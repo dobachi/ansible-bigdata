@@ -1,0 +1,15 @@
+# install
+- include: install.yml tags=install,common
+
+# config
+- include: config.yml tags=config,common
+
+# service
+- include: service_centos6.yml tags=service,common
+  when: ansible_distribution == 'CentOS' and ansible_distribution_major_version == '6'
+
+- include: service_centos7.yml tags=service,common
+  when: ansible_distribution == 'CentOS' and ansible_distribution_major_version == '7'
+
+# selinux
+- include: selinux.yml tags=selinux,common

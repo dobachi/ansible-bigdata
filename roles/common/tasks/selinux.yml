@@ -1,0 +1,7 @@
+# file: roles/common/tasks/selinux.yml
+
+- name: install_libselinux-python
+  yum: name=libselinux-python state=installed
+
+- name: disable_selinux
+  selinux: state={{ common_selinux_state }}

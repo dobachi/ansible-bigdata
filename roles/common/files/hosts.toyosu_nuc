@@ -1,0 +1,32 @@
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
+
+#192.168.56.102 work
+#192.168.56.103 storm-01
+#192.168.56.104 storm-02
+#192.168.56.105 storm-03
+#192.168.56.106 storm-04
+
+192.168.33.2 manage
+
+192.168.33.10 storm-dev
+192.168.33.11 storm-01
+192.168.33.12 storm-02
+192.168.33.13 storm-03
+192.168.33.14 storm-04
+192.168.33.20 kafka-standalone
+192.168.33.21 kafka-01
+192.168.33.22 kafka-02
+192.168.33.23 kafka-03
+192.168.33.24 kafka-04
+
+192.168.33.30 scala-dev
+192.168.33.31 kanon
+
+192.168.33.40 hbase-dev
+192.168.33.41 hbase-01
+192.168.33.42 hbase-02
+192.168.33.43 hbase-03
+192.168.33.44 hbase-04
+
+192.168.33.69 cdh5-pseudo

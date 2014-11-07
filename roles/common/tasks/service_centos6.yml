@@ -1,0 +1,2 @@
+- name: stop_iptables_for_centos6
+  service: name=iptables state={{ common_iptables_state }} enabled=no

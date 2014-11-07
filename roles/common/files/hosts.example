@@ -1,0 +1,58 @@
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
+
+#192.168.56.102 work
+#192.168.56.103 storm-01
+#192.168.56.104 storm-02
+#192.168.56.105 storm-03
+#192.168.56.106 storm-04
+
+192.168.33.2 manage
+
+192.168.33.10 storm-dev
+192.168.33.11 storm-01
+192.168.33.12 storm-02
+192.168.33.13 storm-03
+192.168.33.14 storm-04
+
+192.168.33.15 storm2-dev
+192.168.33.16 storm2-01
+192.168.33.17 storm2-02
+192.168.33.18 storm2-03
+192.168.33.19 storm2-04
+
+192.168.33.21 kafka-01
+192.168.33.22 kafka-02
+192.168.33.23 kafka-03
+192.168.33.24 kafka-04
+
+192.168.33.30 scala-dev
+192.168.33.31 kanon
+
+192.168.33.40 hbase-dev
+192.168.33.41 hbase-01
+192.168.33.42 hbase-02
+192.168.33.43 hbase-03
+192.168.33.44 hbase-04
+192.168.33.45 hbase-pseudo
+192.168.33.46 hbase-pseudo-cdh3
+
+192.168.33.50 cass-dev
+192.168.33.51 cass-01
+192.168.33.52 cass-02
+192.168.33.53 cass-03
+
+192.168.33.54 cass12-dev
+192.168.33.55 cass12-01
+192.168.33.56 cass12-02
+192.168.33.57 cass12-03
+
+192.168.33.60 spark-dev
+192.168.33.61 spark-01
+192.168.33.62 spark-02
+192.168.33.63 spark-03
+
+192.168.33.69 cdh5-pseudo
+
+192.168.33.210 storm-dev-desktop
+192.168.33.211 desktop

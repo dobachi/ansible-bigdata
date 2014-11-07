@@ -1,0 +1,9 @@
+- name: check_firewalld_installed
+  shell: rpm -qa | grep firewalld
+  register: is_firewalld_installed
+  always_run: True
+  ignore_errors: True
+
+- name: stop_iptables_for_centos7
+  service: name=firewalld state={{ common_firewalld_state }} enabled=no
+  when: is_firewalld_installed.rc == 0
