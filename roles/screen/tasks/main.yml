@@ -1,0 +1,2 @@
+- include: install.yml tags=install,screen
+- include: config.yml tags=config,screen

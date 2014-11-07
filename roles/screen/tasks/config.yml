@@ -1,0 +1,2 @@
+- name: copy_screenrc
+  template: src=screenrc.j2 dest=/etc/screenrc
