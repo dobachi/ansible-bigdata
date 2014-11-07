@@ -1,0 +1,2 @@
+- include: install.yml tags=install,ansible
+- include: config.yml tags=config,ansible

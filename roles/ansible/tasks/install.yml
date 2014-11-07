@@ -1,0 +1,5 @@
+- name: install_ansible
+  yum: name=ansible state=installed
+
+- name: install_sshpass
+  yum: name=sshpass state=installed
