@@ -4,7 +4,12 @@
 
 - name: copy_ansible_hosts
   template: src=hosts.{{ ansible_environment }}.j2 dest=/etc/ansible/hosts.{{ ansible_environment }}
+  when: ansible_environment is defined
 
 - name: make_link_of_hosts_for_each_environment
   file: src=/etc/ansible/hosts.{{ ansible_environment }} path=/etc/ansible/hosts state=link
   when: ansible_environment is defined
+
+- name: copy_ansible.cfg
+  template: src=ansible.cfg.j2 dest=/etc/ansible/ansible.cfg
+  when: ansible_modify_cfg
