@@ -6,5 +6,11 @@
 - name: disable_selinux_config
   selinux: state={{ common_selinux_state }}
 
+- name: check_selinux_state
+  shell: getenforce
+  register: selinux_state
+  ignore_errors: True
+
 - name: disable_selinux_with_command
   shell: setenforce 0
+  when: selinux_state.stderr.find('Disabled') == False
