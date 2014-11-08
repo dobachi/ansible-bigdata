@@ -4,8 +4,8 @@
   sudo_user: hdfs
   tasks:
     - name: make_user_dir
-      shell: hdfs dfs -mkdir -p /user/{{ yarn_user | default('vagrant') }}
+      shell: hdfs dfs -mkdir -p /user/{{ yarn_user | default('centos') }}
 
     - name: chown_user_dir
-      shell: hdfs dfs -chown -R {{ yarn_user | default('vagrant') }} /user/{{ yarn_user | default('vagrant') }}
+      shell: hdfs dfs -chown -R {{ yarn_user | default('centos') }} /user/{{ yarn_user | default('centos') }}
 
