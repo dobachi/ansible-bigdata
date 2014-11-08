@@ -3,5 +3,8 @@
 - name: install_libselinux-python
   yum: name=libselinux-python state=installed
 
-- name: disable_selinux
+- name: disable_selinux_config
   selinux: state={{ common_selinux_state }}
+
+- name: disable_selinux_with_command
+  shell: setenforce 0
