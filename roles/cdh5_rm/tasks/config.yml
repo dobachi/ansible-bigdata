@@ -1,0 +1,10 @@
+- name: make_nm_local_dirs
+  file: path={{ item }} state=directory owner=yarn group=hadoop mode=775
+  with_items: cdh5_yarn_nm_local_dirs_list
+
+- name: make_nm_log_dirs
+  file: path={{ item }} state=directory owner=yarn group=hadoop mode=775
+  with_items: cdh5_yarn_nm_log_dirs_list
+
+- name: make_app_log_dirs
+  file: path={{ cdh5_yarn_nm_remote_app_log_dir }} state=directory owner=yarn group=hadoop mode=775

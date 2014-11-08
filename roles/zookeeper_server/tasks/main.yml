@@ -1,0 +1,4 @@
+- include: repo.yml tags=repo,zookeeper
+- include: install.yml tags=install,zookeeper
+- include: config.yml tags=config,zookeeper
+- include: service.yml tags=service,zookeeper

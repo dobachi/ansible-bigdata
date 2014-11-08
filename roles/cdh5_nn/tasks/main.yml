@@ -1,0 +1,2 @@
+- include: install.yml tags=install,cdh5_nn
+- include: config.yml tags=config,cdh5_nn

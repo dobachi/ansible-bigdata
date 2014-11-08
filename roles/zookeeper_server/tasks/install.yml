@@ -1,0 +1,4 @@
+- name: install_zookeeper_packages
+  yum: name={{ item }} state=installed
+  with_items:
+    - zookeeper-server

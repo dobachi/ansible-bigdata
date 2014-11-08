@@ -1,0 +1,5 @@
+- name: install_cdh5_other_pkgs
+  yum: name={{ item }} state=installed
+  with_items:
+    - hadoop-mapreduce-historyserver
+    - hadoop-yarn-proxyserver

@@ -1,0 +1,3 @@
+- name: make_namenode_data_dir
+  file: path={{ item }} state=directory owner=hdfs group=hadoop mode=700
+  with_items: cdh5_dfs_nn_name_dir_list

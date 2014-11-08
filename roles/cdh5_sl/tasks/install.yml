@@ -1,0 +1,7 @@
+- name: install_datanode_nodemanager_and_mapreduce_pkgs
+  yum: name={{ item }} state=installed
+  with_items:
+  - hadoop-yarn-nodemanager
+  - hadoop-hdfs-datanode
+  - hadoop-mapreduce
+ 

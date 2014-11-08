@@ -1,4 +1,0 @@
-- hosts: cdh5_all
-  roles:
-    - common
-    - jdk

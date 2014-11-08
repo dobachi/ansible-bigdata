@@ -1,0 +1,23 @@
+- hosts: cdh5_client
+  gather_facts: no
+  sudo: True
+  sudo_user: hdfs
+  tasks:
+    - name: remove_tmp_dir
+      shell: hdfs dfs -rm -r /tmp
+      ignore_errors: True
+
+    - name: make_intermediate_dir
+      shell: hdfs dfs -mkdir -p /tmp/hadoop-yarn/staging/history/done_intermediate
+
+    - name: chown_intermediate_dir
+      shell: hdfs dfs -chown -R mapred:mapred /tmp/hadoop-yarn/staging
+
+    - name: chmod_tmp_dir
+      shell: hdfs dfs -chmod -R 1777 /tmp 
+
+    - name: make_log_dir
+      shell: hdfs dfs -mkdir -p /var/log/hadoop-yarn
+
+    - name: chown_log_dir
+      shell: hdfs dfs -chown yarn:mapred /var/log/hadoop-yarn

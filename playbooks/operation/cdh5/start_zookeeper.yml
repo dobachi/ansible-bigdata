@@ -1,0 +1,7 @@
+- hosts: cdh5_zookeeperserver
+  gather_facts: no
+  tasks:
+    - name: start_daemons
+      service: name={{ item }} state=started
+      with_items:
+        - zookeeper-server

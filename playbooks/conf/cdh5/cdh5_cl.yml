@@ -1,0 +1,5 @@
+- hosts: cdh5_client
+  roles:
+    - { role: common, common_config_hostname: True }
+    - jdk
+    - cdh5_base

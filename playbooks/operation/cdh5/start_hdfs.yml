@@ -1,0 +1,24 @@
+- hosts: cdh5_journalnode
+  gather_facts: no
+  tasks:
+    - name: start_daemons
+      service: name={{ item }} state=started
+      with_items:
+        - hadoop-hdfs-journalnode
+
+- hosts: cdh5_namenode
+  gather_facts: no
+  tasks:
+    - name: start_daemons
+      service: name={{ item }} state=started
+      with_items:
+        - hadoop-hdfs-namenode
+        - hadoop-hdfs-zkfc
+
+- hosts: cdh5_slave
+  gather_facts: no
+  tasks:
+    - name: start_daemons
+      service: name={{ item }} state=started
+      with_items:
+        - hadoop-hdfs-datanode

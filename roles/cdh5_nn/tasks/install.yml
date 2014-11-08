@@ -1,0 +1,5 @@
+- name: install_namenode_pkgs
+  yum: name={{ item }} state=installed
+  with_items:
+  - hadoop-hdfs-namenode
+  - hadoop-hdfs-zkfc

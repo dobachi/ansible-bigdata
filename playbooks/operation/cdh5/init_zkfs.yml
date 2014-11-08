@@ -1,0 +1,5 @@
+- hosts: cdh5_namenode_primary
+  sudo_user: hdfs
+  tasks:
+    - name: init_zkfc
+      shell: yes Y | hdfs zkfc -formatZK

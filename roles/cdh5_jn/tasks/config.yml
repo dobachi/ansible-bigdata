@@ -1,0 +1,2 @@
+- name: make_journalnode_data_dir
+  file: path={{ cdh5_dfs_journalnode_edits_dir }} state=directory owner=hdfs group=hadoop mode=700

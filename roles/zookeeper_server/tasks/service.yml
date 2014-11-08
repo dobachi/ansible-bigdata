@@ -1,0 +1,4 @@
+# file: roles/zookeeper_cdh5/tasks/service.yml
+
+- name: start_zookeeper_server
+  service: name=zookeeper-server state=started enabled=yes
