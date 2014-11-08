@@ -19,11 +19,6 @@
 
 <configuration>
   <property>
-    <name>yarn.app.mapreduce.am.staging-dir</name>
-    <value>/user</value>
-  </property>
-
-  <property>
     <name>mapred.job.tracker</name>
     <value>{{ groups['cdh5_resourcemanager'][0] }}:8021</value>
   </property>
