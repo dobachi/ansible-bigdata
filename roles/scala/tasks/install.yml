@@ -1,0 +1,16 @@
+# file: roles/scala/tasks/install.yml
+
+- name: make_directory_to_save_tar
+  file: path=/usr/local/scala state=directory
+  tags:
+    - scala
+
+- name: download_scala
+  get_url: url=http://www.scala-lang.org/files/archive/scala-{{ scala_version }}.tgz dest=/usr/local/scala/scala-{{ scala_version }}.tgz force=no
+  tags:
+    - scala
+
+- name: unarchive_scala
+  shell: tar xvzf scala-{{ scala_version }}.tgz chdir=/usr/local/scala creates=/usr/local/scala/scala-{{ scala_version }}/bin/scalap
+  tags:
+    - scala

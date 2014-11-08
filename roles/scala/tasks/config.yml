@@ -1,0 +1,5 @@
+- name: make_simbolic_link_of_scala_default
+  file: src=/usr/local/scala/scala-{{ scala_version }} dest=/usr/local/scala/default state=link
+
+- name: make_bash_profile_file_for_scala_path
+  copy: src=scala.sh dest=/etc/profile.d/
