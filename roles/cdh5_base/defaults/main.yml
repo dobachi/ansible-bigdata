@@ -1,0 +1,44 @@
+# global
+cdh5_data_dir_list:
+  - '/data'
+  - '/data/1'
+
+# core-site.xml.j2
+cdh5_fs_defaultFS: 'hdfs://cdh5-nn-01:8020'
+
+# hdfs-site.xml.j2
+cdh5_namenode_host_address: 'cdh5-nn-01:50070'
+cdh5_dfs_nn_name_dir_list:
+  - '/data/1/dfs/nn'
+cdh5_dfs_nn_checkpoint_dir_list:
+  - '/data/1/dfs/snn'
+cdh5_dfs_dn_data_dir_list:
+  - '/data/1/dfs/dn'
+
+# mapred-site.xml.j2
+cdh5_mr_job_tracker: 'cdh5-rm-01:8021'
+cdh5_mr_jobhistory_address: 'cdh5-ot-01:10020'
+cdh5_mr_jobhistory_webapp_address: 'cdh5-ot-01:19888'
+cdh5_mr_jobhistory_webapp_address: 'cdh5-ot-01:19888'
+cdh5_mr_mapreduce_task_tmp_dir: '/tmp/mapred/${user.name}'
+
+# yarn-site.xml.j2
+cdh5_yarn_rm_rt_address: 'cdh5-rm-01:8031'
+cdh5_yarn_rm_address: 'cdh5-rm-01:8032'
+cdh5_yarn_rm_scheduler_address: 'cdh5-rm-01:8030'
+cdh5_yarn_rm_admin_address: 'cdh5-rm-01:8033'
+cdh5_rm_webapp_address: 'cdh5-rm-01:8088'
+cdh5_yarn_nm_local_dirs_list:
+  - '/data/1/yarn/local'
+cdh5_yarn_nm_log_dirs_list:
+  - '/data/1/yarn/logs'
+cdh5_yarn_nm_remote_app_log_dir: '/var/log/hadoop-yarn/apps'
+cdh5_yarn_nodemanager_resource_memory_mb: '2048'
+cdh5_yarn_scheduler_minimum_allocation_mb: '512'
+cdh5_yarn_scheduler_maximum_allocation_mb: '2024'
+cdh5_yarn_nodemanager_vmem_pmem_ratio: '1.2'
+cdh5_yarn_nodemanager_pmem_check_enabled: 'true'
+cdh5_yarn_nodemanager_vmem_check_enabled: 'true'
+
+# hadoop-metrics2.properties
+cdh5_ganglia_servers: '239.2.11.71:8649'

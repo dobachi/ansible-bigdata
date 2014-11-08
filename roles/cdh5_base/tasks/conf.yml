@@ -1,0 +1,47 @@
+- name: make_data_dir
+  file: path={{ item }} state=directory owner=hdfs group=hadoop mode=777
+  with_items: cdh5_data_dir_list
+
+- name: make_namenode_data_dir
+  file: path={{ item }} state=directory owner=hdfs group=hadoop mode=700
+  with_items: cdh5_dfs_nn_name_dir_list
+
+- name: make_checkpoint_data_dir
+  file: path={{ item }} state=directory owner=hdfs group=hadoop mode=700
+  with_items: cdh5_dfs_nn_checkpoint_dir_list
+
+- name: make_datanode_data_dir
+  file: path={{ item }} state=directory owner=hdfs group=hadoop mode=700
+  with_items: cdh5_dfs_dn_data_dir_list
+
+- name: make_mr_task_tmp_dir
+  file: path=/tmp/mapred state=directory owner=mapred group=hadoop mode=777
+
+- name: make_nm_local_dirs
+  file: path={{ item }} state=directory owner=yarn group=hadoop mode=775
+  with_items: cdh5_yarn_nm_local_dirs_list
+
+- name: make_nm_log_dirs
+  file: path={{ item }} state=directory owner=yarn group=hadoop mode=775
+  with_items: cdh5_yarn_nm_log_dirs_list
+
+- name: make_app_log_dirs
+  file: path={{ cdh5_yarn_nm_remote_app_log_dir }} state=directory owner=yarn group=hadoop mode=775
+
+- name: copy_xml_files
+  template: src={{ item }}.j2 dest=/etc/hadoop/conf/{{ item }}
+  with_items:
+    - core-site.xml
+    - hdfs-site.xml
+    - yarn-site.xml
+    - mapred-site.xml
+    - hadoop-metrics2.properties
+
+- name: chmod_xml_files
+  file: path=/etc/hadoop/conf/{{ item }} mode=644 owner=root
+  with_items:
+    - core-site.xml
+    - hdfs-site.xml
+    - yarn-site.xml
+    - mapred-site.xml
+    - hadoop-metrics2.properties
