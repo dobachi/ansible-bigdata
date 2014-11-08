@@ -1,0 +1,5 @@
+- name: comment_out_requiretty_of_sudoers
+  replace:
+    dest: /etc/sudoers
+    regexp: 'Defaults    requiretty'
+    replace: '#Defaults    requiretty'

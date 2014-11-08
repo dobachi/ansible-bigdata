@@ -1,0 +1,4 @@
+---
+# tasks file for ansible_remote
+
+- include: config.yml tags=config,ansible_remote
