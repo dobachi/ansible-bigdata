@@ -1,0 +1,2 @@
+- include: install.yml tags=install,jdk
+- include: config.yml tags=config,jdk
