@@ -2,10 +2,17 @@
   gather_facts: no
   sudo: True
   sudo_user: hdfs
+  vars:
+    yarn_user: 'centos'
   tasks:
     - name: make_user_dir
-      shell: hdfs dfs -mkdir -p /user/{{ yarn_user | default('centos') }}
+      shell: hdfs dfs -mkdir -p /user/{{ yarn_user }}
 
     - name: chown_user_dir
-      shell: hdfs dfs -chown -R {{ yarn_user | default('centos') }} /user/{{ yarn_user | default('centos') }}
+      shell: hdfs dfs -chown -R {{ yarn_user }} /user/{{ yarn_user }}
 
+    - name: make_user/history_dir
+      shell: hdfs dfs -mkdir -p /user/history
+
+    - name: chown_user/history_dir
+      shell: hdfs dfs -chmod 777 /user/history
