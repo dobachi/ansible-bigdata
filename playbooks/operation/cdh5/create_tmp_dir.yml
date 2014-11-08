@@ -21,3 +21,9 @@
 
     - name: chown_log_dir
       shell: hdfs dfs -chown yarn:mapred /var/log/hadoop-yarn
+
+    - name: make_log_dir_for_spark
+      shell: hdfs dfs -mkdir -p /var/log/spark
+
+    - name: chown_log_dir
+      shell: hdfs dfs -chmod 777 /var/log/spark
