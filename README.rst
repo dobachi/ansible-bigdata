@@ -2,6 +2,7 @@ Ansible Playbooks to construct HDFS/YARN Cluster
 ==================================================
 
 .. sectnum::
+.. contents::
 
 About playbooks
 ---------------
