@@ -214,6 +214,6 @@ You can use "common" role.
 
 Execute ansible-playbook command with common_only_common.yml::
 
- $ ansible-playbook playbooks/conf/common/common_all.yml -k -s -e "common_config_hostname=True server=cdh5_all"
+ $ ansible-playbook playbooks/conf/common/common_only_common.yml -k -s -e "common_config_hostname=True server=cdh5_all"
 
 .. vim: ft=rst tw=0
