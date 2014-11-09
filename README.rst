@@ -196,7 +196,7 @@ Execute ansible-playbook command with ansible_client.yml::
 
  $ ansible-playbook playbooks/conf/ansible/ansible_client.yml -k -s -i hosts.sample -e "ansible_environment=default ansible_modify_cfg=True"
 
-If you use EC2 and need a private key to use SSH,
+If you use EC2 and need a private key for SSH,
 you should specify "ansible_private_key_file" paramter.
 You should execute command with the parameter instead of the above command::
 
@@ -205,5 +205,15 @@ You should execute command with the parameter instead of the above command::
 Check whether all nodes are reachable and "sudo" is available::
 
  $ ansible -m ping cdh5_all -k -s
+
+Configure host name of clusters
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+If you want to configure hostname of nodes,
+You can use "common" role.
+
+Execute ansible-playbook command with common_only_common.yml::
+
+ $ ansible-playbook playbooks/conf/common/common_all.yml -k -s -e "common_config_hostname=True server=cdh5_all"
 
 .. vim: ft=rst tw=0
