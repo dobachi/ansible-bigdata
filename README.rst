@@ -154,4 +154,56 @@ screen           Configuration of screen command
 zookeeper_server Configuration of Zookeeper server
 ================ =======================================================
 
+How to use this playbooks
+--------------------------
+
+Configure Ansible node
+~~~~~~~~~~~~~~~~~~~~~~
+
+First, you may need to configure Ansible node.
+
+Install EPEL repository::
+
+ $ sudo yum install -y http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-2.noarch.rpm
+
+Install Ansible::
+
+ $ sudo yum install ansible
+
+Move original /etc/ansible::
+
+ $ cd /etc
+ $ sudo mv ansible ansible.org
+
+Clone this repository::
+
+ $ git clone https://github.com/dobachi/ansible-cdh5.git ansible
+
+Modify hosts file to be copied to /etc/hosts::
+
+ $ cd ansible
+ $ sudo vi roles/common/files/hosts.default
+
+Execute ansible-playbook command with common_all.yml::
+
+ $ ansible-playbook playbooks/conf/common/common_all.yml -k -s -i hosts.sample
+
+Copy ansible's hosts and modify it::
+
+ $ sudo vi roles/ansible/templates/hosts.default.j2
+
+Execute ansible-playbook command with ansible_client.yml::
+
+ $ ansible-playbook playbooks/conf/ansible/ansible_client.yml -k -s -i hosts.sample -e "ansible_environment=default ansible_modify_cfg=True"
+
+If you use EC2 and need a private key to use SSH,
+you should specify "ansible_private_key_file" paramter.
+You should execute command with the parameter instead of the above command::
+
+ $ ansible-playbook playbooks/conf/ansible/ansible_client.yml -k -s -i hosts.sample -e "ansible_environment=default ansible_modify_cfg=True ansible_private_key_file=${HOME}/mykey.pem"
+
+Check whether all nodes are reachable and "sudo" is available::
+
+ $ ansible -m ping cdh5_all -k -s
+
 .. vim: ft=rst tw=0
