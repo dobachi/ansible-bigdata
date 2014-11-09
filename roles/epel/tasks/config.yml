@@ -1,0 +1,8 @@
+- name: install_epel_repo_for_centos6
+  yum: name=http://dl.fedoraproject.org/pub/epel/{{ ansible_distribution_major_version }}/{{ ansible_machine }}/epel-release-{{ epel_centos6_version }}.noarch.rpm state=installed
+  when: ansible_distribution_major_version == '6'
+
+- name: install_epel_repo_for_centos7
+  yum: name=http://dl.fedoraproject.org/pub/epel/{{ ansible_distribution_major_version }}/{{ ansible_machine }}/e/epel-release-{{ epel_centos7_version }}.noarch.rpm state=installed
+  when: ansible_distribution_major_version == '7'
+
