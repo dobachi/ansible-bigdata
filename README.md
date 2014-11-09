@@ -84,3 +84,15 @@ This is a set of configurations to construct CDH5 environment.
 
   * This playbook executes basic roles and "zookeeper_server" role to build Zookeeper environment
 
+### Ansible
+
+This is a set of configuration about Ansible environment.
+
+* ansible_client.yml
+
+  * This playbook executes "ansible" role to configure nodes where we execute ansible command
+
+* ansible_remote.yml
+
+  * This playbook executes "ansible_remote" role to configure nodes which are configured by ansible
+
