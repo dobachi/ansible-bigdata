@@ -84,7 +84,7 @@ This is a set of configurations to construct CDH5 environment.
 
   * This playbook executes basic roles and "zookeeper_server" role to build Zookeeper environment
 
-### Ansible
+### ansible
 
 This is a set of configuration about Ansible environment.
 
@@ -95,4 +95,36 @@ This is a set of configuration about Ansible environment.
 * ansible_remote.yml
 
   * This playbook executes "ansible_remote" role to configure nodes which are configured by ansible
+
+## Playbooks for operation
+
+We can use playbooks in playbooks/operation directory to operate services.
+
+Directory | Use for
+--- | ---
+playbooks/operation/cdh5 | Operation of Hadoop Services. e.g. Formating HDFS, Start/Stop services, ...
+
+### cdh5
+
+This is a set of operation of Hadoop services.
+Please check README of the directory for more information.
+
+## Abstarct of roles
+
+Role name | Use for
+--- | ---
+ansible | Configuration of nodes where you executes ansible command
+ansible_remote | Configuration of nodes which is configured ansible
+cdh5_base | Basic configuraiton about Hadoop
+cdh5_jn | Configuration of JournalNode
+cdh5_nn | Configuraiton of NameNode
+cdh5_ot | Configuraiton of HistoryServer and YARN Proxy
+cdh5_rm | Configuraiton of ResourceManager
+cdh5_sl | Configuration of DataNode and NodeManager
+cdh5_spark | COnfiguration of Spark core on Hadoop client node
+common | Basic configuration about OS, basic services, and so on
+jdk | Configuraiotn of Oracle JDK
+scala | Configuraiton of Scala on Hadoop client node
+screen | Configuration of screen command
+zookeeper_server | Configuration of Zookeeper server
 
