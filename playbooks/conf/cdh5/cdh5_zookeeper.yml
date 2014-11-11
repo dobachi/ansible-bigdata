@@ -1,5 +1,0 @@
-- hosts: cdh5_zookeeperserver
-  roles:
-    - { role: common, common_config_hostname: True }
-    - jdk
-    - zookeeper_server

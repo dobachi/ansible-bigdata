@@ -1,7 +1,0 @@
-- name: install_hadoop_cdh5_base_packages
-  yum: name={{ item }} state=installed
-  with_items:
-  - hadoop
-  - hadoop-mapreduce
-  - hadoop-yarn
-  - hadoop-hdfs

@@ -1,4 +1,0 @@
-# file: roles/scala/defaults/main.yml
-
-scala_version: '2.10.4'
-

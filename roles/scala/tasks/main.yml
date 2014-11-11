@@ -1,3 +1,0 @@
-- include: install.yml tags=install,scala
-- include: config.yml tags=config,scala
-

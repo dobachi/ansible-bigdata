@@ -1,4 +1,0 @@
-zookeeper_server_bin_path: '/usr/lib/zookeeper/bin'
-
-zookeeper_server_autopuge_snap_retaincount: 3
-zookeeper_server_autopuge_interval: 1

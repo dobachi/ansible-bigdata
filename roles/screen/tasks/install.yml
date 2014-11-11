@@ -1,2 +1,0 @@
-- name: install_screen
-  yum: name=screen state=installed

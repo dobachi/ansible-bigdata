@@ -1,7 +1,0 @@
-/ansible.cfg
-/hosts.dev_local
-/ansible.cfg.rpmnew
-/hosts
-*.swp
-*.swo
-*~

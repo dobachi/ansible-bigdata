@@ -1,2 +1,0 @@
-- name: install_spark
-  yum: name=spark-core state=installed

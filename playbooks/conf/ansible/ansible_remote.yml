@@ -1,3 +1,0 @@
-- hosts: '{{ server | default("localhost") }}'
-  roles:
-    - ansible_remote

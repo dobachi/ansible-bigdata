@@ -1,2 +1,0 @@
-- name: install_journal_node
-  yum: name=hadoop-hdfs-journalnode state=installed

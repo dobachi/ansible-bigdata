@@ -1,7 +1,0 @@
-# ansible_environment: "default"
-
-ansible_modify_cfg: False
-
-# ansible_private_key_file: "~/mykey.pem"
-
-# ansible_pipelining_state: "True"

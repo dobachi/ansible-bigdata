@@ -1,8 +1,0 @@
-- name: install_common_softwares
-  yum: name={{ item }} state=installed
-  with_items:
-    - vim
-    - zip
-    - unzip
-    - man
-    - wget

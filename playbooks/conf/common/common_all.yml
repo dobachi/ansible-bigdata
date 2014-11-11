@@ -1,5 +1,0 @@
-- hosts: '{{ server | default("localhost") }}'
-  roles:
-      - common
-      - screen
-      - epel
