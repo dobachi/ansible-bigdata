@@ -231,12 +231,20 @@ This is usefull for configuration of EC2 instance, because your node may have va
 
 Construct CDH5 HDFS/YARN environment
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-First, you may need to configure hosts list of Ansible::
+If you already have nodes, you can construct CDH5 HDFS/YARN environment by ansible-playbook command::
 
- $ cd /etc/ansible
- $ vi hosts.default
+ $ ansible-playbook playbooks/conf/cdh5/cdh5_all.yml -k -s 
+ $ ansible-playbook playbooks/operation/cdh5/init_zkfs.yml -k -s 
+ $ ansible-playbook playbooks/operation/cdh5/init_hdfs.yml -k -s 
 
+Start services::
 
+ $ ansible-playbook playbooks/operation/cdh5/start_cluster.yml -k -s 
 
+Install Spark Core
+~~~~~~~~~~~~~~~~~~
+You can install Spark Core into Client node by the following command::
+
+ $ ansible-playbook playbooks/conf/cdh5/cdh5_spark.yml -k -s
 
 .. vim: ft=rst tw=0
