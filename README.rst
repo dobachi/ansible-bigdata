@@ -20,6 +20,8 @@ Feature
 * YARN
 * Spark core on Client node
 
+.. _servers:
+
 Servers
 --------
 
@@ -31,6 +33,10 @@ master02 Backup NameNode, JournalNode, Zookeeper Server(id=2), ResourceManager
 master03 Backup NameNode, JournalNode, Zookeeper Server(id=3), HistoryServer
 client01 Hadoop Client, Spark Core
 slave01  DataNode, NodeManager
+slave02  DataNode, NodeManager
+slave03  DataNode, NodeManager
+slave04  DataNode, NodeManager
+slave05  DataNode, NodeManager
 ======== ===========================================================================
 
 Playbooks for configuration
@@ -157,9 +163,13 @@ zookeeper_server Configuration of Zookeeper server
 How to use this playbooks
 --------------------------
 
+Assumption
+~~~~~~~~~~
+You have nodes like servers_.
+
+
 Configure Ansible node
 ~~~~~~~~~~~~~~~~~~~~~~
-
 First, you may need to configure Ansible node.
 
 Install EPEL repository::
@@ -206,14 +216,27 @@ Check whether all nodes are reachable and "sudo" is available::
 
  $ ansible -m ping cdh5_all -k -s
 
-Configure host name of clusters
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Configure host name of clusters (Option)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 If you want to configure hostname of nodes,
 You can use "common" role.
 
 Execute ansible-playbook command with common_only_common.yml::
 
+ $ cd /etc/ansible
  $ ansible-playbook playbooks/conf/common/common_only_common.yml -k -s -e "common_config_hostname=True server=cdh5_all"
+
+This is usefull for configuration of EC2 instance, because your node may have variety of hostname after each node booted.
+
+Construct CDH5 HDFS/YARN environment
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+First, you may need to configure hosts list of Ansible::
+
+ $ cd /etc/ansible
+ $ vi hosts.default
+
+
+
 
 .. vim: ft=rst tw=0
