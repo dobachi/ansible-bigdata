@@ -196,7 +196,7 @@ Modify hosts file to be copied to /etc/hosts::
 
 Execute ansible-playbook command with common_all.yml::
 
- $ ansible-playbook playbooks/conf/common/common_all.yml -k -s -i hosts.sample
+ $ ansible-playbook playbooks/conf/common/common_all.yml -k -s -i hosts.sample -e "common_hosts_replace=True"
 
 Copy ansible's hosts and modify it::
 
