@@ -4,3 +4,7 @@
     - jdk
     - scala
     - cdh5_spark
+
+- hosts: cdh5_all
+  roles:
+    - gcc_gfortran
