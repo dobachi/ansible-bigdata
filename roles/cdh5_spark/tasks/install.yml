@@ -1,2 +1,5 @@
+- name: install_gfortran
+  yum: name=gcc-gfortran state=installed
+
 - name: install_spark
   yum: name=spark-core state=installed
