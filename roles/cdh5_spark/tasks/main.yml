@@ -1,2 +1,3 @@
+- include: repo.yml tags=repo,cdh5_spark
 - include: install.yml tags=install,cdh5_spark
 - include: config.yml tags=config,cdh5_spark
