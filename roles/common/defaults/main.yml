@@ -3,7 +3,7 @@ common_iptables_state: "stopped"
 # This is for CentOS7
 common_firewalld_state: "stopped"
 
-common_hosts_replace: True
+common_hosts_replace: False
 common_hosts_tmpl: "hosts.default"
 
 common_selinux_state: "disabled"
