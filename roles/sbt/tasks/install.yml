@@ -1,0 +1,17 @@
+- name: mkdir_for_sbt
+  file: path=/usr/local/sbt state=directory
+
+- name: mkdir_sbt_{{ sbt_version }}
+  file: path=/usr/local/sbt/{{ sbt_version }} state=directory
+
+- name: download_sbt_package
+  get_url: url=http://dl.bintray.com/sbt/native-packages/sbt/{{ sbt_version }}/sbt-{{ sbt_version }}.tgz dest=/tmp
+
+- name: unarchive_sbt_package
+  shell: tar xvzf sbt-{{ sbt_version }}.tgz -C /usr/local/sbt/{{ sbt_version }} chdir=/tmp
+
+- name: make_simbolic_link_for_sbt
+  file: src=/usr/local/sbt/{{ sbt_version }} dest=/usr/local/sbt/default state=link
+
+- name: copy_profile_for_sbt
+  copy: src=sbt.sh dest=/etc/profile.d/sbt.sh

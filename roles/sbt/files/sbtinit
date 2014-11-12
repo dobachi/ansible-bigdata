@@ -1,0 +1,28 @@
+echo "mkdir project..."
+mkdir project
+
+echo "mkdir src..."
+mkdir -p src/{main,test}/{scala,java,resources}
+
+echo "mkdir target..."
+mkdir target
+
+cat > project.sbt << EOL
+name := "Sample"
+
+version := "1.0"
+
+scalaVersion := "2.10.1"
+
+//resolvers ++= Seq("Resolver name" at "http://example.com")
+
+//libraryDependencies ++= Seq("group" % "id" % "version" % "scope")
+EOL
+
+cat > .gitignore << EOL
+target/
+EOL
+
+cat > project/.gitignore << EOL
+project/.gitignore
+EOL
