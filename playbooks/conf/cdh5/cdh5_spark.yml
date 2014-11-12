@@ -7,7 +7,4 @@
 
 - hosts: cdh5_all
   roles:
-    - { role: common, common_config_hostname: True }
-    - jdk
-    - scala
     - gcc_gfortran
