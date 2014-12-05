@@ -25,19 +25,19 @@ Feature
 Servers
 --------
 
-======== ===========================================================================
+======== ================================================================================
 Server   Use for
-======== ===========================================================================
+======== ================================================================================
 master01 Primary NameNode, JournalNode, Zookeeper Server(id=1)
-master02 Backup NameNode, JournalNode, Zookeeper Server(id=2), ResourceManager
-master03 Backup NameNode, JournalNode, Zookeeper Server(id=3), HistoryServer
+master02 Backup NameNode, JournalNode, Zookeeper Server(id=2), Primary ResourceManager
+master03 JournalNode, Zookeeper Server(id=3), HistoryServer, Backup ResourceManager
 client01 Hadoop Client, Spark Core
 slave01  DataNode, NodeManager
 slave02  DataNode, NodeManager
 slave03  DataNode, NodeManager
 slave04  DataNode, NodeManager
 slave05  DataNode, NodeManager
-======== ===========================================================================
+======== ================================================================================
 
 Playbooks for configuration
 ----------------------------
