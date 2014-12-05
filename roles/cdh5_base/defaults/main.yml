@@ -31,6 +31,9 @@ cdh5_yarn_scheduler_maximum_allocation_mb: '2024'
 cdh5_yarn_nodemanager_vmem_pmem_ratio: '1.2'
 cdh5_yarn_nodemanager_pmem_check_enabled: 'true'
 cdh5_yarn_nodemanager_vmem_check_enabled: 'true'
+cdh5_yarn_rm_cluster_id: 'yarn-cluster'
+cdh5_yarn_rm_connect_retry_interval_ms: '2000'
+cdh5_yarn_arn_app_mapreduce_am_scheduler_connection_wait_interval_ms: '5000'
 
 # hadoop-metrics2.properties
 cdh5_ganglia_servers: '239.2.11.71:8649'

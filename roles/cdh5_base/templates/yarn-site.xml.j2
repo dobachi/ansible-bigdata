@@ -64,26 +64,6 @@
         $HADOOP_YARN_HOME/*,$HADOOP_YARN_HOME/lib/*
      </value>
   </property>
-  <property>
-    <name>yarn.resourcemanager.resource-tracker.address</name>
-    <value>{{ groups['cdh5_resourcemanager'][0] }}:8031</value>
-  </property>
-  <property>
-    <name>yarn.resourcemanager.address</name>
-    <value>{{ groups['cdh5_resourcemanager'][0] }}:8032</value>
-  </property>
-  <property>
-    <name>yarn.resourcemanager.scheduler.address</name>
-    <value>{{ groups['cdh5_resourcemanager'][0] }}:8030</value>
-  </property>
-  <property>
-    <name>yarn.resourcemanager.admin.address</name>
-    <value>{{ groups['cdh5_resourcemanager'][0] }}:8033</value>
-  </property>
-  <property>
-    <name>yarn.resourcemanager.webapp.address</name>
-    <value>{{ groups['cdh5_resourcemanager'][0] }}:8088</value>
-  </property>
 
   <property>
     <name>yarn.nodemanager.resource.memory-mb</name>
@@ -112,5 +92,62 @@
     <name>yarn.nodemanager.vmem-check-enabled</name>
     <value>{{ cdh5_yarn_nodemanager_vmem_check_enabled }}</value>
   </property>
+
+  <!-- Resource Manager HA-->
+  <property>
+    <name>yarn.resourcemanager.connect.retry-interval.ms</name>
+    <value>{{ cdh5_yarn_rm_connect_retry_interval_ms }}</value>
+  </property>
+  <property>
+    <name>yarn.resourcemanager.ha.enabled</name>
+    <value>true</value>
+  </property>
+  <property>
+    <name>yarn.resourcemanager.ha.automatic-failover.enabled</name>
+    <value>true</value>
+  </property>
+  <property>
+    <name>yarn.resourcemanager.ha.automatic-failover.embedded</name>
+    <value>true</value>
+  </property>
+  <property>
+    <name>yarn.resourcemanager.cluster-id</name>
+    <value>{{ cdh5_yarn_rm_cluster_id }}</value>
+  </property>
+  <property>
+    <name>yarn.resourcemanager.ha.rm-ids</name>
+    <value>{{ groups['cdh5_resourcemanager'] | join(',') }}</value>
+  </property>
+  {% for host in groups['cdh5_resourcemanager'] %}
+<property>
+    <name>yarn.resourcemanager.hostname.{{ host }}</name>
+    <value>{{ host }}</value>
+  </property>
+  {% endfor %}
+  <property>
+    <name>yarn.resourcemanager.zk-address</name>
+    <value>{{ groups['cdh5_zookeeperserver'] | join(':2181,') }}:2181</value>
+  </property>
+  <property>
+    <name>yarn.resourcemanager.scheduler.class</name>
+    <value>org.apache.hadoop.yarn.server.resourcemanager.scheduler.fair.FairScheduler</value>
+  </property>
+  <property>
+    <name>yarn.resourcemanager.recovery.enabled</name>
+    <value>true</value>
+  </property>
+  <property>
+    <name>yarn.resourcemanager.store.class</name>
+    <value>org.apache.hadoop.yarn.server.resourcemanager.recovery.ZKRMStateStore</value>
+  </property>
+  <property>
+    <name>yarn.app.mapreduce.am.scheduler.connection.wait.interval-ms</name>
+    <value>{{ cdh5_yarn_arn_app_mapreduce_am_scheduler_connection_wait_interval_ms }}</value>
+  </property>
+  <property>
+    <name>yarn.resourcemanager.work-preserving-recovery.enabled</name>
+    <value>true</value>
+  </property>
+
 
 </configuration>
