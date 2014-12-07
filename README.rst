@@ -162,11 +162,16 @@ zookeeper_server Configuration of Zookeeper server
 
 How to use this playbooks
 --------------------------
+You can use these playbooks to configure the following configuration.
+These are independent of each other.
+
+* Ansible client environment to use various Ansible functions
+* Host name configuration
+* CDH5 HDFS/YARN environment
 
 Assumption
 ~~~~~~~~~~
 You have nodes like servers_.
-
 
 Configure Ansible node
 ~~~~~~~~~~~~~~~~~~~~~~
