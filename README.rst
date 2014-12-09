@@ -239,7 +239,7 @@ Construct CDH5 HDFS/YARN environment
 If you already have nodes, you can construct CDH5 HDFS/YARN environment by ansible-playbook command::
 
  $ ansible-playbook playbooks/conf/cdh5/cdh5_all.yml -k -s 
- $ ansible-playbook playbooks/operation/cdh5/init_zkfs.yml -k -s 
+ $ ansible-playbook playbooks/operation/cdh5/init_zkfc.yml -k -s 
  $ ansible-playbook playbooks/operation/cdh5/init_hdfs.yml -k -s 
 
 Start services::
