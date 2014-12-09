@@ -1,0 +1,322 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>2. About playbooks &mdash; Ansible Hadoop Document 0.1 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="Ansible Hadoop Document 0.1 documentation" href="index.html"/>
+        <link rel="next" title="3. About roles" href="about_roles.html"/>
+        <link rel="prev" title="1. Abstract" href="abstract.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+          <a href="index.html" class="fa fa-home"> Ansible Hadoop Document</a>
+        
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="abstract.html">1. Abstract</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="abstract.html#about-playbooks">1.1. About playbooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="abstract.html#feature">1.2. Feature</a></li>
+<li class="toctree-l2"><a class="reference internal" href="abstract.html#servers">1.3. Servers</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">2. About playbooks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#playbooks-for-configuration">2.1. Playbooks for configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#playbooks-for-operation">2.2. Playbooks for operation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="about_roles.html">3. About roles</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="about_roles.html#roles-to-configure-basic-environments">3.1. Roles to configure basic environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="about_roles.html#roles-to-configure-ansible">3.2. Roles to configure Ansible</a></li>
+<li class="toctree-l2"><a class="reference internal" href="about_roles.html#roles-to-configure-cdh5-hadoop">3.3. Roles to configure CDH5 Hadoop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="about_roles.html#roles-to-configure-spark-core-on-client-node">3.4. Roles to configure Spark core on client node</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Ansible Hadoop Document</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>2. About playbooks</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="_sources/about_playbooks.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <div class="section" id="about-playbooks">
+<h1>2. About playbooks<a class="headerlink" href="#about-playbooks" title="Permalink to this headline">¶</a></h1>
+<p>This project has two types of playbooks.</p>
+<ul class="simple">
+<li>Playbooks for configuration<ul>
+<li>These are used to install middlewares and configure parameters of OS and middlewares.</li>
+</ul>
+</li>
+<li>Playbooks for operation<ul>
+<li>These are used to operate OS&#8217;s services and middleware services.</li>
+</ul>
+</li>
+</ul>
+<div class="section" id="playbooks-for-configuration">
+<h2>2.1. Playbooks for configuration<a class="headerlink" href="#playbooks-for-configuration" title="Permalink to this headline">¶</a></h2>
+<p>We can use playbooks in playbooks/conf directory to configure servers.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="34%" />
+<col width="66%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Directory</th>
+<th class="head">Use for</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>playbooks/conf/common</td>
+<td>Common and basic configuration</td>
+</tr>
+<tr class="row-odd"><td>playbooks/conf/cdh5</td>
+<td>Configuration of CDH5 environment</td>
+</tr>
+<tr class="row-even"><td>playbooks/conf/ansible</td>
+<td>Configuration of Ansible environment</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="common">
+<h3>2.1.1. common<a class="headerlink" href="#common" title="Permalink to this headline">¶</a></h3>
+<p>This is a set of common and basic configurations.</p>
+<ul class="simple">
+<li>playbooks/conf/common/common_all.yml<ul>
+<li>This playbook executes all basic roles</li>
+</ul>
+</li>
+<li>playbooks/conf/common/common_only_common.yml<ul>
+<li>This playbook only executes &#8220;common&#8221; role</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="cdh5">
+<h3>2.1.2. cdh5<a class="headerlink" href="#cdh5" title="Permalink to this headline">¶</a></h3>
+<p>This is a set of configurations to construct CDH5 environment.</p>
+<ul class="simple">
+<li>cdh5_all.yml<ul>
+<li>This playbook is a comprehensive playbook which includes all other playbooks.
+You can build whole CDH5 environment.</li>
+</ul>
+</li>
+<li>cdh5_cl.yml<ul>
+<li>This playbook executes basic roles and &#8220;cdh5_cl&#8221; role to build Hadoop Client environment</li>
+</ul>
+</li>
+<li>cdh5_journalnode.yml<ul>
+<li>This playbook executes basic roles and &#8220;cdh5_jn&#8221; role to build HDFS JournalNode environment</li>
+</ul>
+</li>
+<li>cdh5_namenode.yml<ul>
+<li>This playbook executes basic roles and &#8220;cdh5_nn&#8221; role to build HDFS NameNode environment</li>
+</ul>
+</li>
+<li>cdh5_other.yml<ul>
+<li>This playbook executes basic roles and &#8220;cdh5_ot&#8221; role to build MapReduce HistoryServer and YARN Proxy environments</li>
+</ul>
+</li>
+<li>cdh5_resourcemanager.yml<ul>
+<li>This playbook executes basic roles and &#8220;cdh5_rm&#8221; role to build YARN ResourceManager environment</li>
+</ul>
+</li>
+<li>cdh5_slave.yml<ul>
+<li>This playbook executes basic roles and &#8220;cdh5_sl&#8221; role to build HDFS DataNode and YARN NodeManager environments</li>
+</ul>
+</li>
+<li>cdh5_spark.yml<ul>
+<li>This playbook executes basic roles and &#8220;cdh5_spark&#8221; role to build Spark Core environment on Client Node</li>
+</ul>
+</li>
+<li>cdh5_zookeeper.yml<ul>
+<li>This playbook executes basic roles and &#8220;zookeeper_server&#8221; role to build Zookeeper environment</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="ansible">
+<h3>2.1.3. ansible<a class="headerlink" href="#ansible" title="Permalink to this headline">¶</a></h3>
+<p>This is a set of configuration about Ansible environment.</p>
+<ul class="simple">
+<li>ansible_client.yml<ul>
+<li>This playbook executes &#8220;ansible&#8221; role to configure nodes where we execute ansible command</li>
+</ul>
+</li>
+<li>ansible_remote.yml<ul>
+<li>This playbook executes &#8220;ansible_remote&#8221; role to configure nodes which are configured by ansible</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="playbooks-for-operation">
+<h2>2.2. Playbooks for operation<a class="headerlink" href="#playbooks-for-operation" title="Permalink to this headline">¶</a></h2>
+<p>We can use playbooks in playbooks/operation directory to operate services.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="27%" />
+<col width="73%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Directory</th>
+<th class="head">Use for</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>playbooks/operation/cdh5</td>
+<td>Operation of Hadoop Services.
+e.g. Formating HDFS, Start/Stop services, ...</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="id1">
+<h3>2.2.1. cdh5<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>This is a set of operation of Hadoop services.
+Please check README of the directory for more information.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="about_roles.html" class="btn btn-neutral float-right" title="3. About roles">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="abstract.html" class="btn btn-neutral" title="1. Abstract"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, dobachi.
+    </p>
+  </div>
+
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
