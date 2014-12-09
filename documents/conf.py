@@ -43,7 +43,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'Ansible Hadoop Document'
+project = u'Ansible Playbooks for Hadoop'
 copyright = u'2014, dobachi'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -198,7 +198,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-  ('index', 'AnsibleHadoopDocument.tex', u'Ansible Hadoop Document Documentation',
+  ('index', 'AnsibleHadoopDocument.tex', u'Ansible Playbooks for Hadoop',
    u'dobachi', 'manual'),
 ]
 
@@ -228,7 +228,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'ansiblehadoopdocument', u'Ansible Hadoop Document Documentation',
+    ('index', 'ansiblehadoopdocument', u'Ansible Playbooks for Hadoop',
      [u'dobachi'], 1)
 ]
 
@@ -242,7 +242,7 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  ('index', 'AnsibleHadoopDocument', u'Ansible Hadoop Document Documentation',
+  ('index', 'AnsibleHadoopDocument', u'Ansible Playbooks for Hadoop',
    u'dobachi', 'AnsibleHadoopDocument', 'One line description of project.',
    'Miscellaneous'),
 ]
