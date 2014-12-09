@@ -19,7 +19,7 @@ This project has the following functions.
 * Configuring YARN with ReourceManager HA
 * Configuring Spark core on Client node
 
-.. _servers:
+.. _sec-servers:
 
 Servers
 --------
