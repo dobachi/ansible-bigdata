@@ -236,9 +236,12 @@ This is usefull for configuration of EC2 instance, because your node may have va
 
 Construct CDH5 HDFS/YARN environment
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-If you already have nodes, you can construct CDH5 HDFS/YARN environment by ansible-playbook command::
+If you already have nodes, you can construct CDH5 HDFS/YARN environment by ansible-playbook command.
+In the following example, we configure common_hosts_replace is True.
+As a result of this parameter configuration, Ansible replace /etc/hosts
+by Ansible driver server's /etc/ansible/roles/common/files/hosts.default::
 
- $ ansible-playbook playbooks/conf/cdh5/cdh5_all.yml -k -s 
+ $ ansible-playbook playbooks/conf/cdh5/cdh5_all.yml -k -s -e "common_hosts_replace=True"
  $ ansible-playbook playbooks/operation/cdh5/init_zkfc.yml -k -s 
  $ ansible-playbook playbooks/operation/cdh5/init_hdfs.yml -k -s 
 
