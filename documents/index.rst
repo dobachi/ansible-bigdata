@@ -1,22 +1,15 @@
-.. Ansible Hadoop Document documentation master file, created by
-   sphinx-quickstart on Wed Dec 10 04:21:32 2014.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
-
-Welcome to Ansible Hadoop Document's documentation!
+Ansible Hadoop Document
 ===================================================
+This is a document for `ansible-playbook <https://github.com/dobachi/ansible-hadoop>`_ .
 
-Contents:
+Content
+--------
 
 .. toctree::
    :maxdepth: 2
+   :numbered:
 
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
-
+   abstract
+   about_playbooks
+   about_roles
+   how_to_use_playbooks
