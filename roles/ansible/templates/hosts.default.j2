@@ -3,6 +3,7 @@ cdh5_namenode
 cdh5_journalnode
 cdh5_zookeeperserver
 cdh5_resourcemanager
+cdh5_other
 cdh5_httpfs
 cdh5_hbase
 cdh5_slave
@@ -10,6 +11,7 @@ cdh5_hive
 cdh5_oozie
 cdh5_pig
 cdh5_spark
+cdh5_client
 
 [cdh5_namenode:children]
 cdh5_namenode_primary
@@ -27,12 +29,22 @@ master02
 master03
 
 [cdh5_zookeeperserver]
-master01 zoo_id=1
-master02 zoo_id=2
-master03 zoo_id=3
+master01 zookeeper_server_id=1
+master02 zookeeper_server_id=2
+master03 zookeeper_server_id=3
 
-[cdh5_resourcemanager]
+[cdh5_resourcemanager:children]
+cdh5_resourcemanager_primary
+cdh5_resourcemanager_backup
+
+[cdh5_resourcemanager_primary]
 master02
+
+[cdh5_resourcemanager_backup]
+master03
+
+[cdh5_other]
+master03
 
 [cdh5_httpfs]
 master02
@@ -58,14 +70,17 @@ slave03
 slave04
 slave05
 
-[cdh5_hive]
+[cdh5_client]
 client01
 
-[cdh5_oozie]
-client01
+[cdh5_hive:children]
+cdh5_client
 
-[cdh5_pig]
-client01
+[cdh5_oozie:children]
+cdh5_client
+
+[cdh5_pig:children]
+cdh5_client
 
 [cdh5_spark:children]
 cdh5_spark_master
