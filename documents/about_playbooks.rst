@@ -100,11 +100,16 @@ Directory                 Use for
 ========================= ====================================================================
 playbooks/operation/cdh5  Operation of Hadoop Services.
                           e.g. Formating HDFS, Start/Stop services, ...
+playbooks/operation/ec2   Operation to boot EC2 instances
 ========================= ====================================================================
 
 cdh5
 ~~~~
 
 This is a set of operation of Hadoop services.
-Please check README of the directory for more information.
+Please check README in the *cdh5* directory for more information.
 
+ec2
+~~~~
+This is a set of operation to boot EC2 instances.
+Please check README in the *ec2* directory for more information.
