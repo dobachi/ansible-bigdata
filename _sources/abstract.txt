@@ -15,6 +15,7 @@ Feature
 This project has the following functions.
 
 * Configuring Ansible execution environment
+* Booting EC2 instances for Hadoop cluster
 * Configuring HDFS with NameNode HA
 * Configuring YARN with ReourceManager HA
 * Configuring Spark core on Client node
