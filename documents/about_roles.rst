@@ -24,6 +24,15 @@ ansible          Configuration of nodes where you executes ansible command
 ansible_remote   Configuration of nodes which is configured ansible
 ================ =======================================================
 
+Roles to boot EC2 instances for Hadoop cluster
+------------------------------------------------
+
+================ =======================================================
+Role name        Use for
+================ =======================================================
+ec2_hadoop       Boot EC2 instances for Hadoop cluster
+================ =======================================================
+
 Roles to configure CDH5 Hadoop
 ----------------------------------
 
