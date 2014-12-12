@@ -47,7 +47,7 @@ Clone this repository
 
 .. code-block:: shell
 
- $ git clone https://github.com/dobachi/ansible-cdh5.git ansible
+ $ git clone https://github.com/dobachi/ansible-hadoop.git ansible
 
 Modify configuration
 ~~~~~~~~~~~~~~~~~~~~
