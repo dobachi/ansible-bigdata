@@ -82,7 +82,7 @@ $ sudo mv ansible ansible.org
 </pre></div>
 </div>
 <p>Clone this repository</p>
-<div class="highlight-shell"><div class="highlight"><pre>$ git clone https://github.com/dobachi/ansible-cdh5.git ansible
+<div class="highlight-shell"><div class="highlight"><pre>$ git clone https://github.com/dobachi/ansible-hadoop.git ansible
 </pre></div>
 </div>
 </div>
@@ -120,8 +120,63 @@ You should execute command with the parameter instead of the above command</p>
 </div>
 </div>
 </div>
+<div class="section" id="how-to-boot-ec2-instances-for-hadoop-cluster">
+<h2>4.3. How to boot EC2 instances for Hadoop cluster<a class="headerlink" href="#how-to-boot-ec2-instances-for-hadoop-cluster" title="Permalink to this headline">¶</a></h2>
+<p>If you want to use Hadoop on EC2 instances,
+you can use playbooks/operation/ec2/hadoop_nodes_up.yml to boot instances.</p>
+<div class="section" id="create-inventory-file">
+<h3>4.3.1. Create inventory file<a class="headerlink" href="#create-inventory-file" title="Permalink to this headline">¶</a></h3>
+<p>If you don&#8217;t have an inventory file,
+create inventory file, /etc/ansible/hosts while referring /etc/ansible/hosts.sample.</p>
+</div>
+<div class="section" id="define-environment-variables-for-aws-access">
+<h3>4.3.2. Define environment variables for AWS access<a class="headerlink" href="#define-environment-variables-for-aws-access" title="Permalink to this headline">¶</a></h3>
+<p>We use environment variables to configure AWS access keys.
+Define AWS_ACCESS_KEY and AWS_SECRET_KEY in your ~/.bashrc</p>
+<div class="highlight-python"><div class="highlight"><pre>export AWS_ACCESS_KEY=XXXXXXXXXXXXXXXXXXXXXXXXx
+export AWS_SECRET_KEY=XXXXXXXXXXXXXXXXXXXXXXXXX
+</pre></div>
+</div>
+<p>If you don&#8217;t have AWS keys,
+create keys while referring AWS web site.</p>
+</div>
+<div class="section" id="define-parameters-for-ec2-hadoop-role">
+<h3>4.3.3. Define parameters for ec2_hadoop role<a class="headerlink" href="#define-parameters-for-ec2-hadoop-role" title="Permalink to this headline">¶</a></h3>
+<p>You can find the parameter description for ec2_hadoop role in roles/ec2_hadoop/defaults/main.yml</p>
+<p>To define your own parameters,
+you need to create the group variable file (e.g. group_vars/top) and write parameter defines in this file.</p>
+<p>The following is an example of group_vas/top.</p>
+<div class="highlight-python"><div class="highlight"><pre>ec2_hadoop_group_id: sg-xxxxxxxx
+
+ec2_hadoop_accesskey: xxxxx
+
+ec2_hadoop_itype: xx.xxxxx
+
+ec2_hadoop_master_image: ami-xxxxxxxx
+ec2_hadoop_slave_image: ami-xxxxxxxx
+ec2_hadoop_client_image: ami-xxxxxxxx
+
+ec2_hadoop_region: xx-xxxxxxxxx-x
+
+ec2_hadoop_vpc_subnet_id: subnet-xxxxxxxx
+</pre></div>
+</div>
+<p>If you don&#8217;t define required parameters,
+you will see some errors, like:</p>
+<div class="highlight-python"><div class="highlight"><pre>One or more undefined variables: &#39;ec2_hadoop_group_id&#39; is undefined
+</pre></div>
+</div>
+</div>
+<div class="section" id="apply-playbook">
+<h3>4.3.4. Apply playbook<a class="headerlink" href="#apply-playbook" title="Permalink to this headline">¶</a></h3>
+<p>Execute ansible-playbook command.</p>
+<div class="highlight-python"><div class="highlight"><pre>$ ansible-playbook playbooks/operation/ec2/hadoop_nodes_up.yml -k
+</pre></div>
+</div>
+</div>
+</div>
 <div class="section" id="how-to-configure-host-names-of-nodes">
-<h2>4.3. How to configure host names of nodes<a class="headerlink" href="#how-to-configure-host-names-of-nodes" title="Permalink to this headline">¶</a></h2>
+<h2>4.4. How to configure host names of nodes<a class="headerlink" href="#how-to-configure-host-names-of-nodes" title="Permalink to this headline">¶</a></h2>
 <p>If you want to configure hostname of nodes,
 You can use &#8220;common&#8221; role and related playbooks.</p>
 <p>Execute ansible-playbook command with common_only_common.yml</p>
@@ -132,16 +187,16 @@ $ ansible-playbook playbooks/conf/common/common_only_common.yml -k -s -e &quot;c
 <p>This is usefull for configuration of EC2 instance, because your node may have variety of hostname after each node booted.</p>
 </div>
 <div class="section" id="how-to-configure-cdh5-hdfs-yarn-environment">
-<h2>4.4. How to configure CDH5 HDFS/YARN environment<a class="headerlink" href="#how-to-configure-cdh5-hdfs-yarn-environment" title="Permalink to this headline">¶</a></h2>
+<h2>4.5. How to configure CDH5 HDFS/YARN environment<a class="headerlink" href="#how-to-configure-cdh5-hdfs-yarn-environment" title="Permalink to this headline">¶</a></h2>
 <p>You can construct CDH5 HDFS/YARN environment by ansible-playbook command.</p>
 <div class="section" id="preparement">
-<h3>4.4.1. Preparement<a class="headerlink" href="#preparement" title="Permalink to this headline">¶</a></h3>
+<h3>4.5.1. Preparement<a class="headerlink" href="#preparement" title="Permalink to this headline">¶</a></h3>
 <p>If you have not configured Ansible execution environment,
 you should configure it.
 You can reference <a class="reference internal" href="#sec-configure-ansible-env"><em>How to configure Ansible execution environment</em></a> section.</p>
 </div>
 <div class="section" id="procedure">
-<h3>4.4.2. Procedure<a class="headerlink" href="#procedure" title="Permalink to this headline">¶</a></h3>
+<h3>4.5.2. Procedure<a class="headerlink" href="#procedure" title="Permalink to this headline">¶</a></h3>
 <p>In the following example, we configure common_hosts_replace is True.
 As a result of this parameter configuration, Ansible replace /etc/hosts
 by Ansible driver server&#8217;s /etc/ansible/roles/common/files/hosts.default</p>
@@ -157,7 +212,7 @@ $ ansible-playbook playbooks/operation/cdh5/init_hdfs.yml -k -s
 </div>
 </div>
 <div class="section" id="how-to-install-spark-core">
-<h2>4.5. How to install Spark Core<a class="headerlink" href="#how-to-install-spark-core" title="Permalink to this headline">¶</a></h2>
+<h2>4.6. How to install Spark Core<a class="headerlink" href="#how-to-install-spark-core" title="Permalink to this headline">¶</a></h2>
 <p>You can install Spark Core into Client node by the following command</p>
 <div class="highlight-shell"><div class="highlight"><pre>$ ansible-playbook playbooks/conf/cdh5/cdh5_spark.yml -k -s
 </pre></div>
