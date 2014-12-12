@@ -2,6 +2,7 @@
 /hosts.dev_local
 /ansible.cfg.rpmnew
 /hosts
+/group_vars/dev_local
 *.swp
 *.swo
 *~
