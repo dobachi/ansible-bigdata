@@ -1,4 +1,4 @@
-- hosts: cdh5_client
+- hosts: hadoop_client
   gather_facts: no
   sudo: True
   sudo_user: hdfs

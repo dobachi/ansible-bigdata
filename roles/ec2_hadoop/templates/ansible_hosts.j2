@@ -1,76 +1,87 @@
-[hadoop-all:children]
-hadoop-namenode
-hadoop-journalnode
-hadoop-zookeeperserver
-hadoop-resourcemanager
-hadoop-httpfs
-hadoop-hbase
-hadoop-slave
-hadoop-hive
-hadoop-oozie
-hadoop-pig
-hadoop-spark
+[top:children]
+local
+cdh5_all
 
-[hadoop-namenode:children]
-hadoop-namenode-primary
-hadoop-namenode-backup
+[local]
+localhost
 
-[hadoop-namenode-primary]
+[hadoop_all:children]
+hadoop_namenode
+hadoop_journalnode
+hadoop_zookeeperserver
+hadoop_resourcemanager
+hadoop_httpfs
+hadoop_hbase
+hadoop_slave
+hadoop_hive
+hadoop_oozie
+hadoop_pig
+hadoop_spark
+hadoop_client
+
+[hadoop_namenode:children]
+hadoop_namenode_primary
+hadoop_namenode_backup
+
+[hadoop_namenode_primary]
 {{ ec2_hadoop_ma_result.results[0].item.name }}
 
-[hadoop-namenode-backup]
+[hadoop_namenode_backup]
 {{ ec2_hadoop_ma_result.results[1].item.name }}
 
-[hadoop-journalnode]
+[hadoop_journalnode]
 {{ ec2_hadoop_ma_result.results[0].item.name }}
 {{ ec2_hadoop_ma_result.results[1].item.name }}
 {{ ec2_hadoop_ma_result.results[2].item.name }}
 
-[hadoop-zookeeperserver]
+[hadoop_zookeeperserver]
 {{ ec2_hadoop_ma_result.results[0].item.name }} zoo_id=1
 {{ ec2_hadoop_ma_result.results[1].item.name }} zoo_id=2
 {{ ec2_hadoop_ma_result.results[2].item.name }} zoo_id=3
 
-[hadoop-resourcemanager]
+[hadoop_resourcemanager]
 {{ ec2_hadoop_ma_result.results[1].item.name }}
 
-[hadoop-httpfs]
+[hadoop_httpfs]
 {{ ec2_hadoop_ma_result.results[1].item.name }}
 
-[hadoop-hbase:children]
-hadoop-hbase-master
-hadoop-hbase-regionserver
+[hadoop_hbase:children]
+hadoop_hbase_master
+hadoop_hbase_regionserver
 
-[hadoop-hbase-master]
+[hadoop_hbase_master]
 {{ ec2_hadoop_ma_result.results[0].item.name }}
 
-[hadoop-hbase-regionserver]
+[hadoop_hbase_regionserver]
 {% for i in ec2_hadoop_sl_result.results %}
 {{ i.item.name }}
 {% endfor %}
 
-[hadoop-slave]
+[hadoop_slave]
 {% for i in ec2_hadoop_sl_result.results %}
 {{ i.item.name }}
 {% endfor %}
 
-[hadoop-hive]
+[hadoop_client]
 {{ ec2_hadoop_cl_result.results[0].item.name }}
 
-[hadoop-oozie]
+[hadoop_hive]
 {{ ec2_hadoop_cl_result.results[0].item.name }}
 
-[hadoop-pig]
+[hadoop_oozie]
 {{ ec2_hadoop_cl_result.results[0].item.name }}
 
-[hadoop-spark:children]
-hadoop-spark-master
-hadoop-spark-worker
+[hadoop_pig]
+{{ ec2_hadoop_cl_result.results[0].item.name }}
 
-[hadoop-spark-master]
+[hadoop_spark:children]
+hadoop_spark_master
+hadoop_spark_worker
+
+[hadoop_spark_master]
 {{ ec2_hadoop_ma_result.results[0].item.name }}
 
-[hadoop-spark-worker]
+[hadoop_spark_worker]
 {% for i in ec2_hadoop_sl_result.results %}
 {{ i.item.name }}
 {% endfor %}

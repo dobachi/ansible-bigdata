@@ -6,7 +6,7 @@
       shell: hostname 
       register: src_hostname
 
-- hosts: '{{dst_server | default("cdh5_all") }}'
+- hosts: '{{dst_server | default("hadoop_all") }}'
   vars:
     key_dir: "/tmp/id_rsa_{{ ansible_date_time.epoch }}"
   tasks:

@@ -1,4 +1,4 @@
-- hosts: cdh5_slave
+- hosts: hadoop_slave
   roles:
     - { role: common, common_config_hostname: True }
     - jdk

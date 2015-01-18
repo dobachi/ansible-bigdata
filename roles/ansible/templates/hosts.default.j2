@@ -1,102 +1,80 @@
-[top:children]
-local
-cdh5_all
+[hadoop_all:children]
+hadoop_namenode
+hadoop_journalnode
+hadoop_zookeeperserver
+hadoop_resourcemanager
+hadoop_httpfs
+hadoop_hbase
+hadoop_slave
+hadoop_hive
+hadoop_oozie
+hadoop_pig
+hadoop_spark
 
-[local]
-localhost
+[hadoop_namenode:children]
+hadoop_namenode_primary
+hadoop_namenode_backup
 
-[cdh5_all:children]
-cdh5_namenode
-cdh5_journalnode
-cdh5_zookeeperserver
-cdh5_resourcemanager
-cdh5_other
-cdh5_httpfs
-cdh5_hbase
-cdh5_slave
-cdh5_hive
-cdh5_oozie
-cdh5_pig
-cdh5_spark
-cdh5_client
-
-[cdh5_namenode:children]
-cdh5_namenode_primary
-cdh5_namenode_backup
-
-[cdh5_namenode_primary]
+[hadoop_namenode_primary]
 master01
 
-[cdh5_namenode_backup]
+[hadoop_namenode_backup]
 master02
 
-[cdh5_journalnode]
+[hadoop_journalnode]
 master01
 master02
 master03
 
-[cdh5_zookeeperserver]
-master01 zookeeper_server_id=1
-master02 zookeeper_server_id=2
-master03 zookeeper_server_id=3
+[hadoop_zookeeperserver]
+master01 zoo_id=1
+master02 zoo_id=2
+master03 zoo_id=3
 
-[cdh5_resourcemanager:children]
-cdh5_resourcemanager_primary
-cdh5_resourcemanager_backup
-
-[cdh5_resourcemanager_primary]
+[hadoop_resourcemanager]
 master02
 
-[cdh5_resourcemanager_backup]
-master03
-
-[cdh5_other]
-master03
-
-[cdh5_httpfs]
+[hadoop_httpfs]
 master02
 
-[cdh5_hbase:children]
-cdh5_hbase_master
-cdh5_hbase_regionserver
+[hadoop_hbase:children]
+hadoop_hbase_master
+hadoop_hbase_regionserver
 
-[cdh5_hbase_master]
+[hadoop_hbase_master]
 master01
 
-[cdh5_hbase_regionserver]
+[hadoop_hbase_regionserver]
 slave01
 slave02
 slave03
 slave04
 slave05
 
-[cdh5_slave]
+[hadoop_slave]
 slave01
 slave02
 slave03
 slave04
 slave05
 
-[cdh5_client]
+[hadoop_hive]
 client01
 
-[cdh5_hive:children]
-cdh5_client
+[hadoop_oozie]
+client01
 
-[cdh5_oozie:children]
-cdh5_client
+[hadoop_pig]
+client01
 
-[cdh5_pig:children]
-cdh5_client
+[hadoop_spark:children]
+hadoop_spark_master
+hadoop_spark_worker
 
-[cdh5_spark:children]
-cdh5_spark_master
-cdh5_spark_worker
-
-[cdh5_spark_master]
+[hadoop_spark_master]
 master01
 
-[cdh5_spark_worker]
+[hadoop_spark_worker]
 slave01
 slave02
 slave03

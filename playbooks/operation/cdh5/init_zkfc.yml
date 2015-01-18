@@ -1,4 +1,4 @@
-- hosts: cdh5_namenode_primary
+- hosts: hadoop_namenode_primary
   sudo_user: hdfs
   tasks:
     - name: init_zkfc

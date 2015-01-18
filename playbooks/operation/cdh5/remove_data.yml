@@ -1,4 +1,4 @@
-- hosts: cdh5_slave
+- hosts: hadoop_slave
   gather_facts: no
   tasks:
     - name: remove_data_dir

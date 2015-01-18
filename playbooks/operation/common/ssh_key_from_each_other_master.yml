@@ -1,9 +1,9 @@
-- hosts: '{{src_server | default("cdh5_namenode:cdh5_resourcemanager") }}'
+- hosts: '{{src_server | default("hadoop_namenode:hadoop_resourcemanager") }}'
   tasks:
     - name: gather_facts
       debug: msg="gathering facts to use the same epoc time on all server during executing this playbook"
 
-- hosts: '{{src_server | default("cdh5_namenode") }}'
+- hosts: '{{src_server | default("hadoop_namenode") }}'
   vars:
     ssh_dir: "{{ ansible_env.HOME }}/.ssh"
     key_basedir: "/tmp/id_rsa_{{ ansible_date_time.epoch }}"
@@ -36,7 +36,7 @@
     - name: chmod_authorized_keys
       file: path={{ ansible_env.HOME }}/.ssh/authorized_keys mode=600
 
-- hosts: '{{src_server | default("cdh5_resourcemanager") }}'
+- hosts: '{{src_server | default("hadoop_resourcemanager") }}'
   vars:
     ssh_dir: "{{ ansible_env.HOME }}/.ssh"
     key_basedir: "/tmp/id_rsa_{{ ansible_date_time.epoch }}"

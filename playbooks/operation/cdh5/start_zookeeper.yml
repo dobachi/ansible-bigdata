@@ -1,4 +1,4 @@
-- hosts: cdh5_zookeeperserver
+- hosts: hadoop_zookeeperserver
   gather_facts: no
   tasks:
     - name: start_daemons

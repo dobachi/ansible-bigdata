@@ -1,4 +1,4 @@
-- hosts: cdh5_journalnode
+- hosts: hadoop_journalnode
   roles:
     - { role: common, common_config_hostname: True }
     - jdk

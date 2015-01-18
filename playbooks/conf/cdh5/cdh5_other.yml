@@ -1,4 +1,4 @@
-- hosts: cdh5_other
+- hosts: hadoop_other
   roles:
     - { role: common, common_config_hostname: True }
     - jdk

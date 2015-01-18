@@ -1,4 +1,4 @@
-- hosts: cdh5_resourcemanager
+- hosts: hadoop_resourcemanager
   gather_facts: no
   tasks:
     - name: start_daemons
@@ -6,7 +6,7 @@
       with_items:
         - hadoop-yarn-resourcemanager 
 
-- hosts: cdh5_slave
+- hosts: hadoop_slave
   gather_facts: no
   tasks:
     - name: start_daemons
@@ -14,7 +14,7 @@
       with_items:
         - hadoop-yarn-nodemanager
 
-- hosts: cdh5_other
+- hosts: hadoop_other
   gather_facts: no
   tasks:
     - name: start_daemons

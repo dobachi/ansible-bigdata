@@ -1,10 +1,10 @@
-- hosts: cdh5_journalnode
+- hosts: hadoop_journalnode
   gather_facts: no
   tasks:
     - name: start_journalnode
       service: name=hadoop-hdfs-journalnode state=started
 
-- hosts: cdh5_namenode_primary
+- hosts: hadoop_namenode_primary
   gather_facts: no
   sudo: True
   sudo_user: hdfs
@@ -12,13 +12,13 @@
     - name: format_hdfs
       shell: yes | hdfs namenode -format
 
-- hosts: cdh5_namenode_primary
+- hosts: hadoop_namenode_primary
   gather_facts: no
   tasks:
     - name: start_namenode_primary
       service: name=hadoop-hdfs-namenode state=started
 
-- hosts: cdh5_namenode_backup
+- hosts: hadoop_namenode_backup
   gather_facts: no
   sudo: True
   sudo_user: hdfs
@@ -27,7 +27,7 @@
       shell: >
              yes Y | hdfs namenode -bootstrapStandby
 
-- hosts: cdh5_namenode_backup
+- hosts: hadoop_namenode_backup
   gather_facts: no
   tasks:
     - name: start_namenode_backup

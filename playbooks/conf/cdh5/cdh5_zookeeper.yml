@@ -1,4 +1,4 @@
-- hosts: cdh5_zookeeperserver
+- hosts: hadoop_zookeeperserver
   roles:
     - { role: common, common_config_hostname: True }
     - jdk

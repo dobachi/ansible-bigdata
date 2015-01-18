@@ -1,4 +1,4 @@
-- hosts: cdh5_journalnode
+- hosts: hadoop_journalnode
   gather_facts: no
   tasks:
     - name: start_daemons
@@ -6,7 +6,7 @@
       with_items:
         - hadoop-hdfs-journalnode
 
-- hosts: cdh5_namenode
+- hosts: hadoop_namenode
   gather_facts: no
   tasks:
     - name: start_daemons
@@ -15,7 +15,7 @@
         - hadoop-hdfs-namenode
         - hadoop-hdfs-zkfc
 
-- hosts: cdh5_slave
+- hosts: hadoop_slave
   gather_facts: no
   tasks:
     - name: start_daemons
