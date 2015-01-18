@@ -1,0 +1,14 @@
+- hosts: '{{src_server | default("localhost") }}'
+  tasks:
+    - name: create_keys
+      shell: ssh-keygen -t rsa -N "" -f ~/.ssh/id_rsa creates=~/.ssh/id_rsa
+    - name: check_hostname
+      shell: hostname 
+      register: src_hostname
+
+- hosts: '{{dst_server | default("cdh5_all") }}'
+  tasks:
+    - name: copy_id_rsa_pub
+      copy: src={{ ansible_env.HOME }}/.ssh/id_rsa.pub dest=/tmp/id_rsa.pub.{{ src_hostname
+
+# vim: tw=0 et ts=2 sw=2
