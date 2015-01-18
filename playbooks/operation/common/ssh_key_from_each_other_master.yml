@@ -1,0 +1,72 @@
+- hosts: '{{src_server | default("cdh5_namenode:cdh5_resourcemanager") }}'
+  tasks:
+    - name: gather_facts
+      debug: msg="gathering facts to use the same epoc time on all server during executing this playbook"
+
+- hosts: '{{src_server | default("cdh5_namenode") }}'
+  vars:
+    ssh_dir: "{{ ansible_env.HOME }}/.ssh"
+    key_basedir: "/tmp/id_rsa_{{ ansible_date_time.epoch }}"
+    key_dir: "{{ key_basedir}}/namenode"
+  tasks:
+    - name: create_keys
+      shell: ssh-keygen -t rsa -N "" -f {{ ssh_dir }}/id_rsa creates={{ ssh_dir }}/id_rsa
+    - name: check_hostname
+      shell: hostname 
+      register: src_hostname
+    - name: make_base_directory_to_store_keys
+      local_action: file path={{ key_basedir }} state=directory
+      run_once: True
+    - name: get_public_keys
+      fetch: src={{ ssh_dir }}/id_rsa.pub dest={{ key_dir }}
+    - name: copy_key_dir
+      copy: src={{ key_dir }} dest={{ key_dir }}
+    - name: get_file_paths
+      shell: find {{ key_dir }} -type f
+      register: file_paths
+    - name: mkdir_ssh_dir
+      file: path={{ ansible_env.HOME }}/.ssh mode=700 owner={{ ansible_user_id }} state=directory
+    - name: get_key_string
+      shell: cat {{ item }}
+      with_items: file_paths.stdout.split()
+      register: key_string
+    - name: add_key_string_to_authorized_keys
+      lineinfile: dest={{ ansible_env.HOME }}/.ssh/authorized_keys line="{{ item.stdout }}"
+      with_items: key_string.results
+    - name: chmod_authorized_keys
+      file: path={{ ansible_env.HOME }}/.ssh/authorized_keys mode=600
+
+- hosts: '{{src_server | default("cdh5_resourcemanager") }}'
+  vars:
+    ssh_dir: "{{ ansible_env.HOME }}/.ssh"
+    key_basedir: "/tmp/id_rsa_{{ ansible_date_time.epoch }}"
+    key_dir: "{{ key_basedir}}/resourcemanager"
+  tasks:
+    - name: create_keys
+      shell: ssh-keygen -t rsa -N "" -f {{ ssh_dir }}/id_rsa creates={{ ssh_dir }}/id_rsa
+    - name: check_hostname
+      shell: hostname 
+      register: src_hostname
+    - name: make_base_directory_to_store_keys
+      local_action: file path={{ key_basedir }} state=directory
+      run_once: True
+    - name: get_public_keys
+      fetch: src={{ ssh_dir }}/id_rsa.pub dest={{ key_dir }}
+    - name: copy_key_dir
+      copy: src={{ key_dir }} dest={{ key_dir }}
+    - name: get_file_paths
+      shell: find {{ key_dir }} -type f
+      register: file_paths
+    - name: mkdir_ssh_dir
+      file: path={{ ansible_env.HOME }}/.ssh mode=700 owner={{ ansible_user_id }} state=directory
+    - name: get_key_string
+      shell: cat {{ item }}
+      with_items: file_paths.stdout.split()
+      register: key_string
+    - name: add_key_string_to_authorized_keys
+      lineinfile: dest={{ ansible_env.HOME }}/.ssh/authorized_keys line="{{ item.stdout }}"
+      with_items: key_string.results
+    - name: chmod_authorized_keys
+      file: path={{ ansible_env.HOME }}/.ssh/authorized_keys mode=600
+
+# vim: tw=0 et ts=2 sw=2
