@@ -20,7 +20,7 @@
 <configuration>
   <property>
     <name>mapred.job.tracker</name>
-    <value>{{ groups['cdh5_resourcemanager'][0] }}:8021</value>
+    <value>{{ groups['hadoop_resourcemanager'][0] }}:8021</value>
   </property>
 
   <property>
@@ -30,11 +30,11 @@
 
   <property>
     <name>mapreduce.jobhistory.address</name>
-    <value>{{ groups['cdh5_other'][0] }}:10020</value>
+    <value>{{ groups['hadoop_other'][0] }}:10020</value>
   </property>
   <property>
     <name>mapreduce.jobhistory.webapp.address</name>
-    <value>{{ groups['cdh5_other'][0] }}:19888</value>
+    <value>{{ groups['hadoop_other'][0] }}:19888</value>
   </property>
 
   <property>

@@ -24,7 +24,7 @@ autopurge.snapRetainCount={{ zookeeper_server_autopuge_snap_retaincount }}
 # Set to "0" to disable auto purge feature
 autopurge.purgeInterval={{ zookeeper_server_autopuge_interval }}
 
-{% for server in groups['cdh5_zookeeperserver'] %}
+{% for server in groups['hadoop_zookeeperserver'] %}
 server.{{ loop.index }}={{ server }}:2888:3888
 {% endfor %}
 

@@ -3,6 +3,7 @@ hadoop_namenode
 hadoop_journalnode
 hadoop_zookeeperserver
 hadoop_resourcemanager
+hadoop_other
 hadoop_httpfs
 hadoop_hbase
 hadoop_slave
@@ -27,11 +28,15 @@ master02
 master03
 
 [hadoop_zookeeperserver]
-master01 zoo_id=1
-master02 zoo_id=2
-master03 zoo_id=3
+master01 zookeeper_server_id=1
+master02 zookeeper_server_id=2
+master03 zookeeper_server_id=3
 
 [hadoop_resourcemanager]
+master02
+master03
+
+[hadoop_other]
 master02
 
 [hadoop_httpfs]

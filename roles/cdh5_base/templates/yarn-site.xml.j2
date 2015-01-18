@@ -116,9 +116,9 @@
   </property>
   <property>
     <name>yarn.resourcemanager.ha.rm-ids</name>
-    <value>{{ groups['cdh5_resourcemanager'] | join(',') }}</value>
+    <value>{{ groups['hadoop_resourcemanager'] | join(',') }}</value>
   </property>
-  {% for host in groups['cdh5_resourcemanager'] %}
+  {% for host in groups['hadoop_resourcemanager'] %}
 <property>
     <name>yarn.resourcemanager.hostname.{{ host }}</name>
     <value>{{ host }}</value>
@@ -126,7 +126,7 @@
   {% endfor %}
   <property>
     <name>yarn.resourcemanager.zk-address</name>
-    <value>{{ groups['cdh5_zookeeperserver'] | join(':2181,') }}:2181</value>
+    <value>{{ groups['hadoop_zookeeperserver'] | join(':2181,') }}:2181</value>
   </property>
   <property>
     <name>yarn.resourcemanager.scheduler.class</name>

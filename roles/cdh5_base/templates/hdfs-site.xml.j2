@@ -25,17 +25,17 @@
 
   <property>
      <name>dfs.ha.namenodes.{{ cdh5_dfs_nameservices }}</name>
-     <value>{{ groups['cdh5_namenode'] | join(',') }}</value>
+     <value>{{ groups['hadoop_namenode'] | join(',') }}</value>
   </property>
 
-  {% for host in groups['cdh5_namenode'] %}
+  {% for host in groups['hadoop_namenode'] %}
 <property>
     <name>dfs.namenode.rpc-address.{{ cdh5_dfs_nameservices }}.{{ host }}</name>
     <value>{{ host }}:8020</value>
   </property>
   {% endfor %}
 
-  {% for host in groups['cdh5_namenode'] %}
+  {% for host in groups['hadoop_namenode'] %}
 <property>
     <name>dfs.namenode.http-address.{{ cdh5_dfs_nameservices }}.{{ host }}</name>
     <value>{{ host }}:50070</value>
@@ -45,7 +45,7 @@
   <!-- the location of the shared storage directory -->
   <property>
     <name>dfs.namenode.shared.edits.dir</name>
-    <value>qjournal://{{ groups['cdh5_journalnode'] | join(':8485' + ';') }}:8485/{{ cdh5_dfs_nameservices }}</value>
+    <value>qjournal://{{ groups['hadoop_journalnode'] | join(':8485' + ';') }}:8485/{{ cdh5_dfs_nameservices }}</value>
   </property>
 
   <!-- the path where the JournalNode daemon will store its local state -->

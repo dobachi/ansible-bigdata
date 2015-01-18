@@ -1,5 +1,3 @@
-# file: roles/zookeeper_cdh5/tasks/conf.yml
-
 - name: copy_zoo.cfg
   template: src=zoo.cfg.j2 dest=/etc/zookeeper/conf/zoo.cfg
 
