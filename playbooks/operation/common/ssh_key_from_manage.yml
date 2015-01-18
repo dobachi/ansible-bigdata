@@ -9,6 +9,6 @@
 - hosts: '{{dst_server | default("cdh5_all") }}'
   tasks:
     - name: copy_id_rsa_pub
-      copy: src={{ ansible_env.HOME }}/.ssh/id_rsa.pub dest=/tmp/id_rsa.pub.{{ src_hostname
+      copy: src={{ ansible_env.HOME }}/.ssh/id_rsa.pub dest=/tmp/id_rsa.pub.{{ ansible_env.SSH_CLIENT.split(' ')[0] }}
 
 # vim: tw=0 et ts=2 sw=2
