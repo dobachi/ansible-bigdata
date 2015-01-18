@@ -1,16 +1,17 @@
 [hadoop_all:children]
+hadoop_master
+hadoop_client
+hadoop_slave
+hadoop_hbase
+hadoop_spark
+
+[hadoop_master:children]
 hadoop_namenode
 hadoop_journalnode
 hadoop_zookeeperserver
 hadoop_resourcemanager
 hadoop_other
 hadoop_httpfs
-hadoop_hbase
-hadoop_slave
-hadoop_hive
-hadoop_oozie
-hadoop_pig
-hadoop_spark
 
 [hadoop_namenode:children]
 hadoop_namenode_primary
@@ -62,6 +63,11 @@ slave02
 slave03
 slave04
 slave05
+
+[hadoop_client:children]
+hadoop_hive
+hadoop_oozie
+hadoop_pig
 
 [hadoop_hive]
 client01
