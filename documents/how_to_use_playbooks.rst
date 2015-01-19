@@ -90,7 +90,7 @@ Check whether all nodes are reachable and "sudo" is available
 
 .. code-block:: shell
 
- $ ansible -m ping cdh5_all -k -s
+ $ ansible -m ping hadoop_all -k -s
 
 How to boot EC2 instances for Hadoop cluster
 ------------------------------------------------
@@ -167,7 +167,7 @@ Execute ansible-playbook command with common_only_common.yml
 .. code-block:: shell
 
  $ cd /etc/ansible
- $ ansible-playbook playbooks/conf/common/common_only_common.yml -k -s -e "common_config_hostname=True server=cdh5_all"
+ $ ansible-playbook playbooks/conf/common/common_only_common.yml -k -s -e "common_config_hostname=True server=hadoop_all"
 
 This is usefull for configuration of EC2 instance, because your node may have variety of hostname after each node booted.
 
