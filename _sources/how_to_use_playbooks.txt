@@ -1,7 +1,7 @@
 How to use this playbooks
 ==========================
 You can use these playbooks to configure the following configuration.
-These playbooks are independent of each other.
+**These playbooks are independent of each other** .
 
 * Ansible client environment to use various Ansible functions
 * Host name configuration
@@ -152,6 +152,10 @@ Execute ansible-playbook command.
 ::
 
  $ ansible-playbook playbooks/operation/ec2/hadoop_nodes_up.yml -k
+
+As a result, you can find an IP address list, an ansible inventory file and an example of /etc/hosts used in EC2 instances
+in /tmp/ec2_<unix epoc time>.
+<unix epoc time> is the time you executed this playbook.
 
 How to configure host names of nodes
 ------------------------------------------

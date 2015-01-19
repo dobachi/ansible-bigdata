@@ -27,12 +27,12 @@
     <link rel="next" title="2. About playbooks" href="about_playbooks.html" />
     <link rel="prev" title="What is this document?" href="index.html" /> 
   </head>
-  <body>
-      <div class="header"><h1 class="heading"><a href="index.html">
+  <body role="document">
+      <div class="header" role="banner"><h1 class="heading"><a href="index.html">
           <span>Ansible Playbooks for Hadoop 0.1 documentation</span></a></h1>
         <h2 class="heading"><span>1. Abstract</span></h2>
       </div>
-      <div class="topnav">
+      <div class="topnav" role="navigation" aria-label="top navigation">
       
         <p>
         «&#160;&#160;<a href="index.html">What is this document?</a>
@@ -51,7 +51,11 @@
 <div class="section" id="about-playbooks">
 <h2>1.1. About playbooks<a class="headerlink" href="#about-playbooks" title="Permalink to this headline">¶</a></h2>
 <p>This is a library of playbooks to construct HDFS/YARN clusters.
-You will have HDFS services with HA and YARN services without HA.</p>
+You will have HDFS and YARN services with HA.</p>
+<p>Although the configuration of OS and middlewares are not well tuned about performance,
+this is enough to be used to construct small cluster.
+In other words, if you would like to construct and manage large clusters,
+you may need to configure OS and middlewares adequately.</p>
 <p>To write these playbooks, <a class="reference external" href="https://bitbucket.org/dobachi/ansible-playbooks.git">dobachi&#8217;s ansible-playbooks</a>
 and <a class="reference external" href="https://github.com/mcsrainbow/ansible-playbooks-cdh5">mcsrainbow&#8217;s ansible-playbooks-cdh5</a> are used as reference.</p>
 </div>
@@ -114,7 +118,7 @@ and <a class="reference external" href="https://github.com/mcsrainbow/ansible-pl
 
 
       </div>
-      <div class="bottomnav">
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
       
         <p>
         «&#160;&#160;<a href="index.html">What is this document?</a>
@@ -126,9 +130,9 @@ and <a class="reference external" href="https://github.com/mcsrainbow/ansible-pl
 
       </div>
 
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2014, dobachi.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3b1.
     </div>
   </body>
 </html>
