@@ -5,7 +5,12 @@ About playbooks
 ---------------
 
 This is a library of playbooks to construct HDFS/YARN clusters.
-You will have HDFS services with HA and YARN services without HA.
+You will have HDFS and YARN services with HA.
+
+Although the configuration of OS and middlewares are not well tuned about performance,
+this is enough to be used to construct small cluster.
+In other words, if you would like to construct and manage large clusters,
+you may need to configure OS and middlewares adequately.
 
 To write these playbooks, `dobachi's ansible-playbooks <https://bitbucket.org/dobachi/ansible-playbooks.git>`_
 and `mcsrainbow's ansible-playbooks-cdh5 <https://github.com/mcsrainbow/ansible-playbooks-cdh5>`_ are used as reference.
