@@ -115,7 +115,7 @@ You should execute command with the parameter instead of the above command</p>
 </pre></div>
 </div>
 <p>Check whether all nodes are reachable and &#8220;sudo&#8221; is available</p>
-<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible -m ping cdh5_all -k -s
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible -m ping hadoop_all -k -s
 </pre></div>
 </div>
 </div>
@@ -184,7 +184,7 @@ in /tmp/ec2_&lt;unix epoc time&gt;.
 You can use &#8220;common&#8221; role and related playbooks.</p>
 <p>Execute ansible-playbook command with common_only_common.yml</p>
 <div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd</span> /etc/ansible
-<span class="nv">$ </span>ansible-playbook playbooks/conf/common/common_only_common.yml -k -s -e <span class="s2">&quot;common_config_hostname=True server=cdh5_all&quot;</span>
+<span class="nv">$ </span>ansible-playbook playbooks/conf/common/common_only_common.yml -k -s -e <span class="s2">&quot;common_config_hostname=True server=hadoop_all&quot;</span>
 </pre></div>
 </div>
 <p>This is usefull for configuration of EC2 instance, because your node may have variety of hostname after each node booted.</p>
