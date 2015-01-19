@@ -38,10 +38,10 @@ master02
 master03
 
 [hadoop_other]
-master02
+master03
 
 [hadoop_httpfs]
-master02
+master03
 
 [hadoop_hbase:children]
 hadoop_hbase_master
