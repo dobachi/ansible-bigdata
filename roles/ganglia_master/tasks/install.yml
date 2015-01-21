@@ -1,0 +1,5 @@
+- name: install_gmetad
+  yum: name={{ item }] state=installed
+  with_items:
+    - ganglia-gmetad
+    - ganglia-web
