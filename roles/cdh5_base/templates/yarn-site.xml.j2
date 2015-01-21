@@ -19,6 +19,18 @@
 
 <configuration>
   <property>
+    <description>Address where the localizer IPC is.</description>
+    <name>yarn.nodemanager.localizer.address</name>
+    <value>0.0.0.0:8040</value>
+  </property>
+
+  <property>
+    <description>NM Webapp address.</description>
+    <name>yarn.nodemanager.webapp.address</name>
+    <value>0.0.0.0:8042</value>
+  </property>
+
+  <property>
     <name>yarn.nodemanager.aux-services</name>
     <value>mapreduce_shuffle</value>
   </property>
