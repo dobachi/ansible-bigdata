@@ -1,7 +1,7 @@
 How to use this playbooks
 ==========================
 You can use these playbooks to configure the following configuration.
-These playbooks are independent of each other.
+**These playbooks are independent of each other** .
 
 * Ansible client environment to use various Ansible functions
 * Host name configuration
@@ -90,7 +90,7 @@ Check whether all nodes are reachable and "sudo" is available
 
 .. code-block:: shell
 
- $ ansible -m ping cdh5_all -k -s
+ $ ansible -m ping hadoop_all -k -s
 
 How to boot EC2 instances for Hadoop cluster
 ------------------------------------------------
@@ -153,6 +153,10 @@ Execute ansible-playbook command.
 
  $ ansible-playbook playbooks/operation/ec2/hadoop_nodes_up.yml -k
 
+As a result, you can find an IP address list, an ansible inventory file and an example of /etc/hosts used in EC2 instances
+in /tmp/ec2_<unix epoc time>.
+<unix epoc time> is the time you executed this playbook.
+
 How to configure host names of nodes
 ------------------------------------------
 If you want to configure hostname of nodes,
@@ -163,7 +167,7 @@ Execute ansible-playbook command with common_only_common.yml
 .. code-block:: shell
 
  $ cd /etc/ansible
- $ ansible-playbook playbooks/conf/common/common_only_common.yml -k -s -e "common_config_hostname=True server=cdh5_all"
+ $ ansible-playbook playbooks/conf/common/common_only_common.yml -k -s -e "common_config_hostname=True server=hadoop_all"
 
 This is usefull for configuration of EC2 instance, because your node may have variety of hostname after each node booted.
 
