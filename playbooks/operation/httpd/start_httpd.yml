@@ -1,0 +1,4 @@
+- hosts: "{{ server | default('hadoop_other') }}"
+  tasks:
+    - name: start_httpd
+      service: name=httpd state=started

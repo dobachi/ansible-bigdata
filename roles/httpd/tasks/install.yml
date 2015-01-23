@@ -1,0 +1,2 @@
+- name: install_httpd
+  yum: name=httpd state=installed
