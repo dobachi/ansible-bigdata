@@ -1,2 +1,5 @@
 - name: copy_gmetad.conf
   template: src=gmetad.conf.j2 dest=/etc/ganglia/gmetad.conf
+
+- name: copy_ganglia.conf
+  template: src=ganglia.conf.j2 dest=/etc/httpd/conf.d/ganglia.conf
