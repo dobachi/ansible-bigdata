@@ -31,7 +31,7 @@
       with_items: file_paths.stdout.split()
       register: key_string
     - name: add_key_string_to_authorized_keys
-      lineinfile: dest={{ ansible_env.HOME }}/.ssh/authorized_keys line="{{ item.stdout }}"
+      lineinfile: dest={{ ansible_env.HOME }}/.ssh/authorized_keys line="{{ item.stdout }}" create=yes
       with_items: key_string.results
     - name: chmod_authorized_keys
       file: path={{ ansible_env.HOME }}/.ssh/authorized_keys mode=600
@@ -64,7 +64,7 @@
       with_items: file_paths.stdout.split()
       register: key_string
     - name: add_key_string_to_authorized_keys
-      lineinfile: dest={{ ansible_env.HOME }}/.ssh/authorized_keys line="{{ item.stdout }}"
+      lineinfile: dest={{ ansible_env.HOME }}/.ssh/authorized_keys line="{{ item.stdout }}" create=yes
       with_items: key_string.results
     - name: chmod_authorized_keys
       file: path={{ ansible_env.HOME }}/.ssh/authorized_keys mode=600

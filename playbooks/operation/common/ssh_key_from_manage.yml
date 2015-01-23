@@ -2,9 +2,6 @@
   tasks:
     - name: create_keys
       shell: ssh-keygen -t rsa -N "" -f ~/.ssh/id_rsa creates=~/.ssh/id_rsa
-    - name: check_hostname
-      shell: hostname 
-      register: src_hostname
 
 - hosts: '{{dst_server | default("hadoop_all") }}'
   vars:
@@ -12,15 +9,14 @@
   tasks:
     - name: make_key_dir
       file: path="{{ key_dir }}" state=directory
-    - name: copy_id_rsa_pub
-      copy: src={{ ansible_env.HOME }}/.ssh/id_rsa.pub dest={{ key_dir }}/id_rsa.pub.{{ ansible_env.SSH_CLIENT.split(' ')[0] }}
     - name: get_key_string
-      shell: cat {{ key_dir }}/id_rsa.pub.{{ ansible_env.SSH_CLIENT.split(' ')[0] }}
+      local_action: shell cat ~/.ssh//id_rsa.pub
+      run_once: True
       register: key_string
     - name: mkdir_ssh_dir
       file: path={{ ansible_env.HOME }}/.ssh mode=700 owner={{ ansible_user_id }} state=directory
     - name: add_key_string_to_authorized_keys
-      lineinfile: dest={{ ansible_env.HOME }}/.ssh/authorized_keys line="{{ key_string.stdout }}"
+      lineinfile: dest={{ ansible_env.HOME }}/.ssh/authorized_keys line="{{ key_string.stdout }}" create=yes
     - name: chmod_authorized_keys
       file: path={{ ansible_env.HOME }}/.ssh/authorized_keys mode=600
 
