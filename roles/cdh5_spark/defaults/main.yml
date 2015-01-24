@@ -7,3 +7,6 @@ cdh5_spark_exe_cores: '1'
 cdh5_spark_exe_mem: '400M'
 cdh5_spark_dri_mem: '400M'
 cdh5_spark_history_dir: '/var/log/spark'
+
+# /etc/default/spark
+cdh5_sparkhistory_scala_home: '/usr/local/scala/default'
