@@ -9,4 +9,4 @@ cdh5_spark_dri_mem: '400M'
 cdh5_spark_history_dir: '/var/log/spark'
 
 # /etc/default/spark
-cdh5_sparkhistory_scala_home: '/usr/local/scala/default'
+cdh5_spark_scala_home: '/usr/local/scala/default'

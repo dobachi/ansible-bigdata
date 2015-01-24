@@ -10,6 +10,7 @@
     - { role: common, common_config_hostname: True }
     - jdk
     - scala
+    - cdh5_spark
     - cdh5_sparkhistory
 
 - hosts: hadoop_all
