@@ -1,4 +1,4 @@
 ganglia_slave_cluster_name: 'hadoop_master'
 ganglia_slave_mcast_join: '239.2.11.71'
 
-cdh5_ganglia_servers: '239.2.11.71'
+cdh5_ganglia_servers: '239.2.11.71:8649'
