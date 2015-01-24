@@ -1,0 +1,10 @@
+---
+- name: check_hadoop_group_exists
+  shell: grep -e "^hadoop" /etc/group
+  register: check_hadoop_group
+
+- name: add_spark_user_to_hadoop
+  user: name=spark groups=hadoop
+  when: check_hadoop_group.rc == 0
+
+# vim: et ts=2 sw=2
