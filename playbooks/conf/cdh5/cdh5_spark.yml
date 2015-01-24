@@ -5,6 +5,6 @@
     - scala
     - cdh5_spark
 
-- hosts: cdh5_all
+- hosts: hadoop_all
   roles:
     - gcc_gfortran
