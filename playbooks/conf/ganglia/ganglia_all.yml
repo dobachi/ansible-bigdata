@@ -1,0 +1,2 @@
+- include: ganglia_master.yml
+- include: ganglia_slave.yml
