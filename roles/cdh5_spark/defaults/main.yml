@@ -1,4 +1,5 @@
 # spark-defaults.conf
+cdh5_spark_master: 'yarn'
 cdh5_spark_logdir: 'hdfs://mycluster/var/log/spark'
 
 # spark-env.sh

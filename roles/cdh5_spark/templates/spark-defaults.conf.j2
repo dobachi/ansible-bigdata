@@ -2,7 +2,7 @@
 # This is useful for setting default environmental settings.
 
 # Example:
-spark.master            spark://{{ groups['hadoop_spark_master'][0] }}:7077
+spark.master            {{ cdh5_spark_master }}
 spark.eventLog.enabled  true
 spark.eventLog.dir      {{ cdh5_spark_logdir }}
 # spark.serializer        org.apache.spark.serializer.KryoSerializer
