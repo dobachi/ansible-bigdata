@@ -1,4 +1,4 @@
-- hosts: '{{ server | default("hadoop_client") }}'
+- hosts: '{{ server | default("hadoop_client:hadoop_namenode") }}'
   roles:
     - { role: common, common_config_hostname: True }
     - jdk
