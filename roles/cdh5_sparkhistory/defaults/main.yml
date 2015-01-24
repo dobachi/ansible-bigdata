@@ -1,0 +1,10 @@
+---
+# spark-defaults.conf
+cdh5_sparkhistory_dfs_nameservices: 'mycluster'
+cdh5_sparkhistory_logdir: '/var/log/spark'
+
+# spark-env.sh
+cdh5_sparkhistory_exe_cores: '1'
+cdh5_sparkhistory_exe_mem: '400M'
+cdh5_sparkhistory_dri_mem: '400M'
+cdh5_sparkhistory_history_dir: '/var/log/spark'

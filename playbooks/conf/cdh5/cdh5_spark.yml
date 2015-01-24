@@ -5,6 +5,15 @@
     - scala
     - cdh5_spark
 
+- hosts: '{{ server | default("hadoop_other") }}'
+  roles:
+    - { role: common, common_config_hostname: True }
+    - jdk
+    - scala
+    - cdh5_sparkhistory
+
 - hosts: hadoop_all
   roles:
     - gcc_gfortran
+
+# vim: et ts=2 sw=2
