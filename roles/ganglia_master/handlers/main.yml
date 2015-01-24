@@ -1,2 +1,6 @@
 ---
-# handlers file for roles/ganglia_master
+- name: restart_gmetad
+  service: name=gmetad state=restarted
+
+- name: restart_httpd
+  service: name=httpd state=restarted
