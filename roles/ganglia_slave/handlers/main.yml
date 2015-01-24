@@ -1,2 +1,3 @@
 ---
-# handlers file for roles/ganglia_slave
+- name: restart_gmond
+  service: name=gmond state=restarted

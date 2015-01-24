@@ -1,22 +1,28 @@
-Role Name
-=========
+ganglia_slave
+===============
 
-A brief description of the role goes here.
+This is a role to configure Ganglia gmond.
 
 Requirements
 ------------
-
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+* You can use multicast network
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+Parameters | Default value | notes
+ganglia_slave_cluster_name | hadoop_cluster | -
+ganglia_slave_cluster_owner | hadoop_owner | -
+ganglia_slave_cluster_latlong | unspecified | -
+ganglia_slave_cluster_url | unspecified | -
+ganglia_slave_location | hadoop_place | -
+ganglia_slave_mcast_join | 239.2.11.71 | This is a multicast addresss
+ganglia_slave_port | 8649 | -
+ganglia_slave_dev | eth1 | This is a device used by gmond
 
 Dependencies
 ------------
-
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+* You can use this role with ganglia_master, which is a role to configure Ganglia gmetad.
 
 Example Playbook
 ----------------
@@ -25,7 +31,7 @@ Including an example of how to use your role (for instance, with variables passe
 
     - hosts: servers
       roles:
-         - { role: username.rolename, x: 42 }
+         - { role: dobachi.ganglia_slave }
 
 License
 -------
@@ -34,5 +40,4 @@ BSD
 
 Author Information
 ------------------
-
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+dobachi

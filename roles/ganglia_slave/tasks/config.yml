@@ -1,0 +1,15 @@
+- name: copy_ganglia_config
+  template: src={{ item }}.j2 dest=/etc/ganglia/{{ item }}
+  with_items:
+    - gmond.conf
+  notify:
+    - restart_gmond
+
+- name: copy_sysconfig_config
+  template: src={{ item }}.j2 dest=/etc/sysconfig/network-scripts/{{ item }}-{{ ganglia_slave_dev }}
+  with_items:
+    - route
+  notify:
+    - restart_gmond
+
+# vim: et ts=2 sw=2

@@ -1,2 +1,11 @@
 ---
-# defaults file for roles/ganglia_slave
+ganglia_slave_cluster_name: hadoop_cluster
+ganglia_slave_cluster_owner: hadoop_owner
+ganglia_slave_cluster_latlong: unspecified
+ganglia_slave_cluster_url: unspecified
+
+ganglia_slave_location: hadoop_place
+ganglia_slave_mcast_join: 239.2.11.71
+ganglia_slave_port: 8649
+
+ganglia_slave_dev: eth1

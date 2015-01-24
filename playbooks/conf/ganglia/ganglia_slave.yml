@@ -1,8 +1,7 @@
-- hosts: "{{ server | default('hadoop_other') }}"
+- hosts: "{{ server | default('hadoop_all') }}"
   roles:
     - { role: common, common_config_hostname: True }
     - epel
-    - httpd
-    - ganglia_master
+    - ganglia_slave
 
 # vim: tw=0 et ts=2 sw=2
