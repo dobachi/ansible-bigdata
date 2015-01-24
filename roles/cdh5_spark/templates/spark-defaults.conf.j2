@@ -2,9 +2,9 @@
 # This is useful for setting default environmental settings.
 
 # Example:
-spark.master            spark://{{ groups['cdh5_spark_master'][0] }}:7077
+spark.master            spark://{{ groups['hadoop_spark_master'][0] }}:7077
 spark.eventLog.enabled  true
 spark.eventLog.dir      hdfs://{{ cdh5_spark_dfs_nameservices }}{{ cdh5_spark_logdir }}
 # spark.serializer        org.apache.spark.serializer.KryoSerializer
 
-spark.yarn.historyServer.address {{ groups['cdh5_other'][0] }}:18080
+spark.yarn.historyServer.address {{ groups['hadoop_other'][0] }}:18080
