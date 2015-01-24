@@ -1,3 +1,4 @@
 ---
 - include: install.yml tags=install,httpd
+- include: config.yml tags=config,httpd
 - include: service.yml tags=service,httpd

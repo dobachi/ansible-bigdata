@@ -1,2 +1,3 @@
 ---
-# handlers file for roles/httpd
+- name: restart_httpd
+  service: name=httpd state=restarted
