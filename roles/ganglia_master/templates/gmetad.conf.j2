@@ -63,6 +63,7 @@ data_source "hadoop_client" {{ groups['hadoop_client'][0] }}
 # tag with this name.
 # default: unspecified
 # gridname "MyGrid"
+gridname "{{ ganglia_master_grid_name }}"
 #
 #-------------------------------------------------------------------------------
 # The authority URL for this grid. Used by other gmetads to locate graphs
