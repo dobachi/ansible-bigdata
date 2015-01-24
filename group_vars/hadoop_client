@@ -1,0 +1,2 @@
+ganglia_slave_cluster_name: 'hadoop_client'
+ganglia_slave_mcast_join: '239.2.11.73'
