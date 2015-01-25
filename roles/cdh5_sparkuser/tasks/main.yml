@@ -1,0 +1,2 @@
+---
+- include: user.yml tags=user,cdh5_sparkuser

@@ -1,8 +1,15 @@
-- hosts: '{{ server | default("hadoop_client:hadoop_namenode") }}'
+# NameNode only needs "spark" user to realize access control
+- hosts: '{{ server | default("hadoop_namenode") }}'
+  roles:
+    - { role: common, common_config_hostname: True }
+    - cdh5_sparkuser
+
+- hosts: '{{ server | default("hadoop_client") }}'
   roles:
     - { role: common, common_config_hostname: True }
     - jdk
     - scala
+    - sbt
     - cdh5_spark
 
 - hosts: '{{ server | default("hadoop_other") }}'
