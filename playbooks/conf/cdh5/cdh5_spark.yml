@@ -10,6 +10,7 @@
     - jdk
     - scala
     - sbt
+    - activator_mini
     - cdh5_spark
 
 - hosts: '{{ server | default("hadoop_other") }}'

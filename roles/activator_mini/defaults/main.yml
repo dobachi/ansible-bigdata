@@ -1,0 +1,4 @@
+---
+# defaults file for roles/activator_mini
+activator_mini_base_path: "/usr/local/activator_mini"
+activator_mini_version: "1.2.12"
