@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Abstract &mdash; Ansible Playbooks for Hadoop 0.1 documentation</title>
+    <title>概要 &mdash; Ansible Playbooks for Hadoop 0.1 documentation</title>
     
     <link rel="stylesheet" href="_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -28,7 +28,7 @@
   <body role="document">
       <div class="header" role="banner"><h1 class="heading"><a href="index.html">
           <span>Ansible Playbooks for Hadoop 0.1 documentation</span></a></h1>
-        <h2 class="heading"><span>Abstract</span></h2>
+        <h2 class="heading"><span>概要</span></h2>
       </div>
       <div class="topnav" role="navigation" aria-label="top navigation">
       
@@ -40,42 +40,39 @@
       <div class="content">
         
         
-  <div class="section" id="abstract">
-<h1>Abstract<a class="headerlink" href="#abstract" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="about-playbooks">
-<h2>About playbooks<a class="headerlink" href="#about-playbooks" title="Permalink to this headline">¶</a></h2>
-<p>This is a library of playbooks to construct HDFS/YARN clusters.
-You will have HDFS and YARN services with HA.</p>
-<p>Although the configuration of OS and middlewares are not well tuned about performance,
-this is enough to be used to construct small cluster.
-In other words, if you would like to construct and manage large clusters,
-you may need to configure OS and middlewares adequately.</p>
-<p>To write these playbooks, <a class="reference external" href="https://bitbucket.org/dobachi/ansible-playbooks.git">dobachi&#8217;s ansible-playbooks</a>
-and <a class="reference external" href="https://github.com/mcsrainbow/ansible-playbooks-cdh5">mcsrainbow&#8217;s ansible-playbooks-cdh5</a> are used as reference.</p>
+  <div class="section" id="id1">
+<h1>概要<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id2">
+<h2>このプレイブック集について<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>このプレイブック集を利用すると、HA構成のHDFS、YARN環境を構築できます。
+小さめのクラスタを立てるのに向いた内容となっているため、
+大きなクラスタを立てる時にはHadoopやOSのパラメータチューニングが別途必要となることにご注意ください。</p>
+<p>なお、このプレイブック集は、 <a class="reference external" href="https://bitbucket.org/dobachi/ansible-playbooks.git">dobachi&#8217;s ansible-playbooks</a> や
+<a class="reference external" href="https://github.com/mcsrainbow/ansible-playbooks-cdh5">mcsrainbow&#8217;s ansible-playbooks-cdh5</a> などを参考に作りました。</p>
 </div>
-<div class="section" id="feature">
-<h2>Feature<a class="headerlink" href="#feature" title="Permalink to this headline">¶</a></h2>
-<p>This project has the following functions.
-Each function is available individually.</p>
+<div class="section" id="id3">
+<h2>特徴<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>このプレイブック集の機能は以下の通りです。
+<em>各機能単体で利用できます。</em></p>
 <ul class="simple">
-<li>Configuring Ansible execution environment</li>
-<li>Booting EC2 instances for Hadoop cluster</li>
-<li>Configuring HDFS/YARN with NameNode HA</li>
-<li>Configuring Spark core on Client node</li>
+<li>Ansible実行環境を整える</li>
+<li>Hadoop環境用のAWS EC2インスタンスを起動する</li>
+<li>HA構成のHDFS、YARN環境を構築する</li>
+<li>Spark Coreをインストールし、Sparkの実行環境を整える</li>
 </ul>
 </div>
-<div class="section" id="servers">
-<span id="sec-servers"></span><h2>Servers<a class="headerlink" href="#servers" title="Permalink to this headline">¶</a></h2>
-<p>This project&#8217;s assumption about middleware components and servers.</p>
-<p><strong>Servers</strong></p>
+<div class="section" id="sec-servers-ja">
+<span id="id4"></span><h2>サーバ構成<a class="headerlink" href="#sec-servers-ja" title="Permalink to this headline">¶</a></h2>
+<p>このプレイブック集では以下のサーバ構成を前提としています。</p>
+<p><strong>構成</strong></p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="9%" />
 <col width="91%" />
 </colgroup>
 <thead valign="bottom">
-<tr class="row-odd"><th class="head">Server</th>
-<th class="head">Use for</th>
+<tr class="row-odd"><th class="head">サーバ名</th>
+<th class="head">サービス構成</th>
 </tr>
 </thead>
 <tbody valign="top">
@@ -108,15 +105,15 @@ Each function is available individually.</p>
 </tr>
 </tbody>
 </table>
-<p><strong>Software</strong></p>
+<p><strong>ソフトウェア</strong></p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="22%" />
-<col width="78%" />
+<col width="31%" />
+<col width="69%" />
 </colgroup>
 <thead valign="bottom">
-<tr class="row-odd"><th class="head">Software</th>
-<th class="head">Version</th>
+<tr class="row-odd"><th class="head">ソフトウェア</th>
+<th class="head">バージョン等</th>
 </tr>
 </thead>
 <tbody valign="top">

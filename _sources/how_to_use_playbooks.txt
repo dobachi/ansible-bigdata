@@ -26,13 +26,13 @@ Install EPEL repository
 
 .. code-block:: shell
 
- $ sudo yum install -y http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-2.noarch.rpm
+ $ sudo yum install -y epel-release
 
 Install Ansible
 
 .. code-block:: shell
 
- $ sudo yum install ansible
+ $ sudo yum install -y ansible
 
 Clone playbooks
 ~~~~~~~~~~~~~~~

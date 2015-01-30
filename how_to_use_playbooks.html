@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>4. How to use this playbooks &mdash; Ansible Playbooks for Hadoop 0.1 documentation</title>
+    <title>How to use this playbooks &mdash; Ansible Playbooks for Hadoop 0.1 documentation</title>
     
     <link rel="stylesheet" href="_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -23,19 +23,16 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Ansible Playbooks for Hadoop 0.1 documentation" href="index.html" />
-    <link rel="prev" title="3. About roles" href="about_roles.html" /> 
+    <link rel="top" title="Ansible Playbooks for Hadoop 0.1 documentation" href="index.html" /> 
   </head>
   <body role="document">
       <div class="header" role="banner"><h1 class="heading"><a href="index.html">
           <span>Ansible Playbooks for Hadoop 0.1 documentation</span></a></h1>
-        <h2 class="heading"><span>4. How to use this playbooks</span></h2>
+        <h2 class="heading"><span>How to use this playbooks</span></h2>
       </div>
       <div class="topnav" role="navigation" aria-label="top navigation">
       
         <p>
-        «&#160;&#160;<a href="about_roles.html">3. About roles</a>
-        &#160;&#160;::&#160;&#160;
         <a class="uplink" href="index.html">Contents</a>
         </p>
 
@@ -44,7 +41,7 @@
         
         
   <div class="section" id="how-to-use-this-playbooks">
-<h1>4. How to use this playbooks<a class="headerlink" href="#how-to-use-this-playbooks" title="Permalink to this headline">¶</a></h1>
+<h1>How to use this playbooks<a class="headerlink" href="#how-to-use-this-playbooks" title="Permalink to this headline">¶</a></h1>
 <p>You can use these playbooks to configure the following configuration.
 <strong>These playbooks are independent of each other</strong> .</p>
 <ul class="simple">
@@ -53,29 +50,29 @@
 <li>CDH5 HDFS/YARN environment</li>
 </ul>
 <div class="section" id="assumption-of-this-section">
-<h2>4.1. Assumption of this section<a class="headerlink" href="#assumption-of-this-section" title="Permalink to this headline">¶</a></h2>
+<h2>Assumption of this section<a class="headerlink" href="#assumption-of-this-section" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>You have servers described in <a class="reference internal" href="abstract.html#sec-servers"><em>Servers</em></a> section.</li>
+<li>You have servers described in <a class="reference internal" href="english.html#sec-servers"><em>Servers</em></a> section.</li>
 </ul>
 </div>
 <div class="section" id="how-to-configure-ansible-execution-environment">
-<span id="sec-configure-ansible-env"></span><h2>4.2. How to configure Ansible execution environment<a class="headerlink" href="#how-to-configure-ansible-execution-environment" title="Permalink to this headline">¶</a></h2>
+<span id="sec-configure-ansible-env"></span><h2>How to configure Ansible execution environment<a class="headerlink" href="#how-to-configure-ansible-execution-environment" title="Permalink to this headline">¶</a></h2>
 <p>If you have not configured Ansible execution environment,
 you can use the following playbooks for it.</p>
 <p>In this section, we start from installing Ansible packages.</p>
 <div class="section" id="install-packages">
-<h3>4.2.1. Install packages<a class="headerlink" href="#install-packages" title="Permalink to this headline">¶</a></h3>
+<h3>Install packages<a class="headerlink" href="#install-packages" title="Permalink to this headline">¶</a></h3>
 <p>Install EPEL repository</p>
-<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>sudo yum install -y http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-2.noarch.rpm
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>sudo yum install -y epel-release
 </pre></div>
 </div>
 <p>Install Ansible</p>
-<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>sudo yum install ansible
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>sudo yum install -y ansible
 </pre></div>
 </div>
 </div>
 <div class="section" id="clone-playbooks">
-<h3>4.2.2. Clone playbooks<a class="headerlink" href="#clone-playbooks" title="Permalink to this headline">¶</a></h3>
+<h3>Clone playbooks<a class="headerlink" href="#clone-playbooks" title="Permalink to this headline">¶</a></h3>
 <p>Move original /etc/ansible</p>
 <div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd</span> /etc
 <span class="nv">$ </span>sudo mv ansible ansible.org
@@ -87,7 +84,7 @@ you can use the following playbooks for it.</p>
 </div>
 </div>
 <div class="section" id="modify-configuration">
-<h3>4.2.3. Modify configuration<a class="headerlink" href="#modify-configuration" title="Permalink to this headline">¶</a></h3>
+<h3>Modify configuration<a class="headerlink" href="#modify-configuration" title="Permalink to this headline">¶</a></h3>
 <p>Modify hosts file to be copied to /etc/hosts</p>
 <div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd </span>ansible
 <span class="nv">$ </span>sudo vi roles/common/files/hosts.default
@@ -95,7 +92,7 @@ you can use the following playbooks for it.</p>
 </div>
 </div>
 <div class="section" id="execute-playbooks-one-by-one">
-<h3>4.2.4. Execute playbooks one by one<a class="headerlink" href="#execute-playbooks-one-by-one" title="Permalink to this headline">¶</a></h3>
+<h3>Execute playbooks one by one<a class="headerlink" href="#execute-playbooks-one-by-one" title="Permalink to this headline">¶</a></h3>
 <p>Execute ansible-playbook command with common_all.yml</p>
 <div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/conf/common/common_all.yml -k -s -i hosts.sample -e <span class="s2">&quot;common_hosts_replace=True&quot;</span>
 </pre></div>
@@ -121,16 +118,16 @@ You should execute command with the parameter instead of the above command</p>
 </div>
 </div>
 <div class="section" id="how-to-boot-ec2-instances-for-hadoop-cluster">
-<h2>4.3. How to boot EC2 instances for Hadoop cluster<a class="headerlink" href="#how-to-boot-ec2-instances-for-hadoop-cluster" title="Permalink to this headline">¶</a></h2>
+<h2>How to boot EC2 instances for Hadoop cluster<a class="headerlink" href="#how-to-boot-ec2-instances-for-hadoop-cluster" title="Permalink to this headline">¶</a></h2>
 <p>If you want to use Hadoop on EC2 instances,
 you can use playbooks/operation/ec2/hadoop_nodes_up.yml to boot instances.</p>
 <div class="section" id="create-inventory-file">
-<h3>4.3.1. Create inventory file<a class="headerlink" href="#create-inventory-file" title="Permalink to this headline">¶</a></h3>
+<h3>Create inventory file<a class="headerlink" href="#create-inventory-file" title="Permalink to this headline">¶</a></h3>
 <p>If you don&#8217;t have an inventory file,
 create inventory file, /etc/ansible/hosts while referring /etc/ansible/hosts.sample.</p>
 </div>
 <div class="section" id="define-environment-variables-for-aws-access">
-<h3>4.3.2. Define environment variables for AWS access<a class="headerlink" href="#define-environment-variables-for-aws-access" title="Permalink to this headline">¶</a></h3>
+<h3>Define environment variables for AWS access<a class="headerlink" href="#define-environment-variables-for-aws-access" title="Permalink to this headline">¶</a></h3>
 <p>We use environment variables to configure AWS access keys.
 Define AWS_ACCESS_KEY and AWS_SECRET_KEY in your ~/.bashrc</p>
 <div class="highlight-python"><div class="highlight"><pre>export AWS_ACCESS_KEY=XXXXXXXXXXXXXXXXXXXXXXXXx
@@ -141,7 +138,7 @@ export AWS_SECRET_KEY=XXXXXXXXXXXXXXXXXXXXXXXXX
 create keys while referring AWS web site.</p>
 </div>
 <div class="section" id="define-parameters-for-ec2-hadoop-role">
-<h3>4.3.3. Define parameters for ec2_hadoop role<a class="headerlink" href="#define-parameters-for-ec2-hadoop-role" title="Permalink to this headline">¶</a></h3>
+<h3>Define parameters for ec2_hadoop role<a class="headerlink" href="#define-parameters-for-ec2-hadoop-role" title="Permalink to this headline">¶</a></h3>
 <p>You can find the parameter description for ec2_hadoop role in roles/ec2_hadoop/defaults/main.yml</p>
 <p>To define your own parameters,
 you need to create the group variable file (e.g. group_vars/top) and write parameter defines in this file.</p>
@@ -168,7 +165,7 @@ you will see some errors, like:</p>
 </div>
 </div>
 <div class="section" id="apply-playbook">
-<h3>4.3.4. Apply playbook<a class="headerlink" href="#apply-playbook" title="Permalink to this headline">¶</a></h3>
+<h3>Apply playbook<a class="headerlink" href="#apply-playbook" title="Permalink to this headline">¶</a></h3>
 <p>Execute ansible-playbook command.</p>
 <div class="highlight-python"><div class="highlight"><pre>$ ansible-playbook playbooks/operation/ec2/hadoop_nodes_up.yml -k
 </pre></div>
@@ -179,7 +176,7 @@ in /tmp/ec2_&lt;unix epoc time&gt;.
 </div>
 </div>
 <div class="section" id="how-to-configure-host-names-of-nodes">
-<h2>4.4. How to configure host names of nodes<a class="headerlink" href="#how-to-configure-host-names-of-nodes" title="Permalink to this headline">¶</a></h2>
+<h2>How to configure host names of nodes<a class="headerlink" href="#how-to-configure-host-names-of-nodes" title="Permalink to this headline">¶</a></h2>
 <p>If you want to configure hostname of nodes,
 You can use &#8220;common&#8221; role and related playbooks.</p>
 <p>Execute ansible-playbook command with common_only_common.yml</p>
@@ -190,16 +187,16 @@ You can use &#8220;common&#8221; role and related playbooks.</p>
 <p>This is usefull for configuration of EC2 instance, because your node may have variety of hostname after each node booted.</p>
 </div>
 <div class="section" id="how-to-configure-cdh5-hdfs-yarn-environment">
-<h2>4.5. How to configure CDH5 HDFS/YARN environment<a class="headerlink" href="#how-to-configure-cdh5-hdfs-yarn-environment" title="Permalink to this headline">¶</a></h2>
+<h2>How to configure CDH5 HDFS/YARN environment<a class="headerlink" href="#how-to-configure-cdh5-hdfs-yarn-environment" title="Permalink to this headline">¶</a></h2>
 <p>You can construct CDH5 HDFS/YARN environment by ansible-playbook command.</p>
 <div class="section" id="preparement">
-<h3>4.5.1. Preparement<a class="headerlink" href="#preparement" title="Permalink to this headline">¶</a></h3>
+<h3>Preparement<a class="headerlink" href="#preparement" title="Permalink to this headline">¶</a></h3>
 <p>If you have not configured Ansible execution environment,
 you should configure it.
 You can reference <a class="reference internal" href="#sec-configure-ansible-env"><em>How to configure Ansible execution environment</em></a> section.</p>
 </div>
 <div class="section" id="procedure">
-<h3>4.5.2. Procedure<a class="headerlink" href="#procedure" title="Permalink to this headline">¶</a></h3>
+<h3>Procedure<a class="headerlink" href="#procedure" title="Permalink to this headline">¶</a></h3>
 <p>In the following example, we configure common_hosts_replace is True.
 As a result of this parameter configuration, Ansible replace /etc/hosts
 by Ansible driver server&#8217;s /etc/ansible/roles/common/files/hosts.default</p>
@@ -215,7 +212,7 @@ by Ansible driver server&#8217;s /etc/ansible/roles/common/files/hosts.default</
 </div>
 </div>
 <div class="section" id="how-to-install-spark-core">
-<h2>4.6. How to install Spark Core<a class="headerlink" href="#how-to-install-spark-core" title="Permalink to this headline">¶</a></h2>
+<h2>How to install Spark Core<a class="headerlink" href="#how-to-install-spark-core" title="Permalink to this headline">¶</a></h2>
 <p>You can install Spark Core into Client node by the following command</p>
 <div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/conf/cdh5/cdh5_spark.yml -k -s
 </pre></div>
@@ -228,8 +225,6 @@ by Ansible driver server&#8217;s /etc/ansible/roles/common/files/hosts.default</
       <div class="bottomnav" role="navigation" aria-label="bottom navigation">
       
         <p>
-        «&#160;&#160;<a href="about_roles.html">3. About roles</a>
-        &#160;&#160;::&#160;&#160;
         <a class="uplink" href="index.html">Contents</a>
         </p>
 

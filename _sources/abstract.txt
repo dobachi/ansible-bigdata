@@ -18,11 +18,11 @@ and `mcsrainbow's ansible-playbooks-cdh5 <https://github.com/mcsrainbow/ansible-
 Feature
 --------
 This project has the following functions.
+Each function is available individually.
 
 * Configuring Ansible execution environment
 * Booting EC2 instances for Hadoop cluster
-* Configuring HDFS with NameNode HA
-* Configuring YARN with ReourceManager HA
+* Configuring HDFS/YARN with NameNode HA
 * Configuring Spark core on Client node
 
 .. _sec-servers:
@@ -30,6 +30,8 @@ This project has the following functions.
 Servers
 --------
 This project's assumption about middleware components and servers.
+
+**Servers**
 
 ======== ================================================================================
 Server   Use for
@@ -44,3 +46,15 @@ slave03  DataNode, NodeManager
 slave04  DataNode, NodeManager
 slave05  DataNode, NodeManager
 ======== ================================================================================
+
+**Software**
+
+======== =============================
+Software Version
+======== =============================
+OS       CentOS6.6 or CentOS7.0
+Hadoop   CDH5.2
+Spark    Spark1.2 of CDH5
+Ansible  Ansible 1.8.2 of EPEL
+======== =============================
+

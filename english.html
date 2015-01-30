@@ -1,0 +1,623 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>1. English Document &mdash; Ansible Playbooks for Hadoop 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Ansible Playbooks for Hadoop 0.1 documentation" href="index.html" />
+    <link rel="next" title="2. Japanese Document" href="japanese.html" />
+    <link rel="prev" title="What is this document?" href="index.html" /> 
+  </head>
+  <body role="document">
+      <div class="header" role="banner"><h1 class="heading"><a href="index.html">
+          <span>Ansible Playbooks for Hadoop 0.1 documentation</span></a></h1>
+        <h2 class="heading"><span>1. English Document</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="index.html">What is this document?</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="japanese.html">2. Japanese Document</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="english-document">
+<h1>1. English Document<a class="headerlink" href="#english-document" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="abstract">
+<h2>1.1. Abstract<a class="headerlink" href="#abstract" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="about-playbooks">
+<h3>1.1.1. About playbooks<a class="headerlink" href="#about-playbooks" title="Permalink to this headline">¶</a></h3>
+<p>This is a library of playbooks to construct HDFS/YARN clusters.
+You will have HDFS and YARN services with HA.</p>
+<p>Although the configuration of OS and middlewares are not well tuned about performance,
+this is enough to be used to construct small cluster.
+In other words, if you would like to construct and manage large clusters,
+you may need to configure OS and middlewares adequately.</p>
+<p>To write these playbooks, <a class="reference external" href="https://bitbucket.org/dobachi/ansible-playbooks.git">dobachi&#8217;s ansible-playbooks</a>
+and <a class="reference external" href="https://github.com/mcsrainbow/ansible-playbooks-cdh5">mcsrainbow&#8217;s ansible-playbooks-cdh5</a> are used as reference.</p>
+</div>
+<div class="section" id="feature">
+<h3>1.1.2. Feature<a class="headerlink" href="#feature" title="Permalink to this headline">¶</a></h3>
+<p>This project has the following functions.
+Each function is available individually.</p>
+<ul class="simple">
+<li>Configuring Ansible execution environment</li>
+<li>Booting EC2 instances for Hadoop cluster</li>
+<li>Configuring HDFS/YARN with NameNode HA</li>
+<li>Configuring Spark core on Client node</li>
+</ul>
+</div>
+<div class="section" id="servers">
+<span id="sec-servers"></span><h3>1.1.3. Servers<a class="headerlink" href="#servers" title="Permalink to this headline">¶</a></h3>
+<p>This project&#8217;s assumption about middleware components and servers.</p>
+<p><strong>Servers</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="9%" />
+<col width="91%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Server</th>
+<th class="head">Use for</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>master01</td>
+<td>Primary NameNode, JournalNode, Zookeeper Server(id=1)</td>
+</tr>
+<tr class="row-odd"><td>master02</td>
+<td>Backup NameNode, JournalNode, Zookeeper Server(id=2), Primary ResourceManager</td>
+</tr>
+<tr class="row-even"><td>master03</td>
+<td>JournalNode, Zookeeper Server(id=3), HistoryServer, Backup ResourceManager</td>
+</tr>
+<tr class="row-odd"><td>client01</td>
+<td>Hadoop Client, Spark Core</td>
+</tr>
+<tr class="row-even"><td>slave01</td>
+<td>DataNode, NodeManager</td>
+</tr>
+<tr class="row-odd"><td>slave02</td>
+<td>DataNode, NodeManager</td>
+</tr>
+<tr class="row-even"><td>slave03</td>
+<td>DataNode, NodeManager</td>
+</tr>
+<tr class="row-odd"><td>slave04</td>
+<td>DataNode, NodeManager</td>
+</tr>
+<tr class="row-even"><td>slave05</td>
+<td>DataNode, NodeManager</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Software</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="22%" />
+<col width="78%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Software</th>
+<th class="head">Version</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>OS</td>
+<td>CentOS6.6 or CentOS7.0</td>
+</tr>
+<tr class="row-odd"><td>Hadoop</td>
+<td>CDH5.2</td>
+</tr>
+<tr class="row-even"><td>Spark</td>
+<td>Spark1.2 of CDH5</td>
+</tr>
+<tr class="row-odd"><td>Ansible</td>
+<td>Ansible 1.8.2 of EPEL</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="id1">
+<h2>1.2. About playbooks<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>This project has two types of playbooks.</p>
+<ul class="simple">
+<li>Playbooks for configuration<ul>
+<li>These are used to install middlewares and configure parameters of OS and middlewares.</li>
+</ul>
+</li>
+<li>Playbooks for operation<ul>
+<li>These are used to operate OS&#8217;s services and middleware services.</li>
+</ul>
+</li>
+</ul>
+<div class="section" id="playbooks-for-configuration">
+<h3>1.2.1. Playbooks for configuration<a class="headerlink" href="#playbooks-for-configuration" title="Permalink to this headline">¶</a></h3>
+<p>We can use playbooks in playbooks/conf directory to configure servers.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="34%" />
+<col width="66%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Directory</th>
+<th class="head">Use for</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>playbooks/conf/common</td>
+<td>Common and basic configuration</td>
+</tr>
+<tr class="row-odd"><td>playbooks/conf/cdh5</td>
+<td>Configuration of CDH5 environment</td>
+</tr>
+<tr class="row-even"><td>playbooks/conf/ansible</td>
+<td>Configuration of Ansible environment</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="common">
+<h4>1.2.1.1. common<a class="headerlink" href="#common" title="Permalink to this headline">¶</a></h4>
+<p>This is a set of common and basic configurations.</p>
+<ul class="simple">
+<li>playbooks/conf/common/common_all.yml<ul>
+<li>This playbook executes all basic roles</li>
+</ul>
+</li>
+<li>playbooks/conf/common/common_only_common.yml<ul>
+<li>This playbook only executes &#8220;common&#8221; role</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="cdh5">
+<h4>1.2.1.2. cdh5<a class="headerlink" href="#cdh5" title="Permalink to this headline">¶</a></h4>
+<p>This is a set of configurations to construct CDH5 environment.</p>
+<ul class="simple">
+<li>cdh5_all.yml<ul>
+<li>This playbook is a comprehensive playbook which includes all other playbooks.
+You can build whole CDH5 environment.</li>
+</ul>
+</li>
+<li>cdh5_cl.yml<ul>
+<li>This playbook executes basic roles and &#8220;cdh5_cl&#8221; role to build Hadoop Client environment</li>
+</ul>
+</li>
+<li>cdh5_journalnode.yml<ul>
+<li>This playbook executes basic roles and &#8220;cdh5_jn&#8221; role to build HDFS JournalNode environment</li>
+</ul>
+</li>
+<li>cdh5_namenode.yml<ul>
+<li>This playbook executes basic roles and &#8220;cdh5_nn&#8221; role to build HDFS NameNode environment</li>
+</ul>
+</li>
+<li>cdh5_other.yml<ul>
+<li>This playbook executes basic roles and &#8220;cdh5_ot&#8221; role to build MapReduce HistoryServer and YARN Proxy environments</li>
+</ul>
+</li>
+<li>cdh5_resourcemanager.yml<ul>
+<li>This playbook executes basic roles and &#8220;cdh5_rm&#8221; role to build YARN ResourceManager environment</li>
+</ul>
+</li>
+<li>cdh5_slave.yml<ul>
+<li>This playbook executes basic roles and &#8220;cdh5_sl&#8221; role to build HDFS DataNode and YARN NodeManager environments</li>
+</ul>
+</li>
+<li>cdh5_spark.yml<ul>
+<li>This playbook executes basic roles and &#8220;cdh5_spark&#8221; role to build Spark Core environment on Client Node</li>
+</ul>
+</li>
+<li>cdh5_zookeeper.yml<ul>
+<li>This playbook executes basic roles and &#8220;zookeeper_server&#8221; role to build Zookeeper environment</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="ansible">
+<h4>1.2.1.3. ansible<a class="headerlink" href="#ansible" title="Permalink to this headline">¶</a></h4>
+<p>This is a set of configuration about Ansible environment.
+If you have manually configured Ansible environment, such as ansible.cfg, inventory file and so on,
+you don&#8217;t need these playbooks.</p>
+<ul class="simple">
+<li>ansible_client.yml<ul>
+<li>This playbook executes &#8220;ansible&#8221; role to configure nodes where we execute ansible command</li>
+</ul>
+</li>
+<li>ansible_remote.yml<ul>
+<li>This playbook executes &#8220;ansible_remote&#8221; role to configure nodes which are configured by ansible</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="playbooks-for-operation">
+<h3>1.2.2. Playbooks for operation<a class="headerlink" href="#playbooks-for-operation" title="Permalink to this headline">¶</a></h3>
+<p>We can use playbooks in playbooks/operation directory to operate services.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="27%" />
+<col width="73%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Directory</th>
+<th class="head">Use for</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>playbooks/operation/cdh5</td>
+<td>Operation of Hadoop Services.
+e.g. Formating HDFS, Start/Stop services, ...</td>
+</tr>
+<tr class="row-odd"><td>playbooks/operation/ec2</td>
+<td>Operation to boot EC2 instances</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="id2">
+<h4>1.2.2.1. cdh5<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<p>This is a set of operation of Hadoop services.
+Please check README in the <em>cdh5</em> directory for more information.</p>
+</div>
+<div class="section" id="ec2">
+<h4>1.2.2.2. ec2<a class="headerlink" href="#ec2" title="Permalink to this headline">¶</a></h4>
+<p>This is a set of operation to boot EC2 instances.
+Please check README in the <em>ec2</em> directory for more information.</p>
+</div>
+</div>
+</div>
+<div class="section" id="about-roles">
+<h2>1.3. About roles<a class="headerlink" href="#about-roles" title="Permalink to this headline">¶</a></h2>
+<p>We manage OS and middlewares by using several seperated roles.</p>
+<div class="section" id="roles-to-configure-basic-environments">
+<h3>1.3.1. Roles to configure basic environments<a class="headerlink" href="#roles-to-configure-basic-environments" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="77%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Role name</th>
+<th class="head">Use for</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>common</td>
+<td>Basic configuration about OS, basic services, and so on</td>
+</tr>
+<tr class="row-odd"><td>jdk</td>
+<td>Configuraiotn of Oracle JDK</td>
+</tr>
+<tr class="row-even"><td>scala</td>
+<td>Configuraiton of Scala on Hadoop client node</td>
+</tr>
+<tr class="row-odd"><td>screen</td>
+<td>Configuration of screen command</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="roles-to-configure-ansible">
+<h3>1.3.2. Roles to configure Ansible<a class="headerlink" href="#roles-to-configure-ansible" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="22%" />
+<col width="78%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Role name</th>
+<th class="head">Use for</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>ansible</td>
+<td>Configuration of nodes where you executes ansible command</td>
+</tr>
+<tr class="row-odd"><td>ansible_remote</td>
+<td>Configuration of nodes which is configured ansible</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="roles-to-boot-ec2-instances-for-hadoop-cluster">
+<h3>1.3.3. Roles to boot EC2 instances for Hadoop cluster<a class="headerlink" href="#roles-to-boot-ec2-instances-for-hadoop-cluster" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="77%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Role name</th>
+<th class="head">Use for</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>ec2_hadoop</td>
+<td>Boot EC2 instances for Hadoop cluster</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="roles-to-configure-cdh5-hadoop">
+<h3>1.3.4. Roles to configure CDH5 Hadoop<a class="headerlink" href="#roles-to-configure-cdh5-hadoop" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="77%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Role name</th>
+<th class="head">Use for</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>cdh5_base</td>
+<td>Basic configuraiton about Hadoop</td>
+</tr>
+<tr class="row-odd"><td>cdh5_jn</td>
+<td>Configuration of JournalNode</td>
+</tr>
+<tr class="row-even"><td>cdh5_nn</td>
+<td>Configuraiton of NameNode</td>
+</tr>
+<tr class="row-odd"><td>cdh5_ot</td>
+<td>Configuraiton of HistoryServer and YARN Proxy</td>
+</tr>
+<tr class="row-even"><td>cdh5_rm</td>
+<td>Configuraiton of ResourceManager</td>
+</tr>
+<tr class="row-odd"><td>cdh5_sl</td>
+<td>Configuration of DataNode and NodeManager</td>
+</tr>
+<tr class="row-even"><td>zookeeper_server</td>
+<td>Configuration of Zookeeper server</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="roles-to-configure-spark-core-on-client-node">
+<h3>1.3.5. Roles to configure Spark core on client node<a class="headerlink" href="#roles-to-configure-spark-core-on-client-node" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="77%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Role name</th>
+<th class="head">Use for</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>cdh5_spark</td>
+<td>Configuration of Spark core on Hadoop client node</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="how-to-use-this-playbooks">
+<h2>1.4. How to use this playbooks<a class="headerlink" href="#how-to-use-this-playbooks" title="Permalink to this headline">¶</a></h2>
+<p>You can use these playbooks to configure the following configuration.
+<strong>These playbooks are independent of each other</strong> .</p>
+<ul class="simple">
+<li>Ansible client environment to use various Ansible functions</li>
+<li>Host name configuration</li>
+<li>CDH5 HDFS/YARN environment</li>
+</ul>
+<div class="section" id="assumption-of-this-section">
+<h3>1.4.1. Assumption of this section<a class="headerlink" href="#assumption-of-this-section" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>You have servers described in <a class="reference internal" href="#sec-servers"><em>Servers</em></a> section.</li>
+</ul>
+</div>
+<div class="section" id="how-to-configure-ansible-execution-environment">
+<span id="sec-configure-ansible-env"></span><h3>1.4.2. How to configure Ansible execution environment<a class="headerlink" href="#how-to-configure-ansible-execution-environment" title="Permalink to this headline">¶</a></h3>
+<p>If you have not configured Ansible execution environment,
+you can use the following playbooks for it.</p>
+<p>In this section, we start from installing Ansible packages.</p>
+<div class="section" id="install-packages">
+<h4>1.4.2.1. Install packages<a class="headerlink" href="#install-packages" title="Permalink to this headline">¶</a></h4>
+<p>Install EPEL repository</p>
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>sudo yum install -y epel-release
+</pre></div>
+</div>
+<p>Install Ansible</p>
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>sudo yum install -y ansible
+</pre></div>
+</div>
+</div>
+<div class="section" id="clone-playbooks">
+<h4>1.4.2.2. Clone playbooks<a class="headerlink" href="#clone-playbooks" title="Permalink to this headline">¶</a></h4>
+<p>Move original /etc/ansible</p>
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd</span> /etc
+<span class="nv">$ </span>sudo mv ansible ansible.org
+</pre></div>
+</div>
+<p>Clone this repository</p>
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>git clone https://github.com/dobachi/ansible-hadoop.git ansible
+</pre></div>
+</div>
+</div>
+<div class="section" id="modify-configuration">
+<h4>1.4.2.3. Modify configuration<a class="headerlink" href="#modify-configuration" title="Permalink to this headline">¶</a></h4>
+<p>Modify hosts file to be copied to /etc/hosts</p>
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd </span>ansible
+<span class="nv">$ </span>sudo vi roles/common/files/hosts.default
+</pre></div>
+</div>
+</div>
+<div class="section" id="execute-playbooks-one-by-one">
+<h4>1.4.2.4. Execute playbooks one by one<a class="headerlink" href="#execute-playbooks-one-by-one" title="Permalink to this headline">¶</a></h4>
+<p>Execute ansible-playbook command with common_all.yml</p>
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/conf/common/common_all.yml -k -s -i hosts.sample -e <span class="s2">&quot;common_hosts_replace=True&quot;</span>
+</pre></div>
+</div>
+<p>Copy ansible&#8217;s hosts and modify it</p>
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>sudo vi roles/ansible/templates/hosts.default.j2
+</pre></div>
+</div>
+<p>Execute ansible-playbook command with ansible_client.yml</p>
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/conf/ansible/ansible_client.yml -k -s -i hosts.sample -e <span class="s2">&quot;ansible_environment=default ansible_modify_cfg=True&quot;</span>
+</pre></div>
+</div>
+<p>If you use EC2 and need a private key for SSH,
+you should specify &#8220;ansible_private_key_file&#8221; paramter.
+You should execute command with the parameter instead of the above command</p>
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/conf/ansible/ansible_client.yml -k -s -i hosts.sample -e <span class="s2">&quot;ansible_environment=default ansible_modify_cfg=True ansible_private_key_file=</span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span><span class="s2">/mykey.pem&quot;</span>
+</pre></div>
+</div>
+<p>Check whether all nodes are reachable and &#8220;sudo&#8221; is available</p>
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible -m ping hadoop_all -k -s
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="how-to-boot-ec2-instances-for-hadoop-cluster">
+<h3>1.4.3. How to boot EC2 instances for Hadoop cluster<a class="headerlink" href="#how-to-boot-ec2-instances-for-hadoop-cluster" title="Permalink to this headline">¶</a></h3>
+<p>If you want to use Hadoop on EC2 instances,
+you can use playbooks/operation/ec2/hadoop_nodes_up.yml to boot instances.</p>
+<div class="section" id="create-inventory-file">
+<h4>1.4.3.1. Create inventory file<a class="headerlink" href="#create-inventory-file" title="Permalink to this headline">¶</a></h4>
+<p>If you don&#8217;t have an inventory file,
+create inventory file, /etc/ansible/hosts while referring /etc/ansible/hosts.sample.</p>
+</div>
+<div class="section" id="define-environment-variables-for-aws-access">
+<h4>1.4.3.2. Define environment variables for AWS access<a class="headerlink" href="#define-environment-variables-for-aws-access" title="Permalink to this headline">¶</a></h4>
+<p>We use environment variables to configure AWS access keys.
+Define AWS_ACCESS_KEY and AWS_SECRET_KEY in your ~/.bashrc</p>
+<div class="highlight-python"><div class="highlight"><pre>export AWS_ACCESS_KEY=XXXXXXXXXXXXXXXXXXXXXXXXx
+export AWS_SECRET_KEY=XXXXXXXXXXXXXXXXXXXXXXXXX
+</pre></div>
+</div>
+<p>If you don&#8217;t have AWS keys,
+create keys while referring AWS web site.</p>
+</div>
+<div class="section" id="define-parameters-for-ec2-hadoop-role">
+<h4>1.4.3.3. Define parameters for ec2_hadoop role<a class="headerlink" href="#define-parameters-for-ec2-hadoop-role" title="Permalink to this headline">¶</a></h4>
+<p>You can find the parameter description for ec2_hadoop role in roles/ec2_hadoop/defaults/main.yml</p>
+<p>To define your own parameters,
+you need to create the group variable file (e.g. group_vars/top) and write parameter defines in this file.</p>
+<p>The following is an example of group_vas/top.</p>
+<div class="highlight-python"><div class="highlight"><pre>ec2_hadoop_group_id: sg-xxxxxxxx
+
+ec2_hadoop_accesskey: xxxxx
+
+ec2_hadoop_itype: xx.xxxxx
+
+ec2_hadoop_master_image: ami-xxxxxxxx
+ec2_hadoop_slave_image: ami-xxxxxxxx
+ec2_hadoop_client_image: ami-xxxxxxxx
+
+ec2_hadoop_region: xx-xxxxxxxxx-x
+
+ec2_hadoop_vpc_subnet_id: subnet-xxxxxxxx
+</pre></div>
+</div>
+<p>If you don&#8217;t define required parameters,
+you will see some errors, like:</p>
+<div class="highlight-python"><div class="highlight"><pre>One or more undefined variables: &#39;ec2_hadoop_group_id&#39; is undefined
+</pre></div>
+</div>
+</div>
+<div class="section" id="apply-playbook">
+<h4>1.4.3.4. Apply playbook<a class="headerlink" href="#apply-playbook" title="Permalink to this headline">¶</a></h4>
+<p>Execute ansible-playbook command.</p>
+<div class="highlight-python"><div class="highlight"><pre>$ ansible-playbook playbooks/operation/ec2/hadoop_nodes_up.yml -k
+</pre></div>
+</div>
+<p>As a result, you can find an IP address list, an ansible inventory file and an example of /etc/hosts used in EC2 instances
+in /tmp/ec2_&lt;unix epoc time&gt;.
+&lt;unix epoc time&gt; is the time you executed this playbook.</p>
+</div>
+</div>
+<div class="section" id="how-to-configure-host-names-of-nodes">
+<h3>1.4.4. How to configure host names of nodes<a class="headerlink" href="#how-to-configure-host-names-of-nodes" title="Permalink to this headline">¶</a></h3>
+<p>If you want to configure hostname of nodes,
+You can use &#8220;common&#8221; role and related playbooks.</p>
+<p>Execute ansible-playbook command with common_only_common.yml</p>
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd</span> /etc/ansible
+<span class="nv">$ </span>ansible-playbook playbooks/conf/common/common_only_common.yml -k -s -e <span class="s2">&quot;common_config_hostname=True server=hadoop_all&quot;</span>
+</pre></div>
+</div>
+<p>This is usefull for configuration of EC2 instance, because your node may have variety of hostname after each node booted.</p>
+</div>
+<div class="section" id="how-to-configure-cdh5-hdfs-yarn-environment">
+<h3>1.4.5. How to configure CDH5 HDFS/YARN environment<a class="headerlink" href="#how-to-configure-cdh5-hdfs-yarn-environment" title="Permalink to this headline">¶</a></h3>
+<p>You can construct CDH5 HDFS/YARN environment by ansible-playbook command.</p>
+<div class="section" id="preparement">
+<h4>1.4.5.1. Preparement<a class="headerlink" href="#preparement" title="Permalink to this headline">¶</a></h4>
+<p>If you have not configured Ansible execution environment,
+you should configure it.
+You can reference <a class="reference internal" href="how_to_use_playbooks.html#sec-configure-ansible-env"><em>How to configure Ansible execution environment</em></a> section.</p>
+</div>
+<div class="section" id="procedure">
+<h4>1.4.5.2. Procedure<a class="headerlink" href="#procedure" title="Permalink to this headline">¶</a></h4>
+<p>In the following example, we configure common_hosts_replace is True.
+As a result of this parameter configuration, Ansible replace /etc/hosts
+by Ansible driver server&#8217;s /etc/ansible/roles/common/files/hosts.default</p>
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/conf/cdh5/cdh5_all.yml -k -s -e <span class="s2">&quot;common_hosts_replace=True&quot;</span>
+<span class="nv">$ </span>ansible-playbook playbooks/operation/cdh5/init_zkfc.yml -k -s
+<span class="nv">$ </span>ansible-playbook playbooks/operation/cdh5/init_hdfs.yml -k -s
+</pre></div>
+</div>
+<p>Start services:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ ansible-playbook playbooks/operation/cdh5/start_cluster.yml -k -s
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="how-to-install-spark-core">
+<h3>1.4.6. How to install Spark Core<a class="headerlink" href="#how-to-install-spark-core" title="Permalink to this headline">¶</a></h3>
+<p>You can install Spark Core into Client node by the following command</p>
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/conf/cdh5/cdh5_spark.yml -k -s
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="index.html">What is this document?</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="japanese.html">2. Japanese Document</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2014, dobachi.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3b1.
+    </div>
+  </body>
+</html>

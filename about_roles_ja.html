@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>About roles &mdash; Ansible Playbooks for Hadoop 0.1 documentation</title>
+    <title>ロールについて &mdash; Ansible Playbooks for Hadoop 0.1 documentation</title>
     
     <link rel="stylesheet" href="_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -28,7 +28,7 @@
   <body role="document">
       <div class="header" role="banner"><h1 class="heading"><a href="index.html">
           <span>Ansible Playbooks for Hadoop 0.1 documentation</span></a></h1>
-        <h2 class="heading"><span>About roles</span></h2>
+        <h2 class="heading"><span>ロールについて</span></h2>
       </div>
       <div class="topnav" role="navigation" aria-label="top navigation">
       
@@ -40,117 +40,117 @@
       <div class="content">
         
         
-  <div class="section" id="about-roles">
-<h1>About roles<a class="headerlink" href="#about-roles" title="Permalink to this headline">¶</a></h1>
-<p>We manage OS and middlewares by using several seperated roles.</p>
-<div class="section" id="roles-to-configure-basic-environments">
-<h2>Roles to configure basic environments<a class="headerlink" href="#roles-to-configure-basic-environments" title="Permalink to this headline">¶</a></h2>
+  <div class="section" id="id1">
+<h1>ロールについて<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>この節では、プレイブックの中で呼び出されるロールについて説明します。</p>
+<div class="section" id="id2">
+<h2>基本的な設定のためのロール<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
 <col width="23%" />
 <col width="77%" />
 </colgroup>
 <thead valign="bottom">
-<tr class="row-odd"><th class="head">Role name</th>
-<th class="head">Use for</th>
+<tr class="row-odd"><th class="head">ロール名</th>
+<th class="head">用途</th>
 </tr>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>common</td>
-<td>Basic configuration about OS, basic services, and so on</td>
+<td>OSや基本的なサービスの設定</td>
 </tr>
 <tr class="row-odd"><td>jdk</td>
-<td>Configuraiotn of Oracle JDK</td>
+<td>JDKの設定</td>
 </tr>
 <tr class="row-even"><td>scala</td>
-<td>Configuraiton of Scala on Hadoop client node</td>
+<td>Hadoopクライアント環境のScala実行環境の整備</td>
 </tr>
 <tr class="row-odd"><td>screen</td>
-<td>Configuration of screen command</td>
+<td>screenの設定</td>
 </tr>
 </tbody>
 </table>
 </div>
-<div class="section" id="roles-to-configure-ansible">
-<h2>Roles to configure Ansible<a class="headerlink" href="#roles-to-configure-ansible" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="ansible">
+<h2>Ansible実行環境を構成管理のためのロール<a class="headerlink" href="#ansible" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
-<col width="22%" />
-<col width="78%" />
+<col width="23%" />
+<col width="77%" />
 </colgroup>
 <thead valign="bottom">
-<tr class="row-odd"><th class="head">Role name</th>
-<th class="head">Use for</th>
+<tr class="row-odd"><th class="head">ロール名</th>
+<th class="head">用途</th>
 </tr>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>ansible</td>
-<td>Configuration of nodes where you executes ansible command</td>
+<td>Ansible実行環境の構成管理</td>
 </tr>
 <tr class="row-odd"><td>ansible_remote</td>
-<td>Configuration of nodes which is configured ansible</td>
+<td>Ansible高速化のためのリモート側の構成管理</td>
 </tr>
 </tbody>
 </table>
 </div>
-<div class="section" id="roles-to-boot-ec2-instances-for-hadoop-cluster">
-<h2>Roles to boot EC2 instances for Hadoop cluster<a class="headerlink" href="#roles-to-boot-ec2-instances-for-hadoop-cluster" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="aws-ec2">
+<h2>AWS EC2管理のためのロール<a class="headerlink" href="#aws-ec2" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
 <col width="23%" />
 <col width="77%" />
 </colgroup>
 <thead valign="bottom">
-<tr class="row-odd"><th class="head">Role name</th>
-<th class="head">Use for</th>
+<tr class="row-odd"><th class="head">ロール名</th>
+<th class="head">用途</th>
 </tr>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>ec2_hadoop</td>
-<td>Boot EC2 instances for Hadoop cluster</td>
+<td>Hadoop用のAWS EC2起動</td>
 </tr>
 </tbody>
 </table>
 </div>
-<div class="section" id="roles-to-configure-cdh5-hadoop">
-<h2>Roles to configure CDH5 Hadoop<a class="headerlink" href="#roles-to-configure-cdh5-hadoop" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="cdh5hadoop">
+<h2>CDH5のHadoop環境のロール<a class="headerlink" href="#cdh5hadoop" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
 <col width="23%" />
 <col width="77%" />
 </colgroup>
 <thead valign="bottom">
-<tr class="row-odd"><th class="head">Role name</th>
-<th class="head">Use for</th>
+<tr class="row-odd"><th class="head">ロール名</th>
+<th class="head">用途</th>
 </tr>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>cdh5_base</td>
-<td>Basic configuraiton about Hadoop</td>
+<td>Hadoopの基本的な構成管理（設定ファル配備など）</td>
 </tr>
 <tr class="row-odd"><td>cdh5_jn</td>
-<td>Configuration of JournalNode</td>
+<td>JournalNodeの構成管理</td>
 </tr>
 <tr class="row-even"><td>cdh5_nn</td>
-<td>Configuraiton of NameNode</td>
+<td>NameNodeの構成管理</td>
 </tr>
 <tr class="row-odd"><td>cdh5_ot</td>
-<td>Configuraiton of HistoryServer and YARN Proxy</td>
+<td>HistoryServerとYARN Proxyの構成管理</td>
 </tr>
 <tr class="row-even"><td>cdh5_rm</td>
-<td>Configuraiton of ResourceManager</td>
+<td>ResourceManagerの構成管理</td>
 </tr>
 <tr class="row-odd"><td>cdh5_sl</td>
-<td>Configuration of DataNode and NodeManager</td>
+<td>DataNodeとNodeManagerの構成管理</td>
 </tr>
 <tr class="row-even"><td>zookeeper_server</td>
-<td>Configuration of Zookeeper server</td>
+<td>Zookeeper serverの構成管理</td>
 </tr>
 </tbody>
 </table>
 </div>
-<div class="section" id="roles-to-configure-spark-core-on-client-node">
-<h2>Roles to configure Spark core on client node<a class="headerlink" href="#roles-to-configure-spark-core-on-client-node" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="spark">
+<h2>Spark実行環境の構成管理<a class="headerlink" href="#spark" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
 <col width="23%" />
@@ -163,7 +163,7 @@
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>cdh5_spark</td>
-<td>Configuration of Spark core on Hadoop client node</td>
+<td>Hadoopクライアント環境のSparkコアの構成管理</td>
 </tr>
 </tbody>
 </table>

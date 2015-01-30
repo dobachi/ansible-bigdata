@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>2. About playbooks &mdash; Ansible Playbooks for Hadoop 0.1 documentation</title>
+    <title>About playbooks &mdash; Ansible Playbooks for Hadoop 0.1 documentation</title>
     
     <link rel="stylesheet" href="_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -23,23 +23,17 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Ansible Playbooks for Hadoop 0.1 documentation" href="index.html" />
-    <link rel="next" title="3. About roles" href="about_roles.html" />
-    <link rel="prev" title="1. Abstract" href="abstract.html" /> 
+    <link rel="top" title="Ansible Playbooks for Hadoop 0.1 documentation" href="index.html" /> 
   </head>
   <body role="document">
       <div class="header" role="banner"><h1 class="heading"><a href="index.html">
           <span>Ansible Playbooks for Hadoop 0.1 documentation</span></a></h1>
-        <h2 class="heading"><span>2. About playbooks</span></h2>
+        <h2 class="heading"><span>About playbooks</span></h2>
       </div>
       <div class="topnav" role="navigation" aria-label="top navigation">
       
         <p>
-        «&#160;&#160;<a href="abstract.html">1. Abstract</a>
-        &#160;&#160;::&#160;&#160;
         <a class="uplink" href="index.html">Contents</a>
-        &#160;&#160;::&#160;&#160;
-        <a href="about_roles.html">3. About roles</a>&#160;&#160;»
         </p>
 
       </div>
@@ -47,7 +41,7 @@
         
         
   <div class="section" id="about-playbooks">
-<h1>2. About playbooks<a class="headerlink" href="#about-playbooks" title="Permalink to this headline">¶</a></h1>
+<h1>About playbooks<a class="headerlink" href="#about-playbooks" title="Permalink to this headline">¶</a></h1>
 <p>This project has two types of playbooks.</p>
 <ul class="simple">
 <li>Playbooks for configuration<ul>
@@ -60,7 +54,7 @@
 </li>
 </ul>
 <div class="section" id="playbooks-for-configuration">
-<h2>2.1. Playbooks for configuration<a class="headerlink" href="#playbooks-for-configuration" title="Permalink to this headline">¶</a></h2>
+<h2>Playbooks for configuration<a class="headerlink" href="#playbooks-for-configuration" title="Permalink to this headline">¶</a></h2>
 <p>We can use playbooks in playbooks/conf directory to configure servers.</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -85,7 +79,7 @@
 </tbody>
 </table>
 <div class="section" id="common">
-<h3>2.1.1. common<a class="headerlink" href="#common" title="Permalink to this headline">¶</a></h3>
+<h3>common<a class="headerlink" href="#common" title="Permalink to this headline">¶</a></h3>
 <p>This is a set of common and basic configurations.</p>
 <ul class="simple">
 <li>playbooks/conf/common/common_all.yml<ul>
@@ -99,7 +93,7 @@
 </ul>
 </div>
 <div class="section" id="cdh5">
-<h3>2.1.2. cdh5<a class="headerlink" href="#cdh5" title="Permalink to this headline">¶</a></h3>
+<h3>cdh5<a class="headerlink" href="#cdh5" title="Permalink to this headline">¶</a></h3>
 <p>This is a set of configurations to construct CDH5 environment.</p>
 <ul class="simple">
 <li>cdh5_all.yml<ul>
@@ -142,8 +136,10 @@ You can build whole CDH5 environment.</li>
 </ul>
 </div>
 <div class="section" id="ansible">
-<h3>2.1.3. ansible<a class="headerlink" href="#ansible" title="Permalink to this headline">¶</a></h3>
-<p>This is a set of configuration about Ansible environment.</p>
+<h3>ansible<a class="headerlink" href="#ansible" title="Permalink to this headline">¶</a></h3>
+<p>This is a set of configuration about Ansible environment.
+If you have manually configured Ansible environment, such as ansible.cfg, inventory file and so on,
+you don&#8217;t need these playbooks.</p>
 <ul class="simple">
 <li>ansible_client.yml<ul>
 <li>This playbook executes &#8220;ansible&#8221; role to configure nodes where we execute ansible command</li>
@@ -157,7 +153,7 @@ You can build whole CDH5 environment.</li>
 </div>
 </div>
 <div class="section" id="playbooks-for-operation">
-<h2>2.2. Playbooks for operation<a class="headerlink" href="#playbooks-for-operation" title="Permalink to this headline">¶</a></h2>
+<h2>Playbooks for operation<a class="headerlink" href="#playbooks-for-operation" title="Permalink to this headline">¶</a></h2>
 <p>We can use playbooks in playbooks/operation directory to operate services.</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -180,12 +176,12 @@ e.g. Formating HDFS, Start/Stop services, ...</td>
 </tbody>
 </table>
 <div class="section" id="id1">
-<h3>2.2.1. cdh5<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<h3>cdh5<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <p>This is a set of operation of Hadoop services.
 Please check README in the <em>cdh5</em> directory for more information.</p>
 </div>
 <div class="section" id="ec2">
-<h3>2.2.2. ec2<a class="headerlink" href="#ec2" title="Permalink to this headline">¶</a></h3>
+<h3>ec2<a class="headerlink" href="#ec2" title="Permalink to this headline">¶</a></h3>
 <p>This is a set of operation to boot EC2 instances.
 Please check README in the <em>ec2</em> directory for more information.</p>
 </div>
@@ -197,11 +193,7 @@ Please check README in the <em>ec2</em> directory for more information.</p>
       <div class="bottomnav" role="navigation" aria-label="bottom navigation">
       
         <p>
-        «&#160;&#160;<a href="abstract.html">1. Abstract</a>
-        &#160;&#160;::&#160;&#160;
         <a class="uplink" href="index.html">Contents</a>
-        &#160;&#160;::&#160;&#160;
-        <a href="about_roles.html">3. About roles</a>&#160;&#160;»
         </p>
 
       </div>

@@ -1,0 +1,223 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>プレイブック集について &mdash; Ansible Playbooks for Hadoop 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Ansible Playbooks for Hadoop 0.1 documentation" href="index.html" /> 
+  </head>
+  <body role="document">
+      <div class="header" role="banner"><h1 class="heading"><a href="index.html">
+          <span>Ansible Playbooks for Hadoop 0.1 documentation</span></a></h1>
+        <h2 class="heading"><span>プレイブック集について</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        <a class="uplink" href="index.html">Contents</a>
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="id1">
+<h1>プレイブック集について<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>このプロジェクトには2種類のプレイブックが含まれています。</p>
+<ul class="simple">
+<li>構成管理のためのプレイブック集<ul>
+<li>パッケージをインストールしたり、パラメータを設定するために利用されます。</li>
+<li>（例）Hadoopコアパッケージのインストール</li>
+</ul>
+</li>
+<li>運用作業のためのプレイブック<ul>
+<li>OSサービスやミドルウェアの運用作業を行うためのプレイブック集です。</li>
+<li>（例）HDFSのフォーマット</li>
+</ul>
+</li>
+</ul>
+<div class="section" id="id2">
+<h2>構成管理のためのプレイブック集<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>playbooks/confディレクトリ以下に以下のプレイブック集があります。</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="34%" />
+<col width="66%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">ディレクトリ</th>
+<th class="head">用途</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>playbooks/conf/common</td>
+<td>コモンな設定。OSの設定。</td>
+</tr>
+<tr class="row-odd"><td>playbooks/conf/cdh5</td>
+<td>CDH5のHDFS/YARN環境の構築／設定</td>
+</tr>
+<tr class="row-even"><td>playbooks/conf/ansible</td>
+<td>Ansibleの実行環境の設定</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="common">
+<h3>common<a class="headerlink" href="#common" title="Permalink to this headline">¶</a></h3>
+<p>基本的な設定を行います。</p>
+<ul class="simple">
+<li>playbooks/conf/common/common_all.yml<ul>
+<li>すべての基本的な設定を行うプレイブックです</li>
+</ul>
+</li>
+<li>playbooks/conf/common/common_only_common.yml<ul>
+<li>「common」ロールのみ実行するプレイブックです</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="cdh5">
+<h3>cdh5<a class="headerlink" href="#cdh5" title="Permalink to this headline">¶</a></h3>
+<p>CDH5のHDFS/YARN環境の構築／設定を行います。</p>
+<ul class="simple">
+<li>cdh5_all.yml<ul>
+<li>他のプレイブックのラッパーです</li>
+<li>すべてのサーバの構成管理を実行できます</li>
+</ul>
+</li>
+<li>cdh5_cl.yml<ul>
+<li>Hadoopクライアント環境を構成管理します</li>
+<li>「cdh5_cl」ロールを実行します</li>
+</ul>
+</li>
+<li>cdh5_journalnode.yml<ul>
+<li>HDFS JournalNodeを構成管理します</li>
+<li>「cdh5_jn」ロールを実行します</li>
+</ul>
+</li>
+<li>cdh5_namenode.yml<ul>
+<li>HDFS NameNodeを構成管理します</li>
+<li>「cdh5_nn」ロールを実行します</li>
+</ul>
+</li>
+<li>cdh5_other.yml<ul>
+<li>MapReduce HistoryServerとYARN Proxy環境を構成管理します</li>
+<li>「cdh5_ot」ロールを実行します</li>
+</ul>
+</li>
+<li>cdh5_resourcemanager.yml<ul>
+<li>YARN ResouceManagerを構成管理します</li>
+<li>「cdh5_rm」ロールを実行します</li>
+</ul>
+</li>
+<li>cdh5_slave.yml<ul>
+<li>HDFS DataNodeとYARN NodeManagerを構成管理します</li>
+<li>「cdh5_sl」ロールを実行します</li>
+</ul>
+</li>
+<li>cdh5_spark.yml<ul>
+<li>Hadoopクライアント環境のSparkコアを構成管理します</li>
+<li>「cdh5_spark」ロールを実行します</li>
+</ul>
+</li>
+<li>cdh5_zookeeper.yml<ul>
+<li>Zookeeperを構成管理します</li>
+<li>「zookeeper_server」ロールを実行します</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="ansible">
+<h3>ansible<a class="headerlink" href="#ansible" title="Permalink to this headline">¶</a></h3>
+<p>Ansible実行環境を構成管理します。</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Hadoop HDFS/YARN環境を構成管理するにあたっては、
+このプレイブック集は必須ではありません。
+もし手動でAnsible実行環境を構成管理した場合は不要です。</p>
+</div>
+<ul class="simple">
+<li>ansible_client.yml<ul>
+<li>Ansibleを実行する構成管理サーバ（このプロジェクトではHadoopクライアント環境としています）上に
+Ansible実行環境を構築します</li>
+<li>「ansible」ロールを実行します</li>
+</ul>
+</li>
+<li>ansible_remote.yml<ul>
+<li>Ansibleを高速化するためのパッケージをリモートサーバ群にインストールします</li>
+<li>「ansible_remote」ロールを実行します</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>運用作業のためのプレイブック集<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>playbooks/operationディレクトリ以下に運用作業のためのプレイブック集があります。</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="27%" />
+<col width="73%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">ディレクトリ</th>
+<th class="head">用途</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>playbooks/operation/cdh5</td>
+<td>Hadoop HDFS/YARNサービスの運用に用います
+例えばHDFSの初期化や各サービスの起動／停止です。</td>
+</tr>
+<tr class="row-odd"><td>playbooks/operation/ec2</td>
+<td>Hadoop用のAWS EC2インスタンスを起動します</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="id4">
+<h3>cdh5<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>Hadoopの各サービスを運用するためのプレイブック集です。
+詳しくはディレクトリ内のREADMEを参照ください。</p>
+</div>
+<div class="section" id="ec2">
+<h3>ec2<a class="headerlink" href="#ec2" title="Permalink to this headline">¶</a></h3>
+<p>AWS EC2インスタンスを起動するためのプレイブック集です。
+詳しくはディレクトリ内のREADMEを参照ください。</p>
+</div>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        <a class="uplink" href="index.html">Contents</a>
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2014, dobachi.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3b1.
+    </div>
+  </body>
+</html>
