@@ -1,0 +1,2 @@
+- name: install_openblas
+  yum: name=openblas state=installed

@@ -24,5 +24,6 @@
 - hosts: hadoop_all
   roles:
     - gcc_gfortran
+    - openblas
 
 # vim: et ts=2 sw=2
