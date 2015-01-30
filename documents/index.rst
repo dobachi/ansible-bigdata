@@ -7,10 +7,8 @@ Content
 -----------
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
    :numbered:
 
-   abstract
-   about_playbooks
-   about_roles
-   how_to_use_playbooks
+   english
+   japanese

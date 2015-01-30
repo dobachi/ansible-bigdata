@@ -81,6 +81,8 @@ ansible
 ~~~~~~~
 
 This is a set of configuration about Ansible environment.
+If you have manually configured Ansible environment, such as ansible.cfg, inventory file and so on,
+you don't need these playbooks.
 
 * ansible_client.yml
 
