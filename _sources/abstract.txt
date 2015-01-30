@@ -58,3 +58,7 @@ Spark    Spark1.2 of CDH5
 Ansible  Ansible 1.8.2 of EPEL
 ======== =============================
 
+Prerequirement
+----------------
+* You can login to each server by SSH from the server where you execute ansible.
+* You can use "sudo" in each server

@@ -1,0 +1,178 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Getting Started &mdash; Ansible Playbooks for Hadoop 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Ansible Playbooks for Hadoop 0.1 documentation" href="index.html" /> 
+  </head>
+  <body role="document">
+      <div class="header" role="banner"><h1 class="heading"><a href="index.html">
+          <span>Ansible Playbooks for Hadoop 0.1 documentation</span></a></h1>
+        <h2 class="heading"><span>Getting Started</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        <a class="uplink" href="index.html">Contents</a>
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="getting-started">
+<h1>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
+<p>この節では、Hadoop HDFS/YARN環境を構築する流れを説明します。
+各プレイブックの詳細は別節の説明をご覧ください。</p>
+<div class="section" id="id1">
+<h2>簡単化のための前提<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="japanese.html#sec-servers-ja"><em>サーバ構成</em></a> に示された数のサーバを利用できること。またホスト名が正しく設定されていること。<ul>
+<li>ホスト名は、master01, master02, master03, client01, slave01, slave02, slave03, slave04, slave05です。</li>
+</ul>
+</li>
+<li>Ansibleを実行するサーバからクラスタの各サーバへホスト名でSSHログインできること<ul>
+<li>例えば、/etc/hosts内にクラスタの各サーバについてのホスト名、IPアドレスが設定されていること。</li>
+</ul>
+</li>
+<li>各サーバでsudoできること</li>
+</ul>
+</div>
+<div class="section" id="install-ansible">
+<h2>Install Ansible<a class="headerlink" href="#install-ansible" title="Permalink to this headline">¶</a></h2>
+<p>EPELレポジトリをインストールします。</p>
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>sudo yum install -y epel-release
+</pre></div>
+</div>
+<p>Ansibleをインストールします。</p>
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>sudo yum install -y ansible
+</pre></div>
+</div>
+<div class="section" id="id2">
+<h3>プレイブック集をクローンします<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>まず既存のファイルをmvします。</p>
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd</span> /etc
+<span class="nv">$ </span>sudo mv ansible ansible.org
+</pre></div>
+</div>
+<p>クローンします。</p>
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>git clone https://github.com/dobachi/ansible-hadoop.git ansible
+</pre></div>
+</div>
+</div>
+<div class="section" id="ansible">
+<h3>Ansibleを基本設定します。<a class="headerlink" href="#ansible" title="Permalink to this headline">¶</a></h3>
+<p>ansible.cfg.sampleをansible.cfgにコピーします。</p>
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd </span>ansible
+<span class="nv">$ </span>cp ansible.cfg.sample ansible.cfg
+</pre></div>
+</div>
+<p>インベントリファイルのシンボリックリンクを作成します。</p>
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ln -s hosts.sample hosts
+</pre></div>
+</div>
+<p>各サーバの/etc/hostsにコピーされるテンプレートファイルを修正します。</p>
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>sudo vi roles/common/files/hosts.default
+</pre></div>
+</div>
+</div>
+<div class="section" id="hadoop">
+<h3>Hadoopインストールと設定<a class="headerlink" href="#hadoop" title="Permalink to this headline">¶</a></h3>
+<p>パッケージをインストールし、設定します。</p>
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/conf/cdh5/cdh5_all.yml -k -s -e <span class="s2">&quot;common_hosts_replace=True&quot;</span>
+</pre></div>
+</div>
+<p>サービスを初期化します。
+なお、HDFSを初期化する手順が含まれていますのでご注意ください。</p>
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/operation/cdh5/init_zkfc.yml -k -s
+<span class="nv">$ </span>ansible-playbook playbooks/operation/cdh5/init_hdfs.yml -k -s
+</pre></div>
+</div>
+<p>サービスを起動します。</p>
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/operation/cdh5/start_cluster.yml -k -s
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h3>おめでとうございます<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>これでHDFSにアクセスできるようになりました。
+client01から以下のコマンドを実行してください。</p>
+<p>Example of the command.</p>
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>hdfs dfs -ls /
+</pre></div>
+</div>
+<p>HDFSのウェブサービスには以下のURLからアクセスできます。
+片方ががアクティブで、片方がスタンバイです。</p>
+<ul class="simple">
+<li><a class="reference external" href="http://master01:50070">http://master01:50070</a></li>
+<li><a class="reference external" href="http://master02:50070">http://master02:50070</a></li>
+</ul>
+<p>YARNのサンプルジョブを実行できます。</p>
+<p>Example of the command.</p>
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>hdfs dfs -mkdir /user/&lt;user name&gt;
+<span class="nv">$ </span>hdfs dfs -chown &lt;user name&gt;:&lt;group name&gt; /user/&lt;user name&gt;
+<span class="nv">$ </span>yarn jar /usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar pi <span class="m">100</span> 100
+</pre></div>
+</div>
+<p>YARNのウェブサービスには以下のURLでアクセスできます。
+片方ががアクティブで、片方がスタンバイです。</p>
+<ul class="simple">
+<li><a class="reference external" href="http://master02:8088">http://master02:8088</a></li>
+<li><a class="reference external" href="http://master03:8088">http://master03:8088</a></li>
+</ul>
+</div>
+<div class="section" id="spark">
+<h3>Sparkコアのインストール<a class="headerlink" href="#spark" title="Permalink to this headline">¶</a></h3>
+<p>コマンド例</p>
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/conf/cdh5/cdh5_spark.yml -k -s
+</pre></div>
+</div>
+<p>これでclient01上で、spark-shellなどのコマンドを実行できるようになりました。</p>
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>spark-shell
+</pre></div>
+</div>
+<p>上記コマンドの結果、YARNに接続した状態でSparkのシェルが起動します。
+Sparkドライバのウェブサービスにアクセスするには、以下のURLを利用します。</p>
+<ul class="simple">
+<li><a class="reference external" href="http://client01:4040">http://client01:4040</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        <a class="uplink" href="index.html">Contents</a>
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2014, dobachi.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3b1.
+    </div>
+  </body>
+</html>
