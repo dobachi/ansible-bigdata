@@ -1,0 +1,7 @@
+- hosts: '{{src_server | default("hadoop_other") }}'
+  roles:
+    - common
+    - python_carbon
+
+# vim: et sw=2 ts=2
+

@@ -1,0 +1,7 @@
+- hosts: '{{src_server | default("hadoop_other") }}'
+  roles:
+    - common
+    - httpd
+    - graphite_web
+
+# vim: et sw=2 ts=2

@@ -1,0 +1,4 @@
+---
+# tasks file for roles/graphite_web
+- include: install.yml tags=install,graphite_web
+- include: config.yml tags=config,graphite_web

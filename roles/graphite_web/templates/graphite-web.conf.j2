@@ -1,0 +1,24 @@
+# Graphite Web Basic mod_wsgi vhost
+
+Listen {{ graphite_web_port }}
+
+<VirtualHost *:{{ graphite_web_port }}>
+
+    ServerName {{ ansible_hostname }}
+    DocumentRoot "/usr/share/graphite/webapp"
+    ErrorLog /var/log/httpd/graphite-web-error.log
+    CustomLog /var/log/httpd/graphite-web-access.log common
+    Alias /media/ "/usr/lib/python2.6/site-packages/django/contrib/admin/media/"
+
+    WSGIScriptAlias / /usr/share/graphite/graphite-web.wsgi
+    WSGIImportScript /usr/share/graphite/graphite-web.wsgi process-group=%{GLOBAL} application-group=%{GLOBAL}
+
+    <Location "/content/">
+        SetHandler None
+    </Location>
+
+    <Location "/media/">
+        SetHandler None
+    </Location>
+
+</VirtualHost>

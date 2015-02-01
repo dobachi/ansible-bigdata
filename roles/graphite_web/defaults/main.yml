@@ -1,0 +1,3 @@
+---
+# defaults file for roles/graphite_web
+graphite_web_port: 8888

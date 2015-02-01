@@ -1,0 +1,10 @@
+- name: copy_graphite-web.conf
+  template: src=graphite-web.conf.j2 dest=/etc/httpd/conf.d/graphite-web.conf
+  notify:
+    - restart_httpd
+
+- name: init_graphite_db
+  shell: yes no | python /usr/lib/python2.6/site-packages/graphite/manage.py syncdb creates=/var/lib/graphite-web/graphite.db
+
+- name: chown_graphite_db
+  file: path=/var/lib/graphite-web/graphite.db owner=apache group=apache

@@ -1,0 +1,4 @@
+---
+# tasks file for roles/python_carbon
+- include: install.yml tags=install,python_carbon
+- include: service.yml tags=service,python_carbon

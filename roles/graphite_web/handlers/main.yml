@@ -1,0 +1,4 @@
+---
+# handlers file for roles/graphite_web
+- name: restart_httpd
+  service: name=httpd state=restarted
