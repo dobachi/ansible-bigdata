@@ -10,3 +10,6 @@ cdh5_spark_history_dir: 'hdfs://mycluster/var/log/spark'
 
 # /etc/default/spark
 cdh5_spark_scala_home: '/usr/local/scala/default'
+#
+# /etc/spark/conf/metrics.properties
+cdh5_spark_graphite_prefix: 'spark'
