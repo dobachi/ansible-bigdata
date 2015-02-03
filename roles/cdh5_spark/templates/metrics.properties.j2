@@ -130,6 +130,7 @@
 
 #executor.source.jvm.class=org.apache.spark.metrics.source.JvmSource
 
+*.source.jvm.class=org.apache.spark.metrics.source.JvmSource
 *.sink.graphite.class=org.apache.spark.metrics.sink.GraphiteSink
 *.sink.graphite.host={{ groups['hadoop_other'] | join(',') }}
 *.sink.graphite.prefix={{ cdh5_spark_graphite_prefix }}
