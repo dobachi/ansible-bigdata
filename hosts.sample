@@ -1,3 +1,9 @@
+; Top group to define what kind of environment this is.
+; Examples of the group name are "production", "test" and so on.
+[production:children]
+
+; Top group of all nodes of each component
+; This group includes parent groups of each component
 [hadoop_all:children]
 hadoop_master
 hadoop_client
@@ -5,6 +11,7 @@ hadoop_slave
 hadoop_hbase
 hadoop_spark
 
+; Parent group of master nodes 
 [hadoop_master:children]
 hadoop_namenode
 hadoop_journalnode
@@ -13,50 +20,44 @@ hadoop_resourcemanager
 hadoop_other
 hadoop_httpfs
 
+; All of NameNodes
 [hadoop_namenode:children]
 hadoop_namenode_primary
 hadoop_namenode_backup
 
+; Primary NameNode
+; This group should have only one node.
 [hadoop_namenode_primary]
 master01
 
+; Backup NameNode
+; This group should have only one node.
 [hadoop_namenode_backup]
 master02
 
+; All of JournalNodes
 [hadoop_journalnode]
 master01
 master02
 master03
 
+; All of Zookeeper nodes
+; Each node has a parameter configuration about Zookeeper ID
 [hadoop_zookeeperserver]
 master01 zookeeper_server_id=1
 master02 zookeeper_server_id=2
 master03 zookeeper_server_id=3
 
+; All of ResourceManagers
 [hadoop_resourcemanager]
 master02
 master03
 
+; Node to provide misc services
 [hadoop_other]
 master03
 
-[hadoop_httpfs]
-master03
-
-[hadoop_hbase:children]
-hadoop_hbase_master
-hadoop_hbase_regionserver
-
-[hadoop_hbase_master]
-master01
-
-[hadoop_hbase_regionserver]
-slave01
-slave02
-slave03
-slave04
-slave05
-
+; SlaveNodes
 [hadoop_slave]
 slave01
 slave02
@@ -64,6 +65,7 @@ slave03
 slave04
 slave05
 
+; Used as a client of Hadoop
 [hadoop_client:children]
 hadoop_hive
 hadoop_oozie
@@ -78,6 +80,8 @@ client01
 [hadoop_pig]
 client01
 
+; Spark Standalone cluster
+; Sorry, Spark Standalone configuration is not implemented yet.
 [hadoop_spark:children]
 hadoop_spark_master
 hadoop_spark_worker
@@ -92,3 +96,22 @@ slave03
 slave04
 slave05
 
+; Node to provide HttpFS service
+[hadoop_httpfs]
+master03
+
+; Top group of HBase cluster
+; Sorry, HBase configuration is not implemented yet.
+[hadoop_hbase:children]
+hadoop_hbase_master
+hadoop_hbase_regionserver
+
+[hadoop_hbase_master]
+master01
+
+[hadoop_hbase_regionserver]
+slave01
+slave02
+slave03
+slave04
+slave05
