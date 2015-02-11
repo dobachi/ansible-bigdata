@@ -1,6 +1,12 @@
 ; Top group to define what kind of environment this is.
 ; Examples of the group name are "production", "test" and so on.
 [production:children]
+hadoop_all
+local
+
+; This is a dummy
+[local]
+localhost
 
 ; Top group of all nodes of each component
 ; This group includes parent groups of each component
