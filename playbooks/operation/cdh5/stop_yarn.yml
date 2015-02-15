@@ -6,6 +6,12 @@
       with_items:
         - hadoop-yarn-resourcemanager 
 
+- hosts: hadoop_client
+  tasks:
+    - name: wait_for_resourcemanager_web_service_port_stopped
+      wait_for: host={{ item }} port=8088 state=stopped
+      with_items: groups['hadoop_resourcemanager']
+
 - hosts: hadoop_slave
   gather_facts: no
   tasks:
@@ -13,6 +19,12 @@
       service: name={{ item }} state=stopped
       with_items:
         - hadoop-yarn-nodemanager
+
+- hosts: hadoop_client
+  tasks:
+    - name: wait_for_nodemanager_service_port_stopped
+      wait_for: host={{ item }} port=8040 state=stopped
+      with_items: groups['hadoop_slave']
 
 - hosts: hadoop_other
   gather_facts: no
@@ -22,3 +34,8 @@
       with_items:
         - hadoop-mapreduce-historyserver
 
+- hosts: hadoop_client
+  tasks:
+    - name: wait_for_other_service_port_stopped
+      wait_for: host={{ item }} port=10020 state=stopped
+      with_items: groups['hadoop_other']

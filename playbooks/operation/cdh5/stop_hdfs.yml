@@ -6,6 +6,12 @@
       with_items:
         - hadoop-hdfs-journalnode
 
+- hosts: hadoop_client
+  tasks:
+    - name: wait_for_journalnode_service_port_stopped
+      wait_for: host={{ item }} port=8480 state=stopped
+      with_items: groups['hadoop_journalnode']
+
 - hosts: hadoop_namenode
   gather_facts: no
   tasks:
@@ -15,6 +21,12 @@
         - hadoop-hdfs-namenode
         - hadoop-hdfs-zkfc
 
+- hosts: hadoop_client
+  tasks:
+    - name: wait_for_namenode_service_port_stopped
+      wait_for: host={{ item }} port=8020 state=stopped
+      with_items: groups['hadoop_namenode']
+
 - hosts: hadoop_slave
   gather_facts: no
   tasks:
@@ -23,3 +35,8 @@
       with_items:
         - hadoop-hdfs-datanode
 
+- hosts: hadoop_client
+  tasks:
+    - name: wait_for_datanode_service_port_stopped
+      wait_for: host={{ item }} port=50020 state=stopped
+      with_items: groups['hadoop_slave']

@@ -7,3 +7,5 @@
   tasks:
     - name: init_zkfc
       shell: yes Y | hdfs zkfc -formatZK
+
+# vim: et ts=2 sw=2
