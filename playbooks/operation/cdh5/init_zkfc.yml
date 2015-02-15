@@ -1,3 +1,7 @@
+- include: stop_zookeeper.yml
+
+- include: start_zookeeper.yml
+
 - hosts: hadoop_namenode_primary
   sudo_user: hdfs
   tasks:
