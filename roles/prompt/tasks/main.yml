@@ -1,0 +1,3 @@
+# file: roles/prompt/tasks/main.yml
+
+- include: conf.yml
