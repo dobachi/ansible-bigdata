@@ -24,6 +24,7 @@ Each function is available individually.
 * Booting EC2 instances for Hadoop cluster
 * Configuring HDFS/YARN with NameNode HA
 * Configuring Spark core on Client node
+* Configuring Ganglia for the resource visualization
 
 .. _sec-servers:
 
@@ -36,15 +37,17 @@ This project's assumption about middleware components and servers.
 ======== ================================================================================
 Server   Use for
 ======== ================================================================================
-master01 Primary NameNode, JournalNode, Zookeeper Server(id=1)
-master02 Backup NameNode, JournalNode, Zookeeper Server(id=2), Primary ResourceManager
-master03 JournalNode, Zookeeper Server(id=3), HistoryServer, Backup ResourceManager
-client01 Hadoop Client, Spark Core
-slave01  DataNode, NodeManager
-slave02  DataNode, NodeManager
-slave03  DataNode, NodeManager
-slave04  DataNode, NodeManager
-slave05  DataNode, NodeManager
+master01 Primary NameNode, JournalNode, Zookeeper Server(id=1), Ganglia Slave
+master02 Backup NameNode, JournalNode, Zookeeper Server(id=2), Primary ResourceManager,
+         Ganglia Slave
+master03 JournalNode, Zookeeper Server(id=3), HistoryServer, Backup ResourceManager,
+         Ganglia Slave, Ganglia Master
+client01 Hadoop Client, Spark Core, Ganglia Slave
+slave01  DataNode, NodeManager, Ganglia Slave
+slave02  DataNode, NodeManager, Ganglia Slave
+slave03  DataNode, NodeManager, Ganglia Slave
+slave04  DataNode, NodeManager, Ganglia Slave
+slave05  DataNode, NodeManager, Ganglia Slave
 ======== ================================================================================
 
 **Software**
@@ -53,9 +56,9 @@ slave05  DataNode, NodeManager
 Software Version
 ======== =============================
 OS       CentOS6.6 or CentOS7.0
-Hadoop   CDH5.2
-Spark    Spark1.2 of CDH5
-Ansible  Ansible 1.8.2 of EPEL
+Hadoop   CDH5
+Spark    Spark of CDH5
+Ansible  Ansible 1.8 of EPEL
 ======== =============================
 
 Prerequirement
