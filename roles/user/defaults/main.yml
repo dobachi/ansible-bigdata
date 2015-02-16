@@ -1,0 +1,4 @@
+---
+# defaults file for roles/user
+# user_list:
+#   - centos
