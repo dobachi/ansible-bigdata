@@ -78,6 +78,21 @@
   </property>
 
   <property>
+    <name>yarn.nodemanager.resource.cpu-vcores</name>
+    <value>{{ cdh5_yarn_nodemanager_resource_cpu_vcores }}</value>
+  </property>
+
+  <property>
+    <name>yarn.scheduler.minimum-allocation-vcores</name>
+    <value>{{ cdh5_yarn_scheduler_minimum_allocation_vcores }}</value>
+  </property>
+
+  <property>
+    <name>yarn.scheduler.maximum-allocation-vcores</name>
+    <value>{{ cdh5_yarn_scheduler_maximum_allocation_vcores }}</value>
+  </property>
+
+  <property>
     <name>yarn.nodemanager.resource.memory-mb</name>
     <value>{{ cdh5_yarn_nodemanager_resource_memory_mb }}</value>
   </property>

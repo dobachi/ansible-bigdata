@@ -19,3 +19,6 @@
     - yarn-site.xml
     - mapred-site.xml
     - hadoop-metrics2.properties
+
+- name: copy_sudoersd_config
+  template: src=hadoop.j2 dest=/etc/sudoers.d/hadoop

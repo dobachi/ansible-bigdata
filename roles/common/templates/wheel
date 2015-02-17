@@ -1,0 +1,2 @@
+Defaults:%root    !requiretty
+%wheel    ALL=(ALL)       NOPASSWD: ALL

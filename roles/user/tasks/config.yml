@@ -1,0 +1,8 @@
+- name: add_user
+  user: name={{ item }}
+        password="$6$rounds=40000$zh6mSH7TyRuMxMEz$HN7Eh.MXJfNUfx9biV73QQ5TMyojNj1eWy9IEPR5ZiOs/QyrCHwUZc.NgUaXWJKG/gO6UWpE0uf4.Qe/f9UYr/"
+        update_password="on_create"
+  with_items: user_list
+
+- debug: msg="Created user {{ item }} with password 'hadoop'"
+  with_items: user_list
