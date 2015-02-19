@@ -1,2 +1,2 @@
-Defaults:%root    !requiretty
+Defaults:%wheel    !requiretty
 %wheel    ALL=(ALL)       NOPASSWD: ALL
