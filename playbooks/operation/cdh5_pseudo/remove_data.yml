@@ -1,0 +1,13 @@
+- hosts: hadoop_pseudo
+  gather_facts: no
+  tasks:
+    - name: remove_data_dir
+      file: path={{ item }} state=absent
+      ignore_errors: yes
+      with_items:
+        - '/data/1/dfs/dn'
+
+    - name: make_data_dir
+      file: path={{ item }} state=directory owner=hdfs group=hadoop mode=700
+      with_items:
+        - '/data/1/dfs/dn'
