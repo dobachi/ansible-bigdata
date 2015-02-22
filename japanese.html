@@ -64,6 +64,7 @@
 <li>Hadoop環境用のAWS EC2インスタンスを起動する</li>
 <li>HA構成のHDFS、YARN環境を構築する</li>
 <li>Spark Coreをインストールし、Sparkの実行環境を整える</li>
+<li>テスト用のPseudo環境を構築する</li>
 </ul>
 </div>
 <div class="section" id="sec-servers-ja">
@@ -107,6 +108,9 @@
 </tr>
 <tr class="row-even"><td>slave05</td>
 <td>DataNode, NodeManager</td>
+</tr>
+<tr class="row-odd"><td>pseudo</td>
+<td>Hadoop Pseudo分散環境</td>
 </tr>
 </tbody>
 </table>
@@ -362,8 +366,22 @@ Sparkドライバのウェブサービスにアクセスするには、以下の
 </li>
 </ul>
 </div>
+<div class="section" id="cdh5-pseudo">
+<h4>2.3.1.3. cdh5_pseudo<a class="headerlink" href="#cdh5-pseudo" title="Permalink to this headline">¶</a></h4>
+<p>CDH5のHDFS/YARNのPseudo環境を構築／設定します。</p>
+<ul class="simple">
+<li>cdh5_pseudo.yml<ul>
+<li>Pseudo環境を構築、設定します</li>
+</ul>
+</li>
+<li>cdh5_spark.yml<ul>
+<li>Spark環境をPseudo環境に構築、設定します</li>
+</ul>
+</li>
+</ul>
+</div>
 <div class="section" id="id10">
-<h4>2.3.1.3. ansible<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h4>
+<h4>2.3.1.4. ansible<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h4>
 <p>Ansible実行環境を構成管理します。</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -530,8 +548,27 @@ Ansible実行環境を構築します</li>
 </tbody>
 </table>
 </div>
+<div class="section" id="cdh5hadoop-pseudo">
+<h3>2.4.5. CDH5のHadoop Pseudo環境のロール<a class="headerlink" href="#cdh5hadoop-pseudo" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="77%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">ロール名</th>
+<th class="head">用途</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>cdh5_pseudo</td>
+<td>Hadoop Pseudo環境の構成管理</td>
+</tr>
+</tbody>
+</table>
+</div>
 <div class="section" id="id16">
-<h3>2.4.5. Spark実行環境の構成管理<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
+<h3>2.4.6. Spark実行環境の構成管理<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
 <colgroup>
 <col width="23%" />
@@ -742,6 +779,36 @@ EC2インスタンスにアクセスしたり、EC2インスタンスによる�
 <h3>2.5.6. Spark実行環境の整備<a class="headerlink" href="#id33" title="Permalink to this headline">¶</a></h3>
 <p>以下の通り、ansible-playbookコマンドを実行します。</p>
 <div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/conf/cdh5/cdh5_spark.yml -k -s
+</pre></div>
+</div>
+</div>
+<div class="section" id="cdh5pseudo">
+<h3>2.5.7. CDH5のPseudo環境を構成する例<a class="headerlink" href="#cdh5pseudo" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id34">
+<h4>2.5.7.1. 前提条件<a class="headerlink" href="#id34" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li>本プレイブック集を利用して、もしくは手動で、Ansible実行環境が設定されていること</li>
+</ul>
+</div>
+<div class="section" id="id35">
+<h4>2.5.7.2. 手順<a class="headerlink" href="#id35" title="Permalink to this headline">¶</a></h4>
+<p>以下の通り、ansible-playbookコマンドを実行します。
+各サーバの/etc/hostsを置き換えることに注意してください。
+/etc/ansible/roles/common/files/hosts.defaultの内容に置き換えられます。</p>
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/conf/cdh5_pseudo/cdh5_pseudo.yml -k -s -e <span class="s2">&quot;common_hosts_replace=True&quot;</span>
+<span class="nv">$ </span>ansible-playbook playbooks/operation/cdh5_pseudo/init_hdfs.yml -k -s
+</pre></div>
+</div>
+<p>適切に設定されたらサービスを起動してください:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ ansible-playbook playbooks/operation/cdh5_pseudo/start_cluster.yml -k -s
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id36">
+<h3>2.5.8. Spark実行環境の整備<a class="headerlink" href="#id36" title="Permalink to this headline">¶</a></h3>
+<p>以下の通り、ansible-playbookコマンドを実行します。</p>
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/conf/cdh5_pseudo/cdh5_spark.yml -k -s
 </pre></div>
 </div>
 </div>

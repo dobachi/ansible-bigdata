@@ -218,6 +218,37 @@ by Ansible driver server&#8217;s /etc/ansible/roles/common/files/hosts.default</
 </pre></div>
 </div>
 </div>
+<div class="section" id="how-to-configure-cdh5-pseudo-environment">
+<h2>How to configure CDH5 Pseudo environment<a class="headerlink" href="#how-to-configure-cdh5-pseudo-environment" title="Permalink to this headline">¶</a></h2>
+<p>You can construct CDH5 HDFS/YARN environment by ansible-playbook command.</p>
+<div class="section" id="id1">
+<h3>Preparement<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>If you have not configured Ansible execution environment,
+you should configure it.
+You can reference <a class="reference internal" href="#sec-configure-ansible-env"><em>How to configure Ansible execution environment</em></a> section.</p>
+</div>
+<div class="section" id="id2">
+<h3>Procedure<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>In the following example, we configure common_hosts_replace is True.
+As a result of this parameter configuration, Ansible replace /etc/hosts
+by Ansible driver server&#8217;s /etc/ansible/roles/common/files/hosts.default</p>
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/conf/cdh5_pseudo/cdh5_pseudo.yml -k -s -e <span class="s2">&quot;common_hosts_replace=True&quot;</span>
+<span class="nv">$ </span>ansible-playbook playbooks/operation/cdh5_pseudo/init_hdfs.yml -k -s
+</pre></div>
+</div>
+<p>Start services</p>
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/operation/cdh5_pseudo/start_cluster.yml -k -s
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>How to install Spark Core<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>You can install Spark Core into Client node by the following command</p>
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/conf/cdh5_pseudo/cdh5_spark.yml -k -s
+</pre></div>
+</div>
+</div>
 </div>
 
 

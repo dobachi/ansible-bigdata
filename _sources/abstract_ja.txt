@@ -20,6 +20,7 @@
 * Hadoop環境用のAWS EC2インスタンスを起動する
 * HA構成のHDFS、YARN環境を構築する
 * Spark Coreをインストールし、Sparkの実行環境を整える
+* テスト用のPseudo環境を構築する
 
 .. _sec-servers-ja:
 
@@ -41,6 +42,7 @@ slave02  DataNode, NodeManager
 slave03  DataNode, NodeManager
 slave04  DataNode, NodeManager
 slave05  DataNode, NodeManager
+pseudo   Hadoop Pseudo分散環境
 ======== ================================================================================
 
 **ソフトウェア**

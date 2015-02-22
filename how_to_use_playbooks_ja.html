@@ -235,6 +235,36 @@ EC2インスタンスにアクセスしたり、EC2インスタンスによる�
 </pre></div>
 </div>
 </div>
+<div class="section" id="cdh5pseudo">
+<h2>CDH5のPseudo環境を構成する例<a class="headerlink" href="#cdh5pseudo" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id15">
+<h3>前提条件<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>本プレイブック集を利用して、もしくは手動で、Ansible実行環境が設定されていること</li>
+</ul>
+</div>
+<div class="section" id="id16">
+<h3>手順<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
+<p>以下の通り、ansible-playbookコマンドを実行します。
+各サーバの/etc/hostsを置き換えることに注意してください。
+/etc/ansible/roles/common/files/hosts.defaultの内容に置き換えられます。</p>
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/conf/cdh5_pseudo/cdh5_pseudo.yml -k -s -e <span class="s2">&quot;common_hosts_replace=True&quot;</span>
+<span class="nv">$ </span>ansible-playbook playbooks/operation/cdh5_pseudo/init_hdfs.yml -k -s
+</pre></div>
+</div>
+<p>適切に設定されたらサービスを起動してください:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ ansible-playbook playbooks/operation/cdh5_pseudo/start_cluster.yml -k -s
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id17">
+<h2>Spark実行環境の整備<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h2>
+<p>以下の通り、ansible-playbookコマンドを実行します。</p>
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/conf/cdh5_pseudo/cdh5_spark.yml -k -s
+</pre></div>
+</div>
+</div>
 </div>
 
 
