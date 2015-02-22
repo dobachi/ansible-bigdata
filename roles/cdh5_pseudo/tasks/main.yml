@@ -2,4 +2,4 @@
 
 - include: repos.yml tags=cdh5_pseudo,repos
 - include: install.yml tags=cdh5_pseudo,install
-- include: conf.yml tags=cdh5_pseudo,conf
+- include: config.yml tags=cdh5_pseudo,config
