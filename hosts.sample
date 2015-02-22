@@ -121,3 +121,6 @@ slave02
 slave03
 slave04
 slave05
+
+[hadoop_pseudo]
+pseudo
