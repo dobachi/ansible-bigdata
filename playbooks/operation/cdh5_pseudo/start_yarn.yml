@@ -1,5 +1,4 @@
 - hosts: hadoop_pseudo
-  gather_facts: no
   tasks:
     - name: start_resourcemanager
       service: name={{ item }} state=started
@@ -7,16 +6,16 @@
         - hadoop-yarn-resourcemanager 
 
     - name: wait_for_resourcemanager_web_service_port
-      wait_for: port=8088
+      wait_for: host={{ ansible_hostname }}  port=8088
 
     - name: start_nodemanager
       service: name=hadoop-yarn-nodemanager state=started
 
     - name: wait_for_nodemanager_service_port
-      wait_for: port=8040
+      wait_for: host={{ ansible_hostname }} port=8040
 
     - name: start_hadoop_mapreduce_historyserver
       service: name=hadoop-mapreduce-historyserver state=started
 
     - name: wait_for_other_service_port
-      wait_for: port=10020
+      wait_for: host={{ ansible_hostname }}  port=10020
