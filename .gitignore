@@ -5,3 +5,4 @@ documents
 ansible.cfg
 group_vars
 hosts
+*dev_local
