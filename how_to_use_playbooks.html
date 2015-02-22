@@ -210,12 +210,17 @@ $ ansible-playbook playbooks/operation/cdh5/init_hdfs.yml -k -s
 </pre></div>
 </div>
 </div>
-</div>
 <div class="section" id="how-to-install-spark-environment-on-cdh5-environment">
-<h2>How to install Spark environment on CDH5 environment<a class="headerlink" href="#how-to-install-spark-environment-on-cdh5-environment" title="Permalink to this headline">¶</a></h2>
+<h3>How to install Spark environment on CDH5 environment<a class="headerlink" href="#how-to-install-spark-environment-on-cdh5-environment" title="Permalink to this headline">¶</a></h3>
 <p>You can install Spark Core into Client node by the following command</p>
 <div class="highlight-shell"><div class="highlight"><pre>$ ansible-playbook playbooks/conf/cdh5/cdh5_spark.yml -k -s
 </pre></div>
+</div>
+<p>If you want to start Spark&#8217;s history server,
+please execute the following command.</p>
+<div class="highlight-shell"><div class="highlight"><pre>$ ansible-playbook playbooks/operation/cdh5/start_sparkhistory.yml -k -s
+</pre></div>
+</div>
 </div>
 </div>
 <div class="section" id="how-to-configure-cdh5-pseudo-environment">
@@ -241,9 +246,8 @@ $ ansible-playbook playbooks/operation/cdh5_pseudo/init_hdfs.yml -k -s
 </pre></div>
 </div>
 </div>
-</div>
 <div class="section" id="how-to-install-spark-environment-on-hadoop-pseudo-environment">
-<h2>How to install Spark environment on Hadoop pseudo environment<a class="headerlink" href="#how-to-install-spark-environment-on-hadoop-pseudo-environment" title="Permalink to this headline">¶</a></h2>
+<h3>How to install Spark environment on Hadoop pseudo environment<a class="headerlink" href="#how-to-install-spark-environment-on-hadoop-pseudo-environment" title="Permalink to this headline">¶</a></h3>
 <p>You can install Spark Core into Client node by the following command</p>
 <div class="highlight-shell"><div class="highlight"><pre>$ ansible-playbook playbooks/conf/cdh5_pseudo/cdh5_spark.yml -k -s
 </pre></div>
@@ -252,6 +256,7 @@ $ ansible-playbook playbooks/operation/cdh5_pseudo/init_hdfs.yml -k -s
 please execute the following command.</p>
 <div class="highlight-shell"><div class="highlight"><pre>$ ansible-playbook playbooks/operation/cdh5_pseudo/start_sparkhistory.yml -k -s
 </pre></div>
+</div>
 </div>
 </div>
 </div>

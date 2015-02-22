@@ -774,24 +774,28 @@ $ ansible-playbook playbooks/operation/cdh5/init_hdfs.yml -k -s
 </pre></div>
 </div>
 </div>
-</div>
 <div class="section" id="id33">
-<h3>2.5.6. Spark実行環境の整備<a class="headerlink" href="#id33" title="Permalink to this headline">¶</a></h3>
+<h4>2.5.5.3. Spark実行環境の整備<a class="headerlink" href="#id33" title="Permalink to this headline">¶</a></h4>
 <p>以下の通り、ansible-playbookコマンドを実行します。</p>
 <div class="highlight-shell"><div class="highlight"><pre>$ ansible-playbook playbooks/conf/cdh5/cdh5_spark.yml -k -s
 </pre></div>
 </div>
+<p>Sparkのヒストリサーバを起動する場合は以下のコマンドを実行します。</p>
+<div class="highlight-shell"><div class="highlight"><pre>$ ansible-playbook playbooks/operation/cdh5/start_sparkhistory.yml -k -s
+</pre></div>
+</div>
+</div>
 </div>
 <div class="section" id="cdh5pseudo">
-<h3>2.5.7. CDH5のPseudo環境を構成する例<a class="headerlink" href="#cdh5pseudo" title="Permalink to this headline">¶</a></h3>
+<h3>2.5.6. CDH5のPseudo環境を構成する例<a class="headerlink" href="#cdh5pseudo" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="id34">
-<h4>2.5.7.1. 前提条件<a class="headerlink" href="#id34" title="Permalink to this headline">¶</a></h4>
+<h4>2.5.6.1. 前提条件<a class="headerlink" href="#id34" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li>本プレイブック集を利用して、もしくは手動で、Ansible実行環境が設定されていること</li>
 </ul>
 </div>
 <div class="section" id="id35">
-<h4>2.5.7.2. 手順<a class="headerlink" href="#id35" title="Permalink to this headline">¶</a></h4>
+<h4>2.5.6.2. 手順<a class="headerlink" href="#id35" title="Permalink to this headline">¶</a></h4>
 <p>以下の通り、ansible-playbookコマンドを実行します。
 各サーバの/etc/hostsを置き換えることに注意してください。
 /etc/ansible/roles/common/files/hosts.defaultの内容に置き換えられます。</p>
@@ -804,9 +808,8 @@ $ ansible-playbook playbooks/operation/cdh5_pseudo/init_hdfs.yml -k -s
 </pre></div>
 </div>
 </div>
-</div>
 <div class="section" id="cdh5pseudospark">
-<h3>2.5.8. CDH5のPseudo環境にSpark実行環境を整備<a class="headerlink" href="#cdh5pseudospark" title="Permalink to this headline">¶</a></h3>
+<h4>2.5.6.3. CDH5のPseudo環境にSpark実行環境を整備<a class="headerlink" href="#cdh5pseudospark" title="Permalink to this headline">¶</a></h4>
 <p>以下の通り、ansible-playbookコマンドを実行します。</p>
 <div class="highlight-shell"><div class="highlight"><pre>$ ansible-playbook playbooks/conf/cdh5_pseudo/cdh5_spark.yml -k -s
 </pre></div>
@@ -814,6 +817,7 @@ $ ansible-playbook playbooks/operation/cdh5_pseudo/init_hdfs.yml -k -s
 <p>Sparkのヒストリサーバを起動する場合は以下のコマンドを実行します。</p>
 <div class="highlight-shell"><div class="highlight"><pre>$ ansible-playbook playbooks/operation/cdh5_pseudo/start_sparkhistory.yml -k -s
 </pre></div>
+</div>
 </div>
 </div>
 </div>

@@ -750,25 +750,30 @@ $ ansible-playbook playbooks/operation/cdh5/init_hdfs.yml -k -s
 </pre></div>
 </div>
 </div>
-</div>
 <div class="section" id="how-to-install-spark-environment-on-cdh5-environment">
-<h3>1.5.6. How to install Spark environment on CDH5 environment<a class="headerlink" href="#how-to-install-spark-environment-on-cdh5-environment" title="Permalink to this headline">¶</a></h3>
+<h4>1.5.5.3. How to install Spark environment on CDH5 environment<a class="headerlink" href="#how-to-install-spark-environment-on-cdh5-environment" title="Permalink to this headline">¶</a></h4>
 <p>You can install Spark Core into Client node by the following command</p>
 <div class="highlight-shell"><div class="highlight"><pre>$ ansible-playbook playbooks/conf/cdh5/cdh5_spark.yml -k -s
 </pre></div>
 </div>
+<p>If you want to start Spark&#8217;s history server,
+please execute the following command.</p>
+<div class="highlight-shell"><div class="highlight"><pre>$ ansible-playbook playbooks/operation/cdh5/start_sparkhistory.yml -k -s
+</pre></div>
+</div>
+</div>
 </div>
 <div class="section" id="how-to-configure-cdh5-pseudo-environment">
-<h3>1.5.7. How to configure CDH5 Pseudo environment<a class="headerlink" href="#how-to-configure-cdh5-pseudo-environment" title="Permalink to this headline">¶</a></h3>
+<h3>1.5.6. How to configure CDH5 Pseudo environment<a class="headerlink" href="#how-to-configure-cdh5-pseudo-environment" title="Permalink to this headline">¶</a></h3>
 <p>You can construct CDH5 HDFS/YARN environment by ansible-playbook command.</p>
 <div class="section" id="id4">
-<h4>1.5.7.1. Preparement<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
+<h4>1.5.6.1. Preparement<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
 <p>If you have not configured Ansible execution environment,
 you should configure it.
 You can reference <a class="reference internal" href="how_to_use_playbooks.html#sec-configure-ansible-env"><em>How to configure Ansible execution environment</em></a> section.</p>
 </div>
 <div class="section" id="id5">
-<h4>1.5.7.2. Procedure<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
+<h4>1.5.6.2. Procedure<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
 <p>In the following example, we configure common_hosts_replace is True.
 As a result of this parameter configuration, Ansible replace /etc/hosts
 by Ansible driver server&#8217;s /etc/ansible/roles/common/files/hosts.default</p>
@@ -781,9 +786,8 @@ $ ansible-playbook playbooks/operation/cdh5_pseudo/init_hdfs.yml -k -s
 </pre></div>
 </div>
 </div>
-</div>
 <div class="section" id="how-to-install-spark-environment-on-hadoop-pseudo-environment">
-<h3>1.5.8. How to install Spark environment on Hadoop pseudo environment<a class="headerlink" href="#how-to-install-spark-environment-on-hadoop-pseudo-environment" title="Permalink to this headline">¶</a></h3>
+<h4>1.5.6.3. How to install Spark environment on Hadoop pseudo environment<a class="headerlink" href="#how-to-install-spark-environment-on-hadoop-pseudo-environment" title="Permalink to this headline">¶</a></h4>
 <p>You can install Spark Core into Client node by the following command</p>
 <div class="highlight-shell"><div class="highlight"><pre>$ ansible-playbook playbooks/conf/cdh5_pseudo/cdh5_spark.yml -k -s
 </pre></div>
@@ -792,6 +796,7 @@ $ ansible-playbook playbooks/operation/cdh5_pseudo/init_hdfs.yml -k -s
 please execute the following command.</p>
 <div class="highlight-shell"><div class="highlight"><pre>$ ansible-playbook playbooks/operation/cdh5_pseudo/start_sparkhistory.yml -k -s
 </pre></div>
+</div>
 </div>
 </div>
 </div>
