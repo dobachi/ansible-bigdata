@@ -5,10 +5,22 @@
     - name: make_user_dir
       shell: hdfs dfs -mkdir -p /user/{{ item }}
       with_items: user_list
+      when: user_list is defined
 
     - name: chown_user_dir
       shell: hdfs dfs -chown -R {{ item }} /user/{{ item }}
       with_items: user_list
+      when: user_list is defined
+
+    - name: make_admin_user_dir
+      shell: hdfs dfs -mkdir -p /user/{{ item }}
+      with_items: user_admin_list
+      when: user_admin_list is defined
+
+    - name: chown_admin_user_dir
+      shell: hdfs dfs -chown -R {{ item }} /user/{{ item }}
+      with_items: user_admin_list
+      when: user_admin_list is defined
 
     - name: make_user/history_dir
       shell: hdfs dfs -mkdir -p /user/history
