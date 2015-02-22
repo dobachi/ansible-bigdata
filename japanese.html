@@ -26,12 +26,12 @@
     <link rel="top" title="Ansible Playbooks for Hadoop 0.1 documentation" href="index.html" />
     <link rel="prev" title="1. English Document" href="english.html" /> 
   </head>
-  <body role="document">
-      <div class="header" role="banner"><h1 class="heading"><a href="index.html">
+  <body>
+      <div class="header"><h1 class="heading"><a href="index.html">
           <span>Ansible Playbooks for Hadoop 0.1 documentation</span></a></h1>
         <h2 class="heading"><span>2. Japanese Document</span></h2>
       </div>
-      <div class="topnav" role="navigation" aria-label="top navigation">
+      <div class="topnav">
       
         <p>
         «&#160;&#160;<a href="english.html">1. English Document</a>
@@ -163,55 +163,55 @@
 <div class="section" id="install-ansible">
 <h3>2.2.2. Install Ansible<a class="headerlink" href="#install-ansible" title="Permalink to this headline">¶</a></h3>
 <p>EPELレポジトリをインストールします。</p>
-<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>sudo yum install -y epel-release
+<div class="highlight-shell"><div class="highlight"><pre>$ sudo yum install -y epel-release
 </pre></div>
 </div>
 <p>Ansibleをインストールします。</p>
-<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>sudo yum install -y ansible
+<div class="highlight-shell"><div class="highlight"><pre>$ sudo yum install -y ansible
 </pre></div>
 </div>
 <div class="section" id="id6">
 <h4>2.2.2.1. プレイブック集をクローンします<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h4>
 <p>まず既存のファイルをmvします。</p>
-<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd</span> /etc
-<span class="nv">$ </span>sudo mv ansible ansible.org
+<div class="highlight-shell"><div class="highlight"><pre>$ cd /etc
+$ sudo mv ansible ansible.org
 </pre></div>
 </div>
 <p>クローンします。</p>
-<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>git clone https://github.com/dobachi/ansible-hadoop.git ansible
+<div class="highlight-shell"><div class="highlight"><pre>$ git clone https://github.com/dobachi/ansible-hadoop.git ansible
 </pre></div>
 </div>
 </div>
 <div class="section" id="ansible">
 <h4>2.2.2.2. Ansibleを基本設定します。<a class="headerlink" href="#ansible" title="Permalink to this headline">¶</a></h4>
 <p>ansible.cfg.sampleをansible.cfgにコピーします。</p>
-<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd </span>ansible
-<span class="nv">$ </span>cp ansible.cfg.sample ansible.cfg
+<div class="highlight-shell"><div class="highlight"><pre>$ cd ansible
+$ cp ansible.cfg.sample ansible.cfg
 </pre></div>
 </div>
 <p>インベントリファイルのシンボリックリンクを作成します。</p>
-<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ln -s hosts.sample hosts
+<div class="highlight-shell"><div class="highlight"><pre>$ ln -s hosts.sample hosts
 </pre></div>
 </div>
 <p>各サーバの/etc/hostsにコピーされるテンプレートファイルを修正します。</p>
-<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>sudo vi roles/common/files/hosts.default
+<div class="highlight-shell"><div class="highlight"><pre>$ sudo vi roles/common/files/hosts.default
 </pre></div>
 </div>
 </div>
 <div class="section" id="hadoop">
 <h4>2.2.2.3. Hadoopインストールと設定<a class="headerlink" href="#hadoop" title="Permalink to this headline">¶</a></h4>
 <p>パッケージをインストールし、設定します。</p>
-<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/conf/cdh5/cdh5_all.yml -k -s -e <span class="s2">&quot;common_hosts_replace=True&quot;</span>
+<div class="highlight-shell"><div class="highlight"><pre>$ ansible-playbook playbooks/conf/cdh5/cdh5_all.yml -k -s -e &quot;common_hosts_replace=True&quot;
 </pre></div>
 </div>
 <p>サービスを初期化します。
 なお、HDFSを初期化する手順が含まれていますのでご注意ください。</p>
-<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/operation/cdh5/init_zkfc.yml -k -s
-<span class="nv">$ </span>ansible-playbook playbooks/operation/cdh5/init_hdfs.yml -k -s
+<div class="highlight-shell"><div class="highlight"><pre>$ ansible-playbook playbooks/operation/cdh5/init_zkfc.yml -k -s
+$ ansible-playbook playbooks/operation/cdh5/init_hdfs.yml -k -s
 </pre></div>
 </div>
 <p>サービスを起動します。</p>
-<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/operation/cdh5/start_cluster.yml -k -s
+<div class="highlight-shell"><div class="highlight"><pre>$ ansible-playbook playbooks/operation/cdh5/start_cluster.yml -k -s
 </pre></div>
 </div>
 </div>
@@ -220,7 +220,7 @@
 <p>これでHDFSにアクセスできるようになりました。
 client01から以下のコマンドを実行してください。</p>
 <p>Example of the command.</p>
-<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>hdfs dfs -ls /
+<div class="highlight-shell"><div class="highlight"><pre>$ hdfs dfs -ls /
 </pre></div>
 </div>
 <p>HDFSのウェブサービスには以下のURLからアクセスできます。
@@ -231,9 +231,9 @@ client01から以下のコマンドを実行してください。</p>
 </ul>
 <p>YARNのサンプルジョブを実行できます。</p>
 <p>Example of the command.</p>
-<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>hdfs dfs -mkdir /user/&lt;user name&gt;
-<span class="nv">$ </span>hdfs dfs -chown &lt;user name&gt;:&lt;group name&gt; /user/&lt;user name&gt;
-<span class="nv">$ </span>yarn jar /usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar pi <span class="m">100</span> 100
+<div class="highlight-shell"><div class="highlight"><pre>$ hdfs dfs -mkdir /user/&lt;user name&gt;
+$ hdfs dfs -chown &lt;user name&gt;:&lt;group name&gt; /user/&lt;user name&gt;
+$ yarn jar /usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar pi 100 100
 </pre></div>
 </div>
 <p>YARNのウェブサービスには以下のURLでアクセスできます。
@@ -246,11 +246,11 @@ client01から以下のコマンドを実行してください。</p>
 <div class="section" id="spark">
 <h4>2.2.2.5. Sparkコアのインストール<a class="headerlink" href="#spark" title="Permalink to this headline">¶</a></h4>
 <p>コマンド例</p>
-<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/conf/cdh5/cdh5_spark.yml -k -s
+<div class="highlight-shell"><div class="highlight"><pre>$ ansible-playbook playbooks/conf/cdh5/cdh5_spark.yml -k -s
 </pre></div>
 </div>
 <p>これでclient01上で、spark-shellなどのコマンドを実行できるようになりました。</p>
-<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>spark-shell
+<div class="highlight-shell"><div class="highlight"><pre>$ spark-shell
 </pre></div>
 </div>
 <p>上記コマンドの結果、YARNに接続した状態でSparkのシェルが起動します。
@@ -605,49 +605,49 @@ Ansible実行環境を構築します</li>
 <div class="section" id="id20">
 <h4>2.5.2.1. パッケージのインストール<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h4>
 <p>EPELレポジトリをインストールします。</p>
-<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>sudo yum install -y epel-release
+<div class="highlight-shell"><div class="highlight"><pre>$ sudo yum install -y epel-release
 </pre></div>
 </div>
 <p>Ansibleをインストールします。</p>
-<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>sudo yum install -y ansible
+<div class="highlight-shell"><div class="highlight"><pre>$ sudo yum install -y ansible
 </pre></div>
 </div>
 </div>
 <div class="section" id="id21">
 <h4>2.5.2.2. 本プレイブック集のクローン<a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h4>
 <p>まずオリジナルの/etc/ansibleディレクトリをmvします。</p>
-<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd</span> /etc
-<span class="nv">$ </span>sudo mv ansible ansible.org
+<div class="highlight-shell"><div class="highlight"><pre>$ cd /etc
+$ sudo mv ansible ansible.org
 </pre></div>
 </div>
 <p>gitレポジトリからプレイブック集をクローンします。</p>
-<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>git clone https://github.com/dobachi/ansible-hadoop.git ansible
+<div class="highlight-shell"><div class="highlight"><pre>$ git clone https://github.com/dobachi/ansible-hadoop.git ansible
 </pre></div>
 </div>
 </div>
 <div class="section" id="id22">
 <h4>2.5.2.3. Ansibleの設定修正<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h4>
 <p>/etc/hosts にコピーされるhostsのテンプレートを修正します。</p>
-<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd </span>ansible
-<span class="nv">$ </span>sudo vi roles/common/files/hosts.default
+<div class="highlight-shell"><div class="highlight"><pre>$ cd ansible
+$ sudo vi roles/common/files/hosts.default
 </pre></div>
 </div>
 </div>
 <div class="section" id="id23">
 <h4>2.5.2.4. プレイブック実行<a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h4>
 <p>最初はインベントリのサンプルファイルhosts.sampleを使ってローカルホストに基本的な設定を行います。</p>
-<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/conf/common/common_all.yml -k -s -i hosts.sample -e <span class="s2">&quot;common_hosts_replace=True&quot;</span>
+<div class="highlight-shell"><div class="highlight"><pre>$ ansible-playbook playbooks/conf/common/common_all.yml -k -s -i hosts.sample -e &quot;common_hosts_replace=True&quot;
 </pre></div>
 </div>
 <p>なおオプションで渡しているcommon_hosts_replaceという変数は、
 /etc/hostsファイルを置き換えるかどうかを設定するものです。
 今回は置き換えるためにTrueとしています。</p>
 <p>つぎに/etc/ansible/hosts.defaultにコピーされるインベントリファイルのテンプレートを修正します。</p>
-<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>sudo vi roles/ansible/templates/hosts.default.j2
+<div class="highlight-shell"><div class="highlight"><pre>$ sudo vi roles/ansible/templates/hosts.default.j2
 </pre></div>
 </div>
 <p>ansible_client.ymlを実行し、Ansible実行環境を整備します。</p>
-<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/conf/ansible/ansible_client.yml -k -s -i hosts.sample -e <span class="s2">&quot;ansible_environment=default ansible_modify_cfg=True&quot;</span>
+<div class="highlight-shell"><div class="highlight"><pre>$ ansible-playbook playbooks/conf/ansible/ansible_client.yml -k -s -i hosts.sample -e &quot;ansible_environment=default ansible_modify_cfg=True&quot;
 </pre></div>
 </div>
 <p>なおオプションで渡しているansible_environmentという変数は、
@@ -659,11 +659,11 @@ ansible.cfgを置き換えるかどうかを設定するものです。
 SSHログインの際に鍵認証が必要になります。
 ansible.cfg内で鍵のPATHを指定するために、「ansible_private_key_file」という変数を設定します。
 この場合の実行コマンド例を以下に示します。</p>
-<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/conf/ansible/ansible_client.yml -k -s -i hosts.sample -e <span class="s2">&quot;ansible_environment=default ansible_modify_cfg=True ansible_private_key_file=</span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span><span class="s2">/mykey.pem&quot;</span>
+<div class="highlight-shell"><div class="highlight"><pre>$ ansible-playbook playbooks/conf/ansible/ansible_client.yml -k -s -i hosts.sample -e &quot;ansible_environment=default ansible_modify_cfg=True ansible_private_key_file=${HOME}/mykey.pem&quot;
 </pre></div>
 </div>
 <p>最後に、全サーバにSSHログイン可能かどうか確認します。</p>
-<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible -m ping hadoop_all -k -s
+<div class="highlight-shell"><div class="highlight"><pre>$ ansible -m ping hadoop_all -k -s
 </pre></div>
 </div>
 </div>
@@ -718,7 +718,7 @@ ec2_hadoop_vpc_subnet_id: subnet-xxxxxxxx
 <div class="section" id="id27">
 <h4>2.5.3.4. プレイブックの実行<a class="headerlink" href="#id27" title="Permalink to this headline">¶</a></h4>
 <p>ansible-playbookコマンドを実行します。</p>
-<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/operation/ec2/hadoop_nodes_up.yml -k
+<div class="highlight-shell"><div class="highlight"><pre>$ ansible-playbook playbooks/operation/ec2/hadoop_nodes_up.yml -k
 </pre></div>
 </div>
 <p>成功した場合は <em>/tmp/ec2_&lt;プレイブックを実行したときのUNIXエポック時刻&gt;</em> のディレクトリ以下に以下の内容のファイルが配備されています。
@@ -744,8 +744,8 @@ EC2インスタンスにアクセスしたり、EC2インスタンスによる�
 <div class="section" id="id30">
 <h4>2.5.4.2. 手順<a class="headerlink" href="#id30" title="Permalink to this headline">¶</a></h4>
 <p>以下の通り、ansible-playbookコマンドを実行します。</p>
-<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd</span> /etc/ansible
-<span class="nv">$ </span>ansible-playbook playbooks/conf/common/common_only_common.yml -k -s -e <span class="s2">&quot;common_config_hostname=True server=hadoop_all&quot;</span>
+<div class="highlight-shell"><div class="highlight"><pre>$ cd /etc/ansible
+$ ansible-playbook playbooks/conf/common/common_only_common.yml -k -s -e &quot;common_config_hostname=True server=hadoop_all&quot;
 </pre></div>
 </div>
 </div>
@@ -764,9 +764,9 @@ EC2インスタンスにアクセスしたり、EC2インスタンスによる�
 <p>なお、ここではオプションでcommon_hosts_replace変数をTrueにしているため、
 各サーバの/etc/hostsを置き換えることに注意してください。
 /etc/ansible/roles/common/files/hosts.defaultの内容に置き換えられます。</p>
-<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/conf/cdh5/cdh5_all.yml -k -s -e <span class="s2">&quot;common_hosts_replace=True&quot;</span>
-<span class="nv">$ </span>ansible-playbook playbooks/operation/cdh5/init_zkfc.yml -k -s
-<span class="nv">$ </span>ansible-playbook playbooks/operation/cdh5/init_hdfs.yml -k -s
+<div class="highlight-shell"><div class="highlight"><pre>$ ansible-playbook playbooks/conf/cdh5/cdh5_all.yml -k -s -e &quot;common_hosts_replace=True&quot;
+$ ansible-playbook playbooks/operation/cdh5/init_zkfc.yml -k -s
+$ ansible-playbook playbooks/operation/cdh5/init_hdfs.yml -k -s
 </pre></div>
 </div>
 <p>適切に設定されたらサービスを起動してください:</p>
@@ -778,7 +778,7 @@ EC2インスタンスにアクセスしたり、EC2インスタンスによる�
 <div class="section" id="id33">
 <h3>2.5.6. Spark実行環境の整備<a class="headerlink" href="#id33" title="Permalink to this headline">¶</a></h3>
 <p>以下の通り、ansible-playbookコマンドを実行します。</p>
-<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/conf/cdh5/cdh5_spark.yml -k -s
+<div class="highlight-shell"><div class="highlight"><pre>$ ansible-playbook playbooks/conf/cdh5/cdh5_spark.yml -k -s
 </pre></div>
 </div>
 </div>
@@ -795,8 +795,8 @@ EC2インスタンスにアクセスしたり、EC2インスタンスによる�
 <p>以下の通り、ansible-playbookコマンドを実行します。
 各サーバの/etc/hostsを置き換えることに注意してください。
 /etc/ansible/roles/common/files/hosts.defaultの内容に置き換えられます。</p>
-<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/conf/cdh5_pseudo/cdh5_pseudo.yml -k -s -e <span class="s2">&quot;common_hosts_replace=True&quot;</span>
-<span class="nv">$ </span>ansible-playbook playbooks/operation/cdh5_pseudo/init_hdfs.yml -k -s
+<div class="highlight-shell"><div class="highlight"><pre>$ ansible-playbook playbooks/conf/cdh5_pseudo/cdh5_pseudo.yml -k -s -e &quot;common_hosts_replace=True&quot;
+$ ansible-playbook playbooks/operation/cdh5_pseudo/init_hdfs.yml -k -s
 </pre></div>
 </div>
 <p>適切に設定されたらサービスを起動してください:</p>
@@ -805,10 +805,10 @@ EC2インスタンスにアクセスしたり、EC2インスタンスによる�
 </div>
 </div>
 </div>
-<div class="section" id="id36">
-<h3>2.5.8. Spark実行環境の整備<a class="headerlink" href="#id36" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="cdh5pseudospark">
+<h3>2.5.8. CDH5のPseudo環境にSpark実行環境を整備<a class="headerlink" href="#cdh5pseudospark" title="Permalink to this headline">¶</a></h3>
 <p>以下の通り、ansible-playbookコマンドを実行します。</p>
-<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/conf/cdh5_pseudo/cdh5_spark.yml -k -s
+<div class="highlight-shell"><div class="highlight"><pre>$ ansible-playbook playbooks/conf/cdh5_pseudo/cdh5_spark.yml -k -s
 </pre></div>
 </div>
 </div>
@@ -817,7 +817,7 @@ EC2インスタンスにアクセスしたり、EC2インスタンスによる�
 
 
       </div>
-      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      <div class="bottomnav">
       
         <p>
         «&#160;&#160;<a href="english.html">1. English Document</a>
@@ -827,9 +827,9 @@ EC2インスタンスにアクセスしたり、EC2インスタンスによる�
 
       </div>
 
-    <div class="footer" role="contentinfo">
+    <div class="footer">
         &copy; Copyright 2014, dobachi.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3b1.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>

@@ -27,12 +27,12 @@
     <link rel="next" title="2. Japanese Document" href="japanese.html" />
     <link rel="prev" title="What is this document?" href="index.html" /> 
   </head>
-  <body role="document">
-      <div class="header" role="banner"><h1 class="heading"><a href="index.html">
+  <body>
+      <div class="header"><h1 class="heading"><a href="index.html">
           <span>Ansible Playbooks for Hadoop 0.1 documentation</span></a></h1>
         <h2 class="heading"><span>1. English Document</span></h2>
       </div>
-      <div class="topnav" role="navigation" aria-label="top navigation">
+      <div class="topnav">
       
         <p>
         «&#160;&#160;<a href="index.html">What is this document?</a>
@@ -175,54 +175,54 @@ Each function is available individually.</p>
 <div class="section" id="install-ansible">
 <h3>1.2.2. Install Ansible<a class="headerlink" href="#install-ansible" title="Permalink to this headline">¶</a></h3>
 <p>Install EPEL repository</p>
-<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>sudo yum install -y epel-release
+<div class="highlight-shell"><div class="highlight"><pre>$ sudo yum install -y epel-release
 </pre></div>
 </div>
 <p>Install Ansible</p>
-<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>sudo yum install -y ansible
+<div class="highlight-shell"><div class="highlight"><pre>$ sudo yum install -y ansible
 </pre></div>
 </div>
 <div class="section" id="clone-playbooks">
 <h4>1.2.2.1. Clone playbooks<a class="headerlink" href="#clone-playbooks" title="Permalink to this headline">¶</a></h4>
 <p>Move original /etc/ansible</p>
-<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd</span> /etc
-<span class="nv">$ </span>sudo mv ansible ansible.org
+<div class="highlight-shell"><div class="highlight"><pre>$ cd /etc
+$ sudo mv ansible ansible.org
 </pre></div>
 </div>
 <p>Clone this repository</p>
-<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>git clone https://github.com/dobachi/ansible-hadoop.git ansible
+<div class="highlight-shell"><div class="highlight"><pre>$ git clone https://github.com/dobachi/ansible-hadoop.git ansible
 </pre></div>
 </div>
 </div>
 <div class="section" id="modify-configuration-of-ansible">
 <h4>1.2.2.2. Modify configuration of Ansible<a class="headerlink" href="#modify-configuration-of-ansible" title="Permalink to this headline">¶</a></h4>
 <p>Copy ansible.cfg.sample to ansible.cfg</p>
-<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd </span>ansible
-<span class="nv">$ </span>cp ansible.cfg.sample ansible.cfg
+<div class="highlight-shell"><div class="highlight"><pre>$ cd ansible
+$ cp ansible.cfg.sample ansible.cfg
 </pre></div>
 </div>
 <p>Create symbolic link of inventory file.</p>
-<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ln -s hosts.sample hosts
+<div class="highlight-shell"><div class="highlight"><pre>$ ln -s hosts.sample hosts
 </pre></div>
 </div>
 <p>Modify hosts file to be copied to /etc/hosts</p>
-<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>sudo vi roles/common/files/hosts.default
+<div class="highlight-shell"><div class="highlight"><pre>$ sudo vi roles/common/files/hosts.default
 </pre></div>
 </div>
 </div>
 <div class="section" id="install-and-configure-hadoop">
 <h4>1.2.2.3. Install and configure Hadoop<a class="headerlink" href="#install-and-configure-hadoop" title="Permalink to this headline">¶</a></h4>
 <p>Install and configure Hadoop.</p>
-<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/conf/cdh5/cdh5_all.yml -k -s -e <span class="s2">&quot;common_hosts_replace=True&quot;</span>
+<div class="highlight-shell"><div class="highlight"><pre>$ ansible-playbook playbooks/conf/cdh5/cdh5_all.yml -k -s -e &quot;common_hosts_replace=True&quot;
 </pre></div>
 </div>
 <p>Initilize Hadoop environment.</p>
-<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/operation/cdh5/init_zkfc.yml -k -s
-<span class="nv">$ </span>ansible-playbook playbooks/operation/cdh5/init_hdfs.yml -k -s
+<div class="highlight-shell"><div class="highlight"><pre>$ ansible-playbook playbooks/operation/cdh5/init_zkfc.yml -k -s
+$ ansible-playbook playbooks/operation/cdh5/init_hdfs.yml -k -s
 </pre></div>
 </div>
 <p>Start services</p>
-<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/operation/cdh5/start_cluster.yml -k -s
+<div class="highlight-shell"><div class="highlight"><pre>$ ansible-playbook playbooks/operation/cdh5/start_cluster.yml -k -s
 </pre></div>
 </div>
 </div>
@@ -230,7 +230,7 @@ Each function is available individually.</p>
 <h4>1.2.2.4. Congratulation!<a class="headerlink" href="#congratulation" title="Permalink to this headline">¶</a></h4>
 <p>Now, you can access HDFS from client01.</p>
 <p>Example of the command.</p>
-<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>hdfs dfs -ls /
+<div class="highlight-shell"><div class="highlight"><pre>$ hdfs dfs -ls /
 </pre></div>
 </div>
 <p>You can access the web service of HDFS with the following URL.
@@ -241,9 +241,9 @@ Each function is available individually.</p>
 </ul>
 <p>And, you can execute sample jobs from client01.</p>
 <p>Example of the command.</p>
-<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>hdfs dfs -mkdir /user/&lt;user name&gt;
-<span class="nv">$ </span>hdfs dfs -chown &lt;user name&gt;:&lt;group name&gt; /user/&lt;user name&gt;
-<span class="nv">$ </span>yarn jar /usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar pi <span class="m">100</span> 100
+<div class="highlight-shell"><div class="highlight"><pre>$ hdfs dfs -mkdir /user/&lt;user name&gt;
+$ hdfs dfs -chown &lt;user name&gt;:&lt;group name&gt; /user/&lt;user name&gt;
+$ yarn jar /usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar pi 100 100
 </pre></div>
 </div>
 <p>You can access the web service of YARN with the following URL.
@@ -256,11 +256,11 @@ Each function is available individually.</p>
 <div class="section" id="install-spark-core">
 <h4>1.2.2.5. Install Spark core<a class="headerlink" href="#install-spark-core" title="Permalink to this headline">¶</a></h4>
 <p>Example of commands.</p>
-<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/conf/cdh5/cdh5_spark.yml -k -s
+<div class="highlight-shell"><div class="highlight"><pre>$ ansible-playbook playbooks/conf/cdh5/cdh5_spark.yml -k -s
 </pre></div>
 </div>
 <p>Now, you can use Spark&#8217;s commands, such as spark-shell.</p>
-<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>spark-shell
+<div class="highlight-shell"><div class="highlight"><pre>$ spark-shell
 </pre></div>
 </div>
 <p>As a result, you can run spark-shell with YARN environment.</p>
@@ -603,56 +603,56 @@ you can use the following playbooks for it.</p>
 <div class="section" id="install-packages">
 <h4>1.5.2.1. Install packages<a class="headerlink" href="#install-packages" title="Permalink to this headline">¶</a></h4>
 <p>Install EPEL repository</p>
-<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>sudo yum install -y epel-release
+<div class="highlight-shell"><div class="highlight"><pre>$ sudo yum install -y epel-release
 </pre></div>
 </div>
 <p>Install Ansible</p>
-<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>sudo yum install -y ansible
+<div class="highlight-shell"><div class="highlight"><pre>$ sudo yum install -y ansible
 </pre></div>
 </div>
 </div>
 <div class="section" id="id3">
 <h4>1.5.2.2. Clone playbooks<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
 <p>Move original /etc/ansible</p>
-<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd</span> /etc
-<span class="nv">$ </span>sudo mv ansible ansible.org
+<div class="highlight-shell"><div class="highlight"><pre>$ cd /etc
+$ sudo mv ansible ansible.org
 </pre></div>
 </div>
 <p>Clone this repository</p>
-<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>git clone https://github.com/dobachi/ansible-hadoop.git ansible
+<div class="highlight-shell"><div class="highlight"><pre>$ git clone https://github.com/dobachi/ansible-hadoop.git ansible
 </pre></div>
 </div>
 </div>
 <div class="section" id="modify-configuration">
 <h4>1.5.2.3. Modify configuration<a class="headerlink" href="#modify-configuration" title="Permalink to this headline">¶</a></h4>
 <p>Modify hosts file to be copied to /etc/hosts</p>
-<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd </span>ansible
-<span class="nv">$ </span>sudo vi roles/common/files/hosts.default
+<div class="highlight-shell"><div class="highlight"><pre>$ cd ansible
+$ sudo vi roles/common/files/hosts.default
 </pre></div>
 </div>
 </div>
 <div class="section" id="execute-playbooks-one-by-one">
 <h4>1.5.2.4. Execute playbooks one by one<a class="headerlink" href="#execute-playbooks-one-by-one" title="Permalink to this headline">¶</a></h4>
 <p>Execute ansible-playbook command with common_all.yml</p>
-<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/conf/common/common_all.yml -k -s -i hosts.sample -e <span class="s2">&quot;common_hosts_replace=True&quot;</span>
+<div class="highlight-shell"><div class="highlight"><pre>$ ansible-playbook playbooks/conf/common/common_all.yml -k -s -i hosts.sample -e &quot;common_hosts_replace=True&quot;
 </pre></div>
 </div>
 <p>Copy ansible&#8217;s hosts and modify it</p>
-<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>sudo vi roles/ansible/templates/hosts.default.j2
+<div class="highlight-shell"><div class="highlight"><pre>$ sudo vi roles/ansible/templates/hosts.default.j2
 </pre></div>
 </div>
 <p>Execute ansible-playbook command with ansible_client.yml</p>
-<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/conf/ansible/ansible_client.yml -k -s -i hosts.sample -e <span class="s2">&quot;ansible_environment=default ansible_modify_cfg=True&quot;</span>
+<div class="highlight-shell"><div class="highlight"><pre>$ ansible-playbook playbooks/conf/ansible/ansible_client.yml -k -s -i hosts.sample -e &quot;ansible_environment=default ansible_modify_cfg=True&quot;
 </pre></div>
 </div>
 <p>If you use EC2 and need a private key for SSH,
 you should specify &#8220;ansible_private_key_file&#8221; paramter.
 You should execute command with the parameter instead of the above command</p>
-<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/conf/ansible/ansible_client.yml -k -s -i hosts.sample -e <span class="s2">&quot;ansible_environment=default ansible_modify_cfg=True ansible_private_key_file=</span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span><span class="s2">/mykey.pem&quot;</span>
+<div class="highlight-shell"><div class="highlight"><pre>$ ansible-playbook playbooks/conf/ansible/ansible_client.yml -k -s -i hosts.sample -e &quot;ansible_environment=default ansible_modify_cfg=True ansible_private_key_file=${HOME}/mykey.pem&quot;
 </pre></div>
 </div>
 <p>Check whether all nodes are reachable and &#8220;sudo&#8221; is available</p>
-<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible -m ping hadoop_all -k -s
+<div class="highlight-shell"><div class="highlight"><pre>$ ansible -m ping hadoop_all -k -s
 </pre></div>
 </div>
 </div>
@@ -720,8 +720,8 @@ in /tmp/ec2_&lt;unix epoc time&gt;.
 <p>If you want to configure hostname of nodes,
 You can use &#8220;common&#8221; role and related playbooks.</p>
 <p>Execute ansible-playbook command with common_only_common.yml</p>
-<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd</span> /etc/ansible
-<span class="nv">$ </span>ansible-playbook playbooks/conf/common/common_only_common.yml -k -s -e <span class="s2">&quot;common_config_hostname=True server=hadoop_all&quot;</span>
+<div class="highlight-shell"><div class="highlight"><pre>$ cd /etc/ansible
+$ ansible-playbook playbooks/conf/common/common_only_common.yml -k -s -e &quot;common_config_hostname=True server=hadoop_all&quot;
 </pre></div>
 </div>
 <p>This is usefull for configuration of EC2 instance, because your node may have variety of hostname after each node booted.</p>
@@ -740,21 +740,21 @@ You can reference <a class="reference internal" href="how_to_use_playbooks.html#
 <p>In the following example, we configure common_hosts_replace is True.
 As a result of this parameter configuration, Ansible replace /etc/hosts
 by Ansible driver server&#8217;s /etc/ansible/roles/common/files/hosts.default</p>
-<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/conf/cdh5/cdh5_all.yml -k -s -e <span class="s2">&quot;common_hosts_replace=True&quot;</span>
-<span class="nv">$ </span>ansible-playbook playbooks/operation/cdh5/init_zkfc.yml -k -s
-<span class="nv">$ </span>ansible-playbook playbooks/operation/cdh5/init_hdfs.yml -k -s
+<div class="highlight-shell"><div class="highlight"><pre>$ ansible-playbook playbooks/conf/cdh5/cdh5_all.yml -k -s -e &quot;common_hosts_replace=True&quot;
+$ ansible-playbook playbooks/operation/cdh5/init_zkfc.yml -k -s
+$ ansible-playbook playbooks/operation/cdh5/init_hdfs.yml -k -s
 </pre></div>
 </div>
 <p>Start services</p>
-<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/operation/cdh5/start_cluster.yml -k -s
+<div class="highlight-shell"><div class="highlight"><pre>$ ansible-playbook playbooks/operation/cdh5/start_cluster.yml -k -s
 </pre></div>
 </div>
 </div>
 </div>
-<div class="section" id="how-to-install-spark-core">
-<h3>1.5.6. How to install Spark Core<a class="headerlink" href="#how-to-install-spark-core" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="how-to-install-spark-environment-on-cdh5-environment">
+<h3>1.5.6. How to install Spark environment on CDH5 environment<a class="headerlink" href="#how-to-install-spark-environment-on-cdh5-environment" title="Permalink to this headline">¶</a></h3>
 <p>You can install Spark Core into Client node by the following command</p>
-<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/conf/cdh5/cdh5_spark.yml -k -s
+<div class="highlight-shell"><div class="highlight"><pre>$ ansible-playbook playbooks/conf/cdh5/cdh5_spark.yml -k -s
 </pre></div>
 </div>
 </div>
@@ -772,20 +772,20 @@ You can reference <a class="reference internal" href="how_to_use_playbooks.html#
 <p>In the following example, we configure common_hosts_replace is True.
 As a result of this parameter configuration, Ansible replace /etc/hosts
 by Ansible driver server&#8217;s /etc/ansible/roles/common/files/hosts.default</p>
-<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/conf/cdh5_pseudo/cdh5_pseudo.yml -k -s -e <span class="s2">&quot;common_hosts_replace=True&quot;</span>
-<span class="nv">$ </span>ansible-playbook playbooks/operation/cdh5_pseudo/init_hdfs.yml -k -s
+<div class="highlight-shell"><div class="highlight"><pre>$ ansible-playbook playbooks/conf/cdh5_pseudo/cdh5_pseudo.yml -k -s -e &quot;common_hosts_replace=True&quot;
+$ ansible-playbook playbooks/operation/cdh5_pseudo/init_hdfs.yml -k -s
 </pre></div>
 </div>
 <p>Start services</p>
-<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/operation/cdh5_pseudo/start_cluster.yml -k -s
+<div class="highlight-shell"><div class="highlight"><pre>$ ansible-playbook playbooks/operation/cdh5_pseudo/start_cluster.yml -k -s
 </pre></div>
 </div>
 </div>
 </div>
-<div class="section" id="id6">
-<h3>1.5.8. How to install Spark Core<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="how-to-install-spark-environment-on-hadoop-pseudo-environment">
+<h3>1.5.8. How to install Spark environment on Hadoop pseudo environment<a class="headerlink" href="#how-to-install-spark-environment-on-hadoop-pseudo-environment" title="Permalink to this headline">¶</a></h3>
 <p>You can install Spark Core into Client node by the following command</p>
-<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/conf/cdh5_pseudo/cdh5_spark.yml -k -s
+<div class="highlight-shell"><div class="highlight"><pre>$ ansible-playbook playbooks/conf/cdh5_pseudo/cdh5_spark.yml -k -s
 </pre></div>
 </div>
 </div>
@@ -794,7 +794,7 @@ by Ansible driver server&#8217;s /etc/ansible/roles/common/files/hosts.default</
 
 
       </div>
-      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      <div class="bottomnav">
       
         <p>
         «&#160;&#160;<a href="index.html">What is this document?</a>
@@ -806,9 +806,9 @@ by Ansible driver server&#8217;s /etc/ansible/roles/common/files/hosts.default</
 
       </div>
 
-    <div class="footer" role="contentinfo">
+    <div class="footer">
         &copy; Copyright 2014, dobachi.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3b1.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>

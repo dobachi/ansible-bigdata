@@ -25,12 +25,12 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="Ansible Playbooks for Hadoop 0.1 documentation" href="index.html" /> 
   </head>
-  <body role="document">
-      <div class="header" role="banner"><h1 class="heading"><a href="index.html">
+  <body>
+      <div class="header"><h1 class="heading"><a href="index.html">
           <span>Ansible Playbooks for Hadoop 0.1 documentation</span></a></h1>
         <h2 class="heading"><span>Getting Started</span></h2>
       </div>
-      <div class="topnav" role="navigation" aria-label="top navigation">
+      <div class="topnav">
       
         <p>
         <a class="uplink" href="index.html">Contents</a>
@@ -61,55 +61,55 @@
 <div class="section" id="install-ansible">
 <h2>Install Ansible<a class="headerlink" href="#install-ansible" title="Permalink to this headline">¶</a></h2>
 <p>EPELレポジトリをインストールします。</p>
-<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>sudo yum install -y epel-release
+<div class="highlight-shell"><div class="highlight"><pre>$ sudo yum install -y epel-release
 </pre></div>
 </div>
 <p>Ansibleをインストールします。</p>
-<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>sudo yum install -y ansible
+<div class="highlight-shell"><div class="highlight"><pre>$ sudo yum install -y ansible
 </pre></div>
 </div>
 <div class="section" id="id2">
 <h3>プレイブック集をクローンします<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <p>まず既存のファイルをmvします。</p>
-<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd</span> /etc
-<span class="nv">$ </span>sudo mv ansible ansible.org
+<div class="highlight-shell"><div class="highlight"><pre>$ cd /etc
+$ sudo mv ansible ansible.org
 </pre></div>
 </div>
 <p>クローンします。</p>
-<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>git clone https://github.com/dobachi/ansible-hadoop.git ansible
+<div class="highlight-shell"><div class="highlight"><pre>$ git clone https://github.com/dobachi/ansible-hadoop.git ansible
 </pre></div>
 </div>
 </div>
 <div class="section" id="ansible">
 <h3>Ansibleを基本設定します。<a class="headerlink" href="#ansible" title="Permalink to this headline">¶</a></h3>
 <p>ansible.cfg.sampleをansible.cfgにコピーします。</p>
-<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd </span>ansible
-<span class="nv">$ </span>cp ansible.cfg.sample ansible.cfg
+<div class="highlight-shell"><div class="highlight"><pre>$ cd ansible
+$ cp ansible.cfg.sample ansible.cfg
 </pre></div>
 </div>
 <p>インベントリファイルのシンボリックリンクを作成します。</p>
-<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ln -s hosts.sample hosts
+<div class="highlight-shell"><div class="highlight"><pre>$ ln -s hosts.sample hosts
 </pre></div>
 </div>
 <p>各サーバの/etc/hostsにコピーされるテンプレートファイルを修正します。</p>
-<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>sudo vi roles/common/files/hosts.default
+<div class="highlight-shell"><div class="highlight"><pre>$ sudo vi roles/common/files/hosts.default
 </pre></div>
 </div>
 </div>
 <div class="section" id="hadoop">
 <h3>Hadoopインストールと設定<a class="headerlink" href="#hadoop" title="Permalink to this headline">¶</a></h3>
 <p>パッケージをインストールし、設定します。</p>
-<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/conf/cdh5/cdh5_all.yml -k -s -e <span class="s2">&quot;common_hosts_replace=True&quot;</span>
+<div class="highlight-shell"><div class="highlight"><pre>$ ansible-playbook playbooks/conf/cdh5/cdh5_all.yml -k -s -e &quot;common_hosts_replace=True&quot;
 </pre></div>
 </div>
 <p>サービスを初期化します。
 なお、HDFSを初期化する手順が含まれていますのでご注意ください。</p>
-<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/operation/cdh5/init_zkfc.yml -k -s
-<span class="nv">$ </span>ansible-playbook playbooks/operation/cdh5/init_hdfs.yml -k -s
+<div class="highlight-shell"><div class="highlight"><pre>$ ansible-playbook playbooks/operation/cdh5/init_zkfc.yml -k -s
+$ ansible-playbook playbooks/operation/cdh5/init_hdfs.yml -k -s
 </pre></div>
 </div>
 <p>サービスを起動します。</p>
-<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/operation/cdh5/start_cluster.yml -k -s
+<div class="highlight-shell"><div class="highlight"><pre>$ ansible-playbook playbooks/operation/cdh5/start_cluster.yml -k -s
 </pre></div>
 </div>
 </div>
@@ -118,7 +118,7 @@
 <p>これでHDFSにアクセスできるようになりました。
 client01から以下のコマンドを実行してください。</p>
 <p>Example of the command.</p>
-<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>hdfs dfs -ls /
+<div class="highlight-shell"><div class="highlight"><pre>$ hdfs dfs -ls /
 </pre></div>
 </div>
 <p>HDFSのウェブサービスには以下のURLからアクセスできます。
@@ -129,9 +129,9 @@ client01から以下のコマンドを実行してください。</p>
 </ul>
 <p>YARNのサンプルジョブを実行できます。</p>
 <p>Example of the command.</p>
-<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>hdfs dfs -mkdir /user/&lt;user name&gt;
-<span class="nv">$ </span>hdfs dfs -chown &lt;user name&gt;:&lt;group name&gt; /user/&lt;user name&gt;
-<span class="nv">$ </span>yarn jar /usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar pi <span class="m">100</span> 100
+<div class="highlight-shell"><div class="highlight"><pre>$ hdfs dfs -mkdir /user/&lt;user name&gt;
+$ hdfs dfs -chown &lt;user name&gt;:&lt;group name&gt; /user/&lt;user name&gt;
+$ yarn jar /usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar pi 100 100
 </pre></div>
 </div>
 <p>YARNのウェブサービスには以下のURLでアクセスできます。
@@ -144,11 +144,11 @@ client01から以下のコマンドを実行してください。</p>
 <div class="section" id="spark">
 <h3>Sparkコアのインストール<a class="headerlink" href="#spark" title="Permalink to this headline">¶</a></h3>
 <p>コマンド例</p>
-<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/conf/cdh5/cdh5_spark.yml -k -s
+<div class="highlight-shell"><div class="highlight"><pre>$ ansible-playbook playbooks/conf/cdh5/cdh5_spark.yml -k -s
 </pre></div>
 </div>
 <p>これでclient01上で、spark-shellなどのコマンドを実行できるようになりました。</p>
-<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>spark-shell
+<div class="highlight-shell"><div class="highlight"><pre>$ spark-shell
 </pre></div>
 </div>
 <p>上記コマンドの結果、YARNに接続した状態でSparkのシェルが起動します。
@@ -162,7 +162,7 @@ Sparkドライバのウェブサービスにアクセスするには、以下の
 
 
       </div>
-      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      <div class="bottomnav">
       
         <p>
         <a class="uplink" href="index.html">Contents</a>
@@ -170,9 +170,9 @@ Sparkドライバのウェブサービスにアクセスするには、以下の
 
       </div>
 
-    <div class="footer" role="contentinfo">
+    <div class="footer">
         &copy; Copyright 2014, dobachi.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3b1.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>
