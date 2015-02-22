@@ -1,8 +1,12 @@
-# global
+# ========================
+# role-wide parameters
+# ========================
 cdh5_data_dir_list:
-  - '/data'
   - '/data/1'
 
+# =========================================
+# parameters for each configuration file
+# =========================================
 # core-site.xml.j2
 cdh5_fs_defaultFS: 'hdfs://mycluster'
 

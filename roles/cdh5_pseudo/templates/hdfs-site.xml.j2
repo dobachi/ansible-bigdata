@@ -38,15 +38,15 @@
   </property>
   <property>
      <name>dfs.namenode.name.dir</name>
-     <value>file:///var/lib/hadoop-hdfs/cache/${user.name}/dfs/name</value>
+     <value>{{ cdh5_pseudo_dfs_nn_name_dir_list | join(',') }}</value>
   </property>
   <property>
      <name>dfs.namenode.checkpoint.dir</name>
-     <value>file:///var/lib/hadoop-hdfs/cache/${user.name}/dfs/namesecondary</value>
+     <value>{{ cdh5_pseudo_dfs_name_checkpoint_dir_list | join(',') }}</value>
   </property>
   <property>
      <name>dfs.datanode.data.dir</name>
-     <value>file:///var/lib/hadoop-hdfs/cache/${user.name}/dfs/data</value>
+     <value>{{ cdh5_dfs_dn_data_dir_list | join(',') }}</value>
   </property>
 
   <!-- WebHDFS configuration for Hue -->
