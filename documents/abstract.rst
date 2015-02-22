@@ -24,6 +24,7 @@ Each function is available individually.
 * Booting EC2 instances for Hadoop cluster
 * Configuring HDFS/YARN with NameNode HA
 * Configuring Spark core on Client node
+* Configuring Pseudo environment for test
 
 .. _sec-servers:
 
@@ -45,6 +46,7 @@ slave02  DataNode, NodeManager
 slave03  DataNode, NodeManager
 slave04  DataNode, NodeManager
 slave05  DataNode, NodeManager
+pseudo   Hadoop Pseudo environment
 ======== ================================================================================
 
 **Software**
@@ -53,7 +55,7 @@ slave05  DataNode, NodeManager
 Software Version
 ======== =============================
 OS       CentOS6.6 or CentOS7.0
-Hadoop   CDH5.2
+Hadoop   CDH5.3
 Spark    Spark1.2 of CDH5
 Ansible  Ansible 1.8.2 of EPEL
 ======== =============================

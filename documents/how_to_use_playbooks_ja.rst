@@ -214,3 +214,35 @@ Spark実行環境の整備
 .. code-block:: shell
 
  $ ansible-playbook playbooks/conf/cdh5/cdh5_spark.yml -k -s
+
+CDH5のPseudo環境を構成する例
+--------------------------------------------
+
+前提条件
+~~~~~~~~~~~~
+* 本プレイブック集を利用して、もしくは手動で、Ansible実行環境が設定されていること
+
+手順
+~~~~
+以下の通り、ansible-playbookコマンドを実行します。
+各サーバの/etc/hostsを置き換えることに注意してください。
+/etc/ansible/roles/common/files/hosts.defaultの内容に置き換えられます。
+
+.. code-block:: shell
+
+ $ ansible-playbook playbooks/conf/cdh5_pseudo/cdh5_pseudo.yml -k -s -e "common_hosts_replace=True"
+ $ ansible-playbook playbooks/operation/cdh5_pseudo/init_hdfs.yml -k -s 
+
+適切に設定されたらサービスを起動してください::
+
+ $ ansible-playbook playbooks/operation/cdh5_pseudo/start_cluster.yml -k -s 
+
+Spark実行環境の整備
+---------------------------
+以下の通り、ansible-playbookコマンドを実行します。
+
+.. code-block:: shell
+
+ $ ansible-playbook playbooks/conf/cdh5_pseudo/cdh5_spark.yml -k -s
+
+.. vim: ft=rst tw=0 et ts=2 sw=2
