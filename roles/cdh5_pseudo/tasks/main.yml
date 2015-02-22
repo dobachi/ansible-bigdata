@@ -1,5 +1,5 @@
-# file: roles/hadoop_cdh5/tasks/main.yml
+# file: roles/cdh5_pseudo/tasks/main.yml
 
-- include: repos.yml tags=hadoop_cdh5_pseudo,repos
-- include: install.yml tags=hadoop_cdh5_pseudo,install
-- include: conf.yml tags=hadoop_cdh5_pseudo,conf
+- include: repos.yml tags=cdh5_pseudo,repos
+- include: install.yml tags=cdh5_pseudo,install
+- include: conf.yml tags=cdh5_pseudo,conf

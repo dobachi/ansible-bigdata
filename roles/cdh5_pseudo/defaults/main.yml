@@ -1,5 +1,17 @@
-# file: roles/cdh5_pseudo/defaults/main.yml
+# ========================
+# role-wide parameters
+# ========================
+cdh5_pseudo_host: 'pseudo'
 
-cdh5_pseudo_fs_default_name: 'hdfs://pseudo:8020'
-cdh5_pseudo_mapred_job_tracker: 'pseudo:8021'
+# =========================================
+# parameters for each configuration file
+# =========================================
+
+# core-site.xml
+cdh5_pseudo_fs_default_name: 'hdfs://{{ cdh5_pseudo_host }}:8020'
+
+# mapred-site.xml
+cdh5_pseudo_mapred_job_tracker: '{{ cdh5_pseudo_host }}:8021'
+cdh5_pseudo_mapred_jobhistory_address: '{{ cdh5_pseudo_host }}:10020'
+cdh5_pseudo_mapred_jobhistory_webapp_address: '{{ cdh5_pseudo_host }}:19888'
 cdh5_pseudo_ganglia_servers: '239.2.11.71:8649'

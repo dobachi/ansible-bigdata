@@ -1,4 +1,2 @@
-# file: roles/hadoop_cdh5_pseudo/tasks/install.yml
-
 - name: install_hadoop_conf_pseudo
   yum: name=hadoop-conf-pseudo state=installed
