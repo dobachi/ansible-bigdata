@@ -199,8 +199,8 @@ Start services
 
  $ ansible-playbook playbooks/operation/cdh5/start_cluster.yml -k -s 
 
-How to install Spark Core
----------------------------
+How to install Spark environment on CDH5 environment
+-----------------------------------------------------
 You can install Spark Core into Client node by the following command
 
 .. code-block:: shell
@@ -234,8 +234,8 @@ Start services
 
  $ ansible-playbook playbooks/operation/cdh5_pseudo/start_cluster.yml -k -s 
 
-How to install Spark Core
----------------------------
+How to install Spark environment on Hadoop pseudo environment
+----------------------------------------------------------------
 You can install Spark Core into Client node by the following command
 
 .. code-block:: shell

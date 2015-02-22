@@ -237,8 +237,8 @@ CDH5のPseudo環境を構成する例
 
  $ ansible-playbook playbooks/operation/cdh5_pseudo/start_cluster.yml -k -s 
 
-Spark実行環境の整備
----------------------------
+CDH5のPseudo環境にSpark実行環境を整備
+-----------------------------------------
 以下の通り、ansible-playbookコマンドを実行します。
 
 .. code-block:: shell
