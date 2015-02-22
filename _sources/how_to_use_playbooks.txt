@@ -242,4 +242,12 @@ You can install Spark Core into Client node by the following command
 
  $ ansible-playbook playbooks/conf/cdh5_pseudo/cdh5_spark.yml -k -s
 
+If you want to start Spark's history server,
+please execute the following command.
+
+.. code-block:: shell
+
+ $ ansible-playbook playbooks/operation/cdh5_pseudo/start_sparkhistory.yml -k -s
+
+
 .. vim: ft=rst tw=0 et ts=2 sw=2
