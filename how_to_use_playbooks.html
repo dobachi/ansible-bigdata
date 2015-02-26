@@ -63,56 +63,56 @@ you can use the following playbooks for it.</p>
 <div class="section" id="install-packages">
 <h3>Install packages<a class="headerlink" href="#install-packages" title="Permalink to this headline">¶</a></h3>
 <p>Install EPEL repository</p>
-<div class="highlight-shell"><div class="highlight"><pre>$ sudo yum install -y epel-release
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>sudo yum install -y epel-release
 </pre></div>
 </div>
 <p>Install Ansible</p>
-<div class="highlight-shell"><div class="highlight"><pre>$ sudo yum install -y ansible
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>sudo yum install -y ansible
 </pre></div>
 </div>
 </div>
 <div class="section" id="clone-playbooks">
 <h3>Clone playbooks<a class="headerlink" href="#clone-playbooks" title="Permalink to this headline">¶</a></h3>
 <p>Move original /etc/ansible</p>
-<div class="highlight-shell"><div class="highlight"><pre>$ cd /etc
-$ sudo mv ansible ansible.org
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd</span> /etc
+<span class="nv">$ </span>sudo mv ansible ansible.org
 </pre></div>
 </div>
 <p>Clone this repository</p>
-<div class="highlight-shell"><div class="highlight"><pre>$ git clone https://github.com/dobachi/ansible-hadoop.git ansible
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>git clone https://github.com/dobachi/ansible-hadoop.git ansible
 </pre></div>
 </div>
 </div>
 <div class="section" id="modify-configuration">
 <h3>Modify configuration<a class="headerlink" href="#modify-configuration" title="Permalink to this headline">¶</a></h3>
 <p>Modify hosts file to be copied to /etc/hosts</p>
-<div class="highlight-shell"><div class="highlight"><pre>$ cd ansible
-$ sudo vi roles/common/files/hosts.default
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd </span>ansible
+<span class="nv">$ </span>sudo vi roles/common/files/hosts.default
 </pre></div>
 </div>
 </div>
 <div class="section" id="execute-playbooks-one-by-one">
 <h3>Execute playbooks one by one<a class="headerlink" href="#execute-playbooks-one-by-one" title="Permalink to this headline">¶</a></h3>
 <p>Execute ansible-playbook command with common_all.yml</p>
-<div class="highlight-shell"><div class="highlight"><pre>$ ansible-playbook playbooks/conf/common/common_all.yml -k -s -i hosts.sample -e &quot;common_hosts_replace=True&quot;
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/conf/common/common_all.yml -k -s -i hosts.sample -e <span class="s2">&quot;common_hosts_replace=True&quot;</span>
 </pre></div>
 </div>
 <p>Copy ansible&#8217;s hosts and modify it</p>
-<div class="highlight-shell"><div class="highlight"><pre>$ sudo vi roles/ansible/templates/hosts.default.j2
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>sudo vi roles/ansible/templates/hosts.default.j2
 </pre></div>
 </div>
 <p>Execute ansible-playbook command with ansible_client.yml</p>
-<div class="highlight-shell"><div class="highlight"><pre>$ ansible-playbook playbooks/conf/ansible/ansible_client.yml -k -s -i hosts.sample -e &quot;ansible_environment=default ansible_modify_cfg=True&quot;
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/conf/ansible/ansible_client.yml -k -s -i hosts.sample -e <span class="s2">&quot;ansible_environment=default ansible_modify_cfg=True&quot;</span>
 </pre></div>
 </div>
 <p>If you use EC2 and need a private key for SSH,
 you should specify &#8220;ansible_private_key_file&#8221; paramter.
 You should execute command with the parameter instead of the above command</p>
-<div class="highlight-shell"><div class="highlight"><pre>$ ansible-playbook playbooks/conf/ansible/ansible_client.yml -k -s -i hosts.sample -e &quot;ansible_environment=default ansible_modify_cfg=True ansible_private_key_file=${HOME}/mykey.pem&quot;
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/conf/ansible/ansible_client.yml -k -s -i hosts.sample -e <span class="s2">&quot;ansible_environment=default ansible_modify_cfg=True ansible_private_key_file=</span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span><span class="s2">/mykey.pem&quot;</span>
 </pre></div>
 </div>
 <p>Check whether all nodes are reachable and &#8220;sudo&#8221; is available</p>
-<div class="highlight-shell"><div class="highlight"><pre>$ ansible -m ping hadoop_all -k -s
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible -m ping hadoop_all -k -s
 </pre></div>
 </div>
 </div>
@@ -180,8 +180,8 @@ in /tmp/ec2_&lt;unix epoc time&gt;.
 <p>If you want to configure hostname of nodes,
 You can use &#8220;common&#8221; role and related playbooks.</p>
 <p>Execute ansible-playbook command with common_only_common.yml</p>
-<div class="highlight-shell"><div class="highlight"><pre>$ cd /etc/ansible
-$ ansible-playbook playbooks/conf/common/common_only_common.yml -k -s -e &quot;common_config_hostname=True server=hadoop_all&quot;
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd</span> /etc/ansible
+<span class="nv">$ </span>ansible-playbook playbooks/conf/common/common_only_common.yml -k -s -e <span class="s2">&quot;common_config_hostname=True server=hadoop_all&quot;</span>
 </pre></div>
 </div>
 <p>This is usefull for configuration of EC2 instance, because your node may have variety of hostname after each node booted.</p>
@@ -200,25 +200,25 @@ You can reference <a class="reference internal" href="#sec-configure-ansible-env
 <p>In the following example, we configure common_hosts_replace is True.
 As a result of this parameter configuration, Ansible replace /etc/hosts
 by Ansible driver server&#8217;s /etc/ansible/roles/common/files/hosts.default</p>
-<div class="highlight-shell"><div class="highlight"><pre>$ ansible-playbook playbooks/conf/cdh5/cdh5_all.yml -k -s -e &quot;common_hosts_replace=True&quot;
-$ ansible-playbook playbooks/operation/cdh5/init_zkfc.yml -k -s
-$ ansible-playbook playbooks/operation/cdh5/init_hdfs.yml -k -s
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/conf/cdh5/cdh5_all.yml -k -s -e <span class="s2">&quot;common_hosts_replace=True&quot;</span>
+<span class="nv">$ </span>ansible-playbook playbooks/operation/cdh5/init_zkfc.yml -k -s
+<span class="nv">$ </span>ansible-playbook playbooks/operation/cdh5/init_hdfs.yml -k -s
 </pre></div>
 </div>
 <p>Start services</p>
-<div class="highlight-shell"><div class="highlight"><pre>$ ansible-playbook playbooks/operation/cdh5/start_cluster.yml -k -s
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/operation/cdh5/start_cluster.yml -k -s
 </pre></div>
 </div>
 </div>
 <div class="section" id="how-to-install-spark-environment-on-cdh5-environment">
 <h3>How to install Spark environment on CDH5 environment<a class="headerlink" href="#how-to-install-spark-environment-on-cdh5-environment" title="Permalink to this headline">¶</a></h3>
 <p>You can install Spark Core into Client node by the following command</p>
-<div class="highlight-shell"><div class="highlight"><pre>$ ansible-playbook playbooks/conf/cdh5/cdh5_spark.yml -k -s
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/conf/cdh5/cdh5_spark.yml -k -s
 </pre></div>
 </div>
 <p>If you want to start Spark&#8217;s history server,
 please execute the following command.</p>
-<div class="highlight-shell"><div class="highlight"><pre>$ ansible-playbook playbooks/operation/cdh5/start_sparkhistory.yml -k -s
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/operation/cdh5/start_sparkhistory.yml -k -s
 </pre></div>
 </div>
 </div>
@@ -237,26 +237,35 @@ You can reference <a class="reference internal" href="#sec-configure-ansible-env
 <p>In the following example, we configure common_hosts_replace is True.
 As a result of this parameter configuration, Ansible replace /etc/hosts
 by Ansible driver server&#8217;s /etc/ansible/roles/common/files/hosts.default</p>
-<div class="highlight-shell"><div class="highlight"><pre>$ ansible-playbook playbooks/conf/cdh5_pseudo/cdh5_pseudo.yml -k -s -e &quot;common_hosts_replace=True&quot;
-$ ansible-playbook playbooks/operation/cdh5_pseudo/init_hdfs.yml -k -s
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/conf/cdh5_pseudo/cdh5_pseudo.yml -k -s -e <span class="s2">&quot;common_hosts_replace=True&quot;</span>
+<span class="nv">$ </span>ansible-playbook playbooks/operation/cdh5_pseudo/init_hdfs.yml -k -s
 </pre></div>
 </div>
 <p>Start services</p>
-<div class="highlight-shell"><div class="highlight"><pre>$ ansible-playbook playbooks/operation/cdh5_pseudo/start_cluster.yml -k -s
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/operation/cdh5_pseudo/start_cluster.yml -k -s
 </pre></div>
 </div>
 </div>
 <div class="section" id="how-to-install-spark-environment-on-hadoop-pseudo-environment">
 <h3>How to install Spark environment on Hadoop pseudo environment<a class="headerlink" href="#how-to-install-spark-environment-on-hadoop-pseudo-environment" title="Permalink to this headline">¶</a></h3>
 <p>You can install Spark Core into Client node by the following command</p>
-<div class="highlight-shell"><div class="highlight"><pre>$ ansible-playbook playbooks/conf/cdh5_pseudo/cdh5_spark.yml -k -s
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/conf/cdh5_pseudo/cdh5_spark.yml -k -s
 </pre></div>
 </div>
 <p>If you want to start Spark&#8217;s history server,
 please execute the following command.</p>
-<div class="highlight-shell"><div class="highlight"><pre>$ ansible-playbook playbooks/operation/cdh5_pseudo/start_sparkhistory.yml -k -s
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/operation/cdh5_pseudo/start_sparkhistory.yml -k -s
 </pre></div>
 </div>
+</div>
+<div class="section" id="how-to-install-ganglia-environment">
+<h3>How to install Ganglia environment<a class="headerlink" href="#how-to-install-ganglia-environment" title="Permalink to this headline">¶</a></h3>
+<p>You can install Gaglia services with the following command:</p>
+<div class="highlight-python"><div class="highlight"><pre>.. code-block:: shell
+</pre></div>
+</div>
+<blockquote>
+<div>$ ansible-playbook playbooks/conf/ganglia/ganglia_all.yml -k -s</div></blockquote>
 </div>
 </div>
 </div>

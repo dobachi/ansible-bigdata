@@ -62,6 +62,7 @@ Each function is available individually.</p>
 <li>Booting EC2 instances for Hadoop cluster</li>
 <li>Configuring HDFS/YARN with NameNode HA</li>
 <li>Configuring Spark core on Client node</li>
+<li>Configuring Ganglia for the resource visualization</li>
 <li>Configuring Pseudo environment for test</li>
 </ul>
 </div>
@@ -81,31 +82,33 @@ Each function is available individually.</p>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>master01</td>
-<td>Primary NameNode, JournalNode, Zookeeper Server(id=1)</td>
+<td>Primary NameNode, JournalNode, Zookeeper Server(id=1), Ganglia Slave</td>
 </tr>
 <tr class="row-odd"><td>master02</td>
-<td>Backup NameNode, JournalNode, Zookeeper Server(id=2), Primary ResourceManager</td>
+<td>Backup NameNode, JournalNode, Zookeeper Server(id=2), Primary ResourceManager,
+Ganglia Slave</td>
 </tr>
 <tr class="row-even"><td>master03</td>
-<td>JournalNode, Zookeeper Server(id=3), HistoryServer, Backup ResourceManager</td>
+<td>JournalNode, Zookeeper Server(id=3), HistoryServer, Backup ResourceManager,
+Ganglia Slave, Ganglia Master</td>
 </tr>
 <tr class="row-odd"><td>client01</td>
-<td>Hadoop Client, Spark Core</td>
+<td>Hadoop Client, Spark Core, Ganglia Slave</td>
 </tr>
 <tr class="row-even"><td>slave01</td>
-<td>DataNode, NodeManager</td>
+<td>DataNode, NodeManager, Ganglia Slave</td>
 </tr>
 <tr class="row-odd"><td>slave02</td>
-<td>DataNode, NodeManager</td>
+<td>DataNode, NodeManager, Ganglia Slave</td>
 </tr>
 <tr class="row-even"><td>slave03</td>
-<td>DataNode, NodeManager</td>
+<td>DataNode, NodeManager, Ganglia Slave</td>
 </tr>
 <tr class="row-odd"><td>slave04</td>
-<td>DataNode, NodeManager</td>
+<td>DataNode, NodeManager, Ganglia Slave</td>
 </tr>
 <tr class="row-even"><td>slave05</td>
-<td>DataNode, NodeManager</td>
+<td>DataNode, NodeManager, Ganglia Slave</td>
 </tr>
 <tr class="row-odd"><td>pseudo</td>
 <td>Hadoop Pseudo environment</td>

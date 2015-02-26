@@ -64,3 +64,13 @@ Role name        Use for
 ================ =======================================================
 cdh5_spark       Configuration of Spark core on Hadoop client node
 ================ =======================================================
+
+Roles to configure Ganglia
+------------------------------
+
+================ =======================================================
+Role name        Use for
+================ =======================================================
+ganglia_master   Configuration of Ganglia Master and Web frontend
+ganglia_slave    Configuration of Ganglia Slave
+================ =======================================================

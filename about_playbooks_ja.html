@@ -182,6 +182,25 @@ Ansible実行環境を構築します</li>
 </li>
 </ul>
 </div>
+<div class="section" id="ganglia">
+<h3>ganglia<a class="headerlink" href="#ganglia" title="Permalink to this headline">¶</a></h3>
+<p>Gangliaを構成管理します。
+Gangliaはマスタ／スレーブ構成なのでそれぞれを管理するためのプレイブックがあります。</p>
+<ul class="simple">
+<li>ganglia_all.yml<ul>
+<li>マスタとスレーブを構成するプレイブックのラッパーです</li>
+</ul>
+</li>
+<li>ganglia_master.yml<ul>
+<li>マスタを構成するためのプレイブックです</li>
+</ul>
+</li>
+<li>ganglia_slave.yml<ul>
+<li>スレーブを構成するためのプレイブックです</li>
+</ul>
+</li>
+</ul>
+</div>
 </div>
 <div class="section" id="id3">
 <h2>運用作業のためのプレイブック集<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>

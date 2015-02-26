@@ -59,6 +59,7 @@
 <li>Hadoop環境用のAWS EC2インスタンスを起動する</li>
 <li>HA構成のHDFS、YARN環境を構築する</li>
 <li>Spark Coreをインストールし、Sparkの実行環境を整える</li>
+<li>Gangliaによるリソース可視化環境を整える</li>
 <li>テスト用のPseudo環境を構築する</li>
 </ul>
 </div>
@@ -78,34 +79,33 @@
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>master01</td>
-<td>Primary NameNode, JournalNode, Zookeeper Server(id=1)</td>
+<td>Primary NameNode, JournalNode, Zookeeper Server(id=1), Ganglia Slave</td>
 </tr>
 <tr class="row-odd"><td>master02</td>
-<td>Backup NameNode, JournalNode, Zookeeper Server(id=2), Primary ResourceManager</td>
+<td>Backup NameNode, JournalNode, Zookeeper Server(id=2), Primary ResourceManager,
+Ganglia Slave</td>
 </tr>
 <tr class="row-even"><td>master03</td>
-<td>JournalNode, Zookeeper Server(id=3), HistoryServer, Backup ResourceManager</td>
+<td>JournalNode, Zookeeper Server(id=3), HistoryServer, Backup ResourceManager,
+Ganglia Slave, Ganglia Master</td>
 </tr>
 <tr class="row-odd"><td>client01</td>
-<td>Hadoop Client, Spark Core</td>
+<td>Hadoop Client, Spark Core, Ganglia Slave</td>
 </tr>
 <tr class="row-even"><td>slave01</td>
-<td>DataNode, NodeManager</td>
+<td>DataNode, NodeManager, Ganglia Slave</td>
 </tr>
 <tr class="row-odd"><td>slave02</td>
-<td>DataNode, NodeManager</td>
+<td>DataNode, NodeManager, Ganglia Slave</td>
 </tr>
 <tr class="row-even"><td>slave03</td>
-<td>DataNode, NodeManager</td>
+<td>DataNode, NodeManager, Ganglia Slave</td>
 </tr>
 <tr class="row-odd"><td>slave04</td>
-<td>DataNode, NodeManager</td>
+<td>DataNode, NodeManager, Ganglia Slave</td>
 </tr>
 <tr class="row-even"><td>slave05</td>
-<td>DataNode, NodeManager</td>
-</tr>
-<tr class="row-odd"><td>pseudo</td>
-<td>Hadoop Pseudo分散環境</td>
+<td>DataNode, NodeManager, Ganglia Slave</td>
 </tr>
 </tbody>
 </table>
@@ -125,13 +125,13 @@
 <td>CentOS6.6 or CentOS7.0</td>
 </tr>
 <tr class="row-odd"><td>Hadoop</td>
-<td>CDH5.2</td>
+<td>CDH5.3</td>
 </tr>
 <tr class="row-even"><td>Spark</td>
 <td>Spark1.2 of CDH5</td>
 </tr>
 <tr class="row-odd"><td>Ansible</td>
-<td>Ansible 1.8.2 of EPEL</td>
+<td>Ansible 1.8 of EPEL</td>
 </tr>
 </tbody>
 </table>

@@ -257,4 +257,19 @@ Sparkのヒストリサーバを起動する場合は以下のコマンドを実
 
  $ ansible-playbook playbooks/operation/cdh5_pseudo/start_sparkhistory.yml -k -s
 
+Ganglia環境を構成する
+--------------------------------------------
+
+前提条件
+~~~~~~~~~~~~
+* 本プレイブック集を利用して、もしくは手動で、Ansible実行環境が設定されていること
+
+手順
+~~~~
+以下の通り、ansible-playbookコマンドを実行します。
+
+.. code-block:: shell
+
+ $ ansible-playbook playbooks/conf/ganglia/ganglia_all.yml -k -s
+
 .. vim: ft=rst tw=0 et ts=2 sw=2

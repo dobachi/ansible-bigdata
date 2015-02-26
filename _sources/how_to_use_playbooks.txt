@@ -257,5 +257,13 @@ please execute the following command.
 
  $ ansible-playbook playbooks/operation/cdh5_pseudo/start_sparkhistory.yml -k -s
 
+How to install Ganglia environment
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+You can install Gaglia services with the following command::
+
+.. code-block:: shell
+
+ $ ansible-playbook playbooks/conf/ganglia/ganglia_all.yml -k -s
+
 
 .. vim: ft=rst tw=0 et ts=2 sw=2
