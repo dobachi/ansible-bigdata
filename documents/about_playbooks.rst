@@ -105,6 +105,25 @@ you don't need these playbooks.
 
   + This playbook executes "ansible_remote" role to configure nodes which are configured by ansible
 
+ganglia
+~~~~~~~~~
+
+This is  a set of configuration about Ganglia.
+We have two playbooks for Ganglia master and slave.
+
+* ganglia_all.yml
+
+  + The wrapper playbook of configuration of both of Ganglia master and slave
+
+* ganglia_master.yml
+
+  + The playbook to configure Ganglia master
+
+* ganglia_slave.yml
+
+  + The playbook to configure Ganglia slave
+
+
 Playbooks for operation
 -----------------------
 
