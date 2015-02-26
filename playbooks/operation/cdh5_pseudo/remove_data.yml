@@ -1,13 +1,13 @@
-- hosts: hadoop_slave
+- hosts: hadoop_pseudo
   gather_facts: no
   vars:
-    - cdh5_dfs_dn_data_dir_list:
+    - cdh5_pseudo_dfs_dn_data_dir_list:
         - '/data/1/dfs/dn'
   tasks:
     - name: remove_data_dir
       file: path={{ item }} state=absent
       ignore_errors: yes
-      with_items: cdh5_dfs_dn_data_dir_list
+      with_items: cdh5_pseudo_dfs_dn_data_dir_list
 
     - name: make_data_dir
       file: path={{ item }} state=directory owner=hdfs group=hadoop mode=700

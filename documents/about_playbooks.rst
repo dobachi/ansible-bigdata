@@ -77,6 +77,19 @@ This is a set of configurations to construct CDH5 environment.
 
   + This playbook executes basic roles and "zookeeper_server" role to build Zookeeper environment
 
+cdh5_pseudo
+~~~~~~~~~~~~~
+
+This is a set of configurations to construct CDH5 pseudo environment.
+
+* cdh5_pseudo.yml
+
+  * You can build whole CDH5 pseudo environment.
+
+* cdh5_spark.yml
+
+  * You can build spark environment on CDH5 pseudo.
+
 ansible
 ~~~~~~~
 
@@ -115,3 +128,5 @@ ec2
 ~~~~
 This is a set of operation to boot EC2 instances.
 Please check README in the *ec2* directory for more information.
+
+

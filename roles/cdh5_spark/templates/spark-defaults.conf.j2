@@ -7,4 +7,4 @@ spark.eventLog.enabled  true
 spark.eventLog.dir      {{ cdh5_spark_logdir }}
 # spark.serializer        org.apache.spark.serializer.KryoSerializer
 
-spark.yarn.historyServer.address {{ groups['hadoop_other'][0] }}:18080
+spark.yarn.historyServer.address {{ cdh5_spark_historyserver }}:18080

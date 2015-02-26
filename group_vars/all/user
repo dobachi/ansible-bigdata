@@ -5,3 +5,7 @@
 # user_list:
 #   - <your user name1>
 #   - <your user name2>
+
+# user_admin_list:
+#   - <your administrator name1>
+#   - <your administrator name2>

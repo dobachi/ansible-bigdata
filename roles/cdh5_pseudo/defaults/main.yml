@@ -1,0 +1,27 @@
+# ========================
+# role-wide parameters
+# ========================
+cdh5_pseudo_host: 'pseudo'
+cdh5_pseudo_data_dir_list:
+  - '/data/1'
+
+# =========================================
+# parameters for each configuration file
+# =========================================
+
+# core-site.xml
+cdh5_pseudo_fs_default_name: 'hdfs://{{ cdh5_pseudo_host }}:8020'
+
+# hdfs-site.xml
+cdh5_pseudo_dfs_nn_name_dir_list:
+  - '/data/1/dfs/nn'
+cdh5_pseudo_dfs_name_checkpoint_dir_list:
+  - '/data/1/dfs/snn'
+cdh5_dfs_dn_data_dir_list:
+  - '/data/1/dfs/dn'
+
+# mapred-site.xml
+cdh5_pseudo_mapred_job_tracker: '{{ cdh5_pseudo_host }}:8021'
+cdh5_pseudo_mapred_jobhistory_address: '{{ cdh5_pseudo_host }}:10020'
+cdh5_pseudo_mapred_jobhistory_webapp_address: '{{ cdh5_pseudo_host }}:19888'
+cdh5_pseudo_ganglia_servers: '239.2.11.71:8649'

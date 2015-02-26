@@ -86,6 +86,19 @@ CDH5のHDFS/YARN環境の構築／設定を行います。
   + Zookeeperを構成管理します
   + 「zookeeper_server」ロールを実行します
 
+cdh5_pseudo
+~~~~~~~~~~~~
+
+CDH5のHDFS/YARNのPseudo環境を構築／設定します。
+
+* cdh5_pseudo.yml
+
+  + Pseudo環境を構築、設定します
+
+* cdh5_spark.yml
+
+  + Spark環境をPseudo環境に構築、設定します
+
 ansible
 ~~~~~~~
 Ansible実行環境を構成管理します。

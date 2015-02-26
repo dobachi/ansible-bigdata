@@ -48,6 +48,14 @@ cdh5_sl          Configuration of DataNode and NodeManager
 zookeeper_server Configuration of Zookeeper server
 ================ =======================================================
 
+Roles to configure CDH5 pseudo Hadoop
+---------------------------------------
+================ =======================================================
+Role name        Use for
+================ =======================================================
+cdh5_pseudo      Basic configuraiton about Hadoop pseudo environment
+================ =======================================================
+
 Roles to configure Spark core on client node
 ------------------------------------------------
 

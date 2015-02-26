@@ -21,6 +21,7 @@
 * HA構成のHDFS、YARN環境を構築する
 * Spark Coreをインストールし、Sparkの実行環境を整える
 * Gangliaによるリソース可視化環境を整える
+* テスト用のPseudo環境を構築する
 
 .. _sec-servers-ja:
 
@@ -52,8 +53,8 @@ slave05  DataNode, NodeManager, Ganglia Slave
 ソフトウェア  バージョン等
 ============= =============================
 OS            CentOS6.6 or CentOS7.0
-Hadoop        CDH5
-Spark         Spark of CDH5
+Hadoop        CDH5.3
+Spark         Spark1.2 of CDH5
 Ansible       Ansible 1.8 of EPEL
 ============= =============================
 
