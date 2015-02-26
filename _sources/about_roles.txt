@@ -9,9 +9,14 @@ Roles to configure basic environments
 Role name        Use for
 ================ =======================================================
 common           Basic configuration about OS, basic services, and so on
+prompt           Configuration of console prompt
+screen           Configuration of screen command
+user             Configuration of users
+epel             Configuration of EPEL Repository
 jdk              Configuraiotn of Oracle JDK
 scala            Configuraiton of Scala on Hadoop client node
-screen           Configuration of screen command
+sbt              Configuration of Sbt
+activator_mini   Configuraiton of Activator mini
 ================ =======================================================
 
 Roles to configure Ansible
