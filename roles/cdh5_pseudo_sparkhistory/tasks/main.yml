@@ -1,0 +1,3 @@
+---
+- include: install.yml tags=install,cdh5_sparkhistory
+- include: service.yml tags=service,cdh5_sparkhistory

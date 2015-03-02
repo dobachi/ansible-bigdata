@@ -8,7 +8,8 @@
     - scala
     - sbt
     - activator_mini
-    - cdh5_spark
-    - cdh5_sparkhistory
+    - cdh5_pseudo_sparkuser
+    - cdh5_pseudo_spark
+    - cdh5_pseudo_sparkhistory
 
 # vim: et ts=2 sw=2
