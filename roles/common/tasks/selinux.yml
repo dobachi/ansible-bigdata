@@ -10,6 +10,7 @@
   shell: getenforce
   register: selinux_state
   ignore_errors: True
+  always_run: yes
 
 - name: disable_selinux_with_command
   shell: setenforce 0
