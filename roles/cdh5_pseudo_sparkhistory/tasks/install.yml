@@ -1,2 +1,0 @@
-- name: install_spark_history_server
-  yum: name=spark-history-server state=installed

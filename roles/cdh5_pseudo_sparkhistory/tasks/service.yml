@@ -1,3 +1,0 @@
----
-- name: start_spark-history-server
-  service: name=spark-history-server state=started

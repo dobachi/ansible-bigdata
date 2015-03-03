@@ -1,2 +1,5 @@
-- name: install_spark
-  yum: name=spark-core state=installed
+- name: install_spark_packages
+  yum: name={{ item }} state=installed
+  with_items:
+    - spark-core
+    - spark-history-server
