@@ -1,4 +1,4 @@
-- hosts: '{{src_server | default("hadoop_other") }}'
+- hosts: '{{ server | default("hadoop_other") }}'
   roles:
     - common
     - python_whisper
