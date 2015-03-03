@@ -1,0 +1,8 @@
+- name: copy_spark-defaults.conf
+  template: src=spark-defaults.conf.j2 dest=/etc/spark/conf/spark-defaults.conf
+
+- name: copy_spark-env.sh
+  template: src=spark-env.sh.j2 dest=/etc/spark/conf/spark-env.sh
+
+- name: configure_SCALA_HOME_in_/etc/default/spark
+  lineinfile: dest=/etc/default/spark line="export SCALA_HOME={{ cdh5_spark_scala_home }}"

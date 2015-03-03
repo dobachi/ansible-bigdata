@@ -1,0 +1,13 @@
+- hosts: hadoop_pseudo
+  gather_facts: no
+  sudo: True
+  sudo_user: hdfs
+  tasks:
+    - name: format_hdfs
+      shell: yes | hdfs namenode -format
+
+- hosts: hadoop_pseudo
+  gather_facts: no
+  tasks:
+    - name: start_namenode
+      service: name=hadoop-hdfs-namenode state=started

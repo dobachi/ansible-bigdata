@@ -1,0 +1,5 @@
+# file: roles/cdh5_pseudo/tasks/main.yml
+
+- include: repos.yml tags=cdh5_pseudo,repos
+- include: install.yml tags=cdh5_pseudo,install
+- include: config.yml tags=cdh5_pseudo,config

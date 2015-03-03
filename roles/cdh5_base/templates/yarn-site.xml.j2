@@ -78,6 +78,21 @@
   </property>
 
   <property>
+    <name>yarn.nodemanager.resource.cpu-vcores</name>
+    <value>{{ cdh5_yarn_nodemanager_resource_cpu_vcores }}</value>
+  </property>
+
+  <property>
+    <name>yarn.scheduler.minimum-allocation-vcores</name>
+    <value>{{ cdh5_yarn_scheduler_minimum_allocation_vcores }}</value>
+  </property>
+
+  <property>
+    <name>yarn.scheduler.maximum-allocation-vcores</name>
+    <value>{{ cdh5_yarn_scheduler_maximum_allocation_vcores }}</value>
+  </property>
+
+  <property>
     <name>yarn.nodemanager.resource.memory-mb</name>
     <value>{{ cdh5_yarn_nodemanager_resource_memory_mb }}</value>
   </property>
@@ -141,7 +156,7 @@
 <!-- {{ host }} -->
   <property>
     <name>yarn.resourcemanager.address.{{ host }}</name>
-    <value>{{ host }}:8032</value>
+    <value>{{ host }}:8050</value>
   </property>
   <property>
     <name>yarn.resourcemanager.scheduler.address.{{ host }}</name>
@@ -157,11 +172,11 @@
   </property>
   <property>
     <name>yarn.resourcemanager.resource-tracker.address.{{ host }}</name>
-    <value>{{ host }}:8031</value>
+    <value>{{ host }}:8025</value>
   </property>
   <property>
     <name>yarn.resourcemanager.admin.address.{{ host }}</name>
-    <value>{{ host }}:8033</value>
+    <value>{{ host }}:8141</value>
   </property>
   {% endfor %}
 

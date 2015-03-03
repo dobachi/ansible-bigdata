@@ -1,0 +1,18 @@
+- name: make_data_dir
+  file: path={{ item }} state=directory owner=hdfs group=hadoop mode=777 recurse=yes
+  with_items: cdh5_pseudo_data_dir_list
+
+- name: copy_core_site.xml
+  template: src=core-site.xml.j2 dest=/etc/hadoop/conf/core-site.xml
+
+- name: copy_mapred_site.xml
+  template: src=mapred-site.xml.j2 dest=/etc/hadoop/conf/mapred-site.xml
+
+- name: copy_hdfs_site.xml
+  template: src=hdfs-site.xml.j2 dest=/etc/hadoop/conf/hdfs-site.xml
+
+- name: copy_yarn_site.xml
+  template: src=yarn-site.xml.j2 dest=/etc/hadoop/conf/yarn-site.xml
+
+- name: copy_hadoop-metrics2.properties
+  template: src=hadoop-metrics2.properties.j2 dest=/etc/hadoop/conf/hadoop-metrics2.properties

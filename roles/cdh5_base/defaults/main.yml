@@ -1,8 +1,12 @@
-# global
+# ========================
+# role-wide parameters
+# ========================
 cdh5_data_dir_list:
-  - '/data'
   - '/data/1'
 
+# =========================================
+# parameters for each configuration file
+# =========================================
 # core-site.xml.j2
 cdh5_fs_defaultFS: 'hdfs://mycluster'
 
@@ -25,6 +29,9 @@ cdh5_yarn_nm_local_dirs_list:
 cdh5_yarn_nm_log_dirs_list:
   - '/data/1/yarn/logs'
 cdh5_yarn_nm_remote_app_log_dir: '/var/log/hadoop-yarn/apps'
+cdh5_yarn_nodemanager_resource_cpu_vcores: '8'
+cdh5_yarn_scheduler_minimum_allocation_vcores: '1'
+cdh5_yarn_scheduler_maximum_allocation_vcores: '8'
 cdh5_yarn_nodemanager_resource_memory_mb: '2048'
 cdh5_yarn_scheduler_minimum_allocation_mb: '512'
 cdh5_yarn_scheduler_maximum_allocation_mb: '2024'

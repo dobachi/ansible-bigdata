@@ -1,0 +1,22 @@
+- name: add_user
+  user: name={{ item }}
+        password="$6$rounds=40000$zh6mSH7TyRuMxMEz$HN7Eh.MXJfNUfx9biV73QQ5TMyojNj1eWy9IEPR5ZiOs/QyrCHwUZc.NgUaXWJKG/gO6UWpE0uf4.Qe/f9UYr/"
+        update_password="on_create"
+  with_items: user_list
+  when: user_list is defined
+
+- name: add_user
+  user: name={{ item }}
+        password="$6$rounds=40000$zh6mSH7TyRuMxMEz$HN7Eh.MXJfNUfx9biV73QQ5TMyojNj1eWy9IEPR5ZiOs/QyrCHwUZc.NgUaXWJKG/gO6UWpE0uf4.Qe/f9UYr/"
+        update_password="on_create"
+        groups=wheel
+  with_items: user_admin_list
+  when: user_admin_list is defined
+
+- debug: msg="Created user {{ item }} with password 'hadoop'. If an user already exists, the password of such user is not changed."
+  with_items: user_list
+  when: user_list is defined
+
+- debug: msg="Created user {{ item }} with password 'hadoop'. If an user already exists, the password of such user is not changed."
+  with_items: user_admin_list
+  when: user_admin_list is defined

@@ -199,10 +199,71 @@ Start services
 
  $ ansible-playbook playbooks/operation/cdh5/start_cluster.yml -k -s 
 
-How to install Spark Core
----------------------------
+How to install Spark environment on CDH5 environment
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 You can install Spark Core into Client node by the following command
 
 .. code-block:: shell
 
  $ ansible-playbook playbooks/conf/cdh5/cdh5_spark.yml -k -s
+
+If you want to start Spark's history server,
+please execute the following command.
+
+.. code-block:: shell
+
+ $ ansible-playbook playbooks/operation/cdh5/start_sparkhistory.yml -k -s
+
+
+How to configure CDH5 Pseudo environment
+--------------------------------------------
+You can construct CDH5 HDFS/YARN environment by ansible-playbook command.
+
+Preparement
+~~~~~~~~~~~~
+If you have not configured Ansible execution environment,
+you should configure it.
+You can reference :ref:`sec-configure-ansible-env` section.
+
+Procedure
+~~~~~~~~~
+In the following example, we configure common_hosts_replace is True.
+As a result of this parameter configuration, Ansible replace /etc/hosts
+by Ansible driver server's /etc/ansible/roles/common/files/hosts.default
+
+.. code-block:: shell
+
+ $ ansible-playbook playbooks/conf/cdh5_pseudo/cdh5_pseudo.yml -k -s -e "common_hosts_replace=True"
+ $ ansible-playbook playbooks/operation/cdh5_pseudo/init_hdfs.yml -k -s 
+
+Start services
+
+.. code-block:: shell
+
+ $ ansible-playbook playbooks/operation/cdh5_pseudo/start_cluster.yml -k -s 
+
+How to install Spark environment on Hadoop pseudo environment
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+You can install Spark Core into Client node by the following command
+
+.. code-block:: shell
+
+ $ ansible-playbook playbooks/conf/cdh5_pseudo/cdh5_spark.yml -k -s
+
+If you want to start Spark's history server,
+please execute the following command.
+
+.. code-block:: shell
+
+ $ ansible-playbook playbooks/operation/cdh5_pseudo/start_sparkhistory.yml -k -s
+
+How to install Ganglia environment
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+You can install Gaglia services with the following command::
+
+.. code-block:: shell
+
+ $ ansible-playbook playbooks/conf/ganglia/ganglia_all.yml -k -s
+
+
+.. vim: ft=rst tw=0 et ts=2 sw=2

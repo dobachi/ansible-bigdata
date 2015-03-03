@@ -7,3 +7,4 @@
 - include: cdh5_other.yml
 - include: ../../operation/cdh5/init_zkfc.yml
 - include: ../../operation/cdh5/init_hdfs.yml
+- include: ../../operation/cdh5/start_cluster.yml

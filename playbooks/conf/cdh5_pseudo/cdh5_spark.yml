@@ -1,0 +1,13 @@
+- hosts: '{{ server | default("pseudo") }}'
+  roles:
+    - { role: common, common_config_hostname: True }
+    - epel
+    - gcc_gfortran
+    - openblas
+    - jdk
+    - scala
+    - sbt
+    - activator_mini
+    - cdh5_pseudo_spark
+
+# vim: et ts=2 sw=2

@@ -1,5 +1,5 @@
 - name: make_data_dir
-  file: path={{ item }} state=directory owner=hdfs group=hadoop mode=777
+  file: path={{ item }} state=directory owner=hdfs group=hadoop mode=777 recurse=yes
   with_items: cdh5_data_dir_list
 
 - name: copy_xml_files
@@ -19,3 +19,6 @@
     - yarn-site.xml
     - mapred-site.xml
     - hadoop-metrics2.properties
+
+- name: copy_sudoersd_config
+  template: src=hadoop.j2 dest=/etc/sudoers.d/hadoop

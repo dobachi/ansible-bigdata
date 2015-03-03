@@ -77,6 +77,19 @@ This is a set of configurations to construct CDH5 environment.
 
   + This playbook executes basic roles and "zookeeper_server" role to build Zookeeper environment
 
+cdh5_pseudo
+~~~~~~~~~~~~~
+
+This is a set of configurations to construct CDH5 pseudo environment.
+
+* cdh5_pseudo.yml
+
+  * You can build whole CDH5 pseudo environment.
+
+* cdh5_spark.yml
+
+  * You can build spark environment on CDH5 pseudo.
+
 ansible
 ~~~~~~~
 
@@ -91,6 +104,25 @@ you don't need these playbooks.
 * ansible_remote.yml
 
   + This playbook executes "ansible_remote" role to configure nodes which are configured by ansible
+
+ganglia
+~~~~~~~~~
+
+This is  a set of configuration about Ganglia.
+We have two playbooks for Ganglia master and slave.
+
+* ganglia_all.yml
+
+  + The wrapper playbook of configuration of both of Ganglia master and slave
+
+* ganglia_master.yml
+
+  + The playbook to configure Ganglia master
+
+* ganglia_slave.yml
+
+  + The playbook to configure Ganglia slave
+
 
 Playbooks for operation
 -----------------------
@@ -115,3 +147,5 @@ ec2
 ~~~~
 This is a set of operation to boot EC2 instances.
 Please check README in the *ec2* directory for more information.
+
+

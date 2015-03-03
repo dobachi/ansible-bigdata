@@ -1,0 +1,2 @@
+cdh5_spark_hdfs_cluster_name: 'pseudo:8020'
+cdh5_spark_historyserver: 'pseudo'

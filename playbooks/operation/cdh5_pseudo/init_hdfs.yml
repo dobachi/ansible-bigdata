@@ -1,0 +1,6 @@
+- include: stop_hdfs.yml
+- include: format_hdfs.yml
+- include: remove_data.yml
+- include: start_hdfs.yml
+- include: create_tmp_dir.yml
+- include: create_user_dir.yml
