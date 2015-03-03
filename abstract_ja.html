@@ -66,7 +66,7 @@
 <div class="section" id="sec-servers-ja">
 <span id="id4"></span><h2>サーバ構成<a class="headerlink" href="#sec-servers-ja" title="Permalink to this headline">¶</a></h2>
 <p>このプレイブック集では以下のサーバ構成を前提としています。</p>
-<p><strong>構成</strong></p>
+<p><strong>クラスタ構成時のサーバ環境</strong></p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="9%" />
@@ -109,7 +109,27 @@ Ganglia Slave, Ganglia Master</td>
 </tr>
 </tbody>
 </table>
-<p><strong>ソフトウェア</strong></p>
+<p><strong>疑似分散環境</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="9%" />
+<col width="91%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">サーバ名</th>
+<th class="head">サービス構成</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>pseudo</td>
+<td>NameNode, DataNode, SecondaryNameNode, ResourceManager, NodeManager,
+Spark-core, Spark history server</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id5">
+<h2>ソフトウェア構成<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
 <col width="31%" />

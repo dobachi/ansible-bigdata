@@ -33,7 +33,7 @@ Servers
 --------
 This project's assumption about middleware components and servers.
 
-**Servers**
+**Servers for cluster**
 
 ======== ================================================================================
 Server   Use for
@@ -49,10 +49,19 @@ slave02  DataNode, NodeManager, Ganglia Slave
 slave03  DataNode, NodeManager, Ganglia Slave
 slave04  DataNode, NodeManager, Ganglia Slave
 slave05  DataNode, NodeManager, Ganglia Slave
-pseudo   Hadoop Pseudo environment
 ======== ================================================================================
 
-**Software**
+**Server for pseudo environment**
+
+======== ================================================================================
+Server   Use for
+======== ================================================================================
+pseudo   NameNode, DataNode, SecondaryNameNode, ResourceManager, NodeManager,
+         Spark-core, Spark history server
+======== ================================================================================
+
+Software information
+--------------------
 
 ======== =============================
 Software Version

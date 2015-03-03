@@ -69,7 +69,7 @@ Each function is available individually.</p>
 <div class="section" id="servers">
 <span id="sec-servers"></span><h2>Servers<a class="headerlink" href="#servers" title="Permalink to this headline">¶</a></h2>
 <p>This project&#8217;s assumption about middleware components and servers.</p>
-<p><strong>Servers</strong></p>
+<p><strong>Servers for cluster</strong></p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="9%" />
@@ -110,12 +110,29 @@ Ganglia Slave, Ganglia Master</td>
 <tr class="row-even"><td>slave05</td>
 <td>DataNode, NodeManager, Ganglia Slave</td>
 </tr>
-<tr class="row-odd"><td>pseudo</td>
-<td>Hadoop Pseudo environment</td>
+</tbody>
+</table>
+<p><strong>Server for pseudo environment</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="9%" />
+<col width="91%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Server</th>
+<th class="head">Use for</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>pseudo</td>
+<td>NameNode, DataNode, SecondaryNameNode, ResourceManager, NodeManager,
+Spark-core, Spark history server</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Software</strong></p>
+</div>
+<div class="section" id="software-information">
+<h2>Software information<a class="headerlink" href="#software-information" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
 <col width="22%" />
