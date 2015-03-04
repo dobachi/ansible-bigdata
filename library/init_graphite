@@ -1,0 +1,54 @@
+#!/usr/bin/env python
+# -*- coding:utf-8 -*-
+
+import pexpect
+import sys
+import os
+import json
+import shlex
+
+from ansible.module_utils.basic import *
+
+def main():
+    module = AnsibleModule(
+        argument_spec = dict(
+            user=dict(required=True, type='str'),
+            email=dict(required=True, type='str'),
+            password=dict(required=True, type='str'),
+            locale=dict(required=True, type='str'),
+	    db_path=dict(required=False, default='/var/lib/graphite-web/graphite.db')
+        ),
+        supports_check_mode=False
+    )
+
+    # Check if db has been already created
+    if os.path.exists(module.params['db_path']):
+        module.exit_json(changed=False, result="Success")
+    else:
+	# definition of pattern matching of pexpect
+        init_sqlite_db = {
+            r'Would you like to create one now\? \(yes/no\): ': 'yes\n',
+            r'Username \(leave blank to use \'root\'\): ': module.params['user'] + '\n',
+            r'E-mail address: ': module.params['email'] + '\n',
+            r'Password: ': module.params['password'] + '\n',
+            r'Password \(again\): ': module.params['password'] + '\n'
+        }
+
+	# We add environmental variable LANG.
+	# This is because Django may fail in initilizing process,
+	# if it finds no locale configuration.
+        output,ret = pexpect.run('python /usr/lib/python2.6/site-packages/graphite/manage.py syncdb',
+                         events=init_sqlite_db,
+                         withexitstatus=True,
+                         env={'LANG': module.params['locale']}
+                         #logfile=sys.stdout
+                         )
+
+    if ret == 0:
+        module.exit_json(changed=True, result="Success", stdout=output)
+    else:
+        module.fail_json(msg="Failed to initilize sqlite db of Graphite", stdout=output)
+
+main()
+
+#vim: et tw=0 sw=4 ts=4
