@@ -17,3 +17,5 @@
       yum: name=pexpect state=installed
     - name: init_db
       init_graphite: user={{ user }} password={{ password }} email={{ email }} locale={{ locale }}
+    - name: chown_db
+      file: path=/var/lib/graphite-web recurse=yes owner=apache
