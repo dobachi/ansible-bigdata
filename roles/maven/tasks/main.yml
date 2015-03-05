@@ -1,0 +1,2 @@
+- include: install.yml tags=install,maven
+- include: config.yml tags=config,maven
