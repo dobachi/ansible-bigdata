@@ -1,0 +1,11 @@
+- name: make_maven_directory
+  file: path={{ maven_base_dir }} state=directory
+
+- name: wget_maven_binary
+  get_url: url=http://ftp.jaist.ac.jp/pub/apache/maven/maven-3/{{ maven_version }}/binaries/apache-maven-{{ maven_version }}-bin.tar.gz dest={{ maven_base_dir }}
+
+- name: unarchive_maven_binary
+  shell: tar xvzf apache-maven-{{ maven_version }}-bin.tar.gz chdir={{ maven_base_dir }} creates={{ maven_base_dir }}/apache-maven-{{ maven_version }}/bin/mvn
+
+- name: make_link_of_maven_directory
+  alternatives: name=maven_base link={{ maven_base_dir }}/default path={{ maven_base_dir }}/apache-maven-{{ maven_version }}
