@@ -134,4 +134,5 @@
 *.sink.graphite.class=org.apache.spark.metrics.sink.GraphiteSink
 *.sink.graphite.host={{ groups['hadoop_other'] | join(',') }}
 *.sink.graphite.prefix={{ cdh5_spark_graphite_prefix }}
+*.sink.graphite.port={{ cdh5_spark_graphite_port }}
 

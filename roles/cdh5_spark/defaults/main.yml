@@ -15,6 +15,7 @@ cdh5_spark_hdfs_cluster_name: 'mycluster'
 cdh5_spark_master: 'yarn'
 cdh5_spark_logdir: 'hdfs://{{ cdh5_spark_hdfs_cluster_name }}/var/log/spark'
 cdh5_spark_historyserver: '{{ groups["hadoop_other"][0] }}'
+cdh5_spark_historyserver: '{{ groups["hadoop_other"][0] }}'
 
 # spark-env.sh
 cdh5_spark_exe_cores: '1'
@@ -27,3 +28,4 @@ cdh5_spark_scala_home: '/usr/local/scala/default'
 #
 # /etc/spark/conf/metrics.properties
 cdh5_spark_graphite_prefix: 'spark'
+cdh5_spark_graphite_port: '2003'
