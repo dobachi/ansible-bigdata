@@ -1,0 +1,137 @@
+; Top group to define what kind of environment this is.
+; Examples of the group name are "production", "test" and so on.
+[production:children]
+local
+hadoop_all
+hadoop_pseudo
+
+; This is a dummy
+[local]
+localhost
+
+; Top group of all nodes of each component
+; This group includes parent groups of each component
+[hadoop_all:children]
+hadoop_master
+hadoop_client
+hadoop_slave
+hadoop_hbase
+hadoop_spark
+
+; Parent group of master nodes 
+[hadoop_master:children]
+hadoop_namenode
+hadoop_journalnode
+hadoop_zookeeperserver
+hadoop_resourcemanager
+hadoop_other
+hadoop_httpfs
+
+; All of NameNodes
+[hadoop_namenode:children]
+hadoop_namenode_primary
+hadoop_namenode_backup
+
+; Primary NameNode
+; This group should have only one node.
+[hadoop_namenode_primary]
+master01
+
+; Backup NameNode
+; This group should have only one node.
+[hadoop_namenode_backup]
+master02
+
+; All of JournalNodes
+[hadoop_journalnode]
+master05
+master06
+master07
+
+; All of Zookeeper nodes
+; Each node has a parameter configuration about Zookeeper ID
+[hadoop_zookeeperserver]
+master05 zookeeper_server_id=1
+master06 zookeeper_server_id=2
+master07 zookeeper_server_id=3
+
+; All of ResourceManagers
+[hadoop_resourcemanager]
+master03
+master04
+
+; Node to provide misc services
+[hadoop_other]
+master08
+
+; SlaveNodes
+[hadoop_slave]
+slave01
+slave02
+slave03
+slave04
+slave05
+slave06
+slave07
+slave08
+slave09
+slave10
+
+; Used as a client of Hadoop
+[hadoop_client:children]
+hadoop_hive
+hadoop_oozie
+hadoop_pig
+
+[hadoop_hive]
+client01
+
+[hadoop_oozie]
+client01
+
+[hadoop_pig]
+client01
+
+; Spark Standalone cluster
+; Sorry, Spark Standalone configuration is not implemented yet.
+[hadoop_spark:children]
+hadoop_spark_master
+hadoop_spark_worker
+
+[hadoop_spark_master]
+master01
+
+[hadoop_spark_worker]
+slave01
+slave02
+slave03
+slave04
+slave05
+slave06
+slave07
+slave08
+slave09
+slave10
+
+; Node to provide HttpFS service
+[hadoop_httpfs]
+master08
+
+; Top group of HBase cluster
+; Sorry, HBase configuration is not implemented yet.
+[hadoop_hbase:children]
+hadoop_hbase_master
+hadoop_hbase_regionserver
+
+[hadoop_hbase_master]
+master01
+
+[hadoop_hbase_regionserver]
+slave01
+slave02
+slave03
+slave04
+slave05
+
+[hadoop_pseudo]
+pseudo
