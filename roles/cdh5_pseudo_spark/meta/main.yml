@@ -1,3 +1,0 @@
-dependencies:
-  - {role: cdh5_pseudo}
-  - {role: cdh5_pseudo_sparkuser}

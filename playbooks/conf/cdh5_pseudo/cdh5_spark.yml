@@ -8,6 +8,7 @@
     - scala
     - sbt
     - activator_mini
+    - cdh5_pseudo
     - cdh5_pseudo_spark
 
 # vim: et ts=2 sw=2
