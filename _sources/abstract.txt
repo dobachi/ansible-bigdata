@@ -33,7 +33,7 @@ Servers
 --------
 This project's assumption about middleware components and servers.
 
-**Servers for cluster**
+**Servers for medium cluster**
 
 ======== ================================================================================
 Server   Use for
@@ -49,6 +49,32 @@ slave02  DataNode, NodeManager, Ganglia Slave
 slave03  DataNode, NodeManager, Ganglia Slave
 slave04  DataNode, NodeManager, Ganglia Slave
 slave05  DataNode, NodeManager, Ganglia Slave
+======== ================================================================================
+
+**Servers for large cluster**
+
+======== ================================================================================
+Server   Use for
+======== ================================================================================
+master01 Primary NameNode, Ganglia Slave
+master02 Backup NameNode, Ganglia Slave
+master03 Primary ResourceManager, Ganglia Slave
+master04 Backup ResourceManager, Ganglia Slave
+master05 JournalNode, Zookeeper Server(id=1), Ganglia Slave
+master06 JournalNode, Zookeeper Server(id=2), Ganglia Slave
+master07 JournalNode, Zookeeper Server(id=3), Ganglia Slave
+master08 HistoryServer, Ganglia Master, Ganglia Slave
+client01 Hadoop Client, Spark Core, Ganglia Slave
+slave01  DataNode, NodeManager, Ganglia Slave
+slave02  DataNode, NodeManager, Ganglia Slave
+slave03  DataNode, NodeManager, Ganglia Slave
+slave04  DataNode, NodeManager, Ganglia Slave
+slave05  DataNode, NodeManager, Ganglia Slave
+slave06  DataNode, NodeManager, Ganglia Slave
+slave07  DataNode, NodeManager, Ganglia Slave
+slave08  DataNode, NodeManager, Ganglia Slave
+slave09  DataNode, NodeManager, Ganglia Slave
+slave10  DataNode, NodeManager, Ganglia Slave
 ======== ================================================================================
 
 **Server for pseudo environment**

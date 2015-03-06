@@ -77,7 +77,7 @@ Each function is available individually.</p>
 <div class="section" id="servers">
 <span id="sec-servers"></span><h3>1.1.3. Servers<a class="headerlink" href="#servers" title="Permalink to this headline">¶</a></h3>
 <p>This project&#8217;s assumption about middleware components and servers.</p>
-<p><strong>Servers for cluster</strong></p>
+<p><strong>Servers for medium cluster</strong></p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="9%" />
@@ -116,6 +116,77 @@ Ganglia Slave, Ganglia Master</td>
 <td>DataNode, NodeManager, Ganglia Slave</td>
 </tr>
 <tr class="row-even"><td>slave05</td>
+<td>DataNode, NodeManager, Ganglia Slave</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Servers for large cluster</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="9%" />
+<col width="91%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Server</th>
+<th class="head">Use for</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>master01</td>
+<td>Primary NameNode, Ganglia Slave</td>
+</tr>
+<tr class="row-odd"><td>master02</td>
+<td>Backup NameNode, Ganglia Slave</td>
+</tr>
+<tr class="row-even"><td>master03</td>
+<td>Primary ResourceManager, Ganglia Slave</td>
+</tr>
+<tr class="row-odd"><td>master04</td>
+<td>Backup ResourceManager, Ganglia Slave</td>
+</tr>
+<tr class="row-even"><td>master05</td>
+<td>JournalNode, Zookeeper Server(id=1), Ganglia Slave</td>
+</tr>
+<tr class="row-odd"><td>master06</td>
+<td>JournalNode, Zookeeper Server(id=2), Ganglia Slave</td>
+</tr>
+<tr class="row-even"><td>master07</td>
+<td>JournalNode, Zookeeper Server(id=3), Ganglia Slave</td>
+</tr>
+<tr class="row-odd"><td>master08</td>
+<td>HistoryServer, Ganglia Master, Ganglia Slave</td>
+</tr>
+<tr class="row-even"><td>client01</td>
+<td>Hadoop Client, Spark Core, Ganglia Slave</td>
+</tr>
+<tr class="row-odd"><td>slave01</td>
+<td>DataNode, NodeManager, Ganglia Slave</td>
+</tr>
+<tr class="row-even"><td>slave02</td>
+<td>DataNode, NodeManager, Ganglia Slave</td>
+</tr>
+<tr class="row-odd"><td>slave03</td>
+<td>DataNode, NodeManager, Ganglia Slave</td>
+</tr>
+<tr class="row-even"><td>slave04</td>
+<td>DataNode, NodeManager, Ganglia Slave</td>
+</tr>
+<tr class="row-odd"><td>slave05</td>
+<td>DataNode, NodeManager, Ganglia Slave</td>
+</tr>
+<tr class="row-even"><td>slave06</td>
+<td>DataNode, NodeManager, Ganglia Slave</td>
+</tr>
+<tr class="row-odd"><td>slave07</td>
+<td>DataNode, NodeManager, Ganglia Slave</td>
+</tr>
+<tr class="row-even"><td>slave08</td>
+<td>DataNode, NodeManager, Ganglia Slave</td>
+</tr>
+<tr class="row-odd"><td>slave09</td>
+<td>DataNode, NodeManager, Ganglia Slave</td>
+</tr>
+<tr class="row-even"><td>slave10</td>
 <td>DataNode, NodeManager, Ganglia Slave</td>
 </tr>
 </tbody>
@@ -293,7 +364,16 @@ Spark-core, Spark history server</td>
 </div>
 <div class="section" id="about-hosts">
 <h2>1.3. About hosts<a class="headerlink" href="#about-hosts" title="Permalink to this headline">¶</a></h2>
-<p>We have two types of Ansible hosts sample.</p>
+<p>We have two types of Ansible hosts sample.
+The following is the location of the main services.</p>
+<p>hosts.medium_sample:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Master Services(NameNode, Zookeeper, JournalNode and ResourceManager): 3 nodes</li>
+<li>Client: 1 node</li>
+<li>Slave: 5 nodes</li>
+</ul>
+</div></blockquote>
 <p>hosts.large_sample:</p>
 <blockquote>
 <div><ul class="simple">
@@ -304,14 +384,11 @@ Spark-core, Spark history server</td>
 <li>Slave: 10 nodes</li>
 </ul>
 </div></blockquote>
-<p>hosts.medium_sample:</p>
-<blockquote>
-<div><ul class="simple">
-<li>Master Services(NameNode, Zookeeper, JournalNode and ResourceManager): 3 nodes</li>
-<li>Client: 1 node</li>
-<li>Slave: 5 nodes</li>
-</ul>
-</div></blockquote>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Both hosts sample includes &#8220;hadoop_pseudo&#8221; group,
+which is the pseudo Hadoop environment.</p>
+</div>
 </div>
 <div class="section" id="id1">
 <h2>1.4. About playbooks<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>

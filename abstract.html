@@ -69,7 +69,7 @@ Each function is available individually.</p>
 <div class="section" id="servers">
 <span id="sec-servers"></span><h2>Servers<a class="headerlink" href="#servers" title="Permalink to this headline">¶</a></h2>
 <p>This project&#8217;s assumption about middleware components and servers.</p>
-<p><strong>Servers for cluster</strong></p>
+<p><strong>Servers for medium cluster</strong></p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="9%" />
@@ -108,6 +108,77 @@ Ganglia Slave, Ganglia Master</td>
 <td>DataNode, NodeManager, Ganglia Slave</td>
 </tr>
 <tr class="row-even"><td>slave05</td>
+<td>DataNode, NodeManager, Ganglia Slave</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Servers for large cluster</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="9%" />
+<col width="91%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Server</th>
+<th class="head">Use for</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>master01</td>
+<td>Primary NameNode, Ganglia Slave</td>
+</tr>
+<tr class="row-odd"><td>master02</td>
+<td>Backup NameNode, Ganglia Slave</td>
+</tr>
+<tr class="row-even"><td>master03</td>
+<td>Primary ResourceManager, Ganglia Slave</td>
+</tr>
+<tr class="row-odd"><td>master04</td>
+<td>Backup ResourceManager, Ganglia Slave</td>
+</tr>
+<tr class="row-even"><td>master05</td>
+<td>JournalNode, Zookeeper Server(id=1), Ganglia Slave</td>
+</tr>
+<tr class="row-odd"><td>master06</td>
+<td>JournalNode, Zookeeper Server(id=2), Ganglia Slave</td>
+</tr>
+<tr class="row-even"><td>master07</td>
+<td>JournalNode, Zookeeper Server(id=3), Ganglia Slave</td>
+</tr>
+<tr class="row-odd"><td>master08</td>
+<td>HistoryServer, Ganglia Master, Ganglia Slave</td>
+</tr>
+<tr class="row-even"><td>client01</td>
+<td>Hadoop Client, Spark Core, Ganglia Slave</td>
+</tr>
+<tr class="row-odd"><td>slave01</td>
+<td>DataNode, NodeManager, Ganglia Slave</td>
+</tr>
+<tr class="row-even"><td>slave02</td>
+<td>DataNode, NodeManager, Ganglia Slave</td>
+</tr>
+<tr class="row-odd"><td>slave03</td>
+<td>DataNode, NodeManager, Ganglia Slave</td>
+</tr>
+<tr class="row-even"><td>slave04</td>
+<td>DataNode, NodeManager, Ganglia Slave</td>
+</tr>
+<tr class="row-odd"><td>slave05</td>
+<td>DataNode, NodeManager, Ganglia Slave</td>
+</tr>
+<tr class="row-even"><td>slave06</td>
+<td>DataNode, NodeManager, Ganglia Slave</td>
+</tr>
+<tr class="row-odd"><td>slave07</td>
+<td>DataNode, NodeManager, Ganglia Slave</td>
+</tr>
+<tr class="row-even"><td>slave08</td>
+<td>DataNode, NodeManager, Ganglia Slave</td>
+</tr>
+<tr class="row-odd"><td>slave09</td>
+<td>DataNode, NodeManager, Ganglia Slave</td>
+</tr>
+<tr class="row-even"><td>slave10</td>
 <td>DataNode, NodeManager, Ganglia Slave</td>
 </tr>
 </tbody>
