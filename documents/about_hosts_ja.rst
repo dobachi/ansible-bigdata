@@ -18,3 +18,5 @@ hosts.medium_sample:
  * Slave 5台
 
 hosts.medium_sampleについては、マスタ系サービスが一部同居構成になっています。
+
+また両サンプルともに、疑似分散環境用のhadoop_pseudoグループが定義されています。
