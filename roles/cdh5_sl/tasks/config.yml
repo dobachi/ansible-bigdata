@@ -5,10 +5,6 @@
 - name: make_mr_task_tmp_dir
   file: path=/tmp/mapred state=directory owner=mapred group=hadoop mode=777
 
-- name: make_nm_local_dirs
-  file: path={{ item }} state=directory owner=yarn group=hadoop mode=775
-  with_items: cdh5_yarn_nm_local_dirs_list
-
 - name: make_nm_log_dirs
   file: path={{ item }} state=directory owner=yarn group=hadoop mode=775
   with_items: cdh5_yarn_nm_log_dirs_list
