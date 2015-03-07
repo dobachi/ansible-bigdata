@@ -288,14 +288,48 @@ InfluxDB内の作成します。
 
  $ ansible-playbook playbooks/operation/influxdb/create_graphite_db.yml -k -s
 
+Grafanaのダッシュボード情報を格納するデータベースを作成します。
+
+.. code-block:: shell
+
+ $ ansible-playbook playbooks/operation/influxdb/create_grafana_db.yml -k -s
+
 なお、作成するデータベースの名前や接続に使用するユーザ名は、
 group_vars/all/influxdbにて以下のように設定しています。
+
+**group_vars/all/meta**
+
+.. code-block:: yaml
+
+ meta_graphitedb_in_influxdb: 'graphite'
+ meta_grafanadb_in_influxdb: 'grafana'
+
+**group_vars/all/influxdb**
 
 .. code-block:: yaml
 
  influxdb_server: "{{ groups['hadoop_other'][0] }}"
  influxdb_admin_user: "root"
- influxdb_graphite_db_name: "graphite"
+ influxdb_graphite_db_name: "{{ meta_graphitedb_in_influxdb }}"
+ influxdb_grafana_db_name: "{{ meta_grafanadb_in_influxdb }}"
+
+**group_vars/all/grafana**
+
+.. code-block:: yaml
+
+ grafana_influxdb_list:
+   - name: "{{ meta_graphitedb_in_influxdb }}"
+     server: "{{ groups['hadoop_other'][0] }}"
+     db_name: "{{ meta_graphitedb_in_influxdb }}"
+     admin_name: "root"
+     admin_pass: "root"
+     grafanaDB: "false"
+   - name: "{{ meta_grafanadb_in_influxdb }}"
+     server: "{{ groups['hadoop_other'][0] }}"
+     db_name: "{{ meta_grafanadb_in_influxdb }}"
+     admin_name: "root"
+     admin_pass: "root"
+     grafanaDB: "true"
 
 またGrafanaのグラフを設定する方法は、  `Grafana's documents <http://grafana.org/docs/features/intro/>`_
 などをご参照ください。
