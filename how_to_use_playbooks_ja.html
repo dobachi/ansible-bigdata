@@ -300,11 +300,38 @@ InfluxDB内の作成します。
 <div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/operation/influxdb/create_graphite_db.yml -k -s
 </pre></div>
 </div>
+<p>Grafanaのダッシュボード情報を格納するデータベースを作成します。</p>
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/operation/influxdb/create_grafana_db.yml -k -s
+</pre></div>
+</div>
 <p>なお、作成するデータベースの名前や接続に使用するユーザ名は、
 group_vars/all/influxdbにて以下のように設定しています。</p>
+<p><strong>group_vars/all/meta</strong></p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">meta_graphitedb_in_influxdb</span><span class="p-Indicator">:</span> <span class="s">&#39;graphite&#39;</span>
+<span class="l-Scalar-Plain">meta_grafanadb_in_influxdb</span><span class="p-Indicator">:</span> <span class="s">&#39;grafana&#39;</span>
+</pre></div>
+</div>
+<p><strong>group_vars/all/influxdb</strong></p>
 <div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">influxdb_server</span><span class="p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">groups[&#39;hadoop_other&#39;][0]</span><span class="nv"> </span><span class="s">}}&quot;</span>
 <span class="l-Scalar-Plain">influxdb_admin_user</span><span class="p-Indicator">:</span> <span class="s">&quot;root&quot;</span>
-<span class="l-Scalar-Plain">influxdb_graphite_db_name</span><span class="p-Indicator">:</span> <span class="s">&quot;graphite&quot;</span>
+<span class="l-Scalar-Plain">influxdb_graphite_db_name</span><span class="p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">meta_graphitedb_in_influxdb</span><span class="nv"> </span><span class="s">}}&quot;</span>
+<span class="l-Scalar-Plain">influxdb_grafana_db_name</span><span class="p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">meta_grafanadb_in_influxdb</span><span class="nv"> </span><span class="s">}}&quot;</span>
+</pre></div>
+</div>
+<p><strong>group_vars/all/grafana</strong></p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">grafana_influxdb_list</span><span class="p-Indicator">:</span>
+  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">name</span><span class="p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">meta_graphitedb_in_influxdb</span><span class="nv"> </span><span class="s">}}&quot;</span>
+    <span class="l-Scalar-Plain">server</span><span class="p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">groups[&#39;hadoop_other&#39;][0]</span><span class="nv"> </span><span class="s">}}&quot;</span>
+    <span class="l-Scalar-Plain">db_name</span><span class="p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">meta_graphitedb_in_influxdb</span><span class="nv"> </span><span class="s">}}&quot;</span>
+    <span class="l-Scalar-Plain">admin_name</span><span class="p-Indicator">:</span> <span class="s">&quot;root&quot;</span>
+    <span class="l-Scalar-Plain">admin_pass</span><span class="p-Indicator">:</span> <span class="s">&quot;root&quot;</span>
+    <span class="l-Scalar-Plain">grafanaDB</span><span class="p-Indicator">:</span> <span class="s">&quot;false&quot;</span>
+  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">name</span><span class="p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">meta_grafanadb_in_influxdb</span><span class="nv"> </span><span class="s">}}&quot;</span>
+    <span class="l-Scalar-Plain">server</span><span class="p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">groups[&#39;hadoop_other&#39;][0]</span><span class="nv"> </span><span class="s">}}&quot;</span>
+    <span class="l-Scalar-Plain">db_name</span><span class="p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">meta_grafanadb_in_influxdb</span><span class="nv"> </span><span class="s">}}&quot;</span>
+    <span class="l-Scalar-Plain">admin_name</span><span class="p-Indicator">:</span> <span class="s">&quot;root&quot;</span>
+    <span class="l-Scalar-Plain">admin_pass</span><span class="p-Indicator">:</span> <span class="s">&quot;root&quot;</span>
+    <span class="l-Scalar-Plain">grafanaDB</span><span class="p-Indicator">:</span> <span class="s">&quot;true&quot;</span>
 </pre></div>
 </div>
 <p>またGrafanaのグラフを設定する方法は、  <a class="reference external" href="http://grafana.org/docs/features/intro/">Grafana&#8217;s documents</a>
