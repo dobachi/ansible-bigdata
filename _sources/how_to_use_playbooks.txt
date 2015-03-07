@@ -258,7 +258,7 @@ please execute the following command.
  $ ansible-playbook playbooks/operation/cdh5_pseudo/start_sparkhistory.yml -k -s
 
 How to install Ganglia environment
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+---------------------------------------
 You can install Gaglia services with the following command::
 
 .. code-block:: shell
@@ -266,7 +266,7 @@ You can install Gaglia services with the following command::
  $ ansible-playbook playbooks/conf/ganglia/ganglia_all.yml -k -s
 
 How to install and configure InfluxDB and Grafana
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------------------------------------------
 You can install InfluxDB and Grafana services with the followign command.
 
 .. code-block:: shell

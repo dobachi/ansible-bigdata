@@ -273,7 +273,7 @@ Ganglia環境を構成する
  $ ansible-playbook playbooks/conf/ganglia/ganglia_all.yml -k -s
 
 InfluxDBとGrafanaを構成する
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+----------------------------
 InfluxDBとGrafanaをインストールするには以下のコマンドを実行します。
 
 .. code-block:: shell
