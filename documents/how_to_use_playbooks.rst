@@ -265,5 +265,31 @@ You can install Gaglia services with the following command::
 
  $ ansible-playbook playbooks/conf/ganglia/ganglia_all.yml -k -s
 
+How to install and configure InfluxDB and Grafana
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+You can install InfluxDB and Grafana services with the followign command.
 
-.. vim: ft=rst tw=0 et ts=2 sw=2
+.. code-block:: shell
+
+ $ ansible-playbook playbooks/conf/influxdb/all.yml -k -s
+
+Then, create a database in InfulxDB to hold data gathered by Graphite's protocol.
+
+.. code-block:: shell
+
+ $ ansible-playbook playbooks/operation/influxdb/create_graphite_db.yml -k -s
+
+The database's name and user name to connect the database is 
+configured in group_vars/all/influxdb like the following.
+
+.. code-block:: yaml
+
+ influxdb_server: "{{ groups['hadoop_other'][0] }}"
+ influxdb_admin_user: "root"
+ influxdb_graphite_db_name: "graphite"
+
+Please read `Grafana's documents <http://grafana.org/docs/features/intro/>`_ to learn
+how to configure graphs.
+
+
+.. set ft=rst tw=0 et ts=2 sw=2
