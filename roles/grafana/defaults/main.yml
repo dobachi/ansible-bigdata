@@ -1,0 +1,9 @@
+---
+# defaults file for roles/grafana
+grafana_version: '1.9.1'
+grafana_influxdb_list:
+  - name: "graphite"
+    server: "{{ groups['hadoop_other'][0] }}"
+    db_name: "graphite"
+    admin_name: "root"
+    admin_pass: "root"

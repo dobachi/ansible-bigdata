@@ -1,0 +1,17 @@
+- name: mkdir_/usr/src/grafana
+  file: path=/usr/src/grafana state=directory owner=apache group=apache
+
+- name: get_grafana_tar_gz
+  get_url: url=http://grafanarel.s3.amazonaws.com/grafana-{{ grafana_version }}.tar.gz dest=/usr/src/grafana
+
+- name: unarchive_grafana
+  shell: tar xvzf grafana-{{ grafana_version }}.tar.gz chdir=/usr/src/grafana creates=/usr/src/grafana/grafana-{{ grafana_version }}/README.md
+
+- name: chown_grafana_dir
+  file: path=/usr/src/grafana/grafana-{{ grafana_version }} owner=apache group=apache recurse=yes 
+
+- name: create_alternatives_link_of_grafana
+  alternatives: link=/usr/src/grafana/default name=grafana-src path=/usr/src/grafana/grafana-{{ grafana_version }} 
+
+- name: make_link_to_/var/www/html
+  file: path=/var/www/html/grafana src=/usr/src/grafana/default state=link
