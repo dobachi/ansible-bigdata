@@ -1,4 +1,5 @@
 ---
-# defaults file for roles/influxdb
 influxdb_graphite_enabled: 'true'
-influxdb_graphite_database: 'graphite'
+
+# The following parameters are configured in groups_vars/all/influxdb
+influxdb_graphite_db_name: 'graphite'

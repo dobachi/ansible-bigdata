@@ -1,0 +1,11 @@
+- hosts: '{{ server | default("hadoop_other") }}'
+  vars_prompt:
+    - name: "password"
+      prompt: "Enter influxdb admin's password"
+      private: yes
+  tasks:
+    - name: install_curl
+      yum: name=curl state=installed
+    - name: create_graphite_db
+      shell: >
+             curl -X POST 'http://{{ influxdb_server }}:8086/db?u={{ influxdb_admin_user }}&p=root' -d '{"name": "{{ influxdb_graphite_db_name }}"}'

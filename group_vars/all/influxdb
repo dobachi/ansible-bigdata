@@ -1,0 +1,3 @@
+influxdb_server: "{{ groups['hadoop_other'][0] }}"
+influxdb_admin_user: "root"
+influxdb_graphite_db_name: "graphite"
