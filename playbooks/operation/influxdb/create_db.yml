@@ -8,8 +8,8 @@
       yum: name=curl state=installed
     - name: create_graphite_db
       shell: >
-             curl -X POST 'http://{{ influxdb_server }}:8086/db?u={{ influxdb_admin_user }}&p=root' -d '{"name": "{{ influxdb_graphite_db_name }}"}'
+             curl -X POST 'http://{{ influxdb_server }}:8086/db?u={{ influxdb_admin_user }}&p={{ password }}' -d '{"name": "{{ influxdb_graphite_db_name }}"}'
     - name: create_grafana_db
       shell: >
-             curl -X POST 'http://{{ influxdb_server }}:8086/db?u={{ influxdb_admin_user }}&p=root' -d '{"name": "{{ influxdb_grafana_db_name }}"}'
+             curl -X POST 'http://{{ influxdb_server }}:8086/db?u={{ influxdb_admin_user }}&p={{ password }}' -d '{"name": "{{ influxdb_grafana_db_name }}"}'
 
