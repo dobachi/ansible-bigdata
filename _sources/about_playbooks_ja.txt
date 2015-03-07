@@ -177,7 +177,15 @@ AWS EC2インスタンスを起動するためのプレイブック集です。
 
 influxdb
 ~~~~~~~~
+* create_db.yml
+  
+  + すべての必要なデータベースをInfluxDBに作成します。
+
 * create_graphite_db.yml
 
   + InfluxDBにGraphiteプロトコルで受領したデータを格納するデータベースを作成します。
     主にSparkのGraphiteプロトコルによるメトリクスを保存するために使用します。
+
+* create_grafana_db.yml
+
+  + Grafanaのダッシュボード情報を保存するデータベースをInfluxDBに作成します。

@@ -266,9 +266,17 @@ Gangliaはマスタ／スレーブ構成なのでそれぞれを管理するた�
 <div class="section" id="id5">
 <h3>influxdb<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
+<li>create_db.yml<ul>
+<li>すべての必要なデータベースをInfluxDBに作成します。</li>
+</ul>
+</li>
 <li>create_graphite_db.yml<ul>
 <li>InfluxDBにGraphiteプロトコルで受領したデータを格納するデータベースを作成します。
 主にSparkのGraphiteプロトコルによるメトリクスを保存するために使用します。</li>
+</ul>
+</li>
+<li>create_grafana_db.yml<ul>
+<li>Grafanaのダッシュボード情報を保存するデータベースをInfluxDBに作成します。</li>
 </ul>
 </li>
 </ul>
