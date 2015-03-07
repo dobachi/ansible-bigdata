@@ -1,0 +1,2 @@
+meta_graphitedb_in_influxdb: 'graphite'
+meta_grafanadb_in_influxdb: 'grafana'

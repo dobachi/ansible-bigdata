@@ -1,9 +1,19 @@
 ---
 # defaults file for roles/grafana
 grafana_version: '1.9.1'
-grafana_influxdb_list:
-  - name: "graphite"
-    server: "{{ groups['hadoop_other'][0] }}"
-    db_name: "graphite"
-    admin_name: "root"
-    admin_pass: "root"
+
+# The following parameter is configured in group_vars/all/grafana
+
+#grafana_influxdb_list:
+#  - name: "graphite"
+#    server: "{{ groups['hadoop_other'][0] }}"
+#    db_name: "graphite"
+#    admin_name: "root"
+#    admin_pass: "root"
+#    grafanaDB: "false"
+#  - name: "grafana"
+#    server: "{{ groups['hadoop_other'][0] }}"
+#    db_name: "grafana"
+#    admin_name: "root"
+#    admin_pass: "root"
+#    grafanaDB: "true"

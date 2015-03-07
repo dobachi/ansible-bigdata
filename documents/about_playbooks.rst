@@ -165,8 +165,15 @@ Please check README in the *ec2* directory for more information.
 
 influxdb
 ~~~~~~~~
+* create_db.yml
+  
+  + Create all databases in InfluxDB.
+
 * create_graphite_db.yml
 
   + Create database in InfluxDB, which hold data gathered by Graphite's protocol.
     This is mainly used by Spark.
 
+* create_grafana_db.yml
+
+  + Create database in InfluxDB, which hold Grafana's dashboard data.

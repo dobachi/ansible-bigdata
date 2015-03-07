@@ -1,3 +1,4 @@
 influxdb_server: "{{ groups['hadoop_other'][0] }}"
 influxdb_admin_user: "root"
-influxdb_graphite_db_name: "graphite"
+influxdb_graphite_db_name: "{{ meta_graphitedb_in_influxdb }}"
+influxdb_grafana_db_name: "{{ meta_grafanadb_in_influxdb }}"

@@ -24,6 +24,7 @@ define(['settings'], function(Settings) {
           url: "http://{{ item.server }}:8086/db/{{ item.db_name }}",
           username: '{{ item.admin_name }}',
           password: '{{ item.admin_pass }}',
+          grafanaDB: {{ item.grafanaDB }}
         },
 {% endfor %}
       },

@@ -1,0 +1,14 @@
+grafana_influxdb_list:
+  - name: "{{ meta_graphitedb_in_influxdb }}"
+    server: "{{ groups['hadoop_other'][0] }}"
+    db_name: "{{ meta_graphitedb_in_influxdb }}"
+    admin_name: "root"
+    admin_pass: "root"
+    grafanaDB: "false"
+  - name: "{{ meta_grafanadb_in_influxdb }}"
+    server: "{{ groups['hadoop_other'][0] }}"
+    db_name: "{{ meta_grafanadb_in_influxdb }}"
+    admin_name: "root"
+    admin_pass: "root"
+    grafanaDB: "true"
+
