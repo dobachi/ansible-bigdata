@@ -1,0 +1,4 @@
+---
+# handlers file for roles/influxdb
+- name: restart_influxdb
+  service: name=influxdb state=restarted

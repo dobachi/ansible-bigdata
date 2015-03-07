@@ -1,0 +1,4 @@
+---
+# defaults file for roles/influxdb
+influxdb_graphite_enabled: 'true'
+influxdb_graphite_database: 'graphite'

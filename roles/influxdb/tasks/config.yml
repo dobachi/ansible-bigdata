@@ -1,0 +1,10 @@
+- name: copy_config.toml
+  template: src=config.toml.j2 dest=/opt/influxdb/shared/config.toml
+  notify:
+    - restart_influxdb
+
+- name: config_limits.conf
+  lineinfile: dest=/etc/security/limits.conf regexp="^{{ item }}" line="{{ item }}"
+  with_items:
+    - "influxdb soft nofile 65536"
+    - "influxdb hard nofile 65536"
