@@ -14,13 +14,18 @@ Playbooks for configuration
 ----------------------------
 We can use playbooks in playbooks/conf directory to configure servers.
 
-====================== ==========================================
-Directory              Use for
-====================== ==========================================
-playbooks/conf/common  Common and basic configuration
-playbooks/conf/cdh5    Configuration of CDH5 environment
-playbooks/conf/ansible Configuration of Ansible environment
-====================== ==========================================
+**abstract**
+
+============================ ==========================================
+Directory                    Use for
+============================ ==========================================
+playbooks/conf/common        Common and basic configuration
+playbooks/conf/cdh5          Configuration of CDH5 environment
+playbooks/conf/cdh5_pseudo   Configuration of CDH5 Pseudo environment
+playbooks/conf/ansible       Configuration of Ansible environment
+playbooks/conf/ganglia       Configuration of Ganglia
+playbooks/conf/influxdb      Configuration of InfluxDB and Grafana
+============================ ==========================================
 
 common
 ~~~~~~
@@ -123,19 +128,29 @@ We have two playbooks for Ganglia master and slave.
 
   + The playbook to configure Ganglia slave
 
+influxdb
+~~~~~~~~~
+* all.yml
+
+  + Configure influxdb and Grafana.
 
 Playbooks for operation
 -----------------------
 
 We can use playbooks in playbooks/operation directory to operate services.
 
-========================= ====================================================================
-Directory                 Use for
-========================= ====================================================================
-playbooks/operation/cdh5  Operation of Hadoop Services.
-                          e.g. Formating HDFS, Start/Stop services, ...
-playbooks/operation/ec2   Operation to boot EC2 instances
-========================= ====================================================================
+================================ ====================================================================
+Directory                        Use for
+===============================- ====================================================================
+playbooks/operation/cdh5         Operation of Hadoop Services.
+                                 e.g. Formating HDFS, Start/Stop services, ...
+playbooks/operation/cdh5_pseudo  Operation of Hadoop Services.
+                                 e.g. Formating HDFS, Start/Stop services, ...
+playbooks/operation/common       Operations about SSH key exchange.
+playbooks/operation/ec2          Operation to boot EC2 instances
+playbooks/operation/httpd        Start and stop httpd
+playbooks/operation/influxdb     Operation about InfluxDB initilization
+================================ ====================================================================
 
 cdh5
 ~~~~
@@ -148,4 +163,10 @@ ec2
 This is a set of operation to boot EC2 instances.
 Please check README in the *ec2* directory for more information.
 
+influxdb
+~~~~~~~~
+* create_graphite_db.yml
+
+  + Create database in InfluxDB, which hold data gathered by Graphite's protocol.
+    This is mainly used by Spark.
 

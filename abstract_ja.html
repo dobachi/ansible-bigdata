@@ -60,6 +60,7 @@
 <li>HA構成のHDFS、YARN環境を構築する</li>
 <li>Spark Coreをインストールし、Sparkの実行環境を整える</li>
 <li>Gangliaによるリソース可視化環境を整える</li>
+<li>InfluxDBとGrafanaによるメトリクス可視化環境を整える</li>
 <li>テスト用のPseudo環境を構築する</li>
 </ul>
 </div>
@@ -87,7 +88,7 @@ Ganglia Slave</td>
 </tr>
 <tr class="row-even"><td>master03</td>
 <td>JournalNode, Zookeeper Server(id=3), HistoryServer, Backup ResourceManager,
-Ganglia Slave, Ganglia Master</td>
+Ganglia Slave, Ganglia Master, InfluxDB, Grafana</td>
 </tr>
 <tr class="row-odd"><td>client01</td>
 <td>Hadoop Client, Spark Core, Ganglia Slave</td>
@@ -143,7 +144,7 @@ Ganglia Slave, Ganglia Master</td>
 <td>JournalNode, Zookeeper Server(id=3), Ganglia Slave</td>
 </tr>
 <tr class="row-odd"><td>master08</td>
-<td>HistoryServer, Ganglia Master, Ganglia Slave</td>
+<td>HistoryServer, Ganglia Master, Ganglia Slave, InfluxDB, Grafana</td>
 </tr>
 <tr class="row-even"><td>client01</td>
 <td>Hadoop Client, Spark Core, Ganglia Slave</td>

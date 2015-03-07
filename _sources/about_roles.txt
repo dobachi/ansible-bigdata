@@ -79,3 +79,13 @@ Role name        Use for
 ganglia_master   Configuration of Ganglia Master and Web frontend
 ganglia_slave    Configuration of Ganglia Slave
 ================ =======================================================
+
+Roles to configure InfluxDB and Grafana
+------------------------------------------
+
+================ =======================================================
+Role name        Use for
+================ =======================================================
+influxdb         Configuration of InfluxDB
+grafana          Configuration of Grafana
+================ =======================================================

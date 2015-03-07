@@ -272,4 +272,32 @@ Ganglia環境を構成する
 
  $ ansible-playbook playbooks/conf/ganglia/ganglia_all.yml -k -s
 
+InfluxDBとGrafanaを構成する
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+InfluxDBとGrafanaをインストールするには以下のコマンドを実行します。
+
+.. code-block:: shell
+
+ $ ansible-playbook playbooks/conf/influxdb/all.yml -k -s
+
+Graphiteプロトコルで受領したデータを格納するデータベースを
+InfluxDB内の作成します。
+これは主にSparkのメトリクスを受領するために用います。
+
+.. code-block:: shell
+
+ $ ansible-playbook playbooks/operation/influxdb/create_graphite_db.yml -k -s
+
+なお、作成するデータベースの名前や接続に使用するユーザ名は、
+group_vars/all/influxdbにて以下のように設定しています。
+
+.. code-block:: yaml
+
+ influxdb_server: "{{ groups['hadoop_other'][0] }}"
+ influxdb_admin_user: "root"
+ influxdb_graphite_db_name: "graphite"
+
+またGrafanaのグラフを設定する方法は、  `Grafana's documents <http://grafana.org/docs/features/intro/>`_
+などをご参照ください。
+
 .. vim: ft=rst tw=0 et ts=2 sw=2

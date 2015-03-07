@@ -60,8 +60,8 @@
 <p>playbooks/confディレクトリ以下に以下のプレイブック集があります。</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="34%" />
-<col width="66%" />
+<col width="41%" />
+<col width="59%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">ディレクトリ</th>
@@ -75,8 +75,17 @@
 <tr class="row-odd"><td>playbooks/conf/cdh5</td>
 <td>CDH5のHDFS/YARN環境の構築／設定</td>
 </tr>
-<tr class="row-even"><td>playbooks/conf/ansible</td>
+<tr class="row-even"><td>playbooks/conf/cdh5_pseudo</td>
+<td>CDH5の疑似分散環境の構築/設定</td>
+</tr>
+<tr class="row-odd"><td>playbooks/conf/ansible</td>
 <td>Ansibleの実行環境の設定</td>
+</tr>
+<tr class="row-even"><td>playbooks/conf/ganglia</td>
+<td>Ganglia環境の構築／設定</td>
+</tr>
+<tr class="row-odd"><td>playbooks/conf/influxdb</td>
+<td>InfluxDBとGrafanaの構築／設定</td>
 </tr>
 </tbody>
 </table>
@@ -201,14 +210,23 @@ Gangliaはマスタ／スレーブ構成なのでそれぞれを管理するた�
 </li>
 </ul>
 </div>
+<div class="section" id="influxdb">
+<h3>influxdb<a class="headerlink" href="#influxdb" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>all.yml<ul>
+<li>InfluxDBとGrafanaを設定します</li>
+</ul>
+</li>
+</ul>
+</div>
 </div>
 <div class="section" id="id3">
 <h2>運用作業のためのプレイブック集<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p>playbooks/operationディレクトリ以下に運用作業のためのプレイブック集があります。</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="27%" />
-<col width="73%" />
+<col width="33%" />
+<col width="67%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">ディレクトリ</th>
@@ -220,8 +238,18 @@ Gangliaはマスタ／スレーブ構成なのでそれぞれを管理するた�
 <td>Hadoop HDFS/YARNサービスの運用に用います
 例えばHDFSの初期化や各サービスの起動／停止です。</td>
 </tr>
-<tr class="row-odd"><td>playbooks/operation/ec2</td>
+<tr class="row-odd"><td>playbooks/operation/cdh5_pseudo</td>
+<td>Hadoop HDFS/YARNサービスの運用に用います
+例えばHDFSの初期化や各サービスの起動／停止です。</td>
+</tr>
+<tr class="row-even"><td>playbooks/operation/ec2</td>
 <td>Hadoop用のAWS EC2インスタンスを起動します</td>
+</tr>
+<tr class="row-odd"><td>playbooks/operation/httpd</td>
+<td>HTTPサービスを起動／停止します</td>
+</tr>
+<tr class="row-even"><td>playbooks/operation/influxdb</td>
+<td>InfluxDBを初期化します</td>
 </tr>
 </tbody>
 </table>
@@ -234,6 +262,16 @@ Gangliaはマスタ／スレーブ構成なのでそれぞれを管理するた�
 <h3>ec2<a class="headerlink" href="#ec2" title="Permalink to this headline">¶</a></h3>
 <p>AWS EC2インスタンスを起動するためのプレイブック集です。
 詳しくはディレクトリ内のREADMEを参照ください。</p>
+</div>
+<div class="section" id="id5">
+<h3>influxdb<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>create_graphite_db.yml<ul>
+<li>InfluxDBにGraphiteプロトコルで受領したデータを格納するデータベースを作成します。
+主にSparkのGraphiteプロトコルによるメトリクスを保存するために使用します。</li>
+</ul>
+</li>
+</ul>
 </div>
 </div>
 </div>

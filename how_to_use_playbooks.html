@@ -267,6 +267,26 @@ please execute the following command.</p>
 <blockquote>
 <div>$ ansible-playbook playbooks/conf/ganglia/ganglia_all.yml -k -s</div></blockquote>
 </div>
+<div class="section" id="how-to-install-and-configure-influxdb-and-grafana">
+<h3>How to install and configure InfluxDB and Grafana<a class="headerlink" href="#how-to-install-and-configure-influxdb-and-grafana" title="Permalink to this headline">¶</a></h3>
+<p>You can install InfluxDB and Grafana services with the followign command.</p>
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/conf/influxdb/all.yml -k -s
+</pre></div>
+</div>
+<p>Then, create a database in InfulxDB to hold data gathered by Graphite&#8217;s protocol.</p>
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/operation/influxdb/create_graphite_db.yml -k -s
+</pre></div>
+</div>
+<p>The database&#8217;s name and user name to connect the database is
+configured in group_vars/all/influxdb like the following.</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">influxdb_server</span><span class="p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">groups[&#39;hadoop_other&#39;][0]</span><span class="nv"> </span><span class="s">}}&quot;</span>
+<span class="l-Scalar-Plain">influxdb_admin_user</span><span class="p-Indicator">:</span> <span class="s">&quot;root&quot;</span>
+<span class="l-Scalar-Plain">influxdb_graphite_db_name</span><span class="p-Indicator">:</span> <span class="s">&quot;graphite&quot;</span>
+</pre></div>
+</div>
+<p>Please read <a class="reference external" href="http://grafana.org/docs/features/intro/">Grafana&#8217;s documents</a> to learn
+how to configure graphs.</p>
+</div>
 </div>
 </div>
 

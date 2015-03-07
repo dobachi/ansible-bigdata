@@ -71,6 +71,7 @@ Each function is available individually.</p>
 <li>Configuring HDFS/YARN with NameNode HA</li>
 <li>Configuring Spark core on Client node</li>
 <li>Configuring Ganglia for the resource visualization</li>
+<li>Configuring InfluxDB and Grafana for the metrics visualization</li>
 <li>Configuring Pseudo environment for test</li>
 </ul>
 </div>
@@ -98,7 +99,7 @@ Ganglia Slave</td>
 </tr>
 <tr class="row-even"><td>master03</td>
 <td>JournalNode, Zookeeper Server(id=3), HistoryServer, Backup ResourceManager,
-Ganglia Slave, Ganglia Master</td>
+Ganglia Slave, Ganglia Master, InfluxDB, Grafana</td>
 </tr>
 <tr class="row-odd"><td>client01</td>
 <td>Hadoop Client, Spark Core, Ganglia Slave</td>
@@ -154,7 +155,7 @@ Ganglia Slave, Ganglia Master</td>
 <td>JournalNode, Zookeeper Server(id=3), Ganglia Slave</td>
 </tr>
 <tr class="row-odd"><td>master08</td>
-<td>HistoryServer, Ganglia Master, Ganglia Slave</td>
+<td>HistoryServer, Ganglia Master, Ganglia Slave, InfluxDB, Grafana</td>
 </tr>
 <tr class="row-even"><td>client01</td>
 <td>Hadoop Client, Spark Core, Ganglia Slave</td>
@@ -406,10 +407,11 @@ which is the pseudo Hadoop environment.</p>
 <div class="section" id="playbooks-for-configuration">
 <h3>1.4.1. Playbooks for configuration<a class="headerlink" href="#playbooks-for-configuration" title="Permalink to this headline">¶</a></h3>
 <p>We can use playbooks in playbooks/conf directory to configure servers.</p>
+<p><strong>abstract</strong></p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="34%" />
-<col width="66%" />
+<col width="40%" />
+<col width="60%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Directory</th>
@@ -423,8 +425,17 @@ which is the pseudo Hadoop environment.</p>
 <tr class="row-odd"><td>playbooks/conf/cdh5</td>
 <td>Configuration of CDH5 environment</td>
 </tr>
-<tr class="row-even"><td>playbooks/conf/ansible</td>
+<tr class="row-even"><td>playbooks/conf/cdh5_pseudo</td>
+<td>Configuration of CDH5 Pseudo environment</td>
+</tr>
+<tr class="row-odd"><td>playbooks/conf/ansible</td>
 <td>Configuration of Ansible environment</td>
+</tr>
+<tr class="row-even"><td>playbooks/conf/ganglia</td>
+<td>Configuration of Ganglia</td>
+</tr>
+<tr class="row-odd"><td>playbooks/conf/influxdb</td>
+<td>Configuration of InfluxDB and Grafana</td>
 </tr>
 </tbody>
 </table>
@@ -534,27 +545,50 @@ We have two playbooks for Ganglia master and slave.</p>
 </li>
 </ul>
 </div>
+<div class="section" id="influxdb">
+<h4>1.4.1.6. influxdb<a class="headerlink" href="#influxdb" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li>all.yml<ul>
+<li>Configure influxdb and Grafana.</li>
+</ul>
+</li>
+</ul>
+</div>
 </div>
 <div class="section" id="playbooks-for-operation">
 <h3>1.4.2. Playbooks for operation<a class="headerlink" href="#playbooks-for-operation" title="Permalink to this headline">¶</a></h3>
 <p>We can use playbooks in playbooks/operation directory to operate services.</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="27%" />
-<col width="73%" />
+<col width="32%" />
+<col width="68%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Directory</th>
-<th class="head">Use for</th>
-</tr>
-</thead>
 <tbody valign="top">
-<tr class="row-even"><td>playbooks/operation/cdh5</td>
+<tr class="row-odd"><td>Directory</td>
+<td>Use for</td>
+</tr>
+<tr class="row-even"><td>===============================-</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>playbooks/operation/cdh5</td>
 <td>Operation of Hadoop Services.
 e.g. Formating HDFS, Start/Stop services, ...</td>
 </tr>
-<tr class="row-odd"><td>playbooks/operation/ec2</td>
+<tr class="row-even"><td>playbooks/operation/cdh5_pseudo</td>
+<td>Operation of Hadoop Services.
+e.g. Formating HDFS, Start/Stop services, ...</td>
+</tr>
+<tr class="row-odd"><td>playbooks/operation/common</td>
+<td>Operations about SSH key exchange.</td>
+</tr>
+<tr class="row-even"><td>playbooks/operation/ec2</td>
 <td>Operation to boot EC2 instances</td>
+</tr>
+<tr class="row-odd"><td>playbooks/operation/httpd</td>
+<td>Start and stop httpd</td>
+</tr>
+<tr class="row-even"><td>playbooks/operation/influxdb</td>
+<td>Operation about InfluxDB initilization</td>
 </tr>
 </tbody>
 </table>
@@ -567,6 +601,16 @@ Please check README in the <em>cdh5</em> directory for more information.</p>
 <h4>1.4.2.2. ec2<a class="headerlink" href="#ec2" title="Permalink to this headline">¶</a></h4>
 <p>This is a set of operation to boot EC2 instances.
 Please check README in the <em>ec2</em> directory for more information.</p>
+</div>
+<div class="section" id="id3">
+<h4>1.4.2.3. influxdb<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li>create_graphite_db.yml<ul>
+<li>Create database in InfluxDB, which hold data gathered by Graphite&#8217;s protocol.
+This is mainly used by Spark.</li>
+</ul>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -754,6 +798,28 @@ Please check README in the <em>ec2</em> directory for more information.</p>
 </tbody>
 </table>
 </div>
+<div class="section" id="roles-to-configure-influxdb-and-grafana">
+<h3>1.5.8. Roles to configure InfluxDB and Grafana<a class="headerlink" href="#roles-to-configure-influxdb-and-grafana" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="77%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Role name</th>
+<th class="head">Use for</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>influxdb</td>
+<td>Configuration of InfluxDB</td>
+</tr>
+<tr class="row-odd"><td>grafana</td>
+<td>Configuration of Grafana</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <div class="section" id="how-to-use-this-playbooks">
 <h2>1.6. How to use this playbooks<a class="headerlink" href="#how-to-use-this-playbooks" title="Permalink to this headline">¶</a></h2>
@@ -786,8 +852,8 @@ you can use the following playbooks for it.</p>
 </pre></div>
 </div>
 </div>
-<div class="section" id="id3">
-<h4>1.6.2.2. Clone playbooks<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id4">
+<h4>1.6.2.2. Clone playbooks<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
 <p>Move original /etc/ansible</p>
 <div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd</span> /etc
 <span class="nv">$ </span>sudo mv ansible ansible.org
@@ -941,14 +1007,14 @@ please execute the following command.</p>
 <div class="section" id="how-to-configure-cdh5-pseudo-environment">
 <h3>1.6.6. How to configure CDH5 Pseudo environment<a class="headerlink" href="#how-to-configure-cdh5-pseudo-environment" title="Permalink to this headline">¶</a></h3>
 <p>You can construct CDH5 HDFS/YARN environment by ansible-playbook command.</p>
-<div class="section" id="id4">
-<h4>1.6.6.1. Preparement<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id5">
+<h4>1.6.6.1. Preparement<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
 <p>If you have not configured Ansible execution environment,
 you should configure it.
 You can reference <a class="reference internal" href="how_to_use_playbooks.html#sec-configure-ansible-env"><em>How to configure Ansible execution environment</em></a> section.</p>
 </div>
-<div class="section" id="id5">
-<h4>1.6.6.2. Procedure<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id6">
+<h4>1.6.6.2. Procedure<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h4>
 <p>In the following example, we configure common_hosts_replace is True.
 As a result of this parameter configuration, Ansible replace /etc/hosts
 by Ansible driver server&#8217;s /etc/ansible/roles/common/files/hosts.default</p>
@@ -981,6 +1047,26 @@ please execute the following command.</p>
 </div>
 <blockquote>
 <div>$ ansible-playbook playbooks/conf/ganglia/ganglia_all.yml -k -s</div></blockquote>
+</div>
+<div class="section" id="how-to-install-and-configure-influxdb-and-grafana">
+<h4>1.6.6.5. How to install and configure InfluxDB and Grafana<a class="headerlink" href="#how-to-install-and-configure-influxdb-and-grafana" title="Permalink to this headline">¶</a></h4>
+<p>You can install InfluxDB and Grafana services with the followign command.</p>
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/conf/influxdb/all.yml -k -s
+</pre></div>
+</div>
+<p>Then, create a database in InfulxDB to hold data gathered by Graphite&#8217;s protocol.</p>
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/operation/influxdb/create_graphite_db.yml -k -s
+</pre></div>
+</div>
+<p>The database&#8217;s name and user name to connect the database is
+configured in group_vars/all/influxdb like the following.</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">influxdb_server</span><span class="p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">groups[&#39;hadoop_other&#39;][0]</span><span class="nv"> </span><span class="s">}}&quot;</span>
+<span class="l-Scalar-Plain">influxdb_admin_user</span><span class="p-Indicator">:</span> <span class="s">&quot;root&quot;</span>
+<span class="l-Scalar-Plain">influxdb_graphite_db_name</span><span class="p-Indicator">:</span> <span class="s">&quot;graphite&quot;</span>
+</pre></div>
+</div>
+<p>Please read <a class="reference external" href="http://grafana.org/docs/features/intro/">Grafana&#8217;s documents</a> to learn
+how to configure graphs.</p>
 </div>
 </div>
 </div>

@@ -56,10 +56,11 @@
 <div class="section" id="playbooks-for-configuration">
 <h2>Playbooks for configuration<a class="headerlink" href="#playbooks-for-configuration" title="Permalink to this headline">¶</a></h2>
 <p>We can use playbooks in playbooks/conf directory to configure servers.</p>
+<p><strong>abstract</strong></p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="34%" />
-<col width="66%" />
+<col width="40%" />
+<col width="60%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Directory</th>
@@ -73,8 +74,17 @@
 <tr class="row-odd"><td>playbooks/conf/cdh5</td>
 <td>Configuration of CDH5 environment</td>
 </tr>
-<tr class="row-even"><td>playbooks/conf/ansible</td>
+<tr class="row-even"><td>playbooks/conf/cdh5_pseudo</td>
+<td>Configuration of CDH5 Pseudo environment</td>
+</tr>
+<tr class="row-odd"><td>playbooks/conf/ansible</td>
 <td>Configuration of Ansible environment</td>
+</tr>
+<tr class="row-even"><td>playbooks/conf/ganglia</td>
+<td>Configuration of Ganglia</td>
+</tr>
+<tr class="row-odd"><td>playbooks/conf/influxdb</td>
+<td>Configuration of InfluxDB and Grafana</td>
 </tr>
 </tbody>
 </table>
@@ -184,27 +194,50 @@ We have two playbooks for Ganglia master and slave.</p>
 </li>
 </ul>
 </div>
+<div class="section" id="influxdb">
+<h3>influxdb<a class="headerlink" href="#influxdb" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>all.yml<ul>
+<li>Configure influxdb and Grafana.</li>
+</ul>
+</li>
+</ul>
+</div>
 </div>
 <div class="section" id="playbooks-for-operation">
 <h2>Playbooks for operation<a class="headerlink" href="#playbooks-for-operation" title="Permalink to this headline">¶</a></h2>
 <p>We can use playbooks in playbooks/operation directory to operate services.</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="27%" />
-<col width="73%" />
+<col width="32%" />
+<col width="68%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Directory</th>
-<th class="head">Use for</th>
-</tr>
-</thead>
 <tbody valign="top">
-<tr class="row-even"><td>playbooks/operation/cdh5</td>
+<tr class="row-odd"><td>Directory</td>
+<td>Use for</td>
+</tr>
+<tr class="row-even"><td>===============================-</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>playbooks/operation/cdh5</td>
 <td>Operation of Hadoop Services.
 e.g. Formating HDFS, Start/Stop services, ...</td>
 </tr>
-<tr class="row-odd"><td>playbooks/operation/ec2</td>
+<tr class="row-even"><td>playbooks/operation/cdh5_pseudo</td>
+<td>Operation of Hadoop Services.
+e.g. Formating HDFS, Start/Stop services, ...</td>
+</tr>
+<tr class="row-odd"><td>playbooks/operation/common</td>
+<td>Operations about SSH key exchange.</td>
+</tr>
+<tr class="row-even"><td>playbooks/operation/ec2</td>
 <td>Operation to boot EC2 instances</td>
+</tr>
+<tr class="row-odd"><td>playbooks/operation/httpd</td>
+<td>Start and stop httpd</td>
+</tr>
+<tr class="row-even"><td>playbooks/operation/influxdb</td>
+<td>Operation about InfluxDB initilization</td>
 </tr>
 </tbody>
 </table>
@@ -217,6 +250,16 @@ Please check README in the <em>cdh5</em> directory for more information.</p>
 <h3>ec2<a class="headerlink" href="#ec2" title="Permalink to this headline">¶</a></h3>
 <p>This is a set of operation to boot EC2 instances.
 Please check README in the <em>ec2</em> directory for more information.</p>
+</div>
+<div class="section" id="id2">
+<h3>influxdb<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>create_graphite_db.yml<ul>
+<li>Create database in InfluxDB, which hold data gathered by Graphite&#8217;s protocol.
+This is mainly used by Spark.</li>
+</ul>
+</li>
+</ul>
 </div>
 </div>
 </div>

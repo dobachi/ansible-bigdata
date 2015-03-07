@@ -25,6 +25,7 @@ Each function is available individually.
 * Configuring HDFS/YARN with NameNode HA
 * Configuring Spark core on Client node
 * Configuring Ganglia for the resource visualization
+* Configuring InfluxDB and Grafana for the metrics visualization
 * Configuring Pseudo environment for test
 
 .. _sec-servers:
@@ -42,7 +43,7 @@ master01 Primary NameNode, JournalNode, Zookeeper Server(id=1), Ganglia Slave
 master02 Backup NameNode, JournalNode, Zookeeper Server(id=2), Primary ResourceManager,
          Ganglia Slave
 master03 JournalNode, Zookeeper Server(id=3), HistoryServer, Backup ResourceManager,
-         Ganglia Slave, Ganglia Master
+         Ganglia Slave, Ganglia Master, InfluxDB, Grafana
 client01 Hadoop Client, Spark Core, Ganglia Slave
 slave01  DataNode, NodeManager, Ganglia Slave
 slave02  DataNode, NodeManager, Ganglia Slave
@@ -63,7 +64,7 @@ master04 Backup ResourceManager, Ganglia Slave
 master05 JournalNode, Zookeeper Server(id=1), Ganglia Slave
 master06 JournalNode, Zookeeper Server(id=2), Ganglia Slave
 master07 JournalNode, Zookeeper Server(id=3), Ganglia Slave
-master08 HistoryServer, Ganglia Master, Ganglia Slave
+master08 HistoryServer, Ganglia Master, Ganglia Slave, InfluxDB, Grafana
 client01 Hadoop Client, Spark Core, Ganglia Slave
 slave01  DataNode, NodeManager, Ganglia Slave
 slave02  DataNode, NodeManager, Ganglia Slave

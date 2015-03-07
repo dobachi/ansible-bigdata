@@ -63,6 +63,7 @@ Each function is available individually.</p>
 <li>Configuring HDFS/YARN with NameNode HA</li>
 <li>Configuring Spark core on Client node</li>
 <li>Configuring Ganglia for the resource visualization</li>
+<li>Configuring InfluxDB and Grafana for the metrics visualization</li>
 <li>Configuring Pseudo environment for test</li>
 </ul>
 </div>
@@ -90,7 +91,7 @@ Ganglia Slave</td>
 </tr>
 <tr class="row-even"><td>master03</td>
 <td>JournalNode, Zookeeper Server(id=3), HistoryServer, Backup ResourceManager,
-Ganglia Slave, Ganglia Master</td>
+Ganglia Slave, Ganglia Master, InfluxDB, Grafana</td>
 </tr>
 <tr class="row-odd"><td>client01</td>
 <td>Hadoop Client, Spark Core, Ganglia Slave</td>
@@ -146,7 +147,7 @@ Ganglia Slave, Ganglia Master</td>
 <td>JournalNode, Zookeeper Server(id=3), Ganglia Slave</td>
 </tr>
 <tr class="row-odd"><td>master08</td>
-<td>HistoryServer, Ganglia Master, Ganglia Slave</td>
+<td>HistoryServer, Ganglia Master, Ganglia Slave, InfluxDB, Grafana</td>
 </tr>
 <tr class="row-even"><td>client01</td>
 <td>Hadoop Client, Spark Core, Ganglia Slave</td>
