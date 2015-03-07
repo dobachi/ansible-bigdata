@@ -1,3 +1,0 @@
----
-# tasks file for roles/python_whisper
-- include: install.yml tags=install,python_whisper

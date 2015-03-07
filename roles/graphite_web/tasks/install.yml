@@ -1,5 +1,0 @@
-- name: install_mod_python_
-  yum: name=mod_python state=installed
-
-- name: install_graphite-web
-  yum: name=graphite-web state=installed

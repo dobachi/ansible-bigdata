@@ -1,7 +1,0 @@
-- hosts: '{{ server | default("hadoop_other") }}'
-  roles:
-    - common
-    - python_whisper
-
-# vim: et sw=2 ts=2
-

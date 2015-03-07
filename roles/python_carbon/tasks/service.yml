@@ -1,2 +1,0 @@
-- name: start_carbon_cache
-  service: name=carbon-cache state=started enabled=yes

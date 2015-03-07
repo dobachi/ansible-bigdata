@@ -1,2 +1,0 @@
-- name: install_python-whisper
-  yum: name=python-whisper state=installed

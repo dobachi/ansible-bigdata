@@ -1,5 +1,0 @@
----
-# defaults file for roles/graphite_web
-graphite_web_port: 8888
-graphite_web_key: secret 
-graphite_web_time_zone: 'Asia/Tokyo'

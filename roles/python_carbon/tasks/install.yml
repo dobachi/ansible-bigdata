@@ -1,2 +1,0 @@
-- name: install_python-carbon
-  yum: name=python-carbon state=installed

@@ -1,9 +1,0 @@
-- name: copy_graphite-web.conf
-  template: src=graphite-web.conf.j2 dest=/etc/httpd/conf.d/graphite-web.conf
-  notify:
-    - restart_httpd
-
-- name: copy_local_settings
-  template: src=local_settings.py.j2 dest=/etc/graphite-web/local_settings.py
-  notify:
-    - restart_httpd
