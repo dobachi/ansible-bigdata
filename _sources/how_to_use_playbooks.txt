@@ -274,6 +274,24 @@ You can install Gaglia services with the following command::
 
  $ ansible-playbook playbooks/conf/ganglia/ganglia_all.yml -k -s
 
+How to use unicast for communication between gmonds
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+This playbook uses multicast for communication between gmonds as default.
+In some situcation, you may want to use unicast.
+For example, you are using ec2 of AWS.
+
+The parameter "ganglia_slave_use_unicast" is used to define
+whether you use unicast or not.
+If you set this parameter True in your group_vars, you can use unicast.
+
+Example(group_vars/all/ganglia)::
+
+ ganglia_slave_use_unicast: True
+
+Please configure the parameter "ganglia_slave_host" as well as "ganglia_slave_use_unicast"
+This parameter is used to define the destination which each gmond sends metrics,
+and should be a representative node which gmetad connect.
+
 How to install and configure InfluxDB and Grafana
 -----------------------------------------------------
 You can install InfluxDB and Grafana services with the followign command.

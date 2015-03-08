@@ -1064,6 +1064,22 @@ please execute the following command.</p>
 </div>
 <blockquote>
 <div>$ ansible-playbook playbooks/conf/ganglia/ganglia_all.yml -k -s</div></blockquote>
+<div class="section" id="how-to-use-unicast-for-communication-between-gmonds">
+<h4>1.6.7.1. How to use unicast for communication between gmonds<a class="headerlink" href="#how-to-use-unicast-for-communication-between-gmonds" title="Permalink to this headline">¶</a></h4>
+<p>This playbook uses multicast for communication between gmonds as default.
+In some situcation, you may want to use unicast.
+For example, you are using ec2 of AWS.</p>
+<p>The parameter &#8220;ganglia_slave_use_unicast&#8221; is used to define
+whether you use unicast or not.
+If you set this parameter True in your group_vars, you can use unicast.</p>
+<p>Example(group_vars/all/ganglia):</p>
+<div class="highlight-python"><div class="highlight"><pre>ganglia_slave_use_unicast: True
+</pre></div>
+</div>
+<p>Please configure the parameter &#8220;ganglia_slave_host&#8221; as well as &#8220;ganglia_slave_use_unicast&#8221;
+This parameter is used to define the destination which each gmond sends metrics,
+and should be a representative node which gmetad connect.</p>
+</div>
 </div>
 <div class="section" id="how-to-install-and-configure-influxdb-and-grafana">
 <h3>1.6.8. How to install and configure InfluxDB and Grafana<a class="headerlink" href="#how-to-install-and-configure-influxdb-and-grafana" title="Permalink to this headline">¶</a></h3>

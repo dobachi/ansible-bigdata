@@ -281,6 +281,24 @@ Ganglia環境を構成する
 
  $ ansible-playbook playbooks/conf/ganglia/ganglia_all.yml -k -s
 
+gmondでユニキャストを使う方法
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+デフォルトでは、マルチキャストを使うようになっています。
+EC2インスタンスでクラスタを構成している場合など、
+マルチキャストを利用できない時はユニキャストを利用することになります。
+
+そのためには、"ganglia_slave_use_unicast"というパラメータをTrueに設定してください。
+
+例（group_vars/all/ganglia）::
+
+ ganglia_slave_use_unicast: True
+
+また合わせて"ganglia_slave_host"というパラメータも設定するようにしてください。
+このパラメータは、gmondがメトリクスを送る対象を示します。
+多くの場合、Gangliaのマスタデーモンgmetadは、
+各グループの代表サーバをポーリングします。
+このポーリングする対象を"ganglia_slave_host"の設定値にするとよいです。
+
 InfluxDBとGrafanaを構成する
 ----------------------------
 InfluxDBとGrafanaをインストールするには以下のコマンドを実行します。

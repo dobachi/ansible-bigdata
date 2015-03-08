@@ -1069,6 +1069,22 @@ EC2インスタンスにアクセスしたり、EC2インスタンスによる�
 </pre></div>
 </div>
 </div>
+<div class="section" id="gmond">
+<h4>2.6.7.3. gmondでユニキャストを使う方法<a class="headerlink" href="#gmond" title="Permalink to this headline">¶</a></h4>
+<p>デフォルトでは、マルチキャストを使うようになっています。
+EC2インスタンスでクラスタを構成している場合など、
+マルチキャストを利用できない時はユニキャストを利用することになります。</p>
+<p>そのためには、&#8221;ganglia_slave_use_unicast&#8221;というパラメータをTrueに設定してください。</p>
+<p>例（group_vars/all/ganglia）:</p>
+<div class="highlight-python"><div class="highlight"><pre>ganglia_slave_use_unicast: True
+</pre></div>
+</div>
+<p>また合わせて&#8221;ganglia_slave_host&#8221;というパラメータも設定するようにしてください。
+このパラメータは、gmondがメトリクスを送る対象を示します。
+多くの場合、Gangliaのマスタデーモンgmetadは、
+各グループの代表サーバをポーリングします。
+このポーリングする対象を&#8221;ganglia_slave_host&#8221;の設定値にするとよいです。</p>
+</div>
 </div>
 <div class="section" id="id43">
 <h3>2.6.8. InfluxDBとGrafanaを構成する<a class="headerlink" href="#id43" title="Permalink to this headline">¶</a></h3>
