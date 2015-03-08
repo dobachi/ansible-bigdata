@@ -930,7 +930,7 @@ create keys while referring AWS web site.</p>
 <h4>1.6.3.3. Define parameters for ec2_hadoop role<a class="headerlink" href="#define-parameters-for-ec2-hadoop-role" title="Permalink to this headline">¶</a></h4>
 <p>You can find the parameter description for ec2_hadoop role in roles/ec2_hadoop/defaults/main.yml</p>
 <p>To define your own parameters,
-you need to create the group variable file (e.g. group_vars/top) and write parameter defines in this file.</p>
+you need to create the group variable file (e.g. group_vars/all/ec2) and write parameter defines in this file.</p>
 <p>The following is an example of group_vas/top.</p>
 <div class="highlight-python"><div class="highlight"><pre>ec2_hadoop_group_id: sg-xxxxxxxx
 
@@ -956,12 +956,20 @@ you will see some errors, like:</p>
 <div class="section" id="apply-playbook">
 <h4>1.6.3.4. Apply playbook<a class="headerlink" href="#apply-playbook" title="Permalink to this headline">¶</a></h4>
 <p>Execute ansible-playbook command.</p>
-<div class="highlight-python"><div class="highlight"><pre>$ ansible-playbook playbooks/operation/ec2/hadoop_nodes_up.yml -k
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/operation/ec2/hadoop_nodes_up.yml -k
 </pre></div>
 </div>
 <p>As a result, you can find an IP address list, an ansible inventory file and an example of /etc/hosts used in EC2 instances
 in /tmp/ec2_&lt;unix epoc time&gt;.
 &lt;unix epoc time&gt; is the time you executed this playbook.</p>
+</div>
+<div class="section" id="supplement-when-you-restart-ec2-instances">
+<h4>1.6.3.5. (supplement) When you restart ec2 instances<a class="headerlink" href="#supplement-when-you-restart-ec2-instances" title="Permalink to this headline">¶</a></h4>
+<p>When you restart ec2 instances, public IP addresses may change.
+You can obtain new IP address tables by executing the playbook.</p>
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/operation/ec2/hadoop_nodes_up.yml -k
+</pre></div>
+</div>
 </div>
 </div>
 <div class="section" id="how-to-configure-host-names-of-nodes">

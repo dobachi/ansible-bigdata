@@ -918,7 +918,7 @@ export AWS_SECRET_KEY=XXXXXXXXXXXXXXXXXXXXXXXXX
 <p>パラメータはroles/ec2_hadoop/defaults/main.ymlに定義されています。
 ただし設定必要なパラメータは、最初コメントアウトされた状態になっています。
 各自の値を設定し、コメントアウトを解除してください。</p>
-<p>なお、group_vas/topに記載しても良いです。
+<p>なお、group_vas/all/ec2等のグループ変数に記載しても良いです。
 設定例を以下に示します。</p>
 <div class="highlight-python"><div class="highlight"><pre>ec2_hadoop_group_id: sg-xxxxxxxx
 
@@ -955,20 +955,28 @@ EC2インスタンスにアクセスしたり、EC2インスタンスによる�
 <li>クラスタ内で利用できる/etc/hostsファイルのサンプル</li>
 </ul>
 </div>
-</div>
 <div class="section" id="id31">
-<h3>2.6.4. ホスト名の設定<a class="headerlink" href="#id31" title="Permalink to this headline">¶</a></h3>
+<h4>2.6.3.5. （補足）EC2インスタンスを再起動した場合<a class="headerlink" href="#id31" title="Permalink to this headline">¶</a></h4>
+<p>EC2インスタンスを再起動するとpublicなIPアドレスが変わります。
+その場合はもう一度プレイブックを実行すると、改めてIPアドレス一覧のファイルが生成されます。</p>
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/operation/ec2/hadoop_nodes_up.yml -k
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id32">
+<h3>2.6.4. ホスト名の設定<a class="headerlink" href="#id32" title="Permalink to this headline">¶</a></h3>
 <p>「common」ロールを使って各サーバのホスト名を設定できます。
 主にEC2インスタンスでHadoopクラスタを構成した際に、
 自動付与されたホスト名から扱いやすいホスト名に変更する場合に利用します。</p>
-<div class="section" id="id32">
-<h4>2.6.4.1. 前提<a class="headerlink" href="#id32" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id33">
+<h4>2.6.4.1. 前提<a class="headerlink" href="#id33" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li>本プレイブック集を利用して、もしくは手動で、Ansible実行環境が設定されていること</li>
 </ul>
 </div>
-<div class="section" id="id33">
-<h4>2.6.4.2. 手順<a class="headerlink" href="#id33" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id34">
+<h4>2.6.4.2. 手順<a class="headerlink" href="#id34" title="Permalink to this headline">¶</a></h4>
 <p>以下の通り、ansible-playbookコマンドを実行します。</p>
 <div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd</span> /etc/ansible
 <span class="nv">$ </span>ansible-playbook playbooks/conf/common/common_only_common.yml -k -s -e <span class="s2">&quot;common_config_hostname=True server=hadoop_all&quot;</span>
@@ -978,14 +986,14 @@ EC2インスタンスにアクセスしたり、EC2インスタンスによる�
 </div>
 <div class="section" id="cdh5hdfs-yarn">
 <h3>2.6.5. CDH5のHDFS/YARN環境を構成する例<a class="headerlink" href="#cdh5hdfs-yarn" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="id34">
-<h4>2.6.5.1. 前提条件<a class="headerlink" href="#id34" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id35">
+<h4>2.6.5.1. 前提条件<a class="headerlink" href="#id35" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li>本プレイブック集を利用して、もしくは手動で、Ansible実行環境が設定されていること</li>
 </ul>
 </div>
-<div class="section" id="id35">
-<h4>2.6.5.2. 手順<a class="headerlink" href="#id35" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id36">
+<h4>2.6.5.2. 手順<a class="headerlink" href="#id36" title="Permalink to this headline">¶</a></h4>
 <p>以下の通り、ansible-playbookコマンドを実行します。</p>
 <p>なお、ここではオプションでcommon_hosts_replace変数をTrueにしているため、
 各サーバの/etc/hostsを置き換えることに注意してください。
@@ -1000,8 +1008,8 @@ EC2インスタンスにアクセスしたり、EC2インスタンスによる�
 </pre></div>
 </div>
 </div>
-<div class="section" id="id36">
-<h4>2.6.5.3. Spark実行環境の整備<a class="headerlink" href="#id36" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id37">
+<h4>2.6.5.3. Spark実行環境の整備<a class="headerlink" href="#id37" title="Permalink to this headline">¶</a></h4>
 <p>以下の通り、ansible-playbookコマンドを実行します。</p>
 <div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/conf/cdh5/cdh5_spark.yml -k -s
 </pre></div>
@@ -1014,14 +1022,14 @@ EC2インスタンスにアクセスしたり、EC2インスタンスによる�
 </div>
 <div class="section" id="cdh5pseudo">
 <h3>2.6.6. CDH5のPseudo環境を構成する例<a class="headerlink" href="#cdh5pseudo" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="id37">
-<h4>2.6.6.1. 前提条件<a class="headerlink" href="#id37" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id38">
+<h4>2.6.6.1. 前提条件<a class="headerlink" href="#id38" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li>本プレイブック集を利用して、もしくは手動で、Ansible実行環境が設定されていること</li>
 </ul>
 </div>
-<div class="section" id="id38">
-<h4>2.6.6.2. 手順<a class="headerlink" href="#id38" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id39">
+<h4>2.6.6.2. 手順<a class="headerlink" href="#id39" title="Permalink to this headline">¶</a></h4>
 <p>以下の通り、ansible-playbookコマンドを実行します。
 各サーバの/etc/hostsを置き換えることに注意してください。
 /etc/ansible/roles/common/files/hosts.defaultの内容に置き換えられます。</p>
@@ -1046,24 +1054,24 @@ EC2インスタンスにアクセスしたり、EC2インスタンスによる�
 </div>
 </div>
 </div>
-<div class="section" id="id39">
-<h3>2.6.7. Ganglia環境を構成する<a class="headerlink" href="#id39" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="id40">
-<h4>2.6.7.1. 前提条件<a class="headerlink" href="#id40" title="Permalink to this headline">¶</a></h4>
+<h3>2.6.7. Ganglia環境を構成する<a class="headerlink" href="#id40" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id41">
+<h4>2.6.7.1. 前提条件<a class="headerlink" href="#id41" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li>本プレイブック集を利用して、もしくは手動で、Ansible実行環境が設定されていること</li>
 </ul>
 </div>
-<div class="section" id="id41">
-<h4>2.6.7.2. 手順<a class="headerlink" href="#id41" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id42">
+<h4>2.6.7.2. 手順<a class="headerlink" href="#id42" title="Permalink to this headline">¶</a></h4>
 <p>以下の通り、ansible-playbookコマンドを実行します。</p>
 <div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/conf/ganglia/ganglia_all.yml -k -s
 </pre></div>
 </div>
 </div>
 </div>
-<div class="section" id="id42">
-<h3>2.6.8. InfluxDBとGrafanaを構成する<a class="headerlink" href="#id42" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id43">
+<h3>2.6.8. InfluxDBとGrafanaを構成する<a class="headerlink" href="#id43" title="Permalink to this headline">¶</a></h3>
 <p>InfluxDBとGrafanaをインストールするには以下のコマンドを実行します。</p>
 <div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/conf/influxdb/all.yml -k -s
 </pre></div>

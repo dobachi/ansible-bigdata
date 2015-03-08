@@ -145,7 +145,7 @@ export AWS_SECRET_KEY=XXXXXXXXXXXXXXXXXXXXXXXXX
 <p>パラメータはroles/ec2_hadoop/defaults/main.ymlに定義されています。
 ただし設定必要なパラメータは、最初コメントアウトされた状態になっています。
 各自の値を設定し、コメントアウトを解除してください。</p>
-<p>なお、group_vas/topに記載しても良いです。
+<p>なお、group_vas/all/ec2等のグループ変数に記載しても良いです。
 設定例を以下に示します。</p>
 <div class="highlight-python"><div class="highlight"><pre>ec2_hadoop_group_id: sg-xxxxxxxx
 
@@ -182,20 +182,28 @@ EC2インスタンスにアクセスしたり、EC2インスタンスによる�
 <li>クラスタ内で利用できる/etc/hostsファイルのサンプル</li>
 </ul>
 </div>
-</div>
 <div class="section" id="id10">
-<h2>ホスト名の設定<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
+<h3>（補足）EC2インスタンスを再起動した場合<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<p>EC2インスタンスを再起動するとpublicなIPアドレスが変わります。
+その場合はもう一度プレイブックを実行すると、改めてIPアドレス一覧のファイルが生成されます。</p>
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/operation/ec2/hadoop_nodes_up.yml -k
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id11">
+<h2>ホスト名の設定<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
 <p>「common」ロールを使って各サーバのホスト名を設定できます。
 主にEC2インスタンスでHadoopクラスタを構成した際に、
 自動付与されたホスト名から扱いやすいホスト名に変更する場合に利用します。</p>
-<div class="section" id="id11">
-<h3>前提<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id12">
+<h3>前提<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>本プレイブック集を利用して、もしくは手動で、Ansible実行環境が設定されていること</li>
 </ul>
 </div>
-<div class="section" id="id12">
-<h3>手順<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id13">
+<h3>手順<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
 <p>以下の通り、ansible-playbookコマンドを実行します。</p>
 <div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd</span> /etc/ansible
 <span class="nv">$ </span>ansible-playbook playbooks/conf/common/common_only_common.yml -k -s -e <span class="s2">&quot;common_config_hostname=True server=hadoop_all&quot;</span>
@@ -205,14 +213,14 @@ EC2インスタンスにアクセスしたり、EC2インスタンスによる�
 </div>
 <div class="section" id="cdh5hdfs-yarn">
 <h2>CDH5のHDFS/YARN環境を構成する例<a class="headerlink" href="#cdh5hdfs-yarn" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id13">
-<h3>前提条件<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id14">
+<h3>前提条件<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>本プレイブック集を利用して、もしくは手動で、Ansible実行環境が設定されていること</li>
 </ul>
 </div>
-<div class="section" id="id14">
-<h3>手順<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id15">
+<h3>手順<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
 <p>以下の通り、ansible-playbookコマンドを実行します。</p>
 <p>なお、ここではオプションでcommon_hosts_replace変数をTrueにしているため、
 各サーバの/etc/hostsを置き換えることに注意してください。
@@ -241,14 +249,14 @@ EC2インスタンスにアクセスしたり、EC2インスタンスによる�
 </div>
 <div class="section" id="cdh5pseudo">
 <h2>CDH5のPseudo環境を構成する例<a class="headerlink" href="#cdh5pseudo" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id15">
-<h3>前提条件<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id16">
+<h3>前提条件<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>本プレイブック集を利用して、もしくは手動で、Ansible実行環境が設定されていること</li>
 </ul>
 </div>
-<div class="section" id="id16">
-<h3>手順<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id17">
+<h3>手順<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h3>
 <p>以下の通り、ansible-playbookコマンドを実行します。
 各サーバの/etc/hostsを置き換えることに注意してください。
 /etc/ansible/roles/common/files/hosts.defaultの内容に置き換えられます。</p>
@@ -275,14 +283,14 @@ EC2インスタンスにアクセスしたり、EC2インスタンスによる�
 </div>
 <div class="section" id="ganglia">
 <h2>Ganglia環境を構成する<a class="headerlink" href="#ganglia" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id17">
-<h3>前提条件<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id18">
+<h3>前提条件<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>本プレイブック集を利用して、もしくは手動で、Ansible実行環境が設定されていること</li>
 </ul>
 </div>
-<div class="section" id="id18">
-<h3>手順<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id19">
+<h3>手順<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h3>
 <p>以下の通り、ansible-playbookコマンドを実行します。</p>
 <div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/conf/ganglia/ganglia_all.yml -k -s
 </pre></div>
