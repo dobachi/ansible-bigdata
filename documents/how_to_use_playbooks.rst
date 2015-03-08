@@ -120,7 +120,7 @@ Define parameters for ec2_hadoop role
 You can find the parameter description for ec2_hadoop role in roles/ec2_hadoop/defaults/main.yml
 
 To define your own parameters,
-you need to create the group variable file (e.g. group_vars/top) and write parameter defines in this file.
+you need to create the group variable file (e.g. group_vars/all/ec2) and write parameter defines in this file.
 
 The following is an example of group_vas/top.
 
@@ -149,13 +149,22 @@ Apply playbook
 ~~~~~~~~~~~~~~~~~~
 Execute ansible-playbook command.
 
-::
+.. code-block:: shell
 
  $ ansible-playbook playbooks/operation/ec2/hadoop_nodes_up.yml -k
 
 As a result, you can find an IP address list, an ansible inventory file and an example of /etc/hosts used in EC2 instances
 in /tmp/ec2_<unix epoc time>.
 <unix epoc time> is the time you executed this playbook.
+
+(supplement) When you restart ec2 instances
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+When you restart ec2 instances, public IP addresses may change.
+You can obtain new IP address tables by executing the playbook.
+
+.. code-block:: shell
+
+ $ ansible-playbook playbooks/operation/ec2/hadoop_nodes_up.yml -k
 
 How to configure host names of nodes
 ------------------------------------------
