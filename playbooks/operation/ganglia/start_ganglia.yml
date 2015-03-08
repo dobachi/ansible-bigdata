@@ -1,0 +1,11 @@
+- hosts: "{{ server | default('hadoop_all') }}"
+  tasks:
+    - name: start_gmond
+      service: name=gmond state=started
+
+- hosts: "{{ server | default('hadoop_other') }}"
+  tasks:
+    - name: start_httpd
+      service: name=httpd state=started
+    - name: start_gmetad
+      service: name=gmetad state=started

@@ -1,0 +1,2 @@
+- include: stop_ganglia.yml
+- include: start_ganglia.yml
