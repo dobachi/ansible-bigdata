@@ -12,7 +12,11 @@ globals {
   host_dmax = 0 /*secs */
   cleanup_threshold = 300 /*secs */
   gexec = no
+{% if ganglia_slave_use_unicast == True %}
+  send_metadata_interval = {{ ganglia_slave_metadata_interval }} /*secs */
+{% else %}
   send_metadata_interval = 0 /*secs */
+{% endif %}
 }
 
 /*
@@ -40,17 +44,24 @@ udp_send_channel {
                        # this, the metrics may appear to come from any
                        # interface and the DNS names associated with
                        # those IPs will be used to create the RRDs.
+
+{% if ganglia_slave_use_unicast == True %}
+  host =  {{ ganglia_slave_host }}
+{% else %}
   mcast_join = {{ ganglia_slave_mcast_join }}
-  port = {{ ganglia_slave_port }}
   bind = {{ ganglia_slave_mcast_join }}
+{% endif %}
+  port = {{ ganglia_slave_port }}
   ttl = 1
 }
 
 /* You can specify as many udp_recv_channels as you like as well. */
 udp_recv_channel {
+{% if ganglia_slave_use_unicast == False %}
   mcast_join = {{ ganglia_slave_mcast_join }}
-  port = {{ ganglia_slave_port }}
   bind = {{ ganglia_slave_mcast_join }}
+{% endif %}
+  port = {{ ganglia_slave_port }}
 }
 
 /* You can specify as many tcp_accept_channels as you like to share

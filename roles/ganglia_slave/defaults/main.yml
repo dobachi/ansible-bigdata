@@ -1,11 +1,23 @@
 ---
-ganglia_slave_cluster_name: hadoop_cluster
-ganglia_slave_cluster_owner: hadoop_owner
-ganglia_slave_cluster_latlong: unspecified
-ganglia_slave_cluster_url: unspecified
+ganglia_slave_cluster_name: 'Hadoop_Cluster'
+ganglia_slave_cluster_owner: 'hadoop_owner'
+ganglia_slave_cluster_latlong: 'unspecified'
+ganglia_slave_cluster_url: 'unspecified'
+ganglia_slave_location: 'unspecified'
+ganglia_slave_dev: eth1
 
-ganglia_slave_location: hadoop_place
+# If you want to use unicast, please chanage the following variable to True
+ganglia_slave_use_unicast: False
+
+# Configuration about multicastcast
+#
+# The following parameters may be overwriten in group_vars/{hadoop_master, hadoop_slave, hadoop_client}
 ganglia_slave_mcast_join: 239.2.11.71
 ganglia_slave_port: 8649
+        #
+# Configuration about unicast
+#
+# The following parameters may be overwriten in group_vars/{hadoop_master, hadoop_slave, hadoop_client}
+ganglia_slave_metadata_interval: '10'
+ganglia_slave_host: 'localhost'
 
-ganglia_slave_dev: eth1
