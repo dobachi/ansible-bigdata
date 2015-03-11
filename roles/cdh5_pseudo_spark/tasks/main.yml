@@ -2,3 +2,4 @@
 - include: user.yml tags=user,cdh5_pseudo_spark
 - include: install.yml tags=install,cdh5_pseudo_spark
 - include: config.yml tags=config,cdh5_pseudo_spark
+- include: service.yml tags=service,cdh5_pseudo_spark
