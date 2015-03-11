@@ -79,4 +79,48 @@
         $HADOOP_YARN_HOME/*,$HADOOP_YARN_HOME/lib/*
      </value>
   </property>
+
+  <property>
+    <name>yarn.nodemanager.resource.cpu-vcores</name>
+    <value>{{ cdh5_pseudo_yarn_nodemanager_resource_cpu_vcores }}</value>
+  </property>
+
+  <property>
+    <name>yarn.scheduler.minimum-allocation-vcores</name>
+    <value>{{ cdh5_pseudo_yarn_scheduler_minimum_allocation_vcores }}</value>
+  </property>
+
+  <property>
+    <name>yarn.scheduler.maximum-allocation-vcores</name>
+    <value>{{ cdh5_pseudo_yarn_scheduler_maximum_allocation_vcores }}</value>
+  </property>
+
+  <property>
+    <name>yarn.nodemanager.resource.memory-mb</name>
+    <value>{{ cdh5_pseudo_yarn_nodemanager_resource_memory_mb }}</value>
+  </property>
+
+  <property>
+    <name>yarn.scheduler.minimum-allocation-mb</name>
+    <value>{{ cdh5_pseudo_yarn_scheduler_minimum_allocation_mb }}</value>
+  </property>
+  <property>
+    <name>yarn.scheduler.maximum-allocation-mb</name>
+    <value>{{ cdh5_pseudo_yarn_scheduler_maximum_allocation_mb }}</value>
+  </property>
+
+  <property>
+    <name>yarn.nodemanager.vmem-pmem-ratio</name>
+    <value>{{ cdh5_pseudo_yarn_nodemanager_vmem_pmem_ratio }}</value>
+  </property>
+
+  <property>
+    <name>yarn.nodemanager.pmem-check-enabled</name>
+    <value>{{ cdh5_pseudo_yarn_nodemanager_pmem_check_enabled }}</value>
+  </property>
+  <property>
+    <name>yarn.nodemanager.vmem-check-enabled</name>
+    <value>{{ cdh5_pseudo_yarn_nodemanager_vmem_check_enabled }}</value>
+  </property>
+
 </configuration>
