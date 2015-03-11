@@ -1,0 +1,12 @@
+[top:children]
+local
+cdh5_pseudo
+
+[local]
+localhost
+
+[hadoop_pseudo]
+{% for i in ec2_hadoop_pseudo_result.results %}
+{{ i.item.name }}
+{% endfor %}
+

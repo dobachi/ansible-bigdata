@@ -1,0 +1,6 @@
+# masters
+{% for i in ec2_hadoop_pseudo_result.results %}
+{% for j in i.tagged_instances %}
+{{ j.private_ip }} {{ j.public_ip }}
+{% endfor %}
+{% endfor %}
