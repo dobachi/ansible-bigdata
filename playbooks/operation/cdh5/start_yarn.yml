@@ -9,7 +9,7 @@
 - hosts: hadoop_client
   tasks:
     - name: wait_for_resourcemanager_web_service_port
-      wait_for: host={{ item }} port=8088
+      wait_for: host={{ item }} port=8088 timeout={{ cdh5_wait_for_timeout }}
       with_items: groups['hadoop_resourcemanager']
 
 - hosts: hadoop_slave
@@ -23,7 +23,7 @@
 - hosts: hadoop_client
   tasks:
     - name: wait_for_nodemanager_service_port
-      wait_for: host={{ item }} port=8040
+      wait_for: host={{ item }} port=8040 timeout={{ cdh5_wait_for_timeout }}
       with_items: groups['hadoop_slave']
 
 - hosts: hadoop_other
@@ -37,5 +37,5 @@
 - hosts: hadoop_client
   tasks:
     - name: wait_for_other_service_port
-      wait_for: host={{ item }} port=10020
+      wait_for: host={{ item }} port=10020 timeout={{ cdh5_wait_for_timeout }}
       with_items: groups['hadoop_other']

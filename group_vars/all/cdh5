@@ -1,0 +1,2 @@
+# Used for wait_for in starting and stopping services
+cdh5_wait_for_timeout: '120'

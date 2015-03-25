@@ -9,5 +9,5 @@
 - hosts: hadoop_client
   tasks:
     - name: wait_for_spark_history_server_web_service_port
-      wait_for: host={{ item }} port=18080
+      wait_for: host={{ item }} port=18080 timeout={{ cdh5_wait_for_timeout }}
       with_items: groups['hadoop_other']
