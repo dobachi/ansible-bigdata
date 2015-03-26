@@ -27,5 +27,6 @@ cdh5_spark_history_dir: 'hdfs://{{ cdh5_spark_hdfs_cluster_name }}/var/log/spark
 cdh5_spark_scala_home: '/usr/local/scala/default'
 #
 # /etc/spark/conf/metrics.properties
+cdh5_spark_graphite_enabled: True
 cdh5_spark_graphite_prefix: 'spark'
 cdh5_spark_graphite_port: '2003'
