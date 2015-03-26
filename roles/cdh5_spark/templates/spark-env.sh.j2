@@ -27,11 +27,11 @@
 # - SPARK_YARN_QUEUE, The hadoop queue to use for allocation requests (Default: ‘default’)
 # - SPARK_YARN_DIST_FILES, Comma separated list of files to be distributed with the job.
 # - SPARK_YARN_DIST_ARCHIVES, Comma separated list of archives to be distributed with the job.
-export HADOOP_CONF_DIR=/etc/hadoop/conf
-#export SPARK_EXECUTOR_INSTANCES=10
-export SPARK_EXECUTOR_CORES={{ cdh5_spark_exe_cores }}
-export SPARK_EXECUTOR_MEMORY={{ cdh5_spark_exe_mem }}
-export SPARK_DRIVER_MEMORY={{ cdh5_spark_dri_mem }}
+export HADOOP_CONF_DIR=${HADOOP_CONF_DIR:-/etc/hadoop/conf}
+export SPARK_EXECUTOR_INSTANCES=${SPARK_EXECUTOR_INSTANCES:-{{ cdh5_spark_exe_instances }}}
+export SPARK_EXECUTOR_CORES=${SPARK_EXECUTOR_CORES:-{{ cdh5_spark_exe_cores }}}
+export SPARK_EXECUTOR_MEMORY=${SPARK_EXECUTOR_MEMORY:-{{ cdh5_spark_exe_mem }}}
+export SPARK_DRIVER_MEMORY=${SPARK_DRIVER_MEMORY:-{{ cdh5_spark_dri_mem }}}
 
 # Options for the daemons used in the standalone deploy mode:
 # - SPARK_MASTER_IP, to bind the master to a different IP address or hostname
@@ -46,4 +46,4 @@ export SPARK_DRIVER_MEMORY={{ cdh5_spark_dri_mem }}
 # - SPARK_HISTORY_OPTS, to set config properties only for the history server (e.g. "-Dx=y")
 # - SPARK_DAEMON_JAVA_OPTS, to set config properties for all daemons (e.g. "-Dx=y")
 # - SPARK_PUBLIC_DNS, to set the public dns name of the master or workers
-export SPARK_HISTORY_OPTS="$SPARK_HISTORY_OPTS -Dspark.history.fs.logDirectory={{ cdh5_spark_history_dir }}"
+export SPARK_HISTORY_OPTS=${SPARK_HISTORY_OPTS:-"$SPARK_HISTORY_OPTS -Dspark.history.fs.logDirectory={{ cdh5_spark_history_dir }}"}

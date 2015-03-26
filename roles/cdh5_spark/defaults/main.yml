@@ -18,6 +18,7 @@ cdh5_spark_historyserver: '{{ groups["hadoop_other"][0] }}'
 cdh5_spark_historyserver: '{{ groups["hadoop_other"][0] }}'
 
 # spark-env.sh
+cdh5_spark_exe_instances: '1'
 cdh5_spark_exe_cores: '1'
 cdh5_spark_exe_mem: '400M'
 cdh5_spark_dri_mem: '400M'
