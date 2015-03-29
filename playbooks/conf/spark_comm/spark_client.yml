@@ -6,4 +6,5 @@
     - sbt
     - activator_mini
     - git
+    - maven
     - spark_comm

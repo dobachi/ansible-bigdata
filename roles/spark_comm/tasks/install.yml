@@ -3,3 +3,6 @@
 
 - name: git_clone_spark_sources
   git: repo=https://github.com/apache/spark.git dest={{ spark_comm_src_dir }}/{{ spark_comm_tagname }} version={{ spark_comm_tagname }}
+
+- name: build_spark
+  shell: build/mvn -Pnetlib-lgpl -Pyarn -Phadoop-2.4 -Dhadoop.version=2.4.0 -Phive -Phive-thriftserve -DskipTests clean package chdir={{ spark_comm_src_dir }}/{{ spark_comm_tagname }}
