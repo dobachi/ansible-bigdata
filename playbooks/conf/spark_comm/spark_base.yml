@@ -1,0 +1,4 @@
+- hosts: '{{ server | default("hadoop_all") }}'
+  roles:
+    - { role: common, common_config_hostname: True }
+    - spark_user
