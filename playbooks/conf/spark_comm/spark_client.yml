@@ -5,4 +5,5 @@
     - scala
     - sbt
     - activator_mini
+    - git
     - spark_comm

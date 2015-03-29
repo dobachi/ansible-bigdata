@@ -2,4 +2,5 @@
   roles:
     - { role: common, common_config_hostname: True }
     - jdk
+    - git
     - spark_comm

@@ -1,0 +1,5 @@
+- name: make_spark_src_directory
+  file: path={{ spark_comm_src_dir }} state=directory
+
+- name: git_clone_spark_sources
+  git: repo=https://github.com/apache/spark.git dest={{ spark_comm_src_dir }}/{{ spark_comm_tagname }} version={{ spark_comm_tagname }}

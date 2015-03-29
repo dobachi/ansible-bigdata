@@ -1,2 +1,4 @@
 ---
 # defaults file for roles/spark_comm
+spark_comm_src_dir: '/usr/src/spark'
+spark_comm_tagname: 'v1.3.0'
