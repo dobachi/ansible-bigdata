@@ -1,0 +1,2 @@
+- name: copy_zeppelin-site.xml
+  template: src=zeppelin-site.xml.j2 dest={{ zeppelin_src_dir }}/default/zeppelin-site.xml

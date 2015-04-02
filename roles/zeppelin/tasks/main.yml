@@ -1,0 +1,4 @@
+---
+# tasks file for roles/zeppelin
+- include: install.yml tags=install,zeppelin
+#- include: config.yml tags=config,zeppelin

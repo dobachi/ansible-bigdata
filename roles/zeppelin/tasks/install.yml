@@ -1,0 +1,11 @@
+- name: mkdir_zeppelin_dir
+  file: path={{ zeppelin_src_dir }} state=directory
+
+- name: clone_zeppelin_src
+  git: repo=https://github.com/NFLabs/zeppelin dest={{ zeppelin_src_dir }}/{{ zeppelin_version }}
+
+- name: create_alternatives_link
+  alternatives: name=zeppelin_src path={{ zeppelin_src_dir }}/{{ zeppelin_version }} link={{ zeppelin_src_dir }}/default
+
+- name: compile_zeppelin
+  shell: mvn install -DskipTests -Dspark.version={{ zeppelin_spark_version }} -Dhadoop.version={{ zeppelin_hadoop_version }} chdir={{ zeppelin_src_dir }}/default
