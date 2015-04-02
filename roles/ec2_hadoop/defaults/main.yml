@@ -25,7 +25,8 @@ ec2_hadoop_instance_tag: hadoop
 #ec2_hadoop_vpc_subnet_id: subnet-xxxxxxxx
 
 # The placement group
-#3c2_hadoop_placement_group: xxxxxxxx
+# Notice: The placement group is available for only certain instance types
+#ec2_hadoop_placement_group: xxxxxxx
 
 ec2_hadoop_ma_list:
   - name: master01
