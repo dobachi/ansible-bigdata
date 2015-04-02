@@ -1,2 +1,4 @@
 Defaults:%wheel    !requiretty
+Defaults    env_keep += "PATH"
+Defaults    !secure_path
 %wheel    ALL=(ALL)       NOPASSWD: ALL
