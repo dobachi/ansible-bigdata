@@ -1,7 +1,7 @@
 - hosts: '{{server | default("hadoop_client") }}'
   vars:
     spark_comm_src_dir: '/usr/src/spark'
-    spark_comm_tagname: 'v1.3.0'
+    spark_comm_tagname: 'refs/tags/v1.3.0'
   tasks:
     - name: make_spark_src_directory
       file: path={{ spark_comm_src_dir }} state=directory
@@ -10,4 +10,4 @@
       git: repo=https://github.com/apache/spark.git dest={{ spark_comm_src_dir }}/{{ spark_comm_tagname }} version={{ spark_comm_tagname }}
     
     - name: build_spark
-      shell: yes y | make-distribution.sh --tgz -Pnetlib-lgpl -Pyarn -Phadoop-2.4 -Dhadoop.version=2.4.0 -Phive -Phive-thriftserve -DskipTests chdir={{ spark_comm_src_dir }}/{{ spark_comm_tagname }}
+    shell: yes y | MAVEN_OPTS="-Xmx2g -XX:MaxPermSize=512M -XX:ReservedCodeCacheSize=512m" make-distribution.sh --tgz -Pnetlib-lgpl -Pyarn -Phadoop-2.4 -Dhadoop.version=2.4.0 -Phive -Phive-thriftserve -e chdir={{ spark_comm_src_dir }}/{{ spark_comm_tagname }}
