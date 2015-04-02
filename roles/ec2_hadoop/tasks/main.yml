@@ -15,6 +15,7 @@
       nodetype: "{{ item.name }}"
     private_ip: "{{ item.ip }}"
     vpc_subnet_id: "{{ ec2_hadoop_vpc_subnet_id }}"
+    placement_group: "{{ ec2_hadoop_placement_group }}"
   with_items: ec2_hadoop_ma_list
   register: ec2_hadoop_ma_result
 
@@ -35,6 +36,7 @@
       nodetype: "{{ item.name }}"
     private_ip: "{{ item.ip }}"
     vpc_subnet_id: "{{ ec2_hadoop_vpc_subnet_id }}"
+    placement_group: "{{ ec2_hadoop_placement_group }}"
   with_items: ec2_hadoop_sl_list
   register: ec2_hadoop_sl_result
 
@@ -55,6 +57,7 @@
       nodetype: "{{ item.name }}"
     private_ip: "{{ item.ip }}"
     vpc_subnet_id: "{{ ec2_hadoop_vpc_subnet_id }}"
+    placement_group: "{{ ec2_hadoop_placement_group }}"
   with_items: ec2_hadoop_cl_list
   register: ec2_hadoop_cl_result
 

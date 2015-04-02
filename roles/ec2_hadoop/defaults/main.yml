@@ -24,6 +24,9 @@ ec2_hadoop_instance_tag: hadoop
 # The id of subnet of VPC
 #ec2_hadoop_vpc_subnet_id: subnet-xxxxxxxx
 
+# The placement group
+#3c2_hadoop_placement_group: xxxxxxxx
+
 ec2_hadoop_ma_list:
   - name: master01
     ip: 172.31.16.11
