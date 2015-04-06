@@ -1,6 +1,7 @@
 ---
 # defaults file for roles/zeppelin
+zeppelin_git_url: 'https://github.com/apache/incubator-zeppelin.git'
 zeppelin_src_dir: '/usr/src/zeppelin'
-zeppelin_version: 'refs/tags/release-0.4.0'
-zeppelin_spark_version: '1.2.1'
-zeppelin_hadoop_version: '2.4.0'
+zeppelin_version: 'master'
+zeppelin_comiple_flag: '-Pspark-1.2 -Phadoop-2.4 -Pyarn -DskipTests'
+zeppelin_hadoop_version: '2.5.0-cdh5.3.2'
