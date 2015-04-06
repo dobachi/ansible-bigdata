@@ -1,2 +1,2 @@
 maven_base_dir: '/usr/local/maven'
-maven_version: '3.2.5'
+maven_version: '3.3.1'
