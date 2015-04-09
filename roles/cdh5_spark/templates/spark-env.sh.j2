@@ -46,4 +46,7 @@ export SPARK_DRIVER_MEMORY=${SPARK_DRIVER_MEMORY:-{{ cdh5_spark_dri_mem }}}
 # - SPARK_HISTORY_OPTS, to set config properties only for the history server (e.g. "-Dx=y")
 # - SPARK_DAEMON_JAVA_OPTS, to set config properties for all daemons (e.g. "-Dx=y")
 # - SPARK_PUBLIC_DNS, to set the public dns name of the master or workers
+
 export SPARK_HISTORY_OPTS=${SPARK_HISTORY_OPTS:-"$SPARK_HISTORY_OPTS -Dspark.history.fs.logDirectory={{ cdh5_spark_history_dir }}"}
+export SPARK_CONF_DIR=/etc/spark/conf
+export SCALA_HOME=${SCALA_HOME:-"{{ cdh5_spark_scala_home }}"}
