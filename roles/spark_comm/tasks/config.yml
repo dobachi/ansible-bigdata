@@ -6,3 +6,6 @@
 
 - name: copy_metrics.properties
   template: src=metrics.properties.j2 dest=/etc/spark/conf/metrics.properties
+
+- name: copy_profile_of_spark
+  template: src=spark.sh.j2 dest=/etc/profile.d/spark.sh

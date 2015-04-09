@@ -8,6 +8,10 @@
 #
 spark_comm_hdfs_cluster_name: 'mycluster'
 
+# The path of Spark home directory
+#
+spark_comm_spark_home: '/usr/local/spark/default'
+
 # The path to unarchive Spark packages
 #
 spark_comm_dir: '/usr/local/spark'
