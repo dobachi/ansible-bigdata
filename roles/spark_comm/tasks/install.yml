@@ -17,4 +17,4 @@
   file: path=/etc/spark owner=spark group=spark state=directory
 
 - name: make_alternatives_entry_of_spark_conf
-  alternatives: name=spark_conf path=/usr/local/spark/default/conf link=/etc/spark/conf
+  alternatives: name=spark-conf path=/usr/local/spark/default/conf link=/etc/spark/conf
