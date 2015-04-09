@@ -25,6 +25,7 @@ playbooks/conf/cdh5_pseudo    CDH5の疑似分散環境の構築/設定
 playbooks/conf/ansible        Ansibleの実行環境の設定
 playbooks/conf/ganglia        Ganglia環境の構築／設定
 playbooks/conf/influxdb       InfluxDBとGrafanaの構築／設定
+playbooks/conf/spark_comm     コミュニティ版Sparkの構築/設定
 ============================= ==========================================
 
 common
@@ -147,6 +148,28 @@ influxdb
 
   + InfluxDBとGrafanaを設定します
 
+spark_comm
+~~~~~~~~~~~
+* all.yml
+
+  + クラスタ全体の設定
+
+* spark_base.yml
+
+  + 全ノード共通の基本設定
+
+* spark_client.yml
+
+  + アプリケーションを開発すためのクライアント環境の整備
+
+* spark_history.yml
+
+  + Sparkのヒストリサーバを起動するための設定
+
+* spark_libs.yml
+
+  + MLlibでネイティブライブラリを利用するための設定
+
 運用作業のためのプレイブック集
 -------------------------------
 
@@ -162,6 +185,7 @@ playbooks/operation/cdh5_pseudo   Hadoop HDFS/YARNサービスの運用に用い
 playbooks/operation/ec2           Hadoop用のAWS EC2インスタンスを起動します
 playbooks/operation/httpd         HTTPサービスを起動／停止します
 playbooks/operation/influxdb      InfluxDBを初期化します
+playbooks/operation/spark_com     コミュニティ版Sparkのビルドやサービスの起動/停止に用います
 ================================= ====================================================================
 
 cdh5
@@ -189,3 +213,17 @@ influxdb
 * create_grafana_db.yml
 
   + Grafanaのダッシュボード情報を保存するデータベースをInfluxDBに作成します。
+
+spark_comm
+~~~~~~~~~~~
+* make_spark_packages.yml
+
+  + Sparkソースコードのコンパイルとパッケージ作成
+
+* start_spark_historyserver.yml
+
+  + Sparkのヒストリサーバを起動する
+
+* stop_spark_historyserver.yml
+
+  + Sparkのヒストリサーバを停止する
