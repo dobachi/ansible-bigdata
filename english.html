@@ -1267,6 +1267,54 @@ configured in group_vars/all/meta, group_vars/all/influxdb and group_vars/all/gr
 <p>Please read <a class="reference external" href="http://grafana.org/docs/features/intro/">Grafana&#8217;s documents</a> to learn
 how to configure graphs.</p>
 </div>
+<div class="section" id="how-to-install-spark-community-edition">
+<h3>1.7.9. How to install Spark community edition<a class="headerlink" href="#how-to-install-spark-community-edition" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="obtain-package-or-compile-sources">
+<h4>1.7.9.1. Obtain package or compile sources<a class="headerlink" href="#obtain-package-or-compile-sources" title="Permalink to this headline">¶</a></h4>
+<p>You can get Spark pacakge from <a class="reference external" href="https://spark.apache.org/downloads.html">Spark official download site</a> .</p>
+<p>If you want to use a package compiled by your self,
+you should build it according to <a class="reference external" href="https://spark.apache.org/docs/latest/building-spark.html">Spark offical build procedure</a> .</p>
+<p>You can also use playbooks/operation/spark_comm/make_spark_packages.yml to build it.
+When you use this playbook, please specify the following parameters used in this playbook.</p>
+<ul class="simple">
+<li>spark_comm_src_dir</li>
+<li>spark_comm_version</li>
+<li>spark_comm_mvn_options</li>
+<li>spark_comm_hadoop_version</li>
+</ul>
+</div>
+<div class="section" id="confiure-parameters">
+<h4>1.7.9.2. Confiure parameters<a class="headerlink" href="#confiure-parameters" title="Permalink to this headline">¶</a></h4>
+<p>You can use playbooks/conf/spark_comm/all.yml to configure Spark community edition envirionment.</p>
+<p>This playbooks and roles expect to get Spark tar package by HTTP method.
+You should configure the following parameter to specify where Ansible should get Spark tar package.</p>
+<ul class="simple">
+<li>spark_comm_package_url_base</li>
+<li>spark_comm_package_name</li>
+</ul>
+<p>The download URL is consited like {{ spark_comm_package_url_base }}/{{ spark_comm_package_name }}.tgz
+For example, if the download URL is &#8220;<a class="reference external" href="http://example.local/spark/spark-1.4.0-SNAPSHOT-bin-2.5.0-cdh5.3.2.tgz">http://example.local/spark/spark-1.4.0-SNAPSHOT-bin-2.5.0-cdh5.3.2.tgz</a>&#8221;,
+spark_comm_package_url_base is &#8220;<a class="reference external" href="http://example.local/spark">http://example.local/spark</a>&#8221; and spark_comm_package_name is &#8220;spark-1.4.0-SNAPSHOT-bin-2.5.0-cdh5.3.2&#8221;.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">spark_comm_package_name does not include &#8221;.tgz&#8221;</p>
+</div>
+</div>
+<div class="section" id="execute-playbooks">
+<h4>1.7.9.3. Execute playbooks<a class="headerlink" href="#execute-playbooks" title="Permalink to this headline">¶</a></h4>
+<p>After configuration of parameters, you can execute Ansible playbooks.</p>
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/conf/spark_comm/all.yml -k -s
+</pre></div>
+</div>
+</div>
+<div class="section" id="stat-history-server">
+<h4>1.7.9.4. Stat history server<a class="headerlink" href="#stat-history-server" title="Permalink to this headline">¶</a></h4>
+<p>Start Spark&#8217;s history server by the following command.</p>
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/operation/spark_comm/start_spark_historyserver.yml -k -s
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 </div>
 

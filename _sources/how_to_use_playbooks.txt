@@ -353,5 +353,57 @@ configured in group_vars/all/meta, group_vars/all/influxdb and group_vars/all/gr
 Please read `Grafana's documents <http://grafana.org/docs/features/intro/>`_ to learn
 how to configure graphs.
 
+How to install Spark community edition
+----------------------------------------
+
+Obtain package or compile sources
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+You can get Spark pacakge from `Spark official download site <https://spark.apache.org/downloads.html>`_ .
+
+If you want to use a package compiled by your self,
+you should build it according to `Spark offical build procedure <https://spark.apache.org/docs/latest/building-spark.html>`_ .
+
+You can also use playbooks/operation/spark_comm/make_spark_packages.yml to build it.
+When you use this playbook, please specify the following parameters used in this playbook.
+
+* spark_comm_src_dir
+* spark_comm_version
+* spark_comm_mvn_options
+* spark_comm_hadoop_version
+
+Confiure parameters
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+You can use playbooks/conf/spark_comm/all.yml to configure Spark community edition envirionment.
+
+This playbooks and roles expect to get Spark tar package by HTTP method.
+You should configure the following parameter to specify where Ansible should get Spark tar package.
+
+* spark_comm_package_url_base
+* spark_comm_package_name
+
+The download URL is consited like {{ spark_comm_package_url_base }}/{{ spark_comm_package_name }}.tgz
+For example, if the download URL is "http://example.local/spark/spark-1.4.0-SNAPSHOT-bin-2.5.0-cdh5.3.2.tgz",
+spark_comm_package_url_base is "http://example.local/spark" and spark_comm_package_name is "spark-1.4.0-SNAPSHOT-bin-2.5.0-cdh5.3.2".
+
+.. note::
+
+   spark_comm_package_name does not include ".tgz"
+
+Execute playbooks
+~~~~~~~~~~~~~~~~~~~~
+After configuration of parameters, you can execute Ansible playbooks.
+
+.. code-block:: shell
+
+ $ ansible-playbook playbooks/conf/spark_comm/all.yml -k -s
+
+Stat history server
+~~~~~~~~~~~~~~~~~~~~~~
+Start Spark's history server by the following command.
+
+.. code-block:: shell
+
+ $ ansible-playbook playbooks/operation/spark_comm/start_spark_historyserver.yml -k -s
+
 
 .. set ft=rst tw=0 et ts=2 sw=2

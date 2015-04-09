@@ -1273,6 +1273,55 @@ group_vars/all/influxdbにて以下のように設定しています。</p>
 <p>またGrafanaのグラフを設定する方法は、  <a class="reference external" href="http://grafana.org/docs/features/intro/">Grafana&#8217;s documents</a>
 などをご参照ください。</p>
 </div>
+<div class="section" id="id47">
+<h3>2.7.9. コミュニティ版Sparkを構成する<a class="headerlink" href="#id47" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id48">
+<h4>2.7.9.1. パッケージの取得、もしくはビルド<a class="headerlink" href="#id48" title="Permalink to this headline">¶</a></h4>
+<p><a class="reference external" href="https://spark.apache.org/downloads.html">Spark公式ダウンロードサイト</a> から
+ビルド済みパッケージを取得できます。</p>
+<p>もし何らかの理由で自分でビルドしたい場合は、
+<a class="reference external" href="https://spark.apache.org/docs/latest/building-spark.html">Spark公式のビルド手順</a> を参照ください。</p>
+<p>またplaybooks/operation/spark_comm/make_spark_packages.ymlというプレイブックを利用することも可能です。
+その場合、以下に示すパラメータを任意で設定してください。</p>
+<ul class="simple">
+<li>spark_comm_src_dir</li>
+<li>spark_comm_version</li>
+<li>spark_comm_mvn_options</li>
+<li>spark_comm_hadoop_version</li>
+</ul>
+</div>
+<div class="section" id="id51">
+<h4>2.7.9.2. パラメータの設定<a class="headerlink" href="#id51" title="Permalink to this headline">¶</a></h4>
+<p>コミュニティ版Sparkの構成には、playbooks/conf/spark_comm/all.ymlというプレイブックを利用できます。</p>
+<p>このプレイブックはHTTPでビルド済みパッケージを取得することを前提としています。
+そのためのダウンロードURLを設定するため、以下のパラメータを任意に定義してください。</p>
+<ul class="simple">
+<li>spark_comm_package_url_base</li>
+<li>spark_comm_package_name</li>
+</ul>
+<p>なお、ダウンロードURLは {{ spark_comm_package_url_base }}/{{ spark_comm_package_name }}.tgz のようになります。
+例えばダウンロードURLが&#8221;<a class="reference external" href="http://example.local/spark/spark-1.4.0-SNAPSHOT-bin-2.5.0-cdh5.3.2.tgz">http://example.local/spark/spark-1.4.0-SNAPSHOT-bin-2.5.0-cdh5.3.2.tgz</a>&#8220;のとき、
+spark_comm_package_url_baseは&#8221;<a class="reference external" href="http://example.local/spark">http://example.local/spark</a>&#8220;となり、spark_comm_package_nameは&#8221;spark-1.4.0-SNAPSHOT-bin-2.5.0-cdh5.3.2&#8221;となります。</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">spark_comm_package_nameが&#8221;.tgz&#8221;を含まないことに注意してください</p>
+</div>
+</div>
+<div class="section" id="id52">
+<h4>2.7.9.3. プレイブックの実行<a class="headerlink" href="#id52" title="Permalink to this headline">¶</a></h4>
+<p>パラメータの設定後は、プレイブックを実行します。</p>
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/conf/spark_comm/all.yml -k -s
+</pre></div>
+</div>
+</div>
+<div class="section" id="id53">
+<h4>2.7.9.4. ヒストリサーバの起動<a class="headerlink" href="#id53" title="Permalink to this headline">¶</a></h4>
+<p>ヒストリサーバを起動します。</p>
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/operation/spark_comm/start_spark_historyserver.yml -k -s
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 </div>
 
