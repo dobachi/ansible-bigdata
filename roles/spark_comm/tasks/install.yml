@@ -5,7 +5,7 @@
   get_url: url={{ spark_comm_package_url_base }}/{{ spark_comm_package_name }}.tgz dest=/usr/local/spark/{{ spark_comm_package_name }}.tgz
 
 - name: unarchive_package
-  shell: tar xvzf {{ spark_comm_package_name }}.tgz chdir=/usr/local/spark
+  shell: tar xvzf {{ spark_comm_package_name }}.tgz chdir=/usr/local/spark creates=/usr/local/spark/{{ spark_comm_package_name }}/LICENSE
 
 - name: configure_owner_and_group_of_unarhived_package
   file: path=/usr/local/spark/{{ spark_comm_package_name }} owner=spark group=spark recurse=yes
