@@ -18,3 +18,9 @@
 
 - name: make_alternatives_entry_of_spark_conf
   alternatives: name=spark-conf path=/usr/local/spark/default/conf link=/etc/spark/conf
+
+- name: make_log_dir
+  file: path=/var/log/spark state=directory owner=spark group=spark
+
+- name: make_alternatives_entry_of_spark_log
+  alternatives: name=spark_log path=/var/log/spark link=/usr/local/spark/default/logs
