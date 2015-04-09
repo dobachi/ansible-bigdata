@@ -10,6 +10,9 @@
     
     - name: git_clone_spark_sources
       git: repo=https://github.com/apache/spark.git dest={{ spark_comm_src_dir }}/{{ spark_comm_version }} version={{ spark_comm_version }}
+
+    - name: alternatives_spark_sources
+      alternatives: name=spark_src path={{ spark_comm_src_dir }}/{{ spark_comm_version }} link={{ spark_comm_src_dir }}/default
     
     - name: build_spark
     shell: yes y | MAVEN_OPTS="-Xmx2g -XX:MaxPermSize=512M -XX:ReservedCodeCacheSize=512m" make-distribution.sh --tgz {{ spark_comm_mvn_options }} -Dhadoop.version={{ spark_comm_hadoop_version }} chdir={{ spark_comm_src_dir }}/{{ spark_comm_version }}
