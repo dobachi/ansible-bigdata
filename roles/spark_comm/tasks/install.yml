@@ -1,8 +1,20 @@
-- name: make_spark_src_directory
-  file: path={{ spark_comm_src_dir }} state=directory
+- name: make_spark_directory
+  file: path={{ spark_comm_dir }} owner=spark group=spark state=directory
 
-- name: git_clone_spark_sources
-  git: repo=https://github.com/apache/spark.git dest={{ spark_comm_src_dir }}/{{ spark_comm_tagname }} version={{ spark_comm_tagname }}
+- name: get_spark_package
+  get_url: url={{ spark_comm_package_url_base }}/{{ spark_comm_package_name }}.tgz dest=/usr/local/spark/{{ spark_comm_package_name }}.tgz
 
-- name: build_spark
-  shell: build/mvn -Pnetlib-lgpl -Pyarn -Phadoop-2.4 -Dhadoop.version=2.4.0 -Phive -Phive-thriftserve -DskipTests clean package chdir={{ spark_comm_src_dir }}/{{ spark_comm_tagname }}
+- name: unarchive_package
+  shell: tar xvzf {{ spark_comm_package_name }}.tgz chdir=/usr/local/spark
+
+- name: configure_owner_and_group_of_unarhived_package
+  file: path=/usr/local/spark/{{ spark_comm_package_name }} owner=spark group=spark recurse=yes
+
+- name: make_alternatives_entry_of_spark_default
+  alternatives: name=spark_package_default path=/usr/local/spark/{{ spark_comm_package_name }} link=/usr/local/spark/default
+
+- name: make_etc_spark_dir
+  file: path=/etc/spark owner=spark group=spark state=directory
+
+- name: make_alternatives_entry_of_spark_conf
+  alternatives: name=spark_conf path=/usr/local/spark/default/conf link=/etc/spark/conf

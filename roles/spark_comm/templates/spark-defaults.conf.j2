@@ -1,0 +1,10 @@
+# Default system properties included when running spark-submit.
+# This is useful for setting default environmental settings.
+
+# Example:
+spark.master            {{ spark_comm_master }}
+spark.eventLog.enabled  true
+spark.eventLog.dir      {{ spark_comm_logdir }}
+# spark.serializer        org.apache.spark.serializer.KryoSerializer
+
+spark.yarn.historyServer.address {{ spark_comm_historyserver }}:18080
