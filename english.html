@@ -69,7 +69,8 @@ Each function is available individually.</p>
 <li>Configuring Ansible execution environment</li>
 <li>Booting EC2 instances for Hadoop cluster</li>
 <li>Configuring HDFS/YARN with NameNode HA</li>
-<li>Configuring Spark core on Client node</li>
+<li>Configuring CDH5&#8217;s Spark core on Client node</li>
+<li>Configuring Spark community edition&#8217;s core on Client node</li>
 <li>Configuring Ganglia for the resource visualization</li>
 <li>Configuring InfluxDB and Grafana for the metrics visualization</li>
 <li>Configuring Pseudo environment for test</li>
@@ -508,6 +509,9 @@ you can use them to swich environments which you want to configure in executing 
 <tr class="row-odd"><td>playbooks/conf/influxdb</td>
 <td>Configuration of InfluxDB and Grafana</td>
 </tr>
+<tr class="row-even"><td>playbooks/conf/spark_comm</td>
+<td>Configuration of Spark community edition</td>
+</tr>
 </tbody>
 </table>
 <div class="section" id="common">
@@ -625,6 +629,31 @@ We have two playbooks for Ganglia master and slave.</p>
 </li>
 </ul>
 </div>
+<div class="section" id="spark-comm">
+<h4>1.5.1.7. spark_comm<a class="headerlink" href="#spark-comm" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li>all.yml<ul>
+<li>Configure all nodes</li>
+</ul>
+</li>
+<li>spark_base.yml<ul>
+<li>Execute basic configuration of Spark</li>
+</ul>
+</li>
+<li>spark_client.yml<ul>
+<li>Configure client environment to develop Spark applications</li>
+</ul>
+</li>
+<li>spark_history.yml<ul>
+<li>Configure environment to run Spark history server</li>
+</ul>
+</li>
+<li>spark_libs.yml<ul>
+<li>Configure library environment to use native libraries in MLlib</li>
+</ul>
+</li>
+</ul>
+</div>
 </div>
 <div class="section" id="playbooks-for-operation">
 <h3>1.5.2. Playbooks for operation<a class="headerlink" href="#playbooks-for-operation" title="Permalink to this headline">¶</a></h3>
@@ -661,6 +690,9 @@ e.g. Formating HDFS, Start/Stop services, ...</td>
 <tr class="row-even"><td>playbooks/operation/influxdb</td>
 <td>Operation about InfluxDB initilization</td>
 </tr>
+<tr class="row-odd"><td>playbooks/operation/spark_com</td>
+<td>Operation of Spark services and building Spark packages</td>
+</tr>
 </tbody>
 </table>
 <div class="section" id="id2">
@@ -687,6 +719,23 @@ This is mainly used by Spark.</li>
 </li>
 <li>create_grafana_db.yml<ul>
 <li>Create database in InfluxDB, which hold Grafana&#8217;s dashboard data.</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h4>1.5.2.4. spark_comm<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li>make_spark_packages.yml<ul>
+<li>Compile Spark sources and build packages</li>
+</ul>
+</li>
+<li>start_spark_historyserver.yml<ul>
+<li>Start Spark&#8217;s history server</li>
+</ul>
+</li>
+<li>stop_spark_historyserver.yml<ul>
+<li>Stop Spark&#8217;s history server</li>
 </ul>
 </li>
 </ul>
@@ -899,6 +948,25 @@ This is mainly used by Spark.</li>
 </tbody>
 </table>
 </div>
+<div class="section" id="roles-to-configure-spark-community-edition">
+<h3>1.6.9. Roles to configure Spark community edition<a class="headerlink" href="#roles-to-configure-spark-community-edition" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="77%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Role name</th>
+<th class="head">Use for</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>spark_comm</td>
+<td>Configuration of Spark community edition</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <div class="section" id="how-to-use-this-playbooks">
 <h2>1.7. How to use this playbooks<a class="headerlink" href="#how-to-use-this-playbooks" title="Permalink to this headline">¶</a></h2>
@@ -931,8 +999,8 @@ you can use the following playbooks for it.</p>
 </pre></div>
 </div>
 </div>
-<div class="section" id="id4">
-<h4>1.7.2.2. Clone playbooks<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id5">
+<h4>1.7.2.2. Clone playbooks<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
 <p>Move original /etc/ansible</p>
 <div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd</span> /etc
 <span class="nv">$ </span>sudo mv ansible ansible.org
@@ -1094,14 +1162,14 @@ please execute the following command.</p>
 <div class="section" id="how-to-configure-cdh5-pseudo-environment">
 <h3>1.7.6. How to configure CDH5 Pseudo environment<a class="headerlink" href="#how-to-configure-cdh5-pseudo-environment" title="Permalink to this headline">¶</a></h3>
 <p>You can construct CDH5 HDFS/YARN environment by ansible-playbook command.</p>
-<div class="section" id="id5">
-<h4>1.7.6.1. Preparement<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id6">
+<h4>1.7.6.1. Preparement<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h4>
 <p>If you have not configured Ansible execution environment,
 you should configure it.
 You can reference <a class="reference internal" href="how_to_use_playbooks.html#sec-configure-ansible-env"><em>How to configure Ansible execution environment</em></a> section.</p>
 </div>
-<div class="section" id="id6">
-<h4>1.7.6.2. Procedure<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id7">
+<h4>1.7.6.2. Procedure<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h4>
 <p>In the following example, we configure common_hosts_replace is True.
 As a result of this parameter configuration, Ansible replace /etc/hosts
 by Ansible driver server&#8217;s /etc/ansible/roles/common/files/hosts.default</p>

@@ -23,7 +23,8 @@ Each function is available individually.
 * Configuring Ansible execution environment
 * Booting EC2 instances for Hadoop cluster
 * Configuring HDFS/YARN with NameNode HA
-* Configuring Spark core on Client node
+* Configuring CDH5's Spark core on Client node
+* Configuring Spark community edition's core on Client node
 * Configuring Ganglia for the resource visualization
 * Configuring InfluxDB and Grafana for the metrics visualization
 * Configuring Pseudo environment for test

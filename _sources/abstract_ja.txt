@@ -19,7 +19,8 @@
 * Ansible実行環境を整える
 * Hadoop環境用のAWS EC2インスタンスを起動する
 * HA構成のHDFS、YARN環境を構築する
-* Spark Coreをインストールし、Sparkの実行環境を整える
+* CDH5のSpark Coreをインストールし、Sparkの実行環境を整える
+* コミュニティ版Spark Coreをインストールし、Sparkの実行環境を整える
 * Gangliaによるリソース可視化環境を整える
 * InfluxDBとGrafanaによるメトリクス可視化環境を整える
 * テスト用のPseudo環境を構築する

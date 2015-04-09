@@ -87,6 +87,9 @@
 <tr class="row-odd"><td>playbooks/conf/influxdb</td>
 <td>InfluxDBとGrafanaの構築／設定</td>
 </tr>
+<tr class="row-even"><td>playbooks/conf/spark_comm</td>
+<td>コミュニティ版Sparkの構築/設定</td>
+</tr>
 </tbody>
 </table>
 <div class="section" id="common">
@@ -219,6 +222,31 @@ Gangliaはマスタ／スレーブ構成なのでそれぞれを管理するた�
 </li>
 </ul>
 </div>
+<div class="section" id="spark-comm">
+<h3>spark_comm<a class="headerlink" href="#spark-comm" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>all.yml<ul>
+<li>クラスタ全体の設定</li>
+</ul>
+</li>
+<li>spark_base.yml<ul>
+<li>全ノード共通の基本設定</li>
+</ul>
+</li>
+<li>spark_client.yml<ul>
+<li>アプリケーションを開発すためのクライアント環境の整備</li>
+</ul>
+</li>
+<li>spark_history.yml<ul>
+<li>Sparkのヒストリサーバを起動するための設定</li>
+</ul>
+</li>
+<li>spark_libs.yml<ul>
+<li>MLlibでネイティブライブラリを利用するための設定</li>
+</ul>
+</li>
+</ul>
+</div>
 </div>
 <div class="section" id="id3">
 <h2>運用作業のためのプレイブック集<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
@@ -251,6 +279,9 @@ Gangliaはマスタ／スレーブ構成なのでそれぞれを管理するた�
 <tr class="row-even"><td>playbooks/operation/influxdb</td>
 <td>InfluxDBを初期化します</td>
 </tr>
+<tr class="row-odd"><td>playbooks/operation/spark_com</td>
+<td>コミュニティ版Sparkのビルドやサービスの起動/停止に用います</td>
+</tr>
 </tbody>
 </table>
 <div class="section" id="id4">
@@ -277,6 +308,23 @@ Gangliaはマスタ／スレーブ構成なのでそれぞれを管理するた�
 </li>
 <li>create_grafana_db.yml<ul>
 <li>Grafanaのダッシュボード情報を保存するデータベースをInfluxDBに作成します。</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id6">
+<h3>spark_comm<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>make_spark_packages.yml<ul>
+<li>Sparkソースコードのコンパイルとパッケージ作成</li>
+</ul>
+</li>
+<li>start_spark_historyserver.yml<ul>
+<li>Sparkのヒストリサーバを起動する</li>
+</ul>
+</li>
+<li>stop_spark_historyserver.yml<ul>
+<li>Sparkのヒストリサーバを停止する</li>
 </ul>
 </li>
 </ul>

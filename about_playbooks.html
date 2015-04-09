@@ -86,6 +86,9 @@
 <tr class="row-odd"><td>playbooks/conf/influxdb</td>
 <td>Configuration of InfluxDB and Grafana</td>
 </tr>
+<tr class="row-even"><td>playbooks/conf/spark_comm</td>
+<td>Configuration of Spark community edition</td>
+</tr>
 </tbody>
 </table>
 <div class="section" id="common">
@@ -203,6 +206,31 @@ We have two playbooks for Ganglia master and slave.</p>
 </li>
 </ul>
 </div>
+<div class="section" id="spark-comm">
+<h3>spark_comm<a class="headerlink" href="#spark-comm" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>all.yml<ul>
+<li>Configure all nodes</li>
+</ul>
+</li>
+<li>spark_base.yml<ul>
+<li>Execute basic configuration of Spark</li>
+</ul>
+</li>
+<li>spark_client.yml<ul>
+<li>Configure client environment to develop Spark applications</li>
+</ul>
+</li>
+<li>spark_history.yml<ul>
+<li>Configure environment to run Spark history server</li>
+</ul>
+</li>
+<li>spark_libs.yml<ul>
+<li>Configure library environment to use native libraries in MLlib</li>
+</ul>
+</li>
+</ul>
+</div>
 </div>
 <div class="section" id="playbooks-for-operation">
 <h2>Playbooks for operation<a class="headerlink" href="#playbooks-for-operation" title="Permalink to this headline">¶</a></h2>
@@ -239,6 +267,9 @@ e.g. Formating HDFS, Start/Stop services, ...</td>
 <tr class="row-even"><td>playbooks/operation/influxdb</td>
 <td>Operation about InfluxDB initilization</td>
 </tr>
+<tr class="row-odd"><td>playbooks/operation/spark_com</td>
+<td>Operation of Spark services and building Spark packages</td>
+</tr>
 </tbody>
 </table>
 <div class="section" id="id1">
@@ -265,6 +296,23 @@ This is mainly used by Spark.</li>
 </li>
 <li>create_grafana_db.yml<ul>
 <li>Create database in InfluxDB, which hold Grafana&#8217;s dashboard data.</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id3">
+<h3>spark_comm<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>make_spark_packages.yml<ul>
+<li>Compile Spark sources and build packages</li>
+</ul>
+</li>
+<li>start_spark_historyserver.yml<ul>
+<li>Start Spark&#8217;s history server</li>
+</ul>
+</li>
+<li>stop_spark_historyserver.yml<ul>
+<li>Stop Spark&#8217;s history server</li>
 </ul>
 </li>
 </ul>

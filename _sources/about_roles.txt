@@ -89,3 +89,12 @@ Role name        Use for
 influxdb         Configuration of InfluxDB
 grafana          Configuration of Grafana
 ================ =======================================================
+
+Roles to configure Spark community edition
+-------------------------------------------
+
+================ =======================================================
+Role name        Use for
+================ =======================================================
+spark_comm       Configuration of Spark community edition
+================ =======================================================
