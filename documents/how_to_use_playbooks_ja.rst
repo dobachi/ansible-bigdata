@@ -361,4 +361,57 @@ group_vars/all/influxdbにて以下のように設定しています。
 またGrafanaのグラフを設定する方法は、  `Grafana's documents <http://grafana.org/docs/features/intro/>`_
 などをご参照ください。
 
+コミュニティ版Sparkを構成する
+----------------------------------------
+
+パッケージの取得、もしくはビルド
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+`Spark公式ダウンロードサイト  <https://spark.apache.org/downloads.html>`_ から
+ビルド済みパッケージを取得できます。
+
+もし何らかの理由で自分でビルドしたい場合は、
+`Spark公式のビルド手順 <https://spark.apache.org/docs/latest/building-spark.html>`_ を参照ください。
+
+またplaybooks/operation/spark_comm/make_spark_packages.ymlというプレイブックを利用することも可能です。
+その場合、以下に示すパラメータを任意で設定してください。
+
+* spark_comm_src_dir
+* spark_comm_version
+* spark_comm_mvn_options
+* spark_comm_hadoop_version
+
+パラメータの設定
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+コミュニティ版Sparkの構成には、playbooks/conf/spark_comm/all.ymlというプレイブックを利用できます。
+
+このプレイブックはHTTPでビルド済みパッケージを取得することを前提としています。
+そのためのダウンロードURLを設定するため、以下のパラメータを任意に定義してください。
+
+* spark_comm_package_url_base
+* spark_comm_package_name
+
+なお、ダウンロードURLは {{ spark_comm_package_url_base }}/{{ spark_comm_package_name }}.tgz のようになります。
+例えばダウンロードURLが"http://example.local/spark/spark-1.4.0-SNAPSHOT-bin-2.5.0-cdh5.3.2.tgz"のとき、
+spark_comm_package_url_baseは"http://example.local/spark"となり、spark_comm_package_nameは"spark-1.4.0-SNAPSHOT-bin-2.5.0-cdh5.3.2"となります。
+
+.. note::
+
+   spark_comm_package_nameが".tgz"を含まないことに注意してください
+
+プレイブックの実行
+~~~~~~~~~~~~~~~~~~~~
+パラメータの設定後は、プレイブックを実行します。
+
+.. code-block:: shell
+
+ $ ansible-playbook playbooks/conf/spark_comm/all.yml -k -s
+
+ヒストリサーバの起動
+~~~~~~~~~~~~~~~~~~~~~~
+ヒストリサーバを起動します。
+
+.. code-block:: shell
+
+ $ ansible-playbook playbooks/operation/spark_comm/start_spark_historyserver.yml -k -s
+
 .. vim: ft=rst tw=0 et ts=2 sw=2
