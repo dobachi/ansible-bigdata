@@ -1,0 +1,14 @@
+- hosts: hadoop_other
+  sudo: yes
+  sudo_user: spark
+  tasks:
+    - name: start_spark_history_server
+      shell: bash /usr/local/spark/default/sbin/stop-history-server.sh
+
+- hosts: hadoop_client
+  vars:
+    spark_com_wait_for_timeout: '60'
+  tasks:
+    - name: wait_for_spark_history_server_web_service_port
+      wait_for: host={{ item }} port=18080 state=stopped timeout={{ spark_com_wait_for_timeout }}
+      with_items: groups['hadoop_other']
