@@ -1,0 +1,1 @@
+- include: install.yml tags=install,git

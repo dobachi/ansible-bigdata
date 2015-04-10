@@ -1,0 +1,45 @@
+---
+# ========================
+# role-wide parameters
+# ========================
+
+# The name of HDFS cluster
+# You should use the cluster name or NameNode's URL
+#
+spark_comm_hdfs_cluster_name: 'mycluster'
+
+# The path of Spark home directory
+#
+spark_comm_spark_home: '/usr/local/spark/default'
+
+# The path to unarchive Spark packages
+#
+spark_comm_dir: '/usr/local/spark'
+
+# The base of URL and pacakge name of Spark
+# You should specify the following parameters by your self
+
+#spark_comm_package_url_base: ''
+#spark_comm_package_name: ''
+
+# ====================================
+# Each configuration file parameters
+# ====================================
+
+# spark-defaults.conf
+spark_comm_master: 'yarn' 
+spark_comm_logdir: 'hdfs://{{ spark_comm_hdfs_cluster_name }}/var/log/spark'
+spark_comm_historyserver: '{{ groups["hadoop_other"][0] }}'
+
+# spark-env.sh
+spark_comm_exe_instances: '1'
+spark_comm_exe_cores: '1'
+spark_comm_exe_mem: '400M'
+spark_comm_dri_mem: '400M'
+spark_comm_history_dir: 'hdfs://{{ spark_comm_hdfs_cluster_name }}/var/log/spark'
+spark_comm_scala_home: '/usr/local/scala/default'
+
+# /etc/spark/conf/metrics.properties
+spark_comm_graphite_enabled: True
+spark_comm_graphite_prefix: 'spark'
+spark_comm_graphite_port: '2003'

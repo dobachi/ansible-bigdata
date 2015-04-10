@@ -1,0 +1,4 @@
+- include: spark_base.yml
+- include: spark_client.yml
+- include: spark_history.yml
+- include: spark_libs.yml

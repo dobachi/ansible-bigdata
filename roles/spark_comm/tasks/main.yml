@@ -1,0 +1,5 @@
+---
+# tasks file for roles/spark_comm
+- include: user.yml tags=user,spark_comm
+- include: install.yml tags=install,spark_comm
+- include: config.yml tags=config,spark_comm

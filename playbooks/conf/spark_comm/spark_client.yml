@@ -1,0 +1,10 @@
+- hosts: '{{ server | default("hadoop_client") }}'
+  roles:
+    - { role: common, common_config_hostname: True }
+    - jdk
+    - scala
+    - sbt
+    - activator_mini
+    - git
+    - maven
+    - spark_comm

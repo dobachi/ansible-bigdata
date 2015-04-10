@@ -1,0 +1,18 @@
+- hosts: '{{server | default("hadoop_client") }}'
+  vars:
+    spark_comm_src_dir: '/usr/src/spark'
+    spark_comm_version: 'master'
+    spark_comm_mvn_options: '-Pnetlib-lgpl -Pyarn -Phadoop-2.4 -Phive -Phive-thriftserve -e'
+    spark_comm_hadoop_version: '2.5.0-cdh5.3.2'
+  tasks:
+    - name: make_spark_src_directory
+      file: path={{ spark_comm_src_dir }} state=directory
+    
+    - name: git_clone_spark_sources
+      git: repo=https://github.com/apache/spark.git dest={{ spark_comm_src_dir }}/{{ spark_comm_version }} version={{ spark_comm_version }}
+
+    - name: alternatives_spark_sources
+      alternatives: name=spark_src path={{ spark_comm_src_dir }}/{{ spark_comm_version }} link={{ spark_comm_src_dir }}/default
+    
+    - name: build_spark
+    shell: yes y | MAVEN_OPTS="-Xmx2g -XX:MaxPermSize=512M -XX:ReservedCodeCacheSize=512m" make-distribution.sh --tgz {{ spark_comm_mvn_options }} -Dhadoop.version={{ spark_comm_hadoop_version }} chdir={{ spark_comm_src_dir }}/{{ spark_comm_version }}

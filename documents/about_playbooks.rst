@@ -25,6 +25,7 @@ playbooks/conf/cdh5_pseudo   Configuration of CDH5 Pseudo environment
 playbooks/conf/ansible       Configuration of Ansible environment
 playbooks/conf/ganglia       Configuration of Ganglia
 playbooks/conf/influxdb      Configuration of InfluxDB and Grafana
+playbooks/conf/spark_comm    Configuration of Spark community edition
 ============================ ==========================================
 
 common
@@ -134,6 +135,28 @@ influxdb
 
   + Configure influxdb and Grafana.
 
+spark_comm
+~~~~~~~~~~~
+* all.yml
+
+  + Configure all nodes
+
+* spark_base.yml
+
+  + Execute basic configuration of Spark
+
+* spark_client.yml
+
+  + Configure client environment to develop Spark applications
+
+* spark_history.yml
+
+  + Configure environment to run Spark history server 
+
+* spark_libs.yml
+
+  + Configure library environment to use native libraries in MLlib
+
 Playbooks for operation
 -----------------------
 
@@ -150,6 +173,7 @@ playbooks/operation/common       Operations about SSH key exchange.
 playbooks/operation/ec2          Operation to boot EC2 instances
 playbooks/operation/httpd        Start and stop httpd
 playbooks/operation/influxdb     Operation about InfluxDB initilization
+playbooks/operation/spark_com    Operation of Spark services and building Spark packages
 ================================ ====================================================================
 
 cdh5
@@ -177,3 +201,18 @@ influxdb
 * create_grafana_db.yml
 
   + Create database in InfluxDB, which hold Grafana's dashboard data.
+
+spark_comm
+~~~~~~~~~~~
+* make_spark_packages.yml
+
+  + Compile Spark sources and build packages
+
+* start_spark_historyserver.yml
+
+  + Start Spark's history server
+
+* stop_spark_historyserver.yml
+
+  + Stop Spark's history server
+
