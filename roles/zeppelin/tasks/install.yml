@@ -1,15 +1,15 @@
 - name: mkdir_zeppelin_dir
-  file: path={{ zeppelin_src_dir }} owner=zeppelin group=zeppelin state=directory recurse=yes
+  file: path={{ zeppelin_dir }} owner=zeppelin group=zeppelin state=directory
 
-- name: clone_zeppelin_src
-  git: repo={{ zeppelin_git_url }} dest={{ zeppelin_src_dir }}/{{ zeppelin_version }}
+- name: get_zeppelin_package
+  get_url: url={{ zeppelin_package_base_url }}/{{ zeppelin_package_name }}{{ zeppelin_package_suffix }} dest={{ zeppelin_dir }}/{{ zeppelin_package_name }}{{ zeppelin_package_suffix }}
+  sudo: yes
+  sudo_user: zeppelin
+
+- name: unarchive_zeppelin_package
+  shell: tar xvzf {{ zeppelin_package_name }}{{ zeppelin_package_suffix }} chdir={{ zeppelin_dir }} creates={{ zeppelin_dir }}/{{ zeppelin_package_name }}/LICENSE
   sudo: yes
   sudo_user: zeppelin
 
 - name: create_alternatives_link
-  alternatives: name=zeppelin_src path={{ zeppelin_src_dir }}/{{ zeppelin_version }} link={{ zeppelin_src_dir }}/default
-
-- name: compile_zeppelin
-  shell: mvn clean package -Dhadoop.version={{ zeppelin_hadoop_version }} {{ zeppelin_comiple_flag }} chdir={{ zeppelin_src_dir }}/default
-  sudo: yes
-  sudo_user: zeppelin
+  alternatives: name=zeppelin_package path={{ zeppelin_dir }}/{{ zeppelin_package_name }} link={{ zeppelin_dir }}/default

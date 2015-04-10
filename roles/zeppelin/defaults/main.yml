@@ -1,10 +1,13 @@
 ---
 # defaults file for roles/zeppelin
-zeppelin_git_url: 'https://github.com/apache/incubator-zeppelin.git'
-zeppelin_src_dir: '/usr/src/zeppelin'
-zeppelin_version: 'master'
-zeppelin_comiple_flag: '-Pspark-1.2 -Phadoop-2.4 -Pyarn -DskipTests'
-zeppelin_hadoop_version: '2.5.0-cdh5.3.2'
+zeppelin_dir: '/usr/local/zeppelin'
 zeppelin_java_home: '/usr/java/default'
 zeppelin_master: 'yarn-client'
 zeppelin_hadoop_conf_dir: '/etc/hadoop/conf'
+
+# You should configure the following parameters
+#zeppelin_package_base_url: 'http://example.com/zeppelin'
+#zeppelin_package_name: 'zeppelin-0.5.0-SNAPSHOT'
+#zeppelin_package_suffix: '.tar.gz'
+#zeppelin_spark_home: '/usr/local/spark/default'
+#zeppelin_spark_yarn_jar: '/usr/local/spark/default/lib/spark-assembly-1.4.0-SNAPSHOT-hadoop2.5.0-cdh5.3.2.jar'

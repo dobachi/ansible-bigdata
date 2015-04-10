@@ -48,7 +48,7 @@
 
 <property>
   <name>zeppelin.interpreters</name>
-  <value>com.nflabs.zeppelin.spark.SparkInterpreter,com.nflabs.zeppelin.spark.PySparkInterpreter,com.nflabs.zeppelin.spark.SparkSqlInterpreter,com.nflabs.zeppelin.spark.DepInterpreter,com.nflabs.zeppelin.markdown.Markdown,com.nflabs.zeppelin.shell.ShellInterpreter</value>
+  <value>org.apache.zeppelin.spark.SparkInterpreter,org.apache.zeppelin.spark.PySparkInterpreter,org.apache.zeppelin.spark.SparkSqlInterpreter,org.apache.zeppelin.spark.DepInterpreter,org.apache.zeppelin.markdown.Markdown,org.apache.zeppelin.shell.ShellInterpreter,org.apache.zeppelin.hive.HiveInterpreter</value>
   <description>Comma separated interpreter configurations. First interpreter become a default</description>
 </property>
 
@@ -109,6 +109,16 @@
   <description>Truststore password. Can be obfuscated by the Jetty Password tool. Defaults to the keystore password</description>
 </property>
 -->
+
+<property>
+  <name>spark.home</name>
+  <value>{{ zeppelin_spark_home }}</value>
+</property>
+
+<property>
+  <name>spark.yarn.jar</name>
+  <value>{{ zeppelin_spark_yarn_jar }}</value>
+</property>
 
 </configuration>
 

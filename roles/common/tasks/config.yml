@@ -6,11 +6,12 @@
   hostname: name={{ inventory_hostname }}
   when: common_config_hostname
 
-- name: copy_sudoers
-  template: src=sudoers.j2 dest=/etc/sudoers
-
 - name: no_requiretty_for_root_and_wheel
   template: src={{ item }} dest=/etc/sudoers.d/{{ item }}
   with_items:
     - root
     - wheel
+
+- name: copy_sudoers
+  template: src=sudoers.j2 dest=/etc/sudoers
+
