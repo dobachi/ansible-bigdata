@@ -1,0 +1,6 @@
+- hosts: '{{ server | default("localhost") }}'
+  roles:
+    - common
+    - epel
+    - nodejs
+    - mongodb
