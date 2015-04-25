@@ -5,6 +5,7 @@ zeppelin_mem: '-Xmx2048m -XX:MaxPermSize=512m'
 zeppelin_java_home: '/usr/java/default'
 zeppelin_master: 'yarn-client'
 zeppelin_hadoop_conf_dir: '/etc/hadoop/conf'
+zeppelin_server_port: '8080'
 
 # You should configure the following parameters
 #zeppelin_package_base_url: 'http://example.com/zeppelin'
