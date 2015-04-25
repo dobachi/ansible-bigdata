@@ -11,5 +11,11 @@
   sudo: yes
   sudo_user: zeppelin
 
-- name: create_alternatives_link
+- name: create_alternatives_link_of_default
   alternatives: name=zeppelin_package path={{ zeppelin_dir }}/{{ zeppelin_package_name }} link={{ zeppelin_dir }}/default
+
+- name: mkdir_etc_zeppelin
+  file: path=/etc/zeppelin state=directory owner=zeppelin group=zeppelin
+
+- name: create_alternatives_link_of_conf
+  alternatives: name=zeppelin_conf path={{ zeppelin_dir }}/{{ zeppelin_package_name }}/config link=/etc/zeppelin/conf
