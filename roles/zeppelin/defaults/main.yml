@@ -1,6 +1,7 @@
 ---
 # defaults file for roles/zeppelin
 zeppelin_dir: '/usr/local/zeppelin'
+zeppelin_log_dir: '/var/log/zeppelin'
 zeppelin_mem: '-Xmx2048m -XX:MaxPermSize=512m'
 zeppelin_java_home: '/usr/java/default'
 zeppelin_master: 'yarn-client'

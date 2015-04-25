@@ -19,3 +19,6 @@
 
 - name: create_alternatives_link_of_conf
   alternatives: name=zeppelin_conf path={{ zeppelin_dir }}/{{ zeppelin_package_name }}/config link=/etc/zeppelin/conf
+
+- name: mkdir_log_dir_of_zeppelin
+  file: path={{ zeppelin_log_dir }} state=directory owner=zeppelin group=zeppelin

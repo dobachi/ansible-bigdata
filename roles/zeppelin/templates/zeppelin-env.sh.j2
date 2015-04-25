@@ -21,6 +21,7 @@
 # export PYSPARK_PYTHON          # path to the python command. must be the same path on the driver(Zeppelin) and all workers.
 # export PYTHONPATH              # extra PYTHONPATH.
 
+export ZEPPELIN_LOG_DIR={{ zeppelin_log_dir }}        # Where log files are stored.  PWD by default.
 export ZEPPELIN_MEM="{{ zeppelin_mem }}"            # Zeppelin jvm mem options Default -Xmx1024m -XX:MaxPermSize=512m
 export JAVA_HOME={{ zeppelin_java_home }}
 export MASTER={{ zeppelin_master }}                 # Spark master url. eg. spark://master_addr:7077. Leave empty if you want to use local mode
