@@ -24,6 +24,7 @@
 * Gangliaによるリソース可視化環境を整える
 * InfluxDBとGrafanaによるメトリクス可視化環境を整える
 * テスト用のPseudo環境を構築する
+* Sparkノートブック環境としてZeppelinの実行環境を整える
 
 .. _sec-servers-ja:
 
@@ -41,7 +42,7 @@ master02 Backup NameNode, JournalNode, Zookeeper Server(id=2), Primary ResourceM
          Ganglia Slave
 master03 JournalNode, Zookeeper Server(id=3), HistoryServer, Backup ResourceManager,
          Ganglia Slave, Ganglia Master, InfluxDB, Grafana
-client01 Hadoop Client, Spark Core, Ganglia Slave
+client01 Hadoop Client, Spark Core, Ganglia Slave, Zeppelin
 slave01  DataNode, NodeManager, Ganglia Slave
 slave02  DataNode, NodeManager, Ganglia Slave
 slave03  DataNode, NodeManager, Ganglia Slave
@@ -62,7 +63,7 @@ master05 JournalNode, Zookeeper Server(id=1), Ganglia Slave
 master06 JournalNode, Zookeeper Server(id=2), Ganglia Slave
 master07 JournalNode, Zookeeper Server(id=3), Ganglia Slave
 master08 HistoryServer, Ganglia Master, Ganglia Slave, InfluxDB, Grafana
-client01 Hadoop Client, Spark Core, Ganglia Slave
+client01 Hadoop Client, Spark Core, Ganglia Slave, Zeppelin
 slave01  DataNode, NodeManager, Ganglia Slave
 slave02  DataNode, NodeManager, Ganglia Slave
 slave03  DataNode, NodeManager, Ganglia Slave
@@ -84,15 +85,29 @@ pseudo   NameNode, DataNode, SecondaryNameNode, ResourceManager, NodeManager,
          Spark-core, Spark history server
 ======== ================================================================================
 
+* InfluxDB, Grafana, Zeppelinもプレイブックを利用して構成できます
+
 ソフトウェア構成
 -------------------
 
-============= =============================
+============= ================================
 ソフトウェア  バージョン等
-============= =============================
+============= ================================
 OS            CentOS6.6 or CentOS7.0
 Hadoop        CDH5.3
 Spark         Spark1.2 of CDH5
+              or Spark1.3 community edition
 Ansible       Ansible 1.8 of EPEL
-============= =============================
+InfluxDB      コミュニティ最新版
+Graphana      コミュニティ版1.9.1
+Zeppelin      コミュニティ最新版
+============= ================================
 
+必要事項
+----------------
+* Ansibleを実行するサーバからすべてのサーバにSSHで到達性があることを前提としています
+* 本ドキュメントの例では、実行ユーザがsudoできることを前提としています。
+  もしsudo権限が無いのであればrootユーザでSSH接続して実行する必要があります。
+* EC2上のサーバを構成管理する際には、RSA鍵を利用したSSHアクセスになります。
+  例えばCentOSコミュニティのCentOS6インスタンスの場合、標準ではrootユーザで
+  RSA鍵を利用してログインします。
