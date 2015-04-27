@@ -414,4 +414,49 @@ spark_comm_package_url_baseは"http://example.local/spark"となり、spark_comm
 
  $ ansible-playbook playbooks/operation/spark_comm/start_spark_historyserver.yml -k -s
 
+コミュニティ版Zeppelinを構成する
+-----------------------------------
+
+ソースコードの取得とビルド
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+`公式のREADME <https://github.com/apache/incubator-zeppelin/blob/master/README.md>`_ の通り、
+コンパイルしてパッケージングします。
+
+注意点はコンんパイル時のオプション（プロパティ設定）です。
+現在利用しているHadoopやSparkのバージョンを指定するのを忘れないで下さい。
+
+CDH5.3.3、Spark1.3、YARN環境を利用する場合の例を以下に示します。
+
+.. code-block:: shell
+
+ $ mvn clean package -Pspark-1.3 -Dhadoop.version=2.5.0-cdh5.3.3 -Phadoop-2.4 -Pyarn -DskipTests 
+
+また補助プレイブックplaybooks/operation/zeppelin/build.ymlを利用することもできます。
+その場合は以下のパラメータを任意に設定してください。
+
+* zeppelin_git_url
+* zeppelin_src_dir
+* zeppelin_version
+* zeppelin_comiple_flag
+* zeppelin_hadoop_version
+
+なお、本プレイブック集に含まれているZeppelinの構成管理用プレイブックでは、
+作成したパッケージをHTTPで取得して利用します。
+
+本手順でコンパイル、パッケージ化したものをHTTPで取得可能な場所に配備してください。
+
+プレイブックの実行
+~~~~~~~~~~~~~~~~~~
+以下のようにプレイブックを実行し、Zeppelinを構成します。
+
+.. code-block:: shell
+
+ $ ansible-playbook playbooks/conf/zeppelin/zeppelin.yml -k -s
+
+構成完了後、Zeppelinのサービスを起動します。
+
+.. code-block:: shell
+
+ $ ansible-playbook playbooks/operation/zeppelin/start_zeppelin.yml -k -s
+
 .. vim: ft=rst tw=0 et ts=2 sw=2

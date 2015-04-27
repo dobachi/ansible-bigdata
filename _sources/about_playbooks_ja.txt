@@ -26,6 +26,7 @@ playbooks/conf/ansible        Ansibleの実行環境の設定
 playbooks/conf/ganglia        Ganglia環境の構築／設定
 playbooks/conf/influxdb       InfluxDBとGrafanaの構築／設定
 playbooks/conf/spark_comm     コミュニティ版Sparkの構築/設定
+playbooks/conf/zeppelin       コミュニティ版Zeppelinの構築/設定
 ============================= ==========================================
 
 common
@@ -170,6 +171,12 @@ spark_comm
 
   + MLlibでネイティブライブラリを利用するための設定
 
+zeppelin
+~~~~~~~~~~~
+* zeppelin.yml
+
+  + Zeppelinを構成管理します
+
 運用作業のためのプレイブック集
 -------------------------------
 
@@ -186,6 +193,7 @@ playbooks/operation/ec2           Hadoop用のAWS EC2インスタンスを起動
 playbooks/operation/httpd         HTTPサービスを起動／停止します
 playbooks/operation/influxdb      InfluxDBを初期化します
 playbooks/operation/spark_com     コミュニティ版Sparkのビルドやサービスの起動/停止に用います
+playbooks/operation/zeppelin      Zeppelinのサービスを起動/停止する
 ================================= ====================================================================
 
 cdh5
@@ -227,3 +235,23 @@ spark_comm
 * stop_spark_historyserver.yml
 
   + Sparkのヒストリサーバを停止する
+
+zeppelin
+~~~~~~~~~~
+* build.yml
+
+  + Zeppelinをコンパイルしパッケージングします
+  + このプレイブックはコミュニティ公式ドキュメントに記載されているコンパイル手順を自動化した
+    ヘルパー機能です
+
+* restart_zeppelin.yml
+
+  + Zeppelinのサービスを停止して起動します
+
+* start_zeppelin.yml
+
+  + zeppelin-daemon.shを実行することでサービスを起動します
+
+* stop_zeppelin.yml
+
+  + zeppelin-daemon.shを実行することでサービスを停止します

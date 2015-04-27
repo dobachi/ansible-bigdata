@@ -411,6 +411,43 @@ spark_comm_package_url_baseは&#8221;<a class="reference external" href="http://
 </div>
 </div>
 </div>
+<div class="section" id="zeppelin">
+<h2>コミュニティ版Zeppelinを構成する<a class="headerlink" href="#zeppelin" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id27">
+<h3>ソースコードの取得とビルド<a class="headerlink" href="#id27" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://github.com/apache/incubator-zeppelin/blob/master/README.md">公式のREADME</a> の通り、
+コンパイルしてパッケージングします。</p>
+<p>注意点はコンんパイル時のオプション（プロパティ設定）です。
+現在利用しているHadoopやSparkのバージョンを指定するのを忘れないで下さい。</p>
+<p>CDH5.3.3、Spark1.3、YARN環境を利用する場合の例を以下に示します。</p>
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>mvn clean package -Pspark-1.3 -Dhadoop.version<span class="o">=</span>2.5.0-cdh5.3.3 -Phadoop-2.4 -Pyarn -DskipTests
+</pre></div>
+</div>
+<p>また補助プレイブックplaybooks/operation/zeppelin/build.ymlを利用することもできます。
+その場合は以下のパラメータを任意に設定してください。</p>
+<ul class="simple">
+<li>zeppelin_git_url</li>
+<li>zeppelin_src_dir</li>
+<li>zeppelin_version</li>
+<li>zeppelin_comiple_flag</li>
+<li>zeppelin_hadoop_version</li>
+</ul>
+<p>なお、本プレイブック集に含まれているZeppelinの構成管理用プレイブックでは、
+作成したパッケージをHTTPで取得して利用します。</p>
+<p>本手順でコンパイル、パッケージ化したものをHTTPで取得可能な場所に配備してください。</p>
+</div>
+<div class="section" id="id28">
+<h3>プレイブックの実行<a class="headerlink" href="#id28" title="Permalink to this headline">¶</a></h3>
+<p>以下のようにプレイブックを実行し、Zeppelinを構成します。</p>
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/conf/zeppelin/zeppelin.yml -k -s
+</pre></div>
+</div>
+<p>構成完了後、Zeppelinのサービスを起動します。</p>
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/operation/zeppelin/start_zeppelin.yml -k -s
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 
 

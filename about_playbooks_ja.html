@@ -90,6 +90,9 @@
 <tr class="row-even"><td>playbooks/conf/spark_comm</td>
 <td>コミュニティ版Sparkの構築/設定</td>
 </tr>
+<tr class="row-odd"><td>playbooks/conf/zeppelin</td>
+<td>コミュニティ版Zeppelinの構築/設定</td>
+</tr>
 </tbody>
 </table>
 <div class="section" id="common">
@@ -247,6 +250,15 @@ Gangliaはマスタ／スレーブ構成なのでそれぞれを管理するた�
 </li>
 </ul>
 </div>
+<div class="section" id="zeppelin">
+<h3>zeppelin<a class="headerlink" href="#zeppelin" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>zeppelin.yml<ul>
+<li>Zeppelinを構成管理します</li>
+</ul>
+</li>
+</ul>
+</div>
 </div>
 <div class="section" id="id3">
 <h2>運用作業のためのプレイブック集<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
@@ -281,6 +293,9 @@ Gangliaはマスタ／スレーブ構成なのでそれぞれを管理するた�
 </tr>
 <tr class="row-odd"><td>playbooks/operation/spark_com</td>
 <td>コミュニティ版Sparkのビルドやサービスの起動/停止に用います</td>
+</tr>
+<tr class="row-even"><td>playbooks/operation/zeppelin</td>
+<td>Zeppelinのサービスを起動/停止する</td>
 </tr>
 </tbody>
 </table>
@@ -325,6 +340,29 @@ Gangliaはマスタ／スレーブ構成なのでそれぞれを管理するた�
 </li>
 <li>stop_spark_historyserver.yml<ul>
 <li>Sparkのヒストリサーバを停止する</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id7">
+<h3>zeppelin<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>build.yml<ul>
+<li>Zeppelinをコンパイルしパッケージングします</li>
+<li>このプレイブックはコミュニティ公式ドキュメントに記載されているコンパイル手順を自動化した
+ヘルパー機能です</li>
+</ul>
+</li>
+<li>restart_zeppelin.yml<ul>
+<li>Zeppelinのサービスを停止して起動します</li>
+</ul>
+</li>
+<li>start_zeppelin.yml<ul>
+<li>zeppelin-daemon.shを実行することでサービスを起動します</li>
+</ul>
+</li>
+<li>stop_zeppelin.yml<ul>
+<li>zeppelin-daemon.shを実行することでサービスを停止します</li>
 </ul>
 </li>
 </ul>

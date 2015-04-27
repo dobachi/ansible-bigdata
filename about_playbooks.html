@@ -59,8 +59,8 @@
 <p><strong>abstract</strong></p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="40%" />
-<col width="60%" />
+<col width="38%" />
+<col width="62%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Directory</th>
@@ -88,6 +88,9 @@
 </tr>
 <tr class="row-even"><td>playbooks/conf/spark_comm</td>
 <td>Configuration of Spark community edition</td>
+</tr>
+<tr class="row-odd"><td>playbooks/conf/zeppelin</td>
+<td>Configuration of Zeppelin community edition</td>
 </tr>
 </tbody>
 </table>
@@ -231,6 +234,15 @@ We have two playbooks for Ganglia master and slave.</p>
 </li>
 </ul>
 </div>
+<div class="section" id="zeppelin">
+<h3>zeppelin<a class="headerlink" href="#zeppelin" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>zeppelin.yml<ul>
+<li>Configure zeppelin environment</li>
+</ul>
+</li>
+</ul>
+</div>
 </div>
 <div class="section" id="playbooks-for-operation">
 <h2>Playbooks for operation<a class="headerlink" href="#playbooks-for-operation" title="Permalink to this headline">¶</a></h2>
@@ -269,6 +281,9 @@ e.g. Formating HDFS, Start/Stop services, ...</td>
 </tr>
 <tr class="row-odd"><td>playbooks/operation/spark_com</td>
 <td>Operation of Spark services and building Spark packages</td>
+</tr>
+<tr class="row-even"><td>playbooks/operation/zeppelin</td>
+<td>Start and stop zeppelin services</td>
 </tr>
 </tbody>
 </table>
@@ -313,6 +328,29 @@ This is mainly used by Spark.</li>
 </li>
 <li>stop_spark_historyserver.yml<ul>
 <li>Stop Spark&#8217;s history server</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h3>zeppelin<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>build.yml<ul>
+<li>Compile and package Zeppelin</li>
+<li>This is helper playbook to build Zeppelin.
+You can build Zeppelin according to Zeppelin official web site.</li>
+</ul>
+</li>
+<li>restart_zeppelin.yml<ul>
+<li>Stop and start Zeppelin serives</li>
+</ul>
+</li>
+<li>start_zeppelin.yml<ul>
+<li>Start zeppelin services by executing zeppelin-daemon.sh</li>
+</ul>
+</li>
+<li>stop_zeppelin.yml<ul>
+<li>Stop zeppelin services by executing zeppelin-daemon.sh</li>
 </ul>
 </li>
 </ul>
