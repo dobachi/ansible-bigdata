@@ -63,6 +63,7 @@
 <li>Gangliaによるリソース可視化環境を整える</li>
 <li>InfluxDBとGrafanaによるメトリクス可視化環境を整える</li>
 <li>テスト用のPseudo環境を構築する</li>
+<li>Sparkノートブック環境としてZeppelinの実行環境を整える</li>
 </ul>
 </div>
 <div class="section" id="sec-servers-ja">
@@ -92,7 +93,7 @@ Ganglia Slave</td>
 Ganglia Slave, Ganglia Master, InfluxDB, Grafana</td>
 </tr>
 <tr class="row-odd"><td>client01</td>
-<td>Hadoop Client, Spark Core, Ganglia Slave</td>
+<td>Hadoop Client, Spark Core, Ganglia Slave, Zeppelin</td>
 </tr>
 <tr class="row-even"><td>slave01</td>
 <td>DataNode, NodeManager, Ganglia Slave</td>
@@ -148,7 +149,7 @@ Ganglia Slave, Ganglia Master, InfluxDB, Grafana</td>
 <td>HistoryServer, Ganglia Master, Ganglia Slave, InfluxDB, Grafana</td>
 </tr>
 <tr class="row-even"><td>client01</td>
-<td>Hadoop Client, Spark Core, Ganglia Slave</td>
+<td>Hadoop Client, Spark Core, Ganglia Slave, Zeppelin</td>
 </tr>
 <tr class="row-odd"><td>slave01</td>
 <td>DataNode, NodeManager, Ganglia Slave</td>
@@ -200,13 +201,16 @@ Spark-core, Spark history server</td>
 </tr>
 </tbody>
 </table>
+<ul class="simple">
+<li>InfluxDB, Grafana, Zeppelinもプレイブックを利用して構成できます</li>
+</ul>
 </div>
 <div class="section" id="id5">
 <h2>ソフトウェア構成<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
-<col width="31%" />
-<col width="69%" />
+<col width="29%" />
+<col width="71%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">ソフトウェア</th>
@@ -221,13 +225,34 @@ Spark-core, Spark history server</td>
 <td>CDH5.3</td>
 </tr>
 <tr class="row-even"><td>Spark</td>
-<td>Spark1.2 of CDH5</td>
+<td>Spark1.2 of CDH5
+or Spark1.3 community edition</td>
 </tr>
 <tr class="row-odd"><td>Ansible</td>
 <td>Ansible 1.8 of EPEL</td>
 </tr>
+<tr class="row-even"><td>InfluxDB</td>
+<td>コミュニティ最新版</td>
+</tr>
+<tr class="row-odd"><td>Graphana</td>
+<td>コミュニティ版1.9.1</td>
+</tr>
+<tr class="row-even"><td>Zeppelin</td>
+<td>コミュニティ最新版</td>
+</tr>
 </tbody>
 </table>
+</div>
+<div class="section" id="id6">
+<h2>必要事項<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Ansibleを実行するサーバからすべてのサーバにSSHで到達性があることを前提としています</li>
+<li>本ドキュメントの例では、実行ユーザがsudoできることを前提としています。
+もしsudo権限が無いのであればrootユーザでSSH接続して実行する必要があります。</li>
+<li>EC2上のサーバを構成管理する際には、RSA鍵を利用したSSHアクセスになります。
+例えばCentOSコミュニティのCentOS6インスタンスの場合、標準ではrootユーザで
+RSA鍵を利用してログインします。</li>
+</ul>
 </div>
 </div>
 

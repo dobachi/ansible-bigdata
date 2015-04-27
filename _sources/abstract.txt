@@ -28,6 +28,7 @@ Each function is available individually.
 * Configuring Ganglia for the resource visualization
 * Configuring InfluxDB and Grafana for the metrics visualization
 * Configuring Pseudo environment for test
+* Configuring Zeppelin for Spark notebook
 
 .. _sec-servers:
 
@@ -45,7 +46,7 @@ master02 Backup NameNode, JournalNode, Zookeeper Server(id=2), Primary ResourceM
          Ganglia Slave
 master03 JournalNode, Zookeeper Server(id=3), HistoryServer, Backup ResourceManager,
          Ganglia Slave, Ganglia Master, InfluxDB, Grafana
-client01 Hadoop Client, Spark Core, Ganglia Slave
+client01 Hadoop Client, Spark Core, Ganglia Slave, Zeppelin
 slave01  DataNode, NodeManager, Ganglia Slave
 slave02  DataNode, NodeManager, Ganglia Slave
 slave03  DataNode, NodeManager, Ganglia Slave
@@ -66,7 +67,7 @@ master05 JournalNode, Zookeeper Server(id=1), Ganglia Slave
 master06 JournalNode, Zookeeper Server(id=2), Ganglia Slave
 master07 JournalNode, Zookeeper Server(id=3), Ganglia Slave
 master08 HistoryServer, Ganglia Master, Ganglia Slave, InfluxDB, Grafana
-client01 Hadoop Client, Spark Core, Ganglia Slave
+client01 Hadoop Client, Spark Core, Ganglia Slave, Zeppelin
 slave01  DataNode, NodeManager, Ganglia Slave
 slave02  DataNode, NodeManager, Ganglia Slave
 slave03  DataNode, NodeManager, Ganglia Slave
@@ -88,19 +89,28 @@ pseudo   NameNode, DataNode, SecondaryNameNode, ResourceManager, NodeManager,
          Spark-core, Spark history server
 ======== ================================================================================
 
+* You can also configure InfluxDB, Grafana, Zeppelin by using playbooks
+
 Software information
 --------------------
 
-======== =============================
+======== ========================================================
 Software Version
-======== =============================
+======== ========================================================
 OS       CentOS6.6 or CentOS7.0
 Hadoop   CDH5.3
 Spark    Spark1.2 of CDH5
+         or Spark community edition
 Ansible  Ansible 1.8.2 of EPEL
-======== =============================
+InfluxDB Latest version of the community
+Graphana 1.9.1 of the community
+Zeppelin Latest version of the community
+======== ========================================================
 
 Prerequirement
 ----------------
 * You can login to each server by SSH from the server where you execute ansible.
-* You can use "sudo" in each server
+* You can use "sudo" in each server.
+  If you cannot use sudo, you should access remote servers by root user.
+* When you manage EC2 instances, you need to use RSA key to login servers.
+  For example, CentOS6 community instance use RSA key with root user in SSH access.

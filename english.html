@@ -74,6 +74,7 @@ Each function is available individually.</p>
 <li>Configuring Ganglia for the resource visualization</li>
 <li>Configuring InfluxDB and Grafana for the metrics visualization</li>
 <li>Configuring Pseudo environment for test</li>
+<li>Configuring Zeppelin for Spark notebook</li>
 </ul>
 </div>
 <div class="section" id="servers">
@@ -103,7 +104,7 @@ Ganglia Slave</td>
 Ganglia Slave, Ganglia Master, InfluxDB, Grafana</td>
 </tr>
 <tr class="row-odd"><td>client01</td>
-<td>Hadoop Client, Spark Core, Ganglia Slave</td>
+<td>Hadoop Client, Spark Core, Ganglia Slave, Zeppelin</td>
 </tr>
 <tr class="row-even"><td>slave01</td>
 <td>DataNode, NodeManager, Ganglia Slave</td>
@@ -159,7 +160,7 @@ Ganglia Slave, Ganglia Master, InfluxDB, Grafana</td>
 <td>HistoryServer, Ganglia Master, Ganglia Slave, InfluxDB, Grafana</td>
 </tr>
 <tr class="row-even"><td>client01</td>
-<td>Hadoop Client, Spark Core, Ganglia Slave</td>
+<td>Hadoop Client, Spark Core, Ganglia Slave, Zeppelin</td>
 </tr>
 <tr class="row-odd"><td>slave01</td>
 <td>DataNode, NodeManager, Ganglia Slave</td>
@@ -211,13 +212,16 @@ Spark-core, Spark history server</td>
 </tr>
 </tbody>
 </table>
+<ul class="simple">
+<li>You can also configure InfluxDB, Grafana, Zeppelin by using playbooks</li>
+</ul>
 </div>
 <div class="section" id="software-information">
 <h3>1.1.4. Software information<a class="headerlink" href="#software-information" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
 <colgroup>
-<col width="22%" />
-<col width="78%" />
+<col width="13%" />
+<col width="88%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Software</th>
@@ -232,10 +236,20 @@ Spark-core, Spark history server</td>
 <td>CDH5.3</td>
 </tr>
 <tr class="row-even"><td>Spark</td>
-<td>Spark1.2 of CDH5</td>
+<td>Spark1.2 of CDH5
+or Spark community edition</td>
 </tr>
 <tr class="row-odd"><td>Ansible</td>
 <td>Ansible 1.8.2 of EPEL</td>
+</tr>
+<tr class="row-even"><td>InfluxDB</td>
+<td>Latest version of the community</td>
+</tr>
+<tr class="row-odd"><td>Graphana</td>
+<td>1.9.1 of the community</td>
+</tr>
+<tr class="row-even"><td>Zeppelin</td>
+<td>Latest version of the community</td>
 </tr>
 </tbody>
 </table>
@@ -244,7 +258,10 @@ Spark-core, Spark history server</td>
 <h3>1.1.5. Prerequirement<a class="headerlink" href="#prerequirement" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>You can login to each server by SSH from the server where you execute ansible.</li>
-<li>You can use &#8220;sudo&#8221; in each server</li>
+<li>You can use &#8220;sudo&#8221; in each server.
+If you cannot use sudo, you should access remote servers by root user.</li>
+<li>When you manage EC2 instances, you need to use RSA key to login servers.
+For example, CentOS6 community instance use RSA key with root user in SSH access.</li>
 </ul>
 </div>
 </div>
