@@ -10,6 +10,8 @@ cdh5_spark_hdfs_cluster_name: 'mycluster'
 # ====================================
 # Each configuration file parameters
 # ====================================
+# cloudera-cdh5.pore
+cdh5_base_version: '5.3.3'
 
 # spark-defaults.conf
 cdh5_spark_master: 'yarn'

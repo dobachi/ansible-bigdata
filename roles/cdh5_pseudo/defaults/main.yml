@@ -8,6 +8,8 @@ cdh5_pseudo_data_dir_list:
 # =========================================
 # parameters for each configuration file
 # =========================================
+# cloudera-cdh5.pore
+cdh5_pseudo_version: '5.3.3'
 
 # core-site.xml
 cdh5_pseudo_fs_default_name: 'hdfs://{{ cdh5_pseudo_host }}:8020'

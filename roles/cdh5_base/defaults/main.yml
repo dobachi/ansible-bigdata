@@ -7,6 +7,9 @@ cdh5_data_dir_list:
 # =========================================
 # parameters for each configuration file
 # =========================================
+# cloudera-cdh5.pore
+cdh5_base_version: '5.3.3'
+
 # core-site.xml.j2
 cdh5_fs_defaultFS: 'hdfs://mycluster'
 
