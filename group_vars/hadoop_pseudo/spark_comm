@@ -1,0 +1,2 @@
+spark_comm_hdfs_cluster_name: 'pseudo:8020'
+spark_comm_historyserver: 'pseudo'

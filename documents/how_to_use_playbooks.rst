@@ -405,5 +405,49 @@ Start Spark's history server by the following command.
 
  $ ansible-playbook playbooks/operation/spark_comm/start_spark_historyserver.yml -k -s
 
+Configure Zeppelin
+-----------------------------------
+
+Obtain sources and build
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+First, according to `Official README <https://github.com/apache/incubator-zeppelin/blob/master/README.md>`_ , you need to compile source codes and make a package.
+
+Please take care about the compile option.
+You should specify Spark and Hadoop versions you use now.
+
+The following is an example to configure CDH5.3.3、Spark1.3、YARN environment.
+
+.. code-block:: shell
+
+ $ mvn clean package -Pspark-1.3 -Dhadoop.version=2.5.0-cdh5.3.3 -Phadoop-2.4 -Pyarn -DskipTests 
+
+You can also use playbooks/operation/zeppelin/build.yml, the helper playbook.
+Before executing this playbook, please configure the following parameters in the playbook.
+
+* zeppelin_git_url
+* zeppelin_src_dir
+* zeppelin_version
+* zeppelin_comiple_flag
+* zeppelin_hadoop_version
+
+Finally, the playbook to configure Zeppelin make use of the package
+which you compiled the above procedure.
+The package is downloaded from web service by HTTP,
+so that you need to put the package on a HTTP web server.
+
+Executing playbook
+~~~~~~~~~~~~~~~~~~
+To configure Zeppelin, please execute the following playbook.
+
+.. code-block:: shell
+
+ $ ansible-playbook playbooks/conf/zeppelin/zeppelin.yml -k -s
+
+After finishing configuration, you need to start Zeppelin service.
+
+.. code-block:: shell
+
+ $ ansible-playbook playbooks/operation/zeppelin/start_zeppelin.yml -k -s
+
 
 .. set ft=rst tw=0 et ts=2 sw=2

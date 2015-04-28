@@ -1,0 +1,16 @@
+---
+# defaults file for roles/zeppelin
+zeppelin_dir: '/usr/local/zeppelin'
+zeppelin_log_dir: '/var/log/zeppelin'
+zeppelin_mem: '-Xmx2048m -XX:MaxPermSize=512m'
+zeppelin_java_home: '/usr/java/default'
+zeppelin_master: 'yarn-client'
+zeppelin_hadoop_conf_dir: '/etc/hadoop/conf'
+zeppelin_server_port: '8080'
+
+# You should configure the following parameters
+#zeppelin_package_base_url: 'http://example.com/zeppelin'
+#zeppelin_package_name: 'zeppelin-0.5.0-SNAPSHOT'
+#zeppelin_package_suffix: '.tar.gz'
+#zeppelin_spark_home: '/usr/local/spark/default'
+#zeppelin_spark_yarn_jar: '/usr/local/spark/default/lib/spark-assembly-1.4.0-SNAPSHOT-hadoop2.5.0-cdh5.3.2.jar'

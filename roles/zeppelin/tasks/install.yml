@@ -1,0 +1,24 @@
+- name: mkdir_zeppelin_dir
+  file: path={{ zeppelin_dir }} owner=zeppelin group=zeppelin state=directory
+
+- name: get_zeppelin_package
+  get_url: url={{ zeppelin_package_base_url }}/{{ zeppelin_package_name }}{{ zeppelin_package_suffix }} dest={{ zeppelin_dir }}/{{ zeppelin_package_name }}{{ zeppelin_package_suffix }}
+  sudo: yes
+  sudo_user: zeppelin
+
+- name: unarchive_zeppelin_package
+  shell: tar xvzf {{ zeppelin_package_name }}{{ zeppelin_package_suffix }} chdir={{ zeppelin_dir }} creates={{ zeppelin_dir }}/{{ zeppelin_package_name }}/LICENSE
+  sudo: yes
+  sudo_user: zeppelin
+
+- name: create_alternatives_link_of_default
+  alternatives: name=zeppelin_package path={{ zeppelin_dir }}/{{ zeppelin_package_name }} link={{ zeppelin_dir }}/default
+
+- name: mkdir_etc_zeppelin
+  file: path=/etc/zeppelin state=directory owner=zeppelin group=zeppelin
+
+- name: create_alternatives_link_of_conf
+  alternatives: name=zeppelin_conf path={{ zeppelin_dir }}/{{ zeppelin_package_name }}/config link=/etc/zeppelin/conf
+
+- name: mkdir_log_dir_of_zeppelin
+  file: path={{ zeppelin_log_dir }} state=directory owner=zeppelin group=zeppelin

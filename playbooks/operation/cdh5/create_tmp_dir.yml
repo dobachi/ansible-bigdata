@@ -20,7 +20,7 @@
       shell: hdfs dfs -mkdir -p /var/log/hadoop-yarn
 
     - name: chown_log_dir
-      shell: hdfs dfs -chown yarn:mapred /var/log/hadoop-yarn
+      shell: hdfs dfs -chown yarn:hadoop /var/log/hadoop-yarn
 
     - name: make_log_dir_for_spark
       shell: hdfs dfs -mkdir -p /var/log/spark

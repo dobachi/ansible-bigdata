@@ -1,0 +1,17 @@
+- name: add_zeppelin_profile
+  template: src=zeppelin.sh.j2 dest=/etc/profile.d/zeppelin.sh
+
+- name: copy_zeppelin-site.xml
+  template: src=zeppelin-site.xml.j2 dest={{ zeppelin_dir }}/default/conf/zeppelin-site.xml
+
+- name: copy_zeppelin-site.xml
+  template: src=zeppelin-env.sh.j2 dest={{ zeppelin_dir }}/default/conf/zeppelin-env.sh
+
+- name: mkdir_etc_zeppelin
+  file: path=/etc/zeppelin state=directory owner=zeppelin group=zeppelin recurse=yes
+
+- name: make_alternatives_link_of_zeppelin_conf
+  alternatives: name=zeppelin_conf path=/usr/local/zeppelin/default/conf link=/etc/zeppelin/conf
+
+- name: chown_etc_zeppelin_conf
+  file: path=/etc/zeppelin/conf state=directory owner=zeppelin group=zeppelin recurse=yes

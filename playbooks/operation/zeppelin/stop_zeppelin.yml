@@ -1,0 +1,13 @@
+- hosts: "{{ server | default('hadoop_client') }}"
+  vars:
+    zeppelin_dir: '/usr/local/zeppelin'
+    zeppelin_server_port: '8080'
+  tasks:
+    - name: stop_zeppelin
+      shell: "{{ zeppelin_dir }}/default/bin/zeppelin-daemon.sh stop"
+      sudo: yes
+      sudo_user: zeppelin
+
+    - name: wait_for_zeppelin_port_stopped
+      wait_for: host={{ ansible_hostname }} port={{ zeppelin_server_port }} state=stopped
+

@@ -16,9 +16,9 @@ We can use playbooks in playbooks/conf directory to configure servers.
 
 **abstract**
 
-============================ ==========================================
+============================ =============================================
 Directory                    Use for
-============================ ==========================================
+============================ =============================================
 playbooks/conf/common        Common and basic configuration
 playbooks/conf/cdh5          Configuration of CDH5 environment
 playbooks/conf/cdh5_pseudo   Configuration of CDH5 Pseudo environment
@@ -26,7 +26,8 @@ playbooks/conf/ansible       Configuration of Ansible environment
 playbooks/conf/ganglia       Configuration of Ganglia
 playbooks/conf/influxdb      Configuration of InfluxDB and Grafana
 playbooks/conf/spark_comm    Configuration of Spark community edition
-============================ ==========================================
+playbooks/conf/zeppelin      Configuration of Zeppelin community edition
+============================ =============================================
 
 common
 ~~~~~~
@@ -157,6 +158,12 @@ spark_comm
 
   + Configure library environment to use native libraries in MLlib
 
+zeppelin
+~~~~~~~~~~~
+* zeppelin.yml
+
+  + Configure zeppelin environment
+
 Playbooks for operation
 -----------------------
 
@@ -174,6 +181,7 @@ playbooks/operation/ec2          Operation to boot EC2 instances
 playbooks/operation/httpd        Start and stop httpd
 playbooks/operation/influxdb     Operation about InfluxDB initilization
 playbooks/operation/spark_com    Operation of Spark services and building Spark packages
+playbooks/operation/zeppelin     Start and stop zeppelin services
 ================================ ====================================================================
 
 cdh5
@@ -216,3 +224,22 @@ spark_comm
 
   + Stop Spark's history server
 
+zeppelin
+~~~~~~~~~~
+* build.yml
+
+  + Compile and package Zeppelin
+  + This is helper playbook to build Zeppelin.
+    You can build Zeppelin according to Zeppelin official web site.
+
+* restart_zeppelin.yml
+
+  + Stop and start Zeppelin serives
+
+* start_zeppelin.yml
+
+  + Start zeppelin services by executing zeppelin-daemon.sh
+
+* stop_zeppelin.yml
+
+  + Stop zeppelin services by executing zeppelin-daemon.sh
