@@ -21,8 +21,13 @@
 # export PYSPARK_PYTHON          # path to the python command. must be the same path on the driver(Zeppelin) and all workers.
 # export PYTHONPATH              # extra PYTHONPATH.
 
-export ZEPPELIN_LOG_DIR={{ zeppelin_log_dir }}        # Where log files are stored.  PWD by default.
-export ZEPPELIN_MEM="{{ zeppelin_mem }}"            # Zeppelin jvm mem options Default -Xmx1024m -XX:MaxPermSize=512m
-export JAVA_HOME={{ zeppelin_java_home }}
-export MASTER={{ zeppelin_master }}                 # Spark master url. eg. spark://master_addr:7077. Leave empty if you want to use local mode
-export HADOOP_CONF_DIR={{ zeppelin_hadoop_conf_dir }}         # yarn-site.xml is located in configuration directory in HADOOP_CONF_DIR.
+export ZEPPELIN_LOG_DIR=${ZEPPELIN_LOG_DIR:-{{ zeppelin_log_dir }}}        # Where log files are stored.  PWD by default.
+export ZEPPELIN_MEM=${ZEPPELIN_MEM:-"{{ zeppelin_mem }}"}            # Zeppelin jvm mem options Default -Xmx1024m -XX:MaxPermSize=512m
+export JAVA_HOME=${JAVA_HOME:-{{ zeppelin_java_home }}}
+export MASTER=${MASTER:-{{ zeppelin_master }}}                 # Spark master url. eg. spark://master_addr:7077. Leave empty if you want to use local mode
+export HADOOP_CONF_DIR=${HADOOP_CONF_DIR:-{{ zeppelin_hadoop_conf_dir }}}         # yarn-site.xml is located in configuration directory in HADOOP_CONF_DIR.
+
+# Spark's configurations used in yarn-client mode
+export SPARK_EXECUTOR_INSTANCES=${SPARK_EXECUTOR_INSTANCES:-{{ zeppelin_spark_executor_instances }}}
+export SPARK_EXECUTOR_CORES=${SPARK_EXECUTOR_CORES:-{{ zeppelin_spark_executor_cores }}}
+export SPARK_EXECUTOR_MEMORY=${SPARK_EXECUTOR_MEMORY:-{{ zeppelin_spark_executor_memory }}}
