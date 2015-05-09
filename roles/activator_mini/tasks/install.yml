@@ -2,16 +2,16 @@
   file: path={{ activator_mini_base_path }} state=directory
 
 - name: get_activator_zip
-  get_url: url=http://downloads.typesafe.com/typesafe-activator/{{ activator_mini_version }}/typesafe-activator-{{ activator_mini_version }}-minimal.zip?_ga=1.28938297.409104442.1416747133 dest={{ activator_mini_base_path }}/typesafe-activator-{{ activator_mini_version }}-minimal.zip
+  get_url: url=http://downloads.typesafe.com/typesafe-activator/{{ activator_mini_version }}/typesafe-activator-{{ activator_mini_version }}-minimal.zip dest={{ activator_mini_base_path }}/typesafe-activator-{{ activator_mini_version }}-minimal.zip
 
 - name: unarchive_activator_zip
   shell: unzip -o typesafe-activator-{{ activator_mini_version }}-minimal.zip chdir={{ activator_mini_base_path }} creates={{ activator_mini_base_path }}/activator-{{ activator_mini_version }}-minimal/activator
 
-- name: make_link_default
-  file: path={{ activator_mini_base_path }}/default src={{ activator_mini_base_path }}/activator-{{ activator_mini_version }}-minimal state=link
-
 - name: chmod_activator
-  file: path={{ activator_mini_base_path }}/default/activator mode=755
+  file: path={{ activator_mini_base_path }}/activator-{{ activator_mini_version }}-minimal/activator mode=755
+
+- name: make_link_default
+  alternatives: name=activator_minimal_bin link={{ activator_mini_base_path }}/default path={{ activator_mini_base_path }}/activator-{{ activator_mini_version }}-minimal
 
 - name: copy_activator_mini.sh
   template: src=activator_mini.sh.j2 dest=/etc/profile.d/activator_mini.sh
