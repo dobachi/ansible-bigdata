@@ -1,0 +1,17 @@
+- hosts: "{{ server | default('pseudo') }}"
+  vars:
+    kafka_pseudo_topic_name: 'test'
+  tasks:
+    - name: create_topic
+      sudo: yes
+      sudo_user: kafka
+      shell: ./bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic {{ kafka_pseudo_topic_name }} chdir=/usr/local/kafka_pseudo/default
+
+    - name: list_topics
+      sudo: yes
+      sudo_user: kafka
+      shell: ./bin/kafka-topics.sh --list --zookeeper localhost:2181 chdir=/usr/local/kafka_pseudo/default
+      register: topic_list
+
+    - name: print_topic_list
+      debug: msg="{{ topic_list.stdout }}"

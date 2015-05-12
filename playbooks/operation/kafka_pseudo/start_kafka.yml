@@ -1,0 +1,6 @@
+- hosts: "{{ server | default('pseudo') }}"
+  tasks:
+    - name: start_kafka_server
+      sudo: yes
+      sudo_user: kafka
+      shell: ./bin/kafka-server-start.sh -daemon config/server.properties chdir=/usr/local/kafka_pseudo/default
