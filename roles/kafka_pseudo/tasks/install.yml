@@ -1,0 +1,23 @@
+- name: mkdir_/usr/local/kafka_pseudo
+  file: path=/usr/local/kafka_pseudo owner=kafka group=kafka state=directory
+
+- name: download_kafka_packages
+  get_url: url=http://ftp.riken.jp/net/apache/kafka/{{ kafka_pseudo_version }}/kafka_{{ kafka_pseudo_scala_version }}-{{ kafka_pseudo_version }}.tgz dest=/usr/local/kafka_pseudo/kafka_{{ kafka_pseudo_scala_version }}-{{ kafka_pseudo_version }}.tgz
+
+- name: unarchive_kafka_packages
+  shell: tar xvzf kafka_{{ kafka_pseudo_scala_version }}-{{ kafka_pseudo_version }}.tgz chdir=/usr/local/kafka_pseudo creates=/usr/local/kafka_pseudo/default/LICENSE
+
+- name: chown_of_kafka_packages
+  file: path=/usr/local/kafka_pseudo/kafka_{{ kafka_pseudo_scala_version }}-{{ kafka_pseudo_version }} recurse=yes owner=kafka group=kafka state=directory
+
+- name: make_alternatives_link_of_kafka_package
+  alternatives: name=kafka_package path=/usr/local/kafka_pseudo/kafka_{{ kafka_pseudo_scala_version }}-{{ kafka_pseudo_version }} link=/usr/local/kafka_pseudo/default
+
+- name: mkdir_/etc/kafka/
+  file: path=/etc/kafka state=directory owner=kafka group=kafka
+
+- name: make_alternatives_link_of_kafka_pseudo_config
+  alternatives: name=kafka_pseudo_config path=/usr/local/kafka_pseudo/default/config link=/etc/kafka/conf.pseudo
+
+- name: make_alternatives_link_of_kafka_conf
+  alternatives: name=kafka_conf path=/etc/kafka/conf.pseudo link=/etc/kafka/conf

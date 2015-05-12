@@ -1,0 +1,4 @@
+---
+# defaults file for roles/kafka_pseudo
+kafka_pseudo_version: '0.8.2.1'
+kafka_pseudo_scala_version: '2.10'

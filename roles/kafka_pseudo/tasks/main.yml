@@ -1,0 +1,4 @@
+---
+# tasks file for roles/kafka_pseudo
+- include: user.yml tags=user,kafka_pseudo
+- include: install.yml tags=install,kafka_pseudo
