@@ -1,0 +1,5 @@
+- name: install_mongodb
+  yum: name={{ item }} state=installed
+  with_items:
+    - mongodb
+    - mongodb-server

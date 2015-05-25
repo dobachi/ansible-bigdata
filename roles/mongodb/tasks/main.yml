@@ -1,0 +1,4 @@
+---
+# tasks file for roles/mongodb
+- include: install.yml tags=install,mongodb
+- include: service.yml tags=service,mongodb
