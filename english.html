@@ -1169,7 +1169,7 @@ you will see some errors, like:</p>
 <div class="section" id="apply-playbook">
 <h4>1.7.3.4. Apply playbook<a class="headerlink" href="#apply-playbook" title="Permalink to this headline">¶</a></h4>
 <p>Execute ansible-playbook command.</p>
-<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/operation/ec2/hadoop_nodes_up.yml -k
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/operation/ec2/hadoop_nodes_up.yml -c <span class="nb">local</span>
 </pre></div>
 </div>
 <p>As a result, you can find an IP address list, an ansible inventory file and an example of /etc/hosts used in EC2 instances
@@ -1180,7 +1180,7 @@ in /tmp/ec2_&lt;unix epoc time&gt;.
 <h4>1.7.3.5. (supplement) When you restart ec2 instances<a class="headerlink" href="#supplement-when-you-restart-ec2-instances" title="Permalink to this headline">¶</a></h4>
 <p>When you restart ec2 instances, public IP addresses may change.
 You can obtain new IP address tables by executing the playbook.</p>
-<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/operation/ec2/hadoop_nodes_up.yml -k
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/operation/ec2/hadoop_nodes_up.yml -c <span class="nb">local</span>
 </pre></div>
 </div>
 </div>

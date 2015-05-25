@@ -1164,7 +1164,7 @@ ec2_hadoop_vpc_subnet_id: subnet-xxxxxxxx
 <div class="section" id="id36">
 <h4>2.7.3.4. プレイブックの実行<a class="headerlink" href="#id36" title="Permalink to this headline">¶</a></h4>
 <p>ansible-playbookコマンドを実行します。</p>
-<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/operation/ec2/hadoop_nodes_up.yml -k
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/operation/ec2/hadoop_nodes_up.yml -c <span class="nb">local</span>
 </pre></div>
 </div>
 <p>成功した場合は <em>/tmp/ec2_&lt;プレイブックを実行したときのUNIXエポック時刻&gt;</em> のディレクトリ以下に以下の内容のファイルが配備されています。
@@ -1179,7 +1179,7 @@ EC2インスタンスにアクセスしたり、EC2インスタンスによる�
 <h4>2.7.3.5. （補足）EC2インスタンスを再起動した場合<a class="headerlink" href="#id37" title="Permalink to this headline">¶</a></h4>
 <p>EC2インスタンスを再起動するとpublicなIPアドレスが変わります。
 その場合はもう一度プレイブックを実行すると、改めてIPアドレス一覧のファイルが生成されます。</p>
-<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/operation/ec2/hadoop_nodes_up.yml -k
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/operation/ec2/hadoop_nodes_up.yml -c <span class="nb">local</span>
 </pre></div>
 </div>
 </div>

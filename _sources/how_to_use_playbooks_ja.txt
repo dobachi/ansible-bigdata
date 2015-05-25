@@ -154,7 +154,7 @@ ansible-playbookコマンドを実行します。
 
 .. code-block:: shell
 
- $ ansible-playbook playbooks/operation/ec2/hadoop_nodes_up.yml -k
+ $ ansible-playbook playbooks/operation/ec2/hadoop_nodes_up.yml -c local
 
 成功した場合は */tmp/ec2_<プレイブックを実行したときのUNIXエポック時刻>* のディレクトリ以下に以下の内容のファイルが配備されています。
 EC2インスタンスにアクセスしたり、EC2インスタンスによるクラスタを構成管理する際に利用してください。
@@ -170,7 +170,7 @@ EC2インスタンスを再起動するとpublicなIPアドレスが変わりま
 
 .. code-block:: shell
 
- $ ansible-playbook playbooks/operation/ec2/hadoop_nodes_up.yml -k
+ $ ansible-playbook playbooks/operation/ec2/hadoop_nodes_up.yml -c local
 
 ホスト名の設定
 ------------------------------------------
