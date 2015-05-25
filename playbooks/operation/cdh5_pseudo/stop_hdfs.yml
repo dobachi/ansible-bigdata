@@ -1,4 +1,4 @@
-- hosts: hadoop_pseudo
+- hosts: "{{ server | default('hadoop_pseudo') }}"
   tasks:
     - name: stop_namenode
       service: name=hadoop-hdfs-namenode state=stopped
