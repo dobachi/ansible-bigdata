@@ -1,4 +1,4 @@
-- hosts: hadoop_pseudo
+- hosts: "{{ server | default('hadoop_pseudo') }}"
   tasks:
     - name: start_resourcemanager
       service: name={{ item }} state=started

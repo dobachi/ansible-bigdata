@@ -1,4 +1,4 @@
-- hosts: hadoop_pseudo
+- hosts: "{{ server | default('hadoop_pseudo') }}"
   gather_facts: no
   sudo: True
   sudo_user: hdfs
@@ -6,7 +6,7 @@
     - name: format_hdfs
       shell: yes | hdfs namenode -format
 
-- hosts: hadoop_pseudo
+- hosts: "{{ server | default('hadoop_pseudo') }}"
   gather_facts: no
   tasks:
     - name: start_namenode

@@ -151,7 +151,7 @@ Execute ansible-playbook command.
 
 .. code-block:: shell
 
- $ ansible-playbook playbooks/operation/ec2/hadoop_nodes_up.yml -k
+ $ ansible-playbook playbooks/operation/ec2/hadoop_nodes_up.yml -c local
 
 As a result, you can find an IP address list, an ansible inventory file and an example of /etc/hosts used in EC2 instances
 in /tmp/ec2_<unix epoc time>.
@@ -164,7 +164,7 @@ You can obtain new IP address tables by executing the playbook.
 
 .. code-block:: shell
 
- $ ansible-playbook playbooks/operation/ec2/hadoop_nodes_up.yml -k
+ $ ansible-playbook playbooks/operation/ec2/hadoop_nodes_up.yml -c local
 
 How to configure host names of nodes
 ------------------------------------------

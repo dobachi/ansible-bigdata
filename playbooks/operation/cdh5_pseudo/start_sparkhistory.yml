@@ -1,4 +1,4 @@
-- hosts: hadoop_pseudo
+- hosts: "{{ server | default('hadoop_pseudo') }}"
   tasks:
     - name: start_spark_history_server
       service: name=spark-history-server state=started
