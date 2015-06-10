@@ -1,0 +1,5 @@
+---
+# tasks file for roles/storm
+- include: user.yml tags=user,storm
+- include: install.yml tags=install,storm
+- include: config.yml tags=config,storm

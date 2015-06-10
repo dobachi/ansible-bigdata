@@ -1,0 +1,5 @@
+---
+# defaults file for roles/storm
+storm_base_dir: '/usr/local/storm'
+storm_version: '0.9.5'
+storm_download_url: 'http://ftp.kddilabs.jp/infosystems/apache/storm/apache-storm-{{ storm_version }}/apache-storm-{{ storm_version }}.tar.gz'
