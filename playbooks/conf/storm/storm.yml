@@ -1,0 +1,6 @@
+- hosts: "{{ server | default('localhost') }}"
+  roles:
+    - { role: common, common_config_hostname: True }
+    - epel
+    - jdk
+    - storm
