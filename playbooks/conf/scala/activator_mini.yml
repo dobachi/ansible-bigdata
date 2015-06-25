@@ -2,4 +2,5 @@
   roles:
       - common
       - screen
+      - jdk
       - activator_mini

@@ -1,0 +1,5 @@
+- name: make_group_storm
+  group: name=storm
+
+- name: make_user_storm
+  user: name=storm group=storm

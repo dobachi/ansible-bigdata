@@ -1,0 +1,11 @@
+- name: mkdir_/usr/local/storm
+  file: path={{ storm_base_dir }} owner=storm group=storm state=directory recurse=yes
+
+- name: download_storm_package
+  get_url: url={{ storm_download_url }} dest={{ storm_base_dir }}
+
+- name: unarchive_storm_package
+  shell: tar xvzf apache-storm-{{ storm_version }}.tar.gz chdir={{ storm_base_dir }}
+
+- name: make_alternatives_link_of_storm_package
+  alternatives: name=storm_package path={{ storm_base_dir }}/apache-storm-{{ storm_version }} link={{ storm_base_dir}}/default

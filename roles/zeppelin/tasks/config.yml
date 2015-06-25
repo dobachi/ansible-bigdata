@@ -4,7 +4,7 @@
 - name: copy_zeppelin-site.xml
   template: src=zeppelin-site.xml.j2 dest={{ zeppelin_dir }}/default/conf/zeppelin-site.xml
 
-- name: copy_zeppelin-site.xml
+- name: copy_zeppelin-env.sh
   template: src=zeppelin-env.sh.j2 dest={{ zeppelin_dir }}/default/conf/zeppelin-env.sh
 
 - name: mkdir_etc_zeppelin

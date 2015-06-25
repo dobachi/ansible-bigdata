@@ -1,0 +1,2 @@
+- name: copy_storm.sh_as_profile
+  template: src=storm.sh.j2 dest=/etc/profile.d/storm.sh
