@@ -1,0 +1,29 @@
+- name: install_necessary_packages_to_compile_ruby
+  yum: name={{ item }} state=installed
+  with_items:
+    - gcc
+    - make
+
+- name: mkdir_/usr/local/src/ruby22
+  file: path=/usr/local/src/ruby22 state=directory
+
+- name: download_ruby22
+  get_url: url=http://cache.ruby-lang.org/pub/ruby/2.2/ruby-{{ ruby22_version }}.tar.gz dest=/usr/local/src/ruby22
+
+- name: unarchive_ruby22
+  shell: tar xvzf ruby-{{ ruby22_version }}.tar.gz chdir=/usr/local/src/ruby22 creates=/usr/local/src/ruby22/ruby-{{ ruby22_version }}/README.md
+
+- name: configure_ruby22
+  shell: ./configure --prefix=/usr/local/ruby22/ruby-{{ ruby22_version }} chdir=/usr/local/src/ruby22/ruby-{{ ruby22_version }} creates=/usr/local/src/ruby22/ruby-{{ ruby22_version }}/Makefile
+
+- name: make_clean_ruby22
+  shell: make clean chdir=/usr/local/src/ruby22/ruby-{{ ruby22_version }} creates=/usr/local/ruby22/ruby-{{ ruby22_version }}/bin/ruby
+
+- name: make_ruby22
+  shell: make chdir=/usr/local/src/ruby22/ruby-{{ ruby22_version }} creates=/usr/local/ruby22/ruby-{{ ruby22_version }}/bin/ruby
+
+- name: make_install_ruby22
+  shell: make install chdir=/usr/local/src/ruby22/ruby-{{ ruby22_version }} creates=/usr/local/ruby22/ruby-{{ ruby22_version }}/bin/ruby
+
+- name: create_alternatives_link
+  alternatives: name=ruby22_default link=/usr/local/ruby22/default path=/usr/local/ruby22/ruby-{{ ruby22_version }}

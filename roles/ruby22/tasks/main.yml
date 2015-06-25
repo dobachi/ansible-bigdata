@@ -1,0 +1,4 @@
+---
+# tasks file for roles/ruby22
+- include: install.yml tags=install,ruby22
+- include: config.yml tags=config,ruby22

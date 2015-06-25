@@ -1,0 +1,2 @@
+- name: install_fluentd
+  gem: name=fluentd state=present
