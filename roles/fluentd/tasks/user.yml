@@ -1,0 +1,5 @@
+- name: add_fluentd_group
+  group: name=fluentd state=present
+
+- name: add_fluentd_user
+  user: name=fluentd group=fluentd state=present

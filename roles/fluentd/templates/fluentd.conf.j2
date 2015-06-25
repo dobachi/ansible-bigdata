@@ -1,0 +1,11 @@
+{% if fluentd_source_defines is defined %}
+{% for item in fluentd_source_defines %}
+{{ item }}
+{% endfor %}
+{% endif %}
+
+{% if fluentd_match_defines is defined %}
+{% for item in fluentd_match_defines %}
+{{ item }}
+{% endfor %}
+{% endif %}

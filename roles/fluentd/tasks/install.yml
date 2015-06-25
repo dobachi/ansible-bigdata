@@ -1,2 +1,13 @@
 - name: install_fluentd
-  gem: name=fluentd state=present
+  gem: name=fluentd state=present user_install=no
+
+- name: install_msgpack
+  gem: name=msgpack version=0.5.12 state=present user_install=no
+
+- name: install_yajl-ruby
+  gem: name=yajl-ruby state=present user_install=no
+
+- name: install_plugins
+  gem: name={{ item }} state=present
+  with_items: fluentd_plugins
+  when: fluentd_plugins is defined

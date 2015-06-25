@@ -1,0 +1,8 @@
+- name: mkdir_/etc/fluentd
+  file: path=/etc/fluentd state=directory owner=fluentd group=fluentd
+
+- name: copy_fluentd.conf
+  template: src=fluentd.conf.j2 dest=/etc/fluentd/fluentd.conf
+
+- name: chown_/etc/fluentd/fluentd.conf
+  file: path=/etc/fluentd/fluentd.conf owner=fluentd group=fluentd

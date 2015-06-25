@@ -1,2 +1,4 @@
 ---
 # defaults file for roles/fluentd
+# fluentd_plugins:
+#   - fluent-plugin-webhdfs
