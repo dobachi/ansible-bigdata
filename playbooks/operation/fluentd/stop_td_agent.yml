@@ -1,0 +1,4 @@
+- hosts: "{{ server | default('localhost') }}"
+  tasks:
+    - name: stop_td-agent
+      service: name=td-agent state=stopped
