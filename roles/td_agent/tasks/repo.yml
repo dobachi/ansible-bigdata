@@ -1,0 +1,5 @@
+- name: import_gpgkey_td-agent
+  shell: rpm --import https://packages.treasuredata.com/GPG-KEY-td-agent
+
+- name: copy_yum_conf_of_td-agent
+  template: src=td.repo.j2 dest=/etc/yum.repos.d/td.repo

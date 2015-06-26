@@ -1,0 +1,2 @@
+- name: copy_td-agent.conf
+  template: src=td-agent.conf.j2 dest=/etc/td-agent/td-agent.conf

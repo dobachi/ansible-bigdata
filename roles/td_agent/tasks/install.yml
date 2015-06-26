@@ -1,0 +1,7 @@
+- name: install_td-agent
+  yum: name=td-agent state=installed
+
+- name: install_td-agent_plugins
+  shell: /usr/sbin/td-agent-gem install {{ item }}
+  with_items: td_agent_plugins
+  when: td_agent_plugins is defined
