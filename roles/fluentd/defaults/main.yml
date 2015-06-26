@@ -2,3 +2,20 @@
 # defaults file for roles/fluentd
 # fluentd_plugins:
 #   - fluent-plugin-webhdfs
+
+fluentd_source_defines:
+  - |
+    <source>
+      type forward
+    </source>
+  - |
+    <source>
+      type http
+      port 8888
+    </source>
+
+fluentd_match_defines:
+  - |
+    <match debug.**>
+      type stdout
+    </match>
