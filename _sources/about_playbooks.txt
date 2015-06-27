@@ -27,6 +27,7 @@ playbooks/conf/ganglia       Configuration of Ganglia
 playbooks/conf/influxdb      Configuration of InfluxDB and Grafana
 playbooks/conf/spark_comm    Configuration of Spark community edition
 playbooks/conf/zeppelin      Configuration of Zeppelin community edition
+playbooks/conf/fluentd       Configuration of fluentd and td-agent
 ============================ =============================================
 
 common
@@ -164,6 +165,16 @@ zeppelin
 
   + Configure zeppelin environment
 
+fluentd
+~~~~~~~~~~~~
+* fluentd.yml
+
+  + Configure fluentd
+
+* td_agent.yml
+
+  + Configure td-agent
+
 Playbooks for operation
 -----------------------
 
@@ -182,6 +193,7 @@ playbooks/operation/httpd        Start and stop httpd
 playbooks/operation/influxdb     Operation about InfluxDB initilization
 playbooks/operation/spark_com    Operation of Spark services and building Spark packages
 playbooks/operation/zeppelin     Start and stop zeppelin services
+playbooks/operation/fluentd      Start and stop td-agent services
 ================================ ====================================================================
 
 cdh5
@@ -243,3 +255,17 @@ zeppelin
 * stop_zeppelin.yml
 
   + Stop zeppelin services by executing zeppelin-daemon.sh
+
+fluentd
+~~~~~~~~~~~~~~~~~~~~~
+* restart_td_agent.yml
+
+  + Stop and Start td-agent
+
+* start_td_agent.yml
+
+  + Start td-agent
+
+* stop_td_agent.yml
+
+  + Stop td-agent

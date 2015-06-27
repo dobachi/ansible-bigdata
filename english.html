@@ -75,6 +75,7 @@ Each function is available individually.</p>
 <li>Configuring InfluxDB and Grafana for the metrics visualization</li>
 <li>Configuring Pseudo environment for test</li>
 <li>Configuring Zeppelin for Spark notebook</li>
+<li>Configuring fluentd and td-agent</li>
 </ul>
 </div>
 <div class="section" id="servers">
@@ -532,6 +533,9 @@ you can use them to swich environments which you want to configure in executing 
 <tr class="row-odd"><td>playbooks/conf/zeppelin</td>
 <td>Configuration of Zeppelin community edition</td>
 </tr>
+<tr class="row-even"><td>playbooks/conf/fluentd</td>
+<td>Configuration of fluentd and td-agent</td>
+</tr>
 </tbody>
 </table>
 <div class="section" id="common">
@@ -683,6 +687,19 @@ We have two playbooks for Ganglia master and slave.</p>
 </li>
 </ul>
 </div>
+<div class="section" id="fluentd">
+<h4>1.5.1.9. fluentd<a class="headerlink" href="#fluentd" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li>fluentd.yml<ul>
+<li>Configure fluentd</li>
+</ul>
+</li>
+<li>td_agent.yml<ul>
+<li>Configure td-agent</li>
+</ul>
+</li>
+</ul>
+</div>
 </div>
 <div class="section" id="playbooks-for-operation">
 <h3>1.5.2. Playbooks for operation<a class="headerlink" href="#playbooks-for-operation" title="Permalink to this headline">¶</a></h3>
@@ -724,6 +741,9 @@ e.g. Formating HDFS, Start/Stop services, ...</td>
 </tr>
 <tr class="row-even"><td>playbooks/operation/zeppelin</td>
 <td>Start and stop zeppelin services</td>
+</tr>
+<tr class="row-odd"><td>playbooks/operation/fluentd</td>
+<td>Start and stop td-agent services</td>
 </tr>
 </tbody>
 </table>
@@ -791,6 +811,23 @@ You can build Zeppelin according to Zeppelin official web site.</li>
 </li>
 <li>stop_zeppelin.yml<ul>
 <li>Stop zeppelin services by executing zeppelin-daemon.sh</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id6">
+<h4>1.5.2.6. fluentd<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li>restart_td_agent.yml<ul>
+<li>Stop and Start td-agent</li>
+</ul>
+</li>
+<li>start_td_agent.yml<ul>
+<li>Start td-agent</li>
+</ul>
+</li>
+<li>stop_td_agent.yml<ul>
+<li>Stop td-agent</li>
 </ul>
 </li>
 </ul>
@@ -1041,6 +1078,28 @@ You can build Zeppelin according to Zeppelin official web site.</li>
 </tbody>
 </table>
 </div>
+<div class="section" id="roles-to-configure-fluentd-or-td-agent">
+<h3>1.6.11. Roles to configure fluentd or td-agent<a class="headerlink" href="#roles-to-configure-fluentd-or-td-agent" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="77%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Role name</th>
+<th class="head">Use for</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>fluentd</td>
+<td>Configuration of fluentd (community edition)</td>
+</tr>
+<tr class="row-odd"><td>td_agent</td>
+<td>Configuration of td-agent</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <div class="section" id="how-to-use-this-playbooks">
 <h2>1.7. How to use this playbooks<a class="headerlink" href="#how-to-use-this-playbooks" title="Permalink to this headline">¶</a></h2>
@@ -1073,8 +1132,8 @@ you can use the following playbooks for it.</p>
 </pre></div>
 </div>
 </div>
-<div class="section" id="id6">
-<h4>1.7.2.2. Clone playbooks<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id7">
+<h4>1.7.2.2. Clone playbooks<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h4>
 <p>Move original /etc/ansible</p>
 <div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd</span> /etc
 <span class="nv">$ </span>sudo mv ansible ansible.org
@@ -1236,14 +1295,14 @@ please execute the following command.</p>
 <div class="section" id="how-to-configure-cdh5-pseudo-environment">
 <h3>1.7.6. How to configure CDH5 Pseudo environment<a class="headerlink" href="#how-to-configure-cdh5-pseudo-environment" title="Permalink to this headline">¶</a></h3>
 <p>You can construct CDH5 HDFS/YARN environment by ansible-playbook command.</p>
-<div class="section" id="id7">
-<h4>1.7.6.1. Preparement<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id8">
+<h4>1.7.6.1. Preparement<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h4>
 <p>If you have not configured Ansible execution environment,
 you should configure it.
 You can reference <a class="reference internal" href="how_to_use_playbooks.html#sec-configure-ansible-env"><span>How to configure Ansible execution environment</span></a> section.</p>
 </div>
-<div class="section" id="id8">
-<h4>1.7.6.2. Procedure<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id9">
+<h4>1.7.6.2. Procedure<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h4>
 <p>In the following example, we configure common_hosts_replace is True.
 As a result of this parameter configuration, Ansible replace /etc/hosts
 by Ansible driver server&#8217;s /etc/ansible/roles/common/files/hosts.default</p>

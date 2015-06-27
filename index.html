@@ -83,6 +83,7 @@
 <li class="toctree-l3"><a class="reference internal" href="english.html#roles-to-configure-influxdb-and-grafana">1.6.8. Roles to configure InfluxDB and Grafana</a></li>
 <li class="toctree-l3"><a class="reference internal" href="english.html#roles-to-configure-spark-community-edition">1.6.9. Roles to configure Spark community edition</a></li>
 <li class="toctree-l3"><a class="reference internal" href="english.html#roles-to-configure-zeppelin">1.6.10. Roles to configure Zeppelin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="english.html#roles-to-configure-fluentd-or-td-agent">1.6.11. Roles to configure fluentd or td-agent</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="english.html#how-to-use-this-playbooks">1.7. How to use this playbooks</a><ul>
@@ -121,30 +122,31 @@
 <li class="toctree-l3"><a class="reference internal" href="japanese.html#id14">2.5.2. 運用作業のためのプレイブック集</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="japanese.html#id19">2.6. ロールについて</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="japanese.html#id20">2.6.1. 基本的な設定のためのロール</a></li>
-<li class="toctree-l3"><a class="reference internal" href="japanese.html#id21">2.6.2. Ansible実行環境を構成管理のためのロール</a></li>
+<li class="toctree-l2"><a class="reference internal" href="japanese.html#id20">2.6. ロールについて</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="japanese.html#id21">2.6.1. 基本的な設定のためのロール</a></li>
+<li class="toctree-l3"><a class="reference internal" href="japanese.html#id22">2.6.2. Ansible実行環境を構成管理のためのロール</a></li>
 <li class="toctree-l3"><a class="reference internal" href="japanese.html#aws-ec2">2.6.3. AWS EC2管理のためのロール</a></li>
 <li class="toctree-l3"><a class="reference internal" href="japanese.html#cdh5hadoop">2.6.4. CDH5のHadoop環境のロール</a></li>
 <li class="toctree-l3"><a class="reference internal" href="japanese.html#cdh5hadoop-pseudo">2.6.5. CDH5のHadoop Pseudo環境のロール</a></li>
-<li class="toctree-l3"><a class="reference internal" href="japanese.html#id22">2.6.6. Spark実行環境の構成管理</a></li>
-<li class="toctree-l3"><a class="reference internal" href="japanese.html#id23">2.6.7. Ganglia艦橋の構成管理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="japanese.html#id23">2.6.6. Spark実行環境の構成管理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="japanese.html#id24">2.6.7. Ganglia艦橋の構成管理</a></li>
 <li class="toctree-l3"><a class="reference internal" href="japanese.html#influxdbgrafana">2.6.8. InfluxDBとGrafanaの構成管理</a></li>
-<li class="toctree-l3"><a class="reference internal" href="japanese.html#id24">2.6.9. コミュニティ版Sparkの構成管理</a></li>
-<li class="toctree-l3"><a class="reference internal" href="japanese.html#id25">2.6.10. コミュニティ版Zeppelinの構成管理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="japanese.html#id25">2.6.9. コミュニティ版Sparkの構成管理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="japanese.html#id26">2.6.10. コミュニティ版Zeppelinの構成管理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="japanese.html#fluentdtd-agent">2.6.11. fluentdやtd-agentの構成管理</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="japanese.html#id26">2.7. プレイブックの利用方法</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="japanese.html#id27">2.7.1. 前提条件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="japanese.html#id27">2.7. プレイブックの利用方法</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="japanese.html#id28">2.7.1. 前提条件</a></li>
 <li class="toctree-l3"><a class="reference internal" href="japanese.html#sec-configure-ansible-env-ja">2.7.2. Ansible実行環境を構成管理する例</a></li>
-<li class="toctree-l3"><a class="reference internal" href="japanese.html#id33">2.7.3. EC2インスタンスの構成</a></li>
-<li class="toctree-l3"><a class="reference internal" href="japanese.html#id38">2.7.4. ホスト名の設定</a></li>
+<li class="toctree-l3"><a class="reference internal" href="japanese.html#id34">2.7.3. EC2インスタンスの構成</a></li>
+<li class="toctree-l3"><a class="reference internal" href="japanese.html#id39">2.7.4. ホスト名の設定</a></li>
 <li class="toctree-l3"><a class="reference internal" href="japanese.html#cdh5hdfs-yarn">2.7.5. CDH5のHDFS/YARN環境を構成する例</a></li>
 <li class="toctree-l3"><a class="reference internal" href="japanese.html#cdh5pseudo">2.7.6. CDH5のPseudo環境を構成する例</a></li>
-<li class="toctree-l3"><a class="reference internal" href="japanese.html#id46">2.7.7. Ganglia環境を構成する</a></li>
-<li class="toctree-l3"><a class="reference internal" href="japanese.html#id49">2.7.8. InfluxDBとGrafanaを構成する</a></li>
-<li class="toctree-l3"><a class="reference internal" href="japanese.html#id50">2.7.9. コミュニティ版Sparkを構成する</a></li>
-<li class="toctree-l3"><a class="reference internal" href="japanese.html#id57">2.7.10. コミュニティ版Zeppelinを構成する</a></li>
+<li class="toctree-l3"><a class="reference internal" href="japanese.html#id47">2.7.7. Ganglia環境を構成する</a></li>
+<li class="toctree-l3"><a class="reference internal" href="japanese.html#id50">2.7.8. InfluxDBとGrafanaを構成する</a></li>
+<li class="toctree-l3"><a class="reference internal" href="japanese.html#id51">2.7.9. コミュニティ版Sparkを構成する</a></li>
+<li class="toctree-l3"><a class="reference internal" href="japanese.html#id58">2.7.10. コミュニティ版Zeppelinを構成する</a></li>
 </ul>
 </li>
 </ul>

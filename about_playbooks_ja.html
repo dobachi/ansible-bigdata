@@ -93,6 +93,9 @@
 <tr class="row-odd"><td>playbooks/conf/zeppelin</td>
 <td>コミュニティ版Zeppelinの構築/設定</td>
 </tr>
+<tr class="row-even"><td>playbooks/conf/fluentd</td>
+<td>fluentdとtd-agentの構築/設定</td>
+</tr>
 </tbody>
 </table>
 <div class="section" id="common">
@@ -259,6 +262,19 @@ Gangliaはマスタ／スレーブ構成なのでそれぞれを管理するた�
 </li>
 </ul>
 </div>
+<div class="section" id="fluentd">
+<h3>fluentd<a class="headerlink" href="#fluentd" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>fluentd.yml<ul>
+<li>fluentdを構成管理します</li>
+</ul>
+</li>
+<li>td_agent.yml<ul>
+<li>td-agentを構成管理します</li>
+</ul>
+</li>
+</ul>
+</div>
 </div>
 <div class="section" id="id3">
 <h2>運用作業のためのプレイブック集<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
@@ -296,6 +312,9 @@ Gangliaはマスタ／スレーブ構成なのでそれぞれを管理するた�
 </tr>
 <tr class="row-even"><td>playbooks/operation/zeppelin</td>
 <td>Zeppelinのサービスを起動/停止する</td>
+</tr>
+<tr class="row-odd"><td>playbooks/operation/fluentd</td>
+<td>td-agentサービスを起動/停止する</td>
 </tr>
 </tbody>
 </table>
@@ -363,6 +382,23 @@ Gangliaはマスタ／スレーブ構成なのでそれぞれを管理するた�
 </li>
 <li>stop_zeppelin.yml<ul>
 <li>zeppelin-daemon.shを実行することでサービスを停止します</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id8">
+<h3>fluentd<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>restart_td_agent.yml<ul>
+<li>td-agentのサービスを停止して起動します</li>
+</ul>
+</li>
+<li>start_td_agent.yml<ul>
+<li>td-agentのサービスを起動します</li>
+</ul>
+</li>
+<li>stop_td_agent.yml<ul>
+<li>td-agentのサービスを停止します</li>
 </ul>
 </li>
 </ul>

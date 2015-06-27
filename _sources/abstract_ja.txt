@@ -25,6 +25,7 @@
 * InfluxDBとGrafanaによるメトリクス可視化環境を整える
 * テスト用のPseudo環境を構築する
 * Sparkノートブック環境としてZeppelinの実行環境を整える
+* fluentdやtd-agentを構成管理する
 
 .. _sec-servers-ja:
 

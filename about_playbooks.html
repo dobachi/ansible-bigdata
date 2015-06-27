@@ -92,6 +92,9 @@
 <tr class="row-odd"><td>playbooks/conf/zeppelin</td>
 <td>Configuration of Zeppelin community edition</td>
 </tr>
+<tr class="row-even"><td>playbooks/conf/fluentd</td>
+<td>Configuration of fluentd and td-agent</td>
+</tr>
 </tbody>
 </table>
 <div class="section" id="common">
@@ -243,6 +246,19 @@ We have two playbooks for Ganglia master and slave.</p>
 </li>
 </ul>
 </div>
+<div class="section" id="fluentd">
+<h3>fluentd<a class="headerlink" href="#fluentd" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>fluentd.yml<ul>
+<li>Configure fluentd</li>
+</ul>
+</li>
+<li>td_agent.yml<ul>
+<li>Configure td-agent</li>
+</ul>
+</li>
+</ul>
+</div>
 </div>
 <div class="section" id="playbooks-for-operation">
 <h2>Playbooks for operation<a class="headerlink" href="#playbooks-for-operation" title="Permalink to this headline">¶</a></h2>
@@ -284,6 +300,9 @@ e.g. Formating HDFS, Start/Stop services, ...</td>
 </tr>
 <tr class="row-even"><td>playbooks/operation/zeppelin</td>
 <td>Start and stop zeppelin services</td>
+</tr>
+<tr class="row-odd"><td>playbooks/operation/fluentd</td>
+<td>Start and stop td-agent services</td>
 </tr>
 </tbody>
 </table>
@@ -351,6 +370,23 @@ You can build Zeppelin according to Zeppelin official web site.</li>
 </li>
 <li>stop_zeppelin.yml<ul>
 <li>Stop zeppelin services by executing zeppelin-daemon.sh</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id5">
+<h3>fluentd<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>restart_td_agent.yml<ul>
+<li>Stop and Start td-agent</li>
+</ul>
+</li>
+<li>start_td_agent.yml<ul>
+<li>Start td-agent</li>
+</ul>
+</li>
+<li>stop_td_agent.yml<ul>
+<li>Stop td-agent</li>
 </ul>
 </li>
 </ul>

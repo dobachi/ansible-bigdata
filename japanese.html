@@ -69,6 +69,7 @@
 <li>InfluxDBとGrafanaによるメトリクス可視化環境を整える</li>
 <li>テスト用のPseudo環境を構築する</li>
 <li>Sparkノートブック環境としてZeppelinの実行環境を整える</li>
+<li>fluentdやtd-agentを構成管理する</li>
 </ul>
 </div>
 <div class="section" id="sec-servers-ja">
@@ -527,6 +528,9 @@ ansible-playbookコマンドを実行するときに明示的に指定するこ�
 <tr class="row-odd"><td>playbooks/conf/zeppelin</td>
 <td>コミュニティ版Zeppelinの構築/設定</td>
 </tr>
+<tr class="row-even"><td>playbooks/conf/fluentd</td>
+<td>fluentdとtd-agentの構築/設定</td>
+</tr>
 </tbody>
 </table>
 <div class="section" id="common">
@@ -693,6 +697,19 @@ Gangliaはマスタ／スレーブ構成なのでそれぞれを管理するた�
 </li>
 </ul>
 </div>
+<div class="section" id="fluentd">
+<h4>2.5.1.9. fluentd<a class="headerlink" href="#fluentd" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li>fluentd.yml<ul>
+<li>fluentdを構成管理します</li>
+</ul>
+</li>
+<li>td_agent.yml<ul>
+<li>td-agentを構成管理します</li>
+</ul>
+</li>
+</ul>
+</div>
 </div>
 <div class="section" id="id14">
 <h3>2.5.2. 運用作業のためのプレイブック集<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
@@ -730,6 +747,9 @@ Gangliaはマスタ／スレーブ構成なのでそれぞれを管理するた�
 </tr>
 <tr class="row-even"><td>playbooks/operation/zeppelin</td>
 <td>Zeppelinのサービスを起動/停止する</td>
+</tr>
+<tr class="row-odd"><td>playbooks/operation/fluentd</td>
+<td>td-agentサービスを起動/停止する</td>
 </tr>
 </tbody>
 </table>
@@ -801,13 +821,30 @@ Gangliaはマスタ／スレーブ構成なのでそれぞれを管理するた�
 </li>
 </ul>
 </div>
-</div>
-</div>
 <div class="section" id="id19">
-<h2>2.6. ロールについて<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h2>
-<p>この節では、プレイブックの中で呼び出されるロールについて説明します。</p>
+<h4>2.5.2.6. fluentd<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li>restart_td_agent.yml<ul>
+<li>td-agentのサービスを停止して起動します</li>
+</ul>
+</li>
+<li>start_td_agent.yml<ul>
+<li>td-agentのサービスを起動します</li>
+</ul>
+</li>
+<li>stop_td_agent.yml<ul>
+<li>td-agentのサービスを停止します</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
 <div class="section" id="id20">
-<h3>2.6.1. 基本的な設定のためのロール<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h3>
+<h2>2.6. ロールについて<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h2>
+<p>この節では、プレイブックの中で呼び出されるロールについて説明します。</p>
+<div class="section" id="id21">
+<h3>2.6.1. 基本的な設定のためのロール<a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
 <colgroup>
 <col width="23%" />
@@ -834,8 +871,8 @@ Gangliaはマスタ／スレーブ構成なのでそれぞれを管理するた�
 </tbody>
 </table>
 </div>
-<div class="section" id="id21">
-<h3>2.6.2. Ansible実行環境を構成管理のためのロール<a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id22">
+<h3>2.6.2. Ansible実行環境を構成管理のためのロール<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
 <colgroup>
 <col width="23%" />
@@ -931,8 +968,8 @@ Gangliaはマスタ／スレーブ構成なのでそれぞれを管理するた�
 </tbody>
 </table>
 </div>
-<div class="section" id="id22">
-<h3>2.6.6. Spark実行環境の構成管理<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id23">
+<h3>2.6.6. Spark実行環境の構成管理<a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
 <colgroup>
 <col width="23%" />
@@ -950,8 +987,8 @@ Gangliaはマスタ／スレーブ構成なのでそれぞれを管理するた�
 </tbody>
 </table>
 </div>
-<div class="section" id="id23">
-<h3>2.6.7. Ganglia艦橋の構成管理<a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id24">
+<h3>2.6.7. Ganglia艦橋の構成管理<a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
 <colgroup>
 <col width="23%" />
@@ -994,8 +1031,8 @@ Gangliaはマスタ／スレーブ構成なのでそれぞれを管理するた�
 </tbody>
 </table>
 </div>
-<div class="section" id="id24">
-<h3>2.6.9. コミュニティ版Sparkの構成管理<a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id25">
+<h3>2.6.9. コミュニティ版Sparkの構成管理<a class="headerlink" href="#id25" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
 <colgroup>
 <col width="23%" />
@@ -1013,8 +1050,8 @@ Gangliaはマスタ／スレーブ構成なのでそれぞれを管理するた�
 </tbody>
 </table>
 </div>
-<div class="section" id="id25">
-<h3>2.6.10. コミュニティ版Zeppelinの構成管理<a class="headerlink" href="#id25" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id26">
+<h3>2.6.10. コミュニティ版Zeppelinの構成管理<a class="headerlink" href="#id26" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
 <colgroup>
 <col width="23%" />
@@ -1032,24 +1069,46 @@ Gangliaはマスタ／スレーブ構成なのでそれぞれを管理するた�
 </tbody>
 </table>
 </div>
+<div class="section" id="fluentdtd-agent">
+<h3>2.6.11. fluentdやtd-agentの構成管理<a class="headerlink" href="#fluentdtd-agent" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="77%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">ロール名</th>
+<th class="head">用途</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>fluentd</td>
+<td>fluentd（コミュニティ版）を構成管理します</td>
+</tr>
+<tr class="row-odd"><td>td_agent</td>
+<td>td-agent（TDによるサポートアリ）を構成管理</td>
+</tr>
+</tbody>
+</table>
 </div>
-<div class="section" id="id26">
-<h2>2.7. プレイブックの利用方法<a class="headerlink" href="#id26" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="id27">
+<h2>2.7. プレイブックの利用方法<a class="headerlink" href="#id27" title="Permalink to this headline">¶</a></h2>
 <p>この節では、プレイブックを使って各サービスを構成管理する例を示します。
 なお、各プレイブックはそれぞれ個別に実行できます。</p>
-<div class="section" id="id27">
-<h3>2.7.1. 前提条件<a class="headerlink" href="#id27" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id28">
+<h3>2.7.1. 前提条件<a class="headerlink" href="#id28" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>You have servers described insection.</li>
 <li>サーバの構成は <a class="reference internal" href="#sec-servers-ja"><span>サーバ構成</span></a> 節の内容に従っているものとします。</li>
 </ul>
 </div>
 <div class="section" id="sec-configure-ansible-env-ja">
-<span id="id28"></span><h3>2.7.2. Ansible実行環境を構成管理する例<a class="headerlink" href="#sec-configure-ansible-env-ja" title="Permalink to this headline">¶</a></h3>
+<span id="id29"></span><h3>2.7.2. Ansible実行環境を構成管理する例<a class="headerlink" href="#sec-configure-ansible-env-ja" title="Permalink to this headline">¶</a></h3>
 <p>この節では、Ansibleをインストールするところから初めて、
 プレイブックを使ってAnsible実行環境を構成管理する例を示します。</p>
-<div class="section" id="id29">
-<h4>2.7.2.1. パッケージのインストール<a class="headerlink" href="#id29" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id30">
+<h4>2.7.2.1. パッケージのインストール<a class="headerlink" href="#id30" title="Permalink to this headline">¶</a></h4>
 <p>EPELレポジトリをインストールします。</p>
 <div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>sudo yum install -y epel-release
 </pre></div>
@@ -1059,8 +1118,8 @@ Gangliaはマスタ／スレーブ構成なのでそれぞれを管理するた�
 </pre></div>
 </div>
 </div>
-<div class="section" id="id30">
-<h4>2.7.2.2. 本プレイブック集のクローン<a class="headerlink" href="#id30" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id31">
+<h4>2.7.2.2. 本プレイブック集のクローン<a class="headerlink" href="#id31" title="Permalink to this headline">¶</a></h4>
 <p>まずオリジナルの/etc/ansibleディレクトリをmvします。</p>
 <div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd</span> /etc
 <span class="nv">$ </span>sudo mv ansible ansible.org
@@ -1071,16 +1130,16 @@ Gangliaはマスタ／スレーブ構成なのでそれぞれを管理するた�
 </pre></div>
 </div>
 </div>
-<div class="section" id="id31">
-<h4>2.7.2.3. Ansibleの設定修正<a class="headerlink" href="#id31" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id32">
+<h4>2.7.2.3. Ansibleの設定修正<a class="headerlink" href="#id32" title="Permalink to this headline">¶</a></h4>
 <p>/etc/hosts にコピーされるhostsのテンプレートを修正します。</p>
 <div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd </span>ansible
 <span class="nv">$ </span>sudo vi roles/common/files/hosts.default
 </pre></div>
 </div>
 </div>
-<div class="section" id="id32">
-<h4>2.7.2.4. プレイブック実行<a class="headerlink" href="#id32" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id33">
+<h4>2.7.2.4. プレイブック実行<a class="headerlink" href="#id33" title="Permalink to this headline">¶</a></h4>
 <p>最初はインベントリのサンプルファイルhosts.sampleを使ってローカルホストに基本的な設定を行います。</p>
 <div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/conf/common/common_all.yml -k -s -i hosts.sample -e <span class="s2">&quot;common_hosts_replace=True&quot;</span>
 </pre></div>
@@ -1114,17 +1173,17 @@ ansible.cfg内で鍵のPATHを指定するために、「ansible_private_key_fil
 </div>
 </div>
 </div>
-<div class="section" id="id33">
-<h3>2.7.3. EC2インスタンスの構成<a class="headerlink" href="#id33" title="Permalink to this headline">¶</a></h3>
-<p>この節では、Hadoop用のAWS EC2インスタンスを起動するための手順例を示します。</p>
 <div class="section" id="id34">
-<h4>2.7.3.1. 前提<a class="headerlink" href="#id34" title="Permalink to this headline">¶</a></h4>
+<h3>2.7.3. EC2インスタンスの構成<a class="headerlink" href="#id34" title="Permalink to this headline">¶</a></h3>
+<p>この節では、Hadoop用のAWS EC2インスタンスを起動するための手順例を示します。</p>
+<div class="section" id="id35">
+<h4>2.7.3.1. 前提<a class="headerlink" href="#id35" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li>本プレイブック集を利用して、もしくは手動で、Ansible実行環境が設定されていること</li>
 </ul>
 </div>
-<div class="section" id="id35">
-<h4>2.7.3.2. 環境変数の設定<a class="headerlink" href="#id35" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id36">
+<h4>2.7.3.2. 環境変数の設定<a class="headerlink" href="#id36" title="Permalink to this headline">¶</a></h4>
 <p>AWS access keyなどを設定します。
 アクセス鍵についてはAWSのページを参照し、あらかじめ作成してください。</p>
 <p>以下のような環境変数を定義します。</p>
@@ -1161,8 +1220,8 @@ ec2_hadoop_vpc_subnet_id: subnet-xxxxxxxx
 </pre></div>
 </div>
 </div>
-<div class="section" id="id36">
-<h4>2.7.3.4. プレイブックの実行<a class="headerlink" href="#id36" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id37">
+<h4>2.7.3.4. プレイブックの実行<a class="headerlink" href="#id37" title="Permalink to this headline">¶</a></h4>
 <p>ansible-playbookコマンドを実行します。</p>
 <div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/operation/ec2/hadoop_nodes_up.yml -c <span class="nb">local</span>
 </pre></div>
@@ -1175,8 +1234,8 @@ EC2インスタンスにアクセスしたり、EC2インスタンスによる�
 <li>クラスタ内で利用できる/etc/hostsファイルのサンプル</li>
 </ul>
 </div>
-<div class="section" id="id37">
-<h4>2.7.3.5. （補足）EC2インスタンスを再起動した場合<a class="headerlink" href="#id37" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id38">
+<h4>2.7.3.5. （補足）EC2インスタンスを再起動した場合<a class="headerlink" href="#id38" title="Permalink to this headline">¶</a></h4>
 <p>EC2インスタンスを再起動するとpublicなIPアドレスが変わります。
 その場合はもう一度プレイブックを実行すると、改めてIPアドレス一覧のファイルが生成されます。</p>
 <div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/operation/ec2/hadoop_nodes_up.yml -c <span class="nb">local</span>
@@ -1184,19 +1243,19 @@ EC2インスタンスにアクセスしたり、EC2インスタンスによる�
 </div>
 </div>
 </div>
-<div class="section" id="id38">
-<h3>2.7.4. ホスト名の設定<a class="headerlink" href="#id38" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id39">
+<h3>2.7.4. ホスト名の設定<a class="headerlink" href="#id39" title="Permalink to this headline">¶</a></h3>
 <p>「common」ロールを使って各サーバのホスト名を設定できます。
 主にEC2インスタンスでHadoopクラスタを構成した際に、
 自動付与されたホスト名から扱いやすいホスト名に変更する場合に利用します。</p>
-<div class="section" id="id39">
-<h4>2.7.4.1. 前提<a class="headerlink" href="#id39" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id40">
+<h4>2.7.4.1. 前提<a class="headerlink" href="#id40" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li>本プレイブック集を利用して、もしくは手動で、Ansible実行環境が設定されていること</li>
 </ul>
 </div>
-<div class="section" id="id40">
-<h4>2.7.4.2. 手順<a class="headerlink" href="#id40" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id41">
+<h4>2.7.4.2. 手順<a class="headerlink" href="#id41" title="Permalink to this headline">¶</a></h4>
 <p>以下の通り、ansible-playbookコマンドを実行します。</p>
 <div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd</span> /etc/ansible
 <span class="nv">$ </span>ansible-playbook playbooks/conf/common/common_only_common.yml -k -s -e <span class="s2">&quot;common_config_hostname=True server=hadoop_all&quot;</span>
@@ -1206,14 +1265,14 @@ EC2インスタンスにアクセスしたり、EC2インスタンスによる�
 </div>
 <div class="section" id="cdh5hdfs-yarn">
 <h3>2.7.5. CDH5のHDFS/YARN環境を構成する例<a class="headerlink" href="#cdh5hdfs-yarn" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="id41">
-<h4>2.7.5.1. 前提条件<a class="headerlink" href="#id41" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id42">
+<h4>2.7.5.1. 前提条件<a class="headerlink" href="#id42" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li>本プレイブック集を利用して、もしくは手動で、Ansible実行環境が設定されていること</li>
 </ul>
 </div>
-<div class="section" id="id42">
-<h4>2.7.5.2. 手順<a class="headerlink" href="#id42" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id43">
+<h4>2.7.5.2. 手順<a class="headerlink" href="#id43" title="Permalink to this headline">¶</a></h4>
 <p>以下の通り、ansible-playbookコマンドを実行します。</p>
 <p>なお、ここではオプションでcommon_hosts_replace変数をTrueにしているため、
 各サーバの/etc/hostsを置き換えることに注意してください。
@@ -1228,8 +1287,8 @@ EC2インスタンスにアクセスしたり、EC2インスタンスによる�
 </pre></div>
 </div>
 </div>
-<div class="section" id="id43">
-<h4>2.7.5.3. Spark実行環境の整備<a class="headerlink" href="#id43" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id44">
+<h4>2.7.5.3. Spark実行環境の整備<a class="headerlink" href="#id44" title="Permalink to this headline">¶</a></h4>
 <p>以下の通り、ansible-playbookコマンドを実行します。</p>
 <div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/conf/cdh5/cdh5_spark.yml -k -s
 </pre></div>
@@ -1242,14 +1301,14 @@ EC2インスタンスにアクセスしたり、EC2インスタンスによる�
 </div>
 <div class="section" id="cdh5pseudo">
 <h3>2.7.6. CDH5のPseudo環境を構成する例<a class="headerlink" href="#cdh5pseudo" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="id44">
-<h4>2.7.6.1. 前提条件<a class="headerlink" href="#id44" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id45">
+<h4>2.7.6.1. 前提条件<a class="headerlink" href="#id45" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li>本プレイブック集を利用して、もしくは手動で、Ansible実行環境が設定されていること</li>
 </ul>
 </div>
-<div class="section" id="id45">
-<h4>2.7.6.2. 手順<a class="headerlink" href="#id45" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id46">
+<h4>2.7.6.2. 手順<a class="headerlink" href="#id46" title="Permalink to this headline">¶</a></h4>
 <p>以下の通り、ansible-playbookコマンドを実行します。
 各サーバの/etc/hostsを置き換えることに注意してください。
 /etc/ansible/roles/common/files/hosts.defaultの内容に置き換えられます。</p>
@@ -1274,16 +1333,16 @@ EC2インスタンスにアクセスしたり、EC2インスタンスによる�
 </div>
 </div>
 </div>
-<div class="section" id="id46">
-<h3>2.7.7. Ganglia環境を構成する<a class="headerlink" href="#id46" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="id47">
-<h4>2.7.7.1. 前提条件<a class="headerlink" href="#id47" title="Permalink to this headline">¶</a></h4>
+<h3>2.7.7. Ganglia環境を構成する<a class="headerlink" href="#id47" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id48">
+<h4>2.7.7.1. 前提条件<a class="headerlink" href="#id48" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li>本プレイブック集を利用して、もしくは手動で、Ansible実行環境が設定されていること</li>
 </ul>
 </div>
-<div class="section" id="id48">
-<h4>2.7.7.2. 手順<a class="headerlink" href="#id48" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id49">
+<h4>2.7.7.2. 手順<a class="headerlink" href="#id49" title="Permalink to this headline">¶</a></h4>
 <p>以下の通り、ansible-playbookコマンドを実行します。</p>
 <div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/conf/ganglia/ganglia_all.yml -k -s
 </pre></div>
@@ -1306,8 +1365,8 @@ EC2インスタンスでクラスタを構成している場合など、
 このポーリングする対象を&#8221;ganglia_slave_host&#8221;の設定値にするとよいです。</p>
 </div>
 </div>
-<div class="section" id="id49">
-<h3>2.7.8. InfluxDBとGrafanaを構成する<a class="headerlink" href="#id49" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id50">
+<h3>2.7.8. InfluxDBとGrafanaを構成する<a class="headerlink" href="#id50" title="Permalink to this headline">¶</a></h3>
 <p>InfluxDBとGrafanaをインストールするには以下のコマンドを実行します。</p>
 <div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/conf/influxdb/all.yml -k -s
 </pre></div>
@@ -1355,10 +1414,10 @@ group_vars/all/influxdbにて以下のように設定しています。</p>
 <p>またGrafanaのグラフを設定する方法は、  <a class="reference external" href="http://grafana.org/docs/features/intro/">Grafana&#8217;s documents</a>
 などをご参照ください。</p>
 </div>
-<div class="section" id="id50">
-<h3>2.7.9. コミュニティ版Sparkを構成する<a class="headerlink" href="#id50" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="id51">
-<h4>2.7.9.1. パッケージの取得、もしくはビルド<a class="headerlink" href="#id51" title="Permalink to this headline">¶</a></h4>
+<h3>2.7.9. コミュニティ版Sparkを構成する<a class="headerlink" href="#id51" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id52">
+<h4>2.7.9.1. パッケージの取得、もしくはビルド<a class="headerlink" href="#id52" title="Permalink to this headline">¶</a></h4>
 <p><a class="reference external" href="https://spark.apache.org/downloads.html">Spark公式ダウンロードサイト</a> から
 ビルド済みパッケージを取得できます。</p>
 <p>もし何らかの理由で自分でビルドしたい場合は、
@@ -1372,8 +1431,8 @@ group_vars/all/influxdbにて以下のように設定しています。</p>
 <li>spark_comm_hadoop_version</li>
 </ul>
 </div>
-<div class="section" id="id54">
-<h4>2.7.9.2. パラメータの設定<a class="headerlink" href="#id54" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id55">
+<h4>2.7.9.2. パラメータの設定<a class="headerlink" href="#id55" title="Permalink to this headline">¶</a></h4>
 <p>コミュニティ版Sparkの構成には、playbooks/conf/spark_comm/all.ymlというプレイブックを利用できます。</p>
 <p>このプレイブックはHTTPでビルド済みパッケージを取得することを前提としています。
 そのためのダウンロードURLを設定するため、以下のパラメータを任意に定義してください。</p>
@@ -1389,25 +1448,25 @@ spark_comm_package_url_baseは&#8221;<a class="reference external" href="http://
 <p class="last">spark_comm_package_nameが&#8221;.tgz&#8221;を含まないことに注意してください</p>
 </div>
 </div>
-<div class="section" id="id55">
-<h4>2.7.9.3. プレイブックの実行<a class="headerlink" href="#id55" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id56">
+<h4>2.7.9.3. プレイブックの実行<a class="headerlink" href="#id56" title="Permalink to this headline">¶</a></h4>
 <p>パラメータの設定後は、プレイブックを実行します。</p>
 <div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/conf/spark_comm/all.yml -k -s
 </pre></div>
 </div>
 </div>
-<div class="section" id="id56">
-<h4>2.7.9.4. ヒストリサーバの起動<a class="headerlink" href="#id56" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id57">
+<h4>2.7.9.4. ヒストリサーバの起動<a class="headerlink" href="#id57" title="Permalink to this headline">¶</a></h4>
 <p>ヒストリサーバを起動します。</p>
 <div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/operation/spark_comm/start_spark_historyserver.yml -k -s
 </pre></div>
 </div>
 </div>
 </div>
-<div class="section" id="id57">
-<h3>2.7.10. コミュニティ版Zeppelinを構成する<a class="headerlink" href="#id57" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="id58">
-<h4>2.7.10.1. ソースコードの取得とビルド<a class="headerlink" href="#id58" title="Permalink to this headline">¶</a></h4>
+<h3>2.7.10. コミュニティ版Zeppelinを構成する<a class="headerlink" href="#id58" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id59">
+<h4>2.7.10.1. ソースコードの取得とビルド<a class="headerlink" href="#id59" title="Permalink to this headline">¶</a></h4>
 <p><a class="reference external" href="https://github.com/apache/incubator-zeppelin/blob/master/README.md">公式のREADME</a> の通り、
 コンパイルしてパッケージングします。</p>
 <p>注意点はコンんパイル時のオプション（プロパティ設定）です。
@@ -1429,8 +1488,8 @@ spark_comm_package_url_baseは&#8221;<a class="reference external" href="http://
 作成したパッケージをHTTPで取得して利用します。</p>
 <p>本手順でコンパイル、パッケージ化したものをHTTPで取得可能な場所に配備してください。</p>
 </div>
-<div class="section" id="id59">
-<h4>2.7.10.2. プレイブックの実行<a class="headerlink" href="#id59" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id60">
+<h4>2.7.10.2. プレイブックの実行<a class="headerlink" href="#id60" title="Permalink to this headline">¶</a></h4>
 <p>以下のようにプレイブックを実行し、Zeppelinを構成します。</p>
 <div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/conf/zeppelin/zeppelin.yml -k -s
 </pre></div>
