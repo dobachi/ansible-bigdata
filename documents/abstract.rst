@@ -29,6 +29,7 @@ Each function is available individually.
 * Configuring InfluxDB and Grafana for the metrics visualization
 * Configuring Pseudo environment for test
 * Configuring Zeppelin for Spark notebook
+* Configuring fluentd and td-agent
 
 .. _sec-servers:
 

@@ -27,6 +27,7 @@ playbooks/conf/ganglia        Ganglia環境の構築／設定
 playbooks/conf/influxdb       InfluxDBとGrafanaの構築／設定
 playbooks/conf/spark_comm     コミュニティ版Sparkの構築/設定
 playbooks/conf/zeppelin       コミュニティ版Zeppelinの構築/設定
+playbooks/conf/fluentd        fluentdとtd-agentの構築/設定
 ============================= ==========================================
 
 common
@@ -177,6 +178,16 @@ zeppelin
 
   + Zeppelinを構成管理します
 
+fluentd
+~~~~~~~~~~~~
+* fluentd.yml
+
+  + fluentdを構成管理します
+
+* td_agent.yml
+
+  + td-agentを構成管理します
+
 運用作業のためのプレイブック集
 -------------------------------
 
@@ -194,6 +205,7 @@ playbooks/operation/httpd         HTTPサービスを起動／停止します
 playbooks/operation/influxdb      InfluxDBを初期化します
 playbooks/operation/spark_com     コミュニティ版Sparkのビルドやサービスの起動/停止に用います
 playbooks/operation/zeppelin      Zeppelinのサービスを起動/停止する
+playbooks/operation/fluentd       td-agentサービスを起動/停止する
 ================================= ====================================================================
 
 cdh5
@@ -255,3 +267,17 @@ zeppelin
 * stop_zeppelin.yml
 
   + zeppelin-daemon.shを実行することでサービスを停止します
+
+fluentd
+~~~~~~~~~~~~~~~~~~~~~
+* restart_td_agent.yml
+
+  + td-agentのサービスを停止して起動します
+
+* start_td_agent.yml
+
+  + td-agentのサービスを起動します
+
+* stop_td_agent.yml
+
+  + td-agentのサービスを停止します
