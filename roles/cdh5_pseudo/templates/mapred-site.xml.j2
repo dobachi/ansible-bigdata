@@ -43,4 +43,24 @@
     <value>/var/lib/hadoop-mapreduce/cache/${user.name}/tasks</value>
   </property>
 
+  <property>
+    <name>mapreduce.map.memory.mb</name>
+    <value>{{ cdh5_pseudo_mapreduce_map_memory_mb }}</value>
+  </property>
+
+  <property>
+    <name>mapreduce.reduce.memory.mb</name>
+    <value>{{ cdh5_pseudo_mapreduce_reduce_memory_mb }}</value>
+  </property>
+
+  <property>
+    <name>yarn.app.mapreduce.am.command-opts</name>
+    <value>{{ cdh5_pseudo_mapreduce_am_command_opts }}</value>
+  </property>
+
+  <property>
+    <name>yarn.app.mapreduce.am.resource.mb</name>
+    <value>{{ cdh5_pseudo_yarn_app_mapreduce_am_resource_mb }}</value>
+  </property>
+
 </configuration>
