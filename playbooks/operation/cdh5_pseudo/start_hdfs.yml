@@ -4,7 +4,7 @@
       service: name=hadoop-hdfs-namenode state=started
 
     - name: wait_for_namenode_service_port
-      wait_for: host={{ ansible_hostname }} port=8020
+      wait_for: host={{ ansible_hostname }} port=50070
 
     - name: start_secondarynamenode
       service: name=hadoop-hdfs-secondarynamenode state=started

@@ -16,4 +16,4 @@
       service: name=hadoop-mapreduce-historyserver state=stopped
 
     - name: wait_for_other_service_port_stopped
-      wait_for: host={{ ansible_hostname }} port=10020 state=stopped
+      wait_for: host={{ ansible_hostname }} port=19888 state=stopped
