@@ -1,5 +1,5 @@
 jdk_tmppath: '/tmp'
-jdk_version: '7u67'
-jdk_hotspot: 'b01'
-jdk_md5sum: '3209c90d10ca86e5c384f3aa6ad25bba'
+jdk_version: '7u79'
+jdk_hotspot: 'b15'
+jdk_md5sum: '8486da4cdc4123f5c4f080d279f07712'
  
