@@ -2,5 +2,6 @@
   roles:
     - common
     - epel
-    - nodejs
     - mongodb
+    - nodejs
+    - devhub

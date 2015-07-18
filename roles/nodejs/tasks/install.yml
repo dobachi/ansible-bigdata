@@ -1,2 +1,5 @@
-- name: install_nodejs
-  yum: name=nodejs state=installed
+- name: install_packages
+  yum: name={{ item }} state=installed
+  with_items:
+    - nodejs
+    - npm

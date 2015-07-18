@@ -1,0 +1,5 @@
+- name: clone_devhub
+  git: repo=https://github.com/volpe28v/DevHub.git dest=/usr/local/devhub
+
+- name: install_devhub
+  shell: npm install chdir=/usr/local/devhub

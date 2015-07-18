@@ -1,0 +1,4 @@
+---
+# handlers file for roles/devhub
+- name: reload_upstart_config
+  shell: initctl reload-configuration

@@ -1,0 +1,11 @@
+description "{{ devhub_description }}"
+author  "{{ devhub_author }}"
+
+start on runlevel {{ devhub_start_runlevel }}
+stop on runlevel  {{ devhub_stop_runlevel }}
+
+chdir {{ devhub_base_path }}
+env BASIC_AUTH_USER={{ devhub_basic_user }}
+env BASIC_AUTH_PASS={{ devhub_basic_pass }}
+exec node app.js -p {{ devhub_port }} -d {{ devhub_db }} -t {{ devhub_title }}
+respawn

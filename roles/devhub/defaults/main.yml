@@ -1,0 +1,12 @@
+---
+# defaults file for roles/devhub
+devhub_base_path: "/usr/local/devhub"
+devhub_description: "devhub"
+devhub_author: "hoge <hoge@example.com>"
+devhub_start_runlevel: "[2345]"
+devhub_stop_runlevel: "[016]"
+devhub_basic_user: "devhub"
+devhub_basic_pass: "devhub"
+devhub_port: "3000"
+devhub_db: "devhub_db"
+devhub_title: "devhub"
