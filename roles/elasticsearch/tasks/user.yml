@@ -1,0 +1,5 @@
+- name: add_elasticsearch_group
+  group: name=elasticsearch
+
+- name: add_elasticsearch_user
+  user: name=elasticsearch group=elasticsearch

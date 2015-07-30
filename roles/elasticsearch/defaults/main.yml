@@ -1,0 +1,4 @@
+---
+# defaults file for roles/elasticsearch
+
+elasticsearch_version: "1.7.1"
