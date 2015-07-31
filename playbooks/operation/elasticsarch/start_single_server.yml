@@ -1,0 +1,10 @@
+- hosts: "{{ server | default('localhost') }}"
+  sudo: True
+  tasks:
+    - name: start_es
+      service: name=elasticsearch state=started
+
+    - name: wait_for_elasticsearch_started
+      wait_for: host={{ ansible_hostname }} port=9200 state=started
+
+

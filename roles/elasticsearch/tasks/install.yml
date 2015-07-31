@@ -1,14 +1,2 @@
-- name: mkdir_elasticsearch
-  file: path=/usr/local/elasticsearch state=directory owner=elasticsearch group=elasticsearch
-
-- name: download_es_package
-  get_url: url=https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-{{ elasticsearch_version }}.tar.gz dest=/usr/local/elasticsearch
-
-- name: unarchive_es_package
-  shell: tar xvzf elasticsearch-{{ elasticsearch_version }}.tar.gz chdir=/usr/local/elasticsearch creats=/usr/local/elasticsearch/default/README.textile
-
-- name: chown_es_dir
-  file: path=/usr/local/elasticsearch/elasticsearch-{{ elasticsearch_version }} owner=elasticsearch group=elasticsearch recurse=yes
-
-- name: create_alternatives_entry
-  alternatives: name=elasticsearch_default link=/usr/local/elasticsearch/default path=/usr/local/elasticsearch/elasticsearch-{{ elasticsearch_version }}
+- name: install_es
+  yum: name=https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-{{ elasticsearch_version }}.noarch.rpm state=installed
