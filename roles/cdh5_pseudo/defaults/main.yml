@@ -28,6 +28,7 @@ cdh5_pseudo_mapreduce_am_command_opts: '-Xmx1024m'
 cdh5_pseudo_yarn_app_mapreduce_am_resource_mb: '1536'
 
 # yarn-site.xml
+cdh5_pseudo_yarn_resourcemanager_hostname: '{{ cdh5_pseudo_host }}'
 cdh5_pseudo_yarn_nodemanager_resource_cpu_vcores: '8'
 cdh5_pseudo_yarn_scheduler_minimum_allocation_vcores: '1'
 cdh5_pseudo_yarn_scheduler_maximum_allocation_vcores: '8'
