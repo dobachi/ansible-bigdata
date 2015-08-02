@@ -1,0 +1,11 @@
+description "Kibana 4"
+
+start on runlevel [2345]
+stop on runlevel [016]
+
+chdir /usr/local/kibana/default
+script
+  exec /usr/local/kibana/default/bin/kibana >> /usr/local/kibana/default/kibana.log 2>&1
+  exec su -s /bin/sh -c 'exec "$0" "$@"' kibana  -- /usr/local/kibana/default/bin/kibana >> /usr/local/kibana/default/kibana.log 2>&1
+end script
+respawn

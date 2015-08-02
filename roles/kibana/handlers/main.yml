@@ -1,0 +1,4 @@
+---
+# handlers file for roles/kibana
+- name: initctl_reload
+  shell: /sbin/initctl reload-configuration

@@ -1,0 +1,4 @@
+---
+# tasks file for roles/kibana
+- include: user.yml tags=kibana,user
+- include: install.yml tags=kibana,install

@@ -1,0 +1,5 @@
+- name: make_kibana_group
+  group: name=kibana
+
+- name: make_kibana_user
+  user: name=kibana group=kibana

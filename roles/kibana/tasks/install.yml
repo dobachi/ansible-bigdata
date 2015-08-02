@@ -1,0 +1,18 @@
+- name: mkdir_/usr/local/kibana
+  file: path=/usr/local/kibana state=directory owner=kibana group=kibana
+
+- name: download_kibana_package
+  get_url: url=https://download.elastic.co/kibana/kibana/kibana-{{ kibana_version }}-linux-x64.tar.gz dest=/usr/local/kibana
+
+- name: unarchive_kibana_package
+  shell: tar xvzf kibana-{{ kibana_version }}-linux-x64.tar.gz chdir=/usr/local/kibana creates=/usr/local/kibana/kibana-{{ kibana_version }}-linxu-x64/README.md
+
+- name: chown_/usr/local/kibana/
+  file: path=/usr/local/kibana owner=kibana group=kibana recurse=yes
+
+- name: make_alternatives_entry_of_kibana_default
+  alternatives: name=kibana_default path=/usr/local/kibana/kibana-{{ kibana_version }}-linux-x64 link=/usr/local/kibana/default
+
+- name: copy_kibana_init_script
+  template: src=kibana.conf.j2 dest=/etc/init/kibana.conf
+  notify: initctl_reload

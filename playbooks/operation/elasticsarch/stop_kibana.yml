@@ -1,0 +1,11 @@
+- hosts: "{{ server | default('localhost') }}"
+  tasks:
+    - name: stop_kibana
+      shell: /sbin/initctl stop kibana
+
+    - name: wait_for_kibana_stoped
+      wait_for: host={{ ansible_hostname }} port=5601 state=stopped
+
+
+
+
