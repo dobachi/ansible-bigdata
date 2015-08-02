@@ -3,4 +3,5 @@
     - { role: common, common_config_hostname: True }
     - epel
     - jdk
+    - zookeeper_server
     - kafka_pseudo
