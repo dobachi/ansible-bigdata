@@ -1,7 +1,4 @@
 - hosts: "{{ server | default('pseudo') }}"
   tasks:
     - name: stop_zookeeper_server
-      sudo: yes
-      sudo_user: kafka
-      shell: ./bin/zookeeper-server-stop.sh config/zookeeper.properties chdir=/usr/local/kafka_pseudo/default
-
+      service: name=zookeeper-server state=stopped
