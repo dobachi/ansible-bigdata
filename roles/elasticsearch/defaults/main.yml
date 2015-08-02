@@ -2,3 +2,5 @@
 # defaults file for roles/elasticsearch
 
 elasticsearch_version: "1.7.1"
+elasticsearch_cluster_name: "elasticsearch"
+elasticsearch_node_name: "{{ ansible_hostname }}"
