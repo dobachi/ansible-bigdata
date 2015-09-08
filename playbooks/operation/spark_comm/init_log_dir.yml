@@ -1,0 +1,12 @@
+- hosts: '{{server | default("hadoop_client") }}'
+  sudo: True
+  sudo_user: hdfs
+  tasks:
+    - name: remove_spark_log_dir
+      shell: hdfs dfs -rm -r /var/log/spark 
+    - name: mkdir_spark_log_dir
+      shell: hdfs dfs -mkdir -p /var/log/spark 
+    - name: chown_spark_log_dir
+      shell: hdfs dfs -chown spark /var/log/spark 
+    - name: chmod_spark_log_dir
+      shell: hdfs dfs -chmod a+w /var/log/spark 
