@@ -1,0 +1,7 @@
+- hosts: "{{ server | default('kafka_cluster') }}"
+  tasks:
+    - name: stop_kafka_server
+      sudo: yes
+      sudo_user: kafka
+      shell: ./bin/kafka-server-stop.sh config/server.properties chdir=/usr/local/kafka/default
+

@@ -13,11 +13,8 @@
 - name: make_alternatives_link_of_kafka_package
   alternatives: name=kafka_package path=/usr/local/kafka/kafka_{{ kafka_scala_version }}-{{ kafka_version }} link=/usr/local/kafka/default
 
-- name: mkdir_/etc/kafka/
+- name: mkdir_/etc/kafka
   file: path=/etc/kafka state=directory owner=kafka group=kafka
 
 - name: make_alternatives_link_of_kafka_config
-  alternatives: name=kafka_config path=/usr/local/kafka/default/config link=/etc/kafka/conf.pseudo
-
-- name: make_alternatives_link_of_kafka_conf
-  alternatives: name=kafka_conf path=/etc/kafka/conf.pseudo link=/etc/kafka/conf
+  alternatives: name=kafka_config path=/usr/local/kafka/default/config link=/etc/kafka/conf
