@@ -1,0 +1,4 @@
+---
+# defaults file for roles/kafka
+kafka_version: '0.8.2.1'
+kafka_scala_version: '2.10'

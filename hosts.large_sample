@@ -138,6 +138,6 @@ slave05
 pseudo
 
 [kafka_cluster]
-kafka01
-kafka02
-kafka03
+kafka01 zookeeper_server_id=1
+kafka02 zookeeper_server_id=2
+kafka03 zookeeper_server_id=3
