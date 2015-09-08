@@ -1,0 +1,24 @@
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
+
+# masters
+{% for i in ec2_hadoop_ma_result.results %}
+{% for j in i.tagged_instances %}
+{{ j.private_ip }} {{ i.item.name }}
+{% endfor %}
+{% endfor %}
+
+# slaves
+{% for i in ec2_hadoop_sl_result.results %}
+{% for j in i.tagged_instances %}
+{{ j.private_ip }} {{ i.item.name }}
+{% endfor %}
+{% endfor %}
+
+# clients
+{% for i in ec2_hadoop_cl_result.results %}
+{% for j in i.tagged_instances %}
+{{ j.private_ip }} {{ i.item.name }}
+{% endfor %}
+{% endfor %}
+

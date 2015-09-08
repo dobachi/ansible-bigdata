@@ -1,0 +1,88 @@
+[top:children]
+local
+cdh5_all
+
+[local]
+localhost
+
+[hadoop_all:children]
+hadoop_namenode
+hadoop_journalnode
+hadoop_zookeeperserver
+hadoop_resourcemanager
+hadoop_httpfs
+hadoop_hbase
+hadoop_slave
+hadoop_hive
+hadoop_oozie
+hadoop_pig
+hadoop_spark
+hadoop_client
+
+[hadoop_namenode:children]
+hadoop_namenode_primary
+hadoop_namenode_backup
+
+[hadoop_namenode_primary]
+{{ ec2_hadoop_ma_result.results[0].item.name }}
+
+[hadoop_namenode_backup]
+{{ ec2_hadoop_ma_result.results[1].item.name }}
+
+[hadoop_journalnode]
+{{ ec2_hadoop_ma_result.results[0].item.name }}
+{{ ec2_hadoop_ma_result.results[1].item.name }}
+{{ ec2_hadoop_ma_result.results[2].item.name }}
+
+[hadoop_zookeeperserver]
+{{ ec2_hadoop_ma_result.results[0].item.name }} zoo_id=1
+{{ ec2_hadoop_ma_result.results[1].item.name }} zoo_id=2
+{{ ec2_hadoop_ma_result.results[2].item.name }} zoo_id=3
+
+[hadoop_resourcemanager]
+{{ ec2_hadoop_ma_result.results[1].item.name }}
+
+[hadoop_httpfs]
+{{ ec2_hadoop_ma_result.results[1].item.name }}
+
+[hadoop_hbase:children]
+hadoop_hbase_master
+hadoop_hbase_regionserver
+
+[hadoop_hbase_master]
+{{ ec2_hadoop_ma_result.results[0].item.name }}
+
+[hadoop_hbase_regionserver]
+{% for i in ec2_hadoop_sl_result.results %}
+{{ i.item.name }}
+{% endfor %}
+
+[hadoop_slave]
+{% for i in ec2_hadoop_sl_result.results %}
+{{ i.item.name }}
+{% endfor %}
+
+[hadoop_client]
+{{ ec2_hadoop_cl_result.results[0].item.name }}
+
+[hadoop_hive]
+{{ ec2_hadoop_cl_result.results[0].item.name }}
+
+[hadoop_oozie]
+{{ ec2_hadoop_cl_result.results[0].item.name }}
+
+[hadoop_pig]
+{{ ec2_hadoop_cl_result.results[0].item.name }}
+
+[hadoop_spark:children]
+hadoop_spark_master
+hadoop_spark_worker
+
+[hadoop_spark_master]
+{{ ec2_hadoop_ma_result.results[0].item.name }}
+
+[hadoop_spark_worker]
+{% for i in ec2_hadoop_sl_result.results %}
+{{ i.item.name }}
+{% endfor %}
+

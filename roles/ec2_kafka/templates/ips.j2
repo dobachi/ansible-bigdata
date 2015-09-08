@@ -1,0 +1,20 @@
+# masters
+{% for i in ec2_hadoop_ma_result.results %}
+{% for j in i.tagged_instances %}
+{{ j.private_ip }} {{ j.public_ip }}
+{% endfor %}
+{% endfor %}
+
+# slaves
+{% for i in ec2_hadoop_sl_result.results %}
+{% for j in i.tagged_instances %}
+{{ j.private_ip }} {{ j.public_ip }}
+{% endfor %}
+{% endfor %}
+
+# clients
+{% for i in ec2_hadoop_cl_result.results %}
+{% for j in i.tagged_instances %}
+{{ j.private_ip }} {{ j.public_ip }}
+{% endfor %}
+{% endfor %}

@@ -1,0 +1,35 @@
+# debug mode to print debug messages
+ec2_kafka_debug: False
+
+# Tag name to be attached to instances
+ec2_kafka_instance_tag: kafka
+
+# Security group ids
+#ec2_kafka_group_id: sg-xxxxxxxx
+
+# The name of private key
+#ec2_kafka_accesskey: xxxxxx
+
+# The type of instances
+#ec2_kafka_itype: xx.xxxxx
+
+# The id of AMI image
+#ec2_kafka_image: ami-xxxxxxxx
+
+# The id of region
+#ec2_kafka_region: xx-xxxxxxxxx-x
+
+# The id of subnet of VPC
+#ec2_kafka_vpc_subnet_id: subnet-xxxxxxxx
+
+# The placement group
+# Notice: The placement group is available for only certain instance types
+#ec2_kafka_placement_group: xxxxxxx
+
+ec2_kafka_list:
+  - name: kafka01
+    ip: 172.31.16.41
+  - name: kafka02
+    ip: 172.31.16.42
+  - name: kafka03
+    ip: 172.31.16.43
