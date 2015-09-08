@@ -28,6 +28,7 @@ playbooks/conf/influxdb       InfluxDBとGrafanaの構築／設定
 playbooks/conf/spark_comm     コミュニティ版Sparkの構築/設定
 playbooks/conf/zeppelin       コミュニティ版Zeppelinの構築/設定
 playbooks/conf/fluentd        fluentdとtd-agentの構築/設定
+playbooks/conf/kafka          Kafkaクラスタの構築/設定
 ============================= ==========================================
 
 common
@@ -188,6 +189,12 @@ fluentd
 
   + td-agentを構成管理します
 
+kafka
+~~~~~~~~~~~~
+* kafka_brocker.yml
+
+  + Kafkaを構成管理します
+
 運用作業のためのプレイブック集
 -------------------------------
 
@@ -206,6 +213,7 @@ playbooks/operation/influxdb      InfluxDBを初期化します
 playbooks/operation/spark_com     コミュニティ版Sparkのビルドやサービスの起動/停止に用います
 playbooks/operation/zeppelin      Zeppelinのサービスを起動/停止する
 playbooks/operation/fluentd       td-agentサービスを起動/停止する
+playbooks/operation/kafka         Kafkaクラスタの起動/停止およびトピックの整理
 ================================= ====================================================================
 
 cdh5
@@ -281,3 +289,25 @@ fluentd
 * stop_td_agent.yml
 
   + td-agentのサービスを停止します
+
+kafka
+~~~~~~~~~~~~~~~~~~~~~
+* restart_kafka.yml
+
+  + Kafkaクラスタを起動/停止します
+
+* start_kafka.yml
+
+  + Kafkaクラスタを起動します
+
+* stop_kafka.yml
+
+  + Kafkaクラスタを停止します
+
+* create_topic.yml
+
+  + トピックを作成します
+
+* delete_topic.yml
+
+  + トピックを削除します

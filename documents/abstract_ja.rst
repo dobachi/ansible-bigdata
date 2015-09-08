@@ -26,6 +26,7 @@
 * テスト用のPseudo環境を構築する
 * Sparkノートブック環境としてZeppelinの実行環境を整える
 * fluentdやtd-agentを構成管理する
+* Kafkaクラスタを構成管理する
 
 .. _sec-servers-ja:
 
@@ -49,6 +50,9 @@ slave02  DataNode, NodeManager, Ganglia Slave
 slave03  DataNode, NodeManager, Ganglia Slave
 slave04  DataNode, NodeManager, Ganglia Slave
 slave05  DataNode, NodeManager, Ganglia Slave
+kafka01  Kafka broker
+kafka02  Kafka broker
+kafka03  Kafka broker
 ======== ================================================================================
 
 **大規模クラスタ構築時のサーバ構成**
@@ -75,6 +79,9 @@ slave07  DataNode, NodeManager, Ganglia Slave
 slave08  DataNode, NodeManager, Ganglia Slave
 slave09  DataNode, NodeManager, Ganglia Slave
 slave10  DataNode, NodeManager, Ganglia Slave
+kafka01  Kafka broker
+kafka02  Kafka broker
+kafka03  Kafka broker
 ======== ================================================================================
 
 **疑似分散環境**
@@ -102,6 +109,7 @@ Ansible       Ansible 1.8 of EPEL
 InfluxDB      コミュニティ最新版
 Graphana      コミュニティ版1.9.1
 Zeppelin      コミュニティ最新版
+Kafka         0.8.2.1
 ============= ================================
 
 必要事項
