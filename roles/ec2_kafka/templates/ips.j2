@@ -1,0 +1,6 @@
+# Kafka Cluster
+{% for i in ec2_kafka_result.results %}
+{% for j in i.tagged_instances %}
+{{ j.private_ip }} {{ j.public_ip }}
+{% endfor %}
+{% endfor %}

@@ -11,7 +11,9 @@ ec2_hadoop_instance_tag: hadoop
 #ec2_hadoop_accesskey: xxxxxx
 
 # The type of instances
-#ec2_hadoop_itype: xx.xxxxx
+#ec2_hadoop_master_itype: xx.xxxxx
+#ec2_hadoop_slave_itype: xx.xxxxx
+#ec2_hadoop_client_itype: xx.xxxxx
 
 # The id of AMI image
 #ec2_hadoop_master_image: ami-xxxxxxxx

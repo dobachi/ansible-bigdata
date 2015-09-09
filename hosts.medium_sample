@@ -4,6 +4,7 @@
 local
 hadoop_all
 hadoop_pseudo
+kafka_cluster
 
 ; This is a dummy
 [local]
@@ -125,3 +126,8 @@ slave05
 
 [hadoop_pseudo]
 pseudo
+
+[kafka_cluster]
+kafka01 zookeeper_server_id=1
+kafka02 zookeeper_server_id=2
+kafka03 zookeeper_server_id=3

@@ -1,0 +1,6 @@
+- name: copy_properties
+  template: src={{ item }}.j2 dest=/etc/kafka/conf/{{ item }}
+  with_items:
+    - server.properties
+    - consumer.properties
+    - producer.properties

@@ -1,0 +1,10 @@
+[top:children]
+kafka_cluster
+
+[local]
+localhost
+
+[kafka_cluster]
+{% for i in ec2_kafka_result.results %}
+{{ i.item.name }}
+{% endfor %}

@@ -1,0 +1,9 @@
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
+
+# Kafka cluster
+{% for i in ec2_kafka_result.results %}
+{% for j in i.tagged_instances %}
+{{ j.public_ip }} {{ i.item.name }}
+{% endfor %}
+{% endfor %}

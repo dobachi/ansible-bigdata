@@ -1,0 +1,5 @@
+- include: non_placement_group.yml
+  when: ec2_kafka_placement_group is not defined
+
+- include: placement_group.yml
+  when: ec2_kafka_placement_group is defined

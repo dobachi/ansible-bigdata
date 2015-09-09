@@ -1,0 +1,6 @@
+- hosts: "{{ server | default('kafka_cluster') }}"
+  roles:
+    - { role: common, common_config_hostname: True }
+    - epel
+    - jdk
+    - kafka

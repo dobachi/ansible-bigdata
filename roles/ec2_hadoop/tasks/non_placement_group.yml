@@ -1,7 +1,7 @@
 - name: up_masters
   ec2:
     key_name: "{{ ec2_hadoop_accesskey }}"
-    instance_type: "{{ ec2_hadoop_itype }}"
+    instance_type: "{{ ec2_hadoop_master_itype }}"
     group_id: "{{ ec2_hadoop_group_id }}"
     image: "{{ ec2_hadoop_master_image }}"
     wait: yes
@@ -21,7 +21,7 @@
 - name: up_slaves
   ec2:
     key_name: "{{ ec2_hadoop_accesskey }}"
-    instance_type: "{{ ec2_hadoop_itype }}"
+    instance_type: "{{ ec2_hadoop_slave_itype }}"
     group_id: "{{ ec2_hadoop_group_id }}"
     image: "{{ ec2_hadoop_slave_image }}"
     wait: yes
@@ -41,7 +41,7 @@
 - name: up_client
   ec2:
     key_name: "{{ ec2_hadoop_accesskey }}"
-    instance_type: "{{ ec2_hadoop_itype }}"
+    instance_type: "{{ ec2_hadoop_client_itype }}"
     group_id: "{{ ec2_hadoop_group_id }}"
     image: "{{ ec2_hadoop_client_image }}"
     wait: yes

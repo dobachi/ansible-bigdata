@@ -1,0 +1,23 @@
+- hosts: "{{ server | default('localhost') }}"
+  vars:
+    kafka_topic_name: 'test'
+    kafka_zoo_servers:
+      - master01:2181
+      - master02:2181
+      - master03:2181
+    kafka_repl_factor: 2
+    kafka_partitions: 2
+  tasks:
+    - name: create_topic
+      sudo: yes
+      sudo_user: kafka
+      shell: ./bin/kafka-topics.sh --create --zookeeper {{ ",".join(kafka_zoo_servers) }} --replication-factor {{ kafka_repl_factor }} --partitions {{ kafka_partitions }} --topic {{ kafka_topic_name }} chdir=/usr/local/kafka/default
+
+    - name: list_topics
+      sudo: yes
+      sudo_user: kafka
+      shell: ./bin/kafka-topics.sh --list --zookeeper {{ ",".join(kafka_zoo_servers) }} chdir=/usr/local/kafka/default
+      register: topic_list
+
+    - name: print_topic_list
+      debug: msg="{{ topic_list.stdout }}"

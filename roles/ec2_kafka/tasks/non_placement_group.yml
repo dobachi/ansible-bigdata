@@ -1,0 +1,38 @@
+- name: up_brokers
+  ec2:
+    key_name: "{{ ec2_kafka_accesskey }}"
+    instance_type: "{{ ec2_kafka_itype }}"
+    group_id: "{{ ec2_kafka_group_id }}"
+    image: "{{ ec2_kafka_image }}"
+    wait: yes
+    region: "{{ ec2_kafka_region }}"
+    instance_tags:
+      name: "{{ ec2_kafka_instance_tag }}"
+      nodetype: "{{ item.name }}"
+    exact_count: 1
+    count_tag:
+      name: "{{ ec2_kafka_instance_tag }}"
+      nodetype: "{{ item.name }}"
+    private_ip: "{{ item.ip }}"
+    vpc_subnet_id: "{{ ec2_kafka_vpc_subnet_id }}"
+  with_items: ec2_kafka_list
+  register: ec2_kafka_result
+
+- name: print_master_debugs
+  debug: var="{{ ec2_kafka_result.results }}"
+  when: ec2_kafka_debug
+
+- name: make_out_dir
+  file: path="/tmp/ec2_kafka_{{ ansible_user_id }}_{{ ansible_date_time.epoch }}" state=directory
+
+- name: make_inventory
+  local_action: template src=ansible_hosts.j2 dest="/tmp/ec2_kafka_{{ ansible_user_id }}_{{ ansible_date_time.epoch }}/ansible_hosts"
+
+- name: make_local_hosts_for_os
+  local_action: template src=hosts.j2 dest="/tmp/ec2_kafka_{{ ansible_user_id }}_{{ ansible_date_time.epoch }}/hosts"
+
+- name: make_public_hosts_for_os
+  local_action: template src=publichosts.j2 dest="/tmp/ec2_kafka_{{ ansible_user_id }}_{{ ansible_date_time.epoch }}/publichosts"
+
+- name: make_ip_list
+  local_action: template src=ips.j2 dest="/tmp/ec2_kafka_{{ ansible_user_id }}_{{ ansible_date_time.epoch }}/ips"

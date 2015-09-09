@@ -117,3 +117,12 @@ Role name        Use for
 fluentd          Configuration of fluentd (community edition)
 td_agent         Configuration of td-agent
 ================ =======================================================
+
+Roles to configure Kafka 
+-------------------------------------------
+
+================ =======================================================
+Role name        Use for
+================ =======================================================
+kafka            Configuration of Kafka cluster
+================ =======================================================
