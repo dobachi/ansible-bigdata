@@ -1,5 +1,5 @@
-- name: copy_config.toml
-  template: src=config.toml.j2 dest=/opt/influxdb/shared/config.toml
+- name: copy_influxdb_conf
+  template: src=influxdb.conf.j2 dest=/etc/opt/influxdb/influxdb.conf
   notify:
     - restart_influxdb
 

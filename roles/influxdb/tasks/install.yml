@@ -1,2 +1,2 @@
 - name: install_influxdb
-  yum: name=https://s3.amazonaws.com/influxdb/influxdb-latest-1.x86_64.rpm state=installed
+  yum: name=http://influxdb.s3.amazonaws.com/influxdb-{{ influxdb_version }}.x86_64.rpm state=installed

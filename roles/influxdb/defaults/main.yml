@@ -1,4 +1,6 @@
 ---
+influxdb_version: '0.9.4.2-1'
+
 influxdb_graphite_enabled: 'true'
 
 # The following parameters are configured in groups_vars/all/influxdb
