@@ -1,0 +1,2 @@
+- name: copy_grafana.repo
+  template: src=grafana.repo.j2 dest=/etc/yum.repos.d/grafana.repo

@@ -1,4 +1,6 @@
 ---
 # tasks file for roles/grafana
+- include: repo.yml tags=grafana,repo
 - include: install.yml tags=grafana,install
-- include: config.yml tags=grafana,config
+#- include: config.yml tags=grafana,config
+- include: service.yml tags=grafana,service
