@@ -14,4 +14,4 @@
   alternatives: name=zeppelin_conf path=/usr/local/zeppelin/default/conf link=/etc/zeppelin/conf
 
 - name: chown_etc_zeppelin_conf
-  file: path=/etc/zeppelin/conf state=directory owner=zeppelin group=zeppelin recurse=yes
+  file: path=/usr/local/zeppelin/default/conf state=directory owner=zeppelin group=zeppelin recurse=yes
