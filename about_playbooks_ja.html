@@ -96,6 +96,9 @@
 <tr class="row-even"><td>playbooks/conf/fluentd</td>
 <td>fluentdとtd-agentの構築/設定</td>
 </tr>
+<tr class="row-odd"><td>playbooks/conf/kafka</td>
+<td>Kafkaクラスタの構築/設定</td>
+</tr>
 </tbody>
 </table>
 <div class="section" id="common">
@@ -275,6 +278,15 @@ Gangliaはマスタ／スレーブ構成なのでそれぞれを管理するた�
 </li>
 </ul>
 </div>
+<div class="section" id="kafka">
+<h3>kafka<a class="headerlink" href="#kafka" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>kafka_brocker.yml<ul>
+<li>Kafkaを構成管理します</li>
+</ul>
+</li>
+</ul>
+</div>
 </div>
 <div class="section" id="id3">
 <h2>運用作業のためのプレイブック集<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
@@ -315,6 +327,9 @@ Gangliaはマスタ／スレーブ構成なのでそれぞれを管理するた�
 </tr>
 <tr class="row-odd"><td>playbooks/operation/fluentd</td>
 <td>td-agentサービスを起動/停止する</td>
+</tr>
+<tr class="row-even"><td>playbooks/operation/kafka</td>
+<td>Kafkaクラスタの起動/停止およびトピックの整理</td>
 </tr>
 </tbody>
 </table>
@@ -399,6 +414,31 @@ Gangliaはマスタ／スレーブ構成なのでそれぞれを管理するた�
 </li>
 <li>stop_td_agent.yml<ul>
 <li>td-agentのサービスを停止します</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id9">
+<h3>kafka<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>restart_kafka.yml<ul>
+<li>Kafkaクラスタを起動/停止します</li>
+</ul>
+</li>
+<li>start_kafka.yml<ul>
+<li>Kafkaクラスタを起動します</li>
+</ul>
+</li>
+<li>stop_kafka.yml<ul>
+<li>Kafkaクラスタを停止します</li>
+</ul>
+</li>
+<li>create_topic.yml<ul>
+<li>トピックを作成します</li>
+</ul>
+</li>
+<li>delete_topic.yml<ul>
+<li>トピックを削除します</li>
 </ul>
 </li>
 </ul>

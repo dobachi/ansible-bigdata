@@ -448,6 +448,25 @@ spark_comm_package_url_baseは&#8221;<a class="reference external" href="http://
 </div>
 </div>
 </div>
+<div class="section" id="kafka">
+<h2>Kafkaクラスタを構成する<a class="headerlink" href="#kafka" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id29">
+<h3>注意事項<a class="headerlink" href="#id29" title="Permalink to this headline">¶</a></h3>
+<p>Zookeeperアンサンブルがmaster01, master02、master03にて動作していることを前提とします。
+もしほかに独自のアンサンブルがある場合には、ロールパラメータを上書きしてください。</p>
+</div>
+<div class="section" id="id30">
+<h3>プレイブックの実行<a class="headerlink" href="#id30" title="Permalink to this headline">¶</a></h3>
+<p>以下のようにプレイブックを実行し、Kafkaクラスタを構成します。</p>
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/conf/kafka/kafka_broker.yml -k -s
+</pre></div>
+</div>
+<p>構成完了後、Kafkaクラスタを起動してください。</p>
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/operation/kafka/start_kafka.yml -k -s
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 
 

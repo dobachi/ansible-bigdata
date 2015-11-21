@@ -65,6 +65,7 @@
 <li>テスト用のPseudo環境を構築する</li>
 <li>Sparkノートブック環境としてZeppelinの実行環境を整える</li>
 <li>fluentdやtd-agentを構成管理する</li>
+<li>Kafkaクラスタを構成管理する</li>
 </ul>
 </div>
 <div class="section" id="sec-servers-ja">
@@ -110,6 +111,15 @@ Ganglia Slave, Ganglia Master, InfluxDB, Grafana</td>
 </tr>
 <tr class="row-even"><td>slave05</td>
 <td>DataNode, NodeManager, Ganglia Slave</td>
+</tr>
+<tr class="row-odd"><td>kafka01</td>
+<td>Kafka broker</td>
+</tr>
+<tr class="row-even"><td>kafka02</td>
+<td>Kafka broker</td>
+</tr>
+<tr class="row-odd"><td>kafka03</td>
+<td>Kafka broker</td>
 </tr>
 </tbody>
 </table>
@@ -182,6 +192,15 @@ Ganglia Slave, Ganglia Master, InfluxDB, Grafana</td>
 <tr class="row-even"><td>slave10</td>
 <td>DataNode, NodeManager, Ganglia Slave</td>
 </tr>
+<tr class="row-odd"><td>kafka01</td>
+<td>Kafka broker</td>
+</tr>
+<tr class="row-even"><td>kafka02</td>
+<td>Kafka broker</td>
+</tr>
+<tr class="row-odd"><td>kafka03</td>
+<td>Kafka broker</td>
+</tr>
 </tbody>
 </table>
 <p><strong>疑似分散環境</strong></p>
@@ -240,6 +259,9 @@ or Spark1.3 community edition</td>
 </tr>
 <tr class="row-even"><td>Zeppelin</td>
 <td>コミュニティ最新版</td>
+</tr>
+<tr class="row-odd"><td>Kafka</td>
+<td>0.8.2.1</td>
 </tr>
 </tbody>
 </table>

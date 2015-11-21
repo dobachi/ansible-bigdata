@@ -95,6 +95,9 @@
 <tr class="row-even"><td>playbooks/conf/fluentd</td>
 <td>Configuration of fluentd and td-agent</td>
 </tr>
+<tr class="row-odd"><td>playbooks/conf/kafka</td>
+<td>Configuration of Kafka</td>
+</tr>
 </tbody>
 </table>
 <div class="section" id="common">
@@ -259,6 +262,15 @@ We have two playbooks for Ganglia master and slave.</p>
 </li>
 </ul>
 </div>
+<div class="section" id="kafka">
+<h3>kafka<a class="headerlink" href="#kafka" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>kafka_brocker.yml<ul>
+<li>Configure Kafka broker nodes.</li>
+</ul>
+</li>
+</ul>
+</div>
 </div>
 <div class="section" id="playbooks-for-operation">
 <h2>Playbooks for operation<a class="headerlink" href="#playbooks-for-operation" title="Permalink to this headline">¶</a></h2>
@@ -303,6 +315,9 @@ e.g. Formating HDFS, Start/Stop services, ...</td>
 </tr>
 <tr class="row-odd"><td>playbooks/operation/fluentd</td>
 <td>Start and stop td-agent services</td>
+</tr>
+<tr class="row-even"><td>playbooks/operation/kafka</td>
+<td>Start and stop Kafka cluster</td>
 </tr>
 </tbody>
 </table>
@@ -387,6 +402,31 @@ You can build Zeppelin according to Zeppelin official web site.</li>
 </li>
 <li>stop_td_agent.yml<ul>
 <li>Stop td-agent</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id6">
+<h3>kafka<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>restart_kafka.yml<ul>
+<li>Stop and Start kafka</li>
+</ul>
+</li>
+<li>start_kafka.yml<ul>
+<li>Start kafka</li>
+</ul>
+</li>
+<li>stop_kafka.yml<ul>
+<li>Stop kafka</li>
+</ul>
+</li>
+<li>create_topic.yml<ul>
+<li>Create topic on Kafka cluster</li>
+</ul>
+</li>
+<li>delete_topic.yml<ul>
+<li>Delete topic on Kafka cluster</li>
 </ul>
 </li>
 </ul>

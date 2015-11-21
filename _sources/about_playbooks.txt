@@ -28,6 +28,7 @@ playbooks/conf/influxdb      Configuration of InfluxDB and Grafana
 playbooks/conf/spark_comm    Configuration of Spark community edition
 playbooks/conf/zeppelin      Configuration of Zeppelin community edition
 playbooks/conf/fluentd       Configuration of fluentd and td-agent
+playbooks/conf/kafka         Configuration of Kafka
 ============================ =============================================
 
 common
@@ -175,6 +176,12 @@ fluentd
 
   + Configure td-agent
 
+kafka
+~~~~~~~~~~~~
+* kafka_brocker.yml
+
+  + Configure Kafka broker nodes.
+
 Playbooks for operation
 -----------------------
 
@@ -194,6 +201,7 @@ playbooks/operation/influxdb     Operation about InfluxDB initilization
 playbooks/operation/spark_com    Operation of Spark services and building Spark packages
 playbooks/operation/zeppelin     Start and stop zeppelin services
 playbooks/operation/fluentd      Start and stop td-agent services
+playbooks/operation/kafka        Start and stop Kafka cluster
 ================================ ====================================================================
 
 cdh5
@@ -269,3 +277,25 @@ fluentd
 * stop_td_agent.yml
 
   + Stop td-agent
+
+kafka
+~~~~~~~~~~~~~~~~~~~~~
+* restart_kafka.yml
+
+  + Stop and Start kafka
+
+* start_kafka.yml
+
+  + Start kafka
+
+* stop_kafka.yml
+
+  + Stop kafka
+
+* create_topic.yml
+
+  + Create topic on Kafka cluster
+
+* delete_topic.yml
+
+  + Delete topic on Kafka cluster

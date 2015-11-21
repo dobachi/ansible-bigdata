@@ -459,4 +459,27 @@ CDH5.3.3、Spark1.3、YARN環境を利用する場合の例を以下に示しま
 
  $ ansible-playbook playbooks/operation/zeppelin/start_zeppelin.yml -k -s
 
+Kafkaクラスタを構成する
+-------------------------------
+
+注意事項
+~~~~~~~~~~~~~~~
+Zookeeperアンサンブルがmaster01, master02、master03にて動作していることを前提とします。
+もしほかに独自のアンサンブルがある場合には、ロールパラメータを上書きしてください。
+
+
+プレイブックの実行
+~~~~~~~~~~~~~~~~~~~~~~
+以下のようにプレイブックを実行し、Kafkaクラスタを構成します。
+
+.. code-block:: shell
+
+ $ ansible-playbook playbooks/conf/kafka/kafka_broker.yml -k -s
+
+構成完了後、Kafkaクラスタを起動してください。
+
+.. code-block:: shell
+
+ $ ansible-playbook playbooks/operation/kafka/start_kafka.yml -k -s
+
 .. vim: ft=rst tw=0 et ts=2 sw=2

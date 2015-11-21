@@ -30,6 +30,7 @@ Each function is available individually.
 * Configuring Pseudo environment for test
 * Configuring Zeppelin for Spark notebook
 * Configuring fluentd and td-agent
+* Configuring Kafka cluster
 
 .. _sec-servers:
 
@@ -53,6 +54,9 @@ slave02  DataNode, NodeManager, Ganglia Slave
 slave03  DataNode, NodeManager, Ganglia Slave
 slave04  DataNode, NodeManager, Ganglia Slave
 slave05  DataNode, NodeManager, Ganglia Slave
+kafka01  Kafka broker
+kafka02  Kafka broker
+kafka03  Kafka broker
 ======== ================================================================================
 
 **Servers for large cluster**
@@ -79,6 +83,9 @@ slave07  DataNode, NodeManager, Ganglia Slave
 slave08  DataNode, NodeManager, Ganglia Slave
 slave09  DataNode, NodeManager, Ganglia Slave
 slave10  DataNode, NodeManager, Ganglia Slave
+kafka01  Kafka broker
+kafka02  Kafka broker
+kafka03  Kafka broker
 ======== ================================================================================
 
 **Server for pseudo environment**
@@ -106,6 +113,7 @@ Ansible  Ansible 1.8.2 of EPEL
 InfluxDB Latest version of the community
 Graphana 1.9.1 of the community
 Zeppelin Latest version of the community
+Kafka    0.8.2.1
 ======== ========================================================
 
 Prerequirement

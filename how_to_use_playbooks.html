@@ -424,6 +424,25 @@ so that you need to put the package on a HTTP web server.</p>
 </div>
 </div>
 </div>
+<div class="section" id="configure-kafka-cluster">
+<h2>Configure Kafka cluster<a class="headerlink" href="#configure-kafka-cluster" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="information">
+<h3>Information<a class="headerlink" href="#information" title="Permalink to this headline">¶</a></h3>
+<p>We assume that Zookeeper ensemble was congured on master01, master02 and master03.
+If you have any other Zookeeper ensemble, you should modify kafka role&#8217;s parameters.</p>
+</div>
+<div class="section" id="id3">
+<h3>Executing playbook<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>To configure Kafka cluster, please execute the following playbook.</p>
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/conf/kafka/kafka_broker.yml -k -s
+</pre></div>
+</div>
+<p>After finishing configuration, you need to start Kafka cluster.</p>
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/operation/kafka/start_kafka.yml -k -s
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 
 

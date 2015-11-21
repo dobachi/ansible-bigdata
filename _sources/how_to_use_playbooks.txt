@@ -450,4 +450,27 @@ After finishing configuration, you need to start Zeppelin service.
  $ ansible-playbook playbooks/operation/zeppelin/start_zeppelin.yml -k -s
 
 
+Configure Kafka cluster
+-------------------------------
+
+Information
+~~~~~~~~~~~~~~~
+We assume that Zookeeper ensemble was congured on master01, master02 and master03. 
+If you have any other Zookeeper ensemble, you should modify kafka role's parameters.
+
+
+Executing playbook
+~~~~~~~~~~~~~~~~~~~~~~
+To configure Kafka cluster, please execute the following playbook.
+
+.. code-block:: shell
+
+ $ ansible-playbook playbooks/conf/kafka/kafka_broker.yml -k -s
+
+After finishing configuration, you need to start Kafka cluster.
+
+.. code-block:: shell
+
+ $ ansible-playbook playbooks/operation/kafka/start_kafka.yml -k -s
+
 .. set ft=rst tw=0 et ts=2 sw=2
