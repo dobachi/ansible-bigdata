@@ -46,3 +46,11 @@ spark_comm_metrics_tmpl: 'metrics.properties.j2'
 spark_comm_graphite_enabled: True
 spark_comm_graphite_prefix: 'spark'
 spark_comm_graphite_port: '2003'
+
+# /etc/spark/conf/log4j-spark.properties
+spark_comm_log4j_spark_properties_tmpl: 'log4j-spark.properties.j2'
+spark_comm_log4j_rootCategory: 'WARN, rolling'
+spark_comm_log4j_filename: 'spark.log'
+spark_comm_log4j_ConversionPattern: '%d{yy/MM/dd HH:mm:ss} %p %c{1}: %m%n'
+spark_comm_log4j_MaxFileSize: '256Mb'
+spark_comm_log4j_MaxBackupIndex: '10'

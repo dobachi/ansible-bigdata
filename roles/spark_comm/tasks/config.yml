@@ -7,5 +7,8 @@
 - name: copy_metrics.properties
   template: src={{ spark_comm_metrics_tmpl }} dest=/etc/spark/conf/metrics.properties
 
+- name: copy_log4j_spark_properties
+  template: src={{ spark_comm_log4j_spark_properties_tmpl }} dest=/etc/spark/conf/log4j-spark.properties
+
 - name: copy_profile_of_spark
   template: src=spark.sh.j2 dest=/etc/profile.d/spark.sh
