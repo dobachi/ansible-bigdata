@@ -1,0 +1,4 @@
+---
+# tasks file for roles/ambari
+- include: repos.yml tags=ambari,repos
+- include: install.yml tags=ambari,install

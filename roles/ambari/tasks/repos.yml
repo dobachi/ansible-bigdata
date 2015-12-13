@@ -1,0 +1,2 @@
+- name : copy_yum_repo_conf
+  get_url: url=http://public-repo-1.hortonworks.com/ambari/{{ ambari_os }}/{{ ambari_major_ver }}/updates/{{ ambari_ver }}/ambari.repo dest=/etc/yum.repos.d/ambari.repo

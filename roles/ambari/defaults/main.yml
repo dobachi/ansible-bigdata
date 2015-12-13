@@ -1,0 +1,5 @@
+---
+# defaults file for roles/ambari
+ambari_os: 'centos6'
+ambari_major_ver: '2.x'
+ambari_ver: '2.1.2'

@@ -1,0 +1,4 @@
+- hosts: '{{ server | default("localhost") }}'
+  tasks:
+    - name: setup_ambari_with_default_params
+      shell: ambari-server setup -s
