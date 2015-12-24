@@ -3,14 +3,19 @@
     zeppelin_git_url: 'https://github.com/apache/incubator-zeppelin.git'
     zeppelin_src_dir: '/usr/src/zeppelin'
     zeppelin_version: 'master'
-    zeppelin_comiple_flag: '-Pspark-1.2 -Phadoop-2.4 -Pyarn -DskipTests -P build-distr'
-    zeppelin_hadoop_version: '2.5.0-cdh5.3.2'
+    zeppelin_comiple_flag: '-Pcassandra-spark-1.5 -Phadoop-2.6 -Pyarn -Ppyspark -DskipTests -P build-distr'
+    zeppelin_hadoop_version: '2.6.0'
   roles:
     - jdk
     - maven
   tasks:
+    - name: install_required_packages
+      yum: name={{ item }} state=installed
+      with_items:
+        - npm
+        - fontconfig-devel
     - name: mkdir_zeppelin_dir
-      file: path={{ zeppelin_src_dir }}state=directory recurse=yes
+      file: path={{ zeppelin_src_dir }} state=directory recurse=yes
     - name: clone_zeppelin_src
       git: repo={{ zeppelin_git_url }} dest={{ zeppelin_src_dir }}/{{ zeppelin_version }}
     - name: create_alternatives_link
