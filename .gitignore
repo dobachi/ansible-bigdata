@@ -8,3 +8,6 @@
 *.swo
 *~
 documents/_build
+derby.log
+metastore_db/
+
