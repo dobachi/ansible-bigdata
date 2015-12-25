@@ -1,0 +1,12 @@
+ambari_server: "localhost:8080"
+ambari_user: "admin"
+ambari_passwd: "admin"
+ambari_cluster_name: "localhost"
+ambari_yarn_server: "localhost"
+ambari_yarn_port: "8088"
+ambari_hdfs_server: "localhost"
+ambari_hdfs_port: "50070"
+ambari_zk_servers:
+  - "localhost"
+ambari_zk_port: "2181"
+ambari_timeout: "120"

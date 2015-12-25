@@ -1,0 +1,25 @@
+- hosts: '{{ server | default("localhost") }}'
+  tasks:
+    - name: start_yarn
+      uri:
+        url: "http://{{ ambari_server }}/api/v1/clusters/{{ ambari_cluster_name }}/services/YARN"
+        user: "{{ ambari_user }}"
+        password: "{{ ambari_passwd }}"
+        HEADER_X-Requested-By: "ambari"
+        method: PUT
+        body: '{ "RequestInfo" : { "context" : "Start YARN via REST"}, "Body" : { "ServiceInfo" : { "state" : "STARTED" } } }'
+        force_basic_auth: yes
+      register: command_result
+      failed_when: command_result.status not in [202, 200]
+      changed_when: command_result.status == 202
+
+    - debug: msg={{ command_result.content.split('\\n') }}
+      when: command_result.status != 200
+
+    - name: check_port
+      wait_for:
+        host: "{{ ambari_yarn_server }}"
+        port: "{{ ambari_yarn_port }}"
+        timeout: "{{ ambari_timeout }}"
+      
+
