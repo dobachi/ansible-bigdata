@@ -9,4 +9,4 @@ ambari_hdfs_port: "50070"
 ambari_zk_servers:
   - "localhost"
 ambari_zk_port: "2181"
-ambari_timeout: "120"
+ambari_timeout: "360"
