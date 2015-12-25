@@ -1,3 +1,4 @@
 - include: stop_yarn.yml
 - include: stop_hdfs.yml
 - include: stop_zookeeper.yml
+- include: stop_ambari_metrics.yml

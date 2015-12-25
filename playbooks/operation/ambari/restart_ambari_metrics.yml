@@ -1,0 +1,2 @@
+- include: stop_ambari_metrics.yml
+- include: start_ambari_metrics.yml
