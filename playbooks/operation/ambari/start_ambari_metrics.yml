@@ -1,6 +1,6 @@
 - hosts: '{{ server | default("localhost") }}'
   tasks:
-    - name: start_hdfs
+    - name: start_ambari_metrics
       uri:
         url: "http://{{ ambari_server }}/api/v1/clusters/{{ ambari_cluster_name }}/services/AMBARI_METRICS"
         user: "{{ ambari_user }}"
