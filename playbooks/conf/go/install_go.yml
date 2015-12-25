@@ -1,0 +1,4 @@
+- hosts: '{{ server | default("localhost") }}'
+  roles:
+      - common
+      - go

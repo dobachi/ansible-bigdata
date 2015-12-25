@@ -1,0 +1,23 @@
+- name: mkdir_go
+  file: path=/usr/local/go state=directory
+
+- name: download_go_binaries
+  get_url: url=https://storage.googleapis.com/golang/go{{ go_version }}.linux-amd64.tar.gz dest=/usr/local/go
+
+- name: unarchive_go_binaries
+  shell: tar xvzf go{{ go_version }}.linux-amd64.tar.gz chdir=/usr/local/go creates=/usr/local/go/{{ go_version }}/VERSION
+
+- name: check_go_dir
+  shell: test -d /usr/local/go/go
+  register: check_go_dir
+  ignore_errors: yes
+
+- name: rename_go_dir
+  shell: mv go {{ go_version }} chdir=/usr/local/go
+  when: check_go_dir.rc == 0
+
+- name: make_link_go
+  alternatives: name=go_default link=/usr/local/go/default path=/usr/local/go/{{ go_version}}
+
+- name: copy_profile_go
+  template: src=go.sh.j2 dest=/etc/profile.d/go.sh
