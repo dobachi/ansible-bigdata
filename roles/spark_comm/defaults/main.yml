@@ -22,6 +22,9 @@ spark_comm_dir: '/usr/local/spark'
 #spark_comm_package_url_base: ''
 #spark_comm_package_name: ''
 
+# The maximum number of executers
+spark_comm_exe_instances: '2'
+
 # ====================================
 # Each configuration file parameters
 # ====================================
@@ -34,7 +37,6 @@ spark_comm_historyserver: '{{ groups["hadoop_other"][0] }}'
 
 # spark-env.sh
 spark_comm_env_tmpl: 'spark-env.sh.j2'
-spark_comm_exe_instances: '1'
 spark_comm_exe_cores: '1'
 spark_comm_exe_mem: '400M'
 spark_comm_dri_mem: '400M'
