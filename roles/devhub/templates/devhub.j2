@@ -1,0 +1,106 @@
+#! /bin/sh
+
+### BEGIN INIT INFO
+# Provides: devhub
+# Required-Start: $local_fs $network $remote_fs
+# Should-Start: $time
+# Required-Stop: $local_fs $network $remote_fs
+# Should-Stop:
+# Default-Start:  3 4 5
+# Default-Stop: 0 1 2 6
+# Short-Description: start and stop devhub
+# Description: DevHub is a tools for collaboration.
+#              https://github.com/volpe28v/DevHub
+### END INIT INFO
+
+. /etc/rc.d/init.d/functions
+
+prog="devhub"
+pid_file="/var/run/$prog/$prog.pid"
+user="devhub"
+login_user="devhub"
+login_pass="devhub"
+install_path="/usr/local/devhub"
+port="3000"
+database="devhub"
+title="devhub"
+logfile="/var/log/devhub/stdout.log"
+errfile="/var/log/devhub/stderr.log"
+app_js="app.js"
+forever_cmd="forever"
+forever_opt="-l ${logfile} -e ${errfile} -a --sourceDir ${install_path} --pidFile ${pid_file} --uid ${prog} --workingDir ${install_path}"
+app_opt="-p ${port} -d ${database} -t ${title}"
+kill_delay=5
+
+
+function start() {
+  BASIC_AUTH_USER=${login_user}
+  BASIC_AUTH_PASS=${login_pass} 
+  daemon --user ${user} ${forever_cmd} start ${forever_opt} ${app_js} ${app_opt}
+}
+
+function stop() {
+  runuser -s /bin/bash ${user} -c "${forever_cmd} stop ${forever_opt} ${prog}"
+}
+
+function p_status() {
+  runuser -s /bin/bash ${user} -c "${forever_cmd} list"
+}
+
+
+RETVAL=0
+
+case "$1" in
+
+  start)
+    echo -n $"Starting $prog: "
+    start
+    echo
+    ;;
+
+  stop)
+    echo -n $"Stopping $prog: "
+    stop
+    echo
+    ;;
+
+  restart|try-restart)
+    echo -n $"Restarting $prog: "
+
+    p_status > /dev/null 2>&1
+
+    if [ $? -eq 0 ]; then
+      stop
+      start
+    elif [ "$1" = "restart" ]; then
+      start
+    else
+      [ -z $LSB ] && RETVAL=0 || RETVAL=7 # Program is not running
+    fi
+
+    [ $RETVAL -eq 0 ] && success || failure
+    echo
+    ;;
+
+  reload|force-reload)
+    echo -n $"Reloading $prog: "
+    stop
+    start
+    [ $RETVAL -eq 0 ] && success || failure
+    echo
+    ;;
+
+  status)
+    p_status
+    RETVAL=$?
+    ;;
+
+  *)
+    RETVAL=2  # Invalid or excess argument(s)
+    ;;
+
+esac
+
+exit $RETVAL
+
+# vim: ft=shell tw=0

@@ -1,7 +1,0 @@
-- name: check_devhub_started
-  shell: /sbin/initctl status devhub
-  register: check_devhub_started
-
-- name: start_devhub_by_upsatart
-  shell: /sbin/initctl start devhub
-  when: '"stop" in check_devhub_started.stdout'

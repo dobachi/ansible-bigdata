@@ -1,6 +1,6 @@
 ---
 # tasks file for roles/devhub
 
+- include: user.yml tags=devhub,user
 - include: install.yml tags=devhub,install
 - include: config.yml tags=devhub,config
-- include: service.yml tags=devhub,service

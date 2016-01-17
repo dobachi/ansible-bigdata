@@ -1,3 +1,5 @@
-- name: copy_upstart_config
-  template: src=devhub.conf.j2 dest=/etc/init/devhub.conf
-  notify: reload_upstart_config
+- name: copy_init_script
+  template: src=devhub.j2 dest=/etc/init.d/devhub
+
+- name: chmod_init_script
+  file: path=/etc/init.d/devhub mode=755

@@ -1,5 +1,17 @@
+- name: install_node_forever
+  npm: name=forever state=present global=yes
+
 - name: clone_devhub
   git: repo=https://github.com/volpe28v/DevHub.git dest=/usr/local/devhub
 
 - name: install_devhub
   shell: npm install chdir=/usr/local/devhub
+
+- name: chown_devhub
+  file: path=/usr/local/devhub owner=devhub group=devhub recurse=yes
+
+- name: make_log_dir
+  file: path=/var/log/devhub state=directory owner=devhub group=devhub
+
+- name: chown_pid_file_dir
+  file: path=/var/run/devhub owner=devhub group=devhub state=directory
