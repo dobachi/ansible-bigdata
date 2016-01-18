@@ -1,0 +1,13 @@
+- name: mkdir_user_python_dir
+  file: path=/home/{{ item }}/{{ python_env_base_dir }} state=directory owner={{ item }} group={{ item }}
+  with_items: python_env_user_list
+
+- name: make_env_with_virtualenv
+  shell: virtualenv -p /usr/bin/python /home/{{ item[0] }}/{{ python_env_base_dir}}/{{ item[1] }}
+  with_nested:
+    - "{{ python_env_user_list }}"
+    - "{{ python_env_env_list }}"
+
+- name: chown_base_dir
+  file: path=/home/{{ item }}/{{ python_env_base_dir}} owner={{ item }} group={{ item }} state=directory recurse=yes
+  with_items: python_env_user_list

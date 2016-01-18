@@ -1,0 +1,4 @@
+---
+# tasks file for roles/python_env
+- include: install.yml tags=install,python_env
+- include: config.yml tags=config,python_env

@@ -1,0 +1,2 @@
+- name: install_virtualenv
+  yum: name=python-virtualenv state=installed

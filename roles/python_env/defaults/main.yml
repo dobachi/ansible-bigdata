@@ -1,0 +1,7 @@
+---
+# defaults file for roles/python_env
+python_env_base_dir: 'Python'
+python_env_user_list:
+  - 'centos'
+python_env_env_list:
+  - 'base'
