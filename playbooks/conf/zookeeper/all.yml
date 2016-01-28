@@ -1,0 +1,7 @@
+- hosts: "{{ server | default('pseudo') }}"
+  roles:
+    - { role: common, common_config_hostname: True }
+    - epel
+    - jdk
+    - zookeeper_server
+
