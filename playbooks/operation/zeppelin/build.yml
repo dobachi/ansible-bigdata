@@ -3,7 +3,7 @@
     zeppelin_git_url: 'https://github.com/apache/incubator-zeppelin.git'
     zeppelin_src_dir: '/usr/src/zeppelin'
     zeppelin_version: 'master'
-    zeppelin_comiple_flag: '-Pcassandra-spark-1.5 -Phadoop-2.6 -Pyarn -Ppyspark -DskipTests -P build-distr'
+    zeppelin_comiple_flag: '-Pcassandra-spark-1.6 -Phadoop-2.6 -Pyarn -Ppyspark -DskipTests -P build-distr'
     zeppelin_hadoop_version: '2.6.0'
   roles:
     - jdk
