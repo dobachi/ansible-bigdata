@@ -443,6 +443,26 @@ If you have any other Zookeeper ensemble, you should modify kafka role&#8217;s p
 </div>
 </div>
 </div>
+<div class="section" id="configure-ambari">
+<h2>Configure Ambari<a class="headerlink" href="#configure-ambari" title="Permalink to this headline">¶</a></h2>
+<p>To install the basic packages, execute the following command.</p>
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/conf/ambari/ambari_server.yml -k -s
+</pre></div>
+</div>
+<p>Install Ambari agent to all machines.</p>
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/conf/ambari/ambari_agent.yml -k -s
+</pre></div>
+</div>
+<p>Execute initilization of Ambari server.</p>
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/operation/ambari/setup.yml -k -s
+</pre></div>
+</div>
+<p>Then you can access Ambari web UI on &#8220;manage&#8221; node.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Todo: blueprint</p>
+</div>
+</div>
 </div>
 
 

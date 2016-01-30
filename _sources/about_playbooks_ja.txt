@@ -29,6 +29,7 @@ playbooks/conf/spark_comm     コミュニティ版Sparkの構築/設定
 playbooks/conf/zeppelin       コミュニティ版Zeppelinの構築/設定
 playbooks/conf/fluentd        fluentdとtd-agentの構築/設定
 playbooks/conf/kafka          Kafkaクラスタの構築/設定
+playbooks/conf/ambari         Ambariサーバやエージェントの設定
 ============================= ==========================================
 
 common
@@ -195,6 +196,16 @@ kafka
 
   + Kafkaを構成管理します
 
+ambari
+~~~~~~~~~~~~~
+* ambari_agent.yml
+
+  + AmbariエージェントをAmbariサーバに頼らずに設定
+
+* ambari_server.yml
+
+  + Ambariサーバを設定
+
 運用作業のためのプレイブック集
 -------------------------------
 
@@ -214,6 +225,7 @@ playbooks/operation/spark_com     コミュニティ版Sparkのビルドやサ�
 playbooks/operation/zeppelin      Zeppelinのサービスを起動/停止する
 playbooks/operation/fluentd       td-agentサービスを起動/停止する
 playbooks/operation/kafka         Kafkaクラスタの起動/停止およびトピックの整理
+playbooks/operation/ambari        Ambariサーバの初期設定。各サービスの起動・停止
 ================================= ====================================================================
 
 cdh5
@@ -311,3 +323,27 @@ kafka
 * delete_topic.yml
 
   + トピックを削除します
+
+ambari
+~~~~~~~~~~~~
+* Ambariサーバの初期設定
+
+  + setup.yml
+
+* 各サービスを起動・停止
+
+  + restart_all.yml
+  + restart_ambari_metrics.yml
+  + restart_hdfs.yml
+  + restart_yarn.yml
+  + restart_zookeeper.yml
+  + start_all.yml
+  + start_ambari_metrics.yml
+  + start_hdfs.yml
+  + start_yarn.yml
+  + start_zookeeper.yml
+  + stop_all.yml
+  + stop_ambari_metrics.yml
+  + stop_hdfs.yml
+  + stop_yarn.yml
+  + stop_zookeeper.yml

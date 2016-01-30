@@ -31,6 +31,7 @@ Each function is available individually.
 * Configuring Zeppelin for Spark notebook
 * Configuring fluentd and td-agent
 * Configuring Kafka cluster
+* Configuring Ambari
 
 .. _sec-servers:
 
@@ -57,6 +58,7 @@ slave05  DataNode, NodeManager, Ganglia Slave
 kafka01  Kafka broker
 kafka02  Kafka broker
 kafka03  Kafka broker
+manage   Ambari server
 ======== ================================================================================
 
 **Servers for large cluster**
@@ -86,6 +88,7 @@ slave10  DataNode, NodeManager, Ganglia Slave
 kafka01  Kafka broker
 kafka02  Kafka broker
 kafka03  Kafka broker
+manage   Ambari server
 ======== ================================================================================
 
 **Server for pseudo environment**

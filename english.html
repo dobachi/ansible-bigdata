@@ -77,6 +77,7 @@ Each function is available individually.</p>
 <li>Configuring Zeppelin for Spark notebook</li>
 <li>Configuring fluentd and td-agent</li>
 <li>Configuring Kafka cluster</li>
+<li>Configuring Ambari</li>
 </ul>
 </div>
 <div class="section" id="servers">
@@ -131,6 +132,9 @@ Ganglia Slave, Ganglia Master, InfluxDB, Grafana</td>
 </tr>
 <tr class="row-odd"><td>kafka03</td>
 <td>Kafka broker</td>
+</tr>
+<tr class="row-even"><td>manage</td>
+<td>Ambari server</td>
 </tr>
 </tbody>
 </table>
@@ -211,6 +215,9 @@ Ganglia Slave, Ganglia Master, InfluxDB, Grafana</td>
 </tr>
 <tr class="row-odd"><td>kafka03</td>
 <td>Kafka broker</td>
+</tr>
+<tr class="row-even"><td>manage</td>
+<td>Ambari server</td>
 </tr>
 </tbody>
 </table>
@@ -414,6 +421,7 @@ The following is the location of the main services.</p>
 <li>Master Services(NameNode, Zookeeper, JournalNode and ResourceManager): 3 nodes</li>
 <li>Client: 1 node</li>
 <li>Slave: 5 nodes</li>
+<li>Manage: 1 node</li>
 </ul>
 </div></blockquote>
 <p>hosts.large_sample:</p>
@@ -424,6 +432,7 @@ The following is the location of the main services.</p>
 <li>ResourceManager: 2 nodes</li>
 <li>Client: 1 node</li>
 <li>Slave: 10 nodes</li>
+<li>Manage: 1 node</li>
 </ul>
 </div></blockquote>
 <div class="admonition note">
@@ -488,6 +497,9 @@ as clients of Hadoop and other services.</td>
 </tr>
 <tr class="row-odd"><td>hadoop_pseudo</td>
 <td>This group includes a ndoe which provide Hadoop pseudo environment.</td>
+</tr>
+<tr class="row-even"><td>manage</td>
+<td>This group includes nodes to control clusters</td>
 </tr>
 </tbody>
 </table>
@@ -560,6 +572,9 @@ you can use them to swich environments which you want to configure in executing 
 </tr>
 <tr class="row-odd"><td>playbooks/conf/kafka</td>
 <td>Configuration of Kafka</td>
+</tr>
+<tr class="row-even"><td>playbooks/conf/ambari</td>
+<td>Configuration of Ambari</td>
 </tr>
 </tbody>
 </table>
@@ -734,6 +749,19 @@ We have two playbooks for Ganglia master and slave.</p>
 </li>
 </ul>
 </div>
+<div class="section" id="ambari">
+<h4>1.5.1.11. ambari<a class="headerlink" href="#ambari" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li>ambari_agent.yml<ul>
+<li>Configure Ambari agent manually (Not through Ambari server)</li>
+</ul>
+</li>
+<li>ambari_server.yml<ul>
+<li>Configure Ambari server</li>
+</ul>
+</li>
+</ul>
+</div>
 </div>
 <div class="section" id="playbooks-for-operation">
 <h3>1.5.2. Playbooks for operation<a class="headerlink" href="#playbooks-for-operation" title="Permalink to this headline">¶</a></h3>
@@ -781,6 +809,10 @@ e.g. Formating HDFS, Start/Stop services, ...</td>
 </tr>
 <tr class="row-even"><td>playbooks/operation/kafka</td>
 <td>Start and stop Kafka cluster</td>
+</tr>
+<tr class="row-odd"><td>playbooks/operation/ambari</td>
+<td>Setup Ambari server.
+Start and stop each services.</td>
 </tr>
 </tbody>
 </table>
@@ -890,6 +922,33 @@ You can build Zeppelin according to Zeppelin official web site.</li>
 </li>
 <li>delete_topic.yml<ul>
 <li>Delete topic on Kafka cluster</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id8">
+<h4>1.5.2.8. ambari<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li>To setup Ambari server<ul>
+<li>setup.yml</li>
+</ul>
+</li>
+<li>Starting and stopping each service<ul>
+<li>restart_all.yml</li>
+<li>restart_ambari_metrics.yml</li>
+<li>restart_hdfs.yml</li>
+<li>restart_yarn.yml</li>
+<li>restart_zookeeper.yml</li>
+<li>start_all.yml</li>
+<li>start_ambari_metrics.yml</li>
+<li>start_hdfs.yml</li>
+<li>start_yarn.yml</li>
+<li>start_zookeeper.yml</li>
+<li>stop_all.yml</li>
+<li>stop_ambari_metrics.yml</li>
+<li>stop_hdfs.yml</li>
+<li>stop_yarn.yml</li>
+<li>stop_zookeeper.yml</li>
 </ul>
 </li>
 </ul>
@@ -1181,6 +1240,28 @@ You can build Zeppelin according to Zeppelin official web site.</li>
 </tbody>
 </table>
 </div>
+<div class="section" id="roles-to-configure-ambari">
+<h3>1.6.13. Roles to configure Ambari<a class="headerlink" href="#roles-to-configure-ambari" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="77%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Role name</th>
+<th class="head">Use for</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>ambari_server</td>
+<td>Configuration of Ambari server</td>
+</tr>
+<tr class="row-odd"><td>ambari_agent</td>
+<td>Configuration of Ambari agent</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <div class="section" id="how-to-use-this-playbooks">
 <h2>1.7. How to use this playbooks<a class="headerlink" href="#how-to-use-this-playbooks" title="Permalink to this headline">¶</a></h2>
@@ -1213,8 +1294,8 @@ you can use the following playbooks for it.</p>
 </pre></div>
 </div>
 </div>
-<div class="section" id="id8">
-<h4>1.7.2.2. Clone playbooks<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id9">
+<h4>1.7.2.2. Clone playbooks<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h4>
 <p>Move original /etc/ansible</p>
 <div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd</span> /etc
 <span class="nv">$ </span>sudo mv ansible ansible.org
@@ -1376,14 +1457,14 @@ please execute the following command.</p>
 <div class="section" id="how-to-configure-cdh5-pseudo-environment">
 <h3>1.7.6. How to configure CDH5 Pseudo environment<a class="headerlink" href="#how-to-configure-cdh5-pseudo-environment" title="Permalink to this headline">¶</a></h3>
 <p>You can construct CDH5 HDFS/YARN environment by ansible-playbook command.</p>
-<div class="section" id="id9">
-<h4>1.7.6.1. Preparement<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id10">
+<h4>1.7.6.1. Preparement<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h4>
 <p>If you have not configured Ansible execution environment,
 you should configure it.
 You can reference <a class="reference internal" href="how_to_use_playbooks.html#sec-configure-ansible-env"><span>How to configure Ansible execution environment</span></a> section.</p>
 </div>
-<div class="section" id="id10">
-<h4>1.7.6.2. Procedure<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id11">
+<h4>1.7.6.2. Procedure<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h4>
 <p>In the following example, we configure common_hosts_replace is True.
 As a result of this parameter configuration, Ansible replace /etc/hosts
 by Ansible driver server&#8217;s /etc/ansible/roles/common/files/hosts.default</p>
@@ -1573,8 +1654,8 @@ so that you need to put the package on a HTTP web server.</p>
 <p>We assume that Zookeeper ensemble was congured on master01, master02 and master03.
 If you have any other Zookeeper ensemble, you should modify kafka role&#8217;s parameters.</p>
 </div>
-<div class="section" id="id11">
-<h4>1.7.11.2. Executing playbook<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id12">
+<h4>1.7.11.2. Executing playbook<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h4>
 <p>To configure Kafka cluster, please execute the following playbook.</p>
 <div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/conf/kafka/kafka_broker.yml -k -s
 </pre></div>
@@ -1583,6 +1664,26 @@ If you have any other Zookeeper ensemble, you should modify kafka role&#8217;s p
 <div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/operation/kafka/start_kafka.yml -k -s
 </pre></div>
 </div>
+</div>
+</div>
+<div class="section" id="configure-ambari">
+<h3>1.7.12. Configure Ambari<a class="headerlink" href="#configure-ambari" title="Permalink to this headline">¶</a></h3>
+<p>To install the basic packages, execute the following command.</p>
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/conf/ambari/ambari_server.yml -k -s
+</pre></div>
+</div>
+<p>Install Ambari agent to all machines.</p>
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/conf/ambari/ambari_agent.yml -k -s
+</pre></div>
+</div>
+<p>Execute initilization of Ambari server.</p>
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/operation/ambari/setup.yml -k -s
+</pre></div>
+</div>
+<p>Then you can access Ambari web UI on &#8220;manage&#8221; node.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Todo: blueprint</p>
 </div>
 </div>
 </div>

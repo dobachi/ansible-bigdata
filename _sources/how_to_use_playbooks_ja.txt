@@ -482,4 +482,30 @@ Zookeeperアンサンブルがmaster01, master02、master03にて動作してい
 
  $ ansible-playbook playbooks/operation/kafka/start_kafka.yml -k -s
 
+Ambariを構成する
+-------------------------
+
+Ambariサーバの基本的なパッケージをインストールします。
+
+.. code-block:: shell
+
+ $ ansible-playbook playbooks/conf/ambari/ambari_server.yml -k -s
+
+Ambariエージェントを全マシンにインストールします。
+
+.. code-block:: shell
+
+ $ ansible-playbook playbooks/conf/ambari/ambari_agent.yml -k -s
+
+Ambariサーバを初期化します。
+
+.. code-block:: shell
+
+ $ ansible-playbook playbooks/operation/ambari/setup.yml -k -s
+
+以上の作業でAmbariサーバのウェブUIにアクセスできるようになっているので、
+あとはGUI経由でクラスタを構築します。
+
+.. note:: Todo: ブループリント
+
 .. vim: ft=rst tw=0 et ts=2 sw=2

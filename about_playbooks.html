@@ -98,6 +98,9 @@
 <tr class="row-odd"><td>playbooks/conf/kafka</td>
 <td>Configuration of Kafka</td>
 </tr>
+<tr class="row-even"><td>playbooks/conf/ambari</td>
+<td>Configuration of Ambari</td>
+</tr>
 </tbody>
 </table>
 <div class="section" id="common">
@@ -271,6 +274,19 @@ We have two playbooks for Ganglia master and slave.</p>
 </li>
 </ul>
 </div>
+<div class="section" id="ambari">
+<h3>ambari<a class="headerlink" href="#ambari" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>ambari_agent.yml<ul>
+<li>Configure Ambari agent manually (Not through Ambari server)</li>
+</ul>
+</li>
+<li>ambari_server.yml<ul>
+<li>Configure Ambari server</li>
+</ul>
+</li>
+</ul>
+</div>
 </div>
 <div class="section" id="playbooks-for-operation">
 <h2>Playbooks for operation<a class="headerlink" href="#playbooks-for-operation" title="Permalink to this headline">¶</a></h2>
@@ -318,6 +334,10 @@ e.g. Formating HDFS, Start/Stop services, ...</td>
 </tr>
 <tr class="row-even"><td>playbooks/operation/kafka</td>
 <td>Start and stop Kafka cluster</td>
+</tr>
+<tr class="row-odd"><td>playbooks/operation/ambari</td>
+<td>Setup Ambari server.
+Start and stop each services.</td>
 </tr>
 </tbody>
 </table>
@@ -427,6 +447,33 @@ You can build Zeppelin according to Zeppelin official web site.</li>
 </li>
 <li>delete_topic.yml<ul>
 <li>Delete topic on Kafka cluster</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id7">
+<h3>ambari<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>To setup Ambari server<ul>
+<li>setup.yml</li>
+</ul>
+</li>
+<li>Starting and stopping each service<ul>
+<li>restart_all.yml</li>
+<li>restart_ambari_metrics.yml</li>
+<li>restart_hdfs.yml</li>
+<li>restart_yarn.yml</li>
+<li>restart_zookeeper.yml</li>
+<li>start_all.yml</li>
+<li>start_ambari_metrics.yml</li>
+<li>start_hdfs.yml</li>
+<li>start_yarn.yml</li>
+<li>start_zookeeper.yml</li>
+<li>stop_all.yml</li>
+<li>stop_ambari_metrics.yml</li>
+<li>stop_hdfs.yml</li>
+<li>stop_yarn.yml</li>
+<li>stop_zookeeper.yml</li>
 </ul>
 </li>
 </ul>

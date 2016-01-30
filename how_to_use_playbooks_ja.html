@@ -467,6 +467,27 @@ spark_comm_package_url_baseは&#8221;<a class="reference external" href="http://
 </div>
 </div>
 </div>
+<div class="section" id="ambari">
+<h2>Ambariを構成する<a class="headerlink" href="#ambari" title="Permalink to this headline">¶</a></h2>
+<p>Ambariサーバの基本的なパッケージをインストールします。</p>
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/conf/ambari/ambari_server.yml -k -s
+</pre></div>
+</div>
+<p>Ambariエージェントを全マシンにインストールします。</p>
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/conf/ambari/ambari_agent.yml -k -s
+</pre></div>
+</div>
+<p>Ambariサーバを初期化します。</p>
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/operation/ambari/setup.yml -k -s
+</pre></div>
+</div>
+<p>以上の作業でAmbariサーバのウェブUIにアクセスできるようになっているので、
+あとはGUI経由でクラスタを構築します。</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Todo: ブループリント</p>
+</div>
+</div>
 </div>
 
 

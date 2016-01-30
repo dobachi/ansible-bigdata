@@ -99,6 +99,9 @@
 <tr class="row-odd"><td>playbooks/conf/kafka</td>
 <td>Kafkaクラスタの構築/設定</td>
 </tr>
+<tr class="row-even"><td>playbooks/conf/ambari</td>
+<td>Ambariサーバやエージェントの設定</td>
+</tr>
 </tbody>
 </table>
 <div class="section" id="common">
@@ -287,6 +290,19 @@ Gangliaはマスタ／スレーブ構成なのでそれぞれを管理するた�
 </li>
 </ul>
 </div>
+<div class="section" id="ambari">
+<h3>ambari<a class="headerlink" href="#ambari" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>ambari_agent.yml<ul>
+<li>AmbariエージェントをAmbariサーバに頼らずに設定</li>
+</ul>
+</li>
+<li>ambari_server.yml<ul>
+<li>Ambariサーバを設定</li>
+</ul>
+</li>
+</ul>
+</div>
 </div>
 <div class="section" id="id3">
 <h2>運用作業のためのプレイブック集<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
@@ -330,6 +346,9 @@ Gangliaはマスタ／スレーブ構成なのでそれぞれを管理するた�
 </tr>
 <tr class="row-even"><td>playbooks/operation/kafka</td>
 <td>Kafkaクラスタの起動/停止およびトピックの整理</td>
+</tr>
+<tr class="row-odd"><td>playbooks/operation/ambari</td>
+<td>Ambariサーバの初期設定。各サービスの起動・停止</td>
 </tr>
 </tbody>
 </table>
@@ -439,6 +458,33 @@ Gangliaはマスタ／スレーブ構成なのでそれぞれを管理するた�
 </li>
 <li>delete_topic.yml<ul>
 <li>トピックを削除します</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id10">
+<h3>ambari<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Ambariサーバの初期設定<ul>
+<li>setup.yml</li>
+</ul>
+</li>
+<li>各サービスを起動・停止<ul>
+<li>restart_all.yml</li>
+<li>restart_ambari_metrics.yml</li>
+<li>restart_hdfs.yml</li>
+<li>restart_yarn.yml</li>
+<li>restart_zookeeper.yml</li>
+<li>start_all.yml</li>
+<li>start_ambari_metrics.yml</li>
+<li>start_hdfs.yml</li>
+<li>start_yarn.yml</li>
+<li>start_zookeeper.yml</li>
+<li>stop_all.yml</li>
+<li>stop_ambari_metrics.yml</li>
+<li>stop_hdfs.yml</li>
+<li>stop_yarn.yml</li>
+<li>stop_zookeeper.yml</li>
 </ul>
 </li>
 </ul>
