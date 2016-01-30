@@ -10,12 +10,14 @@ hosts.large_sample:
  * ResourceManager 2台
  * Client 1台
  * Slave 10台
+ * Manage 1台
 
 hosts.medium_sample:
 
  * Master 3台
  * Client 1台
  * Slave 5台
+ * Manage 1台
 
 hosts.medium_sampleについては、マスタ系サービスが一部同居構成になっています。
 
@@ -45,6 +47,7 @@ hadoop_other             Hadoopの関連サービスを提供するノードを�
 hadoop_slave             スレーブノードを含むグループです
 hadoop_client            様々なサービスのクライアント機能を提供するノードを含むグループです
 hadoop_pseudo            疑似分散環境を提供するグループです
+manage                   クラスタを管理するためのノードを含みます
 ======================== ===========================================================================
 
 もし複数の環境を管理していて異なるパラメータを与えたい場合、

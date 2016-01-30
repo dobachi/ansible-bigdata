@@ -473,4 +473,29 @@ After finishing configuration, you need to start Kafka cluster.
 
  $ ansible-playbook playbooks/operation/kafka/start_kafka.yml -k -s
 
+Configure Ambari
+-------------------------
+
+To install the basic packages, execute the following command.
+
+.. code-block:: shell
+
+ $ ansible-playbook playbooks/conf/ambari/ambari_server.yml -k -s
+
+Install Ambari agent to all machines.
+
+.. code-block:: shell
+
+ $ ansible-playbook playbooks/conf/ambari/ambari_agent.yml -k -s
+
+Execute initilization of Ambari server.
+
+.. code-block:: shell
+
+ $ ansible-playbook playbooks/operation/ambari/setup.yml -k -s
+
+Then you can access Ambari web UI on "manage" node.
+
+.. note:: Todo: blueprint
+
 .. set ft=rst tw=0 et ts=2 sw=2

@@ -29,6 +29,7 @@ playbooks/conf/spark_comm    Configuration of Spark community edition
 playbooks/conf/zeppelin      Configuration of Zeppelin community edition
 playbooks/conf/fluentd       Configuration of fluentd and td-agent
 playbooks/conf/kafka         Configuration of Kafka
+playbooks/conf/ambari        Configuration of Ambari
 ============================ =============================================
 
 common
@@ -182,6 +183,16 @@ kafka
 
   + Configure Kafka broker nodes.
 
+ambari
+~~~~~~~~~~~~
+* ambari_agent.yml
+
+  + Configure Ambari agent manually (Not through Ambari server)
+
+* ambari_server.yml
+
+  + Configure Ambari server
+
 Playbooks for operation
 -----------------------
 
@@ -202,6 +213,8 @@ playbooks/operation/spark_com    Operation of Spark services and building Spark 
 playbooks/operation/zeppelin     Start and stop zeppelin services
 playbooks/operation/fluentd      Start and stop td-agent services
 playbooks/operation/kafka        Start and stop Kafka cluster
+playbooks/operation/ambari       Setup Ambari server.
+                                 Start and stop each services.
 ================================ ====================================================================
 
 cdh5
@@ -299,3 +312,27 @@ kafka
 * delete_topic.yml
 
   + Delete topic on Kafka cluster
+
+ambari
+~~~~~~~~~~~~
+* To setup Ambari server
+
+  + setup.yml
+
+* Starting and stopping each service
+
+  + restart_all.yml
+  + restart_ambari_metrics.yml
+  + restart_hdfs.yml
+  + restart_yarn.yml
+  + restart_zookeeper.yml
+  + start_all.yml
+  + start_ambari_metrics.yml
+  + start_hdfs.yml
+  + start_yarn.yml
+  + start_zookeeper.yml
+  + stop_all.yml
+  + stop_ambari_metrics.yml
+  + stop_hdfs.yml
+  + stop_yarn.yml
+  + stop_zookeeper.yml

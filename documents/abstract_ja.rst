@@ -27,6 +27,7 @@
 * Sparkノートブック環境としてZeppelinの実行環境を整える
 * fluentdやtd-agentを構成管理する
 * Kafkaクラスタを構成管理する
+* Ambariを構成管理する
 
 .. _sec-servers-ja:
 
@@ -53,6 +54,7 @@ slave05  DataNode, NodeManager, Ganglia Slave
 kafka01  Kafka broker
 kafka02  Kafka broker
 kafka03  Kafka broker
+manage   Ambari server
 ======== ================================================================================
 
 **大規模クラスタ構築時のサーバ構成**
@@ -82,6 +84,7 @@ slave10  DataNode, NodeManager, Ganglia Slave
 kafka01  Kafka broker
 kafka02  Kafka broker
 kafka03  Kafka broker
+manage   Ambari server
 ======== ================================================================================
 
 **疑似分散環境**

@@ -8,6 +8,7 @@ hosts.medium_sample:
  * Master Services(NameNode, Zookeeper, JournalNode and ResourceManager): 3 nodes
  * Client: 1 node
  * Slave: 5 nodes
+ * Manage: 1 node
 
 hosts.large_sample:
 
@@ -16,6 +17,7 @@ hosts.large_sample:
  * ResourceManager: 2 nodes
  * Client: 1 node
  * Slave: 10 nodes
+ * Manage: 1 node
 
 .. note::
 
@@ -49,6 +51,7 @@ hadoop_slave             This group includes slave nodes of Hadoop
 hadoop_client            This group includes all groups and nodes which is used
                          as clients of Hadoop and other services.
 hadoop_pseudo            This group includes a ndoe which provide Hadoop pseudo environment.
+manage                   This group includes nodes to control clusters
 ======================== ===========================================================================
 
 If you are managing several Hadoop cluster and environment, such as production, test, etc,
