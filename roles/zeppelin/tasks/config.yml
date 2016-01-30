@@ -7,6 +7,9 @@
 - name: copy_zeppelin-env.sh
   template: src=zeppelin-env.sh.j2 dest={{ zeppelin_dir }}/default/conf/zeppelin-env.sh
 
+- name: copy_hive-site.xml
+  template: src=hive-site.xml.j2 dest={{ zeppelin_dir }}/default/conf/hive-site.xml
+
 - name: mkdir_etc_zeppelin
   file: path=/etc/zeppelin state=directory owner=zeppelin group=zeppelin recurse=yes
 

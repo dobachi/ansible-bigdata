@@ -17,3 +17,6 @@ zeppelin_spark_executor_memory: '2g'
 #zeppelin_package_suffix: '.tar.gz'
 #zeppelin_spark_home: '/usr/local/spark/default'
 #zeppelin_spark_yarn_jar: '/usr/local/spark/default/lib/spark-assembly-1.4.0-SNAPSHOT-hadoop2.5.0-cdh5.3.2.jar'
+
+# To use Zeppelin with HDP
+#zeppelin_hdp_version: '2.3.4.0-3485'

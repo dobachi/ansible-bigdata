@@ -69,3 +69,7 @@ export HADOOP_CONF_DIR={{ zeppelin_hadoop_conf_dir }}
 #export SPARK_EXECUTOR_INSTANCES=${SPARK_EXECUTOR_INSTANCES:-{{ zeppelin_spark_executor_instances }}}
 #export SPARK_EXECUTOR_CORES=${SPARK_EXECUTOR_CORES:-{{ zeppelin_spark_executor_cores }}}
 #export SPARK_EXECUTOR_MEMORY=${SPARK_EXECUTOR_MEMORY:-{{ zeppelin_spark_executor_memory }}}
+
+{% if zeppelin_hdp_version is defined %}
+export ZEPPELIN_JAVA_OPTS="-Dhdp.version={{ zeppelin_hdp_version }}"
+{% endif %}

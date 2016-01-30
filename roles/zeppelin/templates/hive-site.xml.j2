@@ -1,0 +1,17 @@
+  <configuration>
+    
+{% if zeppelin_hive_meta_uri is defined %}
+    <property>
+      <name>hive.metastore.uris</name>
+      <value>{{ zeppelin_hive_meta_uri }}</value>
+    </property>
+{% endif %}
+    
+{% if zeppelin_hive_warehouse is defined %}
+    <property>
+      <name>hive.metastore.warehouse.dir</name>
+      <value>zeppelin_hive_warehouse</value>
+    </property>
+{% endif %}
+
+  </configuration>
