@@ -1,0 +1,4 @@
+- name: copy_ambari-agent.ini
+  template: src=ambari-agent.ini.j2 dest=/etc/ambari-agent/conf/ambari-agent.ini
+  notify:
+    - restart_ambari_agent

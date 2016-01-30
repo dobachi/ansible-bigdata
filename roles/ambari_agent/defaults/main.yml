@@ -1,0 +1,8 @@
+---
+# defaults file for roles/ambari_agent
+ambari_agent_os: 'centos6'
+ambari_agent_major_ver: '2.x'
+ambari_agent_ver: '2.2.0.0'
+
+# ambari-agent.ini
+ambari_agent_servername: '{{ groups["manage"][0] }}'

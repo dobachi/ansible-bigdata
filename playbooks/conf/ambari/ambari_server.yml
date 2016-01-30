@@ -1,0 +1,7 @@
+- hosts: "{{ server | default('manage') }}"
+  roles:
+    - { role: common, common_config_hostname: True }
+    - epel
+    - jdk
+    - ambari_server
+

@@ -1,0 +1,3 @@
+- name: install_ambari_agent
+  yum: name=ambari-agent state=installed
+

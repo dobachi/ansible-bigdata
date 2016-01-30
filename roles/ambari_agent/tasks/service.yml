@@ -1,0 +1,2 @@
+- name: enable_ambari-agent
+  service: name=ambari-agent state=started enabled=yes

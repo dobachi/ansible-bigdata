@@ -1,0 +1,8 @@
+- hosts: "{{ server | default('manage') }}"
+  tasks:
+    - name: setup_ambari
+      shell: ambari-server setup -s
+    - name: start_ambari
+      service: name=ambari-server state=started
+    - name : check if ambari-server is up
+      wait_for : host={{ ansible_hostname }} port=8080 delay=20

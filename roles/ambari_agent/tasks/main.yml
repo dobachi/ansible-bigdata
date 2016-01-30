@@ -1,0 +1,6 @@
+---
+# tasks file for roles/ambari_agent
+- include: repos.yml tags=ambari_agent,repos
+- include: install.yml tags=ambari_agent,install
+- include: config.yml tags=ambari_agent,config
+- include: service.yml tags=ambari_agent,service

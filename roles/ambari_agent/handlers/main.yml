@@ -1,0 +1,4 @@
+---
+# handlers file for roles/ambari_agent
+- name: restart_ambari_agent
+  service: name=ambari-agent state=restarted
