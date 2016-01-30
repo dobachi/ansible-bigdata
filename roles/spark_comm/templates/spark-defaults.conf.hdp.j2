@@ -13,7 +13,7 @@ spark.executor.instances {{ spark_comm_exe_instances }}
 
 spark.driver.extraJavaOptions -Dhdp.version=2.3.4.0-3485 -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -XX:MaxMetaspaceSize=256M
 spark.yarn.am.extraJavaOptions -Dhdp.version=2.3.4.0-3485 -XX:+PrintGCDetails -XX:+PrintGCTimeStamps  -XX:MaxMetaspaceSize=256M
-spark.driver.extraJavaOptions -Dhdp.version=2.3.4.0-3485 -XX:+PrintGCDetails -XX:+PrintGCTimeStamps  -XX:MaxMetaspaceSize=256M
+spark.executor.extraJavaOptions -Dhdp.version=2.3.4.0-3485 -XX:+PrintGCDetails -XX:+PrintGCTimeStamps  -XX:MaxMetaspaceSize=256M
 
 spark.yarn.executor.memoryOverhead 512
 spark.yarn.driver.memoryOverhead 512
