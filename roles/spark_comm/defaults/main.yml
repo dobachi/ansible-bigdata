@@ -35,6 +35,18 @@ spark_comm_master: 'yarn'
 spark_comm_logdir: 'hdfs://{{ spark_comm_hdfs_cluster_name }}/var/log/spark'
 spark_comm_historyserver: '{{ groups["hadoop_other"][0] }}'
 
+# hive-site.xml
+
+spark_comm_hive_site_tmpl: 'hive-site.xml.j2'
+
+# The following parameters are needed to connect the remote metastore serfvice
+
+#spark_comm_hive_meta_uri: 'thrift://localhost:9083'
+
+# You can configure warehouse dir
+
+#saprk_comm_hive_warehouse: '/user/hive/warehouse'
+
 # spark-env.sh
 spark_comm_env_tmpl: 'spark-env.sh.j2'
 spark_comm_exe_cores: '1'

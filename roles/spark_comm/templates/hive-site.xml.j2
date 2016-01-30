@@ -1,0 +1,17 @@
+  <configuration>
+    
+{% if spark_comm_hive_meta_uri is defined %}
+    <property>
+      <name>hive.metastore.uris</name>
+      <value>{{ spark_comm_hive_meta_uri }}</value>
+    </property>
+{% endif %}
+    
+{% if spark_comm_hive_warehouse is defined %}
+    <property>
+      <name>hive.metastore.warehouse.dir</name>
+      <value>spark_comm_hive_warehouse</value>
+    </property>
+{% endif %}
+
+  </configuration>

@@ -12,3 +12,6 @@
 
 - name: copy_profile_of_spark
   template: src=spark.sh.j2 dest=/etc/profile.d/spark.sh
+
+- name: copy_hive-site.xml
+  template: src={{ spark_comm_hive_site_tmpl }} dest=/etc/spark/conf/hive-site.xml
