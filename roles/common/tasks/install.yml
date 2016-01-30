@@ -6,3 +6,4 @@
     - unzip
     - man
     - wget
+    - ntp

@@ -1,0 +1,2 @@
+- name: start_ntpd
+  service: name=ntpd state=started enabled=yes
