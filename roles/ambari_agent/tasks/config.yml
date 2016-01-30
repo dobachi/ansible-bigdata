@@ -2,3 +2,9 @@
   template: src=ambari-agent.ini.j2 dest=/etc/ambari-agent/conf/ambari-agent.ini
   notify:
     - restart_ambari_agent
+
+- name: copy_hostname.sh
+  template: src=hostname.sh.j2 dest=/var/lib/ambari-agent/hostname.sh
+
+- name: chmod_hostname.sh
+  file: path=/var/lib/ambari-agent/hostname.sh mode=655
