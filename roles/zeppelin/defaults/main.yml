@@ -10,6 +10,7 @@ zeppelin_server_port: '8080'
 zeppelin_spark_executor_instances: '20'
 zeppelin_spark_executor_cores: '1'
 zeppelin_spark_executor_memory: '2g'
+zeppelin_notebook_storage: 'org.apache.zeppelin.notebook.repo.VFSNotebookRepo'
 
 # You should configure the following parameters
 #zeppelin_package_base_url: 'http://example.com/zeppelin'
