@@ -46,6 +46,7 @@ export ZEPPELIN_LOG_DIR={{ zeppelin_log_dir }}
 # export SPARK_HOME                             # (required) When it is defined, load it instead of Zeppelin embedded Spark libraries
 export SPARK_HOME={{ zeppelin_spark_home }}
 # export SPARK_SUBMIT_OPTIONS                   # (optional) extra options to pass to spark submit. eg) "--driver-memory 512M --executor-memory 1G".
+export SPARK_SUBMIT_OPTIONS="--files=/etc/spark/conf/metrics.properties --conf spark.metrics.conf=metrics.properties"
 
 ## Use embedded spark binaries ##
 ## without SPARK_HOME defined, Zeppelin still able to run spark interpreter process using embedded spark binaries.
