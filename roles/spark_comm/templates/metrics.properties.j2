@@ -133,7 +133,7 @@
 {% if spark_comm_graphite_enabled %}
 *.source.jvm.class=org.apache.spark.metrics.source.JvmSource
 *.sink.graphite.class=org.apache.spark.metrics.sink.GraphiteSink
-*.sink.graphite.host={{ groups['hadoop_other'] | join(',') }}
+*.sink.graphite.host={{ spark_comm_graphite_host }}
 *.sink.graphite.prefix={{ spark_comm_graphite_prefix }}
 *.sink.graphite.port={{ spark_comm_graphite_port }}
 {% endif %}

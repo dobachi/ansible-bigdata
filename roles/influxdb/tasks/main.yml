@@ -1,5 +1,6 @@
 ---
 # tasks file for roles/influxdb
+- include: repo.yml tags=influxdb,repo
 - include: install.yml tags=influxdb,install
 - include: config.yml tags=influxdb,config
 - include: service.yml tags=influxdb,service

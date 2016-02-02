@@ -1,5 +1,5 @@
 - name: copy_influxdb_conf
-  template: src=influxdb.conf.j2 dest=/etc/opt/influxdb/influxdb.conf
+  template: src=influxdb.conf.j2 dest=/etc/influxdb/influxdb.conf
   notify:
     - restart_influxdb
 

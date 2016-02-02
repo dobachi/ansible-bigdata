@@ -58,6 +58,7 @@ spark_comm_scala_home: '/usr/local/scala/default'
 # /etc/spark/conf/metrics.properties
 spark_comm_metrics_tmpl: 'metrics.properties.j2'
 spark_comm_graphite_enabled: True
+spark_comm_graphite_host: '{{ groups["hadoop_other"] | join(",") }}'
 spark_comm_graphite_prefix: 'spark'
 spark_comm_graphite_port: '2003'
 
