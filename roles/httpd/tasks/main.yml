@@ -1,4 +1,9 @@
 ---
 - include: install.yml tags=install,httpd
-- include: config.yml tags=config,httpd
+
+- include: config_centos6.yml tags=config,httpd
+  when: ansible_distribution == 'CentOS' and ansible_distribution_major_version == '6'
+- include: config_centos7.yml tags=config,httpd
+  when: ansible_distribution == 'CentOS' and ansible_distribution_major_version == '7'
+
 - include: service.yml tags=service,httpd

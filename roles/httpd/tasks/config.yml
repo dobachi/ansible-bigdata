@@ -1,4 +1,0 @@
-- name: copy_httpd.conf
-  template: src=httpd.conf.j2 dest=/etc/httpd/conf/httpd.conf
-  notify:
-    - restart_httpd

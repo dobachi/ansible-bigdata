@@ -1,0 +1,4 @@
+- name: copy_httpd.conf_for_centos6
+  template: src=httpd.conf.centos6.j2 dest=/etc/httpd/conf/httpd.conf
+  notify:
+    - restart_httpd
