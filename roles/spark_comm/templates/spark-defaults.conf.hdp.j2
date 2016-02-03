@@ -19,3 +19,7 @@ spark.yarn.executor.memoryOverhead 512
 spark.yarn.driver.memoryOverhead 512
 
 spark.executorEnv.PATH /usr/local/anaconda2/bin:/usr/local/spark/default/bin:/usr/lib64/qt-3.3/bin:/usr/java/default/bin:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/activator_mini/default:/usr/local/maven/default/bin:/usr/local/sbt/default/sbt/bin:/usr/local/scala/default/bin:/root/bin
+
+{% if spark_comm_metrics_properties_path is defined %}
+spark.metrics.conf {{ spark_comm_metrics_properties_path }}
+{% endif %}

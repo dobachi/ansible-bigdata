@@ -16,14 +16,19 @@ spark_comm_spark_home: '/usr/local/spark/default'
 #
 spark_comm_dir: '/usr/local/spark'
 
+# The maximum number of executers
+spark_comm_exe_instances: '2'
+
 # The base of URL and pacakge name of Spark
 # You should specify the following parameters by your self
 
 #spark_comm_package_url_base: ''
 #spark_comm_package_name: ''
 
-# The maximum number of executers
-spark_comm_exe_instances: '2'
+# You should configure the path of metrics properties to be read
+# by Driver and Executors, if necessary
+#spark_comm_metrics_properties_path: '/etc/spark/conf/metrics.properties'
+
 
 # ====================================
 # Each configuration file parameters
