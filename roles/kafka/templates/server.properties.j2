@@ -17,12 +17,15 @@
 ############################# Server Basics #############################
 
 # The id of the broker. This must be set to a unique integer for each broker.
+#broker.id=0
 broker.id={{ kafka_broker_id }}
 
 ############################# Socket Server Settings #############################
 
+listeners=PLAINTEXT://:9092
+
 # The port the socket server listens on
-port=9092
+#port=9092
 
 # Hostname the broker will bind to. If not set, the server will bind to all interfaces
 #host.name=localhost
@@ -115,6 +118,7 @@ log.cleaner.enable=false
 # server. e.g. "127.0.0.1:3000,127.0.0.1:3001,127.0.0.1:3002".
 # You can also append an optional chroot string to the urls to specify the
 # root directory for all kafka znodes.
+#zookeeper.connect=localhost:2181
 zookeeper.connect={{ ",".join(kafka_zoo_servers) }}
 
 # Timeout in ms for connecting to zookeeper
