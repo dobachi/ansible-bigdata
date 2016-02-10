@@ -116,7 +116,7 @@ Ansible  Ansible 1.8.2 of EPEL
 InfluxDB Latest version of the community
 Graphana 1.9.1 of the community
 Zeppelin Latest version of the community
-Kafka    0.8.2.1
+Kafka    0.9.0.0
 ======== ========================================================
 
 Prerequirement
