@@ -112,7 +112,7 @@ Ansible       Ansible 1.8 of EPEL
 InfluxDB      コミュニティ最新版
 Graphana      コミュニティ版1.9.1
 Zeppelin      コミュニティ最新版
-Kafka         0.8.2.1
+Kafka         コミュニティ版0.9.0.0
 ============= ================================
 
 必要事項
