@@ -1,0 +1,8 @@
+---
+# defaults file for roles/confluent_kafka
+
+confluent_kafka_num_partitions: 3
+confluent_kafka_zookeeper_connect: '{{ groups["hadoop_zookeeperserver"] | join(":2181,") }}:2181'
+
+# The following parameters should be configured in group variables or inventory files
+# confluent_kafka_broker_id:

@@ -1,0 +1,2 @@
+- name: copy_server.properties
+  template: src=server.properties.j2 dest=/etc/kafka/server.properties

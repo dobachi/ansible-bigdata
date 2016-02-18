@@ -1,0 +1,4 @@
+- hosts: "{{ server | default('confluent_kafka_cluster') }}"
+  tasks:
+    - name: start_zookeeper_server
+      shell: /usr//bin/zookeeper-server-start /etc/kafka/zookeeper.properties
