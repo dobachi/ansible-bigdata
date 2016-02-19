@@ -1,2 +1,35 @@
-- name: install_confluent_kafka
-  yum: name=confluent-kafka-2.11.7 state=installed
+- name: mkdir_/usr/local/kafka
+  file: path=/usr/local/confluent_kafka state=directory owner=kafka group=kafka
+
+- name: download_confluent_kafka_package
+  get_url: url=http://packages.confluent.io/archive/2.0/confluent-2.0.0-2.11.7.zip dest=/usr/local/confluent_kafka
+
+- name: unarchive_kafka_package
+  shell: unzip confluent-2.0.0-2.11.7.zip chdir=/usr/local/confluent_kafka creates=/usr/local/confluent_kafka/confluent-2.0.0/README.archive
+
+- name: chown_/usr/local/kafka
+  file: path=/usr/local/confluent_kafka state=directory owner=kafka group=kafka recurse=yes
+
+- name: alternatives_kafka_package_default
+  alternatives: name=kafka_package_default path=/usr/local/confluent_kafka/confluent-2.0.0 link=/usr/local/confluent_kafka/default
+
+- name: mkdir_/etc/confluent
+  file: path=/etc/confluent state=directory owner=kafka group=kafka
+
+- name: alternatives_kafka_conf
+  alternatives: name=kafka_{{ item }} path=/usr/local/confluent_kafka/default/etc/{{ item }} link=/etc/confluent/{{ item }}
+  with_items:
+    - camus
+    - confluent-common
+    - kafka
+    - kafka-connect-hdfs
+    - kafka-connect-jdbc
+    - kafka-rest
+    - rest-utils
+    - schema-registry
+
+- name: mkdir_/var/log/confluent_kafka
+  file: path=/var/log/confluent_kafka state=directory owner=kafka group=kafka
+
+- name: alternatives_kafka_log
+  alternatives: name=kafka_log path=/var/log/confluent_kafka link=/usr/local/confluent_kafka/default/logs

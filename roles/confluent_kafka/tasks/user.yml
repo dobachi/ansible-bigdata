@@ -1,0 +1,6 @@
+- name: add_kafka_group
+  group: name=kafka
+
+- name: add_kafka_user
+  user: name=kafka group=kafka
+
