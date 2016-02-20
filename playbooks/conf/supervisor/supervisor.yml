@@ -1,0 +1,5 @@
+- hosts: "{{ server | default('localhost') }}"
+  roles:
+    - common
+    - epel
+    - supervisor
