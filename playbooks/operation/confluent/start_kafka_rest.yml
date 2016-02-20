@@ -1,0 +1,7 @@
+- hosts: "{{ server | default('confluent_kafka_rest') }}"
+  sudo: yes
+  sudo_user: kafka
+  tasks:
+    - name: start_kafka_rest
+      shell: /usr/local/confluent_kafka/default/bin/kafka-rest-start /etc/confluent/kafka-rest/kafka-rest.properties
+

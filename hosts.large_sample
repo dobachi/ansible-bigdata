@@ -151,4 +151,7 @@ kafka03 zookeeper_server_id=3 confluent_kafka_broker_id=3
 [confluent_schema_registry]
 hd-kafka01
 
+[confluent_kafka_rest]
+hd-kafka01
+
 [manage]
