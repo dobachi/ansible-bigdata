@@ -9,3 +9,5 @@ common_hosts_tmpl: "hosts.default"
 common_selinux_state: "disabled"
 
 common_config_hostname: False
+
+common_lang: 'en_US.UTF-8'

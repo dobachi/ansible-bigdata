@@ -15,3 +15,6 @@
 - name: copy_sudoers
   template: src=sudoers.j2 dest=/etc/sudoers
 
+- name: copy_lang.sh
+  template: src=lang.sh.j2 dest=/etc/profile.d/lang.sh
+
