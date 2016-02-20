@@ -138,5 +138,8 @@ kafka01 zookeeper_server_id=1 confluent_kafka_broker_id=1
 kafka02 zookeeper_server_id=2 confluent_kafka_broker_id=2
 kafka03 zookeeper_server_id=3 confluent_kafka_broker_id=3
 
+[confluent_shema_registry]
+hd-kafka01
+
 [manage]
 manage
