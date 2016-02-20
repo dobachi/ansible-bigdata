@@ -3,6 +3,5 @@
     - common
     - epel
     - jdk
+    - supervisor
     - confluent_kafka
-
-

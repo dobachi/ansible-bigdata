@@ -1,0 +1,10 @@
+[program:schema-registry]
+command=/usr/local/confluent_kafka/default/bin/schema-registry-start /etc/confluent/schema-registry/schema-registry.properties
+user=kafka
+autorestart=true
+autostart=false
+stdout_logfile=/usr/local/confluent_kafka/default/logs/schema-registry.log
+stdout_logfile_maxbytes=100MB
+stdout_logfile_backups=5
+stdout_capture_maxbytes=100MB
+redirect_stderr=true

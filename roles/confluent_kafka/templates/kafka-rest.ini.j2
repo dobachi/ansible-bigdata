@@ -1,0 +1,10 @@
+[program:kafka-rest]
+command=/usr/local/confluent_kafka/default/bin/kafka-rest-start /etc/confluent/kafka-rest/kafka-rest.properties
+user=kafka
+autorestart=true
+autostart=false
+stdout_logfile=/usr/local/confluent_kafka/default/logs/kafka-rest.log
+stdout_logfile_maxbytes=100MB
+stdout_logfile_backups=5
+stdout_capture_maxbytes=100MB
+redirect_stderr=true

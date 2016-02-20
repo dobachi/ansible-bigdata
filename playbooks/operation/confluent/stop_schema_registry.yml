@@ -1,8 +1,5 @@
 - hosts: "{{ server | default('confluent_schema_registry') }}"
   sudo: yes
-  sudo_user: kafka
   tasks:
-    - name: stop_kafka_server
-      shell: /usr/local/confluent_kafka/default/bin/schema-registry-stop /etc/confluent/schema-registry/schema-registry.properties
-
-
+    - name: stop_schema_registry
+      shell: supervisorctl stop schema-registry
