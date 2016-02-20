@@ -3,4 +3,4 @@
   sudo_user: kafka
   tasks:
     - name: start_kafka_server
-      shell: /usr/local/confluent_kafka/default/bin/kafka-server-start /etc/kafka/server.properties
+      shell: /usr/local/confluent_kafka/default/bin/kafka-server-start /etc/confluent/kafka/server.properties

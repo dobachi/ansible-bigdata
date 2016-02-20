@@ -3,4 +3,4 @@
   sudo_user: kafka
   tasks:
     - name: stop_kafka_server
-      shell: /usr/local/confluent_kafka/default/bin/kafka-server-stop /etc/kafka/server.properties
+      shell: /usr/local/confluent_kafka/default/bin/kafka-server-stop
