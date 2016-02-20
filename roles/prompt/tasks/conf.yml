@@ -1,4 +1,4 @@
 # file: roles/prompt/tasks/conf.yml
 
 - name: copy_prompt.sh
-  template: src=prompt.sh.j2 dest=/etc/profile.d/prompt.sh
+  file: src=prompt.sh dest=/etc/profile.d/prompt.sh
