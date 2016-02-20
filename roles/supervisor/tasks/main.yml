@@ -1,0 +1,5 @@
+---
+# tasks file for roles/supervisor
+- include: install.yml tags=install,supervisor
+- include: config.yml tags=config,supervisor
+- include: service.yml tags=service,supervisor
