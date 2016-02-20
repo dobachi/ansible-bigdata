@@ -14,3 +14,6 @@ kafka_broker_list:
   - kafka03:9092
 
 kafka_delete_topic_enable: "true"
+
+# The following parameters are configured by group variables
+#kafka_broker_id:
