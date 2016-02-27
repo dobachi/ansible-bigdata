@@ -12,6 +12,8 @@
     - name: install_required_packages
       yum: name={{ item }} state=installed
       with_items:
+        - git
+        - bzip2
         - npm
         - fontconfig-devel
     - name: mkdir_zeppelin_dir
