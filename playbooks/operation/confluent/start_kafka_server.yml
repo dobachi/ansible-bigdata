@@ -1,6 +1,5 @@
 - hosts: "{{ server | default('confluent_kafka_cluster') }}"
   sudo: yes
-  sudo_user: kafka
   tasks:
     - name: start_kafka_server
-      shell: /usr/local/confluent_kafka/default/bin/kafka-server-start /etc/confluent/kafka/server.properties
+      shell: supervisorctl start kafka-server
