@@ -5,6 +5,7 @@ local
 hadoop_all
 hadoop_pseudo
 kafka_cluster
+confluent_kafka_cluster
 manage
 
 ; This is a dummy
