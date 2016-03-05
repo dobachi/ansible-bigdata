@@ -16,9 +16,9 @@ We can use playbooks in playbooks/conf directory to configure servers.
 
 **abstract**
 
-============================ =============================================
+============================ =============================================================
 Directory                    Use for
-============================ =============================================
+============================ =============================================================
 playbooks/conf/common        Common and basic configuration
 playbooks/conf/cdh5          Configuration of CDH5 environment
 playbooks/conf/cdh5_pseudo   Configuration of CDH5 Pseudo environment
@@ -29,8 +29,9 @@ playbooks/conf/spark_comm    Configuration of Spark community edition
 playbooks/conf/zeppelin      Configuration of Zeppelin community edition
 playbooks/conf/fluentd       Configuration of fluentd and td-agent
 playbooks/conf/kafka         Configuration of Kafka
+playbooks/conf/confluent     Configuration of Confluent packages including Kafka
 playbooks/conf/ambari        Configuration of Ambari
-============================ =============================================
+============================ =============================================================
 
 common
 ~~~~~~
@@ -183,6 +184,12 @@ kafka
 
   + Configure Kafka broker nodes.
 
+confluent
+~~~~~~~~~~~~
+* kafka.yml
+
+  + Configure Confluent packages including Kafka
+
 ambari
 ~~~~~~~~~~~~
 * ambari_agent.yml
@@ -213,6 +220,7 @@ playbooks/operation/spark_com    Operation of Spark services and building Spark 
 playbooks/operation/zeppelin     Start and stop zeppelin services
 playbooks/operation/fluentd      Start and stop td-agent services
 playbooks/operation/kafka        Start and stop Kafka cluster
+playbooks/operation/confluent    Start and stop Confluent services including Kafka
 playbooks/operation/ambari       Setup Ambari server.
                                  Start and stop each services.
 ================================ ====================================================================
@@ -312,6 +320,59 @@ kafka
 * delete_topic.yml
 
   + Delete topic on Kafka cluster
+
+confluent
+~~~~~~~~~~~~~
+* restart_kafka_rest.yml
+
+  + Stop and Start REST Proxy service
+
+* restart_kafka_server.yml
+
+  + Stop and Start Kafka broker service
+
+* restart_zookeeper_server.yml
+
+  + Stop and Start ZooKeeper serivce
+  + If you configured ZooKeeper service on Kafka broker nodes,
+    you can use this playbook to control such ZooKeeper serivces.
+
+* start_kafka_rest.yml
+
+  + Start Kafka REST Proxy serivce
+
+* start_kafka_server.yml
+
+  + Start Kafka broker service
+
+* start_schema_registry.yml
+
+  + Start Confluent schema registry service
+
+* start_zookeeper_server.yml
+
+  + Start ZooKeeper serivce
+  + If you configured ZooKeeper service on Kafka broker nodes,
+    you can use this playbook to control such ZooKeeper serivces.
+
+* stop_kafka_rest.yml
+
+  + Stop Kafka REST Proxy serivce
+
+* stop_kafka_server.yml
+
+  + Stop Kafka broker serivce
+
+* stop_schema_registry.yml
+
+  + Stop Confluent schema registry service
+
+* stop_zookeeper_server.yml
+
+  + Stop ZooKeeper serivce
+  + If you configured ZooKeeper service on Kafka broker nodes,
+    you can use this playbook to control such ZooKeeper serivces.
+
 
 ambari
 ~~~~~~~~~~~~

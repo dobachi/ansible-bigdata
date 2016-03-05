@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Getting Started &mdash; Ansible playbooks to construct Hadoop environment</title>
+    <title>2. Getting Started &mdash; Ansible playbooks to construct Hadoop environment</title>
     
     <link rel="stylesheet" href="_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -23,17 +23,23 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Ansible playbooks to construct Hadoop environment" href="index.html" /> 
+    <link rel="top" title="Ansible playbooks to construct Hadoop environment" href="index.html" />
+    <link rel="next" title="3. About hosts(inventory file)" href="about_hosts.html" />
+    <link rel="prev" title="1. Abstract" href="abstract.html" /> 
   </head>
   <body role="document">
       <div class="header" role="banner"><h1 class="heading"><a href="index.html">
           <span>Ansible playbooks to construct Hadoop environment</span></a></h1>
-        <h2 class="heading"><span>Getting Started</span></h2>
+        <h2 class="heading"><span>2. Getting Started</span></h2>
       </div>
       <div class="topnav" role="navigation" aria-label="top navigation">
       
         <p>
+        «&#160;&#160;<a href="abstract.html">1. Abstract</a>
+        &#160;&#160;::&#160;&#160;
         <a class="uplink" href="index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="about_hosts.html">3. About hosts(inventory file)</a>&#160;&#160;»
         </p>
 
       </div>
@@ -41,10 +47,10 @@
         
         
   <div class="section" id="getting-started">
-<h1>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
+<h1>2. Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
 <p>In this section, the procedure to constuct HDFS/YARN environment is explained.</p>
 <div class="section" id="prerequirement-for-simplicity">
-<h2>Prerequirement for simplicity<a class="headerlink" href="#prerequirement-for-simplicity" title="Permalink to this headline">¶</a></h2>
+<h2>2.1. Prerequirement for simplicity<a class="headerlink" href="#prerequirement-for-simplicity" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li>You have enough number of servers. The host names of servers are shown in <a class="reference internal" href="english.html#sec-servers"><span>Servers</span></a><ul>
 <li>eg. master01, master02, master03, client01, slave01, slave02, slave03, slave04, slave05</li>
@@ -58,7 +64,7 @@
 </ul>
 </div>
 <div class="section" id="install-ansible">
-<h2>Install Ansible<a class="headerlink" href="#install-ansible" title="Permalink to this headline">¶</a></h2>
+<h2>2.2. Install Ansible<a class="headerlink" href="#install-ansible" title="Permalink to this headline">¶</a></h2>
 <p>Install EPEL repository</p>
 <div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>sudo yum install -y epel-release
 </pre></div>
@@ -68,7 +74,7 @@
 </pre></div>
 </div>
 <div class="section" id="clone-playbooks">
-<h3>Clone playbooks<a class="headerlink" href="#clone-playbooks" title="Permalink to this headline">¶</a></h3>
+<h3>2.2.1. Clone playbooks<a class="headerlink" href="#clone-playbooks" title="Permalink to this headline">¶</a></h3>
 <p>Move original /etc/ansible</p>
 <div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd</span> /etc
 <span class="nv">$ </span>sudo mv ansible ansible.org
@@ -80,7 +86,7 @@
 </div>
 </div>
 <div class="section" id="modify-configuration-of-ansible">
-<h3>Modify configuration of Ansible<a class="headerlink" href="#modify-configuration-of-ansible" title="Permalink to this headline">¶</a></h3>
+<h3>2.2.2. Modify configuration of Ansible<a class="headerlink" href="#modify-configuration-of-ansible" title="Permalink to this headline">¶</a></h3>
 <p>Copy ansible.cfg.sample to ansible.cfg</p>
 <div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd </span>ansible
 <span class="nv">$ </span>cp ansible.cfg.sample ansible.cfg
@@ -96,7 +102,7 @@
 </div>
 </div>
 <div class="section" id="install-and-configure-hadoop">
-<h3>Install and configure Hadoop<a class="headerlink" href="#install-and-configure-hadoop" title="Permalink to this headline">¶</a></h3>
+<h3>2.2.3. Install and configure Hadoop<a class="headerlink" href="#install-and-configure-hadoop" title="Permalink to this headline">¶</a></h3>
 <p>Install and configure Hadoop.</p>
 <div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/conf/cdh5/cdh5_all.yml -k -s -e <span class="s2">&quot;common_hosts_replace=True&quot;</span>
 </pre></div>
@@ -112,7 +118,7 @@
 </div>
 </div>
 <div class="section" id="congratulation">
-<h3>Congratulation!<a class="headerlink" href="#congratulation" title="Permalink to this headline">¶</a></h3>
+<h3>2.2.4. Congratulation!<a class="headerlink" href="#congratulation" title="Permalink to this headline">¶</a></h3>
 <p>Now, you can access HDFS from client01.</p>
 <p>Example of the command.</p>
 <div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>hdfs dfs -ls /
@@ -139,7 +145,7 @@
 </ul>
 </div>
 <div class="section" id="install-spark-core">
-<h3>Install Spark core<a class="headerlink" href="#install-spark-core" title="Permalink to this headline">¶</a></h3>
+<h3>2.2.5. Install Spark core<a class="headerlink" href="#install-spark-core" title="Permalink to this headline">¶</a></h3>
 <p>Example of commands.</p>
 <div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/conf/cdh5/cdh5_spark.yml -k -s
 </pre></div>
@@ -162,7 +168,11 @@
       <div class="bottomnav" role="navigation" aria-label="bottom navigation">
       
         <p>
+        «&#160;&#160;<a href="abstract.html">1. Abstract</a>
+        &#160;&#160;::&#160;&#160;
         <a class="uplink" href="index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="about_hosts.html">3. About hosts(inventory file)</a>&#160;&#160;»
         </p>
 
       </div>

@@ -10,5 +10,9 @@ Content
    :maxdepth: 3
    :numbered:
 
-   english
-   japanese
+   abstract
+   getting_started
+   about_hosts
+   about_playbooks
+   about_roles
+   how_to_use_playbooks

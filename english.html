@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>1. English Document &mdash; Ansible playbooks to construct Hadoop environment</title>
+    <title>English Document &mdash; Ansible playbooks to construct Hadoop environment</title>
     
     <link rel="stylesheet" href="_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -23,23 +23,17 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Ansible playbooks to construct Hadoop environment" href="index.html" />
-    <link rel="next" title="2. Japanese Document" href="japanese.html" />
-    <link rel="prev" title="What is this document?" href="index.html" /> 
+    <link rel="top" title="Ansible playbooks to construct Hadoop environment" href="index.html" /> 
   </head>
   <body role="document">
       <div class="header" role="banner"><h1 class="heading"><a href="index.html">
           <span>Ansible playbooks to construct Hadoop environment</span></a></h1>
-        <h2 class="heading"><span>1. English Document</span></h2>
+        <h2 class="heading"><span>English Document</span></h2>
       </div>
       <div class="topnav" role="navigation" aria-label="top navigation">
       
         <p>
-        «&#160;&#160;<a href="index.html">What is this document?</a>
-        &#160;&#160;::&#160;&#160;
         <a class="uplink" href="index.html">Contents</a>
-        &#160;&#160;::&#160;&#160;
-        <a href="japanese.html">2. Japanese Document</a>&#160;&#160;»
         </p>
 
       </div>
@@ -47,11 +41,11 @@
         
         
   <div class="section" id="english-document">
-<h1>1. English Document<a class="headerlink" href="#english-document" title="Permalink to this headline">¶</a></h1>
+<h1>English Document<a class="headerlink" href="#english-document" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="abstract">
-<h2>1.1. Abstract<a class="headerlink" href="#abstract" title="Permalink to this headline">¶</a></h2>
+<h2>Abstract<a class="headerlink" href="#abstract" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="about-playbooks">
-<h3>1.1.1. About playbooks<a class="headerlink" href="#about-playbooks" title="Permalink to this headline">¶</a></h3>
+<h3>About playbooks<a class="headerlink" href="#about-playbooks" title="Permalink to this headline">¶</a></h3>
 <p>This is a library of playbooks to construct HDFS/YARN clusters.
 You will have HDFS and YARN services with HA.</p>
 <p>Although the configuration of OS and middlewares are not well tuned about performance,
@@ -62,7 +56,7 @@ you may need to configure OS and middlewares adequately.</p>
 and <a class="reference external" href="https://github.com/mcsrainbow/ansible-playbooks-cdh5">mcsrainbow&#8217;s ansible-playbooks-cdh5</a> are used as reference.</p>
 </div>
 <div class="section" id="feature">
-<h3>1.1.2. Feature<a class="headerlink" href="#feature" title="Permalink to this headline">¶</a></h3>
+<h3>Feature<a class="headerlink" href="#feature" title="Permalink to this headline">¶</a></h3>
 <p>This project has the following functions.
 Each function is available individually.</p>
 <ul class="simple">
@@ -77,11 +71,12 @@ Each function is available individually.</p>
 <li>Configuring Zeppelin for Spark notebook</li>
 <li>Configuring fluentd and td-agent</li>
 <li>Configuring Kafka cluster</li>
+<li>Configuring Confluent cluster</li>
 <li>Configuring Ambari</li>
 </ul>
 </div>
 <div class="section" id="servers">
-<span id="sec-servers"></span><h3>1.1.3. Servers<a class="headerlink" href="#servers" title="Permalink to this headline">¶</a></h3>
+<span id="sec-servers"></span><h3>Servers<a class="headerlink" href="#servers" title="Permalink to this headline">¶</a></h3>
 <p>This project&#8217;s assumption about middleware components and servers.</p>
 <p><strong>Servers for medium cluster</strong></p>
 <table border="1" class="docutils">
@@ -244,7 +239,7 @@ Spark-core, Spark history server</td>
 </ul>
 </div>
 <div class="section" id="software-information">
-<h3>1.1.4. Software information<a class="headerlink" href="#software-information" title="Permalink to this headline">¶</a></h3>
+<h3>Software information<a class="headerlink" href="#software-information" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
 <colgroup>
 <col width="13%" />
@@ -279,13 +274,13 @@ or Spark community edition</td>
 <td>Latest version of the community</td>
 </tr>
 <tr class="row-odd"><td>Kafka</td>
-<td>0.8.2.1</td>
+<td>0.9.0.0</td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="section" id="prerequirement">
-<h3>1.1.5. Prerequirement<a class="headerlink" href="#prerequirement" title="Permalink to this headline">¶</a></h3>
+<h3>Prerequirement<a class="headerlink" href="#prerequirement" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>You can login to each server by SSH from the server where you execute ansible.</li>
 <li>You can use &#8220;sudo&#8221; in each server.
@@ -296,10 +291,10 @@ For example, CentOS6 community instance use RSA key with root user in SSH access
 </div>
 </div>
 <div class="section" id="getting-started">
-<h2>1.2. Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
+<h2>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
 <p>In this section, the procedure to constuct HDFS/YARN environment is explained.</p>
 <div class="section" id="prerequirement-for-simplicity">
-<h3>1.2.1. Prerequirement for simplicity<a class="headerlink" href="#prerequirement-for-simplicity" title="Permalink to this headline">¶</a></h3>
+<h3>Prerequirement for simplicity<a class="headerlink" href="#prerequirement-for-simplicity" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>You have enough number of servers. The host names of servers are shown in <a class="reference internal" href="#sec-servers"><span>Servers</span></a><ul>
 <li>eg. master01, master02, master03, client01, slave01, slave02, slave03, slave04, slave05</li>
@@ -313,7 +308,7 @@ For example, CentOS6 community instance use RSA key with root user in SSH access
 </ul>
 </div>
 <div class="section" id="install-ansible">
-<h3>1.2.2. Install Ansible<a class="headerlink" href="#install-ansible" title="Permalink to this headline">¶</a></h3>
+<h3>Install Ansible<a class="headerlink" href="#install-ansible" title="Permalink to this headline">¶</a></h3>
 <p>Install EPEL repository</p>
 <div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>sudo yum install -y epel-release
 </pre></div>
@@ -323,7 +318,7 @@ For example, CentOS6 community instance use RSA key with root user in SSH access
 </pre></div>
 </div>
 <div class="section" id="clone-playbooks">
-<h4>1.2.2.1. Clone playbooks<a class="headerlink" href="#clone-playbooks" title="Permalink to this headline">¶</a></h4>
+<h4>Clone playbooks<a class="headerlink" href="#clone-playbooks" title="Permalink to this headline">¶</a></h4>
 <p>Move original /etc/ansible</p>
 <div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd</span> /etc
 <span class="nv">$ </span>sudo mv ansible ansible.org
@@ -335,7 +330,7 @@ For example, CentOS6 community instance use RSA key with root user in SSH access
 </div>
 </div>
 <div class="section" id="modify-configuration-of-ansible">
-<h4>1.2.2.2. Modify configuration of Ansible<a class="headerlink" href="#modify-configuration-of-ansible" title="Permalink to this headline">¶</a></h4>
+<h4>Modify configuration of Ansible<a class="headerlink" href="#modify-configuration-of-ansible" title="Permalink to this headline">¶</a></h4>
 <p>Copy ansible.cfg.sample to ansible.cfg</p>
 <div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd </span>ansible
 <span class="nv">$ </span>cp ansible.cfg.sample ansible.cfg
@@ -351,7 +346,7 @@ For example, CentOS6 community instance use RSA key with root user in SSH access
 </div>
 </div>
 <div class="section" id="install-and-configure-hadoop">
-<h4>1.2.2.3. Install and configure Hadoop<a class="headerlink" href="#install-and-configure-hadoop" title="Permalink to this headline">¶</a></h4>
+<h4>Install and configure Hadoop<a class="headerlink" href="#install-and-configure-hadoop" title="Permalink to this headline">¶</a></h4>
 <p>Install and configure Hadoop.</p>
 <div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/conf/cdh5/cdh5_all.yml -k -s -e <span class="s2">&quot;common_hosts_replace=True&quot;</span>
 </pre></div>
@@ -367,7 +362,7 @@ For example, CentOS6 community instance use RSA key with root user in SSH access
 </div>
 </div>
 <div class="section" id="congratulation">
-<h4>1.2.2.4. Congratulation!<a class="headerlink" href="#congratulation" title="Permalink to this headline">¶</a></h4>
+<h4>Congratulation!<a class="headerlink" href="#congratulation" title="Permalink to this headline">¶</a></h4>
 <p>Now, you can access HDFS from client01.</p>
 <p>Example of the command.</p>
 <div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>hdfs dfs -ls /
@@ -394,7 +389,7 @@ For example, CentOS6 community instance use RSA key with root user in SSH access
 </ul>
 </div>
 <div class="section" id="install-spark-core">
-<h4>1.2.2.5. Install Spark core<a class="headerlink" href="#install-spark-core" title="Permalink to this headline">¶</a></h4>
+<h4>Install Spark core<a class="headerlink" href="#install-spark-core" title="Permalink to this headline">¶</a></h4>
 <p>Example of commands.</p>
 <div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/conf/cdh5/cdh5_spark.yml -k -s
 </pre></div>
@@ -412,7 +407,7 @@ For example, CentOS6 community instance use RSA key with root user in SSH access
 </div>
 </div>
 <div class="section" id="about-hosts-inventory-file">
-<h2>1.3. About hosts(inventory file)<a class="headerlink" href="#about-hosts-inventory-file" title="Permalink to this headline">¶</a></h2>
+<h2>About hosts(inventory file)<a class="headerlink" href="#about-hosts-inventory-file" title="Permalink to this headline">¶</a></h2>
 <p>We have two types of Ansible hosts sample.
 The following is the location of the main services.</p>
 <p>hosts.medium_sample:</p>
@@ -421,7 +416,8 @@ The following is the location of the main services.</p>
 <li>Master Services(NameNode, Zookeeper, JournalNode and ResourceManager): 3 nodes</li>
 <li>Client: 1 node</li>
 <li>Slave: 5 nodes</li>
-<li>Manage: 1 node</li>
+<li>Manage: 1 nodes</li>
+<li>Kafka: 3 nodes</li>
 </ul>
 </div></blockquote>
 <p>hosts.large_sample:</p>
@@ -432,7 +428,8 @@ The following is the location of the main services.</p>
 <li>ResourceManager: 2 nodes</li>
 <li>Client: 1 node</li>
 <li>Slave: 10 nodes</li>
-<li>Manage: 1 node</li>
+<li>Manage: 1 nodes</li>
+<li>Kafka: 3 nodes</li>
 </ul>
 </div></blockquote>
 <div class="admonition note">
@@ -442,13 +439,13 @@ which is the pseudo Hadoop environment.</p>
 </div>
 </div>
 <div class="section" id="about-groups-in-inventory">
-<h2>1.4. About groups in inventory<a class="headerlink" href="#about-groups-in-inventory" title="Permalink to this headline">¶</a></h2>
+<h2>About groups in inventory<a class="headerlink" href="#about-groups-in-inventory" title="Permalink to this headline">¶</a></h2>
 <p>This example of inventory includes the following configured groups.</p>
 <p><strong>Main group</strong></p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="24%" />
-<col width="76%" />
+<col width="25%" />
+<col width="75%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">group</th>
@@ -501,6 +498,18 @@ as clients of Hadoop and other services.</td>
 <tr class="row-even"><td>manage</td>
 <td>This group includes nodes to control clusters</td>
 </tr>
+<tr class="row-odd"><td>kafka_cluster</td>
+<td>This group includes Kafka brokers of Apache Kafka (Community version)</td>
+</tr>
+<tr class="row-even"><td>confluent_kafka_cluster</td>
+<td>This group includes Kafka brokers of Confluent Kafka</td>
+</tr>
+<tr class="row-odd"><td>confluent_schema_registry</td>
+<td>This group includes Confluent&#8217;s schema registry service nodes</td>
+</tr>
+<tr class="row-even"><td>confluent_kafka_rest</td>
+<td>This group includes Confluent&#8217;s REST Proxy serivce nodes</td>
+</tr>
 </tbody>
 </table>
 <p>If you are managing several Hadoop cluster and environment, such as production, test, etc,
@@ -516,7 +525,7 @@ group_vars/test/something       ... This includes parameters which are specific 
 you can use them to swich environments which you want to configure in executing ansible-playbook command.</p>
 </div>
 <div class="section" id="id1">
-<h2>1.5. About playbooks<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<h2>About playbooks<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>This project has two types of playbooks.</p>
 <ul class="simple">
 <li>Playbooks for configuration<ul>
@@ -529,13 +538,13 @@ you can use them to swich environments which you want to configure in executing 
 </li>
 </ul>
 <div class="section" id="playbooks-for-configuration">
-<h3>1.5.1. Playbooks for configuration<a class="headerlink" href="#playbooks-for-configuration" title="Permalink to this headline">¶</a></h3>
+<h3>Playbooks for configuration<a class="headerlink" href="#playbooks-for-configuration" title="Permalink to this headline">¶</a></h3>
 <p>We can use playbooks in playbooks/conf directory to configure servers.</p>
 <p><strong>abstract</strong></p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="38%" />
-<col width="62%" />
+<col width="31%" />
+<col width="69%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Directory</th>
@@ -573,13 +582,16 @@ you can use them to swich environments which you want to configure in executing 
 <tr class="row-odd"><td>playbooks/conf/kafka</td>
 <td>Configuration of Kafka</td>
 </tr>
-<tr class="row-even"><td>playbooks/conf/ambari</td>
+<tr class="row-even"><td>playbooks/conf/confluent</td>
+<td>Configuration of Confluent packages including Kafka</td>
+</tr>
+<tr class="row-odd"><td>playbooks/conf/ambari</td>
 <td>Configuration of Ambari</td>
 </tr>
 </tbody>
 </table>
 <div class="section" id="common">
-<h4>1.5.1.1. common<a class="headerlink" href="#common" title="Permalink to this headline">¶</a></h4>
+<h4>common<a class="headerlink" href="#common" title="Permalink to this headline">¶</a></h4>
 <p>This is a set of common and basic configurations.</p>
 <ul class="simple">
 <li>playbooks/conf/common/common_all.yml<ul>
@@ -593,7 +605,7 @@ you can use them to swich environments which you want to configure in executing 
 </ul>
 </div>
 <div class="section" id="cdh5">
-<h4>1.5.1.2. cdh5<a class="headerlink" href="#cdh5" title="Permalink to this headline">¶</a></h4>
+<h4>cdh5<a class="headerlink" href="#cdh5" title="Permalink to this headline">¶</a></h4>
 <p>This is a set of configurations to construct CDH5 environment.</p>
 <ul class="simple">
 <li>cdh5_all.yml<ul>
@@ -636,7 +648,7 @@ You can build whole CDH5 environment.</li>
 </ul>
 </div>
 <div class="section" id="cdh5-pseudo">
-<h4>1.5.1.3. cdh5_pseudo<a class="headerlink" href="#cdh5-pseudo" title="Permalink to this headline">¶</a></h4>
+<h4>cdh5_pseudo<a class="headerlink" href="#cdh5-pseudo" title="Permalink to this headline">¶</a></h4>
 <p>This is a set of configurations to construct CDH5 pseudo environment.</p>
 <ul class="simple">
 <li>cdh5_pseudo.yml<ul>
@@ -650,7 +662,7 @@ You can build whole CDH5 environment.</li>
 </ul>
 </div>
 <div class="section" id="ansible">
-<h4>1.5.1.4. ansible<a class="headerlink" href="#ansible" title="Permalink to this headline">¶</a></h4>
+<h4>ansible<a class="headerlink" href="#ansible" title="Permalink to this headline">¶</a></h4>
 <p>This is a set of configuration about Ansible environment.
 If you have manually configured Ansible environment, such as ansible.cfg, inventory file and so on,
 you don&#8217;t need these playbooks.</p>
@@ -666,7 +678,7 @@ you don&#8217;t need these playbooks.</p>
 </ul>
 </div>
 <div class="section" id="ganglia">
-<h4>1.5.1.5. ganglia<a class="headerlink" href="#ganglia" title="Permalink to this headline">¶</a></h4>
+<h4>ganglia<a class="headerlink" href="#ganglia" title="Permalink to this headline">¶</a></h4>
 <p>This is  a set of configuration about Ganglia.
 We have two playbooks for Ganglia master and slave.</p>
 <ul class="simple">
@@ -685,7 +697,7 @@ We have two playbooks for Ganglia master and slave.</p>
 </ul>
 </div>
 <div class="section" id="influxdb">
-<h4>1.5.1.6. influxdb<a class="headerlink" href="#influxdb" title="Permalink to this headline">¶</a></h4>
+<h4>influxdb<a class="headerlink" href="#influxdb" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li>all.yml<ul>
 <li>Configure influxdb and Grafana.</li>
@@ -694,7 +706,7 @@ We have two playbooks for Ganglia master and slave.</p>
 </ul>
 </div>
 <div class="section" id="spark-comm">
-<h4>1.5.1.7. spark_comm<a class="headerlink" href="#spark-comm" title="Permalink to this headline">¶</a></h4>
+<h4>spark_comm<a class="headerlink" href="#spark-comm" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li>all.yml<ul>
 <li>Configure all nodes</li>
@@ -719,7 +731,7 @@ We have two playbooks for Ganglia master and slave.</p>
 </ul>
 </div>
 <div class="section" id="zeppelin">
-<h4>1.5.1.8. zeppelin<a class="headerlink" href="#zeppelin" title="Permalink to this headline">¶</a></h4>
+<h4>zeppelin<a class="headerlink" href="#zeppelin" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li>zeppelin.yml<ul>
 <li>Configure zeppelin environment</li>
@@ -728,7 +740,7 @@ We have two playbooks for Ganglia master and slave.</p>
 </ul>
 </div>
 <div class="section" id="fluentd">
-<h4>1.5.1.9. fluentd<a class="headerlink" href="#fluentd" title="Permalink to this headline">¶</a></h4>
+<h4>fluentd<a class="headerlink" href="#fluentd" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li>fluentd.yml<ul>
 <li>Configure fluentd</li>
@@ -741,7 +753,7 @@ We have two playbooks for Ganglia master and slave.</p>
 </ul>
 </div>
 <div class="section" id="kafka">
-<h4>1.5.1.10. kafka<a class="headerlink" href="#kafka" title="Permalink to this headline">¶</a></h4>
+<h4>kafka<a class="headerlink" href="#kafka" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li>kafka_brocker.yml<ul>
 <li>Configure Kafka broker nodes.</li>
@@ -749,8 +761,17 @@ We have two playbooks for Ganglia master and slave.</p>
 </li>
 </ul>
 </div>
+<div class="section" id="confluent">
+<h4>confluent<a class="headerlink" href="#confluent" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li>kafka.yml<ul>
+<li>Configure Confluent packages including Kafka</li>
+</ul>
+</li>
+</ul>
+</div>
 <div class="section" id="ambari">
-<h4>1.5.1.11. ambari<a class="headerlink" href="#ambari" title="Permalink to this headline">¶</a></h4>
+<h4>ambari<a class="headerlink" href="#ambari" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li>ambari_agent.yml<ul>
 <li>Configure Ambari agent manually (Not through Ambari server)</li>
@@ -764,7 +785,7 @@ We have two playbooks for Ganglia master and slave.</p>
 </div>
 </div>
 <div class="section" id="playbooks-for-operation">
-<h3>1.5.2. Playbooks for operation<a class="headerlink" href="#playbooks-for-operation" title="Permalink to this headline">¶</a></h3>
+<h3>Playbooks for operation<a class="headerlink" href="#playbooks-for-operation" title="Permalink to this headline">¶</a></h3>
 <p>We can use playbooks in playbooks/operation directory to operate services.</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -810,24 +831,27 @@ e.g. Formating HDFS, Start/Stop services, ...</td>
 <tr class="row-even"><td>playbooks/operation/kafka</td>
 <td>Start and stop Kafka cluster</td>
 </tr>
-<tr class="row-odd"><td>playbooks/operation/ambari</td>
+<tr class="row-odd"><td>playbooks/operation/confluent</td>
+<td>Start and stop Confluent services including Kafka</td>
+</tr>
+<tr class="row-even"><td>playbooks/operation/ambari</td>
 <td>Setup Ambari server.
 Start and stop each services.</td>
 </tr>
 </tbody>
 </table>
 <div class="section" id="id2">
-<h4>1.5.2.1. cdh5<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<h4>cdh5<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
 <p>This is a set of operation of Hadoop services.
 Please check README in the <em>cdh5</em> directory for more information.</p>
 </div>
 <div class="section" id="ec2">
-<h4>1.5.2.2. ec2<a class="headerlink" href="#ec2" title="Permalink to this headline">¶</a></h4>
+<h4>ec2<a class="headerlink" href="#ec2" title="Permalink to this headline">¶</a></h4>
 <p>This is a set of operation to boot EC2 instances.
 Please check README in the <em>ec2</em> directory for more information.</p>
 </div>
 <div class="section" id="id3">
-<h4>1.5.2.3. influxdb<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
+<h4>influxdb<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li>create_db.yml<ul>
 <li>Create all databases in InfluxDB.</li>
@@ -845,7 +869,7 @@ This is mainly used by Spark.</li>
 </ul>
 </div>
 <div class="section" id="id4">
-<h4>1.5.2.4. spark_comm<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
+<h4>spark_comm<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li>make_spark_packages.yml<ul>
 <li>Compile Spark sources and build packages</li>
@@ -862,7 +886,7 @@ This is mainly used by Spark.</li>
 </ul>
 </div>
 <div class="section" id="id5">
-<h4>1.5.2.5. zeppelin<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
+<h4>zeppelin<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li>build.yml<ul>
 <li>Compile and package Zeppelin</li>
@@ -885,7 +909,7 @@ You can build Zeppelin according to Zeppelin official web site.</li>
 </ul>
 </div>
 <div class="section" id="id6">
-<h4>1.5.2.6. fluentd<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h4>
+<h4>fluentd<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li>restart_td_agent.yml<ul>
 <li>Stop and Start td-agent</li>
@@ -902,7 +926,7 @@ You can build Zeppelin according to Zeppelin official web site.</li>
 </ul>
 </div>
 <div class="section" id="id7">
-<h4>1.5.2.7. kafka<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h4>
+<h4>kafka<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li>restart_kafka.yml<ul>
 <li>Stop and Start kafka</li>
@@ -927,7 +951,62 @@ You can build Zeppelin according to Zeppelin official web site.</li>
 </ul>
 </div>
 <div class="section" id="id8">
-<h4>1.5.2.8. ambari<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h4>
+<h4>confluent<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li>restart_kafka_rest.yml<ul>
+<li>Stop and Start REST Proxy service</li>
+</ul>
+</li>
+<li>restart_kafka_server.yml<ul>
+<li>Stop and Start Kafka broker service</li>
+</ul>
+</li>
+<li>restart_zookeeper_server.yml<ul>
+<li>Stop and Start ZooKeeper serivce</li>
+<li>If you configured ZooKeeper service on Kafka broker nodes,
+you can use this playbook to control such ZooKeeper serivces.</li>
+</ul>
+</li>
+<li>start_kafka_rest.yml<ul>
+<li>Start Kafka REST Proxy serivce</li>
+</ul>
+</li>
+<li>start_kafka_server.yml<ul>
+<li>Start Kafka broker service</li>
+</ul>
+</li>
+<li>start_schema_registry.yml<ul>
+<li>Start Confluent schema registry service</li>
+</ul>
+</li>
+<li>start_zookeeper_server.yml<ul>
+<li>Start ZooKeeper serivce</li>
+<li>If you configured ZooKeeper service on Kafka broker nodes,
+you can use this playbook to control such ZooKeeper serivces.</li>
+</ul>
+</li>
+<li>stop_kafka_rest.yml<ul>
+<li>Stop Kafka REST Proxy serivce</li>
+</ul>
+</li>
+<li>stop_kafka_server.yml<ul>
+<li>Stop Kafka broker serivce</li>
+</ul>
+</li>
+<li>stop_schema_registry.yml<ul>
+<li>Stop Confluent schema registry service</li>
+</ul>
+</li>
+<li>stop_zookeeper_server.yml<ul>
+<li>Stop ZooKeeper serivce</li>
+<li>If you configured ZooKeeper service on Kafka broker nodes,
+you can use this playbook to control such ZooKeeper serivces.</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id9">
+<h4>ambari<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li>To setup Ambari server<ul>
 <li>setup.yml</li>
@@ -956,10 +1035,10 @@ You can build Zeppelin according to Zeppelin official web site.</li>
 </div>
 </div>
 <div class="section" id="about-roles">
-<h2>1.6. About roles<a class="headerlink" href="#about-roles" title="Permalink to this headline">¶</a></h2>
+<h2>About roles<a class="headerlink" href="#about-roles" title="Permalink to this headline">¶</a></h2>
 <p>We manage OS and middlewares by using several seperated roles.</p>
 <div class="section" id="roles-to-configure-basic-environments">
-<h3>1.6.1. Roles to configure basic environments<a class="headerlink" href="#roles-to-configure-basic-environments" title="Permalink to this headline">¶</a></h3>
+<h3>Roles to configure basic environments<a class="headerlink" href="#roles-to-configure-basic-environments" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
 <colgroup>
 <col width="23%" />
@@ -1002,7 +1081,7 @@ You can build Zeppelin according to Zeppelin official web site.</li>
 </table>
 </div>
 <div class="section" id="roles-to-configure-ansible">
-<h3>1.6.2. Roles to configure Ansible<a class="headerlink" href="#roles-to-configure-ansible" title="Permalink to this headline">¶</a></h3>
+<h3>Roles to configure Ansible<a class="headerlink" href="#roles-to-configure-ansible" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
 <colgroup>
 <col width="22%" />
@@ -1024,7 +1103,7 @@ You can build Zeppelin according to Zeppelin official web site.</li>
 </table>
 </div>
 <div class="section" id="roles-to-boot-ec2-instances-for-hadoop-cluster">
-<h3>1.6.3. Roles to boot EC2 instances for Hadoop cluster<a class="headerlink" href="#roles-to-boot-ec2-instances-for-hadoop-cluster" title="Permalink to this headline">¶</a></h3>
+<h3>Roles to boot EC2 instances for Hadoop cluster<a class="headerlink" href="#roles-to-boot-ec2-instances-for-hadoop-cluster" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
 <colgroup>
 <col width="23%" />
@@ -1043,7 +1122,7 @@ You can build Zeppelin according to Zeppelin official web site.</li>
 </table>
 </div>
 <div class="section" id="roles-to-configure-cdh5-hadoop">
-<h3>1.6.4. Roles to configure CDH5 Hadoop<a class="headerlink" href="#roles-to-configure-cdh5-hadoop" title="Permalink to this headline">¶</a></h3>
+<h3>Roles to configure CDH5 Hadoop<a class="headerlink" href="#roles-to-configure-cdh5-hadoop" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
 <colgroup>
 <col width="23%" />
@@ -1080,7 +1159,7 @@ You can build Zeppelin according to Zeppelin official web site.</li>
 </table>
 </div>
 <div class="section" id="roles-to-configure-cdh5-pseudo-hadoop">
-<h3>1.6.5. Roles to configure CDH5 pseudo Hadoop<a class="headerlink" href="#roles-to-configure-cdh5-pseudo-hadoop" title="Permalink to this headline">¶</a></h3>
+<h3>Roles to configure CDH5 pseudo Hadoop<a class="headerlink" href="#roles-to-configure-cdh5-pseudo-hadoop" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
 <colgroup>
 <col width="23%" />
@@ -1099,7 +1178,7 @@ You can build Zeppelin according to Zeppelin official web site.</li>
 </table>
 </div>
 <div class="section" id="roles-to-configure-spark-core-on-client-node">
-<h3>1.6.6. Roles to configure Spark core on client node<a class="headerlink" href="#roles-to-configure-spark-core-on-client-node" title="Permalink to this headline">¶</a></h3>
+<h3>Roles to configure Spark core on client node<a class="headerlink" href="#roles-to-configure-spark-core-on-client-node" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
 <colgroup>
 <col width="23%" />
@@ -1118,7 +1197,7 @@ You can build Zeppelin according to Zeppelin official web site.</li>
 </table>
 </div>
 <div class="section" id="roles-to-configure-ganglia">
-<h3>1.6.7. Roles to configure Ganglia<a class="headerlink" href="#roles-to-configure-ganglia" title="Permalink to this headline">¶</a></h3>
+<h3>Roles to configure Ganglia<a class="headerlink" href="#roles-to-configure-ganglia" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
 <colgroup>
 <col width="23%" />
@@ -1140,7 +1219,7 @@ You can build Zeppelin according to Zeppelin official web site.</li>
 </table>
 </div>
 <div class="section" id="roles-to-configure-influxdb-and-grafana">
-<h3>1.6.8. Roles to configure InfluxDB and Grafana<a class="headerlink" href="#roles-to-configure-influxdb-and-grafana" title="Permalink to this headline">¶</a></h3>
+<h3>Roles to configure InfluxDB and Grafana<a class="headerlink" href="#roles-to-configure-influxdb-and-grafana" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
 <colgroup>
 <col width="23%" />
@@ -1162,7 +1241,7 @@ You can build Zeppelin according to Zeppelin official web site.</li>
 </table>
 </div>
 <div class="section" id="roles-to-configure-spark-community-edition">
-<h3>1.6.9. Roles to configure Spark community edition<a class="headerlink" href="#roles-to-configure-spark-community-edition" title="Permalink to this headline">¶</a></h3>
+<h3>Roles to configure Spark community edition<a class="headerlink" href="#roles-to-configure-spark-community-edition" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
 <colgroup>
 <col width="23%" />
@@ -1181,7 +1260,7 @@ You can build Zeppelin according to Zeppelin official web site.</li>
 </table>
 </div>
 <div class="section" id="roles-to-configure-zeppelin">
-<h3>1.6.10. Roles to configure Zeppelin<a class="headerlink" href="#roles-to-configure-zeppelin" title="Permalink to this headline">¶</a></h3>
+<h3>Roles to configure Zeppelin<a class="headerlink" href="#roles-to-configure-zeppelin" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
 <colgroup>
 <col width="23%" />
@@ -1200,7 +1279,7 @@ You can build Zeppelin according to Zeppelin official web site.</li>
 </table>
 </div>
 <div class="section" id="roles-to-configure-fluentd-or-td-agent">
-<h3>1.6.11. Roles to configure fluentd or td-agent<a class="headerlink" href="#roles-to-configure-fluentd-or-td-agent" title="Permalink to this headline">¶</a></h3>
+<h3>Roles to configure fluentd or td-agent<a class="headerlink" href="#roles-to-configure-fluentd-or-td-agent" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
 <colgroup>
 <col width="23%" />
@@ -1222,7 +1301,7 @@ You can build Zeppelin according to Zeppelin official web site.</li>
 </table>
 </div>
 <div class="section" id="roles-to-configure-kafka">
-<h3>1.6.12. Roles to configure Kafka<a class="headerlink" href="#roles-to-configure-kafka" title="Permalink to this headline">¶</a></h3>
+<h3>Roles to configure Kafka<a class="headerlink" href="#roles-to-configure-kafka" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
 <colgroup>
 <col width="23%" />
@@ -1240,8 +1319,27 @@ You can build Zeppelin according to Zeppelin official web site.</li>
 </tbody>
 </table>
 </div>
+<div class="section" id="roles-to-configure-confluent">
+<h3>Roles to configure Confluent<a class="headerlink" href="#roles-to-configure-confluent" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="77%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Role name</th>
+<th class="head">Use for</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>confluent_kafka</td>
+<td>Configuration of Confluent packages</td>
+</tr>
+</tbody>
+</table>
+</div>
 <div class="section" id="roles-to-configure-ambari">
-<h3>1.6.13. Roles to configure Ambari<a class="headerlink" href="#roles-to-configure-ambari" title="Permalink to this headline">¶</a></h3>
+<h3>Roles to configure Ambari<a class="headerlink" href="#roles-to-configure-ambari" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
 <colgroup>
 <col width="23%" />
@@ -1264,7 +1362,7 @@ You can build Zeppelin according to Zeppelin official web site.</li>
 </div>
 </div>
 <div class="section" id="how-to-use-this-playbooks">
-<h2>1.7. How to use this playbooks<a class="headerlink" href="#how-to-use-this-playbooks" title="Permalink to this headline">¶</a></h2>
+<h2>How to use this playbooks<a class="headerlink" href="#how-to-use-this-playbooks" title="Permalink to this headline">¶</a></h2>
 <p>You can use these playbooks to configure the following configuration.
 <strong>These playbooks are independent of each other</strong> .</p>
 <ul class="simple">
@@ -1273,18 +1371,18 @@ You can build Zeppelin according to Zeppelin official web site.</li>
 <li>CDH5 HDFS/YARN environment</li>
 </ul>
 <div class="section" id="assumption-of-this-section">
-<h3>1.7.1. Assumption of this section<a class="headerlink" href="#assumption-of-this-section" title="Permalink to this headline">¶</a></h3>
+<h3>Assumption of this section<a class="headerlink" href="#assumption-of-this-section" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>You have servers described in <a class="reference internal" href="#sec-servers"><span>Servers</span></a> section.</li>
 </ul>
 </div>
 <div class="section" id="how-to-configure-ansible-execution-environment">
-<span id="sec-configure-ansible-env"></span><h3>1.7.2. How to configure Ansible execution environment<a class="headerlink" href="#how-to-configure-ansible-execution-environment" title="Permalink to this headline">¶</a></h3>
+<span id="sec-configure-ansible-env"></span><h3>How to configure Ansible execution environment<a class="headerlink" href="#how-to-configure-ansible-execution-environment" title="Permalink to this headline">¶</a></h3>
 <p>If you have not configured Ansible execution environment,
 you can use the following playbooks for it.</p>
 <p>In this section, we start from installing Ansible packages.</p>
 <div class="section" id="install-packages">
-<h4>1.7.2.1. Install packages<a class="headerlink" href="#install-packages" title="Permalink to this headline">¶</a></h4>
+<h4>Install packages<a class="headerlink" href="#install-packages" title="Permalink to this headline">¶</a></h4>
 <p>Install EPEL repository</p>
 <div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>sudo yum install -y epel-release
 </pre></div>
@@ -1294,8 +1392,8 @@ you can use the following playbooks for it.</p>
 </pre></div>
 </div>
 </div>
-<div class="section" id="id9">
-<h4>1.7.2.2. Clone playbooks<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id10">
+<h4>Clone playbooks<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h4>
 <p>Move original /etc/ansible</p>
 <div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd</span> /etc
 <span class="nv">$ </span>sudo mv ansible ansible.org
@@ -1307,7 +1405,7 @@ you can use the following playbooks for it.</p>
 </div>
 </div>
 <div class="section" id="modify-configuration">
-<h4>1.7.2.3. Modify configuration<a class="headerlink" href="#modify-configuration" title="Permalink to this headline">¶</a></h4>
+<h4>Modify configuration<a class="headerlink" href="#modify-configuration" title="Permalink to this headline">¶</a></h4>
 <p>Modify hosts file to be copied to /etc/hosts</p>
 <div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd </span>ansible
 <span class="nv">$ </span>sudo vi roles/common/files/hosts.default
@@ -1315,7 +1413,7 @@ you can use the following playbooks for it.</p>
 </div>
 </div>
 <div class="section" id="execute-playbooks-one-by-one">
-<h4>1.7.2.4. Execute playbooks one by one<a class="headerlink" href="#execute-playbooks-one-by-one" title="Permalink to this headline">¶</a></h4>
+<h4>Execute playbooks one by one<a class="headerlink" href="#execute-playbooks-one-by-one" title="Permalink to this headline">¶</a></h4>
 <p>Execute ansible-playbook command with common_all.yml</p>
 <div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/conf/common/common_all.yml -k -s -i hosts.sample -e <span class="s2">&quot;common_hosts_replace=True&quot;</span>
 </pre></div>
@@ -1341,16 +1439,16 @@ You should execute command with the parameter instead of the above command</p>
 </div>
 </div>
 <div class="section" id="how-to-boot-ec2-instances-for-hadoop-cluster">
-<h3>1.7.3. How to boot EC2 instances for Hadoop cluster<a class="headerlink" href="#how-to-boot-ec2-instances-for-hadoop-cluster" title="Permalink to this headline">¶</a></h3>
+<h3>How to boot EC2 instances for Hadoop cluster<a class="headerlink" href="#how-to-boot-ec2-instances-for-hadoop-cluster" title="Permalink to this headline">¶</a></h3>
 <p>If you want to use Hadoop on EC2 instances,
 you can use playbooks/operation/ec2/hadoop_nodes_up.yml to boot instances.</p>
 <div class="section" id="create-inventory-file">
-<h4>1.7.3.1. Create inventory file<a class="headerlink" href="#create-inventory-file" title="Permalink to this headline">¶</a></h4>
+<h4>Create inventory file<a class="headerlink" href="#create-inventory-file" title="Permalink to this headline">¶</a></h4>
 <p>If you don&#8217;t have an inventory file,
 create inventory file, /etc/ansible/hosts while referring /etc/ansible/hosts.sample.</p>
 </div>
 <div class="section" id="define-environment-variables-for-aws-access">
-<h4>1.7.3.2. Define environment variables for AWS access<a class="headerlink" href="#define-environment-variables-for-aws-access" title="Permalink to this headline">¶</a></h4>
+<h4>Define environment variables for AWS access<a class="headerlink" href="#define-environment-variables-for-aws-access" title="Permalink to this headline">¶</a></h4>
 <p>We use environment variables to configure AWS access keys.
 Define AWS_ACCESS_KEY and AWS_SECRET_KEY in your ~/.bashrc</p>
 <div class="highlight-python"><div class="highlight"><pre>export AWS_ACCESS_KEY=XXXXXXXXXXXXXXXXXXXXXXXXx
@@ -1361,7 +1459,7 @@ export AWS_SECRET_KEY=XXXXXXXXXXXXXXXXXXXXXXXXX
 create keys while referring AWS web site.</p>
 </div>
 <div class="section" id="define-parameters-for-ec2-hadoop-role">
-<h4>1.7.3.3. Define parameters for ec2_hadoop role<a class="headerlink" href="#define-parameters-for-ec2-hadoop-role" title="Permalink to this headline">¶</a></h4>
+<h4>Define parameters for ec2_hadoop role<a class="headerlink" href="#define-parameters-for-ec2-hadoop-role" title="Permalink to this headline">¶</a></h4>
 <p>You can find the parameter description for ec2_hadoop role in roles/ec2_hadoop/defaults/main.yml</p>
 <p>To define your own parameters,
 you need to create the group variable file (e.g. group_vars/all/ec2) and write parameter defines in this file.</p>
@@ -1388,7 +1486,7 @@ you will see some errors, like:</p>
 </div>
 </div>
 <div class="section" id="apply-playbook">
-<h4>1.7.3.4. Apply playbook<a class="headerlink" href="#apply-playbook" title="Permalink to this headline">¶</a></h4>
+<h4>Apply playbook<a class="headerlink" href="#apply-playbook" title="Permalink to this headline">¶</a></h4>
 <p>Execute ansible-playbook command.</p>
 <div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/operation/ec2/hadoop_nodes_up.yml -c <span class="nb">local</span>
 </pre></div>
@@ -1398,7 +1496,7 @@ in /tmp/ec2_&lt;unix epoc time&gt;.
 &lt;unix epoc time&gt; is the time you executed this playbook.</p>
 </div>
 <div class="section" id="supplement-when-you-restart-ec2-instances">
-<h4>1.7.3.5. (supplement) When you restart ec2 instances<a class="headerlink" href="#supplement-when-you-restart-ec2-instances" title="Permalink to this headline">¶</a></h4>
+<h4>(supplement) When you restart ec2 instances<a class="headerlink" href="#supplement-when-you-restart-ec2-instances" title="Permalink to this headline">¶</a></h4>
 <p>When you restart ec2 instances, public IP addresses may change.
 You can obtain new IP address tables by executing the playbook.</p>
 <div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/operation/ec2/hadoop_nodes_up.yml -c <span class="nb">local</span>
@@ -1407,7 +1505,7 @@ You can obtain new IP address tables by executing the playbook.</p>
 </div>
 </div>
 <div class="section" id="how-to-configure-host-names-of-nodes">
-<h3>1.7.4. How to configure host names of nodes<a class="headerlink" href="#how-to-configure-host-names-of-nodes" title="Permalink to this headline">¶</a></h3>
+<h3>How to configure host names of nodes<a class="headerlink" href="#how-to-configure-host-names-of-nodes" title="Permalink to this headline">¶</a></h3>
 <p>If you want to configure hostname of nodes,
 You can use &#8220;common&#8221; role and related playbooks.</p>
 <p>Execute ansible-playbook command with common_only_common.yml</p>
@@ -1418,16 +1516,16 @@ You can use &#8220;common&#8221; role and related playbooks.</p>
 <p>This is usefull for configuration of EC2 instance, because your node may have variety of hostname after each node booted.</p>
 </div>
 <div class="section" id="how-to-configure-cdh5-hdfs-yarn-environment">
-<h3>1.7.5. How to configure CDH5 HDFS/YARN environment<a class="headerlink" href="#how-to-configure-cdh5-hdfs-yarn-environment" title="Permalink to this headline">¶</a></h3>
+<h3>How to configure CDH5 HDFS/YARN environment<a class="headerlink" href="#how-to-configure-cdh5-hdfs-yarn-environment" title="Permalink to this headline">¶</a></h3>
 <p>You can construct CDH5 HDFS/YARN environment by ansible-playbook command.</p>
 <div class="section" id="preparement">
-<h4>1.7.5.1. Preparement<a class="headerlink" href="#preparement" title="Permalink to this headline">¶</a></h4>
+<h4>Preparement<a class="headerlink" href="#preparement" title="Permalink to this headline">¶</a></h4>
 <p>If you have not configured Ansible execution environment,
 you should configure it.
 You can reference <a class="reference internal" href="how_to_use_playbooks.html#sec-configure-ansible-env"><span>How to configure Ansible execution environment</span></a> section.</p>
 </div>
 <div class="section" id="procedure">
-<h4>1.7.5.2. Procedure<a class="headerlink" href="#procedure" title="Permalink to this headline">¶</a></h4>
+<h4>Procedure<a class="headerlink" href="#procedure" title="Permalink to this headline">¶</a></h4>
 <p>In the following example, we configure common_hosts_replace is True.
 As a result of this parameter configuration, Ansible replace /etc/hosts
 by Ansible driver server&#8217;s /etc/ansible/roles/common/files/hosts.default</p>
@@ -1442,7 +1540,7 @@ by Ansible driver server&#8217;s /etc/ansible/roles/common/files/hosts.default</
 </div>
 </div>
 <div class="section" id="how-to-install-spark-environment-on-cdh5-environment">
-<h4>1.7.5.3. How to install Spark environment on CDH5 environment<a class="headerlink" href="#how-to-install-spark-environment-on-cdh5-environment" title="Permalink to this headline">¶</a></h4>
+<h4>How to install Spark environment on CDH5 environment<a class="headerlink" href="#how-to-install-spark-environment-on-cdh5-environment" title="Permalink to this headline">¶</a></h4>
 <p>You can install Spark Core into Client node by the following command</p>
 <div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/conf/cdh5/cdh5_spark.yml -k -s
 </pre></div>
@@ -1455,16 +1553,16 @@ please execute the following command.</p>
 </div>
 </div>
 <div class="section" id="how-to-configure-cdh5-pseudo-environment">
-<h3>1.7.6. How to configure CDH5 Pseudo environment<a class="headerlink" href="#how-to-configure-cdh5-pseudo-environment" title="Permalink to this headline">¶</a></h3>
+<h3>How to configure CDH5 Pseudo environment<a class="headerlink" href="#how-to-configure-cdh5-pseudo-environment" title="Permalink to this headline">¶</a></h3>
 <p>You can construct CDH5 HDFS/YARN environment by ansible-playbook command.</p>
-<div class="section" id="id10">
-<h4>1.7.6.1. Preparement<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id11">
+<h4>Preparement<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h4>
 <p>If you have not configured Ansible execution environment,
 you should configure it.
 You can reference <a class="reference internal" href="how_to_use_playbooks.html#sec-configure-ansible-env"><span>How to configure Ansible execution environment</span></a> section.</p>
 </div>
-<div class="section" id="id11">
-<h4>1.7.6.2. Procedure<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id12">
+<h4>Procedure<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h4>
 <p>In the following example, we configure common_hosts_replace is True.
 As a result of this parameter configuration, Ansible replace /etc/hosts
 by Ansible driver server&#8217;s /etc/ansible/roles/common/files/hosts.default</p>
@@ -1478,7 +1576,7 @@ by Ansible driver server&#8217;s /etc/ansible/roles/common/files/hosts.default</
 </div>
 </div>
 <div class="section" id="how-to-install-spark-environment-on-hadoop-pseudo-environment">
-<h4>1.7.6.3. How to install Spark environment on Hadoop pseudo environment<a class="headerlink" href="#how-to-install-spark-environment-on-hadoop-pseudo-environment" title="Permalink to this headline">¶</a></h4>
+<h4>How to install Spark environment on Hadoop pseudo environment<a class="headerlink" href="#how-to-install-spark-environment-on-hadoop-pseudo-environment" title="Permalink to this headline">¶</a></h4>
 <p>You can install Spark Core into Client node by the following command</p>
 <div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/conf/cdh5_pseudo/cdh5_spark.yml -k -s
 </pre></div>
@@ -1491,7 +1589,7 @@ please execute the following command.</p>
 </div>
 </div>
 <div class="section" id="how-to-install-ganglia-environment">
-<h3>1.7.7. How to install Ganglia environment<a class="headerlink" href="#how-to-install-ganglia-environment" title="Permalink to this headline">¶</a></h3>
+<h3>How to install Ganglia environment<a class="headerlink" href="#how-to-install-ganglia-environment" title="Permalink to this headline">¶</a></h3>
 <p>You can install Gaglia services with the following command:</p>
 <div class="highlight-python"><div class="highlight"><pre>.. code-block:: shell
 </pre></div>
@@ -1499,7 +1597,7 @@ please execute the following command.</p>
 <blockquote>
 <div>$ ansible-playbook playbooks/conf/ganglia/ganglia_all.yml -k -s</div></blockquote>
 <div class="section" id="how-to-use-unicast-for-communication-between-gmonds">
-<h4>1.7.7.1. How to use unicast for communication between gmonds<a class="headerlink" href="#how-to-use-unicast-for-communication-between-gmonds" title="Permalink to this headline">¶</a></h4>
+<h4>How to use unicast for communication between gmonds<a class="headerlink" href="#how-to-use-unicast-for-communication-between-gmonds" title="Permalink to this headline">¶</a></h4>
 <p>This playbook uses multicast for communication between gmonds as default.
 In some situcation, you may want to use unicast.
 For example, you are using ec2 of AWS.</p>
@@ -1516,7 +1614,7 @@ and should be a representative node which gmetad connect.</p>
 </div>
 </div>
 <div class="section" id="how-to-install-and-configure-influxdb-and-grafana">
-<h3>1.7.8. How to install and configure InfluxDB and Grafana<a class="headerlink" href="#how-to-install-and-configure-influxdb-and-grafana" title="Permalink to this headline">¶</a></h3>
+<h3>How to install and configure InfluxDB and Grafana<a class="headerlink" href="#how-to-install-and-configure-influxdb-and-grafana" title="Permalink to this headline">¶</a></h3>
 <p>You can install InfluxDB and Grafana services with the followign command.</p>
 <div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/conf/influxdb/all.yml -k -s
 </pre></div>
@@ -1563,9 +1661,9 @@ configured in group_vars/all/meta, group_vars/all/influxdb and group_vars/all/gr
 how to configure graphs.</p>
 </div>
 <div class="section" id="how-to-install-spark-community-edition">
-<h3>1.7.9. How to install Spark community edition<a class="headerlink" href="#how-to-install-spark-community-edition" title="Permalink to this headline">¶</a></h3>
+<h3>How to install Spark community edition<a class="headerlink" href="#how-to-install-spark-community-edition" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="obtain-package-or-compile-sources">
-<h4>1.7.9.1. Obtain package or compile sources<a class="headerlink" href="#obtain-package-or-compile-sources" title="Permalink to this headline">¶</a></h4>
+<h4>Obtain package or compile sources<a class="headerlink" href="#obtain-package-or-compile-sources" title="Permalink to this headline">¶</a></h4>
 <p>You can get Spark pacakge from <a class="reference external" href="https://spark.apache.org/downloads.html">Spark official download site</a> .</p>
 <p>If you want to use a package compiled by your self,
 you should build it according to <a class="reference external" href="https://spark.apache.org/docs/latest/building-spark.html">Spark offical build procedure</a> .</p>
@@ -1579,7 +1677,7 @@ When you use this playbook, please specify the following parameters used in this
 </ul>
 </div>
 <div class="section" id="confiure-parameters">
-<h4>1.7.9.2. Confiure parameters<a class="headerlink" href="#confiure-parameters" title="Permalink to this headline">¶</a></h4>
+<h4>Confiure parameters<a class="headerlink" href="#confiure-parameters" title="Permalink to this headline">¶</a></h4>
 <p>You can use playbooks/conf/spark_comm/all.yml to configure Spark community edition envirionment.</p>
 <p>This playbooks and roles expect to get Spark tar package by HTTP method.
 You should configure the following parameter to specify where Ansible should get Spark tar package.</p>
@@ -1596,14 +1694,14 @@ spark_comm_package_url_base is &#8220;<a class="reference external" href="http:/
 </div>
 </div>
 <div class="section" id="execute-playbooks">
-<h4>1.7.9.3. Execute playbooks<a class="headerlink" href="#execute-playbooks" title="Permalink to this headline">¶</a></h4>
+<h4>Execute playbooks<a class="headerlink" href="#execute-playbooks" title="Permalink to this headline">¶</a></h4>
 <p>After configuration of parameters, you can execute Ansible playbooks.</p>
 <div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/conf/spark_comm/all.yml -k -s
 </pre></div>
 </div>
 </div>
 <div class="section" id="stat-history-server">
-<h4>1.7.9.4. Stat history server<a class="headerlink" href="#stat-history-server" title="Permalink to this headline">¶</a></h4>
+<h4>Stat history server<a class="headerlink" href="#stat-history-server" title="Permalink to this headline">¶</a></h4>
 <p>Start Spark&#8217;s history server by the following command.</p>
 <div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/operation/spark_comm/start_spark_historyserver.yml -k -s
 </pre></div>
@@ -1611,9 +1709,9 @@ spark_comm_package_url_base is &#8220;<a class="reference external" href="http:/
 </div>
 </div>
 <div class="section" id="configure-zeppelin">
-<h3>1.7.10. Configure Zeppelin<a class="headerlink" href="#configure-zeppelin" title="Permalink to this headline">¶</a></h3>
+<h3>Configure Zeppelin<a class="headerlink" href="#configure-zeppelin" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="obtain-sources-and-build">
-<h4>1.7.10.1. Obtain sources and build<a class="headerlink" href="#obtain-sources-and-build" title="Permalink to this headline">¶</a></h4>
+<h4>Obtain sources and build<a class="headerlink" href="#obtain-sources-and-build" title="Permalink to this headline">¶</a></h4>
 <p>First, according to <a class="reference external" href="https://github.com/apache/incubator-zeppelin/blob/master/README.md">Official README</a> , you need to compile source codes and make a package.</p>
 <p>Please take care about the compile option.
 You should specify Spark and Hadoop versions you use now.</p>
@@ -1636,7 +1734,7 @@ The package is downloaded from web service by HTTP,
 so that you need to put the package on a HTTP web server.</p>
 </div>
 <div class="section" id="executing-playbook">
-<h4>1.7.10.2. Executing playbook<a class="headerlink" href="#executing-playbook" title="Permalink to this headline">¶</a></h4>
+<h4>Executing playbook<a class="headerlink" href="#executing-playbook" title="Permalink to this headline">¶</a></h4>
 <p>To configure Zeppelin, please execute the following playbook.</p>
 <div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/conf/zeppelin/zeppelin.yml -k -s
 </pre></div>
@@ -1648,14 +1746,14 @@ so that you need to put the package on a HTTP web server.</p>
 </div>
 </div>
 <div class="section" id="configure-kafka-cluster">
-<h3>1.7.11. Configure Kafka cluster<a class="headerlink" href="#configure-kafka-cluster" title="Permalink to this headline">¶</a></h3>
+<h3>Configure Kafka cluster<a class="headerlink" href="#configure-kafka-cluster" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="information">
-<h4>1.7.11.1. Information<a class="headerlink" href="#information" title="Permalink to this headline">¶</a></h4>
+<h4>Information<a class="headerlink" href="#information" title="Permalink to this headline">¶</a></h4>
 <p>We assume that Zookeeper ensemble was congured on master01, master02 and master03.
 If you have any other Zookeeper ensemble, you should modify kafka role&#8217;s parameters.</p>
 </div>
-<div class="section" id="id12">
-<h4>1.7.11.2. Executing playbook<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id13">
+<h4>Executing playbook<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h4>
 <p>To configure Kafka cluster, please execute the following playbook.</p>
 <div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/conf/kafka/kafka_broker.yml -k -s
 </pre></div>
@@ -1666,8 +1764,32 @@ If you have any other Zookeeper ensemble, you should modify kafka role&#8217;s p
 </div>
 </div>
 </div>
+<div class="section" id="configure-confluent-services">
+<h3>Configure Confluent services<a class="headerlink" href="#configure-confluent-services" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id14">
+<h4>Information<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h4>
+<p>We assume that Zookeeper ensemble was congured on master01, master02 and master03.
+If you have any other Zookeeper ensemble, you should modify kafka role&#8217;s parameters.</p>
+</div>
+<div class="section" id="id15">
+<h4>Executing playbook<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h4>
+<p>To configure Kafka cluster, please execute the following playbook.</p>
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/conf/confluent/kafka.yml -k -s
+</pre></div>
+</div>
+<p>After finishing configuration, you need to start Kafka cluster.</p>
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/operation/start_kafka_server.yml -k -s
+</pre></div>
+</div>
+<p>You can use Confluent&#8217;s schema registry serivce and Kafka REST Proxy service.</p>
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/operation/start_schema_registry.yml -k -s
+<span class="nv">$ </span>ansible-playbook playbooks/operation/start_kafka_rest.yml -k -s
+</pre></div>
+</div>
+</div>
+</div>
 <div class="section" id="configure-ambari">
-<h3>1.7.12. Configure Ambari<a class="headerlink" href="#configure-ambari" title="Permalink to this headline">¶</a></h3>
+<h3>Configure Ambari<a class="headerlink" href="#configure-ambari" title="Permalink to this headline">¶</a></h3>
 <p>To install the basic packages, execute the following command.</p>
 <div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/conf/ambari/ambari_server.yml -k -s
 </pre></div>
@@ -1694,11 +1816,7 @@ If you have any other Zookeeper ensemble, you should modify kafka role&#8217;s p
       <div class="bottomnav" role="navigation" aria-label="bottom navigation">
       
         <p>
-        «&#160;&#160;<a href="index.html">What is this document?</a>
-        &#160;&#160;::&#160;&#160;
         <a class="uplink" href="index.html">Contents</a>
-        &#160;&#160;::&#160;&#160;
-        <a href="japanese.html">2. Japanese Document</a>&#160;&#160;»
         </p>
 
       </div>

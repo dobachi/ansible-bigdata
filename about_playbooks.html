@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>About playbooks &mdash; Ansible playbooks to construct Hadoop environment</title>
+    <title>5. About playbooks &mdash; Ansible playbooks to construct Hadoop environment</title>
     
     <link rel="stylesheet" href="_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -23,17 +23,23 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Ansible playbooks to construct Hadoop environment" href="index.html" /> 
+    <link rel="top" title="Ansible playbooks to construct Hadoop environment" href="index.html" />
+    <link rel="next" title="6. About roles" href="about_roles.html" />
+    <link rel="prev" title="3. About hosts(inventory file)" href="about_hosts.html" /> 
   </head>
   <body role="document">
       <div class="header" role="banner"><h1 class="heading"><a href="index.html">
           <span>Ansible playbooks to construct Hadoop environment</span></a></h1>
-        <h2 class="heading"><span>About playbooks</span></h2>
+        <h2 class="heading"><span>5. About playbooks</span></h2>
       </div>
       <div class="topnav" role="navigation" aria-label="top navigation">
       
         <p>
+        «&#160;&#160;<a href="about_hosts.html">3. About hosts(inventory file)</a>
+        &#160;&#160;::&#160;&#160;
         <a class="uplink" href="index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="about_roles.html">6. About roles</a>&#160;&#160;»
         </p>
 
       </div>
@@ -41,7 +47,7 @@
         
         
   <div class="section" id="about-playbooks">
-<h1>About playbooks<a class="headerlink" href="#about-playbooks" title="Permalink to this headline">¶</a></h1>
+<h1>5. About playbooks<a class="headerlink" href="#about-playbooks" title="Permalink to this headline">¶</a></h1>
 <p>This project has two types of playbooks.</p>
 <ul class="simple">
 <li>Playbooks for configuration<ul>
@@ -54,13 +60,13 @@
 </li>
 </ul>
 <div class="section" id="playbooks-for-configuration">
-<h2>Playbooks for configuration<a class="headerlink" href="#playbooks-for-configuration" title="Permalink to this headline">¶</a></h2>
+<h2>5.1. Playbooks for configuration<a class="headerlink" href="#playbooks-for-configuration" title="Permalink to this headline">¶</a></h2>
 <p>We can use playbooks in playbooks/conf directory to configure servers.</p>
 <p><strong>abstract</strong></p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="38%" />
-<col width="62%" />
+<col width="31%" />
+<col width="69%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Directory</th>
@@ -98,13 +104,16 @@
 <tr class="row-odd"><td>playbooks/conf/kafka</td>
 <td>Configuration of Kafka</td>
 </tr>
-<tr class="row-even"><td>playbooks/conf/ambari</td>
+<tr class="row-even"><td>playbooks/conf/confluent</td>
+<td>Configuration of Confluent packages including Kafka</td>
+</tr>
+<tr class="row-odd"><td>playbooks/conf/ambari</td>
 <td>Configuration of Ambari</td>
 </tr>
 </tbody>
 </table>
 <div class="section" id="common">
-<h3>common<a class="headerlink" href="#common" title="Permalink to this headline">¶</a></h3>
+<h3>5.1.1. common<a class="headerlink" href="#common" title="Permalink to this headline">¶</a></h3>
 <p>This is a set of common and basic configurations.</p>
 <ul class="simple">
 <li>playbooks/conf/common/common_all.yml<ul>
@@ -118,7 +127,7 @@
 </ul>
 </div>
 <div class="section" id="cdh5">
-<h3>cdh5<a class="headerlink" href="#cdh5" title="Permalink to this headline">¶</a></h3>
+<h3>5.1.2. cdh5<a class="headerlink" href="#cdh5" title="Permalink to this headline">¶</a></h3>
 <p>This is a set of configurations to construct CDH5 environment.</p>
 <ul class="simple">
 <li>cdh5_all.yml<ul>
@@ -161,7 +170,7 @@ You can build whole CDH5 environment.</li>
 </ul>
 </div>
 <div class="section" id="cdh5-pseudo">
-<h3>cdh5_pseudo<a class="headerlink" href="#cdh5-pseudo" title="Permalink to this headline">¶</a></h3>
+<h3>5.1.3. cdh5_pseudo<a class="headerlink" href="#cdh5-pseudo" title="Permalink to this headline">¶</a></h3>
 <p>This is a set of configurations to construct CDH5 pseudo environment.</p>
 <ul class="simple">
 <li>cdh5_pseudo.yml<ul>
@@ -175,7 +184,7 @@ You can build whole CDH5 environment.</li>
 </ul>
 </div>
 <div class="section" id="ansible">
-<h3>ansible<a class="headerlink" href="#ansible" title="Permalink to this headline">¶</a></h3>
+<h3>5.1.4. ansible<a class="headerlink" href="#ansible" title="Permalink to this headline">¶</a></h3>
 <p>This is a set of configuration about Ansible environment.
 If you have manually configured Ansible environment, such as ansible.cfg, inventory file and so on,
 you don&#8217;t need these playbooks.</p>
@@ -191,7 +200,7 @@ you don&#8217;t need these playbooks.</p>
 </ul>
 </div>
 <div class="section" id="ganglia">
-<h3>ganglia<a class="headerlink" href="#ganglia" title="Permalink to this headline">¶</a></h3>
+<h3>5.1.5. ganglia<a class="headerlink" href="#ganglia" title="Permalink to this headline">¶</a></h3>
 <p>This is  a set of configuration about Ganglia.
 We have two playbooks for Ganglia master and slave.</p>
 <ul class="simple">
@@ -210,7 +219,7 @@ We have two playbooks for Ganglia master and slave.</p>
 </ul>
 </div>
 <div class="section" id="influxdb">
-<h3>influxdb<a class="headerlink" href="#influxdb" title="Permalink to this headline">¶</a></h3>
+<h3>5.1.6. influxdb<a class="headerlink" href="#influxdb" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>all.yml<ul>
 <li>Configure influxdb and Grafana.</li>
@@ -219,7 +228,7 @@ We have two playbooks for Ganglia master and slave.</p>
 </ul>
 </div>
 <div class="section" id="spark-comm">
-<h3>spark_comm<a class="headerlink" href="#spark-comm" title="Permalink to this headline">¶</a></h3>
+<h3>5.1.7. spark_comm<a class="headerlink" href="#spark-comm" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>all.yml<ul>
 <li>Configure all nodes</li>
@@ -244,7 +253,7 @@ We have two playbooks for Ganglia master and slave.</p>
 </ul>
 </div>
 <div class="section" id="zeppelin">
-<h3>zeppelin<a class="headerlink" href="#zeppelin" title="Permalink to this headline">¶</a></h3>
+<h3>5.1.8. zeppelin<a class="headerlink" href="#zeppelin" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>zeppelin.yml<ul>
 <li>Configure zeppelin environment</li>
@@ -253,7 +262,7 @@ We have two playbooks for Ganglia master and slave.</p>
 </ul>
 </div>
 <div class="section" id="fluentd">
-<h3>fluentd<a class="headerlink" href="#fluentd" title="Permalink to this headline">¶</a></h3>
+<h3>5.1.9. fluentd<a class="headerlink" href="#fluentd" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>fluentd.yml<ul>
 <li>Configure fluentd</li>
@@ -266,7 +275,7 @@ We have two playbooks for Ganglia master and slave.</p>
 </ul>
 </div>
 <div class="section" id="kafka">
-<h3>kafka<a class="headerlink" href="#kafka" title="Permalink to this headline">¶</a></h3>
+<h3>5.1.10. kafka<a class="headerlink" href="#kafka" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>kafka_brocker.yml<ul>
 <li>Configure Kafka broker nodes.</li>
@@ -274,8 +283,17 @@ We have two playbooks for Ganglia master and slave.</p>
 </li>
 </ul>
 </div>
+<div class="section" id="confluent">
+<h3>5.1.11. confluent<a class="headerlink" href="#confluent" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>kafka.yml<ul>
+<li>Configure Confluent packages including Kafka</li>
+</ul>
+</li>
+</ul>
+</div>
 <div class="section" id="ambari">
-<h3>ambari<a class="headerlink" href="#ambari" title="Permalink to this headline">¶</a></h3>
+<h3>5.1.12. ambari<a class="headerlink" href="#ambari" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>ambari_agent.yml<ul>
 <li>Configure Ambari agent manually (Not through Ambari server)</li>
@@ -289,7 +307,7 @@ We have two playbooks for Ganglia master and slave.</p>
 </div>
 </div>
 <div class="section" id="playbooks-for-operation">
-<h2>Playbooks for operation<a class="headerlink" href="#playbooks-for-operation" title="Permalink to this headline">¶</a></h2>
+<h2>5.2. Playbooks for operation<a class="headerlink" href="#playbooks-for-operation" title="Permalink to this headline">¶</a></h2>
 <p>We can use playbooks in playbooks/operation directory to operate services.</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -335,24 +353,27 @@ e.g. Formating HDFS, Start/Stop services, ...</td>
 <tr class="row-even"><td>playbooks/operation/kafka</td>
 <td>Start and stop Kafka cluster</td>
 </tr>
-<tr class="row-odd"><td>playbooks/operation/ambari</td>
+<tr class="row-odd"><td>playbooks/operation/confluent</td>
+<td>Start and stop Confluent services including Kafka</td>
+</tr>
+<tr class="row-even"><td>playbooks/operation/ambari</td>
 <td>Setup Ambari server.
 Start and stop each services.</td>
 </tr>
 </tbody>
 </table>
 <div class="section" id="id1">
-<h3>cdh5<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<h3>5.2.1. cdh5<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <p>This is a set of operation of Hadoop services.
 Please check README in the <em>cdh5</em> directory for more information.</p>
 </div>
 <div class="section" id="ec2">
-<h3>ec2<a class="headerlink" href="#ec2" title="Permalink to this headline">¶</a></h3>
+<h3>5.2.2. ec2<a class="headerlink" href="#ec2" title="Permalink to this headline">¶</a></h3>
 <p>This is a set of operation to boot EC2 instances.
 Please check README in the <em>ec2</em> directory for more information.</p>
 </div>
 <div class="section" id="id2">
-<h3>influxdb<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<h3>5.2.3. influxdb<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>create_db.yml<ul>
 <li>Create all databases in InfluxDB.</li>
@@ -370,7 +391,7 @@ This is mainly used by Spark.</li>
 </ul>
 </div>
 <div class="section" id="id3">
-<h3>spark_comm<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<h3>5.2.4. spark_comm<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>make_spark_packages.yml<ul>
 <li>Compile Spark sources and build packages</li>
@@ -387,7 +408,7 @@ This is mainly used by Spark.</li>
 </ul>
 </div>
 <div class="section" id="id4">
-<h3>zeppelin<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<h3>5.2.5. zeppelin<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>build.yml<ul>
 <li>Compile and package Zeppelin</li>
@@ -410,7 +431,7 @@ You can build Zeppelin according to Zeppelin official web site.</li>
 </ul>
 </div>
 <div class="section" id="id5">
-<h3>fluentd<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<h3>5.2.6. fluentd<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>restart_td_agent.yml<ul>
 <li>Stop and Start td-agent</li>
@@ -427,7 +448,7 @@ You can build Zeppelin according to Zeppelin official web site.</li>
 </ul>
 </div>
 <div class="section" id="id6">
-<h3>kafka<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<h3>5.2.7. kafka<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>restart_kafka.yml<ul>
 <li>Stop and Start kafka</li>
@@ -452,7 +473,62 @@ You can build Zeppelin according to Zeppelin official web site.</li>
 </ul>
 </div>
 <div class="section" id="id7">
-<h3>ambari<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<h3>5.2.8. confluent<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>restart_kafka_rest.yml<ul>
+<li>Stop and Start REST Proxy service</li>
+</ul>
+</li>
+<li>restart_kafka_server.yml<ul>
+<li>Stop and Start Kafka broker service</li>
+</ul>
+</li>
+<li>restart_zookeeper_server.yml<ul>
+<li>Stop and Start ZooKeeper serivce</li>
+<li>If you configured ZooKeeper service on Kafka broker nodes,
+you can use this playbook to control such ZooKeeper serivces.</li>
+</ul>
+</li>
+<li>start_kafka_rest.yml<ul>
+<li>Start Kafka REST Proxy serivce</li>
+</ul>
+</li>
+<li>start_kafka_server.yml<ul>
+<li>Start Kafka broker service</li>
+</ul>
+</li>
+<li>start_schema_registry.yml<ul>
+<li>Start Confluent schema registry service</li>
+</ul>
+</li>
+<li>start_zookeeper_server.yml<ul>
+<li>Start ZooKeeper serivce</li>
+<li>If you configured ZooKeeper service on Kafka broker nodes,
+you can use this playbook to control such ZooKeeper serivces.</li>
+</ul>
+</li>
+<li>stop_kafka_rest.yml<ul>
+<li>Stop Kafka REST Proxy serivce</li>
+</ul>
+</li>
+<li>stop_kafka_server.yml<ul>
+<li>Stop Kafka broker serivce</li>
+</ul>
+</li>
+<li>stop_schema_registry.yml<ul>
+<li>Stop Confluent schema registry service</li>
+</ul>
+</li>
+<li>stop_zookeeper_server.yml<ul>
+<li>Stop ZooKeeper serivce</li>
+<li>If you configured ZooKeeper service on Kafka broker nodes,
+you can use this playbook to control such ZooKeeper serivces.</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id8">
+<h3>5.2.9. ambari<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>To setup Ambari server<ul>
 <li>setup.yml</li>
@@ -486,7 +562,11 @@ You can build Zeppelin according to Zeppelin official web site.</li>
       <div class="bottomnav" role="navigation" aria-label="bottom navigation">
       
         <p>
+        «&#160;&#160;<a href="about_hosts.html">3. About hosts(inventory file)</a>
+        &#160;&#160;::&#160;&#160;
         <a class="uplink" href="index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="about_roles.html">6. About roles</a>&#160;&#160;»
         </p>
 
       </div>
