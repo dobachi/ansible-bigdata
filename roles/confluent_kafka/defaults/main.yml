@@ -1,6 +1,8 @@
 ---
 # defaults file for roles/confluent_kafka
 
+confluent_version: '2.0.1'
+confluent_scala_version: '2.11.7'
 confluent_kafka_num_partitions: 3
 confluent_kafka_log_dirs: '/var/lib/confluent/kafka-logs'
 confluent_kafka_zookeeper_connect: '{{ groups["hadoop_zookeeperserver"] | join(":2181,") }}:2181'
