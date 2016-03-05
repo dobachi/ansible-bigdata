@@ -36,3 +36,11 @@
 
 - name: mkdir_/var/lib/confluent/kafka-logs
   file: path={{ confluent_kafka_log_dirs }} recurse=yes state=directory owner=kafka group=kafka
+
+- name: copy_supervisor_configs
+  template: src={{ item }}.j2 dest=/etc/supervisord.d/{{ item }}
+  notify: restart_supervisord
+  with_items:
+    - kafka-server.ini
+    - schema-registry.ini
+    - kafka-rest.ini
