@@ -31,6 +31,7 @@ Each function is available individually.
 * Configuring Zeppelin for Spark notebook
 * Configuring fluentd and td-agent
 * Configuring Kafka cluster
+* Configuring Confluent cluster
 * Configuring Ambari
 
 .. _sec-servers:

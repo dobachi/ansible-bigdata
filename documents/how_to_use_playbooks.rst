@@ -473,6 +473,37 @@ After finishing configuration, you need to start Kafka cluster.
 
  $ ansible-playbook playbooks/operation/kafka/start_kafka.yml -k -s
 
+Configure Confluent services
+-------------------------------
+
+Information
+~~~~~~~~~~~~~~~
+We assume that Zookeeper ensemble was congured on master01, master02 and master03. 
+If you have any other Zookeeper ensemble, you should modify kafka role's parameters.
+
+
+Executing playbook
+~~~~~~~~~~~~~~~~~~~~~~
+To configure Kafka cluster, please execute the following playbook.
+
+.. code-block:: shell
+
+ $ ansible-playbook playbooks/conf/confluent/kafka.yml -k -s
+
+After finishing configuration, you need to start Kafka cluster.
+
+.. code-block:: shell
+
+ $ ansible-playbook playbooks/operation/start_kafka_server.yml -k -s
+
+You can use Confluent's schema registry serivce and Kafka REST Proxy service.
+
+.. code-block:: shell
+
+ $ ansible-playbook playbooks/operation/start_schema_registry.yml -k -s
+ $ ansible-playbook playbooks/operation/start_kafka_rest.yml -k -s
+
+
 Configure Ambari
 -------------------------
 
