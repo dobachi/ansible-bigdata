@@ -2,6 +2,7 @@
 # defaults file for roles/confluent_kafka
 
 confluent_kafka_num_partitions: 3
+confluent_kafka_log_dirs: '/var/lib/confluent/kafka-logs'
 confluent_kafka_zookeeper_connect: '{{ groups["hadoop_zookeeperserver"] | join(":2181,") }}:2181'
 confluent_kafka_rest_id: 'kafka-rest-test-serve'
 confluent_schema_registry: '{{ groups["confluent_schema_registry"][0] }}:8081'
