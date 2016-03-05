@@ -1,0 +1,2 @@
+- include: stop_zookeeper_server.yml
+- include: start_zookeeper_server.yml

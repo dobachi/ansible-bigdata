@@ -1,0 +1,2 @@
+- include: stop_schema_registry.yml                                                                           1,62          全て
+- include: start_schema_registry.yml                                                                           1,62          全て
