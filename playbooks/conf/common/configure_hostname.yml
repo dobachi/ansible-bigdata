@@ -1,0 +1,4 @@
+- hosts: '{{ server | default("localhost") }}'
+  tasks:
+    - name: set_hostname_to_inventory_hostname
+      hostname: name={{ inventory_hostname }}
