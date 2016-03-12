@@ -1,2 +1,4 @@
 ---
 # defaults file for roles/supervisor
+
+supervisor_sock_file: '/var/run/supervisor.sock'

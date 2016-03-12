@@ -32,7 +32,7 @@
   file: path=/var/log/confluent/kafka state=directory owner=kafka group=kafka recurse=yes
 
 - name: alternatives_kafka_log
-  alternatives: name=kafka_log path=/var/log/confluent_kafka link=/usr/local/confluent_kafka/default/logs
+  alternatives: name=kafka_log path=/var/log/confluent/kafka link=/usr/local/confluent_kafka/default/logs
 
 - name: mkdir_/var/lib/confluent/kafka-logs
   file: path={{ confluent_kafka_log_dirs }} recurse=yes state=directory owner=kafka group=kafka

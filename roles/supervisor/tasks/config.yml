@@ -1,2 +1,10 @@
 - name: copy_supervisord.conf
-  template: src=supervisord.conf.j2 dest=/etc/supervisord.conf
+  template: src=supervisord.conf.centos6.j2 dest=/etc/supervisord.conf
+  when: ansible_distribution == 'CentOS' and ansible_distribution_major_version == '6'
+
+- name: copy_supervisord.conf
+  template: src=supervisord.conf.centos7.j2 dest=/etc/supervisord.conf
+  when: ansible_distribution == 'CentOS' and ansible_distribution_major_version == '7'
+
+- name: mkdir_/etc/supervisord.d
+  file: path=/etc/supervisord.d state=directory

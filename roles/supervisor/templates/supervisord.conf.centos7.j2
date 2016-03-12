@@ -1,7 +1,7 @@
 ; Sample supervisor config file.
 
 [unix_http_server]
-file=/var/run/supervisor/supervisor.sock   ; (the path to the socket file)
+file={{ supervisor_sock_file }}   ; (the path to the socket file)
 ;chmod=0700                 ; sockef file mode (default 0700)
 ;chown=nobody:nogroup       ; socket file uid:gid owner
 ;username=user              ; (default is no username (open server))
@@ -37,7 +37,7 @@ minprocs=200                ; (min. avail process descriptors;default 200)
 supervisor.rpcinterface_factory = supervisor.rpcinterface:make_main_rpcinterface
 
 [supervisorctl]
-serverurl=unix:///var/run/supervisor/supervisor.sock ; use a unix:// URL  for a unix socket
+serverurl=unix://{{ supervisor_sock_file }} ; use a unix:// URL  for a unix socket
 ;serverurl=http://127.0.0.1:9001 ; use an http:// url to specify an inet socket
 ;username=chris              ; should be same as http_username if set
 ;password=123                ; should be same as http_password if set
