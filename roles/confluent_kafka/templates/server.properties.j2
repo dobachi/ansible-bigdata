@@ -21,7 +21,7 @@ broker.id={{ confluent_kafka_broker_id }}
 
 ############################# Socket Server Settings #############################
 
-listeners=PLAINTEXT://:9092
+listeners={{ confluent_kafka_listeners }}
 
 # The port the socket server listens on
 #port=9092
@@ -142,3 +142,5 @@ confluent.support.metrics.enable=true
 # that additional support metrics will be collected and reported.
 #
 confluent.support.customer.id=anonymous
+
+delete.topic.enable {{ confluent_kafka_delete_topic_enable }}
