@@ -4,6 +4,8 @@
     - name: stop_kafka_rest
       shell: timeout 10 supervisorctl stop kafka-rest
       when: ansible_distribution == 'CentOS' and ansible_distribution_major_version == '6'
+      register: result
+      failed_when: result.rc != 0 and result.rc != 124
 
     - name: stop_kafka_rest
       shell: supervisorctl stop kafka-rest
