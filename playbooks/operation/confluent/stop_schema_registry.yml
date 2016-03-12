@@ -2,4 +2,9 @@
   sudo: yes
   tasks:
     - name: stop_schema_registry
+      shell: timeout 10 supervisorctl stop schema-registry
+      when: ansible_distribution == 'CentOS' and ansible_distribution_major_version == '6'
+
+    - name: stop_schema_registry
       shell: supervisorctl stop schema-registry
+      when: ansible_distribution == 'CentOS' and ansible_distribution_major_version == '7'
