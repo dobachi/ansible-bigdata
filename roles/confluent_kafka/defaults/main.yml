@@ -11,6 +11,14 @@ confluent_schema_registry: '{{ groups["confluent_schema_registry"][0] }}:8081'
 
 confluent_kafka_listeners: 'PLAINTEXT://:9092'
 confluent_kafka_delete_topic_enable: 'true'
+confluent_kafka_num_network_threads: '3'
+confluent_kafka_num_io_threads: '8'
+confluent_kafka_socket_send_buffer: '102400'
+confluent_kafka_socket_receive_buffer: '102400'
+confluent_kafka_socket_req_max: '104857600'
+confluent_kafka_background_threads: '10'
+confluent_kafka_log_flush_schd_interval: '9223372036854775807'
+confluent_kafka_num_replica_fetchers: '1'
 
 # The following parameters should be configured in group variables or inventory files
 # confluent_kafka_broker_id:
