@@ -19,6 +19,7 @@ confluent_kafka_socket_req_max: '104857600'
 confluent_kafka_background_threads: '10'
 confluent_kafka_log_flush_schd_interval: '9223372036854775807'
 confluent_kafka_num_replica_fetchers: '1'
+confluent_kafka_min_insync_replicas: '1'
 
 # The following parameters should be configured in group variables or inventory files
 # confluent_kafka_broker_id:

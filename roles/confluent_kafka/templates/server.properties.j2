@@ -63,6 +63,10 @@ log.flush.scheduler.interval.ms={{ confluent_kafka_log_flush_schd_interval }}
 # Increasing this value can increase the degree of I/O parallelism in the follower broker.
 num.replica.fetchers={{ confluent_kafka_num_replica_fetchers }}
 
+# When a producer sets request.required.acks to -1, min.insync.replicas specifies
+# the minimum number of replicas that must acknowledge a write for the write to be considered successful.
+min.insync.replicas={{ confluent_kafka_min_insync_replicas }}
+
 ############################# Log Basics #############################
 
 # A comma seperated list of directories under which to store log files
