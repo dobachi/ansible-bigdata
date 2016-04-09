@@ -1,9 +1,9 @@
 [program:kafka-server]
-command=/usr/local/confluent_kafka/default/bin/kafka-server-start /etc/confluent/kafka/server.properties
+command=kafka-server-start /etc/kafka/server.properties
 user=kafka
 autorestart=false
 autostart=false
-stdout_logfile=/var/log/confluent/kafka/kafka-server.log
+stdout_logfile=/var/log/kafka/kafka-server.log
 stdout_logfile_maxbytes=100MB
 stdout_logfile_backups=5
 stdout_capture_maxbytes=100MB
