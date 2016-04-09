@@ -1,5 +1,12 @@
-- hosts: "{{ server | default('confluent_kafka_cluster') }}"
+- hosts: "{{ server | default('confluent_kafka_broker') }}"
   sudo: yes
   tasks:
     - name: stop_kafka_server
+      shell: timeout 10 supervisorctl stop kafka-server
+      when: ansible_distribution == 'CentOS' and ansible_distribution_major_version == '6'
+      register: result
+      failed_when: result.rc != 0 and result.rc != 124
+
+    - name: stop_kafka_server
       shell: supervisorctl stop kafka-server
+      when: ansible_distribution == 'CentOS' and ansible_distribution_major_version == '7'

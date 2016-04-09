@@ -1,0 +1,8 @@
+- name: copy_supervisor_configs
+  template: src={{ item }}.j2 dest=/etc/supervisord.d/{{ item }}
+  notify: restart_supervisord
+  with_items:
+    - kafka-server.ini
+    - schema-registry.ini
+    - kafka-rest.ini
+

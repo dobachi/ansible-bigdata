@@ -21,7 +21,7 @@ broker.id={{ confluent_kafka_broker_id }}
 
 ############################# Socket Server Settings #############################
 
-listeners=PLAINTEXT://:9092
+listeners={{ confluent_kafka_listeners }}
 
 # The port the socket server listens on
 #port=9092
@@ -39,20 +39,33 @@ listeners=PLAINTEXT://:9092
 #advertised.port=<port accessible by clients>
 
 # The number of threads handling network requests
-num.network.threads=3
+num.network.threads={{ confluent_kafka_num_network_threads }}
  
 # The number of threads doing disk I/O
-num.io.threads=8
+num.io.threads={{ confluent_kafka_num_io_threads }}
 
 # The send buffer (SO_SNDBUF) used by the socket server
-socket.send.buffer.bytes=102400
+socket.send.buffer.bytes={{ confluent_kafka_socket_send_buffer }}
 
 # The receive buffer (SO_RCVBUF) used by the socket server
-socket.receive.buffer.bytes=102400
+socket.receive.buffer.bytes={{ confluent_kafka_socket_receive_buffer }}
 
 # The maximum size of a request that the socket server will accept (protection against OOM)
-socket.request.max.bytes=104857600
+socket.request.max.bytes={{ confluent_kafka_socket_req_max }}
 
+# The number of threads to use for various background processing tasks
+background.threads={{ confluent_kafka_background_threads }}
+
+# The frequency in ms that the log flusher checks whether any log needs to be flushed to disk
+log.flush.scheduler.interval.ms={{ confluent_kafka_log_flush_schd_interval }}
+
+# Number of fetcher threads used to replicate messages from a source broker.
+# Increasing this value can increase the degree of I/O parallelism in the follower broker.
+num.replica.fetchers={{ confluent_kafka_num_replica_fetchers }}
+
+# When a producer sets request.required.acks to -1, min.insync.replicas specifies
+# the minimum number of replicas that must acknowledge a write for the write to be considered successful.
+min.insync.replicas={{ confluent_kafka_min_insync_replicas }}
 
 ############################# Log Basics #############################
 
@@ -142,3 +155,5 @@ confluent.support.metrics.enable=true
 # that additional support metrics will be collected and reported.
 #
 confluent.support.customer.id=anonymous
+
+delete.topic.enable {{ confluent_kafka_delete_topic_enable }}
