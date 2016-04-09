@@ -7,6 +7,7 @@ hadoop_pseudo
 kafka_cluster
 confluent_kafka_cluster
 manage
+data_loader
 
 ; This is a dummy
 [local]
@@ -147,3 +148,6 @@ hd-kafka01
 
 [manage]
 manage
+
+[data_loader]
+hd-loader01
