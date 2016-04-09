@@ -1,0 +1,2 @@
+- name: insert_start_supervisor_to_rc.local
+  lineinfile: dest=/etc/rc.local line="/usr/local/python27/bin/supervisord"

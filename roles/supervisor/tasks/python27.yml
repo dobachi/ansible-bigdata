@@ -1,0 +1,32 @@
+- name: install_necessary_libraries_to_build_python27
+  yum: name={{ item }} state=installed
+  with_items:
+    - zlib-devel
+    - bzip2-devel
+    - openssl-devel
+    - ncurses-devel
+    - sqlite-devel
+    - readline-devel
+    - tk-devel
+    - gcc
+
+- name: mkdir_/usr/local/src/python27
+  file: path=/usr/local/src/python27 state=directory
+
+- name: download_python27_src
+  get_url: url=https://www.python.org/ftp/python/2.7.11/Python-2.7.11.tgz dest=/usr/local/src/python27
+
+- name: unarchive_python27_src
+  shell: tar xvzf Python-2.7.11.tgz creates=/usr/local/src/python27/Python-2.7.11/setup.py chdir=/usr/local/src/python27 
+
+- name: configure_python27
+  shell: ./configure --prefix=/usr/local/python27 chdir=/usr/local/src/python27/Python-2.7.11 creates=/usr/local/src/python27/Python-2.7.11/Makefile
+
+- name: make_install_python27
+  shell: make && make install chdir=/usr/local/src/python27/Python-2.7.11/ creates=/usr/local/python27/bin/python
+
+- name: download_pip_installer
+  get_url: url=https://bootstrap.pypa.io/get-pip.py dest=/usr/local/src/get-pip.py
+
+- name: install_pip
+  shell: /usr/local/python27/bin/python /usr/local/src/get-pip.py creates=/usr/local/python27/bin/pip

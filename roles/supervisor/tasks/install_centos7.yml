@@ -1,0 +1,2 @@
+- name: install_supervisor
+  yum: name=supervisor state=installed

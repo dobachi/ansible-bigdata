@@ -1,0 +1,9 @@
+- name: install_supervisor_via_pip
+  shell: /usr/local/python27/bin/pip install supervisor
+
+- name: mkdir_necessary_directories
+  file: path={{ item }} state=directory
+  with_items:
+    - /etc/supervisord.d
+    - /var/run/supervisor
+    - /var/log/supervisor
