@@ -455,15 +455,18 @@ If you have any other Zookeeper ensemble, you should modify kafka role&#8217;s p
 </div>
 <div class="section" id="id5">
 <h3>7.12.2. Executing playbook<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
-<p>To configure Kafka cluster, please execute the following playbook.</p>
-<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/conf/confluent/kafka.yml -k -s
+<p>To configure Kafka broker cluster, please execute the following playbook.</p>
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/conf/confluent/kafka_broker.yml -k -s
 </pre></div>
 </div>
 <p>After finishing configuration, you need to start Kafka cluster.</p>
 <div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/operation/start_kafka_server.yml -k -s
 </pre></div>
 </div>
-<p>You can use Confluent&#8217;s schema registry serivce and Kafka REST Proxy service.</p>
+<p>As the same as the above procedure,
+you can install Schema Registry and Kafka REST Proxy
+by using kafka_schema.yml and kafka_rest.yml in playbooks/conf/confluent directory.
+And, use the following playbooks to these services,</p>
 <div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/operation/start_schema_registry.yml -k -s
 <span class="nv">$ </span>ansible-playbook playbooks/operation/start_kafka_rest.yml -k -s
 </pre></div>

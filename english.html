@@ -764,8 +764,16 @@ We have two playbooks for Ganglia master and slave.</p>
 <div class="section" id="confluent">
 <h4>confluent<a class="headerlink" href="#confluent" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
-<li>kafka.yml<ul>
-<li>Configure Confluent packages including Kafka</li>
+<li>kafka_broker.yml<ul>
+<li>Configure Confluent Kafka brokers</li>
+</ul>
+</li>
+<li>kafka_schema.yml<ul>
+<li>Configure Confluent Schema Registry</li>
+</ul>
+</li>
+<li>kafka_rest.yml<ul>
+<li>Configure Confluent REST Proxy</li>
 </ul>
 </li>
 </ul>
@@ -1773,15 +1781,18 @@ If you have any other Zookeeper ensemble, you should modify kafka role&#8217;s p
 </div>
 <div class="section" id="id15">
 <h4>Executing playbook<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h4>
-<p>To configure Kafka cluster, please execute the following playbook.</p>
-<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/conf/confluent/kafka.yml -k -s
+<p>To configure Kafka broker cluster, please execute the following playbook.</p>
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/conf/confluent/kafka_broker.yml -k -s
 </pre></div>
 </div>
 <p>After finishing configuration, you need to start Kafka cluster.</p>
 <div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/operation/start_kafka_server.yml -k -s
 </pre></div>
 </div>
-<p>You can use Confluent&#8217;s schema registry serivce and Kafka REST Proxy service.</p>
+<p>As the same as the above procedure,
+you can install Schema Registry and Kafka REST Proxy
+by using kafka_schema.yml and kafka_rest.yml in playbooks/conf/confluent directory.
+And, use the following playbooks to these services,</p>
 <div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>ansible-playbook playbooks/operation/start_schema_registry.yml -k -s
 <span class="nv">$ </span>ansible-playbook playbooks/operation/start_kafka_rest.yml -k -s
 </pre></div>
