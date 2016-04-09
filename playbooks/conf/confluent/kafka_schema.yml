@@ -1,4 +1,4 @@
-- hosts: "{{ server | default('confluent_kafka_cluster') }}"
+- hosts: "{{ server | default('confluent_kafka_broker') }}"
   roles:
     - common
     - epel
