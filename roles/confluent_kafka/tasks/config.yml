@@ -10,9 +10,3 @@
 - name: copy_supervisor_configs
   template: src=kafka-server.ini.j2 dest=/etc/supervisord.d/kafka-server.ini
   notify: restart_supervisord
-
-#- name: copy_schema-registry.properties
-#  template: src=schema-registry.properties.j2 dest=/etc/confluent/schema-registry/schema-registry.properties
-#
-#- name: copy_kafka-rest.properties
-#  template: src=kafka-rest.properties.j2 dest=/etc/confluent/kafka-rest/kafka-rest.properties

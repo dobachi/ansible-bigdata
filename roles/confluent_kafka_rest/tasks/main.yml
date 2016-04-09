@@ -1,0 +1,6 @@
+---
+# tasks file for roles/confluent_kafka_rest
+- include: repo.yml tags=repo,confluent_kafka_rest
+- include: user.yml tags=user,confluent_kafka_rest
+- include: install.yml tags=install,confluent_kafka_rest
+- include: config.yml tags=config,confluent_kafka_rest

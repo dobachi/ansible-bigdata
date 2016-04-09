@@ -1,0 +1,4 @@
+---
+# handlers file for roles/confluent_kafka
+- name: restart_supervisord
+  service: name=supervisord state=restarted
