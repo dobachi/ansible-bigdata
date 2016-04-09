@@ -1,9 +1,21 @@
 - name: install_supervisor_via_pip
   shell: /usr/local/python27/bin/pip install supervisor
 
+- name: copy_init_script
+  template: src=supervisord.j2 dest=/etc/init.d/supervisord
+
+- name: chmod_init_script
+  file: path=/etc/init.d/supervisord mode=755
+
+- name: configure_logrotate
+  template: src=supervisor.j2 dest=/etc/logrotate.d/supervisor
+
 - name: mkdir_necessary_directories
   file: path={{ item }} state=directory
   with_items:
     - /etc/supervisord.d
     - /var/run/supervisor
     - /var/log/supervisor
+
+- name: create_symlink_to_/usr/local/bin/supervisorctl
+  file: path=/usr/local/bin/supervisorctl src=/usr/local/python27/bin/supervisorctl state=link
