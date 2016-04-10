@@ -1,6 +1,15 @@
 - name: install_td-agent
   yum: name=td-agent state=installed
 
+- name: install_dependencies
+  yum: name={{ item }} state=installed
+  with_items:
+    - gcc
+    - gcc-c++
+    - openssl-devel
+    - libcurl
+    - libcurl-devel
+
 - name: install_td-agent_plugins
   shell: /usr/sbin/td-agent-gem install {{ item }}
   with_items: td_agent_plugins
