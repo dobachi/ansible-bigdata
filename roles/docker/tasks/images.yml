@@ -1,0 +1,3 @@
+- name: download_images
+  shell: docker pull {{ item }}
+  with_items: docker_images
