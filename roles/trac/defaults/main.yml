@@ -1,0 +1,9 @@
+---
+# defaults file for roles/trac
+trac_projects:
+  - myprojects
+
+trac_admins:
+  - admin
+
+trac_git_repository_path: '/var/git/trac.git'

@@ -1,0 +1,4 @@
+import os
+import trac.web.main
+os.environ['TRAC_ENV_PARENT_DIR'] = '/var/trac'
+application = trac.web.main.dispatch_request

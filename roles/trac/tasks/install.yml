@@ -1,0 +1,8 @@
+- name: install_trac
+  yum: name=trac state=installed
+
+- name: install_mod_wsgi
+  yum: name=mod_wsgi state=installed
+
+- name: install_docutils
+  yum: name=python-docutils state=installed

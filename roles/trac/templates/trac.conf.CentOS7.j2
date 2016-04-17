@@ -1,0 +1,12 @@
+WSGIScriptAlias /trac /var/trac/trac.wsgi
+<Location /trac>
+  WSGIApplicationGroup %{GLOBAL}
+  Require all granted
+</Location>
+<LocationMatch "/trac/.*/login">
+  AuthType Basic
+  AuthName "Trac"
+  AuthUserFile /var/trac/.htpasswd
+  Require valid-user
+</LocationMatch>
+

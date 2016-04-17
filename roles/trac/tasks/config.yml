@@ -1,0 +1,31 @@
+- name: mkdir_/var/trac
+  file: path=/var/trac owner=apache group=apache state=directory
+
+- name: copy_trac.wsgi
+  template: src=trac.wsgi.j2 dest=/var/trac/trac.wsgi
+
+- name: chown_/var/trac/trac.wsgi
+  file: path=/var/trac/trac.wsgi owner=apache group=apache mode=755
+
+- name: copy_trac.conf
+  template:
+    src: trac.conf.{{ ansible_distribution }}{{ ansible_distribution_major_version }}.j2
+    dest: /etc/httpd/conf.d/trac.conf
+
+- name: create_projects
+  shell: trac-admin /var/trac/{{ item }} initenv {{ item }} sqlite:db/trac.db git {{ trac_git_repository_path }} creates=/var/trac/{{ item }}/README
+  with_items: trac_projects
+
+- name: create_git_repository
+  shell: git init {{ trac_git_repository_path }} --bare --share=true creates=/var/git/trac.git/config
+
+- name: add_admin_users
+  shell: trac-admin /var/trac/{{ item[0] }} permission add {{ item[1] }} TRAC_ADMIN
+  with_nested:
+    - "{{ trac_projects }}"
+    - "{{ trac_admins }}"
+
+- name: copy_trac.ini
+  template: src=trac.ini.j2 dest=/var/trac/{{ item }}/conf/trac.ini
+  with_items:
+    - "{{ trac_projects }}"

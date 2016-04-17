@@ -1,0 +1,4 @@
+---
+# tasks file for roles/trac
+- include: install.yml tags=install,trac
+- include: config.yml tags=config,trac
