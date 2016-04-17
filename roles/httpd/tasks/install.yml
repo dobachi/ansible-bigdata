@@ -1,2 +1,5 @@
 - name: install_httpd
   yum: name=httpd state=installed
+
+- name: install_mod_ssl
+  yum: name=mod_ssl state=installed

@@ -1,2 +1,3 @@
 ---
 # defaults file for roles/httpd
+httpd_cert_file_base_name: localhost

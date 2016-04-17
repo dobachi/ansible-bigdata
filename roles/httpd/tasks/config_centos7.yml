@@ -2,3 +2,8 @@
   template: src=httpd.conf.centos7.j2 dest=/etc/httpd/conf/httpd.conf
   notify:
     - restart_httpd
+
+- name: copy_ssl.conf
+  template: src=ssl.conf.j2 dest=/etc/httpd/conf.d/ssl.conf
+  notify:
+    - restart_httpd
