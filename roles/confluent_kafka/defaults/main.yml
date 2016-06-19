@@ -1,7 +1,7 @@
 ---
 # defaults file for roles/confluent_kafka
 
-confluent_scala_version: '2.11.7'
+confluent_scala_version: '2.11'
 confluent_kafka_num_partitions: 3
 confluent_kafka_log_dirs: '/var/lib/kafka'
 confluent_kafka_zookeeper_connect: '{{ groups["hadoop_zookeeperserver"] | join(":2181,") }}:2181'
@@ -19,6 +19,10 @@ confluent_kafka_background_threads: '10'
 confluent_kafka_log_flush_schd_interval: '9223372036854775807'
 confluent_kafka_num_replica_fetchers: '1'
 confluent_kafka_min_insync_replicas: '1'
+confluent_kafka_log_flush_interval_messages: '10000'
+confluent_kafka_log_flush_interval_ms: '1000'
+confluent_kafka_support_metrics_enable: 'false'
+
 
 # The following parameters should be configured in group variables or inventory files
 # confluent_kafka_broker_id:
