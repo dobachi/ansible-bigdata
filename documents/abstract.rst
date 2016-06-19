@@ -106,19 +106,20 @@ pseudo   NameNode, DataNode, SecondaryNameNode, ResourceManager, NodeManager,
 Software information
 --------------------
 
-======== ========================================================
-Software Version
-======== ========================================================
-OS       CentOS6.6 or CentOS7.0
-Hadoop   CDH5.3
-Spark    Spark1.2 of CDH5
-         or Spark community edition
-Ansible  Ansible 1.8.2 of EPEL
-InfluxDB Latest version of the community
-Graphana 1.9.1 of the community
-Zeppelin Latest version of the community
-Kafka    0.9.0.0
-======== ========================================================
+========= ========================================================
+Software  Version
+========= ========================================================
+OS        CentOS6.6 or CentOS7.0
+Hadoop    CDH5.3
+Spark     Spark1.2 of CDH5
+          or Spark community edition
+Ansible   Ansible 1.8.2 of EPEL
+InfluxDB  Latest version of the community
+Graphana  1.9.1 of the community
+Zeppelin  Latest version of the community
+Kafka     0.10.0.0
+Confluent 3.0.0
+========= ========================================================
 
 Prerequirement
 ----------------
