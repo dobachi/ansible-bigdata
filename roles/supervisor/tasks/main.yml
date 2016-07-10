@@ -1,5 +1,13 @@
 ---
 # tasks file for roles/supervisor
-- include: install.yml tags=install,supervisor
+- include: python27.yml tags=python27,supervisor
+  when: ansible_distribution == 'CentOS' and ansible_distribution_major_version == '6'
+
+- include: install_centos6.yml tags=install,supervisor
+  when: ansible_distribution == 'CentOS' and ansible_distribution_major_version == '6'
+- include: install_centos7.yml tags=install,supervisor
+  when: ansible_distribution == 'CentOS' and ansible_distribution_major_version == '7'
+
 - include: config.yml tags=config,supervisor
+
 - include: service.yml tags=service,supervisor

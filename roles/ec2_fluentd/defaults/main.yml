@@ -1,0 +1,31 @@
+# debug mode to print debug messages
+ec2_fluentd_debug: False
+
+# Tag name to be attached to instances
+ec2_fluentd_instance_tag: fluentd
+
+# Security group ids
+#ec2_fluentd_group_id: sg-xxxxxxxx
+
+# The name of private key
+#ec2_fluentd_accesskey: xxxxxx
+
+# The type of instances
+#ec2_fluentd_itype: xx.xxxxx
+
+# The id of AMI image
+#ec2_fluentd_image: ami-xxxxxxxx
+
+# The id of region
+#ec2_fluentd_region: xx-xxxxxxxxx-x
+
+# The id of subnet of VPC
+#ec2_fluentd_vpc_subnet_id: subnet-xxxxxxxx
+
+# The placement group
+# Notice: The placement group is available for only certain instance types
+#ec2_fluentd_placement_group: xxxxxxx
+
+ec2_fluentd_list:
+  - name: fluentd01
+    ip: 172.31.16.51

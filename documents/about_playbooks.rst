@@ -186,9 +186,17 @@ kafka
 
 confluent
 ~~~~~~~~~~~~
-* kafka.yml
+* kafka_broker.yml
 
-  + Configure Confluent packages including Kafka
+  + Configure Confluent Kafka brokers
+
+* kafka_schema.yml
+
+  + Configure Confluent Schema Registry
+
+* kafka_rest.yml
+
+  + Configure Confluent REST Proxy
 
 ambari
 ~~~~~~~~~~~~

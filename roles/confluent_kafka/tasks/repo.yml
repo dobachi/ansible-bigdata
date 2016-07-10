@@ -1,0 +1,5 @@
+- name: import_key
+  shell: rpm --import http://packages.confluent.io/rpm/3.0/archive.key
+
+- name: copy_confluent.repo
+  template: src=confluent.repo.j2 dest=/etc/yum.repos.d/confluent.repo

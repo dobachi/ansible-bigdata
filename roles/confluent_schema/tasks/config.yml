@@ -1,0 +1,9 @@
+- name: chown_/var/log/kafka
+  file: path=/var/log/kafka owner=kafka group=kafka state=directory
+
+- name: copy_schema-registry.properties
+  template: src=schema-registry.properties.j2 dest=/etc/schema-registry/schema-registry.properties
+
+- name: copy_supervisor_configs
+  template: src=schema-registry.ini.j2 dest=/etc/supervisord.d/schema-registry.ini
+  notify: restart_supervisord

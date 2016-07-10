@@ -1,0 +1,10 @@
+[top:children]
+fluentd
+
+[local]
+localhost
+
+[fluentd]
+{% for i in ec2_fluentd_result.results %}
+{{ i.item.name }}
+{% endfor %}

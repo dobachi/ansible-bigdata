@@ -484,11 +484,11 @@ If you have any other Zookeeper ensemble, you should modify kafka role's paramet
 
 Executing playbook
 ~~~~~~~~~~~~~~~~~~~~~~
-To configure Kafka cluster, please execute the following playbook.
+To configure Kafka broker cluster, please execute the following playbook.
 
 .. code-block:: shell
 
- $ ansible-playbook playbooks/conf/confluent/kafka.yml -k -s
+ $ ansible-playbook playbooks/conf/confluent/kafka_broker.yml -k -s
 
 After finishing configuration, you need to start Kafka cluster.
 
@@ -496,7 +496,10 @@ After finishing configuration, you need to start Kafka cluster.
 
  $ ansible-playbook playbooks/operation/start_kafka_server.yml -k -s
 
-You can use Confluent's schema registry serivce and Kafka REST Proxy service.
+As the same as the above procedure,
+you can install Schema Registry and Kafka REST Proxy
+by using kafka_schema.yml and kafka_rest.yml in playbooks/conf/confluent directory.
+And, use the following playbooks to these services, 
 
 .. code-block:: shell
 

@@ -1,14 +1,12 @@
 - name: copy_server.properties
-  template: src=server.properties.j2 dest=/etc/confluent/kafka/server.properties
+  template: src=server.properties.j2 dest=/etc/kafka/server.properties
 
-- name: copy_schema-registry.properties
-  template: src=schema-registry.properties.j2 dest=/etc/confluent/schema-registry/schema-registry.properties
+- name: mkdir_/var/lib/kafka
+  file: path=/var/lib/kafka owner=kafka group=kafka state=directory
 
-- name: copy_kafka-rest.properties
-  template: src=kafka-rest.properties.j2 dest=/etc/confluent/kafka-rest/kafka-rest.properties
+- name: chown_/var/log/kafka
+  file: path=/var/log/kafka owner=kafka group=kafka state=directory
 
-- include: supervisor_centos6.yml
-  when: ansible_distribution == 'CentOS' and ansible_distribution_major_version == '6'
-
-- include: supervisor_centos7.yml
-  when: ansible_distribution == 'CentOS' and ansible_distribution_major_version == '7'
+- name: copy_supervisor_configs
+  template: src=kafka-server.ini.j2 dest=/etc/supervisord.d/kafka-server.ini
+  notify: restart_supervisord

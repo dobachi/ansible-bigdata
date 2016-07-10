@@ -1,0 +1,16 @@
+---
+# defaults file for roles/docker
+
+## Download docker images
+# If you want to download images
+# Please modify the following parameter
+
+# docker_images:
+#   - 'centos:7'
+
+## Stop warning about loopback device
+# If you don't use thinpool and want to
+# stop waring about usage of loopback device,
+# modify the following parameter.
+
+docker_stop_loopback_warn: False

@@ -15,5 +15,9 @@
 ##
 
 id={{ confluent_kafka_rest_id }}
-schema.registry.url={{ confluent_schema_registry }}
-zookeeper.connect={{ confluent_kafka_zookeeper_connect }}
+
+{% if confluent_schema_registry is defined %}
+schema.registry.url={{ confluent_kafka_rest_schema_registry }}
+{% endif %}
+
+zookeeper.connect={{ confluent_kafka_rest_zookeeper_connect }}

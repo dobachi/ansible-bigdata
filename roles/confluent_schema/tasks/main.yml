@@ -1,0 +1,6 @@
+---
+# tasks file for roles/confluent_schema
+- include: repo.yml tags=repo,confluent_schema
+- include: user.yml tags=user,confluent_schema
+- include: install.yml tags=install,confluent_schema
+- include: config.yml tags=config,confluent_schema
