@@ -10,4 +10,4 @@
 documents/_build
 derby.log
 metastore_db/
-
+*.retry
