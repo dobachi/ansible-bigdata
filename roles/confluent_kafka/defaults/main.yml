@@ -4,7 +4,8 @@
 confluent_scala_version: '2.11'
 confluent_kafka_num_partitions: 3
 confluent_kafka_log_dirs: '/var/lib/kafka'
-confluent_kafka_zookeeper_connect: '{{ groups["hadoop_zookeeperserver"] | join(":2181,") }}:2181'
+confluent_kafka_znode_root: '/confluent'
+confluent_kafka_zookeeper_connect: '{{ groups["hadoop_zookeeperserver"] | join(":2181,") }}:2181{{ confluent_kafka_znode_root }}'
 #confluent_kafka_rest_id: 'kafka-rest-test-serve'
 #confluent_schema_registry: '{{ groups["confluent_schema_registry"][0] }}:8081'
 
@@ -18,7 +19,7 @@ confluent_kafka_socket_req_max: '104857600'
 confluent_kafka_background_threads: '10'
 confluent_kafka_log_flush_schd_interval: '9223372036854775807'
 confluent_kafka_num_replica_fetchers: '1'
-confluent_kafka_min_insync_replicas: '1'
+confluent_kafka_min_insync_replicas: '2'
 confluent_kafka_log_flush_interval_messages: '10000'
 confluent_kafka_log_flush_interval_ms: '1000'
 confluent_kafka_support_metrics_enable: 'false'
