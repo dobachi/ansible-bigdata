@@ -1,4 +1,4 @@
-- hosts: "{{ server | default('confluent_kafka_broker') }}"
+- hosts: "{{ server | default('confluent_kafka_cluster') }}"
   sudo: yes
   tasks:
     - name: start_kafka_server
