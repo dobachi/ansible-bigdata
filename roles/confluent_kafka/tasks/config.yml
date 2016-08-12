@@ -1,6 +1,9 @@
 - name: copy_server.properties
   template: src=server.properties.j2 dest=/etc/kafka/server.properties
 
+- name: copy_connect-standalone.properties
+  template: src=connect-standalone.properties.j2 dest=/etc/kafka/connect-standalone.properties
+
 - name: copy_connect-distributed.properties
   template: src=connect-distributed.properties.j2 dest=/etc/kafka/connect-distributed.properties
 
