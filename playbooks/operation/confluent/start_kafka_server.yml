@@ -3,3 +3,5 @@
   tasks:
     - name: start_kafka_server
       shell: supervisorctl start kafka-server
+    - name: verify_port
+      wait_for: host=localhost port=9092 state=started timeout={{ confluent_kafka_wait_for_timeout }}
