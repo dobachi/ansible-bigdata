@@ -1,0 +1,2 @@
+- include: stop_kafka_connect.yml
+- include: start_kafka_connect.yml

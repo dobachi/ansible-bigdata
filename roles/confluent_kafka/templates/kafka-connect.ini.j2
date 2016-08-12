@@ -1,0 +1,10 @@
+[program:kafka-connect]
+command=connect-distributed /etc/kafka/connect-distributed.properties
+user=kafka
+autorestart=false
+autostart=false
+stdout_logfile=/var/log/kafka/kafka-connect.log
+stdout_logfile_maxbytes=100MB
+stdout_logfile_backups=5
+stdout_capture_maxbytes=100MB
+redirect_stderr=true

@@ -24,6 +24,12 @@ confluent_kafka_log_flush_interval_messages: '10000'
 confluent_kafka_log_flush_interval_ms: '1000'
 confluent_kafka_support_metrics_enable: 'false'
 
+# Kafka Connect
+confluent_kafka_connect_bootstrap: '{{ groups["confluent_kafka_cluster"] | join(":9092,") }}:9092'
+confluent_kafka_connect_groupid: 'connect-cluster'
+confluent_kafka_connect_offset_topic: 'connect-offsets'
+confluent_kafka_connect_config_topic: 'connect-configs'
+confluent_kafka_connect_status_topic: 'connect-statuss'
 
 # The following parameters should be configured in group variables or inventory files
 # confluent_kafka_broker_id:

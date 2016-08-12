@@ -140,6 +140,13 @@ kafka01 zookeeper_server_id=1 confluent_kafka_broker_id=1
 kafka02 zookeeper_server_id=2 confluent_kafka_broker_id=2
 kafka03 zookeeper_server_id=3 confluent_kafka_broker_id=3
 
+; This servers should be different from Kafka brokers
+; because of separation of workdloads.
+[confluent_kafka_connect]
+kafka01
+kafka02
+kafka03
+
 [confluent_schema_registry]
 hd-kafka01
 
