@@ -29,7 +29,7 @@ confluent_kafka_connect_bootstrap: '{{ groups["confluent_kafka_cluster"] | join(
 confluent_kafka_connect_groupid: 'connect-cluster'
 confluent_kafka_connect_offset_topic: 'connect-offsets'
 confluent_kafka_connect_config_topic: 'connect-configs'
-confluent_kafka_connect_status_topic: 'connect-statuss'
+confluent_kafka_connect_status_topic: 'connect-status'
 
 # The following parameters should be configured in group variables or inventory files
 # confluent_kafka_broker_id:
