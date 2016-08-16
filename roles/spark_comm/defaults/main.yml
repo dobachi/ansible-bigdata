@@ -39,6 +39,8 @@ spark_comm_defaults_tmpl: 'spark-defaults.conf.j2'
 spark_comm_master: 'yarn' 
 spark_comm_logdir: 'hdfs://{{ spark_comm_hdfs_cluster_name }}/var/log/spark'
 spark_comm_historyserver: '{{ groups["hadoop_other"][0] }}'
+spark_comm_driver_extralib: '/usr/lib/hadoop/lib/native/'
+spark_comm_executor_extralib: '/usr/lib/hadoop/lib/native/'
 
 # hive-site.xml
 

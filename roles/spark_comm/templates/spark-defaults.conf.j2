@@ -7,7 +7,12 @@ spark.eventLog.enabled  true
 spark.eventLog.dir      {{ spark_comm_logdir }}
 spark.serializer        org.apache.spark.serializer.KryoSerializer
 
+spark.driver.extraLibraryPath  {{ spark_comm_driver_extralib }}
+spark.executor.extraLibraryPath  {{ spark_comm_executor_extralib }}
+
 spark.yarn.historyServer.address {{ spark_comm_historyserver }}:18080
+
+spark.sql.warehouse.dir {{}}
 
 spark.executor.instances {{ spark_comm_exe_instances }}
 
