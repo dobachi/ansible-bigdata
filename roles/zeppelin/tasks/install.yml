@@ -14,6 +14,10 @@
   sudo_user: zeppelin
   tags: zeppelin
 
+- name: download_zeppelin_hub_jar
+  get_url: url=https://s3-ap-northeast-1.amazonaws.com/zeppel.in/zeppelinhub-integration-v0.3.3-all.jar dest={{ zeppelin_dir }}/{{ zeppelin_package_name }}/lib
+  tags: zeppelin
+
 - name: create_alternatives_link_of_default
   alternatives: name=zeppelin_package path={{ zeppelin_dir }}/{{ zeppelin_package_name }} link={{ zeppelin_dir }}/default
   tags: zeppelin

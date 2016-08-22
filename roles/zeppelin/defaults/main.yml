@@ -21,5 +21,10 @@ zeppelin_spark_home: '/usr/local/spark/default'
 # zeppelin_spark_submit_opts: '--driver-memory 1g --executor-memory=8g --executor-cores=2'
 zeppelin_hadoop_conf_dir: '/etc/hadoop/conf'
 
+zeppelin_hub_enabled: False
+zeppelin_hub_addr: 'https://www.zeppelinhub.com'
+zeppelin_hub_token: 'YOUR TOKEIN'
+# zeppelin_hub_key: 'YOUR KEY'
+
 # To use Zeppelin with HDP
 #zeppelin_hdp_version: '2.3.4.0-3485'

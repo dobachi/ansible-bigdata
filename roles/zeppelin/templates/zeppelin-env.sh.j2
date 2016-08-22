@@ -92,6 +92,15 @@ export HADOOP_CONF_DIR={{ zeppelin_hadoop_conf_dir }}
 # export ZEPPELINHUB_API_TOKEN			# Refers to the Zeppelin instance token of the user
 # export ZEPPELINHUB_USER_KEY			# Optional, when using Zeppelin with authentication.
 
+{% if zeppelin_hub_enabled == True %}
+export ZEPPELIN_NOTEBOOK_STORAGE="org.apache.zeppelin.notebook.repo.VFSNotebookRepo, org.apache.zeppelin.notebook.repo.zeppelinhub.ZeppelinHubRepo"
+export ZEPPELINHUB_API_ADDRESS={{ zeppelin_hub_addr }}
+export ZEPPELINHUB_API_TOKEN={{ zeppelin_hub_token }}
+{% if zeppelin_hub_key is defined %}
+export ZEPPELINHUB_USER_KEY={{ zeppelin_hub_key }}
+{% endif %}
+{% endif %}
+
 #### HDP configuration ####
 {% if zeppelin_hdp_version is defined %}
 export ZEPPELIN_JAVA_OPTS="-Dhdp.version={{ zeppelin_hdp_version }}"
