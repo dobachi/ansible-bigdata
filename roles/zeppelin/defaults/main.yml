@@ -1,23 +1,25 @@
 ---
 # defaults file for roles/zeppelin
+
+# Installation
+
 zeppelin_dir: '/usr/local/zeppelin'
 zeppelin_log_dir: '/var/log/zeppelin'
-zeppelin_mem: '-Xmx2048m -XX:MaxPermSize=512m'
-zeppelin_java_home: '/usr/java/default'
-zeppelin_master: 'yarn-client'
-zeppelin_hadoop_conf_dir: '/etc/hadoop/conf'
-zeppelin_server_port: '8080'
-zeppelin_spark_executor_instances: '20'
-zeppelin_spark_executor_cores: '1'
-zeppelin_spark_executor_memory: '2g'
-zeppelin_notebook_storage: 'org.apache.zeppelin.notebook.repo.VFSNotebookRepo'
 
 # You should configure the following parameters
-#zeppelin_package_base_url: 'http://example.com/zeppelin'
-#zeppelin_package_name: 'zeppelin-0.5.0-SNAPSHOT'
-#zeppelin_package_suffix: '.tar.gz'
-#zeppelin_spark_home: '/usr/local/spark/default'
-#zeppelin_spark_yarn_jar: '/usr/local/spark/default/lib/spark-assembly-1.4.0-SNAPSHOT-hadoop2.5.0-cdh5.3.2.jar'
+#zeppelin_package_base_url: 'http://www-us.apache.org/dist/zeppelin/zeppelin-0.6.1'
+#zeppelin_package_name: 'zeppelin-0.6.1-bin-netinst'
+#zeppelin_package_suffix: '.tgz'
+
+# zeppelin-site.xml
+zeppelin_server_port: '8080'
+
+# zeppelin-env.sh
+zeppelin_java_home: '/usr/java/default'
+zeppelin_master: 'yarn-client'
+zeppelin_spark_home: '/usr/local/spark/default'
+# zeppelin_spark_submit_opts: '--driver-memory 1g --executor-memory=8g --executor-cores=2'
+zeppelin_hadoop_conf_dir: '/etc/hadoop/conf'
 
 # To use Zeppelin with HDP
 #zeppelin_hdp_version: '2.3.4.0-3485'

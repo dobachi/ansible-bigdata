@@ -1,0 +1,12 @@
+- hosts: "{{ server | default('hadoop_client') }}"
+  vars:
+    zeppelin_user: 'zeppelin'
+  tasks:
+    - name: mkdir_user_dir_on_HDFS
+      shell: hdfs dfs -mkdir /user/{{ zeppelin_user }}
+      become: yes
+      become_user: hdfs
+    - name: chown_user_dir_on_HDFS
+      shell: hdfs dfs -chown {{ zeppelin_user }} /user/{{ zeppelin_user }}
+      become: yes
+      become_user: hdfs
