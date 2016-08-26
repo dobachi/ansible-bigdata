@@ -1,0 +1,168 @@
+#########################################
+# Common settings
+#########################################
+
+# Database type ( h2 or postgres )
+database.type=postgres
+
+# Database base directory ( valid only h2 )
+database.dir=../data/
+
+# Database host address ( valid only postgres )
+database.host={{ endo_datacollector_database_host }}
+
+# Database port number ( valid only postgres )
+database.port=5432
+
+# Database Name
+database.name=endosnipedb
+
+# Database login user name ( valid only postgres )
+database.username=postgres
+
+# Database login password ( valid only postgres )
+database.password=postgres
+
+# System Resource Get Interval
+resource.get.interval=15000
+
+# Config file name for resource monitoring
+resource.config.filename=../conf/resource_monitoring.conf
+
+# DisplayName language
+language=en
+
+# Connection mode (client or server)
+connection.mode=server
+
+#########################################
+# Settings for server mode
+#########################################
+
+# Host Name
+accept.host=localhost
+
+# Port
+accept.port=19000
+
+# SSL enable
+ssl.enable=false
+
+# SSL keyStore path
+ssl.keystore=../conf/ensSkeystore
+
+# SSL keyStore password
+ssl.keystore.pass=ensSkeypass
+
+# SSL trustStore path
+ssl.truststore=../conf/ensStrueststore
+
+# SSL trustStore password
+ssl.truststore.pass=ensStrustpass
+
+# Javelin Log Storage Period
+javelin.log.storage.period=90d
+
+# Measurement Data Storage Period
+measurement.log.storage.period=90d
+
+# SSL Keystore path(Dashboard)
+web.ssl.keystore=/opt/ENdoSnipe/DataCollector/conf/enskeystore
+
+# SSL Keystore password(Dashboard)
+web.ssl.keystore.pass=enskeypass
+
+# SSL Truststore path(Dashboard)
+web.ssl.truststore=/opt/ENdoSnipe/DataCollector/conf/enstrueststore
+
+# SSL Truststore password(Dashboard)
+web.ssl.truststore.pass=enstrustpass
+
+#########################################
+# Individual settings for client mode (Javelin1)
+#########################################
+
+# Host Name (required)
+javelin.host.1=localhost
+
+# Port
+javelin.port.1=18000
+
+# Accept Port for BottleneckEye
+datacollector.acceptport.1=28000
+
+# Database Name
+database.name.1=endosnipedb_localhost_18000
+
+# Javelin Log Storage Period
+javelin.log.storage.period.1=90d
+
+# Measurement Data Storage Period
+measurement.log.storage.period.1=90d
+
+# Accept Host for WebDashboard
+# Only to use WebDashboard
+datacollector.accepthost.1=localhost
+
+#########################################
+# Individual settings for client mode (Javelin2)
+#########################################
+
+# Host Name (required)
+#javelin.host.2=localhost
+
+# Port
+#javelin.port.2=18001
+
+# Accept Port for BottleneckEye
+#datacollector.acceptport.2=28001
+
+# Database Name
+#database.name.2=endosnipedb_localhost_18001
+
+# Javelin Log Storage Period
+#javelin.log.storage.period.2=90d
+
+# Measurement Data Storage Period
+#measurement.log.storage.period.2=90d
+
+#########################################
+# SMTP settings
+#########################################
+collector.smtp.sendMail=false
+collector.smtp.server=localhost
+collector.smtp.encoding=iso-2022-jp
+collector.smtp.port=587
+collector.smtp.user=
+collector.smtp.password=
+collector.smtp.from=endosnipe@example.com
+collector.smtp.to=endosnipe@example.com
+collector.smtp.template.default.failure.subject=[ENdoSnipe] ${signalName}\u3067\u95be\u5024\u8d85\u904e\u3092\u691c\u51fa\u3057\u307e\u3057\u305f
+collector.smtp.template.default.failure.body=../conf/mail/mail_template_default_failure.txt
+collector.smtp.template.default.recover.subject=[ENdoSnipe] ${signalName}\u3067\u95be\u5024\u304b\u3089\u56de\u5fa9\u3057\u307e\u3057\u305f
+collector.smtp.template.default.recover.body=../conf/mail/mail_template_default_recover.txt
+
+#########################################
+# SNMP settings
+#########################################
+collector.snmp.sendTrap=false
+collector.snmp.managers=localhost
+collector.snmp.trapPort=162
+collector.snmp.version=v2c
+collector.snmp.trapCommunity=public
+
+#########################################
+# ElasticSearch settings
+#########################################
+elasticsearch.host.name=localhost
+elasticsearch.host.port=9300
+elasticsearch.cluster.name=endosnipe_cluster
+elasticsearch.index.prefix=endosnipe_index_
+elasticsearch.index.postfix=yyyyMMdd
+elasticsearch.type=endosnipe_type
+elasticsearch.available=false
+
+#########################################
+# Custom settings
+#########################################
+resource.judege.similar.sql=false

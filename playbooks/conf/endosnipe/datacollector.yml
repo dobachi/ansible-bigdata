@@ -1,0 +1,9 @@
+- hosts: "{{ server | default('endo_dashboard') }}"
+  roles:
+    - { role: common, common_config_hostname: True }
+    - common
+    - epel
+    - postgresql
+    - jdk
+    - endosnipe_datacollector
+

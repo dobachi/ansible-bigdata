@@ -1,0 +1,8 @@
+- hosts: "{{ server | default('localhost') }}"
+  tasks:
+    - name: postgresql_initdb
+      shell: /sbin/service postgresql initdb
+
+    - name: start postgresql
+      service: name=postgresql state=started  enabled=yes
+

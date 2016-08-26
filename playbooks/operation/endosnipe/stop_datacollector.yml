@@ -1,0 +1,4 @@
+- hosts: "{{ server | default('endo_dashboard') }}"
+  tasks:
+    - name: stop_datacollector
+      shell: /opt/ENdoSnipe/DataCollector/bin/endosnipe-dc stop

@@ -1,0 +1,5 @@
+- hosts: "{{ server | default('localhost') }}"
+  tasks:
+    - name: stop postgresql
+      service: name=postgresql state=stopped
+

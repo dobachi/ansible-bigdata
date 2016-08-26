@@ -1,0 +1,2 @@
+- include: stop_datacollector.yml
+- include: start_datacollector.yml

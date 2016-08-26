@@ -1,0 +1,6 @@
+- hosts: "{{ server | default('localhost') }}"
+  tasks:
+    - name: stop_tomcat
+      service: name=tomcat state=stopped
+
+
