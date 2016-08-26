@@ -1,0 +1,5 @@
+- hosts: "{{ server | default('endo_javelin') }}"
+  roles:
+    - common
+    - epel
+    - endosnipe_javelin
