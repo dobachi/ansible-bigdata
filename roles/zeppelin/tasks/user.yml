@@ -1,5 +1,7 @@
 - name: add_zepplin_group
   group: name=zeppelin state=present
+  tags: zeppelin
 
 - name: add_zepplin_user
   user: name=zeppelin group=zeppelin state=present 
+  tags: zeppelin

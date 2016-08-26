@@ -1,0 +1,23 @@
+- name: mkdir_/usr/local/terraform
+  file: path=/usr/local/terraform state=directory
+  tags: terraform
+
+- name: mkdir_/usr/local/terraform/version
+  file: path=/usr/local/terraform/{{terraform_version}} state=directory
+  tags: terraform
+
+- name: symlink_default
+  file: src=/usr/local/terraform/{{terraform_version}} path=/usr/local/terraform/default state=link
+  tags: terraform
+
+- name: download_terraform_bin
+  get_url: url=https://releases.hashicorp.com/terraform/{{terraform_version}}/terraform_{{terraform_version}}_linux_amd64.zip dest=/usr/local/terraform/terraform_{{terraform_version}}_linux_amd64.zip sha256sum=a196c63b967967343f3ae9bb18ce324a18b27690e2d105e1f38c5a2d7c02038d
+  tags: terraform
+
+- name: unarchive_terraform_bin
+  unarchive: src=/usr/local/terraform/terraform_{{terraform_version}}_linux_amd64.zip dest=/usr/local/terraform/{{terraform_version}} copy=no creates=/usr/local/terraform/{{terraform_version}}/terraform
+  tags: terraform
+
+- name: add_path
+  template: src=terraform.sh.j2 dest=/etc/profile.d/terraform.sh
+  tags: terraform

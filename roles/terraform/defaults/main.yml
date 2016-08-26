@@ -1,0 +1,3 @@
+---
+# defaults file for roles/terraform
+terraform_version: '0.7.0'
