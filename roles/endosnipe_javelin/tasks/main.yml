@@ -1,0 +1,33 @@
+---
+# tasks file for roles/endosnipe_javelin
+- name: mkdir_ENdoSnipe
+  file:
+    path: /opt/ENdoSnipe
+    state: directory
+  tags: endo_javelin
+
+- name: download_endosnipe_zip
+  get_url:
+    url: http://downloads.sourceforge.net/project/endosnipe/6.0.0-release/endosnipe_6.0.0-release.zip?r=http%3A%2F%2Fwww.endosnipe.com%2Freference%2Findex.html&ts=1472173222&use_mirror=jaist
+    dest: /opt/ENdoSnipe/endosnipe_6.0.0-release.zip
+  tags: endo_javelin
+
+- name: unarchive_endosnipe
+  unarchive:
+    copy: no
+    src: /opt/ENdoSnipe/endosnipe_6.0.0-release.zip
+    dest: /opt/ENdoSnipe/
+  tags: endo_javelin
+
+- name: unarchive_javelin
+  unarchive:
+    copy: no
+    src: /opt/ENdoSnipe/endosnipe_6.0.0-release/Javelin_6.0.0.zip
+    dest: /opt/ENdoSnipe/
+  tags: endo_javelin
+
+- name: copy_javelin.properties
+  template:
+    src: javelin.properties.j2
+    dest: /opt/ENdoSnipe/Javelin/conf/javelin.properties
+  tags: endo_javelin

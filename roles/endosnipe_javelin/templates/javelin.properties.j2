@@ -1,0 +1,614 @@
+################################################################################
+# Javelin Configurations
+################################################################################
+
+#--------------------------------------------------
+# Setting for Startup
+#--------------------------------------------------
+
+# ConcurrentAccessMonitor,CollectionMonitor
+javelin.skipClassOnProcessing=true
+
+
+#--------------------------------------------------
+# Setting for Operation Analysis Log
+#--------------------------------------------------
+
+# System log output directory for Javelin operating situation
+javelin.system.log=../traces
+
+# Log level of system log (FATAL\u3001ERROR\u3001WARN\u3001INFO\u3001DEBUG)
+javelin.system.log.level=INFO
+
+# Maximum file size of system log (bytes)
+javelin.system.log.size.max=1000000
+
+# Maximum number of file of system log
+javelin.system.log.num.max=16
+
+# Javelin Event Level (ERROR\u3001WARN\u3001INFO)
+javelin.event.level=WARN
+
+# Minimum Alarm Interval
+javelin.minimumAlarmInterval=0
+
+# Interval for the same event detection. 
+# The Event is detected only if time passes over this interval from the last event.
+# It prevents NoTimeoutDetected and IntervalError being detected in surplus.
+javelin.eventInterval=3600000
+
+#--------------------------------------------------
+# Setting for Communication
+#--------------------------------------------------
+
+# Port Number for Communication with BottleneckEye
+javelin.acceptPort=18000
+
+# Port Reacquisition Interval for Communication with BottleNeckEye
+# If port acquisition for communication failed, retry following interval later.(Unit: millisecond)
+javelin.bind.interval=5000
+
+# Port range specification flag for communication with BottleneckEye/DataCollector
+javelin.acceptPort.isRange=false
+
+# Maximum value of port range specification for communication with BottleneckEye/DataCollector
+javelin.acceptPort.rangeMax=18010
+
+# Connection Mode (Client or Server)
+javelin.connection.mode=client
+
+# Host Name for communication with BottleneckEye/DataCollector (javelin to BottleneckEye)
+javelin.connectHost={{ endo_javelin_connect_host }}
+
+# Port Number for communication with BottleneckEye/DataCollector (javelin to BottleneckEye)
+javelin.connectPort=19000
+
+# Cluster Name
+javelin.clusterName={{ endo_javelin_cluster_name }}
+
+# Javelin Agent Name
+javelin.agentName=agent
+
+#--------------------------------------------------
+# Setting for File Path (Relative Specification From This File Is Valid)
+#--------------------------------------------------
+
+# Path to jvn file output directory
+javelin.javelinFileDir=../logs
+
+# Path to license file
+javelin.license.path=../license
+
+# Path to file for persistence of information such as Threshold value
+javelin.serializeFile=../data/serialize.dat
+
+# Path to convert target class specification file
+javelin.include=include_diag.conf
+
+# Path to convert exclusion class specification file
+javelin.exclude=exclude_diag.conf
+
+
+#--------------------------------------------------
+# Setting for Javelin Log Output
+#--------------------------------------------------
+
+# Flag of jvn log save on server side
+javelin.log.enable=false
+
+# Maximum number of files of jvn log
+javelin.log.jvn.max=256
+
+# Zipping Threshold value of jvn log file
+# (If the number of output files reaches this number, log files are zipped.)
+javelin.log.zip.max=256
+
+# Flag of use of CallTreeNode
+javelin.call.tree.enable=false
+
+# Maximum number of CallTree child saved on Javelin.
+# If the number of CallTreeNode belonging CallTree exceed this number,
+# output measurable CallTreeNode to jvn, and save measurement information confirmed on Profiler view.
+javelin.call.tree.max=5000
+
+# Flag of all jvn log save and measurement if the number of CallTreeNode reaches maximum.
+javelin.call.tree.all=false
+
+# Maximum number of method calling information saved on each class
+javelin.record.invocation.num.max=1024
+
+# Flag of Discard
+javelin.discard=true
+
+#--------------------------------------------------
+# Setting for Javelin log contents
+#--------------------------------------------------
+
+# Setting for argument information output of method calling
+javelin.log.args=false
+javelin.log.args.detail=false
+javelin.log.args.detail.depth=1
+
+# Setting for return value information of method calling
+javelin.log.return=false
+javelin.log.return.detail=false
+javelin.log.return.detail.depth=1
+
+# Setting for output of session infomation as argument
+javelin.log.http.session=false
+javelin.log.http.session.detail=true
+javelin.log.http.session.detail.depth=2
+
+# Maximum number of letter of argument or return value
+javelin.stringLimitLength=102400
+
+# Maximum value of depth for investigation of inheritance hierarchy with inheritance
+javelin.inheritance.depth=5
+
+# Flag of measurement target exclusion based on bytecode contents. 0:Exclude 1:Not exclude
+javelin.bytecode.exclude.policy=1
+
+# Maximum bytecode length excluded from information acquisition target of Javelin.
+# The exclusion judge is executed only if bytecode length is less than this value.
+javelin.bytecode.exclude.length=32
+
+# Maximum number of control instruction excluded from information acquisition target of Javelin
+# The target is excluded if the number of control instruction is less than this value.
+javelin.bytecode.exclude.controlCount=0
+
+# Flag of stacktrace output at the time of the method calling
+javelin.log.stacktrace=false
+
+# Depth of stacktrace output to log
+javelin.traceDepth=30
+
+# Flag of output for VM MBean information
+javelin.log.mbeaninfo=true
+javelin.log.mbeaninfo.root=true
+
+# Maximum character length of the method name
+javelin.invocation.name.limitLength=2048
+
+# Root node name of method calling
+javelin.rootCallerName=root
+
+# Alternative node name named if end node of method calling is not specified.
+javelin.endCalleeName=unknown
+
+# A way of determining thread name
+# 0:Thread name@Thread ID (Thread class name@Object ID)
+# 1:Thread ID
+# 2:Thread Name
+# 3:Method Name\uff08It correspond to the servlet path at the time of Servlet filter built-in.\uff09
+javelin.threadModel=0
+
+# Unit of CPU activity ratio
+javelin.cpu.unit=1
+
+#--------------------------------------------------
+# Setting for Method of Threshold Value Judgement 
+#--------------------------------------------------
+
+# Set Turn-around-time as the judgement target of Threshold value excess.
+#javelin.recordStrategy=jp.co.acroquest.endosnipe.javelin.record.DefaultRecordStrategy
+
+# Set Turn-around-time or CPU time as the judgement target of Threshold value excess.
+javelin.recordStrategy=jp.co.acroquest.endosnipe.javelin.record.CpuTimeRecordStrategy
+
+# Assume Threshold value excess if Turn-around-time of method updates previous maximum value.
+#javelin.recordStrategy=jp.co.acroquest.endosnipe.javelin.record.MaxAccumulatedTimeUpdateRecordStrategy
+
+#--------------------------------------------------
+# Setting for Functional Add-on Listener
+#--------------------------------------------------
+
+# Listener for additional processing at the time of alarm occurrence
+javelin.alarmListeners=
+
+# Listener for processing extension at the time of the telegram receive from BottleneckEye
+javelin.telegramListeners=jp.co.acroquest.endosnipe.javelin.communicate.GetRequestTelegramListener,jp.co.acroquest.endosnipe.javelin.communicate.ResetRequestTelegramListener,jp.co.acroquest.endosnipe.javelin.communicate.telegram.JvnLogDownloadTelegramListener,jp.co.acroquest.endosnipe.javelin.communicate.telegram.JvnLogListTelegramListener,jp.co.acroquest.endosnipe.javelin.communicate.telegram.SystemResourceTelegramListener,jp.co.acroquest.endosnipe.javelin.communicate.telegram.UpdateRequestTelegramListener,jp.co.acroquest.endosnipe.javelin.communicate.telegram.GetPropertyRequestTelegramListener,jp.co.acroquest.endosnipe.javelin.communicate.TargetSetTelegramListener,jp.co.acroquest.endosnipe.javelin.communicate.GetDumpTelegramListener,jp.co.acroquest.endosnipe.javelin.communicate.telegram.RemoveClassTelegramListener,jp.co.acroquest.endosnipe.javelin.communicate.FunctionCallTelegramListener
+
+#--------------------------------------------------
+# Setting for Statistical Processing
+#--------------------------------------------------
+
+# The number of calling information for each method accumulated in memory 
+javelin.intervalMax=0
+
+# The number of exception occurrence information for each method accumulated in memory
+javelin.throwableMax=0
+
+# Flag of class name abbreviation
+# (Setting this flag true is recommended because class name is extended automatically in Seasar2 application)
+javelin.className.simplify=false
+
+
+#--------------------------------------------------
+# Setting for Memory Leak Detection
+#--------------------------------------------------
+
+# Flag for memory leak detection of Collection
+javelin.leak.collection.monitor=true
+
+# Threshold value for Collection or Map size which is detected as memory leak
+javelin.leak.collectionSizeThreshold=50000
+
+# Memory leak detection times for stacktrace acquisition
+javelin.leak.interval=11
+
+# Maximum number of sracktraces for duplication check at the time that memory leak is detected
+javelin.leak.traceMax=20
+
+# Depth of stacktrace for judgement at the time that memory leak is detected
+javelin.leak.detect.traceDepth=5
+
+# Flag for heap histogram analysis in Java6 or later
+javelin.leak.class.histo=false
+
+# Interval of heap histogram acquisition (ms)
+javelin.leak.class.histo.interval=3600000
+
+# Maximum number of heap histogram acquisition
+javelin.leak.class.histo.max=15
+
+# Flag for execution of GC at the time of heap histogram acquisition
+javelin.leak.class.histo.gc=false
+
+# Flag for acquisition of the number of objects that wait to be finalized
+javelin.finalizationCount.monitor=true
+
+
+#--------------------------------------------------
+# Setting for Thread Monitoring
+#--------------------------------------------------
+
+# Flag for thread contention monitoring
+# (It should be false in JRockit R26.0)
+javelin.thread.contention.monitor=true
+
+# Flag for thread monitoring
+javelin.thread.monitor=true
+
+# Interval for thread monitoring (Unit:ms)
+javelin.thread.monitor.interval=1000
+
+# Depth of stacktrace that is output in thread monitoring
+javelin.thread.monitor.depth=10
+
+# Threshold value of block duration time for output of block duration event
+# The event is output if the value exceeds the threshold value in thread monitoring
+javelin.thread.block.threshold=1000
+javelin.thread.blocktime.threshold=2000
+
+# Flag for full thread dump output
+# If this is true, full thread dump is output when any following condition is fulfilled. # 1. The number of thread is more than javelin.thread.dump.threadnum
+# 2. CPU use rate is more than javelin.thread.dump.cpu
+javelin.thread.dump.monitor=false
+
+# Interval for judgement of full thread dump output (Unit:ms)
+javelin.thread.dump.interval=15000
+
+# Threshold value of the number of thread in full thread dump output
+javelin.thread.dump.threadnum=100
+
+# Threshold value of CPU use rate in full thread dump output
+javelin.thread.dump.cpu=50
+
+# Threshold value of CPU(sys) use rate in full thread dump output
+javelin.thread.dump.cpu.sys=50
+
+# Threshold value of CPU(usr) use rate in full thread dump output
+javelin.thread.dump.cpu.usr=50
+
+# Threshold value of runnable thread in full thread dump output
+javelin.thread.dump.threshold./process/thread/java/runnable=50
+
+# Threshold value of blocked thread in full thread dump output
+javelin.thread.dump.threshold./process/thread/java/blocked=50
+
+# Threshold value of network read in full thread dump output
+javelin.thread.dump.threshold./process/network/read\:bytes(d)=10000000
+
+# Threshold value of network write in full thread dump output
+javelin.thread.dump.threshold./process/network/write\:bytes(d)=10000000
+
+# Flag for full GC detection
+javelin.fullgc.monitor=false
+
+# Name List of GarbageCollector that executes full GC
+javelin.fullgc.list=MarkSweepCompact,Garbage collection optimized for throughput Old Collector
+
+# Threshold value of GC execution time in full GC detection
+javelin.fullgc.threshold=5000
+
+# Flag for deadlock monitoring in Java6 or later
+javelin.thread.deadlock.monitor=true
+
+
+#--------------------------------------------------
+# Setting for Network IO Monitoring
+#--------------------------------------------------
+
+# Flag for network input amount monitoring
+javelin.net.input.monitor=true
+
+# Flag for network output amount monitoring
+javelin.net.output.monitor=true
+
+
+#--------------------------------------------------
+# Setting for File IO Monitoring
+#--------------------------------------------------
+
+# Flag for file input amount monitoring
+javelin.file.input.monitor=true
+
+# Flag for file output amount monitoring
+javelin.file.output.monitor=true
+
+
+#--------------------------------------------------
+# Setting for Turn Around Time Monitoring
+#--------------------------------------------------
+
+# Flag of Turn Around Time monitoring
+javelin.tat.monitor=true
+
+# Duration of retention for Turn Around Time (Unit: millisecond)
+javelin.tat.keepTime=15000
+
+# Time to keep outputting 0 if Turn Around Time value is 0 (Unit: millisecond)
+javelin.tat.zeroKeepTime=10000
+
+
+#--------------------------------------------------
+# Setting for Servlet Monitoring
+#--------------------------------------------------
+
+# servlet exclude pattern
+javelin.servlet.exclude.pattern=.*(\.jpg|\.css|\.js|\.JPG|\.jpeg|\.png|\.gif)$
+
+# servlet exclude pattern cache size
+javelin.servlet.exclude.pattern.cache.size=10000
+
+
+#--------------------------------------------------
+# Setting for HTTP Session Monitoring
+#--------------------------------------------------
+
+# Flag for the number monitoring of HttpSession instance 
+javelin.httpSessionCount.monitor=true
+
+# Flag for total size monitoring of registered object in HttpSession
+javelin.httpSessionSize.monitor=false
+
+
+#--------------------------------------------------
+# Setting for Asynchronous Access Monitoring From Multiple Thread
+#--------------------------------------------------
+
+# Flag for asynchronous access monitoring from multiple thread
+javelin.concurrent.monitor=true
+
+
+#--------------------------------------------------
+# Setting for Timeout Value Detection 
+#--------------------------------------------------
+
+# Flag for timeout value detection
+javelin.timeout.monitor=true
+
+
+#--------------------------------------------------
+# Setting for Log4j Error Log Output Monitoring
+#--------------------------------------------------
+
+# Threshold level of log level in error log output
+# If a log which is higher level than the threshold level is output in Log4j, stacktrace is output.
+javelin.log4j.printstack.level=ERROR
+
+
+#--------------------------------------------------
+# Setting for Liner Search Monitoring
+#--------------------------------------------------
+
+# Flag for liner search monitoring
+javelin.linearsearch.monitor=true
+
+# Threshold value for list size of liner search detection
+javelin.linearsearch.size=5000
+
+# Ratio of searched items to list as liner search target
+javelin.linearsearch.ratio=10
+
+
+#--------------------------------------------------
+# Setting for EJB Session Monitoring
+#--------------------------------------------------
+
+# Flag for EJB session monitoring
+javelin.ejb.session.monitor=false
+
+
+#--------------------------------------------------
+# Setting for JMX Monitoring
+#--------------------------------------------------
+
+javelin.jmx.resource.monitor=false
+
+
+#--------------------------------------------------
+# Setting for Various Threshold Value
+#--------------------------------------------------
+
+# Threshold value for Turn Around Time to accumulate calling information (Unit: millisecond)
+javelin.statisticsThreshold=0
+
+# Threshold value for CPU time for notification to BottleneckEye(Unit: millisecond)
+javelin.alarmCpuThreshold=-1
+
+# Threshold value fot Turn Around Time to notify to BottleneckEye(Unit : millisecond)
+javelin.alarmThreshold=-1
+
+# Flag for exception information notification to BottleneckEye
+javelin.alarmException=false
+
+
+#--------------------------------------------------
+# Setting for Method Call Interval
+#--------------------------------------------------
+
+# Flag for alarm output if the method is called again in time that is less than the interval (ms)
+javelin.interval.monitor=true
+
+# Check for calling of methods which is unnecessary to be called frequently such as framework initialize method.
+# This property is valid if javelin.interval.monitor=true
+javelin.interval.threshold=org.apache.velocity.app.Velocity#init=10000,org.springframework.context.support.GenericApplicationContext#GenericApplicationContext=10000,org.seasar.framework.container.factory.SingletonS2ContainerFactory#init=10000,org.seasar.framework.container.factory.S2ContainerFactory#create=10000,javax.xml.bind.JAXBContext#newInstance=30000,org.apache.commons.httpclient.SimpleHttpConnectionManager#SimpleHttpConnectionManager=10000,org.apache.log4j.PropertyConfigurator#doConfigure=10000,org.apache.log4j.xml.DOMConfigurator#doConfigure=10000,org.apache.log4j.Category#debug=10000
+
+# Check for calling of methods which is unnecessary to be called frequently such as # search which takes time.
+# This property is valid if javelin.interval.monitor=true
+javelin.interval.perargs.threshold=javax.naming.InitialContext#lookup=10000,java.rmi.Naming#lookup=10000
+
+#--------------------------------------------------
+# Setting for Measurement Target Auto Matching Function
+#--------------------------------------------------
+
+# Threshold value of the number of calling excluded automatically from measurement target
+javelin.autoExcludeThreshold.count=0
+
+# Threshold value of the execution time excluded automatically from measurement target(Unit: millisecond)
+javelin.autoExcludeThreshold.time=0
+
+#--------------------------------------------------
+# Setting for Measurement Data Acquisition
+#--------------------------------------------------
+
+# Flag for acquisition of system resource data
+javelin.resource.collectSystemResources=true
+
+# Flag for acquisition of HadoopAgent resource data
+javelin.resource.collectHadoopAgentResources=true
+
+# Character string as prefix of measurement item name(ID)
+javelin.resource.itemName.prefix=
+
+# Flag for acquisition of runnable thread count
+javelin.resource.thread.runnable=false
+
+# Flag for acquisition of blocked thread count
+javelin.resource.thread.blocked=false
+
+# Prefixmatch pattern list of item added no prefix to measurement item name(ID)
+#javelin.resource.itemName.noPrefixList=/hdfs,/mapreduce
+
+
+#--------------------------------------------------
+# Setting for Event Sending
+#--------------------------------------------------
+
+# Flag for InvocationFullEvent sending
+javelin.record.invocation.sendFullEvent=true
+
+
+#--------------------------------------------------
+# Setting for Stall Method Monitoring 
+#--------------------------------------------------
+# Flag for stall method monitoring 
+javelin.method.stall.monitor=false
+
+# Interval for stall method monitoring (Unit:ms)
+javelin.method.stall.interval=10000
+
+# Threshold value to judgement as stall method (Unit:ms)
+javelin.method.stall.threshold=60000
+
+# Depth of stacktrace which is output when stall method is detected
+javelin.method.stall.traceDepth=30
+
+#--------------------------------------------------
+# Setting for SSL
+#--------------------------------------------------
+# Flag for SSL enable
+javelin.ssl.enable=false
+
+# SSL Keystore path.
+javelin.ssl.keystore=../conf/enskeystore
+
+# SSL Keystore password.
+javelin.ssl.keystore.pass=enskeypass
+
+# SSL Truststore path.
+javelin.ssl.truststore=../conf/enstrueststore
+
+# SSL Truststore password.
+javelin.ssl.truststore.pass=enstrustpass
+
+#--------------------------------------------------
+# Setting for Hadoop
+#--------------------------------------------------
+# Flag for acquisition of HadoopAgent resource data
+javelin.resource.collectHadoopAgentResources=true
+
+# Flag for acquisition of HBaseAgent resource data
+javelin.resource.collectHBaseAgentResources=true
+
+
+################################################################################
+# JDBC Javelin Configurations
+################################################################################
+
+#--------------------------------------------------
+# Setting for JDBCJavelin
+#--------------------------------------------------
+
+# Flag for JDBC monitoring
+javelin.jdbc.enable=true
+
+# Flag for record of value of bind variables
+javelin.jdbc.recordBindVal=false
+
+# Flag for all log output of nested JDBC driver class calling
+javelin.jdbc.recordDuplJdbcCall=false
+
+# Maximum string length of SQL to record
+javelin.jdbc.stringLimitLength=102400
+
+# Flag for the number of the same SQL calling excess monitoring in the same transaction
+javelin.jdbc.sqlcount.monitor=true
+
+# Threshold value for the number of the same SQL calling excess in the same transaction
+# If javelin.jdbc.sqlcount.monitor=true, it is valid.
+javelin.jdbc.sqlcount=50
+
+# Flag for stacktrace output with JDBCJavelin
+javelin.jdbc.record.stackTrace=false
+
+# Threshold value for stacktrace output with JDBCJavelin
+javelin.jdbc.record.stacktraceThreshold=100
+
+#--------------------------------------------------
+# Setting for Execution Plan Acquisition
+#--------------------------------------------------
+
+# Flag for execution plan acquisition
+javelin.jdbc.recordExecPlan=true
+
+# Get execution plan if SQL execution time exceeds the following value.(Unit: millisecond)
+javelin.jdbc.execPlanThreshold=0
+
+# Execution plan acquisition interval(Unit: millisecond)
+javelin.jdbc.planInterval=86400000
+
+
+#--------------------------------------------------
+# Inherent Setting for Various DBMS
+#--------------------------------------------------
+
+# Flag for Oracle SQL trace in units of session
+javelin.jdbc.oracle.allowSqlTrace=false
+
+# Flag for detail execution plan output by PostgreSQL
+javelin.jdbc.postgres.verbosePlan=false
+
+# End of javelin.properties ####################################################
+

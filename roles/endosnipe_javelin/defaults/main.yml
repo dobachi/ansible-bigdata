@@ -1,0 +1,4 @@
+---
+# defaults file for roles/endosnipe_javelin
+endo_javelin_connect_host: '{{ groups["endo_dashboard"][0] }}'
+endo_javelin_cluster_name: 'default'
