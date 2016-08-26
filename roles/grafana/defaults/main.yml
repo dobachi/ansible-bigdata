@@ -1,7 +1,4 @@
 ---
-# defaults file for roles/grafana
-grafana_version: '1.9.1'
-
 # The following parameter is configured in group_vars/all/grafana
 
 #grafana_influxdb_list:
