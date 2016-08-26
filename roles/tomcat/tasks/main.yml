@@ -1,0 +1,8 @@
+---
+# tasks file for roles/tomcat
+- name: install_tomcat
+  yum: name={{ item }} state=installed
+  with_items:
+    - tomcat
+    - tomcat-admin-webapps
+  tags: tomcat
