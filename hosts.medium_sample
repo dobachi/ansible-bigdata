@@ -158,3 +158,15 @@ manage
 
 [data_loader]
 hd-loader01
+
+[endosnipe:children]
+endo_javelin
+endo_dashboard
+
+[endo_javelin]
+172.31.26.84
+172.31.30.243
+172.31.30.244
+
+[endo_dashboard]
+endo
