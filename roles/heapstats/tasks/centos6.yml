@@ -1,0 +1,15 @@
+- name: install_openjdk8
+  yum: name={{ item }} state=installed enablerepo='*-debug*'
+  with_items:
+    - java-1.8.0-openjdk
+    - java-1.8.0-openjdk-devel
+    - java-1.8.0-openjdk-debuginfo
+  when: heapstats_install_openjdk8 == True
+  tags: heapstats
+
+- name: install_heapstats
+  yum: name={{ item }} state=installed
+  with_items:
+    - http://icedtea.wildebeest.org/download/heapstats/heapstats-2.0.1/bin/agent/el6/x86_64/heapstats-2.0.1-0.el6.x86_64.rpm
+    - http://icedtea.wildebeest.org/download/heapstats/heapstats-2.0.1/bin/agent/el6/x86_64/heapstats-debuginfo-2.0.1-0.el6.x86_64.rpm
+  tags: heapstats

@@ -8,6 +8,8 @@ kafka_cluster
 confluent_kafka_cluster
 manage
 data_loader
+endosnipe
+heapstats
 
 ; This is a dummy
 [local]

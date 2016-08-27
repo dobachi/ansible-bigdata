@@ -1,0 +1,5 @@
+- hosts: "{{ server | default('heapstats') }}"
+  roles:
+    - { role: common, common_config_hostname: True }
+    - epel
+    - heapstats

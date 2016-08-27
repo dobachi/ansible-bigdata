@@ -1,0 +1,3 @@
+---
+# defaults file for roles/heapstats
+heapstats_install_openjdk8: False
