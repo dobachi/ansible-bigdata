@@ -166,9 +166,18 @@ endo_javelin
 endo_dashboard
 
 [endo_javelin]
-172.31.26.84
-172.31.30.243
-172.31.30.244
+hd-slave01
+hd-slave02
+hd-slave03
+hd-slave04
+hd-slave05
 
 [endo_dashboard]
-endo
+manage
+
+[heapstats]
+hd-slave01
+hd-slave02
+hd-slave03
+hd-slave04
+hd-slave05
