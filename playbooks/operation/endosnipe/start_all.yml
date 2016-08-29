@@ -1,0 +1,3 @@
+- include: start_postgresql.yml
+- include: start_tomcat.yml
+- include: start_datacollector.yml

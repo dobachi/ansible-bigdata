@@ -1,0 +1,5 @@
+- hosts: "{{ server | default('endo_dashboard') }}"
+  tasks:
+    - name: start_tomcat
+      service: name=tomcat state=started
+

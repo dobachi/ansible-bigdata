@@ -1,0 +1,2 @@
+- include: stop_all.yml
+- include: start_all.yml

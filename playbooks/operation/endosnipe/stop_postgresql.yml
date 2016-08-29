@@ -1,0 +1,5 @@
+- hosts: "{{ server | default('endo_dashboard') }}"
+  tasks:
+    - name: stop postgresql
+      service: name=postgresql state=stopped
+

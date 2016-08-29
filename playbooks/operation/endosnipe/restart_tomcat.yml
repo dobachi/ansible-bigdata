@@ -1,0 +1,2 @@
+- include: stop_tomcat.yml
+- include: start_tomcat.yml
