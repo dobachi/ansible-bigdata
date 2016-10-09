@@ -5,17 +5,27 @@
 spark.master            {{ spark_comm_master }}
 spark.eventLog.enabled  true
 spark.eventLog.dir      {{ spark_comm_logdir }}
-spark.serializer        org.apache.spark.serializer.KryoSerializer
+# spark.serializer        org.apache.spark.serializer.KryoSerializer
 
 spark.driver.extraLibraryPath  {{ spark_comm_driver_extralib }}
 spark.executor.extraLibraryPath  {{ spark_comm_executor_extralib }}
 
 spark.yarn.historyServer.address {{ spark_comm_historyserver }}:18080
 
-spark.sql.warehouse.dir {{}}
+{% if spark_comm_executor_memOverhead is defined %}
+spark.yarn.executor.memoryOverhead {{ spark_comm_executor_memOverhead }}
+{% endif %}
 
 spark.executor.instances {{ spark_comm_exe_instances }}
 
 {% if spark_comm_metrics_properties_path is defined %}
 spark.metrics.conf {{ spark_comm_metrics_properties_path }}
+{% endif %}
+
+{% if spark_comm_driver_extrajavaopts is defined %}
+spark.driver.extraJavaOptions {{ spark_comm_driver_extrajavaopts }}
+{% endif %}
+
+{% if spark_comm_executor_extrajavaopts is defined %}
+spark.executor.extraJavaOptions {{ spark_comm_executor_extrajavaopts }}
 {% endif %}

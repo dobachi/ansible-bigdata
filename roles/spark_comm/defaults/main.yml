@@ -41,6 +41,9 @@ spark_comm_logdir: 'hdfs://{{ spark_comm_hdfs_cluster_name }}/var/log/spark'
 spark_comm_historyserver: '{{ groups["hadoop_other"][0] }}'
 spark_comm_driver_extralib: '/usr/lib/hadoop/lib/native/'
 spark_comm_executor_extralib: '/usr/lib/hadoop/lib/native/'
+# spark_comm_executor_memOverhead: '2G'
+# spark_comm_driver_extrajavaopts: '-XX:+UseG1GC -XX:MaxMetaspaceSize=256M'
+# spark_comm_executor_extrajavaopts: '-XX:+UseG1GC -XX:MaxMetaspaceSize=256M'
 
 # hive-site.xml
 
