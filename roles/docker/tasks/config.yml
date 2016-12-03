@@ -3,5 +3,5 @@
     dest: /etc/sysconfig/docker-storage
     regexp: '^DOCKER_STORAGE_OPTIONS'
     line: 'DOCKER_STORAGE_OPTIONS="--storage-opt dm.no_warn_on_loop_devices=true"'
-  when: docker_stop_warn_loopback
+  when: docker_stop_loopback_warn
   notify: restat_docker
