@@ -1,6 +1,6 @@
 - name: make_data_dir
   file: path={{ item }} state=directory owner=hdfs group=hadoop mode=777 recurse=yes
-  with_items: cdh5_pseudo_data_dir_list
+  with_items: "{{ cdh5_pseudo_data_dir_list }}"
 
 - name: make_app_log_dirs
   file: path={{ cdh5_pseudo_yarn_nm_remote_app_log_dir }} state=directory owner=yarn group=hadoop mode=775
