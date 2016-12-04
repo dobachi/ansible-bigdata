@@ -4,6 +4,7 @@
 cdh5_pseudo_host: 'pseudo'
 cdh5_pseudo_data_dir_list:
   - '/data/1'
+cdh5_pseudo_rpm_url: 'http://archive.cloudera.com/cdh5/one-click-install/redhat/{{ ansible_distribution_major_version }}/x86_64/cloudera-cdh-5-0.x86_64.rpm'
 
 # =========================================
 # parameters for each configuration file
