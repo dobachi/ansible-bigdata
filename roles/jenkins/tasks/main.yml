@@ -1,0 +1,20 @@
+---
+# tasks file for roles/jenkins
+
+# Installation
+- name: download_repo_file
+  get_url: url=https://pkg.jenkins.io/redhat-stable/jenkins.repo dest=/etc/yum.repos.d/jenkins.repo 
+  tags: jenkins
+
+- name: import_key
+  shell: rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+  tags: jenkins
+
+- name: yum_install_jenkins
+  yum: name=jenkins state=installed
+  tags: jenkins
+
+# Configuration
+- name: enable_service
+  service: name=jenkins state=started enabled=yes
+  tags: jenkins
