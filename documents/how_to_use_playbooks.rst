@@ -532,4 +532,18 @@ Then you can access Ambari web UI on "manage" node.
 
 .. note:: Todo: blueprint
 
+Configure Jenkins
+--------------------------
+
+To  install Jenkins and related packages, execute the following command.
+
+.. code-block:: shell
+
+ $ ansible-playbook playbooks/conf/jenkins/jenkins.yml -k -s
+
+Soon, Jenkins service is started.
+Please read official documents for the detailed information.
+
+https://jenkins.io/doc/
+
 .. set ft=rst tw=0 et ts=2 sw=2
