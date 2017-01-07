@@ -221,7 +221,7 @@ We can use playbooks in playbooks/operation directory to operate services.
 
 ================================ ====================================================================
 Directory                        Use for
-===============================- ====================================================================
+================================ ====================================================================
 playbooks/operation/cdh5         Operation of Hadoop Services.
                                  e.g. Formating HDFS, Start/Stop services, ...
 playbooks/operation/cdh5_pseudo  Operation of Hadoop Services.

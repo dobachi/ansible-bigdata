@@ -152,5 +152,5 @@ Roles to configure CI environment
 ================ =======================================================
 Role name        Use for
 ================ =======================================================
-jenkins          Configuration of Jenkins
+jenkins          Configuration of Jenkins.
 ================ =======================================================
