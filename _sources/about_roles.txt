@@ -145,3 +145,12 @@ Role name        Use for
 ambari_server    Configuration of Ambari server
 ambari_agent     Configuration of Ambari agent
 ================ =======================================================
+
+Roles to configure CI environment
+-------------------------------------------
+
+================ =======================================================
+Role name        Use for
+================ =======================================================
+jenkins          Configuration of Jenkins
+================ =======================================================

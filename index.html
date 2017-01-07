@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -10,10 +12,11 @@
     
     <link rel="stylesheet" href="_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/print.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
+        URL_ROOT:    '',
         VERSION:     '0.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
@@ -23,15 +26,16 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/theme_extras.js"></script>
     <link rel="top" title="Ansible playbooks to construct Hadoop environment" href="#" />
     <link rel="next" title="1. Abstract" href="abstract.html" /> 
   </head>
-  <body role="document">
-      <div class="header" role="banner"><h1 class="heading"><a href="#">
+  <body>
+      <div class="header"><h1 class="heading"><a href="#">
           <span>Ansible playbooks to construct Hadoop environment</span></a></h1>
         <h2 class="heading"><span>What is this document?</span></h2>
       </div>
-      <div class="topnav" role="navigation" aria-label="top navigation">
+      <div class="topnav">
       
         <p>
         <a class="uplink" href="#">Contents</a>
@@ -87,6 +91,7 @@
 <li class="toctree-l3"><a class="reference internal" href="about_playbooks.html#kafka">5.1.10. kafka</a></li>
 <li class="toctree-l3"><a class="reference internal" href="about_playbooks.html#confluent">5.1.11. confluent</a></li>
 <li class="toctree-l3"><a class="reference internal" href="about_playbooks.html#ambari">5.1.12. ambari</a></li>
+<li class="toctree-l3"><a class="reference internal" href="about_playbooks.html#jenkins">5.1.13. jenkins</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="about_playbooks.html#playbooks-for-operation">5.2. Playbooks for operation</a><ul>
@@ -118,6 +123,7 @@
 <li class="toctree-l2"><a class="reference internal" href="about_roles.html#roles-to-configure-kafka">6.12. Roles to configure Kafka</a></li>
 <li class="toctree-l2"><a class="reference internal" href="about_roles.html#roles-to-configure-confluent">6.13. Roles to configure Confluent</a></li>
 <li class="toctree-l2"><a class="reference internal" href="about_roles.html#roles-to-configure-ambari">6.14. Roles to configure Ambari</a></li>
+<li class="toctree-l2"><a class="reference internal" href="about_roles.html#roles-to-configure-ci-environment">6.15. Roles to configure CI environment</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="how_to_use_playbooks.html">7. How to use this playbooks</a><ul>
@@ -178,6 +184,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="how_to_use_playbooks.html#configure-ambari">7.13. Configure Ambari</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how_to_use_playbooks.html#configure-jenkins">7.14. Configure Jenkins</a></li>
 </ul>
 </li>
 </ul>
@@ -187,7 +194,7 @@
 
 
       </div>
-      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      <div class="bottomnav">
       
         <p>
         <a class="uplink" href="#">Contents</a>
@@ -197,9 +204,9 @@
 
       </div>
 
-    <div class="footer" role="contentinfo">
+    <div class="footer">
         &copy; Copyright 2014, dobachi.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>
 </html>

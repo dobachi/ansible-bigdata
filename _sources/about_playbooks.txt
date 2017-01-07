@@ -208,6 +208,12 @@ ambari
 
   + Configure Ambari server
 
+jenkins
+~~~~~~~~~~~~
+* jenkins.yml
+
+  + Configure Jenkins server
+
 Playbooks for operation
 -----------------------
 

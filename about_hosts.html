@@ -1,0 +1,190 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>3. About hosts(inventory file) &mdash; Ansible playbooks to construct Hadoop environment</title>
+    
+    <link rel="stylesheet" href="_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/print.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/theme_extras.js"></script>
+    <link rel="top" title="Ansible playbooks to construct Hadoop environment" href="index.html" />
+    <link rel="next" title="5. About playbooks" href="about_playbooks.html" />
+    <link rel="prev" title="2. Getting Started" href="getting_started.html" /> 
+  </head>
+  <body>
+      <div class="header"><h1 class="heading"><a href="index.html">
+          <span>Ansible playbooks to construct Hadoop environment</span></a></h1>
+        <h2 class="heading"><span>3. About hosts(inventory file)</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="getting_started.html">2. Getting Started</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="about_playbooks.html">5. About playbooks</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="about-hosts-inventory-file">
+<h1>3. About hosts(inventory file)<a class="headerlink" href="#about-hosts-inventory-file" title="Permalink to this headline">¶</a></h1>
+<p>We have two types of Ansible hosts sample.
+The following is the location of the main services.</p>
+<p>hosts.medium_sample:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Master Services(NameNode, Zookeeper, JournalNode and ResourceManager): 3 nodes</li>
+<li>Client: 1 node</li>
+<li>Slave: 5 nodes</li>
+<li>Manage: 1 nodes</li>
+<li>Kafka: 3 nodes</li>
+</ul>
+</div></blockquote>
+<p>hosts.large_sample:</p>
+<blockquote>
+<div><ul class="simple">
+<li>NameNode: 2 nodes</li>
+<li>Zookeeper and JournalNode: 3 nodes</li>
+<li>ResourceManager: 2 nodes</li>
+<li>Client: 1 node</li>
+<li>Slave: 10 nodes</li>
+<li>Manage: 1 nodes</li>
+<li>Kafka: 3 nodes</li>
+</ul>
+</div></blockquote>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Both hosts sample includes &#8220;hadoop_pseudo&#8221; group,
+which is the pseudo Hadoop environment.</p>
+</div>
+</div>
+<div class="section" id="about-groups-in-inventory">
+<h1>4. About groups in inventory<a class="headerlink" href="#about-groups-in-inventory" title="Permalink to this headline">¶</a></h1>
+<p>This example of inventory includes the following configured groups.</p>
+<p><strong>Main group</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="25%" />
+<col width="75%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">group</th>
+<th class="head">description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>production</td>
+<td>The top group which represent whole of this environment.
+This group is used to define the environmental specific parameters
+using group variables.</td>
+</tr>
+<tr class="row-odd"><td>local</td>
+<td>The dummy group to define localhost in inventory</td>
+</tr>
+<tr class="row-even"><td>hadoop_all</td>
+<td>This group includes all groups and nodes in Hadoop cluster</td>
+</tr>
+<tr class="row-odd"><td>hadoop_master</td>
+<td>This group includes all groups and nodes which provides
+Hadoop&#8217;s master service, such as NameNodes.</td>
+</tr>
+<tr class="row-even"><td>hadoop_namenode</td>
+<td>This group includes both of primary NameNode and backup NameNode</td>
+</tr>
+<tr class="row-odd"><td>hadoop_journalnode</td>
+<td>This group includes JournalNodes</td>
+</tr>
+<tr class="row-even"><td>hadoop_zookeeperserver</td>
+<td>This group includes Zookeeper nodes.
+The parameter &#8220;zookeeper_server_id&#8221; is configured with each nodes.</td>
+</tr>
+<tr class="row-odd"><td>hadoop_resourcemanager</td>
+<td>This group includes ResourceManagers</td>
+</tr>
+<tr class="row-even"><td>hadoop_other</td>
+<td>This group includes node to provides Hadoop side services,
+such as HistoryServer.</td>
+</tr>
+<tr class="row-odd"><td>hadoop_slave</td>
+<td>This group includes slave nodes of Hadoop</td>
+</tr>
+<tr class="row-even"><td>hadoop_client</td>
+<td>This group includes all groups and nodes which is used
+as clients of Hadoop and other services.</td>
+</tr>
+<tr class="row-odd"><td>hadoop_pseudo</td>
+<td>This group includes a ndoe which provide Hadoop pseudo environment.</td>
+</tr>
+<tr class="row-even"><td>manage</td>
+<td>This group includes nodes to control clusters</td>
+</tr>
+<tr class="row-odd"><td>kafka_cluster</td>
+<td>This group includes Kafka brokers of Apache Kafka (Community version)</td>
+</tr>
+<tr class="row-even"><td>confluent_kafka_cluster</td>
+<td>This group includes Kafka brokers of Confluent Kafka</td>
+</tr>
+<tr class="row-odd"><td>confluent_schema_registry</td>
+<td>This group includes Confluent&#8217;s schema registry service nodes</td>
+</tr>
+<tr class="row-even"><td>confluent_kafka_rest</td>
+<td>This group includes Confluent&#8217;s REST Proxy serivce nodes</td>
+</tr>
+</tbody>
+</table>
+<p>If you are managing several Hadoop cluster and environment, such as production, test, etc,
+you can use the top-level group to define such environment.
+The group variables of each group may define parameters which are specific to each environment.</p>
+<p>Example:</p>
+<div class="highlight-python"><pre>group_vars/all/something        ... This includes default parameters for all environment
+group_vars/production/something ... This includes parameters which are specific to the production environment
+group_vars/test/something       ... This includes parameters which are specific to the test environment</pre>
+</div>
+<p>If you define several inventory file which represent each environment,
+you can use them to swich environments which you want to configure in executing ansible-playbook command.</p>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="getting_started.html">2. Getting Started</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="about_playbooks.html">5. About playbooks</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+        &copy; Copyright 2014, dobachi.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>
