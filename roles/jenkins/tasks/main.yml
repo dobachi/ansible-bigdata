@@ -15,6 +15,11 @@
   tags: jenkins
 
 # Configuration
+- name: copy_config
+  template: src=jenkins.j2 dest=/etc/sysconfig/jenkins
+  tags: jenkins
+
+# Service
 - name: enable_service
   service: name=jenkins state=started enabled=yes
   tags: jenkins
