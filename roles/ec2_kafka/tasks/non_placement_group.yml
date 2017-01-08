@@ -7,15 +7,15 @@
     wait: yes
     region: "{{ ec2_kafka_region }}"
     instance_tags:
-      name: "{{ ec2_kafka_instance_tag }}"
+      Name: "{{ ec2_kafka_instance_tag }}"
       nodetype: "{{ item.name }}"
     exact_count: 1
     count_tag:
-      name: "{{ ec2_kafka_instance_tag }}"
+      Name: "{{ ec2_kafka_instance_tag }}"
       nodetype: "{{ item.name }}"
     private_ip: "{{ item.ip }}"
     vpc_subnet_id: "{{ ec2_kafka_vpc_subnet_id }}"
-  with_items: ec2_kafka_list
+  with_items: "{{ ec2_kafka_list }}"
   register: ec2_kafka_result
 
 - name: print_master_debugs

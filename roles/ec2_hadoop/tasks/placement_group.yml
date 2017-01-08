@@ -7,16 +7,16 @@
     wait: yes
     region: "{{ ec2_hadoop_region }}"
     instance_tags:
-      name: "{{ ec2_hadoop_instance_tag }}"
+      Name: "{{ ec2_hadoop_instance_tag }}"
       nodetype: "{{ item.name }}"
     exact_count: 1
     count_tag:
-      name: "{{ ec2_hadoop_instance_tag }}"
+      Name: "{{ ec2_hadoop_instance_tag }}"
       nodetype: "{{ item.name }}"
     private_ip: "{{ item.ip }}"
     vpc_subnet_id: "{{ ec2_hadoop_vpc_subnet_id }}"
     placement_group: "{{ ec2_hadoop_placement_group }}"
-  with_items: ec2_hadoop_ma_list
+  with_items: "{{ ec2_hadoop_ma_list }}"
   register: ec2_hadoop_ma_result
 
 - name: up_slaves
@@ -28,16 +28,16 @@
     wait: yes
     region: "{{ ec2_hadoop_region }}"
     instance_tags:
-      name: "{{ ec2_hadoop_instance_tag }}"
+      Name: "{{ ec2_hadoop_instance_tag }}"
       nodetype: "{{ item.name }}"
     exact_count: 1
     count_tag:
-      name: "{{ ec2_hadoop_instance_tag }}"
+      Name: "{{ ec2_hadoop_instance_tag }}"
       nodetype: "{{ item.name }}"
     private_ip: "{{ item.ip }}"
     vpc_subnet_id: "{{ ec2_hadoop_vpc_subnet_id }}"
     placement_group: "{{ ec2_hadoop_placement_group }}"
-  with_items: ec2_hadoop_sl_list
+  with_items: "{{ ec2_hadoop_sl_list }}"
   register: ec2_hadoop_sl_result
 
 - name: up_client
@@ -49,16 +49,16 @@
     wait: yes
     region: "{{ ec2_hadoop_region }}"
     instance_tags:
-      name: "{{ ec2_hadoop_instance_tag }}"
+      Name: "{{ ec2_hadoop_instance_tag }}"
       nodetype: "{{ item.name }}"
     exact_count: 1
     count_tag:
-      name: "{{ ec2_hadoop_instance_tag }}"
+      Name: "{{ ec2_hadoop_instance_tag }}"
       nodetype: "{{ item.name }}"
     private_ip: "{{ item.ip }}"
     vpc_subnet_id: "{{ ec2_hadoop_vpc_subnet_id }}"
     placement_group: "{{ ec2_hadoop_placement_group }}"
-  with_items: ec2_hadoop_cl_list
+  with_items: "{{ ec2_hadoop_cl_list }}"
   register: ec2_hadoop_cl_result
 
 - name: print_master_debugs

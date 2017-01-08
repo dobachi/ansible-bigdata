@@ -7,15 +7,15 @@
     wait: yes
     region: "{{ ec2_fluentd_region }}"
     instance_tags:
-      name: "{{ ec2_fluentd_instance_tag }}"
+      Name: "{{ ec2_fluentd_instance_tag }}"
       nodetype: "{{ item.name }}"
     exact_count: 1
     count_tag:
-      name: "{{ ec2_fluentd_instance_tag }}"
+      Name: "{{ ec2_fluentd_instance_tag }}"
       nodetype: "{{ item.name }}"
     private_ip: "{{ item.ip }}"
     vpc_subnet_id: "{{ ec2_fluentd_vpc_subnet_id }}"
-  with_items: ec2_fluentd_list
+  with_items: "{{ ec2_fluentd_list }}"
   register: ec2_fluentd_result
 
 - name: print_master_debugs
