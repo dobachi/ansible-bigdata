@@ -46,7 +46,7 @@ master01
 ; Backup NameNode
 ; This group should have only one node.
 [hadoop_namenode_backup]
-master02
+master03
 
 ; All of JournalNodes
 [hadoop_journalnode]
