@@ -17,3 +17,8 @@
 - name: Install
   shell: bash Anaconda2-{{ anacondace_version }}-Linux-x86_64.sh -b -p /usr/local/anacondace/Anaconda2-{{ anacondace_version }}-Linux-x86_64 chdir=/usr/local/anacondace creates=/usr/local/anacondace/Anaconda2-{{ anacondace_version }}-Linux-x86_64/LICENSE.txt
   tags: anacondace
+
+# Configuration
+- name: create_symlink
+  file: dest=/usr/local/anacondace/default state=link src=/usr/local/anacondace/Anaconda2-{{ anacondace_version }}-Linux-x86_64
+  tags: anacondace
