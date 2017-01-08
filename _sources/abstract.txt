@@ -46,10 +46,10 @@ This project's assumption about middleware components and servers.
 Server   Use for
 ======== ================================================================================
 master01 Primary NameNode, JournalNode, Zookeeper Server(id=1), Ganglia Slave
-master02 Backup NameNode, JournalNode, Zookeeper Server(id=2), Primary ResourceManager,
+master02 JournalNode, Zookeeper Server(id=2), Primary ResourceManager,
          Ganglia Slave
 master03 JournalNode, Zookeeper Server(id=3), HistoryServer, Backup ResourceManager,
-         Ganglia Slave, Ganglia Master, InfluxDB, Grafana
+         Backup NameNode, Ganglia Slave, Ganglia Master, InfluxDB, Grafana
 client01 Hadoop Client, Spark Core, Ganglia Slave, Zeppelin
 slave01  DataNode, NodeManager, Ganglia Slave
 slave02  DataNode, NodeManager, Ganglia Slave

@@ -102,12 +102,12 @@ Each function is available individually.</p>
 <td>Primary NameNode, JournalNode, Zookeeper Server(id=1), Ganglia Slave</td>
 </tr>
 <tr class="row-odd"><td>master02</td>
-<td>Backup NameNode, JournalNode, Zookeeper Server(id=2), Primary ResourceManager,
+<td>JournalNode, Zookeeper Server(id=2), Primary ResourceManager,
 Ganglia Slave</td>
 </tr>
 <tr class="row-even"><td>master03</td>
 <td>JournalNode, Zookeeper Server(id=3), HistoryServer, Backup ResourceManager,
-Ganglia Slave, Ganglia Master, InfluxDB, Grafana</td>
+Backup NameNode, Ganglia Slave, Ganglia Master, InfluxDB, Grafana</td>
 </tr>
 <tr class="row-odd"><td>client01</td>
 <td>Hadoop Client, Spark Core, Ganglia Slave, Zeppelin</td>
