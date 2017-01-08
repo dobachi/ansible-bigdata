@@ -10,7 +10,7 @@
   tasks:
     - name: wait_for_resourcemanager_web_service_port_stopped
       wait_for: host={{ item }} port=8088 state=stopped timeout={{ cdh5_wait_for_timeout }}
-      with_items: groups['hadoop_resourcemanager']
+      with_items: "{{ groups['hadoop_resourcemanager'] }}"
 
 - hosts: hadoop_slave
   gather_facts: no
@@ -24,7 +24,7 @@
   tasks:
     - name: wait_for_nodemanager_service_port_stopped
       wait_for: host={{ item }} port=8040 state=stopped timeout={{ cdh5_wait_for_timeout }}
-      with_items: groups['hadoop_slave']
+      with_items: "{{ groups['hadoop_slave'] }}"
 
 - hosts: hadoop_other
   gather_facts: no
@@ -38,4 +38,4 @@
   tasks:
     - name: wait_for_other_service_port_stopped
       wait_for: host={{ item }} port=19888 state=stopped timeout={{ cdh5_wait_for_timeout }}
-      with_items: groups['hadoop_other']
+      with_items: "{{ groups['hadoop_other'] }}"

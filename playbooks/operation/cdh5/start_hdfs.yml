@@ -10,7 +10,7 @@
   tasks:
     - name: wait_for_journalnode_service_port
       wait_for: host={{ item }} port=8480 timeout={{ cdh5_wait_for_timeout }}
-      with_items: groups['hadoop_journalnode']
+      with_items: "{{ groups['hadoop_journalnode'] }}"
 
 - hosts: hadoop_namenode
   gather_facts: no
@@ -25,7 +25,7 @@
   tasks:
     - name: wait_for_namenode_service_port
       wait_for: host={{ item }} port=8020 timeout={{ cdh5_wait_for_timeout }}
-      with_items: groups['hadoop_namenode']
+      with_items: "{{ groups['hadoop_namenode'] }}"
 
 - hosts: hadoop_slave
   gather_facts: no
@@ -39,4 +39,4 @@
   tasks:
     - name: wait_for_datanode_service_port
       wait_for: host={{ item }} port=50020 timeout={{ cdh5_wait_for_timeout }}
-      with_items: groups['hadoop_slave']
+      with_items: "{{ groups['hadoop_slave'] }}"
