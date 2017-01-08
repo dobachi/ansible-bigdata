@@ -31,6 +31,10 @@ playbooks/conf/fluentd       Configuration of fluentd and td-agent
 playbooks/conf/kafka         Configuration of Kafka
 playbooks/conf/confluent     Configuration of Confluent packages including Kafka
 playbooks/conf/ambari        Configuration of Ambari
+playbooks/conf/jenkins       Configuration of Jenkins
+playbooks/conf/anacondace    Configuration of Anaconda CE
+playbooks/conf/postgresql    Configuration of PostgreSQL
+playbooks/conf/cdh5_hive     Configuration of Hive and PostgreSQL
 ============================ =============================================================
 
 common
@@ -220,6 +224,18 @@ anacondace
 
   + Configure Anaconda CE
 
+postgresql
+~~~~~~~~~~~~
+* postgresql.yml
+
+  + Configure PostgreSQL
+
+cdh5_hive
+~~~~~~~~~~~~
+* cdh5_hive.yml
+
+  + Configure Hive and PostgreSQL
+
 Playbooks for operation
 -----------------------
 
@@ -243,6 +259,7 @@ playbooks/operation/kafka        Start and stop Kafka cluster
 playbooks/operation/confluent    Start and stop Confluent services including Kafka
 playbooks/operation/ambari       Setup Ambari server.
                                  Start and stop each services.
+playbooks/operation/postgresql   Start and stop PostgreSQL. Initialize PostgreSQL DB.
 ================================ ====================================================================
 
 cdh5
@@ -417,3 +434,29 @@ ambari
   + stop_hdfs.yml
   + stop_yarn.yml
   + stop_zookeeper.yml
+
+postgresql
+~~~~~~~~~~~~~~~~~~
+* setup db
+
+  + initdb.yml
+
+* start and stop postgresql
+
+  + start_postgresql.yml
+  + stop_postgresql.yml
+  + restart_postgresql.yml
+
+cdh5_hive
+~~~~~~~~~~~~~
+* setup
+
+  + create_metastore_db.yml
+
+* start and stop services
+
+  + start_metastore.yml
+  + stop_metastore.yml
+
+
+.. vim: ft=rst tw=0

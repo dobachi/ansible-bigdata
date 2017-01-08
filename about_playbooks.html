@@ -114,6 +114,18 @@
 <tr class="row-odd"><td>playbooks/conf/ambari</td>
 <td>Configuration of Ambari</td>
 </tr>
+<tr class="row-even"><td>playbooks/conf/jenkins</td>
+<td>Configuration of Jenkins</td>
+</tr>
+<tr class="row-odd"><td>playbooks/conf/anacondace</td>
+<td>Configuration of Anaconda CE</td>
+</tr>
+<tr class="row-even"><td>playbooks/conf/postgresql</td>
+<td>Configuration of PostgreSQL</td>
+</tr>
+<tr class="row-odd"><td>playbooks/conf/cdh5_hive</td>
+<td>Configuration of Hive and PostgreSQL</td>
+</tr>
 </tbody>
 </table>
 <div class="section" id="common">
@@ -335,6 +347,24 @@ We have two playbooks for Ganglia master and slave.</p>
 </li>
 </ul>
 </div>
+<div class="section" id="postgresql">
+<h3>5.1.15. postgresql<a class="headerlink" href="#postgresql" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>postgresql.yml<ul>
+<li>Configure PostgreSQL</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="cdh5-hive">
+<h3>5.1.16. cdh5_hive<a class="headerlink" href="#cdh5-hive" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>cdh5_hive.yml<ul>
+<li>Configure Hive and PostgreSQL</li>
+</ul>
+</li>
+</ul>
+</div>
 </div>
 <div class="section" id="playbooks-for-operation">
 <h2>5.2. Playbooks for operation<a class="headerlink" href="#playbooks-for-operation" title="Permalink to this headline">¶</a></h2>
@@ -388,6 +418,9 @@ e.g. Formating HDFS, Start/Stop services, ...</td>
 <tr class="row-odd"><td>playbooks/operation/ambari</td>
 <td>Setup Ambari server.
 Start and stop each services.</td>
+</tr>
+<tr class="row-even"><td>playbooks/operation/postgresql</td>
+<td>Start and stop PostgreSQL. Initialize PostgreSQL DB.</td>
 </tr>
 </tbody>
 </table>
@@ -579,6 +612,35 @@ you can use this playbook to control such ZooKeeper serivces.</li>
 <li>stop_hdfs.yml</li>
 <li>stop_yarn.yml</li>
 <li>stop_zookeeper.yml</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id9">
+<h3>5.2.10. postgresql<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>setup db<ul>
+<li>initdb.yml</li>
+</ul>
+</li>
+<li>start and stop postgresql<ul>
+<li>start_postgresql.yml</li>
+<li>stop_postgresql.yml</li>
+<li>restart_postgresql.yml</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id10">
+<h3>5.2.11. cdh5_hive<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>setup<ul>
+<li>create_metastore_db.yml</li>
+</ul>
+</li>
+<li>start and stop services<ul>
+<li>start_metastore.yml</li>
+<li>stop_metastore.yml</li>
 </ul>
 </li>
 </ul>
