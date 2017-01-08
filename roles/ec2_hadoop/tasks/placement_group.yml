@@ -8,10 +8,11 @@
     region: "{{ ec2_hadoop_region }}"
     instance_tags:
       Name: "{{ ec2_hadoop_instance_tag }}"
+      group: "{{ ec2_hadoop_instance_tag }}"
       nodetype: "{{ item.name }}"
     exact_count: 1
     count_tag:
-      Name: "{{ ec2_hadoop_instance_tag }}"
+      group: "{{ ec2_hadoop_instance_tag }}"
       nodetype: "{{ item.name }}"
     private_ip: "{{ item.ip }}"
     vpc_subnet_id: "{{ ec2_hadoop_vpc_subnet_id }}"
@@ -29,10 +30,11 @@
     region: "{{ ec2_hadoop_region }}"
     instance_tags:
       Name: "{{ ec2_hadoop_instance_tag }}"
+      group: "{{ ec2_hadoop_instance_tag }}"
       nodetype: "{{ item.name }}"
     exact_count: 1
     count_tag:
-      Name: "{{ ec2_hadoop_instance_tag }}"
+      group: "{{ ec2_hadoop_instance_tag }}"
       nodetype: "{{ item.name }}"
     private_ip: "{{ item.ip }}"
     vpc_subnet_id: "{{ ec2_hadoop_vpc_subnet_id }}"
@@ -50,10 +52,11 @@
     region: "{{ ec2_hadoop_region }}"
     instance_tags:
       Name: "{{ ec2_hadoop_instance_tag }}"
+      group: "{{ ec2_hadoop_instance_tag }}"
       nodetype: "{{ item.name }}"
     exact_count: 1
     count_tag:
-      Name: "{{ ec2_hadoop_instance_tag }}"
+      group: "{{ ec2_hadoop_instance_tag }}"
       nodetype: "{{ item.name }}"
     private_ip: "{{ item.ip }}"
     vpc_subnet_id: "{{ ec2_hadoop_vpc_subnet_id }}"
