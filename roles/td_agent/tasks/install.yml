@@ -13,5 +13,5 @@
 
 - name: install_td-agent_plugins
   shell: /usr/sbin/td-agent-gem install {{ item }}
-  with_items: td_agent_plugins
+  with_items: "{{ td_agent_plugins }}"
   when: td_agent_plugins is defined

@@ -9,5 +9,5 @@
 
 - name: install_plugins
   gem: name={{ item }} state=present
-  with_items: fluentd_plugins
+  with_items: "{{ fluentd_plugins }}"
   when: fluentd_plugins is defined
