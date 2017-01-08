@@ -214,6 +214,12 @@ jenkins
 
   + Configure Jenkins server
 
+anacondace
+~~~~~~~~~~~~
+* anacondace.yml
+
+  + Configure Anaconda CE
+
 Playbooks for operation
 -----------------------
 
