@@ -1,2 +1,8 @@
-- name: install_cdh5_repo
+- name: install_cdh5_repo_for_CentOS6
   yum: name=http://archive.cloudera.com/cdh5/one-click-install/redhat/6/x86_64/cloudera-cdh-5-0.x86_64.rpm state=installed
+  when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "6"
+
+
+- name: install_cdh5_repo_CentOS7
+  yum: name=http://archive.cloudera.com/cdh5/one-click-install/redhat/7/x86_64/cloudera-cdh-5-0.x86_64.rpm state=installed
+  when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "7"
