@@ -1,0 +1,7 @@
+- hosts: "{{ server | default('hadoop_client') }}"
+  gather_facts: no
+  become: True
+  tasks:
+    - name: stop_hive_metastore
+      service: name=hive-metastore state=stopped
+

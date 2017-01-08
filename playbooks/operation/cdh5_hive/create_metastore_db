@@ -1,0 +1,12 @@
+- hosts: "{{ server | default('hadoop_client') }}"
+  gather_facts: no
+  become: True
+  become_user: postgres
+  tasks:
+    - name: create_user_on_postgres
+      postgresql_user:
+        name: hiveuser
+        password: hive
+    - name: create_db_on_postgres
+      postgresql_db:
+        name: metastore

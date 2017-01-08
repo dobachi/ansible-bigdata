@@ -1,0 +1,2 @@
+- include: stop_metastore.yml
+- include: start_metastore.yml

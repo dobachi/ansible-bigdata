@@ -6,11 +6,13 @@
     - postgresql-server
     - postgresql-devel
     - postgresql-contrib
+    - postgresql-jdbc
     - python-psycopg2
   tags: postgresql
 
-- name: copy_pg_hba.conf
-  template:
-    src: pg_hba.conf.j2
-    dest: /var/lib/pgsql/data/pg_hba.conf
+- name: copy_configuration
+  template: src={{ item }}.j2 dest=/var/lib/pgsql/data/{{ item }}
+  with_items:
+    - pg_hba.conf
+    - postgresql.conf
   tags: postgresql

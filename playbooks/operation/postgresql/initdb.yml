@@ -1,8 +1,16 @@
 - hosts: "{{ server | default('localhost') }}"
+  become: yes
   tasks:
+    - name: stoppostgresql
+      service: name=postgresql state=stopped
+    - name: remove_/var/lib/pgsql/data
+      file: path=/var/lib/pgsql/data state=absent
     - name: postgresql_initdb
       shell: /sbin/service postgresql initdb
 
+- hosts: "{{ server | default('localhost') }}"
+  become: yes
+  tasks:
     - name: start postgresql
       service: name=postgresql state=started  enabled=yes
 

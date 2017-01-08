@@ -551,4 +551,53 @@ To install Anaconda CE, execute the following command.
 The above command installs Anaconda CE pakcages to /usr/local/anacondace directory.
 If you want to configure PATH, please do it yourself.
 
+Configure Hive
+--------------------------
+To install Hive and related packages, execute the following command.
+
+.. code-block:: shell
+
+ $ ansible-playbook playbooks/conf/hive/hive.yml -k -s
+
+The above command installs PostgreSQL and Hive packages as well as common packages.
+To Initialize PostgreSQL Database, execute the following command.
+This command remove existing database and initialize database.
+
+.. code-block:: shell
+
+ $ ansible-playbook playbooks/operation/postgresql/initdb.yml -s -e "server=hadoop_client"
+ $ ansible-playbook playbooks/operation/postgresql/restart_postgresql.yml -s -e "server=hadoop_client"
+
+To create user and database, execute the following command.
+
+.. code-block:: shell
+
+ $ ansible-playbook playbooks/operation/cdh5_hive/create_metastore_db -k -s
+
+To define schema, execute the following command *on the Hadoop client*.
+
+.. code-block:: shell
+
+ $ sudo -u postgres psql
+ postgres=# \i /usr/lib/hive/scripts/metastore/upgrade/postgres/hive-schema-n.n.n.postgres.sql
+ metastore=# \c metastore
+ metastore=# \pset tuples_only on
+ metastore=# \o /tmp/grant-privs
+ metastore=#   SELECT 'GRANT SELECT,INSERT,UPDATE,DELETE ON "'  || schemaname || '". "' ||tablename ||'" TO hiveuser ;'
+ metastore-#   FROM pg_tables
+ metastore-#   WHERE tableowner = CURRENT_USER and schemaname = 'public';
+ metastore=# \o
+ metastore=# \pset tuples_only off
+ metastore=# \i /tmp/grant-privs
+
+To start metastore service, execute the following command.
+
+
+.. code-block:: shell
+
+ $ ansible-playbook playbooks/operation/cdh5_hive/start_metastore.yml -k -s
+
+If you also use Hive as a input of Spark,
+please copy hive-site.xml from /etc/hive/conf to /etc/spark/conf.
+
 .. set ft=rst tw=0 et ts=2 sw=2

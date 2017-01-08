@@ -1,0 +1,19 @@
+---
+# tasks file for roles/cdh5_hive
+
+# Installation
+- name: install_hive
+  yum: name={{ item }} state=installed
+  with_items:
+    - hive
+    - hive-metastore
+  tags: cdh5_hive
+
+- name: copy_postgresql_jdbc
+  shell: cp /usr/share/java/postgresql-jdbc.jar /usr/lib/hive/lib/postgresql-jdbc.jar creates=/usr/lib/hive/lib/postgresql-jdbc.jar
+  tags: cdh5_hive
+
+# Configuration
+- name: copy_hive-site.xml
+  template: src=hive-site.xml.j2 dest=/etc/hive/conf/hive-site.xml
+  tags: cdh5_hive

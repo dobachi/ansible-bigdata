@@ -1,2 +1,4 @@
 ---
 # defaults file for roles/postgresql
+postgresql_listen_addresses: '*'
+postgresql_std_conf: 'off'
