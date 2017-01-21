@@ -1,0 +1,11 @@
+---
+# tasks file for roles/alluxio_conf
+
+# Config
+- name: mkdir_/etc/alluxio
+  file: path=/etc/alluxio state=directory
+  tags: alluxio_conf
+
+- name: deploy_alluxio-site.properties
+  template: src=alluxio-site.properties.j2 dest=/etc/alluxio/alluxio-site.properties
+  tags: alluxio_conf
