@@ -11,7 +11,7 @@
   tags: alluxio_yarn
 
 - name: unarchive_alluxio_package
-  unarchive: src=/usr/local/alluxio/alluxio-{{ alluxio_yarn_version }}-bin.tar.gz dest=/usr/local/alluxio remote_src=yes keep_newer=True
+  unarchive: src=/usr/local/alluxio/alluxio-{{ alluxio_yarn_version }}-bin.tar.gz dest=/usr/local/alluxio remote_src=yes creates=/usr/local/alluxio/alluxio-{{ alluxio_yarn_version }}/README.md
   tags: alluxio_yarn
 
 - name: link_default_alluxio
@@ -20,6 +20,18 @@
 
 - name: compile_alluxio_with_yarn
   shell: mvn clean install -Dhadoop.version={{ alluxio_yarn_hadoop_version }} -Pyarn -Dlicense.skip -DskipTests -Dfindbugs.skip -Dmaven.javadoc.skip -Dcheckstyle.skip && touch /usr/local/alluxio/default/compiled creates=/usr/local/alluxio/default/compiled chdir=/usr/local/alluxio/default
+  tags: alluxio_yarn
+
+- name: deply_create_tar.sh
+  template: src=create_tar.sh.j2 dest=/usr/local/alluxio/default/integration/yarn/bin/create_tar.sh mode=755
+  tags: alluxio_yarn
+
+- name: execute_create_tar.sh
+  shell: ./integration/yarn/bin/create_tar.sh chdir=/usr/local/alluxio/default
+  tags: alluxio_yarn
+
+- name: deploy_alluxio-yarn.sh
+  template: src=alluxio-yarn.sh.j2 dest=/usr/local/alluxio/default/integration/yarn/bin/alluxio-yarn.sh mode=755
   tags: alluxio_yarn
 
 # Config
