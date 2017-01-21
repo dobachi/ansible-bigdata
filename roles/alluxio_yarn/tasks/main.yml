@@ -11,7 +11,7 @@
   tags: alluxio_yarn
 
 - name: unarchive_alluxio_package
-  unarchive: src=/usr/local/alluxio/alluxio-{{ alluxio_yarn_version }}-bin.tar.gz dest=/usr/local/alluxio remote_src=yes
+  unarchive: src=/usr/local/alluxio/alluxio-{{ alluxio_yarn_version }}-bin.tar.gz dest=/usr/local/alluxio remote_src=yes keep_newer=True
   tags: alluxio_yarn
 
 - name: link_default_alluxio
