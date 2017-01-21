@@ -35,6 +35,7 @@ playbooks/conf/jenkins       Configuration of Jenkins
 playbooks/conf/anacondace    Configuration of Anaconda CE
 playbooks/conf/postgresql    Configuration of PostgreSQL
 playbooks/conf/cdh5_hive     Configuration of Hive and PostgreSQL
+playbooks/conf/alluxio_yarn  Configuration of Alluxio on YARN
 ============================ =============================================================
 
 common
@@ -235,6 +236,12 @@ cdh5_hive
 * cdh5_hive.yml
 
   + Configure Hive and PostgreSQL
+
+alluxio_yarn
+~~~~~~~~~~~~
+* alluxio_yarn.yml
+
+  + Configure Alluxio on YARN
 
 Playbooks for operation
 -----------------------

@@ -1,0 +1,12 @@
+---
+# defaults file for roles/alluxio-yarn
+
+# Install
+alluxio_yarn_version: "1.4.0"
+alluxio_yarn_hadoop_version: "2.6.0"
+
+# alluxio-site.properties
+alluxio_yarn_master: "{{ groups['hadoop_slave'][0] }}"
+alluxio_yarn_hdfs_uri: "hdfs://mycluster"
+alluxio_yarn_underfs_addr: "{{ alluxio_yarn_hdfs_uri }}/tmp/underFSStorage"
+alluxio_yarn_auth_permission_enabled: "false"

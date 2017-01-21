@@ -1,0 +1,12 @@
+- hosts: "{{ server | default('hd-client01') }}"
+  vars:
+    alluxio_yarn_hadoop_home: "/usr/lib/hadoop"
+    alluxio_yarn_yarn_home: "/usr/lib/hadoop-yarn"
+    alluxio_yarn_hadoop_conf_dir: "/etc/hadoop/conf"
+    alluxio_yarn_num_workers: "3"
+    alluxio_yarn_working_dir: "hdfs://mycluster/tmp"
+    alluxio_yarn_master: '{{ groups["hadoop_slave"][0] }}'
+  tasks:
+    - name: deploy_alluxio
+      shell: HADOOP_HOME={{ alluxio_yarn_hadoop_home }} YARN_HOME={{ alluxio_yarn_yarn_home }} HADOOP_CONF_DIR={{ alluxio_yarn_hadoop_conf_dir }} alluxio-yarn.sh {{ alluxio_yarn_num_workers }} {{ alluxio_yarn_working_dir }} {{ alluxio_yarn_master }}
+

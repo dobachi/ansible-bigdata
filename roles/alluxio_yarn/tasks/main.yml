@@ -1,0 +1,32 @@
+---
+# tasks file for roles/alluxio-yarn
+
+# Install
+- name: mkdir_/usr/local/alluxio
+  file: path=/usr/local/alluxio state=directory
+  tags: alluxio_yarn
+
+- name: download_alluxio_package
+  get_url : url=http://alluxio.org/downloads/files/{{ alluxio_yarn_version }}/alluxio-{{ alluxio_yarn_version }}-bin.tar.gz dest=/usr/local/alluxio/alluxio-{{ alluxio_yarn_version }}-bin.tar.gz
+  tags: alluxio_yarn
+
+- name: unarchive_alluxio_package
+  unarchive: src=/usr/local/alluxio/alluxio-{{ alluxio_yarn_version }}-bin.tar.gz dest=/usr/local/alluxio remote_src=yes
+  tags: alluxio_yarn
+
+- name: link_default_alluxio
+  file: path=/usr/local/alluxio/default state=link src=/usr/local/alluxio/alluxio-{{ alluxio_yarn_version }}
+  tags: alluxio_yarn
+
+- name: compile_alluxio_with_yarn
+  shell: mvn clean install -Dhadoop.version={{ alluxio_yarn_hadoop_version }} -Pyarn -Dlicense.skip -DskipTests -Dfindbugs.skip -Dmaven.javadoc.skip -Dcheckstyle.skip && touch /usr/local/alluxio/default/compiled creates=/usr/local/alluxio/default/compiled chdir=/usr/local/alluxio/default
+  tags: alluxio_yarn
+
+# Config
+- name: deploy_alluxio-site.properties
+  template: src=alluxio-site.properties.j2 dest=/usr/local/alluxio/default/conf/alluxio-site.properties
+  tags: alluxio_yarn
+
+- name: deploy_alluxio.sh
+  template: src=alluxio.sh.j2 dest=/etc/profile.d/alluxio.sh
+  tags: alluxio_yarn
