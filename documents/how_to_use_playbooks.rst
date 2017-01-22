@@ -600,4 +600,42 @@ To start metastore service, execute the following command.
 If you also use Hive as a input of Spark,
 please copy hive-site.xml from /etc/hive/conf to /etc/spark/conf.
 
+
+Configure Alluxio on YARN
+----------------------------
+To configure Alluxio environment at the client,
+please execute the following command.
+
+.. code-block:: shell
+
+ $ ansible-playbook playbooks/conf/alluxio/alluxio_yarn.yml -k -s
+
+This configures /usr/local/alluxio, compiles sources, adds some directories to PATH, and so on.
+
+.. note::
+
+   The role, alluxio_yarn, creates a tar file which is used when you deploy
+   an application to YARN and replace alluxio-yarn.sh in Alluxio package.
+   This is because the original alluxio-yarn.sh create tar files every time
+   you deploy applications and it is not convenient.
+
+If you want to deploy an Alluxio application to YARN,
+please execute the following command.
+
+.. code-block:: shell
+
+ $ ansible-playbook playbooks/operation/alluxio_yarn/deploy_alluxio.yml -k -s
+
+You can configure the following variables.
+
+* alluxio_yarn_hadoop_home: "/usr/lib/hadoop"
+* alluxio_yarn_yarn_home: "/usr/lib/hadoop-yarn"
+* alluxio_yarn_hadoop_conf_dir: "/etc/hadoop/conf"
+* alluxio_yarn_num_workers: "3"
+* alluxio_yarn_working_dir: "hdfs://mycluster/tmp"
+* alluxio_yarn_master: '{{ groups["hadoop_slave"][0] }}'
+
+
+
+
 .. set ft=rst tw=0 et ts=2 sw=2

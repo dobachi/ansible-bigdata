@@ -243,6 +243,8 @@ alluxio_yarn
 
   + Configure Alluxio on YARN
 
+    - Configure client and slave nodes
+
 Playbooks for operation
 -----------------------
 
@@ -267,6 +269,8 @@ playbooks/operation/confluent    Start and stop Confluent services including Kaf
 playbooks/operation/ambari       Setup Ambari server.
                                  Start and stop each services.
 playbooks/operation/postgresql   Start and stop PostgreSQL. Initialize PostgreSQL DB.
+playbooks/operation/cdh5_hive    Set up the metastore. Start and stop
+playbooks/operation/alluxio_yarn Deploy Alluxio cluster to YARN
 ================================ ====================================================================
 
 cdh5
@@ -465,5 +469,10 @@ cdh5_hive
   + start_metastore.yml
   + stop_metastore.yml
 
+deploy_yarn
+~~~~~~~~~~~~~~
+* deploy Alluxio application to YARN
+
+  + deploy_alluxio.yml
 
 .. vim: ft=rst tw=0

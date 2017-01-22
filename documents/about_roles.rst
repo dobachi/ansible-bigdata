@@ -189,5 +189,6 @@ Roles to configure Alluxio
 ================ =======================================================
 Role name        Use for
 ================ =======================================================
+alluxio_conf     Deploy Alluxio configuration files to slave nodes
 alluxio_yarn     Configuration of Alluxio on YARN
 ================ =======================================================
