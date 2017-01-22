@@ -1,30 +1,9 @@
 Playbooks for operation
 -----------------------
+The playbooks in "playbooks/operation" directory provide functions
+to initialize and manage services.
 
-We can use playbooks in playbooks/operation directory to operate services.
-
-================================ ====================================================================
-Directory                        Use for
-================================ ====================================================================
-playbooks/operation/cdh5         Operation of Hadoop Services.
-                                 e.g. Formating HDFS, Start/Stop services, ...
-playbooks/operation/cdh5_pseudo  Operation of Hadoop Services.
-                                 e.g. Formating HDFS, Start/Stop services, ...
-playbooks/operation/common       Operations about SSH key exchange.
-playbooks/operation/ec2          Operation to boot EC2 instances
-playbooks/operation/httpd        Start and stop httpd
-playbooks/operation/influxdb     Operation about InfluxDB initilization
-playbooks/operation/spark_com    Operation of Spark services and building Spark packages
-playbooks/operation/zeppelin     Start and stop zeppelin services
-playbooks/operation/fluentd      Start and stop td-agent services
-playbooks/operation/kafka        Start and stop Kafka cluster
-playbooks/operation/confluent    Start and stop Confluent services including Kafka
-playbooks/operation/ambari       Setup Ambari server.
-                                 Start and stop each services.
-playbooks/operation/postgresql   Start and stop PostgreSQL. Initialize PostgreSQL DB.
-playbooks/operation/cdh5_hive    Set up the metastore. Start and stop
-playbooks/operation/alluxio_yarn Deploy Alluxio cluster to YARN
-================================ ====================================================================
+In this section, the short descriptions for each playbook are shown.
 
 cdh5
 ~~~~

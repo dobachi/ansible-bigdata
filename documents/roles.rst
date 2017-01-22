@@ -1,6 +1,7 @@
 About roles
 ============
-We manage OS and middlewares by using several seperated roles.
+This project has many kinds of roles.
+In this section, the short description for each role are shown.
 
 Roles to configure basic environments
 ----------------------------------------

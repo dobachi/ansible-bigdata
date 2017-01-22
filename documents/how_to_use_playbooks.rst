@@ -1,11 +1,11 @@
 How to use this playbooks
 ==========================
-You can use these playbooks to configure the following configuration.
-**These playbooks are independent of each other** .
+This project provides many kinds of playbooks to configure and manage
+nodes and serivces.
 
-* Ansible client environment to use various Ansible functions
-* Host name configuration
-* CDH5 HDFS/YARN environment
+.. note::
+
+   To understand each playbook, please refer  :ref:`sec-about-playbooks` section.
 
 Assumption of this section
 ----------------------------

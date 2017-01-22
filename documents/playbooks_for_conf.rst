@@ -1,43 +1,22 @@
 Playbooks for configuration
 ----------------------------
-We can use playbooks in playbooks/conf directory to configure servers.
+The playbooks in "playbooks/conf" directory provide functions
+to configure nodes.
 
-**abstract**
-
-============================ =============================================================
-Directory                    Use for
-============================ =============================================================
-playbooks/conf/common        Common and basic configuration
-playbooks/conf/cdh5          Configuration of CDH5 environment
-playbooks/conf/cdh5_pseudo   Configuration of CDH5 Pseudo environment
-playbooks/conf/ansible       Configuration of Ansible environment
-playbooks/conf/ganglia       Configuration of Ganglia
-playbooks/conf/influxdb      Configuration of InfluxDB and Grafana
-playbooks/conf/spark_comm    Configuration of Spark community edition
-playbooks/conf/zeppelin      Configuration of Zeppelin community edition
-playbooks/conf/fluentd       Configuration of fluentd and td-agent
-playbooks/conf/kafka         Configuration of Kafka
-playbooks/conf/confluent     Configuration of Confluent packages including Kafka
-playbooks/conf/ambari        Configuration of Ambari
-playbooks/conf/jenkins       Configuration of Jenkins
-playbooks/conf/anacondace    Configuration of Anaconda CE
-playbooks/conf/postgresql    Configuration of PostgreSQL
-playbooks/conf/cdh5_hive     Configuration of Hive and PostgreSQL
-playbooks/conf/alluxio_yarn  Configuration of Alluxio on YARN
-============================ =============================================================
+In this section, the short descriptions for each playbook are shown.
 
 common
 ~~~~~~
 
-This is a set of common and basic configurations.
+This is a set of common and basic configurations including OS parameters.
 
 * playbooks/conf/common/common_all.yml
 
-  + This playbook executes all basic roles
+  + The playbook which provides all basic configurations.
 
 * playbooks/conf/common/common_only_common.yml
 
-  + This playbook only executes "common" role
+  + The playbook which provides configurations only in "common" role
 
 cdh5
 ~~~~
