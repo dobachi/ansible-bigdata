@@ -126,6 +126,9 @@
 <tr class="row-odd"><td>playbooks/conf/cdh5_hive</td>
 <td>Configuration of Hive and PostgreSQL</td>
 </tr>
+<tr class="row-even"><td>playbooks/conf/alluxio_yarn</td>
+<td>Configuration of Alluxio on YARN</td>
+</tr>
 </tbody>
 </table>
 <div class="section" id="common">
@@ -365,6 +368,18 @@ We have two playbooks for Ganglia master and slave.</p>
 </li>
 </ul>
 </div>
+<div class="section" id="alluxio-yarn">
+<h3>5.1.17. alluxio_yarn<a class="headerlink" href="#alluxio-yarn" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>alluxio_yarn.yml<ul>
+<li>Configure Alluxio on YARN<ul>
+<li>Configure client and slave nodes</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
 </div>
 <div class="section" id="playbooks-for-operation">
 <h2>5.2. Playbooks for operation<a class="headerlink" href="#playbooks-for-operation" title="Permalink to this headline">¶</a></h2>
@@ -421,6 +436,12 @@ Start and stop each services.</td>
 </tr>
 <tr class="row-even"><td>playbooks/operation/postgresql</td>
 <td>Start and stop PostgreSQL. Initialize PostgreSQL DB.</td>
+</tr>
+<tr class="row-odd"><td>playbooks/operation/cdh5_hive</td>
+<td>Set up the metastore. Start and stop</td>
+</tr>
+<tr class="row-even"><td>playbooks/operation/alluxio_yarn</td>
+<td>Deploy Alluxio cluster to YARN</td>
 </tr>
 </tbody>
 </table>
@@ -641,6 +662,15 @@ you can use this playbook to control such ZooKeeper serivces.</li>
 <li>start and stop services<ul>
 <li>start_metastore.yml</li>
 <li>stop_metastore.yml</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="deploy-yarn">
+<h3>5.2.12. deploy_yarn<a class="headerlink" href="#deploy-yarn" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>deploy Alluxio application to YARN<ul>
+<li>deploy_alluxio.yml</li>
 </ul>
 </li>
 </ul>

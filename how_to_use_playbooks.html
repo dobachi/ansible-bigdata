@@ -502,6 +502,34 @@ metastore=# \i /tmp/grant-privs</pre>
 <p>If you also use Hive as a input of Spark,
 please copy hive-site.xml from /etc/hive/conf to /etc/spark/conf.</p>
 </div>
+<div class="section" id="configure-alluxio-on-yarn">
+<h2>7.17. Configure Alluxio on YARN<a class="headerlink" href="#configure-alluxio-on-yarn" title="Permalink to this headline">¶</a></h2>
+<p>To configure Alluxio environment at the client,
+please execute the following command.</p>
+<div class="highlight-shell"><pre>$ ansible-playbook playbooks/conf/alluxio/alluxio_yarn.yml -k -s</pre>
+</div>
+<p>This configures /usr/local/alluxio, compiles sources, adds some directories to PATH, and so on.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The role, alluxio_yarn, creates a tar file which is used when you deploy
+an application to YARN and replace alluxio-yarn.sh in Alluxio package.
+This is because the original alluxio-yarn.sh create tar files every time
+you deploy applications and it is not convenient.</p>
+</div>
+<p>If you want to deploy an Alluxio application to YARN,
+please execute the following command.</p>
+<div class="highlight-shell"><pre>$ ansible-playbook playbooks/operation/alluxio_yarn/deploy_alluxio.yml -k -s</pre>
+</div>
+<p>You can configure the following variables.</p>
+<ul class="simple">
+<li>alluxio_yarn_hadoop_home: &#8220;/usr/lib/hadoop&#8221;</li>
+<li>alluxio_yarn_yarn_home: &#8220;/usr/lib/hadoop-yarn&#8221;</li>
+<li>alluxio_yarn_hadoop_conf_dir: &#8220;/etc/hadoop/conf&#8221;</li>
+<li>alluxio_yarn_num_workers: &#8220;3&#8221;</li>
+<li>alluxio_yarn_working_dir: &#8220;hdfs://mycluster/tmp&#8221;</li>
+<li>alluxio_yarn_master: &#8216;{{ groups[&#8220;hadoop_slave&#8221;][0] }}&#8217;</li>
+</ul>
+</div>
 </div>
 
 
