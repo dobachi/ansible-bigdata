@@ -13,6 +13,8 @@ Content
    abstract
    getting_started
    about_hosts
-   about_playbooks
-   about_roles
    how_to_use_playbooks
+   about_playbooks
+   about_playbooks_for_conf
+   about_playbooks_for_op
+   about_roles
