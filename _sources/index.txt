@@ -11,8 +11,7 @@ Content
    :numbered:
 
    abstract
-   getting_started
-   about_hosts
-   about_playbooks
-   about_roles
+   hosts
    how_to_use_playbooks
+   playbooks
+   roles

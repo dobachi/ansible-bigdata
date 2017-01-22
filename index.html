@@ -63,141 +63,132 @@
 <li class="toctree-l2"><a class="reference internal" href="abstract.html#prerequirement">1.5. Prerequirement</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="getting_started.html">2. Getting Started</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="getting_started.html#prerequirement-for-simplicity">2.1. Prerequirement for simplicity</a></li>
-<li class="toctree-l2"><a class="reference internal" href="getting_started.html#install-ansible">2.2. Install Ansible</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="getting_started.html#clone-playbooks">2.2.1. Clone playbooks</a></li>
-<li class="toctree-l3"><a class="reference internal" href="getting_started.html#modify-configuration-of-ansible">2.2.2. Modify configuration of Ansible</a></li>
-<li class="toctree-l3"><a class="reference internal" href="getting_started.html#install-and-configure-hadoop">2.2.3. Install and configure Hadoop</a></li>
-<li class="toctree-l3"><a class="reference internal" href="getting_started.html#congratulation">2.2.4. Congratulation!</a></li>
-<li class="toctree-l3"><a class="reference internal" href="getting_started.html#install-spark-core">2.2.5. Install Spark core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hosts.html">2. About hosts(inventory file)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hosts.html#about-groups-in-inventory">3. About groups in inventory</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="hosts.html#managing-several-clusters">3.1. Managing several clusters</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="how_to_use_playbooks.html">4. How to use this playbooks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="how_to_use_playbooks.html#assumption-of-this-section">4.1. Assumption of this section</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how_to_use_playbooks.html#how-to-configure-ansible-execution-environment">4.2. How to configure Ansible execution environment</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="how_to_use_playbooks.html#install-packages">4.2.1. Install packages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="how_to_use_playbooks.html#clone-playbooks">4.2.2. Clone playbooks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="how_to_use_playbooks.html#create-inventry">4.2.3. Create inventry</a></li>
+<li class="toctree-l3"><a class="reference internal" href="how_to_use_playbooks.html#create-ansible-cfg">4.2.4. Create ansible.cfg</a></li>
+<li class="toctree-l3"><a class="reference internal" href="how_to_use_playbooks.html#try-ping-to-all-nodes">4.2.5. Try ping to all nodes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="how_to_use_playbooks.html#how-to-boot-ec2-instances-for-hadoop-cluster">4.3. How to boot EC2 instances for Hadoop cluster</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="how_to_use_playbooks.html#define-environment-variables-for-aws-access">4.3.1. Define environment variables for AWS access</a></li>
+<li class="toctree-l3"><a class="reference internal" href="how_to_use_playbooks.html#define-parameters-for-ec2-hadoop-role">4.3.2. Define parameters for ec2_hadoop role</a></li>
+<li class="toctree-l3"><a class="reference internal" href="how_to_use_playbooks.html#apply-playbook">4.3.3. Apply playbook</a></li>
+<li class="toctree-l3"><a class="reference internal" href="how_to_use_playbooks.html#supplement-when-you-restart-ec2-instances">4.3.4. (supplement) When you restart ec2 instances</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="how_to_use_playbooks.html#how-to-configure-host-names-of-nodes">4.4. How to configure host names of nodes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how_to_use_playbooks.html#how-to-configure-cdh5-hdfs-yarn-environment">4.5. How to configure CDH5 HDFS/YARN environment</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="how_to_use_playbooks.html#preparement">4.5.1. Preparement</a></li>
+<li class="toctree-l3"><a class="reference internal" href="how_to_use_playbooks.html#procedure">4.5.2. Procedure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="how_to_use_playbooks.html#how-to-install-spark-environment-on-cdh5-environment">4.5.3. How to install Spark environment on CDH5 environment</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="how_to_use_playbooks.html#how-to-configure-cdh5-pseudo-environment">4.6. How to configure CDH5 Pseudo environment</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="how_to_use_playbooks.html#id1">4.6.1. Preparement</a></li>
+<li class="toctree-l3"><a class="reference internal" href="how_to_use_playbooks.html#id2">4.6.2. Procedure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="how_to_use_playbooks.html#how-to-install-spark-environment-on-hadoop-pseudo-environment">4.6.3. How to install Spark environment on Hadoop pseudo environment</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="how_to_use_playbooks.html#how-to-install-ganglia-environment">4.7. How to install Ganglia environment</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="how_to_use_playbooks.html#how-to-use-unicast-for-communication-between-gmonds">4.7.1. How to use unicast for communication between gmonds</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="how_to_use_playbooks.html#how-to-install-and-configure-influxdb-and-grafana">4.8. How to install and configure InfluxDB and Grafana</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how_to_use_playbooks.html#how-to-install-spark-community-edition">4.9. How to install Spark community edition</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="how_to_use_playbooks.html#obtain-package-or-compile-sources">4.9.1. Obtain package or compile sources</a></li>
+<li class="toctree-l3"><a class="reference internal" href="how_to_use_playbooks.html#confiure-parameters">4.9.2. Confiure parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="how_to_use_playbooks.html#execute-playbooks">4.9.3. Execute playbooks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="how_to_use_playbooks.html#stat-history-server">4.9.4. Stat history server</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="how_to_use_playbooks.html#configure-zeppelin">4.10. Configure Zeppelin</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="how_to_use_playbooks.html#obtain-sources-and-build">4.10.1. Obtain sources and build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="how_to_use_playbooks.html#executing-playbook">4.10.2. Executing playbook</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="how_to_use_playbooks.html#configure-kafka-cluster">4.11. Configure Kafka cluster</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="how_to_use_playbooks.html#information">4.11.1. Information</a></li>
+<li class="toctree-l3"><a class="reference internal" href="how_to_use_playbooks.html#id3">4.11.2. Executing playbook</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="how_to_use_playbooks.html#configure-confluent-services">4.12. Configure Confluent services</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="how_to_use_playbooks.html#id4">4.12.1. Information</a></li>
+<li class="toctree-l3"><a class="reference internal" href="how_to_use_playbooks.html#id5">4.12.2. Executing playbook</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="how_to_use_playbooks.html#configure-ambari">4.13. Configure Ambari</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how_to_use_playbooks.html#configure-jenkins">4.14. Configure Jenkins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how_to_use_playbooks.html#configure-anaconda-ce">4.15. Configure Anaconda CE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how_to_use_playbooks.html#configure-hive">4.16. Configure Hive</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how_to_use_playbooks.html#configure-alluxio-on-yarn">4.17. Configure Alluxio on YARN</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="playbooks.html">5. About playbooks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="playbooks.html#playbooks-for-configuration">5.1. Playbooks for configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="playbooks.html#common">5.1.1. common</a></li>
+<li class="toctree-l3"><a class="reference internal" href="playbooks.html#cdh5">5.1.2. cdh5</a></li>
+<li class="toctree-l3"><a class="reference internal" href="playbooks.html#cdh5-pseudo">5.1.3. cdh5_pseudo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="playbooks.html#ansible">5.1.4. ansible</a></li>
+<li class="toctree-l3"><a class="reference internal" href="playbooks.html#ganglia">5.1.5. ganglia</a></li>
+<li class="toctree-l3"><a class="reference internal" href="playbooks.html#influxdb">5.1.6. influxdb</a></li>
+<li class="toctree-l3"><a class="reference internal" href="playbooks.html#spark-comm">5.1.7. spark_comm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="playbooks.html#zeppelin">5.1.8. zeppelin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="playbooks.html#fluentd">5.1.9. fluentd</a></li>
+<li class="toctree-l3"><a class="reference internal" href="playbooks.html#kafka">5.1.10. kafka</a></li>
+<li class="toctree-l3"><a class="reference internal" href="playbooks.html#confluent">5.1.11. confluent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="playbooks.html#ambari">5.1.12. ambari</a></li>
+<li class="toctree-l3"><a class="reference internal" href="playbooks.html#jenkins">5.1.13. jenkins</a></li>
+<li class="toctree-l3"><a class="reference internal" href="playbooks.html#anacondace">5.1.14. anacondace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="playbooks.html#postgresql">5.1.15. postgresql</a></li>
+<li class="toctree-l3"><a class="reference internal" href="playbooks.html#cdh5-hive">5.1.16. cdh5_hive</a></li>
+<li class="toctree-l3"><a class="reference internal" href="playbooks.html#alluxio-yarn">5.1.17. alluxio_yarn</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="playbooks.html#playbooks-for-operation">5.2. Playbooks for operation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="playbooks.html#id1">5.2.1. cdh5</a></li>
+<li class="toctree-l3"><a class="reference internal" href="playbooks.html#ec2">5.2.2. ec2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="playbooks.html#id2">5.2.3. influxdb</a></li>
+<li class="toctree-l3"><a class="reference internal" href="playbooks.html#id3">5.2.4. spark_comm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="playbooks.html#id4">5.2.5. zeppelin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="playbooks.html#id5">5.2.6. fluentd</a></li>
+<li class="toctree-l3"><a class="reference internal" href="playbooks.html#id6">5.2.7. kafka</a></li>
+<li class="toctree-l3"><a class="reference internal" href="playbooks.html#id7">5.2.8. confluent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="playbooks.html#id8">5.2.9. ambari</a></li>
+<li class="toctree-l3"><a class="reference internal" href="playbooks.html#id9">5.2.10. postgresql</a></li>
+<li class="toctree-l3"><a class="reference internal" href="playbooks.html#id10">5.2.11. cdh5_hive</a></li>
+<li class="toctree-l3"><a class="reference internal" href="playbooks.html#deploy-yarn">5.2.12. deploy_yarn</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="about_hosts.html">3. About hosts(inventory file)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="about_hosts.html#about-groups-in-inventory">4. About groups in inventory</a></li>
-<li class="toctree-l1"><a class="reference internal" href="about_playbooks.html">5. About playbooks</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="about_playbooks.html#playbooks-for-configuration">5.1. Playbooks for configuration</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="about_playbooks.html#common">5.1.1. common</a></li>
-<li class="toctree-l3"><a class="reference internal" href="about_playbooks.html#cdh5">5.1.2. cdh5</a></li>
-<li class="toctree-l3"><a class="reference internal" href="about_playbooks.html#cdh5-pseudo">5.1.3. cdh5_pseudo</a></li>
-<li class="toctree-l3"><a class="reference internal" href="about_playbooks.html#ansible">5.1.4. ansible</a></li>
-<li class="toctree-l3"><a class="reference internal" href="about_playbooks.html#ganglia">5.1.5. ganglia</a></li>
-<li class="toctree-l3"><a class="reference internal" href="about_playbooks.html#influxdb">5.1.6. influxdb</a></li>
-<li class="toctree-l3"><a class="reference internal" href="about_playbooks.html#spark-comm">5.1.7. spark_comm</a></li>
-<li class="toctree-l3"><a class="reference internal" href="about_playbooks.html#zeppelin">5.1.8. zeppelin</a></li>
-<li class="toctree-l3"><a class="reference internal" href="about_playbooks.html#fluentd">5.1.9. fluentd</a></li>
-<li class="toctree-l3"><a class="reference internal" href="about_playbooks.html#kafka">5.1.10. kafka</a></li>
-<li class="toctree-l3"><a class="reference internal" href="about_playbooks.html#confluent">5.1.11. confluent</a></li>
-<li class="toctree-l3"><a class="reference internal" href="about_playbooks.html#ambari">5.1.12. ambari</a></li>
-<li class="toctree-l3"><a class="reference internal" href="about_playbooks.html#jenkins">5.1.13. jenkins</a></li>
-<li class="toctree-l3"><a class="reference internal" href="about_playbooks.html#anacondace">5.1.14. anacondace</a></li>
-<li class="toctree-l3"><a class="reference internal" href="about_playbooks.html#postgresql">5.1.15. postgresql</a></li>
-<li class="toctree-l3"><a class="reference internal" href="about_playbooks.html#cdh5-hive">5.1.16. cdh5_hive</a></li>
-<li class="toctree-l3"><a class="reference internal" href="about_playbooks.html#alluxio-yarn">5.1.17. alluxio_yarn</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="about_playbooks.html#playbooks-for-operation">5.2. Playbooks for operation</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="about_playbooks.html#id1">5.2.1. cdh5</a></li>
-<li class="toctree-l3"><a class="reference internal" href="about_playbooks.html#ec2">5.2.2. ec2</a></li>
-<li class="toctree-l3"><a class="reference internal" href="about_playbooks.html#id2">5.2.3. influxdb</a></li>
-<li class="toctree-l3"><a class="reference internal" href="about_playbooks.html#id3">5.2.4. spark_comm</a></li>
-<li class="toctree-l3"><a class="reference internal" href="about_playbooks.html#id4">5.2.5. zeppelin</a></li>
-<li class="toctree-l3"><a class="reference internal" href="about_playbooks.html#id5">5.2.6. fluentd</a></li>
-<li class="toctree-l3"><a class="reference internal" href="about_playbooks.html#id6">5.2.7. kafka</a></li>
-<li class="toctree-l3"><a class="reference internal" href="about_playbooks.html#id7">5.2.8. confluent</a></li>
-<li class="toctree-l3"><a class="reference internal" href="about_playbooks.html#id8">5.2.9. ambari</a></li>
-<li class="toctree-l3"><a class="reference internal" href="about_playbooks.html#id9">5.2.10. postgresql</a></li>
-<li class="toctree-l3"><a class="reference internal" href="about_playbooks.html#id10">5.2.11. cdh5_hive</a></li>
-<li class="toctree-l3"><a class="reference internal" href="about_playbooks.html#deploy-yarn">5.2.12. deploy_yarn</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="about_roles.html">6. About roles</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="about_roles.html#roles-to-configure-basic-environments">6.1. Roles to configure basic environments</a></li>
-<li class="toctree-l2"><a class="reference internal" href="about_roles.html#roles-to-configure-ansible">6.2. Roles to configure Ansible</a></li>
-<li class="toctree-l2"><a class="reference internal" href="about_roles.html#roles-to-boot-ec2-instances-for-hadoop-cluster">6.3. Roles to boot EC2 instances for Hadoop cluster</a></li>
-<li class="toctree-l2"><a class="reference internal" href="about_roles.html#roles-to-configure-cdh5-hadoop">6.4. Roles to configure CDH5 Hadoop</a></li>
-<li class="toctree-l2"><a class="reference internal" href="about_roles.html#roles-to-configure-cdh5-pseudo-hadoop">6.5. Roles to configure CDH5 pseudo Hadoop</a></li>
-<li class="toctree-l2"><a class="reference internal" href="about_roles.html#roles-to-configure-spark-core-on-client-node">6.6. Roles to configure Spark core on client node</a></li>
-<li class="toctree-l2"><a class="reference internal" href="about_roles.html#roles-to-configure-ganglia">6.7. Roles to configure Ganglia</a></li>
-<li class="toctree-l2"><a class="reference internal" href="about_roles.html#roles-to-configure-influxdb-and-grafana">6.8. Roles to configure InfluxDB and Grafana</a></li>
-<li class="toctree-l2"><a class="reference internal" href="about_roles.html#roles-to-configure-zeppelin">6.9. Roles to configure Zeppelin</a></li>
-<li class="toctree-l2"><a class="reference internal" href="about_roles.html#roles-to-configure-fluentd-or-td-agent">6.10. Roles to configure fluentd or td-agent</a></li>
-<li class="toctree-l2"><a class="reference internal" href="about_roles.html#roles-to-configure-kafka">6.11. Roles to configure Kafka</a></li>
-<li class="toctree-l2"><a class="reference internal" href="about_roles.html#roles-to-configure-confluent">6.12. Roles to configure Confluent</a></li>
-<li class="toctree-l2"><a class="reference internal" href="about_roles.html#roles-to-configure-ambari">6.13. Roles to configure Ambari</a></li>
-<li class="toctree-l2"><a class="reference internal" href="about_roles.html#roles-to-configure-ci-environment">6.14. Roles to configure CI environment</a></li>
-<li class="toctree-l2"><a class="reference internal" href="about_roles.html#roles-to-configure-anaconda-ce">6.15. Roles to configure Anaconda CE</a></li>
-<li class="toctree-l2"><a class="reference internal" href="about_roles.html#roles-to-configure-postgresql">6.16. Roles to configure PostgreSQL</a></li>
-<li class="toctree-l2"><a class="reference internal" href="about_roles.html#roles-to-configure-hive">6.17. Roles to configure Hive</a></li>
-<li class="toctree-l2"><a class="reference internal" href="about_roles.html#roles-to-configure-alluxio">6.18. Roles to configure Alluxio</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="how_to_use_playbooks.html">7. How to use this playbooks</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="how_to_use_playbooks.html#assumption-of-this-section">7.1. Assumption of this section</a></li>
-<li class="toctree-l2"><a class="reference internal" href="how_to_use_playbooks.html#how-to-configure-ansible-execution-environment">7.2. How to configure Ansible execution environment</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="how_to_use_playbooks.html#install-packages">7.2.1. Install packages</a></li>
-<li class="toctree-l3"><a class="reference internal" href="how_to_use_playbooks.html#clone-playbooks">7.2.2. Clone playbooks</a></li>
-<li class="toctree-l3"><a class="reference internal" href="how_to_use_playbooks.html#modify-configuration">7.2.3. Modify configuration</a></li>
-<li class="toctree-l3"><a class="reference internal" href="how_to_use_playbooks.html#execute-playbooks-one-by-one">7.2.4. Execute playbooks one by one</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="how_to_use_playbooks.html#how-to-boot-ec2-instances-for-hadoop-cluster">7.3. How to boot EC2 instances for Hadoop cluster</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="how_to_use_playbooks.html#create-inventory-file">7.3.1. Create inventory file</a></li>
-<li class="toctree-l3"><a class="reference internal" href="how_to_use_playbooks.html#define-environment-variables-for-aws-access">7.3.2. Define environment variables for AWS access</a></li>
-<li class="toctree-l3"><a class="reference internal" href="how_to_use_playbooks.html#define-parameters-for-ec2-hadoop-role">7.3.3. Define parameters for ec2_hadoop role</a></li>
-<li class="toctree-l3"><a class="reference internal" href="how_to_use_playbooks.html#apply-playbook">7.3.4. Apply playbook</a></li>
-<li class="toctree-l3"><a class="reference internal" href="how_to_use_playbooks.html#supplement-when-you-restart-ec2-instances">7.3.5. (supplement) When you restart ec2 instances</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="how_to_use_playbooks.html#how-to-configure-host-names-of-nodes">7.4. How to configure host names of nodes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="how_to_use_playbooks.html#how-to-configure-cdh5-hdfs-yarn-environment">7.5. How to configure CDH5 HDFS/YARN environment</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="how_to_use_playbooks.html#preparement">7.5.1. Preparement</a></li>
-<li class="toctree-l3"><a class="reference internal" href="how_to_use_playbooks.html#procedure">7.5.2. Procedure</a></li>
-<li class="toctree-l3"><a class="reference internal" href="how_to_use_playbooks.html#how-to-install-spark-environment-on-cdh5-environment">7.5.3. How to install Spark environment on CDH5 environment</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="how_to_use_playbooks.html#how-to-configure-cdh5-pseudo-environment">7.6. How to configure CDH5 Pseudo environment</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="how_to_use_playbooks.html#id1">7.6.1. Preparement</a></li>
-<li class="toctree-l3"><a class="reference internal" href="how_to_use_playbooks.html#id2">7.6.2. Procedure</a></li>
-<li class="toctree-l3"><a class="reference internal" href="how_to_use_playbooks.html#how-to-install-spark-environment-on-hadoop-pseudo-environment">7.6.3. How to install Spark environment on Hadoop pseudo environment</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="how_to_use_playbooks.html#how-to-install-ganglia-environment">7.7. How to install Ganglia environment</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="how_to_use_playbooks.html#how-to-use-unicast-for-communication-between-gmonds">7.7.1. How to use unicast for communication between gmonds</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="how_to_use_playbooks.html#how-to-install-and-configure-influxdb-and-grafana">7.8. How to install and configure InfluxDB and Grafana</a></li>
-<li class="toctree-l2"><a class="reference internal" href="how_to_use_playbooks.html#how-to-install-spark-community-edition">7.9. How to install Spark community edition</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="how_to_use_playbooks.html#obtain-package-or-compile-sources">7.9.1. Obtain package or compile sources</a></li>
-<li class="toctree-l3"><a class="reference internal" href="how_to_use_playbooks.html#confiure-parameters">7.9.2. Confiure parameters</a></li>
-<li class="toctree-l3"><a class="reference internal" href="how_to_use_playbooks.html#execute-playbooks">7.9.3. Execute playbooks</a></li>
-<li class="toctree-l3"><a class="reference internal" href="how_to_use_playbooks.html#stat-history-server">7.9.4. Stat history server</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="how_to_use_playbooks.html#configure-zeppelin">7.10. Configure Zeppelin</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="how_to_use_playbooks.html#obtain-sources-and-build">7.10.1. Obtain sources and build</a></li>
-<li class="toctree-l3"><a class="reference internal" href="how_to_use_playbooks.html#executing-playbook">7.10.2. Executing playbook</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="how_to_use_playbooks.html#configure-kafka-cluster">7.11. Configure Kafka cluster</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="how_to_use_playbooks.html#information">7.11.1. Information</a></li>
-<li class="toctree-l3"><a class="reference internal" href="how_to_use_playbooks.html#id3">7.11.2. Executing playbook</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="how_to_use_playbooks.html#configure-confluent-services">7.12. Configure Confluent services</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="how_to_use_playbooks.html#id4">7.12.1. Information</a></li>
-<li class="toctree-l3"><a class="reference internal" href="how_to_use_playbooks.html#id5">7.12.2. Executing playbook</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="how_to_use_playbooks.html#configure-ambari">7.13. Configure Ambari</a></li>
-<li class="toctree-l2"><a class="reference internal" href="how_to_use_playbooks.html#configure-jenkins">7.14. Configure Jenkins</a></li>
-<li class="toctree-l2"><a class="reference internal" href="how_to_use_playbooks.html#configure-anaconda-ce">7.15. Configure Anaconda CE</a></li>
-<li class="toctree-l2"><a class="reference internal" href="how_to_use_playbooks.html#configure-hive">7.16. Configure Hive</a></li>
-<li class="toctree-l2"><a class="reference internal" href="how_to_use_playbooks.html#configure-alluxio-on-yarn">7.17. Configure Alluxio on YARN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="roles.html">6. About roles</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="roles.html#roles-to-configure-basic-environments">6.1. Roles to configure basic environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="roles.html#roles-to-configure-ansible">6.2. Roles to configure Ansible</a></li>
+<li class="toctree-l2"><a class="reference internal" href="roles.html#roles-to-boot-ec2-instances-for-hadoop-cluster">6.3. Roles to boot EC2 instances for Hadoop cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="roles.html#roles-to-configure-cdh5-hadoop">6.4. Roles to configure CDH5 Hadoop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="roles.html#roles-to-configure-cdh5-pseudo-hadoop">6.5. Roles to configure CDH5 pseudo Hadoop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="roles.html#roles-to-configure-spark-core-on-client-node">6.6. Roles to configure Spark core on client node</a></li>
+<li class="toctree-l2"><a class="reference internal" href="roles.html#roles-to-configure-ganglia">6.7. Roles to configure Ganglia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="roles.html#roles-to-configure-influxdb-and-grafana">6.8. Roles to configure InfluxDB and Grafana</a></li>
+<li class="toctree-l2"><a class="reference internal" href="roles.html#roles-to-configure-zeppelin">6.9. Roles to configure Zeppelin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="roles.html#roles-to-configure-fluentd-or-td-agent">6.10. Roles to configure fluentd or td-agent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="roles.html#roles-to-configure-kafka">6.11. Roles to configure Kafka</a></li>
+<li class="toctree-l2"><a class="reference internal" href="roles.html#roles-to-configure-confluent">6.12. Roles to configure Confluent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="roles.html#roles-to-configure-ambari">6.13. Roles to configure Ambari</a></li>
+<li class="toctree-l2"><a class="reference internal" href="roles.html#roles-to-configure-ci-environment">6.14. Roles to configure CI environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="roles.html#roles-to-configure-anaconda-ce">6.15. Roles to configure Anaconda CE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="roles.html#roles-to-configure-postgresql">6.16. Roles to configure PostgreSQL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="roles.html#roles-to-configure-hive">6.17. Roles to configure Hive</a></li>
+<li class="toctree-l2"><a class="reference internal" href="roles.html#roles-to-configure-alluxio">6.18. Roles to configure Alluxio</a></li>
 </ul>
 </li>
 </ul>

@@ -1,0 +1,203 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>2. About hosts(inventory file) &mdash; Ansible playbooks to construct Hadoop environment</title>
+    
+    <link rel="stylesheet" href="_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/print.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/theme_extras.js"></script>
+    <link rel="top" title="Ansible playbooks to construct Hadoop environment" href="index.html" />
+    <link rel="next" title="4. How to use this playbooks" href="how_to_use_playbooks.html" />
+    <link rel="prev" title="1. Abstract" href="abstract.html" /> 
+  </head>
+  <body>
+      <div class="header"><h1 class="heading"><a href="index.html">
+          <span>Ansible playbooks to construct Hadoop environment</span></a></h1>
+        <h2 class="heading"><span>2. About hosts(inventory file)</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="abstract.html">1. Abstract</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="how_to_use_playbooks.html">4. How to use this playbooks</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="about-hosts-inventory-file">
+<h1>2. About hosts(inventory file)<a class="headerlink" href="#about-hosts-inventory-file" title="Permalink to this headline">¶</a></h1>
+<p>This project provides two types of Ansible hosts sample.
+The following is the location of the main services.</p>
+<p>hosts.medium_sample:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Master Services including NameNode and ResourceManager: 3 nodes</li>
+<li>Client: 1 node</li>
+<li>Slave: 5 nodes</li>
+<li>Manage: 1 nodes</li>
+<li>Kafka: 3 nodes</li>
+</ul>
+</div></blockquote>
+<p>hosts.large_sample:</p>
+<blockquote>
+<div><ul class="simple">
+<li>NameNode: 2 nodes</li>
+<li>Zookeeper and JournalNode: 3 nodes</li>
+<li>ResourceManager: 2 nodes</li>
+<li>Client: 1 node</li>
+<li>Slave: 10 nodes</li>
+<li>Manage: 1 nodes</li>
+<li>Kafka: 3 nodes</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="about-groups-in-inventory">
+<h1>3. About groups in inventory<a class="headerlink" href="#about-groups-in-inventory" title="Permalink to this headline">¶</a></h1>
+<p>This example of inventory includes the following configured groups.</p>
+<p><strong>Main group</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="25%" />
+<col width="75%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">group</th>
+<th class="head">description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>production</td>
+<td>The top group which represents the whole of the environment,
+such as data centers.
+This group is used to define the environmental specific parameters.</td>
+</tr>
+<tr class="row-odd"><td>local</td>
+<td>The dummy group to define localhost in inventory.</td>
+</tr>
+<tr class="row-even"><td>hadoop_all</td>
+<td>The group whih represents the whole of Hadoop cluster.
+This group includes all groups and nodes in the Hadoop cluster.</td>
+</tr>
+<tr class="row-odd"><td>hadoop_master</td>
+<td>This group represents all master nodes.</td>
+</tr>
+<tr class="row-even"><td>hadoop_namenode</td>
+<td>This group represents the primary NameNode and the backup NameNode</td>
+</tr>
+<tr class="row-odd"><td>hadoop_journalnode</td>
+<td>This group represents JournalNodes.</td>
+</tr>
+<tr class="row-even"><td>hadoop_zookeeperserver</td>
+<td>This group represents Zookeeper nodes.
+<em>Important</em> : The parameter &#8220;zookeeper_server_id&#8221; is
+configured with each nodes.</td>
+</tr>
+<tr class="row-odd"><td>hadoop_resourcemanager</td>
+<td>This group represents ResourceManagers</td>
+</tr>
+<tr class="row-even"><td>hadoop_other</td>
+<td>This group represents nodes which provide Hadoop-related services,
+such as HistoryServer.</td>
+</tr>
+<tr class="row-odd"><td>hadoop_slave</td>
+<td>This group represents slave nodes.</td>
+</tr>
+<tr class="row-even"><td>hadoop_client</td>
+<td>This group represents client nodes.
+The client nodes are used to execute commands to access Hadoop services
+and other related services.</td>
+</tr>
+<tr class="row-odd"><td>hadoop_pseudo</td>
+<td>This group represents a node which provides Hadoop pseudo environment.
+This is mainly used for the application development.</td>
+</tr>
+<tr class="row-even"><td>manage</td>
+<td>This group represents nodes which provides the management services,
+such as Ganglia and Graphite.</td>
+</tr>
+<tr class="row-odd"><td>kafka_cluster</td>
+<td>This group represents Kafka brokers of Apache Kafka (Community version)</td>
+</tr>
+<tr class="row-even"><td>confluent_kafka_cluster</td>
+<td>This group represents Kafka brokers of Confluent Kafka</td>
+</tr>
+<tr class="row-odd"><td>confluent_schema_registry</td>
+<td>This group represents Confluent&#8217;s schema registry service nodes</td>
+</tr>
+<tr class="row-even"><td>confluent_kafka_rest</td>
+<td>This group represents Confluent&#8217;s REST Proxy serivce nodes</td>
+</tr>
+<tr class="row-odd"><td>data_loader</td>
+<td>This group represents nodes which provide the services to load data
+to the cluster. e.g. fluentd and td-agent</td>
+</tr>
+<tr class="row-even"><td>endosnipe</td>
+<td>This group represents nodes which provide EndoSNipe servides, such as
+a dashbord.</td>
+</tr>
+<tr class="row-odd"><td>heapstats</td>
+<td>This group represents nodes which use heapstats to monitor JVM processes.</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="managing-several-clusters">
+<h2>3.1. Managing several clusters<a class="headerlink" href="#managing-several-clusters" title="Permalink to this headline">¶</a></h2>
+<p>If you want to manage several Hadoop clusters or environments,
+you can distinguish these environments by using different inventries which have different top-level groups.</p>
+<p>e.g. the production environments, the test environments, the development environments and so on.</p>
+<p>The group variables of each group define parameters specific to each environment.</p>
+<p>Example</p>
+<ul class="simple">
+<li>group_vars/all/something ... This file provides default parameters common for all environments.</li>
+<li>group_vars/production/something ... This file provides parameters common for the production environments.</li>
+<li>group_vars/test/something ... This file provides parameters common for the test environments.</li>
+</ul>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="abstract.html">1. Abstract</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="how_to_use_playbooks.html">4. How to use this playbooks</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+        &copy; Copyright 2014, dobachi.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

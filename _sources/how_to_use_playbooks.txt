@@ -1,15 +1,17 @@
 How to use this playbooks
 ==========================
-You can use these playbooks to configure the following configuration.
-**These playbooks are independent of each other** .
+This project provides many kinds of playbooks to configure and manage
+nodes and serivces.
 
-* Ansible client environment to use various Ansible functions
-* Host name configuration
-* CDH5 HDFS/YARN environment
+.. note::
+
+   To understand each playbook, please refer  :ref:`sec-about-playbooks` section.
 
 Assumption of this section
 ----------------------------
-* You have servers described in :ref:`sec-servers` section.
+* You should have servers described in :ref:`sec-servers` section.
+* You should be able to access all hosts listed in the inventry which is created by the following procedure.
+  e.g. You should configure /etc/hosts to access nodes by hostname in advance.
 
 .. _sec-configure-ansible-env:
 
@@ -36,55 +38,58 @@ Install Ansible
 
 Clone playbooks
 ~~~~~~~~~~~~~~~
-Move original /etc/ansible
+Clone this projects to any paths.
+
+E.g.
 
 .. code-block:: shell
 
- $ cd /etc
- $ sudo mv ansible ansible.org
-
-Clone this repository
-
-.. code-block:: shell
-
+ $ cd ~
+ $ mkdir Sources
+ $ cd Sources
  $ git clone https://github.com/dobachi/ansible-hadoop.git ansible
 
-Modify configuration
-~~~~~~~~~~~~~~~~~~~~
-Modify hosts file to be copied to /etc/hosts
+Create inventry
+~~~~~~~~~~~~~~~~~~~~~~
+Create an inventry for your environment.
+You can use examples of this project, hosts.mdedium_sample and hosts.large_sample.
 
 .. code-block:: shell
 
- $ cd ansible
- $ sudo vi roles/common/files/hosts.default
+ $ cp hosts.medium_sample hosts.test
+ $ ln -s hosts.test hosts
 
-Execute playbooks one by one
+Modify the top group of the inventry and hostnames in groups.
+
+.. code-block:: shell
+
+ $ vim hosts
+
+Create ansible.cfg
+~~~~~~~~~~~~~~~~~~~~~~
+Create ansible.cfg refering an example of this project.
+
+.. code-block:: shell
+
+ $ cp ansible.cfg.sample ansible.cfg
+
+The important differences of the default ansible.cfg,
+which you can find /etc/ansible/ansible.cfg, is 
+
+* hostfile = hosts
+
+  + To use an inventry file in the current directory.
+
+* library = /usr/share/ansible:library
+
+  + To include "library" directory in the current dicrectory.
+
+* roles_path = roles
+
+  + To use roles in the current directory.
+
+Try ping to all nodes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Execute ansible-playbook command with common_all.yml
-
-.. code-block:: shell
-
- $ ansible-playbook playbooks/conf/common/common_all.yml -k -s -i hosts.sample -e "common_hosts_replace=True"
-
-Copy ansible's hosts and modify it
-
-.. code-block:: shell
-
- $ sudo vi roles/ansible/templates/hosts.default.j2
-
-Execute ansible-playbook command with ansible_client.yml
-
-.. code-block:: shell
-
- $ ansible-playbook playbooks/conf/ansible/ansible_client.yml -k -s -i hosts.sample -e "ansible_environment=default ansible_modify_cfg=True"
-
-If you use EC2 and need a private key for SSH,
-you should specify "ansible_private_key_file" paramter.
-You should execute command with the parameter instead of the above command
-
-.. code-block:: shell
-
- $ ansible-playbook playbooks/conf/ansible/ansible_client.yml -k -s -i hosts.sample -e "ansible_environment=default ansible_modify_cfg=True ansible_private_key_file=${HOME}/mykey.pem"
 
 Check whether all nodes are reachable and "sudo" is available
 
@@ -96,11 +101,6 @@ How to boot EC2 instances for Hadoop cluster
 ------------------------------------------------
 If you want to use Hadoop on EC2 instances,
 you can use playbooks/operation/ec2/hadoop_nodes_up.yml to boot instances.
-
-Create inventory file
-~~~~~~~~~~~~~~~~~~~~~~
-If you don't have an inventory file,
-create inventory file, /etc/ansible/hosts while referring /etc/ansible/hosts.sample.
 
 Define environment variables for AWS access
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

@@ -1,0 +1,493 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>6. About roles &mdash; Ansible playbooks to construct Hadoop environment</title>
+    
+    <link rel="stylesheet" href="_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/print.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/theme_extras.js"></script>
+    <link rel="top" title="Ansible playbooks to construct Hadoop environment" href="index.html" />
+    <link rel="prev" title="5. About playbooks" href="playbooks.html" /> 
+  </head>
+  <body>
+      <div class="header"><h1 class="heading"><a href="index.html">
+          <span>Ansible playbooks to construct Hadoop environment</span></a></h1>
+        <h2 class="heading"><span>6. About roles</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="playbooks.html">5. About playbooks</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">Contents</a>
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="about-roles">
+<h1>6. About roles<a class="headerlink" href="#about-roles" title="Permalink to this headline">¶</a></h1>
+<p>This project has many kinds of roles.
+In this section, the short description for each role are shown.</p>
+<div class="section" id="roles-to-configure-basic-environments">
+<h2>6.1. Roles to configure basic environments<a class="headerlink" href="#roles-to-configure-basic-environments" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="77%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Role name</th>
+<th class="head">Use for</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>common</td>
+<td>Basic configuration about OS, basic services, and so on</td>
+</tr>
+<tr class="row-odd"><td>prompt</td>
+<td>Configuration of console prompt</td>
+</tr>
+<tr class="row-even"><td>screen</td>
+<td>Configuration of screen command</td>
+</tr>
+<tr class="row-odd"><td>user</td>
+<td>Configuration of users</td>
+</tr>
+<tr class="row-even"><td>epel</td>
+<td>Configuration of EPEL Repository</td>
+</tr>
+<tr class="row-odd"><td>jdk</td>
+<td>Configuraiotn of Oracle JDK</td>
+</tr>
+<tr class="row-even"><td>scala</td>
+<td>Configuraiton of Scala on Hadoop client node</td>
+</tr>
+<tr class="row-odd"><td>sbt</td>
+<td>Configuration of Sbt</td>
+</tr>
+<tr class="row-even"><td>activator_mini</td>
+<td>Configuraiton of Activator mini</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="roles-to-configure-ansible">
+<h2>6.2. Roles to configure Ansible<a class="headerlink" href="#roles-to-configure-ansible" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="22%" />
+<col width="78%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Role name</th>
+<th class="head">Use for</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>ansible</td>
+<td>Configuration of nodes where you executes ansible command</td>
+</tr>
+<tr class="row-odd"><td>ansible_remote</td>
+<td>Configuration of nodes which is configured ansible</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="roles-to-boot-ec2-instances-for-hadoop-cluster">
+<h2>6.3. Roles to boot EC2 instances for Hadoop cluster<a class="headerlink" href="#roles-to-boot-ec2-instances-for-hadoop-cluster" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="77%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Role name</th>
+<th class="head">Use for</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>ec2_hadoop</td>
+<td>Boot EC2 instances for Hadoop cluster</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="roles-to-configure-cdh5-hadoop">
+<h2>6.4. Roles to configure CDH5 Hadoop<a class="headerlink" href="#roles-to-configure-cdh5-hadoop" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="77%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Role name</th>
+<th class="head">Use for</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>cdh5_base</td>
+<td>Basic configuraiton about Hadoop</td>
+</tr>
+<tr class="row-odd"><td>cdh5_jn</td>
+<td>Configuration of JournalNode</td>
+</tr>
+<tr class="row-even"><td>cdh5_nn</td>
+<td>Configuraiton of NameNode</td>
+</tr>
+<tr class="row-odd"><td>cdh5_ot</td>
+<td>Configuraiton of HistoryServer and YARN Proxy</td>
+</tr>
+<tr class="row-even"><td>cdh5_rm</td>
+<td>Configuraiton of ResourceManager</td>
+</tr>
+<tr class="row-odd"><td>cdh5_sl</td>
+<td>Configuration of DataNode and NodeManager</td>
+</tr>
+<tr class="row-even"><td>zookeeper_server</td>
+<td>Configuration of Zookeeper server</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="roles-to-configure-cdh5-pseudo-hadoop">
+<h2>6.5. Roles to configure CDH5 pseudo Hadoop<a class="headerlink" href="#roles-to-configure-cdh5-pseudo-hadoop" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="77%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Role name</th>
+<th class="head">Use for</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>cdh5_pseudo</td>
+<td>Basic configuraiton about Hadoop pseudo environment</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="roles-to-configure-spark-core-on-client-node">
+<h2>6.6. Roles to configure Spark core on client node<a class="headerlink" href="#roles-to-configure-spark-core-on-client-node" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="77%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Role name</th>
+<th class="head">Use for</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>cdh5_spark</td>
+<td>Configuration of Spark core on Hadoop client node</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="roles-to-configure-ganglia">
+<h2>6.7. Roles to configure Ganglia<a class="headerlink" href="#roles-to-configure-ganglia" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="77%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Role name</th>
+<th class="head">Use for</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>ganglia_master</td>
+<td>Configuration of Ganglia Master and Web frontend</td>
+</tr>
+<tr class="row-odd"><td>ganglia_slave</td>
+<td>Configuration of Ganglia Slave</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="roles-to-configure-influxdb-and-grafana">
+<h2>6.8. Roles to configure InfluxDB and Grafana<a class="headerlink" href="#roles-to-configure-influxdb-and-grafana" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="77%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Role name</th>
+<th class="head">Use for</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>influxdb</td>
+<td>Configuration of InfluxDB</td>
+</tr>
+<tr class="row-odd"><td>grafana</td>
+<td>Configuration of Grafana</td>
+</tr>
+</tbody>
+</table>
+<p>Roles to configure Spark community edition</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="77%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Role name</th>
+<th class="head">Use for</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>spark_comm</td>
+<td>Configuration of Spark community edition</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="roles-to-configure-zeppelin">
+<h2>6.9. Roles to configure Zeppelin<a class="headerlink" href="#roles-to-configure-zeppelin" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="77%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Role name</th>
+<th class="head">Use for</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>zeppelin</td>
+<td>Configuration of Zeppelin community edition</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="roles-to-configure-fluentd-or-td-agent">
+<h2>6.10. Roles to configure fluentd or td-agent<a class="headerlink" href="#roles-to-configure-fluentd-or-td-agent" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="77%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Role name</th>
+<th class="head">Use for</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>fluentd</td>
+<td>Configuration of fluentd (community edition)</td>
+</tr>
+<tr class="row-odd"><td>td_agent</td>
+<td>Configuration of td-agent</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="roles-to-configure-kafka">
+<h2>6.11. Roles to configure Kafka<a class="headerlink" href="#roles-to-configure-kafka" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="77%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Role name</th>
+<th class="head">Use for</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>kafka</td>
+<td>Configuration of Kafka cluster</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="roles-to-configure-confluent">
+<h2>6.12. Roles to configure Confluent<a class="headerlink" href="#roles-to-configure-confluent" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="77%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Role name</th>
+<th class="head">Use for</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>confluent_kafka</td>
+<td>Configuration of Confluent packages</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="roles-to-configure-ambari">
+<h2>6.13. Roles to configure Ambari<a class="headerlink" href="#roles-to-configure-ambari" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="77%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Role name</th>
+<th class="head">Use for</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>ambari_server</td>
+<td>Configuration of Ambari server</td>
+</tr>
+<tr class="row-odd"><td>ambari_agent</td>
+<td>Configuration of Ambari agent</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="roles-to-configure-ci-environment">
+<h2>6.14. Roles to configure CI environment<a class="headerlink" href="#roles-to-configure-ci-environment" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="77%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Role name</th>
+<th class="head">Use for</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>jenkins</td>
+<td>Configuration of Jenkins.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="roles-to-configure-anaconda-ce">
+<h2>6.15. Roles to configure Anaconda CE<a class="headerlink" href="#roles-to-configure-anaconda-ce" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="77%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Role name</th>
+<th class="head">Use for</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>jenkins</td>
+<td>Configuration of Anaconda CE</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="roles-to-configure-postgresql">
+<h2>6.16. Roles to configure PostgreSQL<a class="headerlink" href="#roles-to-configure-postgresql" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="77%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Role name</th>
+<th class="head">Use for</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>postgresql</td>
+<td>Configuration of PostgreSQL, which is used for a
+metastore_db of Hive</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="roles-to-configure-hive">
+<h2>6.17. Roles to configure Hive<a class="headerlink" href="#roles-to-configure-hive" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="77%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Role name</th>
+<th class="head">Use for</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>cdh5_hive</td>
+<td>Configuration of Hive with metastore</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="roles-to-configure-alluxio">
+<h2>6.18. Roles to configure Alluxio<a class="headerlink" href="#roles-to-configure-alluxio" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="77%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Role name</th>
+<th class="head">Use for</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>alluxio_conf</td>
+<td>Deploy Alluxio configuration files to slave nodes</td>
+</tr>
+<tr class="row-odd"><td>alluxio_yarn</td>
+<td>Configuration of Alluxio on YARN</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="playbooks.html">5. About playbooks</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">Contents</a>
+        </p>
+
+      </div>
+
+    <div class="footer">
+        &copy; Copyright 2014, dobachi.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

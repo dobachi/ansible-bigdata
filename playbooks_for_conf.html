@@ -1,0 +1,318 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Playbooks for configuration &mdash; Ansible playbooks to construct Hadoop environment</title>
+    
+    <link rel="stylesheet" href="_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/print.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/theme_extras.js"></script>
+    <link rel="top" title="Ansible playbooks to construct Hadoop environment" href="index.html" /> 
+  </head>
+  <body>
+      <div class="header"><h1 class="heading"><a href="index.html">
+          <span>Ansible playbooks to construct Hadoop environment</span></a></h1>
+        <h2 class="heading"><span>Playbooks for configuration</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        <a class="uplink" href="index.html">Contents</a>
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="playbooks-for-configuration">
+<h1>Playbooks for configuration<a class="headerlink" href="#playbooks-for-configuration" title="Permalink to this headline">¶</a></h1>
+<p>The playbooks in &#8220;playbooks/conf&#8221; directory provide functions
+to configure nodes.</p>
+<p>In this section, the short descriptions for each playbook are shown.</p>
+<div class="section" id="common">
+<h2>common<a class="headerlink" href="#common" title="Permalink to this headline">¶</a></h2>
+<p>This is a set of common and basic configurations including OS parameters.</p>
+<ul class="simple">
+<li>playbooks/conf/common/common_all.yml<ul>
+<li>The playbook which provides all basic configurations.</li>
+</ul>
+</li>
+<li>playbooks/conf/common/common_only_common.yml<ul>
+<li>The playbook which provides configurations only in &#8220;common&#8221; role</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="cdh5">
+<h2>cdh5<a class="headerlink" href="#cdh5" title="Permalink to this headline">¶</a></h2>
+<p>This is a set of configurations to construct CDH5 environment.</p>
+<ul class="simple">
+<li>cdh5_all.yml<ul>
+<li>This playbook is a comprehensive playbook which includes all other playbooks.
+You can build whole CDH5 environment.</li>
+</ul>
+</li>
+<li>cdh5_cl.yml<ul>
+<li>This playbook executes basic roles and &#8220;cdh5_cl&#8221; role to build Hadoop Client environment</li>
+</ul>
+</li>
+<li>cdh5_journalnode.yml<ul>
+<li>This playbook executes basic roles and &#8220;cdh5_jn&#8221; role to build HDFS JournalNode environment</li>
+</ul>
+</li>
+<li>cdh5_namenode.yml<ul>
+<li>This playbook executes basic roles and &#8220;cdh5_nn&#8221; role to build HDFS NameNode environment</li>
+</ul>
+</li>
+<li>cdh5_other.yml<ul>
+<li>This playbook executes basic roles and &#8220;cdh5_ot&#8221; role to build MapReduce HistoryServer and YARN Proxy environments</li>
+</ul>
+</li>
+<li>cdh5_resourcemanager.yml<ul>
+<li>This playbook executes basic roles and &#8220;cdh5_rm&#8221; role to build YARN ResourceManager environment</li>
+</ul>
+</li>
+<li>cdh5_slave.yml<ul>
+<li>This playbook executes basic roles and &#8220;cdh5_sl&#8221; role to build HDFS DataNode and YARN NodeManager environments</li>
+</ul>
+</li>
+<li>cdh5_spark.yml<ul>
+<li>This playbook executes basic roles and &#8220;cdh5_spark&#8221; role to build Spark Core environment on Client Node</li>
+</ul>
+</li>
+<li>cdh5_zookeeper.yml<ul>
+<li>This playbook executes basic roles and &#8220;zookeeper_server&#8221; role to build Zookeeper environment</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="cdh5-pseudo">
+<h2>cdh5_pseudo<a class="headerlink" href="#cdh5-pseudo" title="Permalink to this headline">¶</a></h2>
+<p>This is a set of configurations to construct CDH5 pseudo environment.</p>
+<ul class="simple">
+<li>cdh5_pseudo.yml<ul>
+<li>You can build whole CDH5 pseudo environment.</li>
+</ul>
+</li>
+<li>cdh5_spark.yml<ul>
+<li>You can build spark environment on CDH5 pseudo.</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="ansible">
+<h2>ansible<a class="headerlink" href="#ansible" title="Permalink to this headline">¶</a></h2>
+<p>This is a set of configuration about Ansible environment.
+If you have manually configured Ansible environment, such as ansible.cfg, inventory file and so on,
+you don&#8217;t need these playbooks.</p>
+<ul class="simple">
+<li>ansible_client.yml<ul>
+<li>This playbook executes &#8220;ansible&#8221; role to configure nodes where we execute ansible command</li>
+</ul>
+</li>
+<li>ansible_remote.yml<ul>
+<li>This playbook executes &#8220;ansible_remote&#8221; role to configure nodes which are configured by ansible</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="ganglia">
+<h2>ganglia<a class="headerlink" href="#ganglia" title="Permalink to this headline">¶</a></h2>
+<p>This is  a set of configuration about Ganglia.
+We have two playbooks for Ganglia master and slave.</p>
+<ul class="simple">
+<li>ganglia_all.yml<ul>
+<li>The wrapper playbook of configuration of both of Ganglia master and slave</li>
+</ul>
+</li>
+<li>ganglia_master.yml<ul>
+<li>The playbook to configure Ganglia master</li>
+</ul>
+</li>
+<li>ganglia_slave.yml<ul>
+<li>The playbook to configure Ganglia slave</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="influxdb">
+<h2>influxdb<a class="headerlink" href="#influxdb" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>all.yml<ul>
+<li>Configure influxdb and Grafana.</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="spark-comm">
+<h2>spark_comm<a class="headerlink" href="#spark-comm" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>all.yml<ul>
+<li>Configure all nodes</li>
+</ul>
+</li>
+<li>spark_base.yml<ul>
+<li>Execute basic configuration of Spark</li>
+</ul>
+</li>
+<li>spark_client.yml<ul>
+<li>Configure client environment to develop Spark applications</li>
+</ul>
+</li>
+<li>spark_history.yml<ul>
+<li>Configure environment to run Spark history server</li>
+</ul>
+</li>
+<li>spark_libs.yml<ul>
+<li>Configure library environment to use native libraries in MLlib</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="zeppelin">
+<h2>zeppelin<a class="headerlink" href="#zeppelin" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>zeppelin.yml<ul>
+<li>Configure zeppelin environment</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="fluentd">
+<h2>fluentd<a class="headerlink" href="#fluentd" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>fluentd.yml<ul>
+<li>Configure fluentd</li>
+</ul>
+</li>
+<li>td_agent.yml<ul>
+<li>Configure td-agent</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="kafka">
+<h2>kafka<a class="headerlink" href="#kafka" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>kafka_brocker.yml<ul>
+<li>Configure Kafka broker nodes.</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="confluent">
+<h2>confluent<a class="headerlink" href="#confluent" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>kafka_broker.yml<ul>
+<li>Configure Confluent Kafka brokers</li>
+</ul>
+</li>
+<li>kafka_schema.yml<ul>
+<li>Configure Confluent Schema Registry</li>
+</ul>
+</li>
+<li>kafka_rest.yml<ul>
+<li>Configure Confluent REST Proxy</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="ambari">
+<h2>ambari<a class="headerlink" href="#ambari" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>ambari_agent.yml<ul>
+<li>Configure Ambari agent manually (Not through Ambari server)</li>
+</ul>
+</li>
+<li>ambari_server.yml<ul>
+<li>Configure Ambari server</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="jenkins">
+<h2>jenkins<a class="headerlink" href="#jenkins" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>jenkins.yml<ul>
+<li>Configure Jenkins server</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="anacondace">
+<h2>anacondace<a class="headerlink" href="#anacondace" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>anacondace.yml<ul>
+<li>Configure Anaconda CE</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="postgresql">
+<h2>postgresql<a class="headerlink" href="#postgresql" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>postgresql.yml<ul>
+<li>Configure PostgreSQL</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="cdh5-hive">
+<h2>cdh5_hive<a class="headerlink" href="#cdh5-hive" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>cdh5_hive.yml<ul>
+<li>Configure Hive and PostgreSQL</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="alluxio-yarn">
+<h2>alluxio_yarn<a class="headerlink" href="#alluxio-yarn" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>alluxio_yarn.yml<ul>
+<li>Configure Alluxio on YARN<ul>
+<li>Configure client and slave nodes</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        <a class="uplink" href="index.html">Contents</a>
+        </p>
+
+      </div>
+
+    <div class="footer">
+        &copy; Copyright 2014, dobachi.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>
