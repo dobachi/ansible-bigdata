@@ -11,7 +11,6 @@ Content
    :numbered:
 
    abstract
-   getting_started
    hosts
    how_to_use_playbooks
    playbooks
