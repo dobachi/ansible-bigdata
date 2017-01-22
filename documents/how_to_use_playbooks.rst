@@ -9,8 +9,8 @@ nodes and serivces.
 
 Assumption of this section
 ----------------------------
-* You have servers described in :ref:`sec-servers` section.
-* You can access all hosts listed in the inventry which is created by the following procedure.
+* You should have servers described in :ref:`sec-servers` section.
+* You should be able to access all hosts listed in the inventry which is created by the following procedure.
   e.g. You should configure /etc/hosts to access nodes by hostname in advance.
 
 .. _sec-configure-ansible-env:
