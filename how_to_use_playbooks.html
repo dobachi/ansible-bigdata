@@ -541,6 +541,17 @@ please execute the following command.</p>
 <li>alluxio_yarn_master: &#8216;{{ groups[&#8220;hadoop_slave&#8221;][0] }}&#8217;</li>
 </ul>
 </div>
+<div class="section" id="configure-tpc-ds">
+<h2>4.18. Configure TPC-DS<a class="headerlink" href="#configure-tpc-ds" title="Permalink to this headline">¶</a></h2>
+<p>To configure TPC-DS, please execute the following command.</p>
+<div class="highlight-shell"><pre>$ ansible-playbook playbooks/conf/tpc_ds/tpc_ds.yml -k -s</pre>
+</div>
+<p>The default target node is localhost.
+If you want to configure any other nodes,
+please execute the command with overwriting &#8220;server&#8221; variable like the following.</p>
+<div class="highlight-shell"><pre>$ ansible-playbook playbooks/conf/tpc_ds/tpc_ds.yml -k -s -e "server=haddoop_client:hadoop_slave"</pre>
+</div>
+</div>
 </div>
 
 

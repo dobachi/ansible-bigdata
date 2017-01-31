@@ -635,7 +635,21 @@ You can configure the following variables.
 * alluxio_yarn_working_dir: "hdfs://mycluster/tmp"
 * alluxio_yarn_master: '{{ groups["hadoop_slave"][0] }}'
 
+Configure TPC-DS
+---------------------
+To configure TPC-DS, please execute the following command.
 
+.. code-block:: shell
+
+ $ ansible-playbook playbooks/conf/tpc_ds/tpc_ds.yml -k -s
+
+The default target node is localhost.
+If you want to configure any other nodes,
+please execute the command with overwriting "server" variable like the following.
+
+.. code-block:: shell
+
+ $ ansible-playbook playbooks/conf/tpc_ds/tpc_ds.yml -k -s -e "server=haddoop_client:hadoop_slave"
 
 
 .. set ft=rst tw=0 et ts=2 sw=2

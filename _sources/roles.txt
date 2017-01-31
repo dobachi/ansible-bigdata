@@ -193,3 +193,13 @@ Role name        Use for
 alluxio_conf     Deploy Alluxio configuration files to slave nodes
 alluxio_yarn     Configuration of Alluxio on YARN
 ================ =======================================================
+
+Roles to configure TPC-DS
+-------------------------------------------
+
+================ =======================================================
+Role name        Use for
+================ =======================================================
+tpc_ds           Download TPC-DS packages and make binaries.
+                 The download URL is provided by yourself.
+================ =======================================================
