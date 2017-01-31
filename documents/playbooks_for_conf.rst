@@ -212,3 +212,9 @@ alluxio_yarn
 
     - Configure client and slave nodes
 
+tpc_ds
+~~~~~~~~
+* tpc_ds.yml
+
+  + Configure TPC-DS packages
+
