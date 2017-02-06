@@ -1,0 +1,28 @@
+---
+# tasks file for roles/tpc_ds
+- name: install_packages
+  yum: name={{ item }} state=installed
+  with_items:
+    - byacc
+    - flex
+  tags: tpc_ds
+
+- name: mkdir_/usr/local/tpc-ds
+  file: path=/usr/local/tpc-ds state=directory
+  tags: tpc_ds
+
+- name: download_tpc_ds
+  get_url: url={{ tpc_ds_download_url }} dest=/usr/local/tpc-ds/{{ tpc_ds_version }}.tgz
+  tags: tpc_ds
+
+- name: unarchive_tpc_package
+  unarchive: src=/usr/local/tpc-ds/{{ tpc_ds_version }}.tgz dest=/usr/local/tpc-ds remote_src=yes creates=/usr/local/tpc-ds/{{ tpc_ds_version }}/EULA.txt
+  tags: tpc_ds
+
+- name: mklink_default
+  file: path=/usr/local/tpc-ds/default src=/usr/local/tpc-ds/{{ tpc_ds_version }} state=link
+  tags: tpc_ds
+
+- name: make
+  shell: make clean && make chdir=/usr/local/tpc-ds/default creates=/usr/local/tpc-ds/default/tools/dsdgen
+  tags: tpc_ds

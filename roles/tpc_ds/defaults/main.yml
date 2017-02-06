@@ -1,0 +1,6 @@
+---
+# defaults file for roles/tpc_ds
+tpc_ds_version: "v2.3.0"
+
+# You need to specify the download url of TPC-DS package by yourself.
+# tpc_ds_download_url: https://example.com/{{ tpc_ds_version }}.tgz
