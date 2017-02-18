@@ -557,7 +557,7 @@ To install Hive and related packages, execute the following command.
 
 .. code-block:: shell
 
- $ ansible-playbook playbooks/conf/hive/hive.yml -k -s
+ $ ansible-playbook playbooks/conf/cdh5_hive/cdh5_hive.yml -k -s -e "server=hadoop_client"
 
 The above command installs PostgreSQL and Hive packages as well as common packages.
 To Initialize PostgreSQL Database, execute the following command.
@@ -565,22 +565,23 @@ This command remove existing database and initialize database.
 
 .. code-block:: shell
 
- $ ansible-playbook playbooks/operation/postgresql/initdb.yml -s -e "server=hadoop_client"
- $ ansible-playbook playbooks/operation/postgresql/restart_postgresql.yml -s -e "server=hadoop_client"
+ $ ansible-playbook playbooks/operation/postgresql/initdb.yml -s -k -e "server=hadoop_client"
+ $ ansible-playbook playbooks/operation/postgresql/restart_postgresql.yml -s -k -e "server=hadoop_client"
 
 To create user and database, execute the following command.
 
 .. code-block:: shell
 
- $ ansible-playbook playbooks/operation/cdh5_hive/create_metastore_db -k -s
+ $ ansible-playbook playbooks/operation/cdh5_hive/create_metastore_db -k -s -e "server=hadoop_client"
 
 To define schema, execute the following command *on the Hadoop client*.
 
 .. code-block:: shell
 
+ $ cd /usr/lib/hive/scripts/metastore/upgrade/postgres
  $ sudo -u postgres psql
- postgres=# \i /usr/lib/hive/scripts/metastore/upgrade/postgres/hive-schema-n.n.n.postgres.sql
- metastore=# \c metastore
+ postgres=# \c metastore
+ metastore=# \i hive-schema-1.1.0.postgres.sql
  metastore=# \pset tuples_only on
  metastore=# \o /tmp/grant-privs
  metastore=#   SELECT 'GRANT SELECT,INSERT,UPDATE,DELETE ON "'  || schemaname || '". "' ||tablename ||'" TO hiveuser ;'
@@ -589,13 +590,16 @@ To define schema, execute the following command *on the Hadoop client*.
  metastore=# \o
  metastore=# \pset tuples_only off
  metastore=# \i /tmp/grant-privs
+ metastore=# \q
 
 To start metastore service, execute the following command.
 
 
 .. code-block:: shell
 
- $ ansible-playbook playbooks/operation/cdh5_hive/start_metastore.yml -k -s
+ $ ansible-playbook playbooks/conf/cdh5_hive/cdh5_hive.yml -s -k -e "server=hadoop_client" 
+ $ ansible-playbook playbooks/operation/postgresql/restart_postgresql.yml -s -k -e "server=hadoop_client"
+ $ ansible-playbook playbooks/operation/cdh5_hive/start_metastore.yml -k -s -e "server=hadoop_client"
 
 If you also use Hive as a input of Spark,
 please copy hive-site.xml from /etc/hive/conf to /etc/spark/conf.
