@@ -483,21 +483,22 @@ If you want to configure PATH, please do it yourself.</p>
 <div class="section" id="configure-hive">
 <h2>4.16. Configure Hive<a class="headerlink" href="#configure-hive" title="Permalink to this headline">¶</a></h2>
 <p>To install Hive and related packages, execute the following command.</p>
-<div class="highlight-shell"><pre>$ ansible-playbook playbooks/conf/hive/hive.yml -k -s</pre>
+<div class="highlight-shell"><pre>$ ansible-playbook playbooks/conf/cdh5_hive/cdh5_hive.yml -k -s -e "server=hadoop_client"</pre>
 </div>
 <p>The above command installs PostgreSQL and Hive packages as well as common packages.
 To Initialize PostgreSQL Database, execute the following command.
 This command remove existing database and initialize database.</p>
-<div class="highlight-shell"><pre>$ ansible-playbook playbooks/operation/postgresql/initdb.yml -s -e "server=hadoop_client"
-$ ansible-playbook playbooks/operation/postgresql/restart_postgresql.yml -s -e "server=hadoop_client"</pre>
+<div class="highlight-shell"><pre>$ ansible-playbook playbooks/operation/postgresql/initdb.yml -s -k -e "server=hadoop_client"
+$ ansible-playbook playbooks/operation/postgresql/restart_postgresql.yml -s -k -e "server=hadoop_client"</pre>
 </div>
 <p>To create user and database, execute the following command.</p>
-<div class="highlight-shell"><pre>$ ansible-playbook playbooks/operation/cdh5_hive/create_metastore_db -k -s</pre>
+<div class="highlight-shell"><pre>$ ansible-playbook playbooks/operation/cdh5_hive/create_metastore_db -k -s -e "server=hadoop_client"</pre>
 </div>
 <p>To define schema, execute the following command <em>on the Hadoop client</em>.</p>
-<div class="highlight-shell"><pre>$ sudo -u postgres psql
-postgres=# \i /usr/lib/hive/scripts/metastore/upgrade/postgres/hive-schema-n.n.n.postgres.sql
-metastore=# \c metastore
+<div class="highlight-shell"><pre>$ cd /usr/lib/hive/scripts/metastore/upgrade/postgres
+$ sudo -u postgres psql
+postgres=# \c metastore
+metastore=# \i hive-schema-1.1.0.postgres.sql
 metastore=# \pset tuples_only on
 metastore=# \o /tmp/grant-privs
 metastore=#   SELECT 'GRANT SELECT,INSERT,UPDATE,DELETE ON "'  || schemaname || '". "' ||tablename ||'" TO hiveuser ;'
@@ -505,10 +506,13 @@ metastore-#   FROM pg_tables
 metastore-#   WHERE tableowner = CURRENT_USER and schemaname = 'public';
 metastore=# \o
 metastore=# \pset tuples_only off
-metastore=# \i /tmp/grant-privs</pre>
+metastore=# \i /tmp/grant-privs
+metastore=# \q</pre>
 </div>
 <p>To start metastore service, execute the following command.</p>
-<div class="highlight-shell"><pre>$ ansible-playbook playbooks/operation/cdh5_hive/start_metastore.yml -k -s</pre>
+<div class="highlight-shell"><pre>$ ansible-playbook playbooks/conf/cdh5_hive/cdh5_hive.yml -s -k -e "server=hadoop_client"
+$ ansible-playbook playbooks/operation/postgresql/restart_postgresql.yml -s -k -e "server=hadoop_client"
+$ ansible-playbook playbooks/operation/cdh5_hive/start_metastore.yml -k -s -e "server=hadoop_client"</pre>
 </div>
 <p>If you also use Hive as a input of Spark,
 please copy hive-site.xml from /etc/hive/conf to /etc/spark/conf.</p>
