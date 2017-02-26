@@ -7,9 +7,8 @@
     - name: remove_data_dir
       file: path={{ item }} state=absent
       ignore_errors: yes
-      with_items: cdh5_dfs_dn_data_dir_list
+      with_items: "{{ cdh5_dfs_dn_data_dir_list }}"
 
     - name: make_data_dir
       file: path={{ item }} state=directory owner=hdfs group=hadoop mode=700
-      with_items:
-        - '/data/1/dfs/dn'
+      with_items: "{{ cdh5_dfs_dn_data_dir_list }}"
