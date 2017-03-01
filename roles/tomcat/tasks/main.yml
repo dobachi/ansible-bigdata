@@ -6,3 +6,7 @@
     - tomcat
     - tomcat-admin-webapps
   tags: tomcat
+
+- name: deploy_server.xml
+  template: src=server.xml.j2 dest=/etc/tomcat/server.xml
+  tags: tomcat

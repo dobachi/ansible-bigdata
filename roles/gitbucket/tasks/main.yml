@@ -1,0 +1,9 @@
+---
+# tasks file for roles/gitbucket
+- name: download_gitbucket.war
+  get_url: url=https://github.com/gitbucket/gitbucket/releases/download/4.10/gitbucket.war dest=/var/lib/tomcat/webapps/gitbucket.war
+  tags: gitbucket
+
+- name: deploy_http_config
+  template: src=gitbucket.conf.j2 dest=/etc/httpd/conf.d/gitbucket.conf
+  tags: gitbucket
