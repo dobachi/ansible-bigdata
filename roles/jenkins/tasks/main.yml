@@ -19,6 +19,18 @@
   template: src=jenkins.j2 dest=/etc/sysconfig/jenkins
   tags: jenkins
 
+- name: mkdir_/var/lib/jenkins/.ssl
+  file: path=/var/lib/jenkins/.ssl state=directory owner=jenkins group=jenkins
+  tags: jenkins
+
+- name: create_keystore
+  shell: keytool -noprompt -dname "CN=example.com, OU=example, O=exmaple, L=example, S=examle, C=example" -genkey -alias jenkins-ssl-cert -keyalg RSA -keystore .ssl/.keystore -validity 365 -storepass jenkinspass -keypass jenkinspass chdir=/var/lib/jenkins creates=/var/lib/jenkins/.ssl/.keystore
+  tags: jenkins
+
+- name: chown_/var/lib/jenkins/.ssl
+  file: path=/var/lib/jenkins/.ssl state=directory owner=jenkins group=jenkins recurse=yes
+  tags: jenkins
+
 # Service
 - name: enable_service
   service: name=jenkins state=started enabled=yes

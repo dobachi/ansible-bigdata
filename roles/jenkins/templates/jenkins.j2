@@ -71,7 +71,7 @@ JENKINS_LISTEN_ADDRESS=""
 # HTTPS port Jenkins is listening on.
 # Default is disabled.
 #
-JENKINS_HTTPS_PORT=""
+JENKINS_HTTPS_PORT="1443"
 
 ## Type:        string
 ## Default:     ""
@@ -80,7 +80,7 @@ JENKINS_HTTPS_PORT=""
 # Path to the keystore in JKS format (as created by the JDK 'keytool').
 # Default is disabled.
 #
-JENKINS_HTTPS_KEYSTORE=""
+JENKINS_HTTPS_KEYSTORE="/var/lib/jenkins/.ssl/.keystore"
 
 ## Type:        string
 ## Default:     ""
@@ -89,7 +89,7 @@ JENKINS_HTTPS_KEYSTORE=""
 # Password to access the keystore defined in JENKINS_HTTPS_KEYSTORE.
 # Default is disabled.
 #
-JENKINS_HTTPS_KEYSTORE_PASSWORD=""
+JENKINS_HTTPS_KEYSTORE_PASSWORD="jenkinspass"
 
 ## Type:        string
 ## Default:     ""
