@@ -2,4 +2,5 @@
   roles:
       - common
       - jdk
+      - httpd
       - jenkins

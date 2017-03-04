@@ -1,2 +1,9 @@
 ---
 # handlers file for roles/jenkins
+- name: restart_httpd
+  service: name=httpd state=restarted
+  tags: jenkins
+
+- name: restart_jenkins
+  service: name=jenkins state=restarted
+  tags: jenkins
