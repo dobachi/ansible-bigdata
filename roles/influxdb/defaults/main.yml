@@ -1,6 +1,5 @@
 ---
 influxdb_hostname: 'localhost'
-influxdb_meta_bind_address: ':8089'
 influxdb_http_bind_address: ':8086'
 influxdb_graphite_enabled: 'true'
 influxdb_graphite_templates:
