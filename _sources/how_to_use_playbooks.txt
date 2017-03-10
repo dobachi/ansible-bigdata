@@ -295,63 +295,14 @@ and should be a representative node which gmetad connect.
 How to install and configure InfluxDB and Grafana
 -----------------------------------------------------
 You can install InfluxDB and Grafana services with the followign command.
+Be careful for a machine to which you install InfluxDB,
+because InfluxDB uses 8088 port but Hadoop YARN ResourceManager also use 8088 port.
 
 .. code-block:: shell
 
  $ ansible-playbook playbooks/conf/influxdb/all.yml -k -s
 
-Then, create a database in InfulxDB to hold data gathered by Graphite's protocol.
-
-.. code-block:: shell
-
- $ ansible-playbook playbooks/operation/influxdb/create_graphite_db.yml -k -s
-
-Create a database in InfulxDB to store Grafana's dashboard data.
-
-.. code-block:: shell
-
- $ ansible-playbook playbooks/operation/influxdb/create_grafana_db.yml -k -s
-
-The database's name and user name to connect the database is 
-configured in group_vars/all/meta, group_vars/all/influxdb and group_vars/all/grafana like the following.
-
-**group_vars/all/meta**
-
-.. code-block:: yaml
-
- meta_graphitedb_in_influxdb: 'graphite'
- meta_grafanadb_in_influxdb: 'grafana'
-
-**group_vars/all/influxdb**
-
-.. code-block:: yaml
-
- influxdb_server: "{{ groups['hadoop_other'][0] }}"
- influxdb_admin_user: "root"
- influxdb_graphite_db_name: "{{ meta_graphitedb_in_influxdb }}"
- influxdb_grafana_db_name: "{{ meta_grafanadb_in_influxdb }}"
-
-**group_vars/all/grafana**
-
-.. code-block:: yaml
-
- grafana_influxdb_list:
-   - name: "{{ meta_graphitedb_in_influxdb }}"
-     server: "{{ groups['hadoop_other'][0] }}"
-     db_name: "{{ meta_graphitedb_in_influxdb }}"
-     admin_name: "root"
-     admin_pass: "root"
-     grafanaDB: "false"
-   - name: "{{ meta_grafanadb_in_influxdb }}"
-     server: "{{ groups['hadoop_other'][0] }}"
-     db_name: "{{ meta_grafanadb_in_influxdb }}"
-     admin_name: "root"
-     admin_pass: "root"
-     grafanaDB: "true"
-
-
-Please read `Grafana's documents <http://grafana.org/docs/features/intro/>`_ to learn
-how to configure graphs.
+You can access http://<Grafana server>:3000/ to watch grafana.
 
 How to install Spark community edition
 ----------------------------------------

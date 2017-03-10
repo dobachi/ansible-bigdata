@@ -286,47 +286,12 @@ and should be a representative node which gmetad connect.</p>
 </div>
 <div class="section" id="how-to-install-and-configure-influxdb-and-grafana">
 <h2>4.8. How to install and configure InfluxDB and Grafana<a class="headerlink" href="#how-to-install-and-configure-influxdb-and-grafana" title="Permalink to this headline">¶</a></h2>
-<p>You can install InfluxDB and Grafana services with the followign command.</p>
+<p>You can install InfluxDB and Grafana services with the followign command.
+Be careful for a machine to which you install InfluxDB,
+because InfluxDB uses 8088 port but Hadoop YARN ResourceManager also use 8088 port.</p>
 <div class="highlight-shell"><pre>$ ansible-playbook playbooks/conf/influxdb/all.yml -k -s</pre>
 </div>
-<p>Then, create a database in InfulxDB to hold data gathered by Graphite&#8217;s protocol.</p>
-<div class="highlight-shell"><pre>$ ansible-playbook playbooks/operation/influxdb/create_graphite_db.yml -k -s</pre>
-</div>
-<p>Create a database in InfulxDB to store Grafana&#8217;s dashboard data.</p>
-<div class="highlight-shell"><pre>$ ansible-playbook playbooks/operation/influxdb/create_grafana_db.yml -k -s</pre>
-</div>
-<p>The database&#8217;s name and user name to connect the database is
-configured in group_vars/all/meta, group_vars/all/influxdb and group_vars/all/grafana like the following.</p>
-<p><strong>group_vars/all/meta</strong></p>
-<div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">meta_graphitedb_in_influxdb</span><span class="p-Indicator">:</span> <span class="s">&#39;graphite&#39;</span>
-<span class="l-Scalar-Plain">meta_grafanadb_in_influxdb</span><span class="p-Indicator">:</span> <span class="s">&#39;grafana&#39;</span>
-</pre></div>
-</div>
-<p><strong>group_vars/all/influxdb</strong></p>
-<div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">influxdb_server</span><span class="p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">groups[&#39;hadoop_other&#39;][0]</span><span class="nv"> </span><span class="s">}}&quot;</span>
-<span class="l-Scalar-Plain">influxdb_admin_user</span><span class="p-Indicator">:</span> <span class="s">&quot;root&quot;</span>
-<span class="l-Scalar-Plain">influxdb_graphite_db_name</span><span class="p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">meta_graphitedb_in_influxdb</span><span class="nv"> </span><span class="s">}}&quot;</span>
-<span class="l-Scalar-Plain">influxdb_grafana_db_name</span><span class="p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">meta_grafanadb_in_influxdb</span><span class="nv"> </span><span class="s">}}&quot;</span>
-</pre></div>
-</div>
-<p><strong>group_vars/all/grafana</strong></p>
-<div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">grafana_influxdb_list</span><span class="p-Indicator">:</span>
-  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">name</span><span class="p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">meta_graphitedb_in_influxdb</span><span class="nv"> </span><span class="s">}}&quot;</span>
-    <span class="l-Scalar-Plain">server</span><span class="p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">groups[&#39;hadoop_other&#39;][0]</span><span class="nv"> </span><span class="s">}}&quot;</span>
-    <span class="l-Scalar-Plain">db_name</span><span class="p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">meta_graphitedb_in_influxdb</span><span class="nv"> </span><span class="s">}}&quot;</span>
-    <span class="l-Scalar-Plain">admin_name</span><span class="p-Indicator">:</span> <span class="s">&quot;root&quot;</span>
-    <span class="l-Scalar-Plain">admin_pass</span><span class="p-Indicator">:</span> <span class="s">&quot;root&quot;</span>
-    <span class="l-Scalar-Plain">grafanaDB</span><span class="p-Indicator">:</span> <span class="s">&quot;false&quot;</span>
-  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">name</span><span class="p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">meta_grafanadb_in_influxdb</span><span class="nv"> </span><span class="s">}}&quot;</span>
-    <span class="l-Scalar-Plain">server</span><span class="p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">groups[&#39;hadoop_other&#39;][0]</span><span class="nv"> </span><span class="s">}}&quot;</span>
-    <span class="l-Scalar-Plain">db_name</span><span class="p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">meta_grafanadb_in_influxdb</span><span class="nv"> </span><span class="s">}}&quot;</span>
-    <span class="l-Scalar-Plain">admin_name</span><span class="p-Indicator">:</span> <span class="s">&quot;root&quot;</span>
-    <span class="l-Scalar-Plain">admin_pass</span><span class="p-Indicator">:</span> <span class="s">&quot;root&quot;</span>
-    <span class="l-Scalar-Plain">grafanaDB</span><span class="p-Indicator">:</span> <span class="s">&quot;true&quot;</span>
-</pre></div>
-</div>
-<p>Please read <a class="reference external" href="http://grafana.org/docs/features/intro/">Grafana&#8217;s documents</a> to learn
-how to configure graphs.</p>
+<p>You can access <a class="reference external" href="http:/">http:/</a>/&lt;Grafana server&gt;:3000/ to watch grafana.</p>
 </div>
 <div class="section" id="how-to-install-spark-community-edition">
 <h2>4.9. How to install Spark community edition<a class="headerlink" href="#how-to-install-spark-community-edition" title="Permalink to this headline">¶</a></h2>
