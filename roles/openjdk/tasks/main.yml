@@ -1,0 +1,6 @@
+---
+# tasks file for roles/openjdk
+- name: install_openjdk
+  yum: name=java-1.8.0-openjdk state=installed
+  tags:
+    - openjdk
