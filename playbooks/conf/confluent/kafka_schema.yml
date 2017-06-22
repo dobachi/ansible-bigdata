@@ -2,6 +2,6 @@
   roles:
     - common
     - epel
-    - jdk
+    - openjdk
     - supervisor
     - confluent_schema

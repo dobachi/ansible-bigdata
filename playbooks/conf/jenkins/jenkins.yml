@@ -1,6 +1,6 @@
 - hosts: '{{ server | default("localhost") }}'
   roles:
       - common
-      - jdk
+      - openjdk
       - httpd
       - jenkins

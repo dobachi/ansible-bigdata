@@ -1,7 +1,7 @@
 - hosts: "{{ server | default('hdoop_client') }}"
   roles:
     - { role: common, common_config_hostname: True }
-    - jdk
+    - openjdk
     - maven
     - alluxio_yarn
 

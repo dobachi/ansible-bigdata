@@ -2,5 +2,5 @@
   roles:
     - common
     - screen
-    - jdk
+    - openjdk
     - maven

@@ -1,5 +1,5 @@
 - hosts: hadoop_zookeeperserver
   roles:
     - { role: common, common_config_hostname: True }
-    - jdk
+    - openjdk
     - zookeeper_server

@@ -3,7 +3,7 @@
     - { role: common, common_config_hostname: True }
     - common
     - epel
-    - jdk
+    - openjdk
     - tomcat
     - endosnipe_dashboard
 

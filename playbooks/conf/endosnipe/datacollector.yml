@@ -4,6 +4,6 @@
     - common
     - epel
     - postgresql
-    - jdk
+    - openjdk
     - endosnipe_datacollector
 

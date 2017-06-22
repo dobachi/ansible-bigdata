@@ -2,7 +2,7 @@
   roles:
     - { role: common, common_config_hostname: True }
     - epel
-    - jdk
+    - openjdk
     - httpd
     - tomcat
     - gitbucket
