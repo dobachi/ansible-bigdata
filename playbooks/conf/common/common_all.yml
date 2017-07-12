@@ -3,4 +3,5 @@
       - common
       - prompt
       - screen
+      - tmux
       - epel
