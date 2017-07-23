@@ -1,0 +1,22 @@
+---
+# tasks file for roles/cuda
+
+- name: install_required_packages
+  yum: name={{ item }} state=installed
+  with_items:
+    - gcc
+    - kernel-devel
+    - kernel-headers
+  tags: cuda
+
+- name: install_cuda_repo
+  yum: name=http://developer.download.nvidia.com/compute/cuda/repos/rhel7/x86_64/cuda-repo-rhel7-8.0.61-1.x86_64.rpm state=installed
+  tags: cuda
+
+- name: install_cuda
+  yum: name=cuda state=installed
+  tags: cuda
+
+- name: deploy_cuda.sh
+  template: src=cuda.sh.j2 dest=/etc/profile.d/cuda.sh
+  tags: cuda
