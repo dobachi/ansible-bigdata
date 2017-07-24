@@ -20,3 +20,7 @@
 - name: deploy_cuda.sh
   template: src=cuda.sh.j2 dest=/etc/profile.d/cuda.sh
   tags: cuda
+
+- name: deploy_cudnn
+  unarchive: src={{ cuda_cudnn_package }} dest=/usr/local
+  tags: cuda
