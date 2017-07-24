@@ -218,3 +218,9 @@ tpc_ds
 
   + Configure TPC-DS packages
 
+tensorflow
+~~~~~~~~~~~~~~~~
+* gpu_env.yml
+
+  + Configure CUDA and cuDNN environment
+

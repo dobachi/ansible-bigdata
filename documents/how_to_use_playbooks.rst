@@ -606,5 +606,19 @@ please execute the command with overwriting "server" variable like the following
 
  $ ansible-playbook playbooks/conf/tpc_ds/tpc_ds.yml -k -s -e "server=haddoop_client:hadoop_slave"
 
+Configure CUDA and cuDNN
+----------------------------
+First, you should download cuDNN package from NVIDIA's download site manually.
+This is because we need to register NVIDIA's site before downloading the package.
+In this role, we use cudnn-8.0-linux-x64-v5.1.solitairetheme8.
+Before executing the playbook, you should store cudnn-8.0-linux-x64-v5.1.solitairetheme8 in roles/cuda/files directory.
+
+If you want to install required packages,
+please execute the command with overwriting "server" variable like the following.
+
+.. code-block:: shell
+
+ $ ansible-playbook playbooks/conf/tensorflow/gpu_env.yml -k -s -e "server=hd-client01"
+
 
 .. set ft=rst tw=0 et ts=2 sw=2
