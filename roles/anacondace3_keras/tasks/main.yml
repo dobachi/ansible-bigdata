@@ -1,0 +1,10 @@
+---
+# tasks file for roles/anacondace3_keras
+
+- name: conda_create
+  shell: conda create -y -n keras python=3.5 ipython jupyter creates={{ anacondace3_keras_anaconda_dir }}/envs/keras/bin/ipython
+  tags: anacondace3_keras
+
+- name: pip_install_keras
+  shell: "{{ anacondace3_keras_anaconda_dir }}/envs/keras/bin/pip install keras tensorflow"
+  tags: anacondace3_keras
