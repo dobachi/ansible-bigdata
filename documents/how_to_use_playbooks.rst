@@ -493,11 +493,17 @@ To install Jenkins and related packages, execute the following command.
 
 Configure Anaconda CE
 --------------------------
-To install Anaconda CE, execute the following command.
+To install Anaconda2 CE, execute the following command.
 
 .. code-block:: shell
 
- $ ansible-playbook playbooks/conf/anacondace/anacondace.yml -k -s
+ $ ansible-playbook playbooks/conf/anacondace/anacondace2.yml -k -s
+
+To install Anaconda3 CE, execute the following command.
+
+.. code-block:: shell
+
+ $ ansible-playbook playbooks/conf/anacondace/anacondace3.yml -k -s
 
 The above command installs Anaconda CE pakcages to /usr/local/anacondace directory.
 If you want to configure PATH, please do it yourself.

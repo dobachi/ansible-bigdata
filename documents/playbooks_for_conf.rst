@@ -188,9 +188,13 @@ jenkins
 
 anacondace
 ~~~~~~~~~~~~
-* anacondace.yml
+* anacondace2.yml
 
-  + Configure Anaconda CE
+  + Configure Anaconda2 CE
+
+* anacondace3.yml
+
+  + Configure Anaconda3 CE
 
 postgresql
 ~~~~~~~~~~~~

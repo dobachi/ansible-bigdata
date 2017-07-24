@@ -1,0 +1,24 @@
+---
+# tasks file for roles/anacondace
+
+# Installation
+- name: Install_bzip2
+  yum: name=bzip2 state=installed
+  tags: anacondace2
+
+- name: mkidr_anacondace
+  file: path={{ anacondace2_root_dir }} state=directory
+  tags: anacondace2
+
+- name: Downloads_anaconda_package
+  get_url: url=https://repo.continuum.io/archive/Anaconda2-{{ anacondace2_version }}-Linux-x86_64.sh dest={{ anacondace2_root_dir }}/Anaconda2-{{ anacondace2_version }}-Linux-x86_64.sh
+  tags: anacondace2
+
+- name: Install
+  shell: bash Anaconda2-{{ anacondace2_version }}-Linux-x86_64.sh -b -p {{ anacondace2_root_dir }}/Anaconda2-{{ anacondace2_version }}-Linux-x86_64 chdir={{ anacondace2_root_dir }} creates={{ anacondace2_root_dir }}/Anaconda2-{{ anacondace2_version }}-Linux-x86_64/LICENSE.txt
+  tags: anacondace2
+
+# Configuration
+- name: create_symlink
+  file: dest={{ anacondace2_root_dir }}/default state=link src={{ anacondace2_root_dir }}/Anaconda2-{{ anacondace2_version }}-Linux-x86_64
+  tags: anacondace2
