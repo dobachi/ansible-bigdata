@@ -439,8 +439,11 @@ $ ansible-playbook playbooks/operation/start_kafka_rest.yml -k -s</pre>
 </div>
 <div class="section" id="configure-anaconda-ce">
 <h2>4.15. Configure Anaconda CE<a class="headerlink" href="#configure-anaconda-ce" title="Permalink to this headline">¶</a></h2>
-<p>To install Anaconda CE, execute the following command.</p>
-<div class="highlight-shell"><pre>$ ansible-playbook playbooks/conf/anacondace/anacondace.yml -k -s</pre>
+<p>To install Anaconda2 CE, execute the following command.</p>
+<div class="highlight-shell"><pre>$ ansible-playbook playbooks/conf/anacondace/anacondace2.yml -k -s</pre>
+</div>
+<p>To install Anaconda3 CE, execute the following command.</p>
+<div class="highlight-shell"><pre>$ ansible-playbook playbooks/conf/anacondace/anacondace3.yml -k -s</pre>
 </div>
 <p>The above command installs Anaconda CE pakcages to /usr/local/anacondace directory.
 If you want to configure PATH, please do it yourself.</p>
@@ -519,6 +522,25 @@ please execute the following command.</p>
 If you want to configure any other nodes,
 please execute the command with overwriting &#8220;server&#8221; variable like the following.</p>
 <div class="highlight-shell"><pre>$ ansible-playbook playbooks/conf/tpc_ds/tpc_ds.yml -k -s -e "server=haddoop_client:hadoop_slave"</pre>
+</div>
+</div>
+<div class="section" id="configure-keras-and-tensorflow">
+<h2>4.19. Configure Keras and Tensorflow<a class="headerlink" href="#configure-keras-and-tensorflow" title="Permalink to this headline">¶</a></h2>
+<p>If you want to use GPU,
+you should download cuDNN package from NVIDIA&#8217;s download site manually.
+This is because we need to register NVIDIA&#8217;s site before downloading the package.
+In &#8220;cuda&#8221; role, we use cudnn-8.0-linux-x64-v5.1.solitairetheme8.
+Before executing the playbook, you should store cudnn-8.0-linux-x64-v5.1.solitairetheme8 in roles/cuda/files directory.</p>
+<p>If you don&#8217;t want to use GPU, you don&#8217;t need to downloads cuDNN packages.</p>
+<div class="section" id="gpu">
+<h3>4.19.1. GPU<a class="headerlink" href="#gpu" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-shell"><pre>$ ansible-playbook playbooks/conf/tensorflow/keras_gpu.yml -k -s -e "server=hd-client01"</pre>
+</div>
+</div>
+<div class="section" id="cpu">
+<h3>4.19.2. CPU<a class="headerlink" href="#cpu" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-shell"><pre>$ ansible-playbook playbooks/conf/tensorflow/keras.yml -k -s -e "server=hd-client01"</pre>
+</div>
 </div>
 </div>
 </div>

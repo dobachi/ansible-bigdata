@@ -33,6 +33,7 @@ Each function is available individually.
 * Configuring Kafka cluster
 * Configuring Confluent cluster
 * Configuring Ambari
+* Configuring CUDA and cuDNN
 
 .. _sec-servers:
 
