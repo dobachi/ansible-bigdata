@@ -224,7 +224,18 @@ tpc_ds
 
 tensorflow
 ~~~~~~~~~~~~~~~~
+* anaconda.yml
+
+  + Configure Anaconda3 CE
+
 * gpu_env.yml
 
   + Configure CUDA and cuDNN environment
 
+* keras.yml
+
+  + Configure Keras and TensorFlow environment (Use CPU)
+
+* keras_gpu.yml
+
+  + Configure Keras and TensorFlow environment (Use GPU)
