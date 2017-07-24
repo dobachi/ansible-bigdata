@@ -22,5 +22,5 @@
   tags: cuda
 
 - name: deploy_cudnn
-  unarchive: src={{ cuda_cudnn_package }} dest=/usr/local
+  unarchive: src={{ cuda_cudnn_package }} dest=/usr/local creates=/usr/local/cuda/lib64/libcudnn.so.5
   tags: cuda
