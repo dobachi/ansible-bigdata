@@ -1,0 +1,4 @@
+---
+# defaults file for roles/anacondace3_keras
+anacondace3_keras_gpu_anaconda_dir: "/usr/local/anacondace3/default"
+anacondace3_keras_gpu_tensorflow_url "https://storage.googleapis.com/tensorflow/linux/gpu/tensorflow_gpu-1.1.0-cp35-cp35m-linux_x86_64.whl"
