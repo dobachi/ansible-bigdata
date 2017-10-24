@@ -1,0 +1,4 @@
+---
+# defaults file for roles/anacondace
+anacondace2_root_dir: "/usr/local/anacondace2"
+anacondace2_version: "4.2.0"

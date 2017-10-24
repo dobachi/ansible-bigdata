@@ -1,0 +1,24 @@
+---
+# tasks file for roles/anacondace
+
+# Installation
+- name: Install_bzip2
+  yum: name=bzip2 state=installed
+  tags: anacondace3
+
+- name: mkidr_anacondace
+  file: path={{ anacondace3_root_dir }} state=directory
+  tags: anacondace3
+
+- name: Downloads_anaconda_package
+  get_url: url=https://repo.continuum.io/archive/Anaconda3-{{ anacondace3_version }}-Linux-x86_64.sh dest={{ anacondace3_root_dir }}/Anaconda3-{{ anacondace3_version }}-Linux-x86_64.sh
+  tags: anacondace3
+
+- name: Install
+  shell: bash Anaconda3-{{ anacondace3_version }}-Linux-x86_64.sh -b -p {{ anacondace3_root_dir }}/Anaconda3-{{ anacondace3_version }}-Linux-x86_64 chdir={{ anacondace3_root_dir }} creates={{ anacondace3_root_dir }}/Anaconda3-{{ anacondace3_version }}-Linux-x86_64/LICENSE.txt
+  tags: anacondace3
+
+# Configuration
+- name: create_symlink
+  file: dest={{ anacondace3_root_dir }}/default state=link src={{ anacondace3_root_dir }}/Anaconda3-{{ anacondace3_version }}-Linux-x86_64
+  tags: anacondace3

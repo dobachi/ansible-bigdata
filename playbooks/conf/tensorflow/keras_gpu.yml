@@ -1,0 +1,7 @@
+- include: gpu_env.yml
+- include: anaconda.yml
+
+- hosts: "{{ server | default('localhost') }}"
+  roles:
+    - anacondace3_keras_gpu
+

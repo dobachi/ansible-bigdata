@@ -188,9 +188,13 @@ jenkins
 
 anacondace
 ~~~~~~~~~~~~
-* anacondace.yml
+* anacondace2.yml
 
-  + Configure Anaconda CE
+  + Configure Anaconda2 CE
+
+* anacondace3.yml
+
+  + Configure Anaconda3 CE
 
 postgresql
 ~~~~~~~~~~~~
@@ -218,3 +222,20 @@ tpc_ds
 
   + Configure TPC-DS packages
 
+tensorflow
+~~~~~~~~~~~~~~~~
+* anaconda.yml
+
+  + Configure Anaconda3 CE
+
+* gpu_env.yml
+
+  + Configure CUDA and cuDNN environment
+
+* keras.yml
+
+  + Configure Keras and TensorFlow environment (Use CPU)
+
+* keras_gpu.yml
+
+  + Configure Keras and TensorFlow environment (Use GPU)
