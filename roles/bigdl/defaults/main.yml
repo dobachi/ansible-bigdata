@@ -1,0 +1,5 @@
+---
+# defaults file for roles/bigdl
+bigdl_root_dir: '/usr/local/bigdl'
+bigdl_package_url_base: 'https://oss.sonatype.org/content/groups/public/com/intel/analytics/bigdl/dist-spark-2.1.1-scala-2.11.8-linux64/0.2.0'
+bigdl_package_name: 'dist-spark-2.1.1-scala-2.11.8-linux64-0.2.0-dist'

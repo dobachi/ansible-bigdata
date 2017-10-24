@@ -1,0 +1,30 @@
+---
+# tasks file for roles/bigdl
+- name: add_bigdl_group
+  group: name=bigdl
+  tags: bigdl
+
+- name: add_bigdl_user
+  user: name=bigdl
+  tags: bigdl
+
+- name: make_bigdl_directory
+  file: path={{ bigdl_root_dir }} owner=bigdl group=bigdl state=directory
+  tags: bigdl
+
+- name: get_bigdl_packages
+  get_url: url={{ bigdl_package_url_base }}/{{ bigdl_package_name }}.zip dest=/usr/local/bigdl/{{ bigdl_package_name }}.zip
+  tags: bigdl
+
+- name: unarchive_package
+  shell: unzip -d {{ bigdl_root_dir }}/{{ bigdl_package_name }} {{ bigdl_package_name }}.zip chdir={{ bigdl_root_dir }} creates={{ bigdl_root_dir }}/{{ bigdl_package_name }}/conf/spark-bigdl.conf
+  tags: bigdl
+
+- name: configure_owner_and_group_of_unarhived_package
+  file: path={{ bigdl_root_dir }}/{{ bigdl_package_name }} owner=bigdl group=bigdl recurse=yes
+  tags: bigdl
+
+- name: make_alternatives_entry_of_bigdl_default
+  alternatives: name=bigdl_package_default path={{ bigdl_root_dir }}/{{ bigdl_package_name }} link={{bigdl_root_dir }}/default
+  tags: bigdl
+
