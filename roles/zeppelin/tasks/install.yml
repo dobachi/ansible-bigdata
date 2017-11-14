@@ -3,7 +3,7 @@
   tags: zeppelin
 
 - name: get_zeppelin_package
-  get_url: url={{ zeppelin_package_base_url }}/{{ zeppelin_package_name }}{{ zeppelin_package_suffix }} dest={{ zeppelin_dir }}/{{ zeppelin_package_name }}{{ zeppelin_package_suffix }}
+  get_url: url={{ zeppelin_package_base_url }}/{{ zeppelin_package_name }}{{ zeppelin_package_suffix }} dest={{ zeppelin_dir }}/{{ zeppelin_package_name }}{{ zeppelin_package_suffix }} timeout=30
   sudo: yes
   sudo_user: zeppelin
   tags: zeppelin

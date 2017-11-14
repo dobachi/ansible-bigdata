@@ -7,12 +7,13 @@ zeppelin_dir: '/usr/local/zeppelin'
 zeppelin_log_dir: '/var/log/zeppelin'
 
 # You should configure the following parameters
-#zeppelin_package_base_url: 'http://www-us.apache.org/dist/zeppelin/zeppelin-0.6.1'
-#zeppelin_package_name: 'zeppelin-0.6.1-bin-netinst'
+#zeppelin_package_base_url: 'http://www-us.apache.org/dist/zeppelin/zeppelin-0.7.3'
+#zeppelin_package_name: 'zeppelin-0.7.3-bin-all'
 #zeppelin_package_suffix: '.tgz'
 
 # zeppelin-site.xml
 zeppelin_server_port: '8080'
+zeppelin_notebook_dir: 'notebook'
 
 # zeppelin-env.sh
 zeppelin_java_home: '/usr/java/default'
