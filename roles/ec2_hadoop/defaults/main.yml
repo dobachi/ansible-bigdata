@@ -14,11 +14,13 @@ ec2_hadoop_instance_tag: hadoop
 #ec2_hadoop_master_itype: xx.xxxxx
 #ec2_hadoop_slave_itype: xx.xxxxx
 #ec2_hadoop_client_itype: xx.xxxxx
+#ec2_hadoop_other_itype: xx.xxxxx
 
 # The id of AMI image
 #ec2_hadoop_master_image: ami-xxxxxxxx
 #ec2_hadoop_slave_image: ami-xxxxxxxx
 #ec2_hadoop_client_image: ami-xxxxxxxx
+#ec2_hadoop_other_image: ami-xxxxxxxx
 
 # The id of region
 #ec2_hadoop_region: xx-xxxxxxxxx-x
@@ -53,3 +55,7 @@ ec2_hadoop_sl_list:
 ec2_hadoop_cl_list:
   - name: client01
     ip: 172.31.16.31
+
+ec2_hadoop_ot_list:
+  - name: other01
+    ip: 172.31.16.40
