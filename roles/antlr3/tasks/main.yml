@@ -1,7 +1,7 @@
 ---
 # tasks file for roles/antlr3
 - name: Create_directries
-  file: path=/usr/local/antlr3/{{ antlr3_version }} state=directory
+  file: path=/usr/local/antlr3/{{ antlr3_version }}/bin state=directory recurse=yes
   tags: antlr3
 
 - name: Create_symlink
@@ -10,4 +10,16 @@
 
 - name: Download_Antlr_bin
   get_url: url=http://www.antlr3.org/download/antlr-{{ antlr3_version }}-complete-no-st3.jar dest=/usr/local/antlr3/default/
+  tags: antlr3
+
+- name: Create_symlink_of_jar
+  file: src=/usr/local/antlr3/{{ antlr3_version }}/antlr-{{ antlr3_version }}-complete-no-st3.jar dest=/usr/local/antlr3/default/antlr3.jar state=link
+  tags: antlr3
+
+- name: create_command
+  template: src=antlr3.j2 dest=/usr/local/antlr3/default/bin/antlr3 mode=755
+  tags: antlr3
+
+- name: create_profile
+  template: src=antlr3.sh.j2 dest=/etc/profile.d/antlr3.sh
   tags: antlr3
