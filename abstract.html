@@ -301,6 +301,15 @@ If you cannot use sudo, you should access remote servers by root user.</li>
 For example, CentOS6 community instance use RSA key with root user in SSH access.</li>
 </ul>
 </div>
+<div class="section" id="use-python3">
+<h2>1.6. Use Python3<a class="headerlink" href="#use-python3" title="Permalink to this headline">¶</a></h2>
+<p>If you want to use Python3, you should create group_vars/all/python3 file including the following content.
+Please replace &lt;your python3 path&gt; to the path of your own Python3.
+For example, /usr/bin/python3.</p>
+<div class="highlight-python"><pre>ansible_python_interpreter: &lt;your python3 path&gt;</pre>
+</div>
+<p>The file, group_vars/all/python3 is included in .gitignore list, because the path of Python3 is different from each environment.</p>
+</div>
 </div>
 
 
