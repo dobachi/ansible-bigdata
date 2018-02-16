@@ -11,13 +11,13 @@
 
 # some basic default values...
 
-hostfile       = hosts
+inventory       = hosts
 library        = /usr/share/ansible:library
 remote_tmp     = $HOME/.ansible/tmp
 pattern        = *
 forks          = 5
 poll_interval  = 15
-sudo_user      = root
+become_user      = root
 #ask_sudo_pass = True
 #ask_pass      = True
 transport      = smart
@@ -41,7 +41,7 @@ roles_path    = roles
 host_key_checking = False
 
 # change this for alternative sudo implementations
-sudo_exe = sudo
+become_method = sudo
 
 # what flags to pass to sudo
 #sudo_flags = -H
@@ -178,10 +178,10 @@ record_host_keys=False
 # (default is sftp)
 #scp_if_ssh = True
 
-[accelerate]
-accelerate_port = 5099
-accelerate_timeout = 30
-accelerate_connect_timeout = 5.0
+# [accelerate]
+# accelerate_port = 5099
+# accelerate_timeout = 30
+# accelerate_connect_timeout = 5.0
 
 # The daemon timeout is measured in minutes. This time is measured
 # from the last activity to the accelerate daemon.
