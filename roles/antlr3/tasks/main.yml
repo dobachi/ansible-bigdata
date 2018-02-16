@@ -1,0 +1,13 @@
+---
+# tasks file for roles/antlr3
+- name: Create_directries
+  file: path=/usr/local/antlr3/{{ antlr3_version }} state=directory
+  tags: antlr3
+
+- name: Create_symlink
+  file: src=/usr/local/antlr3/{{ antlr3_version }} dest=/usr/local/antlr3/default state=link
+  tags: antlr3
+
+- name: Download_Antlr_bin
+  get_url: url=http://www.antlr3.org/download/antlr-{{ antlr3_version }}-complete-no-st3.jar dest=/usr/local/antlr3/default/
+  tags: antlr3
