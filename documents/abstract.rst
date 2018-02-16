@@ -129,3 +129,17 @@ Prerequirement
   If you cannot use sudo, you should access remote servers by root user.
 * When you manage EC2 instances, you need to use RSA key to login servers.
   For example, CentOS6 community instance use RSA key with root user in SSH access.
+
+Use Python3
+------------------
+If you want to use Python3, you should create group_vars/all/python3 file including the following content.
+Please replace <your python3 path> to the path of your own Python3.
+For example, /usr/bin/python3.
+
+::
+
+ ansible_python_interpreter: <your python3 path>
+
+
+The file, group_vars/all/python3 is included in .gitignore list, because the path of Python3 is different from each environment.
+
