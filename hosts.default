@@ -1,0 +1,18 @@
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
+
+# masters
+172.31.80.11 master01
+172.31.80.12 master02
+172.31.80.13 master03
+
+# slaves
+172.31.80.21 slave01
+172.31.80.22 slave02
+172.31.80.23 slave03
+172.31.80.24 slave04
+172.31.80.25 slave05
+
+# clients
+172.31.80.31 client01
+

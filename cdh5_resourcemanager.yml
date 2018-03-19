@@ -1,0 +1,6 @@
+- hosts: hadoop_resourcemanager
+  roles:
+    - { role: common, common_config_hostname: True }
+    - openjdk
+    - cdh5_base
+    - cdh5_rm

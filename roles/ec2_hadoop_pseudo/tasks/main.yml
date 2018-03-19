@@ -5,7 +5,8 @@
     group_id: "{{ ec2_hadoop_pseudo_group_id }}"
     image: "{{ ec2_hadoop_pseudo_image }}"
     wait: yes
-    region: "{{ ec2_hadoop_pseudo_region }}"
+    # region: "{{ ec2_hadoop_pseudo_region }}"
+    ec2_url: "{{ ec2_url }}"
     instance_tags:
       Name: "{{ ec2_hadoop_pseudo_instance_tag }}"
       nodetype: "{{ item.name }}"
