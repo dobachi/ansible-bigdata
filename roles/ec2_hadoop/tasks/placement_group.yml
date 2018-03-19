@@ -5,7 +5,8 @@
     group_id: "{{ ec2_hadoop_group_id }}"
     image: "{{ ec2_hadoop_master_image }}"
     wait: yes
-    region: "{{ ec2_hadoop_region }}"
+        # region: "{{ ec2_hadoop_pseudo_region }}"
+    ec2_url: "{{ ec2_url }}"
     instance_tags:
       Name: "{{ ec2_hadoop_instance_tag }}"
       group: "{{ ec2_hadoop_instance_tag }}"
@@ -27,7 +28,8 @@
     group_id: "{{ ec2_hadoop_group_id }}"
     image: "{{ ec2_hadoop_slave_image }}"
     wait: yes
-    region: "{{ ec2_hadoop_region }}"
+        # region: "{{ ec2_hadoop_pseudo_region }}"
+    ec2_url: "{{ ec2_url }}"
     instance_tags:
       Name: "{{ ec2_hadoop_instance_tag }}"
       group: "{{ ec2_hadoop_instance_tag }}"
@@ -49,7 +51,8 @@
     group_id: "{{ ec2_hadoop_group_id }}"
     image: "{{ ec2_hadoop_client_image }}"
     wait: yes
-    region: "{{ ec2_hadoop_region }}"
+        # region: "{{ ec2_hadoop_pseudo_region }}"
+    ec2_url: "{{ ec2_url }}"
     instance_tags:
       Name: "{{ ec2_hadoop_instance_tag }}"
       group: "{{ ec2_hadoop_instance_tag }}"
@@ -71,7 +74,8 @@
     group_id: "{{ ec2_hadoop_group_id }}"
     image: "{{ ec2_hadoop_other_image }}"
     wait: yes
-    region: "{{ ec2_hadoop_region }}"
+        # region: "{{ ec2_hadoop_pseudo_region }}"
+    ec2_url: "{{ ec2_url }}"
     instance_tags:
       Name: "{{ ec2_hadoop_instance_tag }}"
       group: "{{ ec2_hadoop_instance_tag }}"

@@ -1,0 +1,10 @@
+- include: cdh5_zookeeper.yml
+- include: cdh5_cl.yml
+- include: cdh5_namenode.yml
+- include: cdh5_journalnode.yml
+- include: cdh5_resourcemanager.yml
+- include: cdh5_slave.yml
+- include: cdh5_other.yml
+- include: ../../operation/cdh5/init_zkfc.yml
+- include: ../../operation/cdh5/init_hdfs.yml
+- include: ../../operation/cdh5/start_cluster.yml
