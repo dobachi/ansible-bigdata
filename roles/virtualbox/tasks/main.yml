@@ -2,5 +2,5 @@
 # tasks file for roles/virtualbox
 
 - name: install_virtualbox
-  package: name=https://download.virtualbox.org/virtualbox/5.2.8/VirtualBox-5.2-5.2.8_121009_el7-1.x86_64.rpm state=present
+  package: name=https://download.virtualbox.org/virtualbox/{{ virtualbox_version }}/VirtualBox-{{ virtualbox_version_detail }}.x86_64.rpm state=present
   tags: virtualbox

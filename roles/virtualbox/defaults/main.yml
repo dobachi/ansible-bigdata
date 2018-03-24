@@ -1,2 +1,4 @@
 ---
 # defaults file for roles/virtualbox
+virtualbox_version: "5.2.8"
+virtualbox_version_detail: "5.2-5.2.8_121009_el7-1"
