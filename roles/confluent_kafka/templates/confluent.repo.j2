@@ -1,6 +1,13 @@
-[confluent-3.0]
-name=Confluent repository for 3.0.x packages
-baseurl=http://packages.confluent.io/rpm/3.0
+[Confluent.dist]
+name=Confluent repository (dist)
+baseurl=https://packages.confluent.io/rpm/5.0/7
 gpgcheck=1
-gpgkey=http://packages.confluent.io/rpm/3.0/archive.key
+gpgkey=https://packages.confluent.io/rpm/5.0/archive.key
+enabled=1
+
+[Confluent]
+name=Confluent repository
+baseurl=https://packages.confluent.io/rpm/5.0
+gpgcheck=1
+gpgkey=https://packages.confluent.io/rpm/5.0/archive.key
 enabled=1

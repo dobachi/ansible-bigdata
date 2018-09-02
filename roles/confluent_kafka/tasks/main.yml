@@ -1,6 +1,19 @@
 ---
 # tasks file for roles/confluent_kafka
-- include: repo.yml tags=repo,confluent_kafka
-- include: user.yml tags=user,confluent_kafka
-- include: install.yml tags=install,confluent_kafka
-- include: config.yml tags=config,confluent_kafka
+- name: import_key
+  shell: rpm --import http://packages.confluent.io/rpm/5.0/archive.key
+
+- name: copy_confluent.repo
+  template: src=confluent.repo.j2 dest=/etc/yum.repos.d/confluent.repo
+
+- name: install_confluent_kafka
+  yum: name=confluent-platform-oss-{{ confluent_scala_version }} state=installed
+
+# - name: copy_server.properties
+#   template: src=server.properties.j2 dest=/etc/kafka/server.properties
+# 
+# - name: copy_connect-standalone.properties
+#   template: src=connect-standalone.properties.j2 dest=/etc/kafka/connect-standalone.properties
+# 
+# - name: copy_connect-distributed.properties
+#   template: src=connect-distributed.properties.j2 dest=/etc/kafka/connect-distributed.properties
