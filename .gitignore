@@ -13,3 +13,4 @@ metastore_db/
 *.retry
 doctmp
 group_vars/all/python3
+.vagrant
