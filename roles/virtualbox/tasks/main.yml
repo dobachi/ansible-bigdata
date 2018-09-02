@@ -1,0 +1,6 @@
+---
+# tasks file for roles/virtualbox
+
+- name: install_virtualbox
+  package: name=https://download.virtualbox.org/virtualbox/{{ virtualbox_version }}/VirtualBox-{{ virtualbox_version_detail }}.x86_64.rpm state=present
+  tags: virtualbox
