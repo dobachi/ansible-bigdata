@@ -1,28 +1,22 @@
 ---
 # defaults file for roles/confluent_kafka
 
+# installation
 confluent_scala_version: '2.11'
+
+# server.properties
+confluent_kafka_broker_id_gen: 'false'
 confluent_kafka_num_partitions: 3
-confluent_kafka_log_dirs: '/var/lib/kafka'
 confluent_kafka_znode_root: '/confluent'
-confluent_kafka_zookeeper_connect: '{{ groups["hadoop_zookeeperserver"] | join(":2181,") }}:2181{{ confluent_kafka_znode_root }}'
+confluent_kafka_zookeeper_connect: '{{ groups["confluent_kafka_cluster"] | join(":2181,") }}:2181{{ confluent_kafka_znode_root }}'
+confluent_kafka_support_metrics_enable: 'false'
+confluent_kafka_delete_topic_enable: 'true'
+
+## The following parameters should be configured in group variables or inventory files
+# confluent_kafka_broker_id:
+
 #confluent_kafka_rest_id: 'kafka-rest-test-serve'
 #confluent_schema_registry: '{{ groups["confluent_schema_registry"][0] }}:8081'
-
-confluent_kafka_listeners: 'PLAINTEXT://:9092'
-confluent_kafka_delete_topic_enable: 'true'
-confluent_kafka_num_network_threads: '3'
-confluent_kafka_num_io_threads: '8'
-confluent_kafka_socket_send_buffer: '102400'
-confluent_kafka_socket_receive_buffer: '102400'
-confluent_kafka_socket_req_max: '104857600'
-confluent_kafka_background_threads: '10'
-confluent_kafka_log_flush_schd_interval: '9223372036854775807'
-confluent_kafka_num_replica_fetchers: '1'
-confluent_kafka_min_insync_replicas: '2'
-confluent_kafka_log_flush_interval_messages: '10000'
-confluent_kafka_log_flush_interval_ms: '1000'
-confluent_kafka_support_metrics_enable: 'false'
 
 # Kafka Connect
 confluent_kafka_connect_bootstrap: '{{ groups["confluent_kafka_cluster"] | join(":9092,") }}:9092'
@@ -30,6 +24,3 @@ confluent_kafka_connect_groupid: 'connect-cluster'
 confluent_kafka_connect_offset_topic: 'connect-offsets'
 confluent_kafka_connect_config_topic: 'connect-configs'
 confluent_kafka_connect_status_topic: 'connect-status'
-
-# The following parameters should be configured in group variables or inventory files
-# confluent_kafka_broker_id:

@@ -2,18 +2,32 @@
 # tasks file for roles/confluent_kafka
 - name: import_key
   shell: rpm --import http://packages.confluent.io/rpm/5.0/archive.key
+  tags: confluent_kafka
 
 - name: copy_confluent.repo
   template: src=confluent.repo.j2 dest=/etc/yum.repos.d/confluent.repo
+  tags: confluent_kafka
 
 - name: install_confluent_kafka
   yum: name=confluent-platform-oss-{{ confluent_scala_version }} state=installed
+  tags: confluent_kafka
 
-# - name: copy_server.properties
-#   template: src=server.properties.j2 dest=/etc/kafka/server.properties
+- name: copy_zookeeper.properties
+  template: src=zookeeper.properties.j2 dest=/etc/kafka/zookeeper.properties
+  tags: confluent_kafka
+
+- name: copy_myid
+  template: src=myid.j2 dest=/var/lib/zookeeper/myid
+  tags: confluent_kafka
+
+- name: copy_server.properties
+  template: src=server.properties.j2 dest=/etc/kafka/server.properties
+  tags: confluent_kafka
 # 
 # - name: copy_connect-standalone.properties
 #   template: src=connect-standalone.properties.j2 dest=/etc/kafka/connect-standalone.properties
+#   tags: confluent_kafka
 # 
 # - name: copy_connect-distributed.properties
 #   template: src=connect-distributed.properties.j2 dest=/etc/kafka/connect-distributed.properties
+#   tags: confluent_kafka
