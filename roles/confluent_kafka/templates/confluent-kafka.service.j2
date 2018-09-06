@@ -1,0 +1,19 @@
+[Unit]
+Description=Apache Kafka - broker
+Documentation=http://docs.confluent.io/
+After=network.target confluent-zookeeper.target
+
+[Service]
+Type=simple
+User=cp-kafka
+Group=confluent
+ExecStart=/usr/bin/kafka-server-start /etc/kafka/server.properties
+TimeoutStopSec=180
+Restart=no
+
+{% if confluent_kafka_service_environment %}
+Environment={{confluent_kafka_service_environment}}
+{% endif %}
+
+[Install]
+WantedBy=multi-user.target

@@ -23,6 +23,10 @@
 - name: copy_server.properties
   template: src=server.properties.j2 dest=/etc/kafka/server.properties
   tags: confluent_kafka
+
+- name: copy_confluent-kafka.services
+  template: src=confluent-kafka.service.j2 dest=/lib/systemd/system/confluent-kafka.service
+  tags: confluent_kafka
 # 
 # - name: copy_connect-standalone.properties
 #   template: src=connect-standalone.properties.j2 dest=/etc/kafka/connect-standalone.properties

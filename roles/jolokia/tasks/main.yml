@@ -1,0 +1,14 @@
+---
+# tasks file for roles/jolokia
+
+- name: mkdir_jolokia
+  file: path=/opt/jolokia state=directory
+  tags: jolokia
+
+- name: donwload_jolokia
+  get_url: url=https://github.com/rhuss/jolokia/releases/download/v1.5.0/jolokia-1.5.0-bin.tar.gz dest=/opt/jolokia/jolokia-1.5.0-bin.tar.gz
+  tags: jolokia
+
+- name: unarchive_tar
+  unarchive: src=/opt/jolokia/jolokia-1.5.0-bin.tar.gz dest=/opt/jolokia copy=no
+  tags: jolokia
