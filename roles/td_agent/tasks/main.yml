@@ -1,5 +1,6 @@
 ---
-# tasks file for roles/td-agent
-- include: repo.yml tags=td_agent,repo
-- include: install.yml tags=td_agent,install
-- include: config.yml tags=td_agent,config
+# tasks file for roles/td_agent
+
+- name: install_td_agent
+  shell:  curl -L https://toolbelt.treasuredata.com/sh/install-redhat-td-agent3.sh | sh
+  tags: td_agent
