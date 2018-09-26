@@ -165,6 +165,9 @@ hd-kafka01
 [confluent_kafka_rest]
 hd-kafka01
 
+[confluent_ksql]
+hd-kafka01
+
 [manage]
 manage
 
