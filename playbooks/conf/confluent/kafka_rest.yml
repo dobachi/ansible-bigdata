@@ -1,7 +1,0 @@
-- hosts: "{{ server | default('confluent_kafka_broker') }}"
-  roles:
-    - common
-    - epel
-    - openjdk
-    - supervisor
-    - confluent_kafka_rest

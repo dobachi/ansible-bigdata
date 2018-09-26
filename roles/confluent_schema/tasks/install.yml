@@ -1,2 +1,0 @@
-- name: install_confluent_schema_registry
-  yum: name=confluent-schema-registry state=installed

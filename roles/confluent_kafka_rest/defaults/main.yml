@@ -1,9 +1,0 @@
----
-# defaults file for roles/confluent_kafka_rest
-
-confluent_kafka_rest_id: 'kafka-rest-test-serve'
-confluent_kafka_rest_zookeeper_connect: '{{ groups["hadoop_zookeeperserver"] | join(":2181,") }}:2181'
-
-# If you use Schema Registry, you should configure the following
-# parameter.
-# confluent_kafka_rest_schema_registry:

@@ -1,2 +1,0 @@
-- name: install_confluent_kafka_rest
-  yum: name=confluent-kafka-rest state=installed
