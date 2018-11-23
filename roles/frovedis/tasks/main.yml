@@ -1,0 +1,9 @@
+---
+# tasks file for roles/frovedis
+- block:
+
+  - name: install_frovedis
+    package: name=https://github.com/frovedis/frovedis/releases/download/v0.8.0/frovedis-0.8.0-3.x86_64.rpm state=present
+
+  tags:
+    - frovedis
