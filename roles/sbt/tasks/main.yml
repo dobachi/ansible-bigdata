@@ -1,1 +1,7 @@
-- include: install.yml
+- name: download_sbt_yum_repo_config
+  get_url: url=https://bintray.com/sbt/rpm/rpm dest=/etc/yum.repos.d/bintray-sbt-rpm.repo
+  tags: sbt
+
+- name: install_sbt
+  package: name=sbt state=installed
+  tags: sbt
