@@ -1,0 +1,40 @@
+---
+# tasks file for roles/superset
+
+- block:
+
+  - name: install_requirements
+    package:
+      name: "{{ item }}"
+      state: present
+    with_items:
+      - gcc
+      - gcc-c++
+      - libffi-devel
+      - python36-devel
+      - python36-pip
+      - python34-virtualenv
+      - python-wheel
+      - openssl-devel
+      - cyrus-sasl-devel
+      - openldap-devel
+
+  - name: mkdir_virtualenv
+    file:
+      path: /opt/virtualenv
+      state: directory
+
+  - name: install_superset
+    pip:
+      name: "{{ item }}"
+      state: present
+      virtualenv: /opt/virtualenv/superset
+      virtualenv_python: python3.6
+      virtualenv_command: virtualenv-3
+    with_items:
+      - wheel
+      - pandas==0.23.4
+      - superset
+
+  tags:
+    - superset
