@@ -1,0 +1,7 @@
+---
+# tasks file for roles/docker
+- include: install.yml tags=install,docker
+- include: config.yml tags=config,docker
+- include: service.yml tags=service,docker
+- include: images.yml tags=images,docker
+  when: docker_images is defined

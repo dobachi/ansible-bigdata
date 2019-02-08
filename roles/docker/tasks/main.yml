@@ -1,7 +1,35 @@
 ---
 # tasks file for roles/docker
-- include: install.yml tags=install,docker
-- include: config.yml tags=config,docker
-- include: service.yml tags=service,docker
-- include: images.yml tags=images,docker
-  when: docker_images is defined
+
+- block:
+
+  - name: install_requirements
+    package:
+      name: "{{ item }}"
+      state: present
+    with_items:
+      - yum-utils
+      - device-mapper-persistent-data
+      - lvm2
+
+  - name: add_repo
+    shell: |
+      yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+    creates: /etc/yum.repos.d/docker-ce.repo
+
+  - name: install_docker
+    package:
+      name: "{{ item }}"
+    with_items:
+      -  docker-ce
+      - docker-ce-cli
+      - containerd.io
+
+  - name: enable_docker_service
+    service:
+      name: docker
+      state: started
+      enabled: yes
+
+  tags:
+    - docker
