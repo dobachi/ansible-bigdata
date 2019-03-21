@@ -11,19 +11,21 @@
       - yum-utils
       - device-mapper-persistent-data
       - lvm2
+      - ruby
 
   - name: add_repo
     shell: |
       yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
     creates: /etc/yum.repos.d/docker-ce.repo
 
-  - name: install_docker
+  - name: install_docker_and_docker_compose
     package:
       name: "{{ item }}"
     with_items:
-      -  docker-ce
+      - docker-ce
       - docker-ce-cli
       - containerd.io
+      - docker-compose
 
   - name: enable_docker_service
     service:
