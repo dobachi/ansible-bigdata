@@ -1,0 +1,5 @@
+- hosts: '{{ server | default("localhost") }}'
+  tasks:
+    - name: install_python3.7.5
+      shell: pyenv install 3.7.5
+      become: False

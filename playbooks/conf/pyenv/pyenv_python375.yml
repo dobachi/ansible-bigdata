@@ -1,0 +1,7 @@
+- hosts: '{{ server | default("localhost") }}'
+  become: False
+  tasks:
+    - name: install_python3.7.5
+      shell: "{{ ansible_env.HOME }}/.pyenv/bin/pyenv install 3.7.5"
+    - name: globalize
+      shell: "{{ ansible_env.HOME }}/.pyenv/bin/pyenv global 3.7.5"

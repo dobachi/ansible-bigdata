@@ -12,6 +12,7 @@
       - bzip2-devel
       - readline-devel
       - sqlite-devel
+      - libffi-devel
   - name: install_pyenv
     shell: curl https://pyenv.run | bash
     args:
