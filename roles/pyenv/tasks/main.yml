@@ -3,20 +3,33 @@
 
 - block:
 
+  - name: install_requirements
+    yum:
+      name: "{{ item }}"
+      state: installed
+    with_items:
+      - openssl-devel
+      - bzip2-devel
   - name: install_pyenv
     shell: curl https://pyenv.run | bash
+    args:
+      creates: "/home/{{ ansible_env.SUDO_USER }}/.pyenv"
+    become: False
   - name: configure_PATH
     lineinfile:
       line: export PATH="$HOME/.pyenv/bin:$PATH"
-      path: "{{ ansible_env.HOME }}/.bashrc"
+      path: "/home/{{ ansible_env.SUDO_USER }}/.bashrc"
+    become: False
   - name: configure_pyenv_init
     lineinfile:
       line: eval "$(pyenv init -)"
-      path: "{{ ansible_env.HOME }}/.bashrc"
+      path: "/home/{{ ansible_env.SUDO_USER }}/.bashrc"
+    become: False
   - name: configure_virtualenv_init
     lineinfile:
       line: eval "$(pyenv virtualenv-init -)"
-      path: "{{ ansible_env.HOME }}/.bashrc"
+      path: "/home/{{ ansible_env.SUDO_USER }}/.bashrc"
+    become: False
 
   tags:
     - pyenv
