@@ -1,0 +1,4 @@
+- hosts: '{{ server | default("localhost") }}'
+  become: False
+  roles:
+      - pyenv
