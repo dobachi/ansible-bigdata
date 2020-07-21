@@ -1,0 +1,19 @@
+- hosts: "{{ server | default('hadoop_pseudo') }}"
+  tasks:
+    - name: stop_namenode
+      service: name=hadoop-hdfs-namenode state=stopped
+
+    - name: wait_for_namenode_service_port_stopped
+      wait_for: host={{ ansible_hostname }}  port=8020 state=stopped
+
+    - name: stop_secondarynamenode
+      service: name=hadoop-hdfs-secondarynamenode state=stopped
+
+    - name: wait_for_secondarynamenode_web_service_port_stopped
+      wait_for: host={{ ansible_hostname }} port=50090 state=stopped
+
+    - name: stop_datanode
+      service: name=hadoop-hdfs-datanode state=stopped
+
+    - name: wait_for_datanode_service_port_stopped
+      wait_for: host={{ ansible_hostname }}  port=50020 state=stopped

@@ -1,0 +1,6 @@
+- hosts: "{{ server | default('pseudo') }}"
+  roles:
+    - { role: common, common_config_hostname: False, common_hosts_replace: False}
+    - epel
+    - openjdk
+    - bigtop_pseudo

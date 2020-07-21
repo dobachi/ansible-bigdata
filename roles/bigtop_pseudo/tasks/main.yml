@@ -1,0 +1,22 @@
+---
+# tasks file for roles/bigtop_pseudo
+
+- block:
+
+  - name: add_bigtop.repo
+    yum_repository:
+      name: Bigtop
+      file: bigtop
+      description: Bigtop
+      enabled: yes
+      gpgcheck: yes
+      gpgkey: https://dist.apache.org/repos/dist/release/bigtop/KEYS
+      baseurl: http://repos.bigtop.apache.org/releases/1.4.0/centos/7/$basearch
+
+  - name: install_bigtop_pseudo
+    yum:
+      name: hadoop-conf-pseudo
+      state: installed
+
+  tags:
+    - bigtop_pseudo

@@ -1,0 +1,2 @@
+- include: stop_yarn.yml
+- include: stop_hdfs.yml
