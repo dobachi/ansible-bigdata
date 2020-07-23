@@ -1,4 +1,4 @@
-- hosts: "{{ server | default('hadoop_pseudo') }}"
+- hosts: "{{ server | default(groups.hadoop_client[0]) }}"
   gather_facts: no
   become: True
   become_user: hdfs

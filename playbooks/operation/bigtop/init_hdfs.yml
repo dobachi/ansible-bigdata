@@ -1,0 +1,5 @@
+- include: stop_cluster.yml
+- include: format_hdfs.yml
+- include: start_cluster.yml
+- include: create_tmp_dir.yml
+- include: create_user_dir.yml
