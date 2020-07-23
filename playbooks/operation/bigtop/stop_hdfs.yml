@@ -1,19 +1,21 @@
-- hosts: "{{ server | default('hadoop_pseudo') }}"
+- hosts: "{{ server | default(groups.hadoop_namenode[0]) }}"
   tasks:
     - name: stop_namenode
-      service: name=hadoop-hdfs-namenode state=stopped
+      shell: /usr/sbin/service hadoop-hdfs-namenode stop
 
-    - name: wait_for_namenode_service_port_stopped
-      wait_for: host={{ ansible_hostname }}  port=8020 state=stopped
+    - name: wait_for_namenode_service_port
+      wait_for: host={{ ansible_hostname }} port=50070 state=stopped
 
-    - name: stop_secondarynamenode
-      service: name=hadoop-hdfs-secondarynamenode state=stopped
+#    - name: stop_secondarynamenode
+#      service: name=hadoop-hdfs-secondarynamenode state=stoped
+#
+#    - name: wait_for_secondarynamenode_web_service_port_stoped
+#      wait_for: host={{ ansible_hostname }} port=50090 state=stoped
 
-    - name: wait_for_secondarynamenode_web_service_port_stopped
-      wait_for: host={{ ansible_hostname }} port=50090 state=stopped
+- hosts: "{{ server | default(groups.hadoop_slave) }}"
+  tasks:
+    - name: stop_datnode
+      shell: /usr/sbin/service hadoop-hdfs-datanode stop
 
-    - name: stop_datanode
-      service: name=hadoop-hdfs-datanode state=stopped
-
-    - name: wait_for_datanode_service_port_stopped
-      wait_for: host={{ ansible_hostname }}  port=50020 state=stopped
+    - name: wait_for_datanode_service_port
+      wait_for: host={{ ansible_hostname }} port=50020 state=stopped

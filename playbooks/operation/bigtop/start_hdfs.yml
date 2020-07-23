@@ -1,19 +1,21 @@
-- hosts: "{{ server | default('hadoop_pseudo') }}"
+- hosts: "{{ server | default(groups.hadoop_namenode[0]) }}"
   tasks:
     - name: start_namenode
-      service: name=hadoop-hdfs-namenode state=started
+      shell: /usr/sbin/service hadoop-hdfs-namenode start
 
     - name: wait_for_namenode_service_port
       wait_for: host={{ ansible_hostname }} port=50070
 
-    - name: start_secondarynamenode
-      service: name=hadoop-hdfs-secondarynamenode state=started
+#    - name: start_secondarynamenode
+#      service: name=hadoop-hdfs-secondarynamenode state=started
+#
+#    - name: wait_for_secondarynamenode_web_service_port_started
+#      wait_for: host={{ ansible_hostname }} port=50090 state=started
 
-    - name: wait_for_secondarynamenode_web_service_port_started
-      wait_for: host={{ ansible_hostname }} port=50090 state=started
-
+- hosts: "{{ server | default(groups.hadoop_slave) }}"
+  tasks:
     - name: start_datnode
-      service: name=hadoop-hdfs-datanode state=started
+      shell: /usr/sbin/service hadoop-hdfs-datanode start
 
     - name: wait_for_datanode_service_port
       wait_for: host={{ ansible_hostname }} port=50020
