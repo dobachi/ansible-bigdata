@@ -1,6 +1,13 @@
 ---
 # tasks file for roles/openjdk
-- name: install_openjdk
-  yum: name=java-11-openjdk-devel state=installed
+- block:
+
+  - name: install_openjdk
+    yum: name=java-11-openjdk-devel state=installed
+  - name: configure_JAVA_HOME
+    template:
+      src: java_home.sh.j2
+      dest: /etc/profile.d/java_home.sh
+
   tags:
     - openjdk
