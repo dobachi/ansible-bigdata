@@ -27,6 +27,11 @@
       src: core-site.xml.j2
       dest: /etc/hadoop/conf/core-site.xml
 
+  - name: configure_hdfs-site.xml
+    template:
+      src: hdfs-site.xml.j2
+      dest: /etc/hadoop/conf/hdfs-site.xml
+
   - name: configure_yarn-site.xml
     template:
       src: yarn-site.xml.j2
