@@ -3,3 +3,4 @@
     - common
     - epel
     - openjdk
+    - hadoop_base
