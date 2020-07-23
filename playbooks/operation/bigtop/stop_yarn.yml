@@ -1,10 +1,15 @@
-- hosts: "{{ server | default('hadoop_pseudo') }}"
+- hosts: "{{ server | default(groups.hadoop_resourcemanager[0]) }}"
   tasks:
     - name: stop_resourcemanager
-      service: name=hadoop-yarn-resourcemanager state=stopped
+      shell: /usr/sbin/service hadoop-yarn-resourcemanager stop
 
     - name: wait_for_resourcemanager_web_service_port_stopped
       wait_for: host={{ ansible_hostname }} port=8088 state=stopped
+
+- hosts: "{{ server | default(groups.hadoop_slave) }}"
+  tasks:
+    - name: stop_nodemanager
+      shell: /usr/sbin/service hadoop-yarn-nodemanager stop
 
     - name: stop_nodemanager
       service: name=hadoop-yarn-nodemanager state=stopped
@@ -12,8 +17,8 @@
     - name: wait_for_nodemanager_service_port_stopped
       wait_for: host={{ ansible_hostname }}  port=8040 state=stopped
 
-    - name: stop_mapreduce_historyserver
-      service: name=hadoop-mapreduce-historyserver state=stopped
-
-    - name: wait_for_other_service_port_stopped
-      wait_for: host={{ ansible_hostname }} port=19888 state=stopped
+#    - name: stop_mapreduce_historyserver
+#      service: name=hadoop-mapreduce-historyserver state=stopped
+#
+#    - name: wait_for_other_service_port_stopped
+#      wait_for: host={{ ansible_hostname }} port=19888 state=stopped
