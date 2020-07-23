@@ -17,5 +17,15 @@
       name: hadoop
       state: installed
 
+  - name: configure_hadoop-env.sh
+    template:
+      src: hadoop-env.sh.j2
+      dest: /etc/hadoop/conf/hadoop-env.sh
+
+  - name: configure_core-site.xml
+    template:
+      src: core-site.xml.j2
+      dest: /etc/hadoop/conf/core-site.xml
+
   tags:
     - hadoop_base
