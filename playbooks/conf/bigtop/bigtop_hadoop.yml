@@ -1,0 +1,5 @@
+- hosts: "{{ server | default('hadoop_all') }}"
+  roles:
+    - common
+    - epel
+    - openjdk
