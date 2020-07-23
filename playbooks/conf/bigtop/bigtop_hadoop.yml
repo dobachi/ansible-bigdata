@@ -4,3 +4,17 @@
     - epel
     - openjdk
     - hadoop_base
+
+- hosts: "{{ server | default('hadoop_namenode') }}"
+  roles:
+    - hadoop_nn
+
+- hosts: "{{ server | default('hadoop_resourcemanager') }}"
+  roles:
+    - hadoop_rm
+
+- hosts: "{{ server | default('hadoop_slave') }}"
+  roles:
+    - hadoop_dn
+    - hadoop_nm
+

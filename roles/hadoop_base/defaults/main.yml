@@ -1,3 +1,4 @@
 ---
 # defaults file for roles/hadoop_base
 hadoop_base_fs_default: "hdfs://{{groups.hadoop_namenode[0]}}:8020"
+hadoop_base_rm_hostname: "{{groups.hadoop_resourcemanager[0]}}"

@@ -1,0 +1,15 @@
+---
+# tasks file for roles/hadoop_rm
+- block:
+  - name: install_hadoop_resourcemanager
+    yum:
+      name: hadoop-yarn-resourcemanager
+      state: installed
+
+  - name: disable_resourcemanager
+    service: 
+      name: hadoop-yarn-resourcemanager
+      enabled: no
+
+  tags:
+    - hadoop_rm

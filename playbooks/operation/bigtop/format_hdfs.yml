@@ -1,0 +1,3 @@
+- hosts: "{{ server | default(groups.hadoop_namenode[0]) }}"
+  roles:
+    - hadoop_format_hdfs

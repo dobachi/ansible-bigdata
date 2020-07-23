@@ -1,0 +1,15 @@
+---
+# tasks file for roles/hadoop_nn
+- block:
+  - name: install_hadoop_namenode
+    yum:
+      name: hadoop-hdfs-namenode
+      state: installed
+
+  - name: disable_namenode
+    service: 
+      name: hadoop-hdfs-namenode
+      enabled: no
+
+  tags:
+    - hadoop_nn

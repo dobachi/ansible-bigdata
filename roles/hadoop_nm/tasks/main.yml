@@ -1,0 +1,15 @@
+---
+# tasks file for roles/hadoop_nm
+- block:
+  - name: install_hadoop_nodemanager
+    yum:
+      name: hadoop-yarn-nodemanager
+      state: installed
+
+  - name: disable_nodemanager
+    service: 
+      name: hadoop-yarn-nodemanager
+      enabled: no
+
+  tags:
+    - hadoop_nm

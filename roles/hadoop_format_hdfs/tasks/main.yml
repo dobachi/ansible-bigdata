@@ -1,0 +1,10 @@
+---
+# tasks file for roles/bigtop_pseudo_format_hdfs
+
+- block:
+
+  - name: format_hdfs
+    shell: yes | hdfs namenode -format
+
+  tags:
+    - hadoop_format_hdfs

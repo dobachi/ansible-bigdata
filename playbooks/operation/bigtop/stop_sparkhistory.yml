@@ -1,0 +1,8 @@
+- hosts: "{{ server | default('hadoop_pseudo') }}"
+  tasks:
+    - name: stop_spark_history_server
+      service: name=spark-history-server state=stopped
+
+    - name: wait_for_spark_history_server_web_service_port_stopped
+      wait_for: host={{ ansible_hostname }}  port=18080 state=stopped
+
