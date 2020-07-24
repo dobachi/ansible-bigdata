@@ -3,7 +3,7 @@
 - block:
 
   - name: install_openjdk
-    yum: name=java-11-openjdk-devel state=installed
+    yum: name=java-1.8.0-openjdk-devel state=installed
   - name: configure_JAVA_HOME
     template:
       src: java_home.sh.j2
