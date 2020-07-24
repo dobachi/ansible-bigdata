@@ -1,0 +1,11 @@
+---
+# tasks file for roles/spark
+- block:
+
+  - name: install_spark
+    yum:
+      name: spark-core
+      state: installed
+
+  tags:
+    - spark

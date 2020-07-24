@@ -1,0 +1,19 @@
+---
+# tasks file for roles/spark_misc
+- block:
+
+  - name: install_spark_misc_packages
+    yum:
+      name: ["spark-history-server", "spark-thriftserver"]
+      state: installed
+
+  - name: disable_services
+    service:
+      name: "{{item}}"
+      enabled: no
+    with_items:
+      - "spark-history-server"
+      - "spark-thriftserver"
+
+  tags:
+    - spark_misc
