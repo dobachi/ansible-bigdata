@@ -1,7 +1,7 @@
-- hosts: "{{ server | default('hadoop_pseudo') }}"
+- hosts: "{{ server | default('hadoop_other') }}"
   tasks:
     - name: start_spark_history_server
-      service: name=spark-history-server state=started
+      shell: /usr/sbin/service spark-history-server start
 
     - name: wait_for_spark_history_server_web_service_port
-      wait_for: host={{ ansible_hostname }} port=18080
+      wait_for: host={{ ansible_hostname }} port=18082
