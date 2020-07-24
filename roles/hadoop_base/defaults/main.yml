@@ -4,4 +4,5 @@ hadoop_base_fs_default: "hdfs://{{groups.hadoop_namenode[0]}}:8020"
 hadoop_base_rm_hostname: "{{groups.hadoop_resourcemanager[0]}}"
 hadoop_base_nn_name_dir: "/var/lib/hadoop-hdfs/namenode"
 hadoop_base_dn_data_dir: "/var/lib/hadoop-hdfs/datanode"
-
+hadoop_base_yarn_log_agg: "true"
+hadoop_base_yarn_vmemcheck: "false"

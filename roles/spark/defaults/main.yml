@@ -1,2 +1,6 @@
 ---
 # defaults file for roles/spark
+spark_ex_mem: "4g"
+spark_ex_memover: "1g"
+spark_dri_mem: "4g"
+spark_dri_memover: "1g"

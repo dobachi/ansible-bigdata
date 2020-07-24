@@ -17,4 +17,12 @@
         <name>yarn.resourcemanager.hostname</name>
         <value>{{hadoop_base_rm_hostname}}</value>
     </property>
+    <property>
+        <name>yarn.log-aggregation-enable</name>
+        <value>{{hadoop_base_yarn_log_agg}}</value>
+    </property>
+    <property>
+        <name>yarn.nodemanager.vmem-check-enabled</name>
+        <value>{{hadoop_base_yarn_vmemcheck}}</value>
+    </property>
 </configuration>

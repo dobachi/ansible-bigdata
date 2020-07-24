@@ -4,8 +4,18 @@
 
   - name: install_spark
     yum:
-      name: spark-core
+      name: ["spark-core", "spark-datanucleus", "spark-external", "spark-python"]
       state: installed
+
+  - name: send_spark-defaults.conf
+    template:
+      src: spark-defaults.conf.j2
+      dest: /etc/spark/conf/spark-defaults.conf
+
+  - name: send_spark-env.sh
+    template:
+      src: spark-env.sh.j2
+      dest: /etc/spark/conf/spark-env.sh
 
   tags:
     - spark
