@@ -1,16 +1,27 @@
-- hosts: "{{ server | default(groups.hadoop_namenode[0]) }}"
+- hosts: hadoop_journalnode
+  gather_facts: no
+  tasks:
+    - name: start_daemons
+      shell: /usr/sbin/service hadoop-hdfs-journalnode start
+
+    - name: wait_for_journalnode_service_port
+      wait_for: host={{ ansible_host }} port=8480
+
+- hosts: "{{ server | default(groups.hadoop_namenode) }}"
   tasks:
     - name: start_namenode
       shell: /usr/sbin/service hadoop-hdfs-namenode start
 
     - name: wait_for_namenode_service_port
-      wait_for: host={{ ansible_hostname }} port=50070
+      wait_for: host={{ ansible_host }} port=50070
 
-#    - name: start_secondarynamenode
-#      service: name=hadoop-hdfs-secondarynamenode state=started
-#
-#    - name: wait_for_secondarynamenode_web_service_port_started
-#      wait_for: host={{ ansible_hostname }} port=50090 state=started
+- hosts: "{{ server | default(groups.hadoop_namenode) }}"
+  tasks:
+    - name: start_zkfc
+      shell: /usr/sbin/service hadoop-hdfs-zkfc start
+
+    - name: wait_for_zkfc_service_port
+      wait_for: host={{ ansible_host }} port=8019
 
 - hosts: "{{ server | default(groups.hadoop_slave) }}"
   tasks:
@@ -18,4 +29,4 @@
       shell: /usr/sbin/service hadoop-hdfs-datanode start
 
     - name: wait_for_datanode_service_port
-      wait_for: host={{ ansible_hostname }} port=50020
+      wait_for: host={{ ansible_host }} port=50020

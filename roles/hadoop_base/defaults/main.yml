@@ -1,8 +1,12 @@
 ---
 # defaults file for roles/hadoop_base
-hadoop_base_fs_default: "hdfs://{{groups.hadoop_namenode[0]}}:8020"
+hadoop_base_fs_default: "hdfs://{{hadoop_base_nameservices}}"
 hadoop_base_rm_hostname: "{{groups.hadoop_resourcemanager[0]}}"
 hadoop_base_nn_name_dir: "/var/lib/hadoop-hdfs/namenode"
 hadoop_base_dn_data_dir: "/var/lib/hadoop-hdfs/datanode"
+hadoop_base_nameservices: "mycluster"
+hadoop_base_jn_edits_dir: "/var/lib/hadoop-hdfs/journalnode/edits"
+hadoop_base_dfs_fencing_methods: "sshfence"
+hadoop_base_dfs_fencing_private_key: "/var/lib/hadoop-hdfs/.ssh/id_rsa"
 hadoop_base_yarn_log_agg: "true"
 hadoop_base_yarn_vmemcheck: "false"

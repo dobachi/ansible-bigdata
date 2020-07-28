@@ -1,0 +1,3 @@
+---
+# defaults file for roles/hadoop_remkdir_namenodedir
+hadoop_base_nn_name_dir: "/var/lib/hadoop-hdfs/namenode"

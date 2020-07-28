@@ -1,4 +1,17 @@
+- include: start_zookeeper.yml
+- include: start_journalnode.yml
+
+- hosts: "{{ server | default(groups.hadoop_namenode) }}"
+  become_user: hdfs
+  roles:
+    - hadoop_remkdir_namenodedir
+
 - hosts: "{{ server | default(groups.hadoop_namenode[0]) }}"
   become_user: hdfs
   roles:
     - hadoop_format_hdfs
+
+- hosts: "{{ server | default(groups.hadoop_slave) }}"
+  become_user: hdfs
+  roles:
+    - hadoop_remove_datadir

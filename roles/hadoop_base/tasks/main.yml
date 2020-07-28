@@ -14,7 +14,7 @@
 
   - name: install_hadoop
     yum:
-      name: ["hadoop", "hadoop-hdfs", "hadoop-yarn", "hadoop-mapreduce"]
+      name: ["hadoop", "hadoop-hdfs", "hadoop-yarn", "hadoop-mapreduce", "zookeeper"]
       state: installed
 
   - name: configure_hadoop-env.sh

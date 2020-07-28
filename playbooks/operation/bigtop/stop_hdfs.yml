@@ -1,16 +1,26 @@
-- hosts: "{{ server | default(groups.hadoop_namenode[0]) }}"
+- hosts: "{{ server | default(groups.hadoop_namenode) }}"
+  tasks:
+    - name: stop_jkfc
+      shell: /usr/sbin/service hadoop-hdfs-zkfc stop
+
+    - name: wait_for_namenode_service_port
+      wait_for: host={{ ansible_host }} port=8019 state=stopped
+
+- hosts: "{{ server | default(groups.hadoop_namenode) }}"
   tasks:
     - name: stop_namenode
       shell: /usr/sbin/service hadoop-hdfs-namenode stop
 
     - name: wait_for_namenode_service_port
-      wait_for: host={{ ansible_hostname }} port=50070 state=stopped
+      wait_for: host={{ ansible_host }} port=50070 state=stopped
 
-#    - name: stop_secondarynamenode
-#      service: name=hadoop-hdfs-secondarynamenode state=stoped
-#
-#    - name: wait_for_secondarynamenode_web_service_port_stoped
-#      wait_for: host={{ ansible_hostname }} port=50090 state=stoped
+- hosts: "{{ server | default(groups.hadoop_journalnode) }}"
+  tasks:
+    - name: stop_journalnode
+      shell: /usr/sbin/service hadoop-hdfs-journalnode stop
+
+    - name: wait_for_journalnode_service_port
+      wait_for: host={{ ansible_host }} port=8480 state=stopped
 
 - hosts: "{{ server | default(groups.hadoop_slave) }}"
   tasks:
@@ -18,4 +28,4 @@
       shell: /usr/sbin/service hadoop-hdfs-datanode stop
 
     - name: wait_for_datanode_service_port
-      wait_for: host={{ ansible_hostname }} port=50020 state=stopped
+      wait_for: host={{ ansible_host }} port=50020 state=stopped

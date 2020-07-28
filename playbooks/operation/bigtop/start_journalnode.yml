@@ -1,0 +1,8 @@
+- hosts: hadoop_journalnode
+  gather_facts: no
+  tasks:
+    - name: start_daemons
+      shell: /usr/sbin/service hadoop-hdfs-journalnode start
+
+    - name: wait_for_journalnode_service_port
+      wait_for: host={{ ansible_host }} port=8480 state=started

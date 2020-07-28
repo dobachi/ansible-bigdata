@@ -1,0 +1,16 @@
+---
+# tasks file for roles/hadoop_remkdir_namenodedir
+- block:
+
+  - name: remove_namenode_dir
+    file:
+      path: "{{hadoop_base_nn_name_dir}}"
+      state: absent
+
+  - name: mkdir_namenode_dir
+    file:
+      path: "{{hadoop_base_nn_name_dir}}"
+      state: directory
+
+  tags:
+    - hadoop_remkdir_namenodedir

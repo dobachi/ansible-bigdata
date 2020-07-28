@@ -5,6 +5,14 @@
     - openjdk
     - hadoop_base
 
+- hosts: "{{ server | default('hadoop_zookeeperserver') }}"
+  roles:
+    - hadoop_zk
+
+- hosts: "{{ server | default('hadoop_journalnode') }}"
+  roles:
+    - hadoop_jn
+
 - hosts: "{{ server | default('hadoop_namenode') }}"
   roles:
     - hadoop_nn

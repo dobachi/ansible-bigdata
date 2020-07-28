@@ -1,0 +1,8 @@
+- hosts: hadoop_zookeeperserver
+  gather_facts: no
+  tasks:
+    - name: start_daemons
+      shell: /usr/sbin/service zookeeper-server start
+
+    - name: wait_for_zookeeper_service_port
+      wait_for: host={{ ansible_host }} port=2181

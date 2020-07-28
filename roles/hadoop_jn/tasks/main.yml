@@ -1,0 +1,15 @@
+---
+# tasks file for roles/hadoop_jn
+- block:
+  - name: install_hadoop_journalnode
+    yum:
+      name: hadoop-hdfs-journalnode
+      state: installed
+
+  - name: disable_journalnode
+    service: 
+      name: hadoop-hdfs-journalnode
+      enabled: no
+
+  tags:
+    - hadoop_jn

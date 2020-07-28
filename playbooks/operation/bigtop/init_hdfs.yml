@@ -1,5 +1,8 @@
 - include: stop_cluster.yml
+- include: start_zookeeper.yml
+- include: start_journalnode.yml
 - include: format_hdfs.yml
-- include: start_cluster.yml
+- include: restart_hdfs.yml
+- include: start_hdfs.yml
 - include: create_tmp_dir.yml
 - include: create_user_dir.yml

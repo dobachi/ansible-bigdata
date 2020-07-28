@@ -1,0 +1,7 @@
+- hosts: "{{ server | default(groups.hadoop_journalnode) }}"
+  tasks:
+    - name: stop_journalnode
+      shell: /usr/sbin/service hadoop-hdfs-journalnode stop
+
+    - name: wait_for_journalnode_service_port
+      wait_for: host={{ ansible_host }} port=8480 state=stopped

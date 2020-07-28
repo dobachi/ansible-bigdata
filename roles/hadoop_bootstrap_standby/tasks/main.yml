@@ -1,0 +1,10 @@
+---
+# tasks file for roles/hadoop_bootstrap_standby
+
+- block:
+
+  - name: bootstrap_standby
+    shell: yes | hdfs namenode -bootstrapStandby
+
+  tags:
+    - hadoop_bootstrap_standby

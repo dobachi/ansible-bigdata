@@ -3,13 +3,16 @@
 - block:
   - name: install_hadoop_namenode
     yum:
-      name: hadoop-hdfs-namenode
+      name: ["hadoop-hdfs-namenode", "hadoop-hdfs-zkfc"]
       state: installed
 
   - name: disable_namenode
     service: 
-      name: hadoop-hdfs-namenode
+      name: "{{item}}"
       enabled: no
+    with_items:
+      - hadoop-hdfs-zkfc
+      - hadoop-hdfs-namenode
 
   tags:
     - hadoop_nn

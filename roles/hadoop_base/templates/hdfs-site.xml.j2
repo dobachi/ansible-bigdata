@@ -18,6 +18,73 @@
 
 <configuration>
     <property>
+        <name>dfs.nameservices</name>
+	<value>{{hadoop_base_nameservices}}</value>
+    </property>
+    <property>
+        <name>dfs.ha.namenodes.mycluster</name>
+	<value>{{groups.hadoop_namenode | join(',')}}</value>
+    </property>
+
+    {% for host in groups.hadoop_namenode %}
+<property>
+      <name>dfs.namenode.rpc-address.{{ hadoop_base_nameservices }}.{{ host }}</name>
+      <value>{{ host }}:8020</value>
+    </property>
+    {% endfor %}
+
+    {% for host in groups.hadoop_namenode %}
+<property>
+      <name>dfs.namenode.http-address.{{ hadoop_base_nameservices }}.{{ host }}</name>
+      <value>{{ host }}:50070</value>
+    </property>
+    {% endfor %}
+
+    <!-- the location of the shared storage directory -->
+    <property>
+      <name>dfs.namenode.shared.edits.dir</name>
+      <value>qjournal://{{ groups.hadoop_journalnode | join(':8485' + ';') }}:8485/{{ hadoop_base_nameservices }}</value>
+    </property>
+
+    <!-- the path where the JournalNode daemon will store its local state -->
+    <property>
+      <name>dfs.journalnode.edits.dir</name>
+      <value>{{ hadoop_base_jn_edits_dir }}</value>
+    </property>
+
+    <!-- the Java class that HDFS clients use to contact the Active NameNode -->
+    <property>
+      <name>dfs.client.failover.proxy.provider.{{ hadoop_base_nameservices }}</name>
+      <value>org.apache.hadoop.hdfs.server.namenode.ha.ConfiguredFailoverProxyProvider</value>
+    </property>
+
+    <property>
+      <name>dfs.ha.fencing.methods</name>
+      <value>{{ hadoop_base_dfs_fencing_methods }}</value>
+    </property>
+
+
+    {% if hadoop_base_dfs_fencing_private_key is defined %}
+    <property>
+      <name>dfs.ha.fencing.ssh.private-key-files</name>
+      <value>{{ hadoop_base_dfs_fencing_private_key }}</value>
+    </property>
+    {% endif %}
+
+    <property>
+      <name>dfs.ha.automatic-failover.enabled</name>
+      <value>true</value>
+    </property>
+
+    <property>
+       <name>dfs.permissions.superusergroup</name>
+       <value>hadoop</value>
+    </property>
+    <property>
+       <name>hadoop.tmp.dir</name>
+       <value>/var/lib/hadoop-hdfs/cache/${user.name}</value>
+    </property>
+    <property>
         <name>dfs.namenode.name.dir</name>
         <value>{{hadoop_base_nn_name_dir}}</value>
     </property>

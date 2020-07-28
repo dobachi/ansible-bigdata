@@ -1,0 +1,11 @@
+---
+# tasks file for roles/hadoop_remove_datadir
+- block:
+
+  - name: remove_data_dir
+    file:
+      path: "{{hadoop_base_dn_data_dir}}" 
+      state: absent
+
+  tags:
+    - hadoop_remove_datadir

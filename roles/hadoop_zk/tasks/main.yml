@@ -1,0 +1,26 @@
+---
+# tasks file for roles/hadoop_zk
+- block:
+
+  - name: install_zookeeper
+    yum:
+      name: "zookeeper-server"
+      state: installed
+
+  - name: zoo.cfg
+    template:
+      src: zoo.cfg.j2
+      dest: /etc/zookeeper/conf/zoo.cfg
+
+  - name: myid
+    template:
+      src: myid.j2
+      dest: /var/lib/zookeeper/myid
+
+  - name: disable_zookeeper-server
+    service:
+      name: zookeeper-server
+      enabled: no
+
+  tags:
+    - hadoop_zk

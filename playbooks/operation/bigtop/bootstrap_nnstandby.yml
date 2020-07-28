@@ -1,0 +1,4 @@
+- hosts: "{{ server | default(groups.hadoop_namenode[1]) }}"
+  become_user: hdfs
+  roles:
+    - hadoop_bootstrap_standby
