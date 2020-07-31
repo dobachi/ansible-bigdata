@@ -1,4 +1,4 @@
-- hosts: "{{ server | default(groups.hadoop_resourcemanager[0]) }}"
+- hosts: "{{ server | default(groups.hadoop_resourcemanager) }}"
   tasks:
     - name: start_resourcemanager
       shell: /usr/sbin/service hadoop-yarn-resourcemanager start
@@ -8,14 +8,9 @@
 
 - hosts: "{{ server | default(groups.hadoop_slave) }}"
   tasks:
-    - name: start_datnode
+    - name: start_nodemanager
       shell: /usr/sbin/service hadoop-yarn-nodemanager start
 
     - name: wait_for_nodemanager_service_port
       wait_for: host={{ ansible_hostname }} port=8040
 
-#    - name: start_hadoop_mapreduce_historyserver
-#      service: name=hadoop-mapreduce-historyserver state=started
-#
-#    - name: wait_for_other_service_port
-#      wait_for: host={{ ansible_hostname }}  port=19888

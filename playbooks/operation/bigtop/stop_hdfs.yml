@@ -1,6 +1,6 @@
 - hosts: "{{ server | default(groups.hadoop_namenode) }}"
   tasks:
-    - name: stop_jkfc
+    - name: stop_zkfc
       shell: /usr/sbin/service hadoop-hdfs-zkfc stop
 
     - name: wait_for_namenode_service_port

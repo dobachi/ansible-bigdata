@@ -14,15 +14,48 @@
 -->
 <configuration>
     <property>
-        <name>yarn.resourcemanager.hostname</name>
-        <value>{{hadoop_base_rm_hostname}}</value>
+      <name>yarn.resourcemanager.ha.enabled</name>
+      <value>true</value>
     </property>
+
+    <property>
+      <name>yarn.resourcemanager.cluster-id</name>
+      <value>{{hadoop_base_yarn_clusterid}}</value>
+    </property>
+
+    <property>
+      <name>yarn.resourcemanager.ha.rm-ids</name>
+      <value>{{groups.hadoop_resourcemanager | join(',')}}</value>
+    </property>
+
+
+    {% for host in groups.hadoop_resourcemanager %}
+<property>
+      <name>yarn.resourcemanager.hostname.{{ host }}</name>
+      <value>{{ host }}</value>
+    </property>
+    {% endfor %}
+
+    {% for host in groups.hadoop_resourcemanager %}
+<property>
+      <name>yarn.resourcemanager.webapp.address.{{host}}</name>
+      <value>{{host}}:8088</value>
+    </property>
+    {% endfor %}
+
+    <property>
+      <name>yarn.resourcemanager.zk-address</name>
+      <value>{{ groups.hadoop_zookeeperserver | join(':2181,') }}:2181</value>
+    </property>
+
     <property>
         <name>yarn.log-aggregation-enable</name>
         <value>{{hadoop_base_yarn_log_agg}}</value>
     </property>
+
     <property>
         <name>yarn.nodemanager.vmem-check-enabled</name>
         <value>{{hadoop_base_yarn_vmemcheck}}</value>
     </property>
+
 </configuration>
