@@ -1,0 +1,2 @@
+- include: stop_spark_historyserver.yml
+- include: start_spark_historyserver.yml
