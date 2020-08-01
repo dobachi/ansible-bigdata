@@ -2,4 +2,4 @@
 - hosts: localhost
   remote_user: root
   roles:
-    - roles/bigtop_pseudo
+    - roles/hadoop_pseudo

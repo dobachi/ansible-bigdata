@@ -1,5 +1,5 @@
 ---
-# tasks file for roles/bigtop_pseudo
+# tasks file for roles/hadoop_pseudo
 
 - block:
 
@@ -13,10 +13,10 @@
       gpgkey: https://dist.apache.org/repos/dist/release/bigtop/KEYS
       baseurl: http://repos.bigtop.apache.org/releases/1.4.0/centos/7/$basearch
 
-  - name: install_bigtop_pseudo
+  - name: install_hadoop_pseudo
     yum:
       name: hadoop-conf-pseudo
       state: installed
 
   tags:
-    - bigtop_pseudo
+    - hadoop_pseudo
