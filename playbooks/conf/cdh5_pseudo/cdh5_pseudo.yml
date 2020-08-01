@@ -1,6 +1,0 @@
-- hosts: "{{ server | default('pseudo') }}"
-  roles:
-    - { role: common, common_config_hostname: True }
-    - epel
-    - openjdk
-    - cdh5_pseudo

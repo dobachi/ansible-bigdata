@@ -1,3 +1,0 @@
-- include: repo.yml tags=repo,cdh5_base
-- include: install.yml tags=install,cdh5_base
-- include: config.yml tags=config,cdh5_base

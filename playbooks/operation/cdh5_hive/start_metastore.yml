@@ -1,6 +1,0 @@
-- hosts: "{{ server | default('hadoop_client') }}"
-  gather_facts: no
-  become: True
-  tasks:
-    - name: start_hive_metastore
-      service: name=hive-metastore state=started

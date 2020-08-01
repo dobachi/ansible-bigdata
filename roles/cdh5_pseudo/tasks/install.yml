@@ -1,2 +1,0 @@
-- name: install_hadoop_conf_pseudo
-  yum: name=hadoop-conf-pseudo state=installed

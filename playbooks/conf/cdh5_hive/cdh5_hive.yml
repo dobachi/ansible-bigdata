@@ -1,7 +1,0 @@
-- hosts: "{{ server | default('hadoop_client') }}"
-  roles:
-    - { role: common, common_config_hostname: True }
-    - openjdk
-    - postgresql
-    - cdh5_hive
-
