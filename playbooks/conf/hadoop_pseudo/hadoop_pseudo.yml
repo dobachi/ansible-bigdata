@@ -3,4 +3,4 @@
     - { role: common, common_config_hostname: False, common_hosts_replace: False}
     - epel
     - openjdk
-    - bigtop_pseudo
+    - hadoop_pseudo
