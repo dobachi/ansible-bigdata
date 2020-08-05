@@ -11,3 +11,6 @@ hadoop_base_dfs_fencing_private_key: "/var/lib/hadoop-hdfs/.ssh/id_rsa"
 hadoop_base_yarn_clusterid: "mycluster"
 hadoop_base_yarn_log_agg: "true"
 hadoop_base_yarn_vmemcheck: "false"
+hadoop_base_ganglia: False
+hadoop_base_nn_g_servers: "{{groups.hadoop_master[0]}}:8649,{{groups.hadoop_master[1]}}:8649"
+hadoop_base_dn_g_servers: "{{groups.hadoop_slave[0]}}:8649,{{groups.hadoop_slave[1]}}:8649"
