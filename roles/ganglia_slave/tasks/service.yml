@@ -1,2 +1,0 @@
-- name: start_gmond
-  service: name=gmond state=started enabled=yes

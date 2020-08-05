@@ -1,2 +1,0 @@
-- name: install_gmond
-  yum: name=ganglia-gmond state=installed

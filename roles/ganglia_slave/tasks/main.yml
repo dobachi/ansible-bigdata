@@ -5,6 +5,7 @@
     yum:
       name: ganglia-gmond
       state: installed
+
   - name: copy_ganglia_config
     template:
       src: gmond.conf.j2
@@ -12,6 +13,11 @@
   
   - name: copy_sysconfig_config
     template: src=route.j2 dest=/etc/sysconfig/network-scripts/route-{{ ganglia_slave_dev }}
+
+  - name: disable_gmond
+    service:
+      name: gmond
+      enabled: no
 
   tags:
     - ganglia_slave
