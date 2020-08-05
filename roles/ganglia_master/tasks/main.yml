@@ -1,5 +1,26 @@
 ---
 # tasks file for roles/ganglia_master
-- include: install.yml tags=install,ganglia_master
-- include: config.yml tags=config,ganglia_master
-- include: service.yml tags=service,ganglia_master
+- block:
+
+  - name: install_gmetad
+    yum:
+      name: ["ganglia-gmetad", "ganglia-web"]
+      state: installed
+  
+  - name: send_gmetad.conf
+    template:
+      src: gmetad.conf.j2
+      dest: /etc/ganglia/gmetad.conf
+  
+  - name: send_conf.php
+    template:
+      src: conf.php.j2
+      dest: /etc/httpd/conf.d/conf.php
+
+  - name: disable_gmetad
+    service:
+      name: gmetad
+      enabled: no
+
+  tags:
+    - ganglia_master

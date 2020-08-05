@@ -1,4 +1,17 @@
 ---
-- include: install.yml tags=install,ganglia_slave
-- include: config.yml tags=config,ganglia_slave
-- include: service.yml tags=service,ganglia_slave
+- block:
+
+  - name: install_gmond
+    yum:
+      name: ganglia-gmond
+      state: installed
+  - name: copy_ganglia_config
+    template:
+      src: gmond.conf.j2
+      dest: /etc/ganglia/gmond.conf
+  
+  - name: copy_sysconfig_config
+    template: src=route.j2 dest=/etc/sysconfig/network-scripts/route-{{ ganglia_slave_dev }}
+
+  tags:
+    - ganglia_slave

@@ -1,9 +1,3 @@
-# About variables
-#
-# Variables, ganglia_slave_cluster_name,ganglia_slave_mcast_join and cdh5_ganglia_servers are 
-# configured by group_vars.
-# Please see group_vars/hadoop_master, group_vars/hadoop_slave and group_vars/hadoop_client.
-#
 - hosts: "{{ server | default('hadoop_all') }}"
   roles:
     - { role: common, common_config_hostname: True }

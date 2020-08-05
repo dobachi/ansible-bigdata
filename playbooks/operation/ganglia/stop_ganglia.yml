@@ -1,11 +1,11 @@
 - hosts: "{{ server | default('hadoop_all') }}"
   tasks:
     - name: stop_gmond
-      service: name=gmond state=stopped
+      shell: /usr/sbin/service gmond stop
 
 - hosts: "{{ server | default('hadoop_other') }}"
   tasks:
     - name: stop_httpd
-      service: name=httpd state=stopped
+      shell: /usr/sbin/service httpd stop
     - name: stop_gmetad
-      service: name=gmetad state=stopped
+      shell: /usr/sbin/service gmetad stop

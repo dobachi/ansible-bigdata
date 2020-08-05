@@ -1,2 +1,0 @@
-- name: start_gmetad_on_boot
-  service: name=gmetad state=started enabled=yes
