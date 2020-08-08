@@ -1,5 +1,99 @@
 ---
 # tasks file for roles/spark_comm
-- include: user.yml tags=user,spark_comm
-- include: install.yml tags=install,spark_comm
-- include: config.yml tags=config,spark_comm
+- block:
+
+  - name: check_spark_group_exists
+    shell: grep -e "^spark:" /etc/group
+    register: check_spark_group
+
+  - name: create_spark_group
+    group:
+      name: spark
+      state: present
+    when: check_spark_group.rc != 0
+
+  - name: check_spark_user_exists
+    shell: grep -e "^spark:" /etc/passwd
+    register: check_spark_user
+
+  - name: create_spark_user
+    user:
+      name: spark
+      groups: hadoop
+    when: check_spark_user.rc != 0
+  
+  - name: check_hdfs_user_exists
+    shell: grep -e "^hdfs:" /etc/passwd
+    register: check_hdfs_user
+
+  - name: add_hdfs_to_spark_group
+    user:
+      name: hdfs
+      groups: hadoop,hdfs,spark
+    when: check_hdfs_user.rc == 0
+  
+  - name: make_spark_directory
+    file:
+      path: "{{ spark_comm_dir }}"
+      owner: "spark"
+      group: "spark"
+      state: directory
+  
+  - name: get_spark_package
+    get_url:
+      url: "{{ spark_comm_package_url_base }}/{{ spark_comm_package_name }}.tgz"
+      dest: "/usr/local/spark/{{ spark_comm_package_name }}.tgz"
+  
+  - name: unarchive_package
+    shell: tar xvzf {{ spark_comm_package_name }}.tgz
+    args:
+      chdir: "/usr/local/spark"
+      creates: "/usr/local/spark/{{ spark_comm_package_name }}/LICENSE"
+  
+  - name: configure_owner_and_group_of_unarhived_package
+    file:
+      path: "/usr/local/spark/{{ spark_comm_package_name }}"
+      owner: "spark"
+      group: "spark"
+      mode: 0755
+      recurse: yes
+
+  - name: configure_mode_of_log_dir
+    file:
+      path: "/usr/local/spark/{{ spark_comm_package_name }}/logs"
+      owner: "spark"
+      group: "spark"
+      mode: 0775
+  
+  - name: make_alternatives_entry_of_spark_default
+    alternatives:
+      name: "spark_package_default"
+      path: "/usr/local/spark/{{ spark_comm_package_name }}"
+      link: "/usr/local/spark/default"
+  
+  - name: copy_spark-defaults.conf
+    template:
+      src: "{{ spark_comm_defaults_tmpl }}"
+      dest: "/usr/local/spark/default/conf/spark-defaults.conf"
+  
+  - name: copy_spark-env.sh
+    template:
+      src: "{{ spark_comm_env_tmpl }}"
+      dest: "/usr/local/spark/default/conf/spark-env.sh"
+  
+    #   - name: copy_metrics.properties
+    #     template: src={{ spark_comm_metrics_tmpl }} dest=/usr/local/spark/default/conf/metrics.properties
+    #   
+    #   - name: copy_log4j_spark_properties
+    #     template: src={{ spark_comm_log4j_spark_properties_tmpl }} dest=/usr/local/spark/default/conf/log4j-spark.properties
+    #   
+    #   - name: copy_hive-site.xml
+    #     template: src={{ spark_comm_hive_site_tmpl }} dest=/usr/local/spark/default/conf/hive-site.xml
+   
+  - name: copy_profile_of_spark
+    template:
+      src: "spark.sh.j2"
+      dest: "/etc/profile.d/spark.sh"
+
+  tags:
+    - spark_comm

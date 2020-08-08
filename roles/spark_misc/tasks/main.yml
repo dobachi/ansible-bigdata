@@ -15,5 +15,22 @@
       - "spark-history-server"
       - "spark-thriftserver"
 
+  - name: check_hdfs_user_exists
+    shell: grep -e "^hdfs:" /etc/passwd
+    register: check_hdfs_user
+
+  - name: add_hdfs_to_spark_group
+    user:
+      name: hdfs
+      groups: hadoop,hdfs,spark
+    when: check_hdfs_user.rc == 0
+
+  - name: configure_mode_of_log_dir
+    file:
+      path: "/var/log/spark"
+      owner: "spark"
+      group: "spark"
+      mode: 0775
+
   tags:
     - spark_misc

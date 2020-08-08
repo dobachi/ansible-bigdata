@@ -1,17 +1,11 @@
 - hosts: '{{server | default("hadoop_other") }}'
-  sudo: yes
-  sudo_user: spark
+  become: yes
+  become_user: hdfs
   tasks:
     - name: start_spark_history_server
       shell: bash /usr/local/spark/default/sbin/start-history-server.sh
       register: shell_result
       failed_when: shell_result.rc not in [0, 1] 
       changed_when: shell_result.rc == 0
-
-- hosts: '{{ client | default("hadoop_client") }}'
-  vars:
-    spark_com_wait_for_timeout: '60'
-  tasks:
     - name: wait_for_spark_history_server_web_service_port
-      wait_for: host={{ item }} port=18080 timeout={{ spark_com_wait_for_timeout }}
-      with_items: '{{ server | default(groups["hadoop_other"]) }}'
+      wait_for: host={{ ansible_hostname }} port=18080

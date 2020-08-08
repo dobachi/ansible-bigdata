@@ -1,6 +1,0 @@
-- hosts: '{{ server | default("localhost") }}'
-  roles:
-      - common
-      - screen
-      - openjdk
-      - activator_mini

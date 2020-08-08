@@ -2,9 +2,8 @@
   roles:
     - { role: common, common_config_hostname: True }
     - openjdk
-    - scala
-    - sbt
-    - activator_mini
-    - git
-    - maven
+      #    - scala
+      #    - sbt
+      #    - git
+      #    - maven
     - spark_comm

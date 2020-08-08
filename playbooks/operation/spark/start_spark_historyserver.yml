@@ -1,4 +1,6 @@
 - hosts: '{{server | default("hadoop_other") }}'
+  become: yes
+  become_user: hdfs
   tasks:
     - name: start_spark_history_server
       shell: /usr/sbin/service spark-history-server start
