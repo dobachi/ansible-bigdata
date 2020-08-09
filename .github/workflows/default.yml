@@ -35,7 +35,7 @@ jobs:
       run: |
         mkdir ~/.ssh
         ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
-        echo "${{ secrets.MY_ACTIONS_DEPLOY_KEY }}" > ~/.ssh/id_rsa
+        echo "${{ secrets.ANSIBLEBIGDATA }}" > ~/.ssh/id_rsa
         chmod 400 ~/.ssh/id_rsa
         cd gh-pages
         git remote set-url origin git@github.com:${GITHUB_REPOSITORY}.git
