@@ -20,24 +20,20 @@ jobs:
         docs-folder: "documents/"
     # Publish built docs to gh-pages branch.
     # ===============================
-    - name: Commit documentation changes
+    - name: Commit documentation changes and push it
       run: |
-        git clone https://github.com/dobachi/ansible-bigdata.git --branch gh-pages --single-branch gh-pages
+        mkdir ~/.ssh
+        ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
+        echo "${{ secrets.ANSIBLEBIGDATA }}" > ~/.ssh/id_rsa
+        chmod 400 ~/.ssh/id_rsa
+        git clone git@github.com:${GITHUB_REPOSITORY}.git --branch gh-pages --single-branch gh-pages
         cp -r documents/_build/html/* gh-pages/
         cd gh-pages
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         git add .
         git commit -m "Update documentation via GitHub Actions" -a || true
+        git push origin HEAD:gh-pages
         # The above command will fail if no changes were present, so we ignore
         # that.
-    - name: Deploy Configuration and Push
-      run: |
-        mkdir ~/.ssh
-        ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
-        echo "${{ secrets.ANSIBLEBIGDATA }}" > ~/.ssh/id_rsa
-        chmod 400 ~/.ssh/id_rsa
-        cd gh-pages
-        git remote set-url origin git@github.com:${GITHUB_REPOSITORY}.git
-        git push origin HEAD:gh-pages
     # ===============================
