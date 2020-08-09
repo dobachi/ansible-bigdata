@@ -1,64 +1,51 @@
 
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
+<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>Playbooks for configuration &mdash; Ansible playbooks to construct Hadoop environment</title>
-    
+    <meta charset="utf-8" />
+    <title>Playbooks for configuration &#8212; Ansible playbooks to construct Hadoop environment</title>
     <link rel="stylesheet" href="_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/print.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '',
-        VERSION:     '0.1',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
-      };
-    </script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/theme_extras.js"></script>
-    <link rel="top" title="Ansible playbooks to construct Hadoop environment" href="index.html" /> 
-  </head>
-  <body>
-      <div class="header"><h1 class="heading"><a href="index.html">
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="index.html">
           <span>Ansible playbooks to construct Hadoop environment</span></a></h1>
         <h2 class="heading"><span>Playbooks for configuration</span></h2>
       </div>
-      <div class="topnav">
+      <div class="topnav" role="navigation" aria-label="top navigation">
       
         <p>
         <a class="uplink" href="index.html">Contents</a>
         </p>
 
       </div>
-      <div class="content">
+      <div class="content" role="main">
         
         
   <div class="section" id="playbooks-for-configuration">
 <h1>Playbooks for configuration<a class="headerlink" href="#playbooks-for-configuration" title="Permalink to this headline">¶</a></h1>
-<p>The playbooks in &#8220;playbooks/conf&#8221; directory provide functions
+<p>The playbooks in “playbooks/conf” directory provide functions
 to configure nodes.</p>
 <p>In this section, the short descriptions for each playbook are shown.</p>
 <div class="section" id="common">
 <h2>common<a class="headerlink" href="#common" title="Permalink to this headline">¶</a></h2>
 <p>This is a set of common and basic configurations including OS parameters.</p>
 <ul class="simple">
-<li>playbooks/conf/common/common_all.yml<ul>
-<li>The playbook which provides all basic configurations.</li>
+<li><p>playbooks/conf/common/common_all.yml</p>
+<ul>
+<li><p>The playbook which provides all basic configurations.</p></li>
 </ul>
 </li>
-<li>playbooks/conf/common/common_only_common.yml<ul>
-<li>The playbook which provides configurations only in &#8220;common&#8221; role</li>
+<li><p>playbooks/conf/common/common_only_common.yml</p>
+<ul>
+<li><p>The playbook which provides configurations only in “common” role</p></li>
 </ul>
 </li>
 </ul>
@@ -67,41 +54,50 @@ to configure nodes.</p>
 <h2>cdh5<a class="headerlink" href="#cdh5" title="Permalink to this headline">¶</a></h2>
 <p>This is a set of configurations to construct CDH5 environment.</p>
 <ul class="simple">
-<li>cdh5_all.yml<ul>
-<li>This playbook is a comprehensive playbook which includes all other playbooks.
-You can build whole CDH5 environment.</li>
+<li><p>cdh5_all.yml</p>
+<ul>
+<li><p>This playbook is a comprehensive playbook which includes all other playbooks.
+You can build whole CDH5 environment.</p></li>
 </ul>
 </li>
-<li>cdh5_cl.yml<ul>
-<li>This playbook executes basic roles and &#8220;cdh5_cl&#8221; role to build Hadoop Client environment</li>
+<li><p>cdh5_cl.yml</p>
+<ul>
+<li><p>This playbook executes basic roles and “cdh5_cl” role to build Hadoop Client environment</p></li>
 </ul>
 </li>
-<li>cdh5_journalnode.yml<ul>
-<li>This playbook executes basic roles and &#8220;cdh5_jn&#8221; role to build HDFS JournalNode environment</li>
+<li><p>cdh5_journalnode.yml</p>
+<ul>
+<li><p>This playbook executes basic roles and “cdh5_jn” role to build HDFS JournalNode environment</p></li>
 </ul>
 </li>
-<li>cdh5_namenode.yml<ul>
-<li>This playbook executes basic roles and &#8220;cdh5_nn&#8221; role to build HDFS NameNode environment</li>
+<li><p>cdh5_namenode.yml</p>
+<ul>
+<li><p>This playbook executes basic roles and “cdh5_nn” role to build HDFS NameNode environment</p></li>
 </ul>
 </li>
-<li>cdh5_other.yml<ul>
-<li>This playbook executes basic roles and &#8220;cdh5_ot&#8221; role to build MapReduce HistoryServer and YARN Proxy environments</li>
+<li><p>cdh5_other.yml</p>
+<ul>
+<li><p>This playbook executes basic roles and “cdh5_ot” role to build MapReduce HistoryServer and YARN Proxy environments</p></li>
 </ul>
 </li>
-<li>cdh5_resourcemanager.yml<ul>
-<li>This playbook executes basic roles and &#8220;cdh5_rm&#8221; role to build YARN ResourceManager environment</li>
+<li><p>cdh5_resourcemanager.yml</p>
+<ul>
+<li><p>This playbook executes basic roles and “cdh5_rm” role to build YARN ResourceManager environment</p></li>
 </ul>
 </li>
-<li>cdh5_slave.yml<ul>
-<li>This playbook executes basic roles and &#8220;cdh5_sl&#8221; role to build HDFS DataNode and YARN NodeManager environments</li>
+<li><p>cdh5_slave.yml</p>
+<ul>
+<li><p>This playbook executes basic roles and “cdh5_sl” role to build HDFS DataNode and YARN NodeManager environments</p></li>
 </ul>
 </li>
-<li>cdh5_spark.yml<ul>
-<li>This playbook executes basic roles and &#8220;cdh5_spark&#8221; role to build Spark Core environment on Client Node</li>
+<li><p>cdh5_spark.yml</p>
+<ul>
+<li><p>This playbook executes basic roles and “cdh5_spark” role to build Spark Core environment on Client Node</p></li>
 </ul>
 </li>
-<li>cdh5_zookeeper.yml<ul>
-<li>This playbook executes basic roles and &#8220;zookeeper_server&#8221; role to build Zookeeper environment</li>
+<li><p>cdh5_zookeeper.yml</p>
+<ul>
+<li><p>This playbook executes basic roles and “zookeeper_server” role to build Zookeeper environment</p></li>
 </ul>
 </li>
 </ul>
@@ -110,12 +106,14 @@ You can build whole CDH5 environment.</li>
 <h2>cdh5_pseudo<a class="headerlink" href="#cdh5-pseudo" title="Permalink to this headline">¶</a></h2>
 <p>This is a set of configurations to construct CDH5 pseudo environment.</p>
 <ul class="simple">
-<li>cdh5_pseudo.yml<ul>
-<li>You can build whole CDH5 pseudo environment.</li>
+<li><p>cdh5_pseudo.yml</p>
+<ul>
+<li><p>You can build whole CDH5 pseudo environment.</p></li>
 </ul>
 </li>
-<li>cdh5_spark.yml<ul>
-<li>You can build spark environment on CDH5 pseudo.</li>
+<li><p>cdh5_spark.yml</p>
+<ul>
+<li><p>You can build spark environment on CDH5 pseudo.</p></li>
 </ul>
 </li>
 </ul>
@@ -124,14 +122,16 @@ You can build whole CDH5 environment.</li>
 <h2>ansible<a class="headerlink" href="#ansible" title="Permalink to this headline">¶</a></h2>
 <p>This is a set of configuration about Ansible environment.
 If you have manually configured Ansible environment, such as ansible.cfg, inventory file and so on,
-you don&#8217;t need these playbooks.</p>
+you don’t need these playbooks.</p>
 <ul class="simple">
-<li>ansible_client.yml<ul>
-<li>This playbook executes &#8220;ansible&#8221; role to configure nodes where we execute ansible command</li>
+<li><p>ansible_client.yml</p>
+<ul>
+<li><p>This playbook executes “ansible” role to configure nodes where we execute ansible command</p></li>
 </ul>
 </li>
-<li>ansible_remote.yml<ul>
-<li>This playbook executes &#8220;ansible_remote&#8221; role to configure nodes which are configured by ansible</li>
+<li><p>ansible_remote.yml</p>
+<ul>
+<li><p>This playbook executes “ansible_remote” role to configure nodes which are configured by ansible</p></li>
 </ul>
 </li>
 </ul>
@@ -141,16 +141,19 @@ you don&#8217;t need these playbooks.</p>
 <p>This is  a set of configuration about Ganglia.
 We have two playbooks for Ganglia master and slave.</p>
 <ul class="simple">
-<li>ganglia_all.yml<ul>
-<li>The wrapper playbook of configuration of both of Ganglia master and slave</li>
+<li><p>ganglia_all.yml</p>
+<ul>
+<li><p>The wrapper playbook of configuration of both of Ganglia master and slave</p></li>
 </ul>
 </li>
-<li>ganglia_master.yml<ul>
-<li>The playbook to configure Ganglia master</li>
+<li><p>ganglia_master.yml</p>
+<ul>
+<li><p>The playbook to configure Ganglia master</p></li>
 </ul>
 </li>
-<li>ganglia_slave.yml<ul>
-<li>The playbook to configure Ganglia slave</li>
+<li><p>ganglia_slave.yml</p>
+<ul>
+<li><p>The playbook to configure Ganglia slave</p></li>
 </ul>
 </li>
 </ul>
@@ -158,8 +161,9 @@ We have two playbooks for Ganglia master and slave.</p>
 <div class="section" id="influxdb">
 <h2>influxdb<a class="headerlink" href="#influxdb" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>all.yml<ul>
-<li>Configure influxdb and Grafana.</li>
+<li><p>all.yml</p>
+<ul>
+<li><p>Configure influxdb and Grafana.</p></li>
 </ul>
 </li>
 </ul>
@@ -167,24 +171,29 @@ We have two playbooks for Ganglia master and slave.</p>
 <div class="section" id="spark-comm">
 <h2>spark_comm<a class="headerlink" href="#spark-comm" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>all.yml<ul>
-<li>Configure all nodes</li>
+<li><p>all.yml</p>
+<ul>
+<li><p>Configure all nodes</p></li>
 </ul>
 </li>
-<li>spark_base.yml<ul>
-<li>Execute basic configuration of Spark</li>
+<li><p>spark_base.yml</p>
+<ul>
+<li><p>Execute basic configuration of Spark</p></li>
 </ul>
 </li>
-<li>spark_client.yml<ul>
-<li>Configure client environment to develop Spark applications</li>
+<li><p>spark_client.yml</p>
+<ul>
+<li><p>Configure client environment to develop Spark applications</p></li>
 </ul>
 </li>
-<li>spark_history.yml<ul>
-<li>Configure environment to run Spark history server</li>
+<li><p>spark_history.yml</p>
+<ul>
+<li><p>Configure environment to run Spark history server</p></li>
 </ul>
 </li>
-<li>spark_libs.yml<ul>
-<li>Configure library environment to use native libraries in MLlib</li>
+<li><p>spark_libs.yml</p>
+<ul>
+<li><p>Configure library environment to use native libraries in MLlib</p></li>
 </ul>
 </li>
 </ul>
@@ -192,8 +201,9 @@ We have two playbooks for Ganglia master and slave.</p>
 <div class="section" id="zeppelin">
 <h2>zeppelin<a class="headerlink" href="#zeppelin" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>zeppelin.yml<ul>
-<li>Configure zeppelin environment</li>
+<li><p>zeppelin.yml</p>
+<ul>
+<li><p>Configure zeppelin environment</p></li>
 </ul>
 </li>
 </ul>
@@ -201,12 +211,14 @@ We have two playbooks for Ganglia master and slave.</p>
 <div class="section" id="fluentd">
 <h2>fluentd<a class="headerlink" href="#fluentd" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>fluentd.yml<ul>
-<li>Configure fluentd</li>
+<li><p>fluentd.yml</p>
+<ul>
+<li><p>Configure fluentd</p></li>
 </ul>
 </li>
-<li>td_agent.yml<ul>
-<li>Configure td-agent</li>
+<li><p>td_agent.yml</p>
+<ul>
+<li><p>Configure td-agent</p></li>
 </ul>
 </li>
 </ul>
@@ -214,8 +226,9 @@ We have two playbooks for Ganglia master and slave.</p>
 <div class="section" id="kafka">
 <h2>kafka<a class="headerlink" href="#kafka" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>kafka_brocker.yml<ul>
-<li>Configure Kafka broker nodes.</li>
+<li><p>kafka_brocker.yml</p>
+<ul>
+<li><p>Configure Kafka broker nodes.</p></li>
 </ul>
 </li>
 </ul>
@@ -223,16 +236,19 @@ We have two playbooks for Ganglia master and slave.</p>
 <div class="section" id="confluent">
 <h2>confluent<a class="headerlink" href="#confluent" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>kafka_broker.yml<ul>
-<li>Configure Confluent Kafka brokers</li>
+<li><p>kafka_broker.yml</p>
+<ul>
+<li><p>Configure Confluent Kafka brokers</p></li>
 </ul>
 </li>
-<li>kafka_schema.yml<ul>
-<li>Configure Confluent Schema Registry</li>
+<li><p>kafka_schema.yml</p>
+<ul>
+<li><p>Configure Confluent Schema Registry</p></li>
 </ul>
 </li>
-<li>kafka_rest.yml<ul>
-<li>Configure Confluent REST Proxy</li>
+<li><p>kafka_rest.yml</p>
+<ul>
+<li><p>Configure Confluent REST Proxy</p></li>
 </ul>
 </li>
 </ul>
@@ -240,12 +256,14 @@ We have two playbooks for Ganglia master and slave.</p>
 <div class="section" id="ambari">
 <h2>ambari<a class="headerlink" href="#ambari" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>ambari_agent.yml<ul>
-<li>Configure Ambari agent manually (Not through Ambari server)</li>
+<li><p>ambari_agent.yml</p>
+<ul>
+<li><p>Configure Ambari agent manually (Not through Ambari server)</p></li>
 </ul>
 </li>
-<li>ambari_server.yml<ul>
-<li>Configure Ambari server</li>
+<li><p>ambari_server.yml</p>
+<ul>
+<li><p>Configure Ambari server</p></li>
 </ul>
 </li>
 </ul>
@@ -253,8 +271,9 @@ We have two playbooks for Ganglia master and slave.</p>
 <div class="section" id="jenkins">
 <h2>jenkins<a class="headerlink" href="#jenkins" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>jenkins.yml<ul>
-<li>Configure Jenkins server</li>
+<li><p>jenkins.yml</p>
+<ul>
+<li><p>Configure Jenkins server</p></li>
 </ul>
 </li>
 </ul>
@@ -262,12 +281,14 @@ We have two playbooks for Ganglia master and slave.</p>
 <div class="section" id="anacondace">
 <h2>anacondace<a class="headerlink" href="#anacondace" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>anacondace2.yml<ul>
-<li>Configure Anaconda2 CE</li>
+<li><p>anacondace2.yml</p>
+<ul>
+<li><p>Configure Anaconda2 CE</p></li>
 </ul>
 </li>
-<li>anacondace3.yml<ul>
-<li>Configure Anaconda3 CE</li>
+<li><p>anacondace3.yml</p>
+<ul>
+<li><p>Configure Anaconda3 CE</p></li>
 </ul>
 </li>
 </ul>
@@ -275,8 +296,9 @@ We have two playbooks for Ganglia master and slave.</p>
 <div class="section" id="postgresql">
 <h2>postgresql<a class="headerlink" href="#postgresql" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>postgresql.yml<ul>
-<li>Configure PostgreSQL</li>
+<li><p>postgresql.yml</p>
+<ul>
+<li><p>Configure PostgreSQL</p></li>
 </ul>
 </li>
 </ul>
@@ -284,8 +306,9 @@ We have two playbooks for Ganglia master and slave.</p>
 <div class="section" id="cdh5-hive">
 <h2>cdh5_hive<a class="headerlink" href="#cdh5-hive" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>cdh5_hive.yml<ul>
-<li>Configure Hive and PostgreSQL</li>
+<li><p>cdh5_hive.yml</p>
+<ul>
+<li><p>Configure Hive and PostgreSQL</p></li>
 </ul>
 </li>
 </ul>
@@ -293,9 +316,11 @@ We have two playbooks for Ganglia master and slave.</p>
 <div class="section" id="alluxio-yarn">
 <h2>alluxio_yarn<a class="headerlink" href="#alluxio-yarn" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>alluxio_yarn.yml<ul>
-<li>Configure Alluxio on YARN<ul>
-<li>Configure client and slave nodes</li>
+<li><p>alluxio_yarn.yml</p>
+<ul>
+<li><p>Configure Alluxio on YARN</p>
+<ul>
+<li><p>Configure client and slave nodes</p></li>
 </ul>
 </li>
 </ul>
@@ -305,8 +330,9 @@ We have two playbooks for Ganglia master and slave.</p>
 <div class="section" id="tpc-ds">
 <h2>tpc_ds<a class="headerlink" href="#tpc-ds" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>tpc_ds.yml<ul>
-<li>Configure TPC-DS packages</li>
+<li><p>tpc_ds.yml</p>
+<ul>
+<li><p>Configure TPC-DS packages</p></li>
 </ul>
 </li>
 </ul>
@@ -314,20 +340,24 @@ We have two playbooks for Ganglia master and slave.</p>
 <div class="section" id="tensorflow">
 <h2>tensorflow<a class="headerlink" href="#tensorflow" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>anaconda.yml<ul>
-<li>Configure Anaconda3 CE</li>
+<li><p>anaconda.yml</p>
+<ul>
+<li><p>Configure Anaconda3 CE</p></li>
 </ul>
 </li>
-<li>gpu_env.yml<ul>
-<li>Configure CUDA and cuDNN environment</li>
+<li><p>gpu_env.yml</p>
+<ul>
+<li><p>Configure CUDA and cuDNN environment</p></li>
 </ul>
 </li>
-<li>keras.yml<ul>
-<li>Configure Keras and TensorFlow environment (Use CPU)</li>
+<li><p>keras.yml</p>
+<ul>
+<li><p>Configure Keras and TensorFlow environment (Use CPU)</p></li>
 </ul>
 </li>
-<li>keras_gpu.yml<ul>
-<li>Configure Keras and TensorFlow environment (Use GPU)</li>
+<li><p>keras_gpu.yml</p>
+<ul>
+<li><p>Configure Keras and TensorFlow environment (Use GPU)</p></li>
 </ul>
 </li>
 </ul>
@@ -336,7 +366,7 @@ We have two playbooks for Ganglia master and slave.</p>
 
 
       </div>
-      <div class="bottomnav">
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
       
         <p>
         <a class="uplink" href="index.html">Contents</a>
@@ -344,9 +374,9 @@ We have two playbooks for Ganglia master and slave.</p>
 
       </div>
 
-    <div class="footer">
-        &copy; Copyright 2014, dobachi.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2014, dobachi.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.4.
     </div>
   </body>
 </html>

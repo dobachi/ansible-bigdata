@@ -1,312 +1,298 @@
 
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
+<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>1. Abstract &mdash; Ansible playbooks to construct Hadoop environment</title>
-    
+    <meta charset="utf-8" />
+    <title>1. Abstract &#8212; Ansible playbooks to construct Hadoop environment</title>
     <link rel="stylesheet" href="_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/print.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '',
-        VERSION:     '0.1',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
-      };
-    </script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/theme_extras.js"></script>
-    <link rel="top" title="Ansible playbooks to construct Hadoop environment" href="index.html" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="2. About hosts(inventory file)" href="hosts.html" />
     <link rel="prev" title="What is this document?" href="index.html" /> 
-  </head>
-  <body>
-      <div class="header"><h1 class="heading"><a href="index.html">
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="index.html">
           <span>Ansible playbooks to construct Hadoop environment</span></a></h1>
         <h2 class="heading"><span>1. Abstract</span></h2>
       </div>
-      <div class="topnav">
+      <div class="topnav" role="navigation" aria-label="top navigation">
       
         <p>
         «&#160;&#160;<a href="index.html">What is this document?</a>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
-        <a href="hosts.html">2. About hosts(inventory file)</a>&#160;&#160;»
+        <a href="hosts.html"><span class="section-number">2. </span>About hosts(inventory file)</a>&#160;&#160;»
         </p>
 
       </div>
-      <div class="content">
+      <div class="content" role="main">
         
         
   <div class="section" id="abstract">
-<h1>1. Abstract<a class="headerlink" href="#abstract" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">1. </span>Abstract<a class="headerlink" href="#abstract" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="about-playbooks">
-<h2>1.1. About playbooks<a class="headerlink" href="#about-playbooks" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.1. </span>About playbooks<a class="headerlink" href="#about-playbooks" title="Permalink to this headline">¶</a></h2>
 <p>This is a library of playbooks to construct HDFS/YARN clusters.
 You will have HDFS and YARN services with HA.</p>
 <p>Although the configuration of OS and middlewares are not well tuned about performance,
 this is enough to be used to construct small cluster.
 In other words, if you would like to construct and manage large clusters,
 you may need to configure OS and middlewares adequately.</p>
-<p>To write these playbooks, <a class="reference external" href="https://bitbucket.org/dobachi/ansible-playbooks.git">dobachi&#8217;s ansible-playbooks</a>
-and <a class="reference external" href="https://github.com/mcsrainbow/ansible-playbooks-cdh5">mcsrainbow&#8217;s ansible-playbooks-cdh5</a> are used as reference.</p>
+<p>To write these playbooks, <a class="reference external" href="https://bitbucket.org/dobachi/ansible-playbooks.git">dobachi’s ansible-playbooks</a>
+and <a class="reference external" href="https://github.com/mcsrainbow/ansible-playbooks-cdh5">mcsrainbow’s ansible-playbooks-cdh5</a> are used as reference.</p>
 </div>
 <div class="section" id="feature">
-<h2>1.2. Feature<a class="headerlink" href="#feature" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.2. </span>Feature<a class="headerlink" href="#feature" title="Permalink to this headline">¶</a></h2>
 <p>This project has the following functions.
 Each function is available individually.</p>
 <ul class="simple">
-<li>Configuring Ansible execution environment</li>
-<li>Booting EC2 instances for Hadoop cluster</li>
-<li>Configuring HDFS/YARN with NameNode HA</li>
-<li>Configuring CDH5&#8217;s Spark core on Client node</li>
-<li>Configuring Spark community edition&#8217;s core on Client node</li>
-<li>Configuring Ganglia for the resource visualization</li>
-<li>Configuring InfluxDB and Grafana for the metrics visualization</li>
-<li>Configuring Pseudo environment for test</li>
-<li>Configuring Zeppelin for Spark notebook</li>
-<li>Configuring fluentd and td-agent</li>
-<li>Configuring Kafka cluster</li>
-<li>Configuring Confluent cluster</li>
-<li>Configuring Ambari</li>
-<li>Configuring CUDA and cuDNN</li>
+<li><p>Configuring Ansible execution environment</p></li>
+<li><p>Booting EC2 instances for Hadoop cluster</p></li>
+<li><p>Configuring HDFS/YARN with NameNode HA</p></li>
+<li><p>Configuring CDH5’s Spark core on Client node</p></li>
+<li><p>Configuring Spark community edition’s core on Client node</p></li>
+<li><p>Configuring Ganglia for the resource visualization</p></li>
+<li><p>Configuring InfluxDB and Grafana for the metrics visualization</p></li>
+<li><p>Configuring Pseudo environment for test</p></li>
+<li><p>Configuring Zeppelin for Spark notebook</p></li>
+<li><p>Configuring fluentd and td-agent</p></li>
+<li><p>Configuring Kafka cluster</p></li>
+<li><p>Configuring Confluent cluster</p></li>
+<li><p>Configuring Ambari</p></li>
+<li><p>Configuring CUDA and cuDNN</p></li>
 </ul>
 </div>
 <div class="section" id="servers">
-<span id="sec-servers"></span><h2>1.3. Servers<a class="headerlink" href="#servers" title="Permalink to this headline">¶</a></h2>
-<p>This project&#8217;s assumption about middleware components and servers.</p>
+<span id="sec-servers"></span><h2><span class="section-number">1.3. </span>Servers<a class="headerlink" href="#servers" title="Permalink to this headline">¶</a></h2>
+<p>This project’s assumption about middleware components and servers.</p>
 <p><strong>Servers for medium cluster</strong></p>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="9%" />
-<col width="91%" />
+<col style="width: 9%" />
+<col style="width: 91%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Server</th>
-<th class="head">Use for</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Server</p></th>
+<th class="head"><p>Use for</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>master01</td>
-<td>Primary NameNode, JournalNode, Zookeeper Server(id=1), Ganglia Slave</td>
+<tbody>
+<tr class="row-even"><td><p>master01</p></td>
+<td><p>Primary NameNode, JournalNode, Zookeeper Server(id=1), Ganglia Slave</p></td>
 </tr>
-<tr class="row-odd"><td>master02</td>
-<td>JournalNode, Zookeeper Server(id=2), Primary ResourceManager,
-Ganglia Slave</td>
+<tr class="row-odd"><td><p>master02</p></td>
+<td><p>JournalNode, Zookeeper Server(id=2), Primary ResourceManager,
+Ganglia Slave</p></td>
 </tr>
-<tr class="row-even"><td>master03</td>
-<td>JournalNode, Zookeeper Server(id=3), HistoryServer, Backup ResourceManager,
-Backup NameNode, Ganglia Slave, Ganglia Master, InfluxDB, Grafana</td>
+<tr class="row-even"><td><p>master03</p></td>
+<td><p>JournalNode, Zookeeper Server(id=3), HistoryServer, Backup ResourceManager,
+Backup NameNode, Ganglia Slave, Ganglia Master, InfluxDB, Grafana</p></td>
 </tr>
-<tr class="row-odd"><td>client01</td>
-<td>Hadoop Client, Spark Core, Ganglia Slave, Zeppelin</td>
+<tr class="row-odd"><td><p>client01</p></td>
+<td><p>Hadoop Client, Spark Core, Ganglia Slave, Zeppelin</p></td>
 </tr>
-<tr class="row-even"><td>slave01</td>
-<td>DataNode, NodeManager, Ganglia Slave</td>
+<tr class="row-even"><td><p>slave01</p></td>
+<td><p>DataNode, NodeManager, Ganglia Slave</p></td>
 </tr>
-<tr class="row-odd"><td>slave02</td>
-<td>DataNode, NodeManager, Ganglia Slave</td>
+<tr class="row-odd"><td><p>slave02</p></td>
+<td><p>DataNode, NodeManager, Ganglia Slave</p></td>
 </tr>
-<tr class="row-even"><td>slave03</td>
-<td>DataNode, NodeManager, Ganglia Slave</td>
+<tr class="row-even"><td><p>slave03</p></td>
+<td><p>DataNode, NodeManager, Ganglia Slave</p></td>
 </tr>
-<tr class="row-odd"><td>slave04</td>
-<td>DataNode, NodeManager, Ganglia Slave</td>
+<tr class="row-odd"><td><p>slave04</p></td>
+<td><p>DataNode, NodeManager, Ganglia Slave</p></td>
 </tr>
-<tr class="row-even"><td>slave05</td>
-<td>DataNode, NodeManager, Ganglia Slave</td>
+<tr class="row-even"><td><p>slave05</p></td>
+<td><p>DataNode, NodeManager, Ganglia Slave</p></td>
 </tr>
-<tr class="row-odd"><td>kafka01</td>
-<td>Kafka broker</td>
+<tr class="row-odd"><td><p>kafka01</p></td>
+<td><p>Kafka broker</p></td>
 </tr>
-<tr class="row-even"><td>kafka02</td>
-<td>Kafka broker</td>
+<tr class="row-even"><td><p>kafka02</p></td>
+<td><p>Kafka broker</p></td>
 </tr>
-<tr class="row-odd"><td>kafka03</td>
-<td>Kafka broker</td>
+<tr class="row-odd"><td><p>kafka03</p></td>
+<td><p>Kafka broker</p></td>
 </tr>
-<tr class="row-even"><td>manage</td>
-<td>Ambari server</td>
+<tr class="row-even"><td><p>manage</p></td>
+<td><p>Ambari server</p></td>
 </tr>
 </tbody>
 </table>
 <p><strong>Servers for large cluster</strong></p>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="9%" />
-<col width="91%" />
+<col style="width: 9%" />
+<col style="width: 91%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Server</th>
-<th class="head">Use for</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Server</p></th>
+<th class="head"><p>Use for</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>master01</td>
-<td>Primary NameNode, Ganglia Slave</td>
+<tbody>
+<tr class="row-even"><td><p>master01</p></td>
+<td><p>Primary NameNode, Ganglia Slave</p></td>
 </tr>
-<tr class="row-odd"><td>master02</td>
-<td>Backup NameNode, Ganglia Slave</td>
+<tr class="row-odd"><td><p>master02</p></td>
+<td><p>Backup NameNode, Ganglia Slave</p></td>
 </tr>
-<tr class="row-even"><td>master03</td>
-<td>Primary ResourceManager, Ganglia Slave</td>
+<tr class="row-even"><td><p>master03</p></td>
+<td><p>Primary ResourceManager, Ganglia Slave</p></td>
 </tr>
-<tr class="row-odd"><td>master04</td>
-<td>Backup ResourceManager, Ganglia Slave</td>
+<tr class="row-odd"><td><p>master04</p></td>
+<td><p>Backup ResourceManager, Ganglia Slave</p></td>
 </tr>
-<tr class="row-even"><td>master05</td>
-<td>JournalNode, Zookeeper Server(id=1), Ganglia Slave</td>
+<tr class="row-even"><td><p>master05</p></td>
+<td><p>JournalNode, Zookeeper Server(id=1), Ganglia Slave</p></td>
 </tr>
-<tr class="row-odd"><td>master06</td>
-<td>JournalNode, Zookeeper Server(id=2), Ganglia Slave</td>
+<tr class="row-odd"><td><p>master06</p></td>
+<td><p>JournalNode, Zookeeper Server(id=2), Ganglia Slave</p></td>
 </tr>
-<tr class="row-even"><td>master07</td>
-<td>JournalNode, Zookeeper Server(id=3), Ganglia Slave</td>
+<tr class="row-even"><td><p>master07</p></td>
+<td><p>JournalNode, Zookeeper Server(id=3), Ganglia Slave</p></td>
 </tr>
-<tr class="row-odd"><td>master08</td>
-<td>HistoryServer, Ganglia Master, Ganglia Slave, InfluxDB, Grafana</td>
+<tr class="row-odd"><td><p>master08</p></td>
+<td><p>HistoryServer, Ganglia Master, Ganglia Slave, InfluxDB, Grafana</p></td>
 </tr>
-<tr class="row-even"><td>client01</td>
-<td>Hadoop Client, Spark Core, Ganglia Slave, Zeppelin</td>
+<tr class="row-even"><td><p>client01</p></td>
+<td><p>Hadoop Client, Spark Core, Ganglia Slave, Zeppelin</p></td>
 </tr>
-<tr class="row-odd"><td>slave01</td>
-<td>DataNode, NodeManager, Ganglia Slave</td>
+<tr class="row-odd"><td><p>slave01</p></td>
+<td><p>DataNode, NodeManager, Ganglia Slave</p></td>
 </tr>
-<tr class="row-even"><td>slave02</td>
-<td>DataNode, NodeManager, Ganglia Slave</td>
+<tr class="row-even"><td><p>slave02</p></td>
+<td><p>DataNode, NodeManager, Ganglia Slave</p></td>
 </tr>
-<tr class="row-odd"><td>slave03</td>
-<td>DataNode, NodeManager, Ganglia Slave</td>
+<tr class="row-odd"><td><p>slave03</p></td>
+<td><p>DataNode, NodeManager, Ganglia Slave</p></td>
 </tr>
-<tr class="row-even"><td>slave04</td>
-<td>DataNode, NodeManager, Ganglia Slave</td>
+<tr class="row-even"><td><p>slave04</p></td>
+<td><p>DataNode, NodeManager, Ganglia Slave</p></td>
 </tr>
-<tr class="row-odd"><td>slave05</td>
-<td>DataNode, NodeManager, Ganglia Slave</td>
+<tr class="row-odd"><td><p>slave05</p></td>
+<td><p>DataNode, NodeManager, Ganglia Slave</p></td>
 </tr>
-<tr class="row-even"><td>slave06</td>
-<td>DataNode, NodeManager, Ganglia Slave</td>
+<tr class="row-even"><td><p>slave06</p></td>
+<td><p>DataNode, NodeManager, Ganglia Slave</p></td>
 </tr>
-<tr class="row-odd"><td>slave07</td>
-<td>DataNode, NodeManager, Ganglia Slave</td>
+<tr class="row-odd"><td><p>slave07</p></td>
+<td><p>DataNode, NodeManager, Ganglia Slave</p></td>
 </tr>
-<tr class="row-even"><td>slave08</td>
-<td>DataNode, NodeManager, Ganglia Slave</td>
+<tr class="row-even"><td><p>slave08</p></td>
+<td><p>DataNode, NodeManager, Ganglia Slave</p></td>
 </tr>
-<tr class="row-odd"><td>slave09</td>
-<td>DataNode, NodeManager, Ganglia Slave</td>
+<tr class="row-odd"><td><p>slave09</p></td>
+<td><p>DataNode, NodeManager, Ganglia Slave</p></td>
 </tr>
-<tr class="row-even"><td>slave10</td>
-<td>DataNode, NodeManager, Ganglia Slave</td>
+<tr class="row-even"><td><p>slave10</p></td>
+<td><p>DataNode, NodeManager, Ganglia Slave</p></td>
 </tr>
-<tr class="row-odd"><td>kafka01</td>
-<td>Kafka broker</td>
+<tr class="row-odd"><td><p>kafka01</p></td>
+<td><p>Kafka broker</p></td>
 </tr>
-<tr class="row-even"><td>kafka02</td>
-<td>Kafka broker</td>
+<tr class="row-even"><td><p>kafka02</p></td>
+<td><p>Kafka broker</p></td>
 </tr>
-<tr class="row-odd"><td>kafka03</td>
-<td>Kafka broker</td>
+<tr class="row-odd"><td><p>kafka03</p></td>
+<td><p>Kafka broker</p></td>
 </tr>
-<tr class="row-even"><td>manage</td>
-<td>Ambari server</td>
+<tr class="row-even"><td><p>manage</p></td>
+<td><p>Ambari server</p></td>
 </tr>
 </tbody>
 </table>
 <p><strong>Server for pseudo environment</strong></p>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="9%" />
-<col width="91%" />
+<col style="width: 9%" />
+<col style="width: 91%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Server</th>
-<th class="head">Use for</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Server</p></th>
+<th class="head"><p>Use for</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>pseudo</td>
-<td>NameNode, DataNode, SecondaryNameNode, ResourceManager, NodeManager,
-Spark-core, Spark history server</td>
+<tbody>
+<tr class="row-even"><td><p>pseudo</p></td>
+<td><p>NameNode, DataNode, SecondaryNameNode, ResourceManager, NodeManager,
+Spark-core, Spark history server</p></td>
 </tr>
 </tbody>
 </table>
 <ul class="simple">
-<li>You can also configure InfluxDB, Grafana, Zeppelin by using playbooks</li>
+<li><p>You can also configure InfluxDB, Grafana, Zeppelin by using playbooks</p></li>
 </ul>
 </div>
 <div class="section" id="software-information">
-<h2>1.4. Software information<a class="headerlink" href="#software-information" title="Permalink to this headline">¶</a></h2>
-<table border="1" class="docutils">
+<h2><span class="section-number">1.4. </span>Software information<a class="headerlink" href="#software-information" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
 <colgroup>
-<col width="14%" />
-<col width="86%" />
+<col style="width: 14%" />
+<col style="width: 86%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Software</th>
-<th class="head">Version</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Software</p></th>
+<th class="head"><p>Version</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>OS</td>
-<td>CentOS6.6 or CentOS7.0</td>
+<tbody>
+<tr class="row-even"><td><p>OS</p></td>
+<td><p>CentOS6.6 or CentOS7.0</p></td>
 </tr>
-<tr class="row-odd"><td>Hadoop</td>
-<td>CDH5.3</td>
+<tr class="row-odd"><td><p>Hadoop</p></td>
+<td><p>CDH5.3</p></td>
 </tr>
-<tr class="row-even"><td>Spark</td>
-<td>Spark1.2 of CDH5
-or Spark community edition</td>
+<tr class="row-even"><td><p>Spark</p></td>
+<td><p>Spark1.2 of CDH5
+or Spark community edition</p></td>
 </tr>
-<tr class="row-odd"><td>Ansible</td>
-<td>Ansible 1.8.2 of EPEL</td>
+<tr class="row-odd"><td><p>Ansible</p></td>
+<td><p>Ansible 1.8.2 of EPEL</p></td>
 </tr>
-<tr class="row-even"><td>InfluxDB</td>
-<td>Latest version of the community</td>
+<tr class="row-even"><td><p>InfluxDB</p></td>
+<td><p>Latest version of the community</p></td>
 </tr>
-<tr class="row-odd"><td>Graphana</td>
-<td>1.9.1 of the community</td>
+<tr class="row-odd"><td><p>Graphana</p></td>
+<td><p>1.9.1 of the community</p></td>
 </tr>
-<tr class="row-even"><td>Zeppelin</td>
-<td>Latest version of the community</td>
+<tr class="row-even"><td><p>Zeppelin</p></td>
+<td><p>Latest version of the community</p></td>
 </tr>
-<tr class="row-odd"><td>Kafka</td>
-<td>0.10.0.0</td>
+<tr class="row-odd"><td><p>Kafka</p></td>
+<td><p>0.10.0.0</p></td>
 </tr>
-<tr class="row-even"><td>Confluent</td>
-<td>3.0.0</td>
+<tr class="row-even"><td><p>Confluent</p></td>
+<td><p>3.0.0</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="section" id="prerequirement">
-<h2>1.5. Prerequirement<a class="headerlink" href="#prerequirement" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.5. </span>Prerequirement<a class="headerlink" href="#prerequirement" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>You can login to each server by SSH from the server where you execute ansible.</li>
-<li>You can use &#8220;sudo&#8221; in each server.
-If you cannot use sudo, you should access remote servers by root user.</li>
-<li>When you manage EC2 instances, you need to use RSA key to login servers.
-For example, CentOS6 community instance use RSA key with root user in SSH access.</li>
+<li><p>You can login to each server by SSH from the server where you execute ansible.</p></li>
+<li><p>You can use “sudo” in each server.
+If you cannot use sudo, you should access remote servers by root user.</p></li>
+<li><p>When you manage EC2 instances, you need to use RSA key to login servers.
+For example, CentOS6 community instance use RSA key with root user in SSH access.</p></li>
 </ul>
 </div>
 <div class="section" id="use-python3">
-<h2>1.6. Use Python3<a class="headerlink" href="#use-python3" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.6. </span>Use Python3<a class="headerlink" href="#use-python3" title="Permalink to this headline">¶</a></h2>
 <p>If you want to use Python3, you should create group_vars/all/python3 file including the following content.
 Please replace &lt;your python3 path&gt; to the path of your own Python3.
 For example, /usr/bin/python3.</p>
-<div class="highlight-python"><pre>ansible_python_interpreter: &lt;your python3 path&gt;</pre>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ansible_python_interpreter</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">your</span> <span class="n">python3</span> <span class="n">path</span><span class="o">&gt;</span>
+</pre></div>
 </div>
 <p>The file, group_vars/all/python3 is included in .gitignore list, because the path of Python3 is different from each environment.</p>
 </div>
@@ -314,21 +300,21 @@ For example, /usr/bin/python3.</p>
 
 
       </div>
-      <div class="bottomnav">
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
       
         <p>
         «&#160;&#160;<a href="index.html">What is this document?</a>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
-        <a href="hosts.html">2. About hosts(inventory file)</a>&#160;&#160;»
+        <a href="hosts.html"><span class="section-number">2. </span>About hosts(inventory file)</a>&#160;&#160;»
         </p>
 
       </div>
 
-    <div class="footer">
-        &copy; Copyright 2014, dobachi.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2014, dobachi.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.4.
     </div>
   </body>
 </html>

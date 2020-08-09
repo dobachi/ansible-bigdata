@@ -1,320 +1,347 @@
 
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
+<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>5. About playbooks &mdash; Ansible playbooks to construct Hadoop environment</title>
-    
+    <meta charset="utf-8" />
+    <title>5. About playbooks &#8212; Ansible playbooks to construct Hadoop environment</title>
     <link rel="stylesheet" href="_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/print.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '',
-        VERSION:     '0.1',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
-      };
-    </script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/theme_extras.js"></script>
-    <link rel="top" title="Ansible playbooks to construct Hadoop environment" href="index.html" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="6. About roles" href="roles.html" />
     <link rel="prev" title="4. How to use this playbooks" href="how_to_use_playbooks.html" /> 
-  </head>
-  <body>
-      <div class="header"><h1 class="heading"><a href="index.html">
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="index.html">
           <span>Ansible playbooks to construct Hadoop environment</span></a></h1>
         <h2 class="heading"><span>5. About playbooks</span></h2>
       </div>
-      <div class="topnav">
+      <div class="topnav" role="navigation" aria-label="top navigation">
       
         <p>
-        «&#160;&#160;<a href="how_to_use_playbooks.html">4. How to use this playbooks</a>
+        «&#160;&#160;<a href="how_to_use_playbooks.html"><span class="section-number">4. </span>How to use this playbooks</a>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
-        <a href="roles.html">6. About roles</a>&#160;&#160;»
+        <a href="roles.html"><span class="section-number">6. </span>About roles</a>&#160;&#160;»
         </p>
 
       </div>
-      <div class="content">
+      <div class="content" role="main">
         
         
   <div class="section" id="about-playbooks">
-<span id="sec-about-playbooks"></span><h1>5. About playbooks<a class="headerlink" href="#about-playbooks" title="Permalink to this headline">¶</a></h1>
+<span id="sec-about-playbooks"></span><h1><span class="section-number">5. </span>About playbooks<a class="headerlink" href="#about-playbooks" title="Permalink to this headline">¶</a></h1>
 <p>This project has two types of playbooks.</p>
 <ul class="simple">
-<li>Playbooks for configuration<ul>
-<li>These are used to install middlewares and configure parameters of OS and middlewares.</li>
+<li><p>Playbooks for configuration</p>
+<ul>
+<li><p>These are used to install middlewares and configure parameters of OS and middlewares.</p></li>
 </ul>
 </li>
-<li>Playbooks for operation<ul>
-<li>These are used to operate OS&#8217;s services and middleware services.</li>
+<li><p>Playbooks for operation</p>
+<ul>
+<li><p>These are used to operate OS’s services and middleware services.</p></li>
 </ul>
 </li>
 </ul>
 <div class="section" id="playbooks-for-configuration">
-<h2>5.1. Playbooks for configuration<a class="headerlink" href="#playbooks-for-configuration" title="Permalink to this headline">¶</a></h2>
-<p>The playbooks in &#8220;playbooks/conf&#8221; directory provide functions
+<h2><span class="section-number">5.1. </span>Playbooks for configuration<a class="headerlink" href="#playbooks-for-configuration" title="Permalink to this headline">¶</a></h2>
+<p>The playbooks in “playbooks/conf” directory provide functions
 to configure nodes.</p>
 <p>In this section, the short descriptions for each playbook are shown.</p>
 <div class="section" id="common">
-<h3>5.1.1. common<a class="headerlink" href="#common" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.1.1. </span>common<a class="headerlink" href="#common" title="Permalink to this headline">¶</a></h3>
 <p>This is a set of common and basic configurations including OS parameters.</p>
 <ul class="simple">
-<li>playbooks/conf/common/common_all.yml<ul>
-<li>The playbook which provides all basic configurations.</li>
+<li><p>playbooks/conf/common/common_all.yml</p>
+<ul>
+<li><p>The playbook which provides all basic configurations.</p></li>
 </ul>
 </li>
-<li>playbooks/conf/common/common_only_common.yml<ul>
-<li>The playbook which provides configurations only in &#8220;common&#8221; role</li>
+<li><p>playbooks/conf/common/common_only_common.yml</p>
+<ul>
+<li><p>The playbook which provides configurations only in “common” role</p></li>
 </ul>
 </li>
 </ul>
 </div>
 <div class="section" id="cdh5">
-<h3>5.1.2. cdh5<a class="headerlink" href="#cdh5" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.1.2. </span>cdh5<a class="headerlink" href="#cdh5" title="Permalink to this headline">¶</a></h3>
 <p>This is a set of configurations to construct CDH5 environment.</p>
 <ul class="simple">
-<li>cdh5_all.yml<ul>
-<li>This playbook is a comprehensive playbook which includes all other playbooks.
-You can build whole CDH5 environment.</li>
+<li><p>cdh5_all.yml</p>
+<ul>
+<li><p>This playbook is a comprehensive playbook which includes all other playbooks.
+You can build whole CDH5 environment.</p></li>
 </ul>
 </li>
-<li>cdh5_cl.yml<ul>
-<li>This playbook executes basic roles and &#8220;cdh5_cl&#8221; role to build Hadoop Client environment</li>
+<li><p>cdh5_cl.yml</p>
+<ul>
+<li><p>This playbook executes basic roles and “cdh5_cl” role to build Hadoop Client environment</p></li>
 </ul>
 </li>
-<li>cdh5_journalnode.yml<ul>
-<li>This playbook executes basic roles and &#8220;cdh5_jn&#8221; role to build HDFS JournalNode environment</li>
+<li><p>cdh5_journalnode.yml</p>
+<ul>
+<li><p>This playbook executes basic roles and “cdh5_jn” role to build HDFS JournalNode environment</p></li>
 </ul>
 </li>
-<li>cdh5_namenode.yml<ul>
-<li>This playbook executes basic roles and &#8220;cdh5_nn&#8221; role to build HDFS NameNode environment</li>
+<li><p>cdh5_namenode.yml</p>
+<ul>
+<li><p>This playbook executes basic roles and “cdh5_nn” role to build HDFS NameNode environment</p></li>
 </ul>
 </li>
-<li>cdh5_other.yml<ul>
-<li>This playbook executes basic roles and &#8220;cdh5_ot&#8221; role to build MapReduce HistoryServer and YARN Proxy environments</li>
+<li><p>cdh5_other.yml</p>
+<ul>
+<li><p>This playbook executes basic roles and “cdh5_ot” role to build MapReduce HistoryServer and YARN Proxy environments</p></li>
 </ul>
 </li>
-<li>cdh5_resourcemanager.yml<ul>
-<li>This playbook executes basic roles and &#8220;cdh5_rm&#8221; role to build YARN ResourceManager environment</li>
+<li><p>cdh5_resourcemanager.yml</p>
+<ul>
+<li><p>This playbook executes basic roles and “cdh5_rm” role to build YARN ResourceManager environment</p></li>
 </ul>
 </li>
-<li>cdh5_slave.yml<ul>
-<li>This playbook executes basic roles and &#8220;cdh5_sl&#8221; role to build HDFS DataNode and YARN NodeManager environments</li>
+<li><p>cdh5_slave.yml</p>
+<ul>
+<li><p>This playbook executes basic roles and “cdh5_sl” role to build HDFS DataNode and YARN NodeManager environments</p></li>
 </ul>
 </li>
-<li>cdh5_spark.yml<ul>
-<li>This playbook executes basic roles and &#8220;cdh5_spark&#8221; role to build Spark Core environment on Client Node</li>
+<li><p>cdh5_spark.yml</p>
+<ul>
+<li><p>This playbook executes basic roles and “cdh5_spark” role to build Spark Core environment on Client Node</p></li>
 </ul>
 </li>
-<li>cdh5_zookeeper.yml<ul>
-<li>This playbook executes basic roles and &#8220;zookeeper_server&#8221; role to build Zookeeper environment</li>
+<li><p>cdh5_zookeeper.yml</p>
+<ul>
+<li><p>This playbook executes basic roles and “zookeeper_server” role to build Zookeeper environment</p></li>
 </ul>
 </li>
 </ul>
 </div>
 <div class="section" id="cdh5-pseudo">
-<h3>5.1.3. cdh5_pseudo<a class="headerlink" href="#cdh5-pseudo" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.1.3. </span>cdh5_pseudo<a class="headerlink" href="#cdh5-pseudo" title="Permalink to this headline">¶</a></h3>
 <p>This is a set of configurations to construct CDH5 pseudo environment.</p>
 <ul class="simple">
-<li>cdh5_pseudo.yml<ul>
-<li>You can build whole CDH5 pseudo environment.</li>
+<li><p>cdh5_pseudo.yml</p>
+<ul>
+<li><p>You can build whole CDH5 pseudo environment.</p></li>
 </ul>
 </li>
-<li>cdh5_spark.yml<ul>
-<li>You can build spark environment on CDH5 pseudo.</li>
+<li><p>cdh5_spark.yml</p>
+<ul>
+<li><p>You can build spark environment on CDH5 pseudo.</p></li>
 </ul>
 </li>
 </ul>
 </div>
 <div class="section" id="ansible">
-<h3>5.1.4. ansible<a class="headerlink" href="#ansible" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.1.4. </span>ansible<a class="headerlink" href="#ansible" title="Permalink to this headline">¶</a></h3>
 <p>This is a set of configuration about Ansible environment.
 If you have manually configured Ansible environment, such as ansible.cfg, inventory file and so on,
-you don&#8217;t need these playbooks.</p>
+you don’t need these playbooks.</p>
 <ul class="simple">
-<li>ansible_client.yml<ul>
-<li>This playbook executes &#8220;ansible&#8221; role to configure nodes where we execute ansible command</li>
+<li><p>ansible_client.yml</p>
+<ul>
+<li><p>This playbook executes “ansible” role to configure nodes where we execute ansible command</p></li>
 </ul>
 </li>
-<li>ansible_remote.yml<ul>
-<li>This playbook executes &#8220;ansible_remote&#8221; role to configure nodes which are configured by ansible</li>
+<li><p>ansible_remote.yml</p>
+<ul>
+<li><p>This playbook executes “ansible_remote” role to configure nodes which are configured by ansible</p></li>
 </ul>
 </li>
 </ul>
 </div>
 <div class="section" id="ganglia">
-<h3>5.1.5. ganglia<a class="headerlink" href="#ganglia" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.1.5. </span>ganglia<a class="headerlink" href="#ganglia" title="Permalink to this headline">¶</a></h3>
 <p>This is  a set of configuration about Ganglia.
 We have two playbooks for Ganglia master and slave.</p>
 <ul class="simple">
-<li>ganglia_all.yml<ul>
-<li>The wrapper playbook of configuration of both of Ganglia master and slave</li>
+<li><p>ganglia_all.yml</p>
+<ul>
+<li><p>The wrapper playbook of configuration of both of Ganglia master and slave</p></li>
 </ul>
 </li>
-<li>ganglia_master.yml<ul>
-<li>The playbook to configure Ganglia master</li>
+<li><p>ganglia_master.yml</p>
+<ul>
+<li><p>The playbook to configure Ganglia master</p></li>
 </ul>
 </li>
-<li>ganglia_slave.yml<ul>
-<li>The playbook to configure Ganglia slave</li>
+<li><p>ganglia_slave.yml</p>
+<ul>
+<li><p>The playbook to configure Ganglia slave</p></li>
 </ul>
 </li>
 </ul>
 </div>
 <div class="section" id="influxdb">
-<h3>5.1.6. influxdb<a class="headerlink" href="#influxdb" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.1.6. </span>influxdb<a class="headerlink" href="#influxdb" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>all.yml<ul>
-<li>Configure influxdb and Grafana.</li>
+<li><p>all.yml</p>
+<ul>
+<li><p>Configure influxdb and Grafana.</p></li>
 </ul>
 </li>
 </ul>
 </div>
 <div class="section" id="spark-comm">
-<h3>5.1.7. spark_comm<a class="headerlink" href="#spark-comm" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.1.7. </span>spark_comm<a class="headerlink" href="#spark-comm" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>all.yml<ul>
-<li>Configure all nodes</li>
+<li><p>all.yml</p>
+<ul>
+<li><p>Configure all nodes</p></li>
 </ul>
 </li>
-<li>spark_base.yml<ul>
-<li>Execute basic configuration of Spark</li>
+<li><p>spark_base.yml</p>
+<ul>
+<li><p>Execute basic configuration of Spark</p></li>
 </ul>
 </li>
-<li>spark_client.yml<ul>
-<li>Configure client environment to develop Spark applications</li>
+<li><p>spark_client.yml</p>
+<ul>
+<li><p>Configure client environment to develop Spark applications</p></li>
 </ul>
 </li>
-<li>spark_history.yml<ul>
-<li>Configure environment to run Spark history server</li>
+<li><p>spark_history.yml</p>
+<ul>
+<li><p>Configure environment to run Spark history server</p></li>
 </ul>
 </li>
-<li>spark_libs.yml<ul>
-<li>Configure library environment to use native libraries in MLlib</li>
+<li><p>spark_libs.yml</p>
+<ul>
+<li><p>Configure library environment to use native libraries in MLlib</p></li>
 </ul>
 </li>
 </ul>
 </div>
 <div class="section" id="zeppelin">
-<h3>5.1.8. zeppelin<a class="headerlink" href="#zeppelin" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.1.8. </span>zeppelin<a class="headerlink" href="#zeppelin" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>zeppelin.yml<ul>
-<li>Configure zeppelin environment</li>
+<li><p>zeppelin.yml</p>
+<ul>
+<li><p>Configure zeppelin environment</p></li>
 </ul>
 </li>
 </ul>
 </div>
 <div class="section" id="fluentd">
-<h3>5.1.9. fluentd<a class="headerlink" href="#fluentd" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.1.9. </span>fluentd<a class="headerlink" href="#fluentd" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>fluentd.yml<ul>
-<li>Configure fluentd</li>
+<li><p>fluentd.yml</p>
+<ul>
+<li><p>Configure fluentd</p></li>
 </ul>
 </li>
-<li>td_agent.yml<ul>
-<li>Configure td-agent</li>
+<li><p>td_agent.yml</p>
+<ul>
+<li><p>Configure td-agent</p></li>
 </ul>
 </li>
 </ul>
 </div>
 <div class="section" id="kafka">
-<h3>5.1.10. kafka<a class="headerlink" href="#kafka" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.1.10. </span>kafka<a class="headerlink" href="#kafka" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>kafka_brocker.yml<ul>
-<li>Configure Kafka broker nodes.</li>
+<li><p>kafka_brocker.yml</p>
+<ul>
+<li><p>Configure Kafka broker nodes.</p></li>
 </ul>
 </li>
 </ul>
 </div>
 <div class="section" id="confluent">
-<h3>5.1.11. confluent<a class="headerlink" href="#confluent" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.1.11. </span>confluent<a class="headerlink" href="#confluent" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>kafka_broker.yml<ul>
-<li>Configure Confluent Kafka brokers</li>
+<li><p>kafka_broker.yml</p>
+<ul>
+<li><p>Configure Confluent Kafka brokers</p></li>
 </ul>
 </li>
-<li>kafka_schema.yml<ul>
-<li>Configure Confluent Schema Registry</li>
+<li><p>kafka_schema.yml</p>
+<ul>
+<li><p>Configure Confluent Schema Registry</p></li>
 </ul>
 </li>
-<li>kafka_rest.yml<ul>
-<li>Configure Confluent REST Proxy</li>
+<li><p>kafka_rest.yml</p>
+<ul>
+<li><p>Configure Confluent REST Proxy</p></li>
 </ul>
 </li>
 </ul>
 </div>
 <div class="section" id="ambari">
-<h3>5.1.12. ambari<a class="headerlink" href="#ambari" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.1.12. </span>ambari<a class="headerlink" href="#ambari" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>ambari_agent.yml<ul>
-<li>Configure Ambari agent manually (Not through Ambari server)</li>
+<li><p>ambari_agent.yml</p>
+<ul>
+<li><p>Configure Ambari agent manually (Not through Ambari server)</p></li>
 </ul>
 </li>
-<li>ambari_server.yml<ul>
-<li>Configure Ambari server</li>
+<li><p>ambari_server.yml</p>
+<ul>
+<li><p>Configure Ambari server</p></li>
 </ul>
 </li>
 </ul>
 </div>
 <div class="section" id="jenkins">
-<h3>5.1.13. jenkins<a class="headerlink" href="#jenkins" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.1.13. </span>jenkins<a class="headerlink" href="#jenkins" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>jenkins.yml<ul>
-<li>Configure Jenkins server</li>
+<li><p>jenkins.yml</p>
+<ul>
+<li><p>Configure Jenkins server</p></li>
 </ul>
 </li>
 </ul>
 </div>
 <div class="section" id="anacondace">
-<h3>5.1.14. anacondace<a class="headerlink" href="#anacondace" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.1.14. </span>anacondace<a class="headerlink" href="#anacondace" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>anacondace2.yml<ul>
-<li>Configure Anaconda2 CE</li>
+<li><p>anacondace2.yml</p>
+<ul>
+<li><p>Configure Anaconda2 CE</p></li>
 </ul>
 </li>
-<li>anacondace3.yml<ul>
-<li>Configure Anaconda3 CE</li>
+<li><p>anacondace3.yml</p>
+<ul>
+<li><p>Configure Anaconda3 CE</p></li>
 </ul>
 </li>
 </ul>
 </div>
 <div class="section" id="postgresql">
-<h3>5.1.15. postgresql<a class="headerlink" href="#postgresql" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.1.15. </span>postgresql<a class="headerlink" href="#postgresql" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>postgresql.yml<ul>
-<li>Configure PostgreSQL</li>
+<li><p>postgresql.yml</p>
+<ul>
+<li><p>Configure PostgreSQL</p></li>
 </ul>
 </li>
 </ul>
 </div>
 <div class="section" id="cdh5-hive">
-<h3>5.1.16. cdh5_hive<a class="headerlink" href="#cdh5-hive" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.1.16. </span>cdh5_hive<a class="headerlink" href="#cdh5-hive" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>cdh5_hive.yml<ul>
-<li>Configure Hive and PostgreSQL</li>
+<li><p>cdh5_hive.yml</p>
+<ul>
+<li><p>Configure Hive and PostgreSQL</p></li>
 </ul>
 </li>
 </ul>
 </div>
 <div class="section" id="alluxio-yarn">
-<h3>5.1.17. alluxio_yarn<a class="headerlink" href="#alluxio-yarn" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.1.17. </span>alluxio_yarn<a class="headerlink" href="#alluxio-yarn" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>alluxio_yarn.yml<ul>
-<li>Configure Alluxio on YARN<ul>
-<li>Configure client and slave nodes</li>
+<li><p>alluxio_yarn.yml</p>
+<ul>
+<li><p>Configure Alluxio on YARN</p>
+<ul>
+<li><p>Configure client and slave nodes</p></li>
 </ul>
 </li>
 </ul>
@@ -322,267 +349,308 @@ We have two playbooks for Ganglia master and slave.</p>
 </ul>
 </div>
 <div class="section" id="tpc-ds">
-<h3>5.1.18. tpc_ds<a class="headerlink" href="#tpc-ds" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.1.18. </span>tpc_ds<a class="headerlink" href="#tpc-ds" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>tpc_ds.yml<ul>
-<li>Configure TPC-DS packages</li>
+<li><p>tpc_ds.yml</p>
+<ul>
+<li><p>Configure TPC-DS packages</p></li>
 </ul>
 </li>
 </ul>
 </div>
 <div class="section" id="tensorflow">
-<h3>5.1.19. tensorflow<a class="headerlink" href="#tensorflow" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.1.19. </span>tensorflow<a class="headerlink" href="#tensorflow" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>anaconda.yml<ul>
-<li>Configure Anaconda3 CE</li>
+<li><p>anaconda.yml</p>
+<ul>
+<li><p>Configure Anaconda3 CE</p></li>
 </ul>
 </li>
-<li>gpu_env.yml<ul>
-<li>Configure CUDA and cuDNN environment</li>
+<li><p>gpu_env.yml</p>
+<ul>
+<li><p>Configure CUDA and cuDNN environment</p></li>
 </ul>
 </li>
-<li>keras.yml<ul>
-<li>Configure Keras and TensorFlow environment (Use CPU)</li>
+<li><p>keras.yml</p>
+<ul>
+<li><p>Configure Keras and TensorFlow environment (Use CPU)</p></li>
 </ul>
 </li>
-<li>keras_gpu.yml<ul>
-<li>Configure Keras and TensorFlow environment (Use GPU)</li>
+<li><p>keras_gpu.yml</p>
+<ul>
+<li><p>Configure Keras and TensorFlow environment (Use GPU)</p></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 <div class="section" id="playbooks-for-operation">
-<h2>5.2. Playbooks for operation<a class="headerlink" href="#playbooks-for-operation" title="Permalink to this headline">¶</a></h2>
-<p>The playbooks in &#8220;playbooks/operation&#8221; directory provide functions
+<h2><span class="section-number">5.2. </span>Playbooks for operation<a class="headerlink" href="#playbooks-for-operation" title="Permalink to this headline">¶</a></h2>
+<p>The playbooks in “playbooks/operation” directory provide functions
 to initialize and manage services.</p>
 <p>In this section, the short descriptions for each playbook are shown.</p>
 <div class="section" id="id1">
-<h3>5.2.1. cdh5<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.2.1. </span>cdh5<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <p>This is a set of operation of Hadoop services.
 Please check README in the <em>cdh5</em> directory for more information.</p>
 </div>
 <div class="section" id="ec2">
-<h3>5.2.2. ec2<a class="headerlink" href="#ec2" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.2.2. </span>ec2<a class="headerlink" href="#ec2" title="Permalink to this headline">¶</a></h3>
 <p>This is a set of operation to boot EC2 instances.
 Please check README in the <em>ec2</em> directory for more information.</p>
 </div>
 <div class="section" id="id2">
-<h3>5.2.3. influxdb<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.2.3. </span>influxdb<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>create_db.yml<ul>
-<li>Create all databases in InfluxDB.</li>
+<li><p>create_db.yml</p>
+<ul>
+<li><p>Create all databases in InfluxDB.</p></li>
 </ul>
 </li>
-<li>create_graphite_db.yml<ul>
-<li>Create database in InfluxDB, which hold data gathered by Graphite&#8217;s protocol.
-This is mainly used by Spark.</li>
+<li><p>create_graphite_db.yml</p>
+<ul>
+<li><p>Create database in InfluxDB, which hold data gathered by Graphite’s protocol.
+This is mainly used by Spark.</p></li>
 </ul>
 </li>
-<li>create_grafana_db.yml<ul>
-<li>Create database in InfluxDB, which hold Grafana&#8217;s dashboard data.</li>
+<li><p>create_grafana_db.yml</p>
+<ul>
+<li><p>Create database in InfluxDB, which hold Grafana’s dashboard data.</p></li>
 </ul>
 </li>
 </ul>
 </div>
 <div class="section" id="id3">
-<h3>5.2.4. spark_comm<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.2.4. </span>spark_comm<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>make_spark_packages.yml<ul>
-<li>Compile Spark sources and build packages</li>
+<li><p>make_spark_packages.yml</p>
+<ul>
+<li><p>Compile Spark sources and build packages</p></li>
 </ul>
 </li>
-<li>start_spark_historyserver.yml<ul>
-<li>Start Spark&#8217;s history server</li>
+<li><p>start_spark_historyserver.yml</p>
+<ul>
+<li><p>Start Spark’s history server</p></li>
 </ul>
 </li>
-<li>stop_spark_historyserver.yml<ul>
-<li>Stop Spark&#8217;s history server</li>
+<li><p>stop_spark_historyserver.yml</p>
+<ul>
+<li><p>Stop Spark’s history server</p></li>
 </ul>
 </li>
 </ul>
 </div>
 <div class="section" id="id4">
-<h3>5.2.5. zeppelin<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.2.5. </span>zeppelin<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>build.yml<ul>
-<li>Compile and package Zeppelin</li>
-<li>This is helper playbook to build Zeppelin.
-You can build Zeppelin according to Zeppelin official web site.</li>
+<li><p>build.yml</p>
+<ul>
+<li><p>Compile and package Zeppelin</p></li>
+<li><p>This is helper playbook to build Zeppelin.
+You can build Zeppelin according to Zeppelin official web site.</p></li>
 </ul>
 </li>
-<li>restart_zeppelin.yml<ul>
-<li>Stop and start Zeppelin serives</li>
+<li><p>restart_zeppelin.yml</p>
+<ul>
+<li><p>Stop and start Zeppelin serives</p></li>
 </ul>
 </li>
-<li>start_zeppelin.yml<ul>
-<li>Start zeppelin services by executing zeppelin-daemon.sh</li>
+<li><p>start_zeppelin.yml</p>
+<ul>
+<li><p>Start zeppelin services by executing zeppelin-daemon.sh</p></li>
 </ul>
 </li>
-<li>stop_zeppelin.yml<ul>
-<li>Stop zeppelin services by executing zeppelin-daemon.sh</li>
+<li><p>stop_zeppelin.yml</p>
+<ul>
+<li><p>Stop zeppelin services by executing zeppelin-daemon.sh</p></li>
 </ul>
 </li>
 </ul>
 </div>
 <div class="section" id="id5">
-<h3>5.2.6. fluentd<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.2.6. </span>fluentd<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>restart_td_agent.yml<ul>
-<li>Stop and Start td-agent</li>
+<li><p>restart_td_agent.yml</p>
+<ul>
+<li><p>Stop and Start td-agent</p></li>
 </ul>
 </li>
-<li>start_td_agent.yml<ul>
-<li>Start td-agent</li>
+<li><p>start_td_agent.yml</p>
+<ul>
+<li><p>Start td-agent</p></li>
 </ul>
 </li>
-<li>stop_td_agent.yml<ul>
-<li>Stop td-agent</li>
+<li><p>stop_td_agent.yml</p>
+<ul>
+<li><p>Stop td-agent</p></li>
 </ul>
 </li>
 </ul>
 </div>
 <div class="section" id="id6">
-<h3>5.2.7. kafka<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.2.7. </span>kafka<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>restart_kafka.yml<ul>
-<li>Stop and Start kafka</li>
+<li><p>restart_kafka.yml</p>
+<ul>
+<li><p>Stop and Start kafka</p></li>
 </ul>
 </li>
-<li>start_kafka.yml<ul>
-<li>Start kafka</li>
+<li><p>start_kafka.yml</p>
+<ul>
+<li><p>Start kafka</p></li>
 </ul>
 </li>
-<li>stop_kafka.yml<ul>
-<li>Stop kafka</li>
+<li><p>stop_kafka.yml</p>
+<ul>
+<li><p>Stop kafka</p></li>
 </ul>
 </li>
-<li>create_topic.yml<ul>
-<li>Create topic on Kafka cluster</li>
+<li><p>create_topic.yml</p>
+<ul>
+<li><p>Create topic on Kafka cluster</p></li>
 </ul>
 </li>
-<li>delete_topic.yml<ul>
-<li>Delete topic on Kafka cluster</li>
+<li><p>delete_topic.yml</p>
+<ul>
+<li><p>Delete topic on Kafka cluster</p></li>
 </ul>
 </li>
 </ul>
 </div>
 <div class="section" id="id7">
-<h3>5.2.8. confluent<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.2.8. </span>confluent<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>restart_kafka_rest.yml<ul>
-<li>Stop and Start REST Proxy service</li>
+<li><p>restart_kafka_rest.yml</p>
+<ul>
+<li><p>Stop and Start REST Proxy service</p></li>
 </ul>
 </li>
-<li>restart_kafka_server.yml<ul>
-<li>Stop and Start Kafka broker service</li>
+<li><p>restart_kafka_server.yml</p>
+<ul>
+<li><p>Stop and Start Kafka broker service</p></li>
 </ul>
 </li>
-<li>restart_zookeeper_server.yml<ul>
-<li>Stop and Start ZooKeeper serivce</li>
-<li>If you configured ZooKeeper service on Kafka broker nodes,
-you can use this playbook to control such ZooKeeper serivces.</li>
+<li><p>restart_zookeeper_server.yml</p>
+<ul>
+<li><p>Stop and Start ZooKeeper serivce</p></li>
+<li><p>If you configured ZooKeeper service on Kafka broker nodes,
+you can use this playbook to control such ZooKeeper serivces.</p></li>
 </ul>
 </li>
-<li>start_kafka_rest.yml<ul>
-<li>Start Kafka REST Proxy serivce</li>
+<li><p>start_kafka_rest.yml</p>
+<ul>
+<li><p>Start Kafka REST Proxy serivce</p></li>
 </ul>
 </li>
-<li>start_kafka_server.yml<ul>
-<li>Start Kafka broker service</li>
+<li><p>start_kafka_server.yml</p>
+<ul>
+<li><p>Start Kafka broker service</p></li>
 </ul>
 </li>
-<li>start_schema_registry.yml<ul>
-<li>Start Confluent schema registry service</li>
+<li><p>start_schema_registry.yml</p>
+<ul>
+<li><p>Start Confluent schema registry service</p></li>
 </ul>
 </li>
-<li>start_zookeeper_server.yml<ul>
-<li>Start ZooKeeper serivce</li>
-<li>If you configured ZooKeeper service on Kafka broker nodes,
-you can use this playbook to control such ZooKeeper serivces.</li>
+<li><p>start_zookeeper_server.yml</p>
+<ul>
+<li><p>Start ZooKeeper serivce</p></li>
+<li><p>If you configured ZooKeeper service on Kafka broker nodes,
+you can use this playbook to control such ZooKeeper serivces.</p></li>
 </ul>
 </li>
-<li>stop_kafka_rest.yml<ul>
-<li>Stop Kafka REST Proxy serivce</li>
+<li><p>stop_kafka_rest.yml</p>
+<ul>
+<li><p>Stop Kafka REST Proxy serivce</p></li>
 </ul>
 </li>
-<li>stop_kafka_server.yml<ul>
-<li>Stop Kafka broker serivce</li>
+<li><p>stop_kafka_server.yml</p>
+<ul>
+<li><p>Stop Kafka broker serivce</p></li>
 </ul>
 </li>
-<li>stop_schema_registry.yml<ul>
-<li>Stop Confluent schema registry service</li>
+<li><p>stop_schema_registry.yml</p>
+<ul>
+<li><p>Stop Confluent schema registry service</p></li>
 </ul>
 </li>
-<li>stop_zookeeper_server.yml<ul>
-<li>Stop ZooKeeper serivce</li>
-<li>If you configured ZooKeeper service on Kafka broker nodes,
-you can use this playbook to control such ZooKeeper serivces.</li>
+<li><p>stop_zookeeper_server.yml</p>
+<ul>
+<li><p>Stop ZooKeeper serivce</p></li>
+<li><p>If you configured ZooKeeper service on Kafka broker nodes,
+you can use this playbook to control such ZooKeeper serivces.</p></li>
 </ul>
 </li>
 </ul>
 </div>
 <div class="section" id="id8">
-<h3>5.2.9. ambari<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.2.9. </span>ambari<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>To setup Ambari server<ul>
-<li>setup.yml</li>
+<li><p>To setup Ambari server</p>
+<ul>
+<li><p>setup.yml</p></li>
 </ul>
 </li>
-<li>Starting and stopping each service<ul>
-<li>restart_all.yml</li>
-<li>restart_ambari_metrics.yml</li>
-<li>restart_hdfs.yml</li>
-<li>restart_yarn.yml</li>
-<li>restart_zookeeper.yml</li>
-<li>start_all.yml</li>
-<li>start_ambari_metrics.yml</li>
-<li>start_hdfs.yml</li>
-<li>start_yarn.yml</li>
-<li>start_zookeeper.yml</li>
-<li>stop_all.yml</li>
-<li>stop_ambari_metrics.yml</li>
-<li>stop_hdfs.yml</li>
-<li>stop_yarn.yml</li>
-<li>stop_zookeeper.yml</li>
+<li><p>Starting and stopping each service</p>
+<ul>
+<li><p>restart_all.yml</p></li>
+<li><p>restart_ambari_metrics.yml</p></li>
+<li><p>restart_hdfs.yml</p></li>
+<li><p>restart_yarn.yml</p></li>
+<li><p>restart_zookeeper.yml</p></li>
+<li><p>start_all.yml</p></li>
+<li><p>start_ambari_metrics.yml</p></li>
+<li><p>start_hdfs.yml</p></li>
+<li><p>start_yarn.yml</p></li>
+<li><p>start_zookeeper.yml</p></li>
+<li><p>stop_all.yml</p></li>
+<li><p>stop_ambari_metrics.yml</p></li>
+<li><p>stop_hdfs.yml</p></li>
+<li><p>stop_yarn.yml</p></li>
+<li><p>stop_zookeeper.yml</p></li>
 </ul>
 </li>
 </ul>
 </div>
 <div class="section" id="id9">
-<h3>5.2.10. postgresql<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.2.10. </span>postgresql<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>setup db<ul>
-<li>initdb.yml</li>
+<li><p>setup db</p>
+<ul>
+<li><p>initdb.yml</p></li>
 </ul>
 </li>
-<li>start and stop postgresql<ul>
-<li>start_postgresql.yml</li>
-<li>stop_postgresql.yml</li>
-<li>restart_postgresql.yml</li>
+<li><p>start and stop postgresql</p>
+<ul>
+<li><p>start_postgresql.yml</p></li>
+<li><p>stop_postgresql.yml</p></li>
+<li><p>restart_postgresql.yml</p></li>
 </ul>
 </li>
 </ul>
 </div>
 <div class="section" id="id10">
-<h3>5.2.11. cdh5_hive<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.2.11. </span>cdh5_hive<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>setup<ul>
-<li>create_metastore_db.yml</li>
+<li><p>setup</p>
+<ul>
+<li><p>create_metastore_db.yml</p></li>
 </ul>
 </li>
-<li>start and stop services<ul>
-<li>start_metastore.yml</li>
-<li>stop_metastore.yml</li>
+<li><p>start and stop services</p>
+<ul>
+<li><p>start_metastore.yml</p></li>
+<li><p>stop_metastore.yml</p></li>
 </ul>
 </li>
 </ul>
 </div>
 <div class="section" id="deploy-yarn">
-<h3>5.2.12. deploy_yarn<a class="headerlink" href="#deploy-yarn" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.2.12. </span>deploy_yarn<a class="headerlink" href="#deploy-yarn" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>deploy Alluxio application to YARN<ul>
-<li>deploy_alluxio.yml</li>
+<li><p>deploy Alluxio application to YARN</p>
+<ul>
+<li><p>deploy_alluxio.yml</p></li>
 </ul>
 </li>
 </ul>
@@ -592,21 +660,21 @@ you can use this playbook to control such ZooKeeper serivces.</li>
 
 
       </div>
-      <div class="bottomnav">
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
       
         <p>
-        «&#160;&#160;<a href="how_to_use_playbooks.html">4. How to use this playbooks</a>
+        «&#160;&#160;<a href="how_to_use_playbooks.html"><span class="section-number">4. </span>How to use this playbooks</a>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
-        <a href="roles.html">6. About roles</a>&#160;&#160;»
+        <a href="roles.html"><span class="section-number">6. </span>About roles</a>&#160;&#160;»
         </p>
 
       </div>
 
-    <div class="footer">
-        &copy; Copyright 2014, dobachi.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2014, dobachi.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.4.
     </div>
   </body>
 </html>

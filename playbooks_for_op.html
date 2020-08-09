@@ -1,52 +1,37 @@
 
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
+<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>Playbooks for operation &mdash; Ansible playbooks to construct Hadoop environment</title>
-    
+    <meta charset="utf-8" />
+    <title>Playbooks for operation &#8212; Ansible playbooks to construct Hadoop environment</title>
     <link rel="stylesheet" href="_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/print.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '',
-        VERSION:     '0.1',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
-      };
-    </script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/theme_extras.js"></script>
-    <link rel="top" title="Ansible playbooks to construct Hadoop environment" href="index.html" /> 
-  </head>
-  <body>
-      <div class="header"><h1 class="heading"><a href="index.html">
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="index.html">
           <span>Ansible playbooks to construct Hadoop environment</span></a></h1>
         <h2 class="heading"><span>Playbooks for operation</span></h2>
       </div>
-      <div class="topnav">
+      <div class="topnav" role="navigation" aria-label="top navigation">
       
         <p>
         <a class="uplink" href="index.html">Contents</a>
         </p>
 
       </div>
-      <div class="content">
+      <div class="content" role="main">
         
         
   <div class="section" id="playbooks-for-operation">
 <h1>Playbooks for operation<a class="headerlink" href="#playbooks-for-operation" title="Permalink to this headline">¶</a></h1>
-<p>The playbooks in &#8220;playbooks/operation&#8221; directory provide functions
+<p>The playbooks in “playbooks/operation” directory provide functions
 to initialize and manage services.</p>
 <p>In this section, the short descriptions for each playbook are shown.</p>
 <div class="section" id="cdh5">
@@ -62,17 +47,20 @@ Please check README in the <em>ec2</em> directory for more information.</p>
 <div class="section" id="influxdb">
 <h2>influxdb<a class="headerlink" href="#influxdb" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>create_db.yml<ul>
-<li>Create all databases in InfluxDB.</li>
+<li><p>create_db.yml</p>
+<ul>
+<li><p>Create all databases in InfluxDB.</p></li>
 </ul>
 </li>
-<li>create_graphite_db.yml<ul>
-<li>Create database in InfluxDB, which hold data gathered by Graphite&#8217;s protocol.
-This is mainly used by Spark.</li>
+<li><p>create_graphite_db.yml</p>
+<ul>
+<li><p>Create database in InfluxDB, which hold data gathered by Graphite’s protocol.
+This is mainly used by Spark.</p></li>
 </ul>
 </li>
-<li>create_grafana_db.yml<ul>
-<li>Create database in InfluxDB, which hold Grafana&#8217;s dashboard data.</li>
+<li><p>create_grafana_db.yml</p>
+<ul>
+<li><p>Create database in InfluxDB, which hold Grafana’s dashboard data.</p></li>
 </ul>
 </li>
 </ul>
@@ -80,16 +68,19 @@ This is mainly used by Spark.</li>
 <div class="section" id="spark-comm">
 <h2>spark_comm<a class="headerlink" href="#spark-comm" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>make_spark_packages.yml<ul>
-<li>Compile Spark sources and build packages</li>
+<li><p>make_spark_packages.yml</p>
+<ul>
+<li><p>Compile Spark sources and build packages</p></li>
 </ul>
 </li>
-<li>start_spark_historyserver.yml<ul>
-<li>Start Spark&#8217;s history server</li>
+<li><p>start_spark_historyserver.yml</p>
+<ul>
+<li><p>Start Spark’s history server</p></li>
 </ul>
 </li>
-<li>stop_spark_historyserver.yml<ul>
-<li>Stop Spark&#8217;s history server</li>
+<li><p>stop_spark_historyserver.yml</p>
+<ul>
+<li><p>Stop Spark’s history server</p></li>
 </ul>
 </li>
 </ul>
@@ -97,22 +88,26 @@ This is mainly used by Spark.</li>
 <div class="section" id="zeppelin">
 <h2>zeppelin<a class="headerlink" href="#zeppelin" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>build.yml<ul>
-<li>Compile and package Zeppelin</li>
-<li>This is helper playbook to build Zeppelin.
-You can build Zeppelin according to Zeppelin official web site.</li>
+<li><p>build.yml</p>
+<ul>
+<li><p>Compile and package Zeppelin</p></li>
+<li><p>This is helper playbook to build Zeppelin.
+You can build Zeppelin according to Zeppelin official web site.</p></li>
 </ul>
 </li>
-<li>restart_zeppelin.yml<ul>
-<li>Stop and start Zeppelin serives</li>
+<li><p>restart_zeppelin.yml</p>
+<ul>
+<li><p>Stop and start Zeppelin serives</p></li>
 </ul>
 </li>
-<li>start_zeppelin.yml<ul>
-<li>Start zeppelin services by executing zeppelin-daemon.sh</li>
+<li><p>start_zeppelin.yml</p>
+<ul>
+<li><p>Start zeppelin services by executing zeppelin-daemon.sh</p></li>
 </ul>
 </li>
-<li>stop_zeppelin.yml<ul>
-<li>Stop zeppelin services by executing zeppelin-daemon.sh</li>
+<li><p>stop_zeppelin.yml</p>
+<ul>
+<li><p>Stop zeppelin services by executing zeppelin-daemon.sh</p></li>
 </ul>
 </li>
 </ul>
@@ -120,16 +115,19 @@ You can build Zeppelin according to Zeppelin official web site.</li>
 <div class="section" id="fluentd">
 <h2>fluentd<a class="headerlink" href="#fluentd" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>restart_td_agent.yml<ul>
-<li>Stop and Start td-agent</li>
+<li><p>restart_td_agent.yml</p>
+<ul>
+<li><p>Stop and Start td-agent</p></li>
 </ul>
 </li>
-<li>start_td_agent.yml<ul>
-<li>Start td-agent</li>
+<li><p>start_td_agent.yml</p>
+<ul>
+<li><p>Start td-agent</p></li>
 </ul>
 </li>
-<li>stop_td_agent.yml<ul>
-<li>Stop td-agent</li>
+<li><p>stop_td_agent.yml</p>
+<ul>
+<li><p>Stop td-agent</p></li>
 </ul>
 </li>
 </ul>
@@ -137,24 +135,29 @@ You can build Zeppelin according to Zeppelin official web site.</li>
 <div class="section" id="kafka">
 <h2>kafka<a class="headerlink" href="#kafka" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>restart_kafka.yml<ul>
-<li>Stop and Start kafka</li>
+<li><p>restart_kafka.yml</p>
+<ul>
+<li><p>Stop and Start kafka</p></li>
 </ul>
 </li>
-<li>start_kafka.yml<ul>
-<li>Start kafka</li>
+<li><p>start_kafka.yml</p>
+<ul>
+<li><p>Start kafka</p></li>
 </ul>
 </li>
-<li>stop_kafka.yml<ul>
-<li>Stop kafka</li>
+<li><p>stop_kafka.yml</p>
+<ul>
+<li><p>Stop kafka</p></li>
 </ul>
 </li>
-<li>create_topic.yml<ul>
-<li>Create topic on Kafka cluster</li>
+<li><p>create_topic.yml</p>
+<ul>
+<li><p>Create topic on Kafka cluster</p></li>
 </ul>
 </li>
-<li>delete_topic.yml<ul>
-<li>Delete topic on Kafka cluster</li>
+<li><p>delete_topic.yml</p>
+<ul>
+<li><p>Delete topic on Kafka cluster</p></li>
 </ul>
 </li>
 </ul>
@@ -162,54 +165,65 @@ You can build Zeppelin according to Zeppelin official web site.</li>
 <div class="section" id="confluent">
 <h2>confluent<a class="headerlink" href="#confluent" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>restart_kafka_rest.yml<ul>
-<li>Stop and Start REST Proxy service</li>
+<li><p>restart_kafka_rest.yml</p>
+<ul>
+<li><p>Stop and Start REST Proxy service</p></li>
 </ul>
 </li>
-<li>restart_kafka_server.yml<ul>
-<li>Stop and Start Kafka broker service</li>
+<li><p>restart_kafka_server.yml</p>
+<ul>
+<li><p>Stop and Start Kafka broker service</p></li>
 </ul>
 </li>
-<li>restart_zookeeper_server.yml<ul>
-<li>Stop and Start ZooKeeper serivce</li>
-<li>If you configured ZooKeeper service on Kafka broker nodes,
-you can use this playbook to control such ZooKeeper serivces.</li>
+<li><p>restart_zookeeper_server.yml</p>
+<ul>
+<li><p>Stop and Start ZooKeeper serivce</p></li>
+<li><p>If you configured ZooKeeper service on Kafka broker nodes,
+you can use this playbook to control such ZooKeeper serivces.</p></li>
 </ul>
 </li>
-<li>start_kafka_rest.yml<ul>
-<li>Start Kafka REST Proxy serivce</li>
+<li><p>start_kafka_rest.yml</p>
+<ul>
+<li><p>Start Kafka REST Proxy serivce</p></li>
 </ul>
 </li>
-<li>start_kafka_server.yml<ul>
-<li>Start Kafka broker service</li>
+<li><p>start_kafka_server.yml</p>
+<ul>
+<li><p>Start Kafka broker service</p></li>
 </ul>
 </li>
-<li>start_schema_registry.yml<ul>
-<li>Start Confluent schema registry service</li>
+<li><p>start_schema_registry.yml</p>
+<ul>
+<li><p>Start Confluent schema registry service</p></li>
 </ul>
 </li>
-<li>start_zookeeper_server.yml<ul>
-<li>Start ZooKeeper serivce</li>
-<li>If you configured ZooKeeper service on Kafka broker nodes,
-you can use this playbook to control such ZooKeeper serivces.</li>
+<li><p>start_zookeeper_server.yml</p>
+<ul>
+<li><p>Start ZooKeeper serivce</p></li>
+<li><p>If you configured ZooKeeper service on Kafka broker nodes,
+you can use this playbook to control such ZooKeeper serivces.</p></li>
 </ul>
 </li>
-<li>stop_kafka_rest.yml<ul>
-<li>Stop Kafka REST Proxy serivce</li>
+<li><p>stop_kafka_rest.yml</p>
+<ul>
+<li><p>Stop Kafka REST Proxy serivce</p></li>
 </ul>
 </li>
-<li>stop_kafka_server.yml<ul>
-<li>Stop Kafka broker serivce</li>
+<li><p>stop_kafka_server.yml</p>
+<ul>
+<li><p>Stop Kafka broker serivce</p></li>
 </ul>
 </li>
-<li>stop_schema_registry.yml<ul>
-<li>Stop Confluent schema registry service</li>
+<li><p>stop_schema_registry.yml</p>
+<ul>
+<li><p>Stop Confluent schema registry service</p></li>
 </ul>
 </li>
-<li>stop_zookeeper_server.yml<ul>
-<li>Stop ZooKeeper serivce</li>
-<li>If you configured ZooKeeper service on Kafka broker nodes,
-you can use this playbook to control such ZooKeeper serivces.</li>
+<li><p>stop_zookeeper_server.yml</p>
+<ul>
+<li><p>Stop ZooKeeper serivce</p></li>
+<li><p>If you configured ZooKeeper service on Kafka broker nodes,
+you can use this playbook to control such ZooKeeper serivces.</p></li>
 </ul>
 </li>
 </ul>
@@ -217,26 +231,28 @@ you can use this playbook to control such ZooKeeper serivces.</li>
 <div class="section" id="ambari">
 <h2>ambari<a class="headerlink" href="#ambari" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>To setup Ambari server<ul>
-<li>setup.yml</li>
+<li><p>To setup Ambari server</p>
+<ul>
+<li><p>setup.yml</p></li>
 </ul>
 </li>
-<li>Starting and stopping each service<ul>
-<li>restart_all.yml</li>
-<li>restart_ambari_metrics.yml</li>
-<li>restart_hdfs.yml</li>
-<li>restart_yarn.yml</li>
-<li>restart_zookeeper.yml</li>
-<li>start_all.yml</li>
-<li>start_ambari_metrics.yml</li>
-<li>start_hdfs.yml</li>
-<li>start_yarn.yml</li>
-<li>start_zookeeper.yml</li>
-<li>stop_all.yml</li>
-<li>stop_ambari_metrics.yml</li>
-<li>stop_hdfs.yml</li>
-<li>stop_yarn.yml</li>
-<li>stop_zookeeper.yml</li>
+<li><p>Starting and stopping each service</p>
+<ul>
+<li><p>restart_all.yml</p></li>
+<li><p>restart_ambari_metrics.yml</p></li>
+<li><p>restart_hdfs.yml</p></li>
+<li><p>restart_yarn.yml</p></li>
+<li><p>restart_zookeeper.yml</p></li>
+<li><p>start_all.yml</p></li>
+<li><p>start_ambari_metrics.yml</p></li>
+<li><p>start_hdfs.yml</p></li>
+<li><p>start_yarn.yml</p></li>
+<li><p>start_zookeeper.yml</p></li>
+<li><p>stop_all.yml</p></li>
+<li><p>stop_ambari_metrics.yml</p></li>
+<li><p>stop_hdfs.yml</p></li>
+<li><p>stop_yarn.yml</p></li>
+<li><p>stop_zookeeper.yml</p></li>
 </ul>
 </li>
 </ul>
@@ -244,14 +260,16 @@ you can use this playbook to control such ZooKeeper serivces.</li>
 <div class="section" id="postgresql">
 <h2>postgresql<a class="headerlink" href="#postgresql" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>setup db<ul>
-<li>initdb.yml</li>
+<li><p>setup db</p>
+<ul>
+<li><p>initdb.yml</p></li>
 </ul>
 </li>
-<li>start and stop postgresql<ul>
-<li>start_postgresql.yml</li>
-<li>stop_postgresql.yml</li>
-<li>restart_postgresql.yml</li>
+<li><p>start and stop postgresql</p>
+<ul>
+<li><p>start_postgresql.yml</p></li>
+<li><p>stop_postgresql.yml</p></li>
+<li><p>restart_postgresql.yml</p></li>
 </ul>
 </li>
 </ul>
@@ -259,13 +277,15 @@ you can use this playbook to control such ZooKeeper serivces.</li>
 <div class="section" id="cdh5-hive">
 <h2>cdh5_hive<a class="headerlink" href="#cdh5-hive" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>setup<ul>
-<li>create_metastore_db.yml</li>
+<li><p>setup</p>
+<ul>
+<li><p>create_metastore_db.yml</p></li>
 </ul>
 </li>
-<li>start and stop services<ul>
-<li>start_metastore.yml</li>
-<li>stop_metastore.yml</li>
+<li><p>start and stop services</p>
+<ul>
+<li><p>start_metastore.yml</p></li>
+<li><p>stop_metastore.yml</p></li>
 </ul>
 </li>
 </ul>
@@ -273,8 +293,9 @@ you can use this playbook to control such ZooKeeper serivces.</li>
 <div class="section" id="deploy-yarn">
 <h2>deploy_yarn<a class="headerlink" href="#deploy-yarn" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>deploy Alluxio application to YARN<ul>
-<li>deploy_alluxio.yml</li>
+<li><p>deploy Alluxio application to YARN</p>
+<ul>
+<li><p>deploy_alluxio.yml</p></li>
 </ul>
 </li>
 </ul>
@@ -283,7 +304,7 @@ you can use this playbook to control such ZooKeeper serivces.</li>
 
 
       </div>
-      <div class="bottomnav">
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
       
         <p>
         <a class="uplink" href="index.html">Contents</a>
@@ -291,9 +312,9 @@ you can use this playbook to control such ZooKeeper serivces.</li>
 
       </div>
 
-    <div class="footer">
-        &copy; Copyright 2014, dobachi.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2014, dobachi.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.4.
     </div>
   </body>
 </html>

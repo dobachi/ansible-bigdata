@@ -1,362 +1,378 @@
 
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
+<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>4. How to use this playbooks &mdash; Ansible playbooks to construct Hadoop environment</title>
-    
+    <meta charset="utf-8" />
+    <title>4. How to use this playbooks &#8212; Ansible playbooks to construct Hadoop environment</title>
     <link rel="stylesheet" href="_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/print.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '',
-        VERSION:     '0.1',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
-      };
-    </script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/theme_extras.js"></script>
-    <link rel="top" title="Ansible playbooks to construct Hadoop environment" href="index.html" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="5. About playbooks" href="playbooks.html" />
     <link rel="prev" title="2. About hosts(inventory file)" href="hosts.html" /> 
-  </head>
-  <body>
-      <div class="header"><h1 class="heading"><a href="index.html">
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="index.html">
           <span>Ansible playbooks to construct Hadoop environment</span></a></h1>
         <h2 class="heading"><span>4. How to use this playbooks</span></h2>
       </div>
-      <div class="topnav">
+      <div class="topnav" role="navigation" aria-label="top navigation">
       
         <p>
-        «&#160;&#160;<a href="hosts.html">2. About hosts(inventory file)</a>
+        «&#160;&#160;<a href="hosts.html"><span class="section-number">2. </span>About hosts(inventory file)</a>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
-        <a href="playbooks.html">5. About playbooks</a>&#160;&#160;»
+        <a href="playbooks.html"><span class="section-number">5. </span>About playbooks</a>&#160;&#160;»
         </p>
 
       </div>
-      <div class="content">
+      <div class="content" role="main">
         
         
   <div class="section" id="how-to-use-this-playbooks">
-<h1>4. How to use this playbooks<a class="headerlink" href="#how-to-use-this-playbooks" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">4. </span>How to use this playbooks<a class="headerlink" href="#how-to-use-this-playbooks" title="Permalink to this headline">¶</a></h1>
 <p>This project provides many kinds of playbooks to configure and manage
 nodes and serivces.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">To understand each playbook, please refer  <a class="reference internal" href="playbooks.html#sec-about-playbooks"><em>About playbooks</em></a> section.</p>
+<p class="admonition-title">Note</p>
+<p>To understand each playbook, please refer  <a class="reference internal" href="playbooks.html#sec-about-playbooks"><span class="std std-ref">About playbooks</span></a> section.</p>
 </div>
 <div class="section" id="assumption-of-this-section">
-<h2>4.1. Assumption of this section<a class="headerlink" href="#assumption-of-this-section" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.1. </span>Assumption of this section<a class="headerlink" href="#assumption-of-this-section" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>You should have servers described in <a class="reference internal" href="abstract.html#sec-servers"><em>Servers</em></a> section.</li>
-<li>You should be able to access all hosts listed in the inventry which is created by the following procedure.
-e.g. You should configure /etc/hosts to access nodes by hostname in advance.</li>
+<li><p>You should have servers described in <a class="reference internal" href="abstract.html#sec-servers"><span class="std std-ref">Servers</span></a> section.</p></li>
+<li><p>You should be able to access all hosts listed in the inventry which is created by the following procedure.
+e.g. You should configure /etc/hosts to access nodes by hostname in advance.</p></li>
 </ul>
 </div>
 <div class="section" id="how-to-configure-ansible-execution-environment">
-<span id="sec-configure-ansible-env"></span><h2>4.2. How to configure Ansible execution environment<a class="headerlink" href="#how-to-configure-ansible-execution-environment" title="Permalink to this headline">¶</a></h2>
+<span id="sec-configure-ansible-env"></span><h2><span class="section-number">4.2. </span>How to configure Ansible execution environment<a class="headerlink" href="#how-to-configure-ansible-execution-environment" title="Permalink to this headline">¶</a></h2>
 <p>If you have not configured Ansible execution environment,
 you can use the following playbooks for it.</p>
 <p>In this section, we start from installing Ansible packages.</p>
 <div class="section" id="install-packages">
-<h3>4.2.1. Install packages<a class="headerlink" href="#install-packages" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">4.2.1. </span>Install packages<a class="headerlink" href="#install-packages" title="Permalink to this headline">¶</a></h3>
 <p>Install EPEL repository</p>
-<div class="highlight-shell"><pre>$ sudo yum install -y epel-release</pre>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ sudo yum install -y epel-release
+</pre></div>
 </div>
 <p>Install Ansible</p>
-<div class="highlight-shell"><pre>$ sudo yum install -y ansible</pre>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ sudo yum install -y ansible
+</pre></div>
 </div>
 </div>
 <div class="section" id="clone-playbooks">
-<h3>4.2.2. Clone playbooks<a class="headerlink" href="#clone-playbooks" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">4.2.2. </span>Clone playbooks<a class="headerlink" href="#clone-playbooks" title="Permalink to this headline">¶</a></h3>
 <p>Clone this projects to any paths.</p>
 <p>E.g.</p>
-<div class="highlight-shell"><pre>$ cd ~
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> ~
 $ mkdir Sources
-$ cd Sources
-$ git clone https://github.com/dobachi/ansible-hadoop.git ansible</pre>
+$ <span class="nb">cd</span> Sources
+$ git clone https://github.com/dobachi/ansible-hadoop.git ansible
+</pre></div>
 </div>
 </div>
 <div class="section" id="create-inventry">
-<h3>4.2.3. Create inventry<a class="headerlink" href="#create-inventry" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">4.2.3. </span>Create inventry<a class="headerlink" href="#create-inventry" title="Permalink to this headline">¶</a></h3>
 <p>Create an inventry for your environment.
 You can use examples of this project, hosts.mdedium_sample and hosts.large_sample.</p>
-<div class="highlight-shell"><pre>$ cp hosts.medium_sample hosts.test
-$ ln -s hosts.test hosts</pre>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ cp hosts.medium_sample hosts.test
+$ ln -s hosts.test hosts
+</pre></div>
 </div>
 <p>Modify the top group of the inventry and hostnames in groups.</p>
-<div class="highlight-shell"><pre>$ vim hosts</pre>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ vim hosts
+</pre></div>
 </div>
 </div>
 <div class="section" id="create-ansible-cfg">
-<h3>4.2.4. Create ansible.cfg<a class="headerlink" href="#create-ansible-cfg" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">4.2.4. </span>Create ansible.cfg<a class="headerlink" href="#create-ansible-cfg" title="Permalink to this headline">¶</a></h3>
 <p>Create ansible.cfg refering an example of this project.</p>
-<div class="highlight-shell"><pre>$ cp ansible.cfg.sample ansible.cfg</pre>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ cp ansible.cfg.sample ansible.cfg
+</pre></div>
 </div>
 <p>The important differences of the default ansible.cfg,
 which you can find /etc/ansible/ansible.cfg, is</p>
 <ul class="simple">
-<li>hostfile = hosts<ul>
-<li>To use an inventry file in the current directory.</li>
+<li><p>hostfile = hosts</p>
+<ul>
+<li><p>To use an inventry file in the current directory.</p></li>
 </ul>
 </li>
-<li>library = /usr/share/ansible:library<ul>
-<li>To include &#8220;library&#8221; directory in the current dicrectory.</li>
+<li><p>library = /usr/share/ansible:library</p>
+<ul>
+<li><p>To include “library” directory in the current dicrectory.</p></li>
 </ul>
 </li>
-<li>roles_path = roles<ul>
-<li>To use roles in the current directory.</li>
+<li><p>roles_path = roles</p>
+<ul>
+<li><p>To use roles in the current directory.</p></li>
 </ul>
 </li>
 </ul>
 </div>
 <div class="section" id="try-ping-to-all-nodes">
-<h3>4.2.5. Try ping to all nodes<a class="headerlink" href="#try-ping-to-all-nodes" title="Permalink to this headline">¶</a></h3>
-<p>Check whether all nodes are reachable and &#8220;sudo&#8221; is available</p>
-<div class="highlight-shell"><pre>$ ansible -m ping hadoop_all -k -s</pre>
+<h3><span class="section-number">4.2.5. </span>Try ping to all nodes<a class="headerlink" href="#try-ping-to-all-nodes" title="Permalink to this headline">¶</a></h3>
+<p>Check whether all nodes are reachable and “sudo” is available</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ ansible -m ping hadoop_all -k -s
+</pre></div>
 </div>
 </div>
 </div>
 <div class="section" id="how-to-boot-ec2-instances-for-hadoop-cluster">
-<h2>4.3. How to boot EC2 instances for Hadoop cluster<a class="headerlink" href="#how-to-boot-ec2-instances-for-hadoop-cluster" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.3. </span>How to boot EC2 instances for Hadoop cluster<a class="headerlink" href="#how-to-boot-ec2-instances-for-hadoop-cluster" title="Permalink to this headline">¶</a></h2>
 <p>If you want to use Hadoop on EC2 instances,
 you can use playbooks/operation/ec2/hadoop_nodes_up.yml to boot instances.</p>
 <div class="section" id="define-environment-variables-for-aws-access">
-<h3>4.3.1. Define environment variables for AWS access<a class="headerlink" href="#define-environment-variables-for-aws-access" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">4.3.1. </span>Define environment variables for AWS access<a class="headerlink" href="#define-environment-variables-for-aws-access" title="Permalink to this headline">¶</a></h3>
 <p>We use environment variables to configure AWS access keys.
 Define AWS_ACCESS_KEY and AWS_SECRET_KEY in your ~/.bashrc</p>
-<div class="highlight-python"><pre>export AWS_ACCESS_KEY=XXXXXXXXXXXXXXXXXXXXXXXXx
-export AWS_SECRET_KEY=XXXXXXXXXXXXXXXXXXXXXXXXX</pre>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">AWS_ACCESS_KEY</span><span class="o">=</span><span class="n">XXXXXXXXXXXXXXXXXXXXXXXXx</span>
+<span class="n">export</span> <span class="n">AWS_SECRET_KEY</span><span class="o">=</span><span class="n">XXXXXXXXXXXXXXXXXXXXXXXXX</span>
+</pre></div>
 </div>
-<p>If you don&#8217;t have AWS keys,
+<p>If you don’t have AWS keys,
 create keys while referring AWS web site.</p>
 </div>
 <div class="section" id="define-parameters-for-ec2-hadoop-role">
-<h3>4.3.2. Define parameters for ec2_hadoop role<a class="headerlink" href="#define-parameters-for-ec2-hadoop-role" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">4.3.2. </span>Define parameters for ec2_hadoop role<a class="headerlink" href="#define-parameters-for-ec2-hadoop-role" title="Permalink to this headline">¶</a></h3>
 <p>You can find the parameter description for ec2_hadoop role in roles/ec2_hadoop/defaults/main.yml</p>
 <p>To define your own parameters,
 you need to create the group variable file (e.g. group_vars/all/ec2) and write parameter defines in this file.</p>
 <p>The following is an example of group_vas/top.</p>
-<div class="highlight-python"><pre>ec2_hadoop_group_id: sg-xxxxxxxx
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ec2_hadoop_group_id</span><span class="p">:</span> <span class="n">sg</span><span class="o">-</span><span class="n">xxxxxxxx</span>
 
-ec2_hadoop_accesskey: xxxxx
+<span class="n">ec2_hadoop_accesskey</span><span class="p">:</span> <span class="n">xxxxx</span>
 
-ec2_hadoop_itype: xx.xxxxx
+<span class="n">ec2_hadoop_itype</span><span class="p">:</span> <span class="n">xx</span><span class="o">.</span><span class="n">xxxxx</span>
 
-ec2_hadoop_master_image: ami-xxxxxxxx
-ec2_hadoop_slave_image: ami-xxxxxxxx
-ec2_hadoop_client_image: ami-xxxxxxxx
+<span class="n">ec2_hadoop_master_image</span><span class="p">:</span> <span class="n">ami</span><span class="o">-</span><span class="n">xxxxxxxx</span>
+<span class="n">ec2_hadoop_slave_image</span><span class="p">:</span> <span class="n">ami</span><span class="o">-</span><span class="n">xxxxxxxx</span>
+<span class="n">ec2_hadoop_client_image</span><span class="p">:</span> <span class="n">ami</span><span class="o">-</span><span class="n">xxxxxxxx</span>
 
-ec2_hadoop_region: xx-xxxxxxxxx-x
+<span class="n">ec2_hadoop_region</span><span class="p">:</span> <span class="n">xx</span><span class="o">-</span><span class="n">xxxxxxxxx</span><span class="o">-</span><span class="n">x</span>
 
-ec2_hadoop_vpc_subnet_id: subnet-xxxxxxxx</pre>
+<span class="n">ec2_hadoop_vpc_subnet_id</span><span class="p">:</span> <span class="n">subnet</span><span class="o">-</span><span class="n">xxxxxxxx</span>
+</pre></div>
 </div>
-<p>If you don&#8217;t define required parameters,
+<p>If you don’t define required parameters,
 you will see some errors, like:</p>
-<div class="highlight-python"><pre>One or more undefined variables: 'ec2_hadoop_group_id' is undefined</pre>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">One</span> <span class="ow">or</span> <span class="n">more</span> <span class="n">undefined</span> <span class="n">variables</span><span class="p">:</span> <span class="s1">&#39;ec2_hadoop_group_id&#39;</span> <span class="ow">is</span> <span class="n">undefined</span>
+</pre></div>
 </div>
 </div>
 <div class="section" id="apply-playbook">
-<h3>4.3.3. Apply playbook<a class="headerlink" href="#apply-playbook" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">4.3.3. </span>Apply playbook<a class="headerlink" href="#apply-playbook" title="Permalink to this headline">¶</a></h3>
 <p>Execute ansible-playbook command.</p>
-<div class="highlight-shell"><pre>$ ansible-playbook playbooks/operation/ec2/hadoop_nodes_up.yml -c local</pre>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ ansible-playbook playbooks/operation/ec2/hadoop_nodes_up.yml -c <span class="nb">local</span>
+</pre></div>
 </div>
 <p>As a result, you can find an IP address list, an ansible inventory file and an example of /etc/hosts used in EC2 instances
 in /tmp/ec2_&lt;unix epoc time&gt;.
 &lt;unix epoc time&gt; is the time you executed this playbook.</p>
 </div>
 <div class="section" id="supplement-when-you-restart-ec2-instances">
-<h3>4.3.4. (supplement) When you restart ec2 instances<a class="headerlink" href="#supplement-when-you-restart-ec2-instances" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">4.3.4. </span>(supplement) When you restart ec2 instances<a class="headerlink" href="#supplement-when-you-restart-ec2-instances" title="Permalink to this headline">¶</a></h3>
 <p>When you restart ec2 instances, public IP addresses may change.
 You can obtain new IP address tables by executing the playbook.</p>
-<div class="highlight-shell"><pre>$ ansible-playbook playbooks/operation/ec2/hadoop_nodes_up.yml -c local</pre>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ ansible-playbook playbooks/operation/ec2/hadoop_nodes_up.yml -c <span class="nb">local</span>
+</pre></div>
 </div>
 </div>
 </div>
 <div class="section" id="how-to-configure-host-names-of-nodes">
-<h2>4.4. How to configure host names of nodes<a class="headerlink" href="#how-to-configure-host-names-of-nodes" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.4. </span>How to configure host names of nodes<a class="headerlink" href="#how-to-configure-host-names-of-nodes" title="Permalink to this headline">¶</a></h2>
 <p>If you want to configure hostname of nodes,
-You can use &#8220;common&#8221; role and related playbooks.</p>
+You can use “common” role and related playbooks.</p>
 <p>Execute ansible-playbook command with common_only_common.yml</p>
-<div class="highlight-shell"><pre>$ cd /etc/ansible
-$ ansible-playbook playbooks/conf/common/common_only_common.yml -k -s -e "common_config_hostname=True server=hadoop_all"</pre>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> /etc/ansible
+$ ansible-playbook playbooks/conf/common/common_only_common.yml -k -s -e <span class="s2">&quot;common_config_hostname=True server=hadoop_all&quot;</span>
+</pre></div>
 </div>
 <p>This is usefull for configuration of EC2 instance, because your node may have variety of hostname after each node booted.</p>
 </div>
 <div class="section" id="how-to-configure-cdh5-hdfs-yarn-environment">
-<h2>4.5. How to configure CDH5 HDFS/YARN environment<a class="headerlink" href="#how-to-configure-cdh5-hdfs-yarn-environment" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.5. </span>How to configure CDH5 HDFS/YARN environment<a class="headerlink" href="#how-to-configure-cdh5-hdfs-yarn-environment" title="Permalink to this headline">¶</a></h2>
 <p>You can construct CDH5 HDFS/YARN environment by ansible-playbook command.</p>
 <div class="section" id="preparement">
-<h3>4.5.1. Preparement<a class="headerlink" href="#preparement" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">4.5.1. </span>Preparement<a class="headerlink" href="#preparement" title="Permalink to this headline">¶</a></h3>
 <p>If you have not configured Ansible execution environment,
 you should configure it.
-You can reference <a class="reference internal" href="#sec-configure-ansible-env"><em>How to configure Ansible execution environment</em></a> section.</p>
+You can reference <a class="reference internal" href="#sec-configure-ansible-env"><span class="std std-ref">How to configure Ansible execution environment</span></a> section.</p>
 </div>
 <div class="section" id="procedure">
-<h3>4.5.2. Procedure<a class="headerlink" href="#procedure" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">4.5.2. </span>Procedure<a class="headerlink" href="#procedure" title="Permalink to this headline">¶</a></h3>
 <p>In the following example, we configure common_hosts_replace is True.
 As a result of this parameter configuration, Ansible replace /etc/hosts
-by Ansible driver server&#8217;s /etc/ansible/roles/common/files/hosts.default</p>
-<div class="highlight-shell"><pre>$ ansible-playbook playbooks/conf/cdh5/cdh5_all.yml -k -s -e "common_hosts_replace=True"
+by Ansible driver server’s /etc/ansible/roles/common/files/hosts.default</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ ansible-playbook playbooks/conf/cdh5/cdh5_all.yml -k -s -e <span class="s2">&quot;common_hosts_replace=True&quot;</span>
 $ ansible-playbook playbooks/operation/cdh5/init_zkfc.yml -k -s
-$ ansible-playbook playbooks/operation/cdh5/init_hdfs.yml -k -s</pre>
+$ ansible-playbook playbooks/operation/cdh5/init_hdfs.yml -k -s
+</pre></div>
 </div>
 <p>Start services</p>
-<div class="highlight-shell"><pre>$ ansible-playbook playbooks/operation/cdh5/start_cluster.yml -k -s</pre>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ ansible-playbook playbooks/operation/cdh5/start_cluster.yml -k -s
+</pre></div>
 </div>
 </div>
 <div class="section" id="how-to-install-spark-environment-on-cdh5-environment">
-<h3>4.5.3. How to install Spark environment on CDH5 environment<a class="headerlink" href="#how-to-install-spark-environment-on-cdh5-environment" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">4.5.3. </span>How to install Spark environment on CDH5 environment<a class="headerlink" href="#how-to-install-spark-environment-on-cdh5-environment" title="Permalink to this headline">¶</a></h3>
 <p>You can install Spark Core into Client node by the following command</p>
-<div class="highlight-shell"><pre>$ ansible-playbook playbooks/conf/cdh5/cdh5_spark.yml -k -s</pre>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ ansible-playbook playbooks/conf/cdh5/cdh5_spark.yml -k -s
+</pre></div>
 </div>
-<p>If you want to start Spark&#8217;s history server,
+<p>If you want to start Spark’s history server,
 please execute the following command.</p>
-<div class="highlight-shell"><pre>$ ansible-playbook playbooks/operation/cdh5/start_sparkhistory.yml -k -s</pre>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ ansible-playbook playbooks/operation/cdh5/start_sparkhistory.yml -k -s
+</pre></div>
 </div>
 </div>
 </div>
 <div class="section" id="how-to-configure-cdh5-pseudo-environment">
-<h2>4.6. How to configure CDH5 Pseudo environment<a class="headerlink" href="#how-to-configure-cdh5-pseudo-environment" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.6. </span>How to configure CDH5 Pseudo environment<a class="headerlink" href="#how-to-configure-cdh5-pseudo-environment" title="Permalink to this headline">¶</a></h2>
 <p>You can construct CDH5 HDFS/YARN environment by ansible-playbook command.</p>
 <div class="section" id="id1">
-<h3>4.6.1. Preparement<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">4.6.1. </span>Preparement<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <p>If you have not configured Ansible execution environment,
 you should configure it.
-You can reference <a class="reference internal" href="#sec-configure-ansible-env"><em>How to configure Ansible execution environment</em></a> section.</p>
+You can reference <a class="reference internal" href="#sec-configure-ansible-env"><span class="std std-ref">How to configure Ansible execution environment</span></a> section.</p>
 </div>
 <div class="section" id="id2">
-<h3>4.6.2. Procedure<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">4.6.2. </span>Procedure<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <p>In the following example, we configure common_hosts_replace is True.
 As a result of this parameter configuration, Ansible replace /etc/hosts
-by Ansible driver server&#8217;s /etc/ansible/roles/common/files/hosts.default</p>
-<div class="highlight-shell"><pre>$ ansible-playbook playbooks/conf/cdh5_pseudo/cdh5_pseudo.yml -k -s -e "common_hosts_replace=True"
-$ ansible-playbook playbooks/operation/cdh5_pseudo/init_hdfs.yml -k -s</pre>
+by Ansible driver server’s /etc/ansible/roles/common/files/hosts.default</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ ansible-playbook playbooks/conf/cdh5_pseudo/cdh5_pseudo.yml -k -s -e <span class="s2">&quot;common_hosts_replace=True&quot;</span>
+$ ansible-playbook playbooks/operation/cdh5_pseudo/init_hdfs.yml -k -s
+</pre></div>
 </div>
 <p>Start services</p>
-<div class="highlight-shell"><pre>$ ansible-playbook playbooks/operation/cdh5_pseudo/start_cluster.yml -k -s</pre>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ ansible-playbook playbooks/operation/cdh5_pseudo/start_cluster.yml -k -s
+</pre></div>
 </div>
 </div>
 <div class="section" id="how-to-install-spark-environment-on-hadoop-pseudo-environment">
-<h3>4.6.3. How to install Spark environment on Hadoop pseudo environment<a class="headerlink" href="#how-to-install-spark-environment-on-hadoop-pseudo-environment" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">4.6.3. </span>How to install Spark environment on Hadoop pseudo environment<a class="headerlink" href="#how-to-install-spark-environment-on-hadoop-pseudo-environment" title="Permalink to this headline">¶</a></h3>
 <p>You can install Spark Core into Client node by the following command</p>
-<div class="highlight-shell"><pre>$ ansible-playbook playbooks/conf/cdh5_pseudo/cdh5_spark.yml -k -s</pre>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ ansible-playbook playbooks/conf/cdh5_pseudo/cdh5_spark.yml -k -s
+</pre></div>
 </div>
-<p>If you want to start Spark&#8217;s history server,
+<p>If you want to start Spark’s history server,
 please execute the following command.</p>
-<div class="highlight-shell"><pre>$ ansible-playbook playbooks/operation/cdh5_pseudo/start_sparkhistory.yml -k -s</pre>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ ansible-playbook playbooks/operation/cdh5_pseudo/start_sparkhistory.yml -k -s
+</pre></div>
 </div>
 </div>
 </div>
 <div class="section" id="how-to-install-ganglia-environment">
-<h2>4.7. How to install Ganglia environment<a class="headerlink" href="#how-to-install-ganglia-environment" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.7. </span>How to install Ganglia environment<a class="headerlink" href="#how-to-install-ganglia-environment" title="Permalink to this headline">¶</a></h2>
 <p>You can install Gaglia services with the following command:</p>
-<div class="highlight-python"><pre>.. code-block:: shell</pre>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">code</span><span class="o">-</span><span class="n">block</span><span class="p">::</span> <span class="n">shell</span>
+</pre></div>
 </div>
 <blockquote>
-<div>$ ansible-playbook playbooks/conf/ganglia/ganglia_all.yml -k -s</div></blockquote>
+<div><p>$ ansible-playbook playbooks/conf/ganglia/ganglia_all.yml -k -s</p>
+</div></blockquote>
 <div class="section" id="how-to-use-unicast-for-communication-between-gmonds">
-<h3>4.7.1. How to use unicast for communication between gmonds<a class="headerlink" href="#how-to-use-unicast-for-communication-between-gmonds" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">4.7.1. </span>How to use unicast for communication between gmonds<a class="headerlink" href="#how-to-use-unicast-for-communication-between-gmonds" title="Permalink to this headline">¶</a></h3>
 <p>This playbook uses multicast for communication between gmonds as default.
 In some situcation, you may want to use unicast.
 For example, you are using ec2 of AWS.</p>
-<p>The parameter &#8220;ganglia_slave_use_unicast&#8221; is used to define
+<p>The parameter “ganglia_slave_use_unicast” is used to define
 whether you use unicast or not.
 If you set this parameter True in your group_vars, you can use unicast.</p>
 <p>Example(group_vars/all/ganglia):</p>
-<div class="highlight-python"><pre>ganglia_slave_use_unicast: True</pre>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ganglia_slave_use_unicast</span><span class="p">:</span> <span class="kc">True</span>
+</pre></div>
 </div>
-<p>Please configure the parameter &#8220;ganglia_slave_host&#8221; as well as &#8220;ganglia_slave_use_unicast&#8221;
+<p>Please configure the parameter “ganglia_slave_host” as well as “ganglia_slave_use_unicast”
 This parameter is used to define the destination which each gmond sends metrics,
 and should be a representative node which gmetad connect.</p>
 </div>
 </div>
 <div class="section" id="how-to-install-and-configure-influxdb-and-grafana">
-<h2>4.8. How to install and configure InfluxDB and Grafana<a class="headerlink" href="#how-to-install-and-configure-influxdb-and-grafana" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.8. </span>How to install and configure InfluxDB and Grafana<a class="headerlink" href="#how-to-install-and-configure-influxdb-and-grafana" title="Permalink to this headline">¶</a></h2>
 <p>You can install InfluxDB and Grafana services with the followign command.
 Be careful for a machine to which you install InfluxDB,
 because InfluxDB uses 8088 port but Hadoop YARN ResourceManager also use 8088 port.</p>
-<div class="highlight-shell"><pre>$ ansible-playbook playbooks/conf/influxdb/all.yml -k -s</pre>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ ansible-playbook playbooks/conf/influxdb/all.yml -k -s
+</pre></div>
 </div>
 <p>You can access <a class="reference external" href="http:/">http:/</a>/&lt;Grafana server&gt;:3000/ to watch grafana.</p>
 </div>
 <div class="section" id="how-to-install-spark-community-edition">
-<h2>4.9. How to install Spark community edition<a class="headerlink" href="#how-to-install-spark-community-edition" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.9. </span>How to install Spark community edition<a class="headerlink" href="#how-to-install-spark-community-edition" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="obtain-package-or-compile-sources">
-<h3>4.9.1. Obtain package or compile sources<a class="headerlink" href="#obtain-package-or-compile-sources" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">4.9.1. </span>Obtain package or compile sources<a class="headerlink" href="#obtain-package-or-compile-sources" title="Permalink to this headline">¶</a></h3>
 <p>You can get Spark pacakge from <a class="reference external" href="https://spark.apache.org/downloads.html">Spark official download site</a> .</p>
 <p>If you want to use a package compiled by your self,
 you should build it according to <a class="reference external" href="https://spark.apache.org/docs/latest/building-spark.html">Spark offical build procedure</a> .</p>
 <p>You can also use playbooks/operation/spark_comm/make_spark_packages.yml to build it.
 When you use this playbook, please specify the following parameters used in this playbook.</p>
 <ul class="simple">
-<li>spark_comm_src_dir</li>
-<li>spark_comm_version</li>
-<li>spark_comm_mvn_options</li>
-<li>spark_comm_hadoop_version</li>
+<li><p>spark_comm_src_dir</p></li>
+<li><p>spark_comm_version</p></li>
+<li><p>spark_comm_mvn_options</p></li>
+<li><p>spark_comm_hadoop_version</p></li>
 </ul>
 </div>
 <div class="section" id="confiure-parameters">
-<h3>4.9.2. Confiure parameters<a class="headerlink" href="#confiure-parameters" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">4.9.2. </span>Confiure parameters<a class="headerlink" href="#confiure-parameters" title="Permalink to this headline">¶</a></h3>
 <p>You can use playbooks/conf/spark_comm/all.yml to configure Spark community edition envirionment.</p>
 <p>This playbooks and roles expect to get Spark tar package by HTTP method.
 You should configure the following parameter to specify where Ansible should get Spark tar package.</p>
 <ul class="simple">
-<li>spark_comm_package_url_base</li>
-<li>spark_comm_package_name</li>
+<li><p>spark_comm_package_url_base</p></li>
+<li><p>spark_comm_package_name</p></li>
 </ul>
 <p>The download URL is consited like {{ spark_comm_package_url_base }}/{{ spark_comm_package_name }}.tgz
-For example, if the download URL is &#8220;<a class="reference external" href="http://example.local/spark/spark-1.4.0-SNAPSHOT-bin-2.5.0-cdh5.3.2.tgz">http://example.local/spark/spark-1.4.0-SNAPSHOT-bin-2.5.0-cdh5.3.2.tgz</a>&#8221;,
-spark_comm_package_url_base is &#8220;<a class="reference external" href="http://example.local/spark">http://example.local/spark</a>&#8221; and spark_comm_package_name is &#8220;spark-1.4.0-SNAPSHOT-bin-2.5.0-cdh5.3.2&#8221;.</p>
+For example, if the download URL is “<a class="reference external" href="http://example.local/spark/spark-1.4.0-SNAPSHOT-bin-2.5.0-cdh5.3.2.tgz">http://example.local/spark/spark-1.4.0-SNAPSHOT-bin-2.5.0-cdh5.3.2.tgz</a>”,
+spark_comm_package_url_base is “<a class="reference external" href="http://example.local/spark">http://example.local/spark</a>” and spark_comm_package_name is “spark-1.4.0-SNAPSHOT-bin-2.5.0-cdh5.3.2”.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">spark_comm_package_name does not include &#8221;.tgz&#8221;</p>
+<p class="admonition-title">Note</p>
+<p>spark_comm_package_name does not include “.tgz”</p>
 </div>
 </div>
 <div class="section" id="execute-playbooks">
-<h3>4.9.3. Execute playbooks<a class="headerlink" href="#execute-playbooks" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">4.9.3. </span>Execute playbooks<a class="headerlink" href="#execute-playbooks" title="Permalink to this headline">¶</a></h3>
 <p>After configuration of parameters, you can execute Ansible playbooks.</p>
-<div class="highlight-shell"><pre>$ ansible-playbook playbooks/conf/spark_comm/all.yml -k -s</pre>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ ansible-playbook playbooks/conf/spark_comm/all.yml -k -s
+</pre></div>
 </div>
 </div>
 <div class="section" id="stat-history-server">
-<h3>4.9.4. Stat history server<a class="headerlink" href="#stat-history-server" title="Permalink to this headline">¶</a></h3>
-<p>Start Spark&#8217;s history server by the following command.</p>
-<div class="highlight-shell"><pre>$ ansible-playbook playbooks/operation/spark_comm/start_spark_historyserver.yml -k -s</pre>
+<h3><span class="section-number">4.9.4. </span>Stat history server<a class="headerlink" href="#stat-history-server" title="Permalink to this headline">¶</a></h3>
+<p>Start Spark’s history server by the following command.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ ansible-playbook playbooks/operation/spark_comm/start_spark_historyserver.yml -k -s
+</pre></div>
 </div>
 </div>
 </div>
 <div class="section" id="configure-zeppelin">
-<h2>4.10. Configure Zeppelin<a class="headerlink" href="#configure-zeppelin" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.10. </span>Configure Zeppelin<a class="headerlink" href="#configure-zeppelin" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="obtain-sources-and-build">
-<h3>4.10.1. Obtain sources and build<a class="headerlink" href="#obtain-sources-and-build" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">4.10.1. </span>Obtain sources and build<a class="headerlink" href="#obtain-sources-and-build" title="Permalink to this headline">¶</a></h3>
 <p>First, according to <a class="reference external" href="https://github.com/apache/incubator-zeppelin/blob/master/README.md">Official README</a> , you need to compile source codes and make a package.</p>
 <p>Please take care about the compile option.
 You should specify Spark and Hadoop versions you use now.</p>
 <p>The following is an example to configure CDH5.3.3、Spark1.3、YARN environment.</p>
-<div class="highlight-shell"><pre>$ mvn clean package -Pspark-1.3 -Dhadoop.version=2.5.0-cdh5.3.3 -Phadoop-2.4 -Pyarn -DskipTests</pre>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ mvn clean package -Pspark-1.3 -Dhadoop.version<span class="o">=</span><span class="m">2</span>.5.0-cdh5.3.3 -Phadoop-2.4 -Pyarn -DskipTests
+</pre></div>
 </div>
 <p>You can also use playbooks/operation/zeppelin/build.yml, the helper playbook.
 Before executing this playbook, please configure the following parameters in the playbook.</p>
 <ul class="simple">
-<li>zeppelin_git_url</li>
-<li>zeppelin_src_dir</li>
-<li>zeppelin_version</li>
-<li>zeppelin_comiple_flag</li>
-<li>zeppelin_hadoop_version</li>
+<li><p>zeppelin_git_url</p></li>
+<li><p>zeppelin_src_dir</p></li>
+<li><p>zeppelin_version</p></li>
+<li><p>zeppelin_comiple_flag</p></li>
+<li><p>zeppelin_hadoop_version</p></li>
 </ul>
 <p>Finally, the playbook to configure Zeppelin make use of the package
 which you compiled the above procedure.
@@ -364,182 +380,206 @@ The package is downloaded from web service by HTTP,
 so that you need to put the package on a HTTP web server.</p>
 </div>
 <div class="section" id="executing-playbook">
-<h3>4.10.2. Executing playbook<a class="headerlink" href="#executing-playbook" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">4.10.2. </span>Executing playbook<a class="headerlink" href="#executing-playbook" title="Permalink to this headline">¶</a></h3>
 <p>To configure Zeppelin, please execute the following playbook.</p>
-<div class="highlight-shell"><pre>$ ansible-playbook playbooks/conf/zeppelin/zeppelin.yml -k -s</pre>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ ansible-playbook playbooks/conf/zeppelin/zeppelin.yml -k -s
+</pre></div>
 </div>
 <p>After finishing configuration, you need to start Zeppelin service.</p>
-<div class="highlight-shell"><pre>$ ansible-playbook playbooks/operation/zeppelin/start_zeppelin.yml -k -s</pre>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ ansible-playbook playbooks/operation/zeppelin/start_zeppelin.yml -k -s
+</pre></div>
 </div>
 </div>
 </div>
 <div class="section" id="configure-kafka-cluster">
-<h2>4.11. Configure Kafka cluster<a class="headerlink" href="#configure-kafka-cluster" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.11. </span>Configure Kafka cluster<a class="headerlink" href="#configure-kafka-cluster" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="information">
-<h3>4.11.1. Information<a class="headerlink" href="#information" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">4.11.1. </span>Information<a class="headerlink" href="#information" title="Permalink to this headline">¶</a></h3>
 <p>We assume that Zookeeper ensemble was congured on master01, master02 and master03.
-If you have any other Zookeeper ensemble, you should modify kafka role&#8217;s parameters.</p>
+If you have any other Zookeeper ensemble, you should modify kafka role’s parameters.</p>
 </div>
 <div class="section" id="id3">
-<h3>4.11.2. Executing playbook<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">4.11.2. </span>Executing playbook<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <p>To configure Kafka cluster, please execute the following playbook.</p>
-<div class="highlight-shell"><pre>$ ansible-playbook playbooks/conf/kafka/kafka_broker.yml -k -s</pre>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ ansible-playbook playbooks/conf/kafka/kafka_broker.yml -k -s
+</pre></div>
 </div>
 <p>After finishing configuration, you need to start Kafka cluster.</p>
-<div class="highlight-shell"><pre>$ ansible-playbook playbooks/operation/kafka/start_kafka.yml -k -s</pre>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ ansible-playbook playbooks/operation/kafka/start_kafka.yml -k -s
+</pre></div>
 </div>
 </div>
 </div>
 <div class="section" id="configure-confluent-services">
-<h2>4.12. Configure Confluent services<a class="headerlink" href="#configure-confluent-services" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.12. </span>Configure Confluent services<a class="headerlink" href="#configure-confluent-services" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id4">
-<h3>4.12.1. Information<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">4.12.1. </span>Information<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <p>We assume that Zookeeper ensemble was congured on master01, master02 and master03.
-If you have any other Zookeeper ensemble, you should modify kafka role&#8217;s parameters.</p>
+If you have any other Zookeeper ensemble, you should modify kafka role’s parameters.</p>
 </div>
 <div class="section" id="id5">
-<h3>4.12.2. Executing playbook<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">4.12.2. </span>Executing playbook<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <p>To configure Kafka broker cluster, please execute the following playbook.</p>
-<div class="highlight-shell"><pre>$ ansible-playbook playbooks/conf/confluent/kafka_broker.yml -k -s</pre>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ ansible-playbook playbooks/conf/confluent/kafka_broker.yml -k -s
+</pre></div>
 </div>
 <p>After finishing configuration, you need to start Kafka cluster.</p>
-<div class="highlight-shell"><pre>$ ansible-playbook playbooks/operation/start_kafka_server.yml -k -s</pre>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ ansible-playbook playbooks/operation/start_kafka_server.yml -k -s
+</pre></div>
 </div>
 <p>As the same as the above procedure,
 you can install Schema Registry and Kafka REST Proxy
 by using kafka_schema.yml and kafka_rest.yml in playbooks/conf/confluent directory.
 And, use the following playbooks to these services,</p>
-<div class="highlight-shell"><pre>$ ansible-playbook playbooks/operation/start_schema_registry.yml -k -s
-$ ansible-playbook playbooks/operation/start_kafka_rest.yml -k -s</pre>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ ansible-playbook playbooks/operation/start_schema_registry.yml -k -s
+$ ansible-playbook playbooks/operation/start_kafka_rest.yml -k -s
+</pre></div>
 </div>
 </div>
 </div>
 <div class="section" id="configure-ambari">
-<h2>4.13. Configure Ambari<a class="headerlink" href="#configure-ambari" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.13. </span>Configure Ambari<a class="headerlink" href="#configure-ambari" title="Permalink to this headline">¶</a></h2>
 <p>To install the basic packages, execute the following command.</p>
-<div class="highlight-shell"><pre>$ ansible-playbook playbooks/conf/ambari/ambari_server.yml -k -s</pre>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ ansible-playbook playbooks/conf/ambari/ambari_server.yml -k -s
+</pre></div>
 </div>
 <p>Install Ambari agent to all machines.</p>
-<div class="highlight-shell"><pre>$ ansible-playbook playbooks/conf/ambari/ambari_agent.yml -k -s</pre>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ ansible-playbook playbooks/conf/ambari/ambari_agent.yml -k -s
+</pre></div>
 </div>
 <p>Execute initilization of Ambari server.</p>
-<div class="highlight-shell"><pre>$ ansible-playbook playbooks/operation/ambari/setup.yml -k -s</pre>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ ansible-playbook playbooks/operation/ambari/setup.yml -k -s
+</pre></div>
 </div>
-<p>Then you can access Ambari web UI on &#8220;manage&#8221; node.</p>
+<p>Then you can access Ambari web UI on “manage” node.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Todo: blueprint</p>
+<p class="admonition-title">Note</p>
+<p>Todo: blueprint</p>
 </div>
 </div>
 <div class="section" id="configure-jenkins">
-<h2>4.14. Configure Jenkins<a class="headerlink" href="#configure-jenkins" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.14. </span>Configure Jenkins<a class="headerlink" href="#configure-jenkins" title="Permalink to this headline">¶</a></h2>
 <p>To install Jenkins and related packages, execute the following command.</p>
-<div class="highlight-shell"><pre>$ ansible-playbook playbooks/conf/jenkins/jenkins.yml -k -s</pre>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ ansible-playbook playbooks/conf/jenkins/jenkins.yml -k -s
+</pre></div>
 </div>
 </div>
 <div class="section" id="configure-anaconda-ce">
-<h2>4.15. Configure Anaconda CE<a class="headerlink" href="#configure-anaconda-ce" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.15. </span>Configure Anaconda CE<a class="headerlink" href="#configure-anaconda-ce" title="Permalink to this headline">¶</a></h2>
 <p>To install Anaconda2 CE, execute the following command.</p>
-<div class="highlight-shell"><pre>$ ansible-playbook playbooks/conf/anacondace/anacondace2.yml -k -s</pre>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ ansible-playbook playbooks/conf/anacondace/anacondace2.yml -k -s
+</pre></div>
 </div>
 <p>To install Anaconda3 CE, execute the following command.</p>
-<div class="highlight-shell"><pre>$ ansible-playbook playbooks/conf/anacondace/anacondace3.yml -k -s</pre>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ ansible-playbook playbooks/conf/anacondace/anacondace3.yml -k -s
+</pre></div>
 </div>
 <p>The above command installs Anaconda CE pakcages to /usr/local/anacondace directory.
 If you want to configure PATH, please do it yourself.</p>
 </div>
 <div class="section" id="configure-hive">
-<h2>4.16. Configure Hive<a class="headerlink" href="#configure-hive" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.16. </span>Configure Hive<a class="headerlink" href="#configure-hive" title="Permalink to this headline">¶</a></h2>
 <p>To install Hive and related packages, execute the following command.</p>
-<div class="highlight-shell"><pre>$ ansible-playbook playbooks/conf/cdh5_hive/cdh5_hive.yml -k -s -e "server=hadoop_client"</pre>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ ansible-playbook playbooks/conf/cdh5_hive/cdh5_hive.yml -k -s -e <span class="s2">&quot;server=hadoop_client&quot;</span>
+</pre></div>
 </div>
 <p>The above command installs PostgreSQL and Hive packages as well as common packages.
 To Initialize PostgreSQL Database, execute the following command.
 This command remove existing database and initialize database.</p>
-<div class="highlight-shell"><pre>$ ansible-playbook playbooks/operation/postgresql/initdb.yml -s -k -e "server=hadoop_client"
-$ ansible-playbook playbooks/operation/postgresql/restart_postgresql.yml -s -k -e "server=hadoop_client"</pre>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ ansible-playbook playbooks/operation/postgresql/initdb.yml -s -k -e <span class="s2">&quot;server=hadoop_client&quot;</span>
+$ ansible-playbook playbooks/operation/postgresql/restart_postgresql.yml -s -k -e <span class="s2">&quot;server=hadoop_client&quot;</span>
+</pre></div>
 </div>
 <p>To create user and database, execute the following command.</p>
-<div class="highlight-shell"><pre>$ ansible-playbook playbooks/operation/cdh5_hive/create_metastore_db -k -s -e "server=hadoop_client"</pre>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ ansible-playbook playbooks/operation/cdh5_hive/create_metastore_db -k -s -e <span class="s2">&quot;server=hadoop_client&quot;</span>
+</pre></div>
 </div>
 <p>To define schema, execute the following command <em>on the Hadoop client</em>.</p>
-<div class="highlight-shell"><pre>$ cd /usr/lib/hive/scripts/metastore/upgrade/postgres
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> /usr/lib/hive/scripts/metastore/upgrade/postgres
 $ sudo -u postgres psql
-postgres=# \c metastore
-metastore=# \i hive-schema-1.1.0.postgres.sql
-metastore=# \pset tuples_only on
-metastore=# \o /tmp/grant-privs
-metastore=#   SELECT 'GRANT SELECT,INSERT,UPDATE,DELETE ON "'  || schemaname || '". "' ||tablename ||'" TO hiveuser ;'
+<span class="nv">postgres</span><span class="o">=</span><span class="c1"># \c metastore</span>
+<span class="nv">metastore</span><span class="o">=</span><span class="c1"># \i hive-schema-1.1.0.postgres.sql</span>
+<span class="nv">metastore</span><span class="o">=</span><span class="c1"># \pset tuples_only on</span>
+<span class="nv">metastore</span><span class="o">=</span><span class="c1"># \o /tmp/grant-privs</span>
+<span class="nv">metastore</span><span class="o">=</span><span class="c1">#   SELECT &#39;GRANT SELECT,INSERT,UPDATE,DELETE ON &quot;&#39;  || schemaname || &#39;&quot;. &quot;&#39; ||tablename ||&#39;&quot; TO hiveuser ;&#39;</span>
 metastore-#   FROM pg_tables
-metastore-#   WHERE tableowner = CURRENT_USER and schemaname = 'public';
-metastore=# \o
-metastore=# \pset tuples_only off
-metastore=# \i /tmp/grant-privs
-metastore=# \q</pre>
+metastore-#   WHERE <span class="nv">tableowner</span> <span class="o">=</span> CURRENT_USER and <span class="nv">schemaname</span> <span class="o">=</span> <span class="s1">&#39;public&#39;</span><span class="p">;</span>
+<span class="nv">metastore</span><span class="o">=</span><span class="c1"># \o</span>
+<span class="nv">metastore</span><span class="o">=</span><span class="c1"># \pset tuples_only off</span>
+<span class="nv">metastore</span><span class="o">=</span><span class="c1"># \i /tmp/grant-privs</span>
+<span class="nv">metastore</span><span class="o">=</span><span class="c1"># \q</span>
+</pre></div>
 </div>
 <p>To start metastore service, execute the following command.</p>
-<div class="highlight-shell"><pre>$ ansible-playbook playbooks/conf/cdh5_hive/cdh5_hive.yml -s -k -e "server=hadoop_client"
-$ ansible-playbook playbooks/operation/postgresql/restart_postgresql.yml -s -k -e "server=hadoop_client"
-$ ansible-playbook playbooks/operation/cdh5_hive/start_metastore.yml -k -s -e "server=hadoop_client"</pre>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ ansible-playbook playbooks/conf/cdh5_hive/cdh5_hive.yml -s -k -e <span class="s2">&quot;server=hadoop_client&quot;</span>
+$ ansible-playbook playbooks/operation/postgresql/restart_postgresql.yml -s -k -e <span class="s2">&quot;server=hadoop_client&quot;</span>
+$ ansible-playbook playbooks/operation/cdh5_hive/start_metastore.yml -k -s -e <span class="s2">&quot;server=hadoop_client&quot;</span>
+</pre></div>
 </div>
 <p>If you also use Hive as a input of Spark,
 please copy hive-site.xml from /etc/hive/conf to /etc/spark/conf.</p>
 </div>
 <div class="section" id="configure-alluxio-on-yarn">
-<h2>4.17. Configure Alluxio on YARN<a class="headerlink" href="#configure-alluxio-on-yarn" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.17. </span>Configure Alluxio on YARN<a class="headerlink" href="#configure-alluxio-on-yarn" title="Permalink to this headline">¶</a></h2>
 <p>To configure Alluxio environment at the client,
 please execute the following command.</p>
-<div class="highlight-shell"><pre>$ ansible-playbook playbooks/conf/alluxio/alluxio_yarn.yml -k -s</pre>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ ansible-playbook playbooks/conf/alluxio/alluxio_yarn.yml -k -s
+</pre></div>
 </div>
 <p>This configures /usr/local/alluxio, compiles sources, adds some directories to PATH, and so on.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">The role, alluxio_yarn, creates a tar file which is used when you deploy
+<p class="admonition-title">Note</p>
+<p>The role, alluxio_yarn, creates a tar file which is used when you deploy
 an application to YARN and replace alluxio-yarn.sh in Alluxio package.
 This is because the original alluxio-yarn.sh create tar files every time
 you deploy applications and it is not convenient.</p>
 </div>
 <p>If you want to deploy an Alluxio application to YARN,
 please execute the following command.</p>
-<div class="highlight-shell"><pre>$ ansible-playbook playbooks/operation/alluxio_yarn/deploy_alluxio.yml -k -s</pre>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ ansible-playbook playbooks/operation/alluxio_yarn/deploy_alluxio.yml -k -s
+</pre></div>
 </div>
 <p>You can configure the following variables.</p>
 <ul class="simple">
-<li>alluxio_yarn_hadoop_home: &#8220;/usr/lib/hadoop&#8221;</li>
-<li>alluxio_yarn_yarn_home: &#8220;/usr/lib/hadoop-yarn&#8221;</li>
-<li>alluxio_yarn_hadoop_conf_dir: &#8220;/etc/hadoop/conf&#8221;</li>
-<li>alluxio_yarn_num_workers: &#8220;3&#8221;</li>
-<li>alluxio_yarn_working_dir: &#8220;hdfs://mycluster/tmp&#8221;</li>
-<li>alluxio_yarn_master: &#8216;{{ groups[&#8220;hadoop_slave&#8221;][0] }}&#8217;</li>
+<li><p>alluxio_yarn_hadoop_home: “/usr/lib/hadoop”</p></li>
+<li><p>alluxio_yarn_yarn_home: “/usr/lib/hadoop-yarn”</p></li>
+<li><p>alluxio_yarn_hadoop_conf_dir: “/etc/hadoop/conf”</p></li>
+<li><p>alluxio_yarn_num_workers: “3”</p></li>
+<li><p>alluxio_yarn_working_dir: “hdfs://mycluster/tmp”</p></li>
+<li><p>alluxio_yarn_master: ‘{{ groups[“hadoop_slave”][0] }}’</p></li>
 </ul>
 </div>
 <div class="section" id="configure-tpc-ds">
-<h2>4.18. Configure TPC-DS<a class="headerlink" href="#configure-tpc-ds" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.18. </span>Configure TPC-DS<a class="headerlink" href="#configure-tpc-ds" title="Permalink to this headline">¶</a></h2>
 <p>To configure TPC-DS, please execute the following command.</p>
-<div class="highlight-shell"><pre>$ ansible-playbook playbooks/conf/tpc_ds/tpc_ds.yml -k -s</pre>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ ansible-playbook playbooks/conf/tpc_ds/tpc_ds.yml -k -s
+</pre></div>
 </div>
 <p>The default target node is localhost.
 If you want to configure any other nodes,
-please execute the command with overwriting &#8220;server&#8221; variable like the following.</p>
-<div class="highlight-shell"><pre>$ ansible-playbook playbooks/conf/tpc_ds/tpc_ds.yml -k -s -e "server=haddoop_client:hadoop_slave"</pre>
+please execute the command with overwriting “server” variable like the following.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ ansible-playbook playbooks/conf/tpc_ds/tpc_ds.yml -k -s -e <span class="s2">&quot;server=haddoop_client:hadoop_slave&quot;</span>
+</pre></div>
 </div>
 </div>
 <div class="section" id="configure-keras-and-tensorflow">
-<h2>4.19. Configure Keras and Tensorflow<a class="headerlink" href="#configure-keras-and-tensorflow" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.19. </span>Configure Keras and Tensorflow<a class="headerlink" href="#configure-keras-and-tensorflow" title="Permalink to this headline">¶</a></h2>
 <p>If you want to use GPU,
-you should download cuDNN package from NVIDIA&#8217;s download site manually.
-This is because we need to register NVIDIA&#8217;s site before downloading the package.
-In &#8220;cuda&#8221; role, we use cudnn-8.0-linux-x64-v5.1.solitairetheme8.
+you should download cuDNN package from NVIDIA’s download site manually.
+This is because we need to register NVIDIA’s site before downloading the package.
+In “cuda” role, we use cudnn-8.0-linux-x64-v5.1.solitairetheme8.
 Before executing the playbook, you should store cudnn-8.0-linux-x64-v5.1.solitairetheme8 in roles/cuda/files directory.</p>
-<p>If you don&#8217;t want to use GPU, you don&#8217;t need to downloads cuDNN packages.</p>
+<p>If you don’t want to use GPU, you don’t need to downloads cuDNN packages.</p>
 <div class="section" id="gpu">
-<h3>4.19.1. GPU<a class="headerlink" href="#gpu" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-shell"><pre>$ ansible-playbook playbooks/conf/tensorflow/keras_gpu.yml -k -s -e "server=hd-client01"</pre>
+<h3><span class="section-number">4.19.1. </span>GPU<a class="headerlink" href="#gpu" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ ansible-playbook playbooks/conf/tensorflow/keras_gpu.yml -k -s -e <span class="s2">&quot;server=hd-client01&quot;</span>
+</pre></div>
 </div>
 </div>
 <div class="section" id="cpu">
-<h3>4.19.2. CPU<a class="headerlink" href="#cpu" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-shell"><pre>$ ansible-playbook playbooks/conf/tensorflow/keras.yml -k -s -e "server=hd-client01"</pre>
+<h3><span class="section-number">4.19.2. </span>CPU<a class="headerlink" href="#cpu" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ ansible-playbook playbooks/conf/tensorflow/keras.yml -k -s -e <span class="s2">&quot;server=hd-client01&quot;</span>
+</pre></div>
 </div>
 </div>
 </div>
@@ -547,21 +587,21 @@ Before executing the playbook, you should store cudnn-8.0-linux-x64-v5.1.solitai
 
 
       </div>
-      <div class="bottomnav">
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
       
         <p>
-        «&#160;&#160;<a href="hosts.html">2. About hosts(inventory file)</a>
+        «&#160;&#160;<a href="hosts.html"><span class="section-number">2. </span>About hosts(inventory file)</a>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
-        <a href="playbooks.html">5. About playbooks</a>&#160;&#160;»
+        <a href="playbooks.html"><span class="section-number">5. </span>About playbooks</a>&#160;&#160;»
         </p>
 
       </div>
 
-    <div class="footer">
-        &copy; Copyright 2014, dobachi.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2014, dobachi.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.4.
     </div>
   </body>
 </html>
