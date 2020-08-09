@@ -4,7 +4,7 @@ Abstract
 About playbooks
 ---------------
 
-This is a library of playbooks to construct HDFS/YARN clusters.
+This is a library of playbooks to construct HDFS/YARN clusters with some kinds of Big Data tools, such as Apache Spark.
 You will have HDFS and YARN services with HA.
 
 Although the configuration of OS and middlewares are not well tuned about performance,
