@@ -9,7 +9,7 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-    if: "!contains(github.event.head_commit.message, 'auto rebuilding site')"
+    if: "!contains(github.event.head_commit.message, 'Update documentation via GitHub Actions')"
 
     steps:
     - uses: actions/checkout@v1
@@ -28,7 +28,7 @@ jobs:
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         git add .
-        git commit -m "Update documentation" -a || true
+        git commit -m "Update documentation via GitHub Actions" -a || true
         # The above command will fail if no changes were present, so we ignore
         # that.
     - name: Deploy Configuration and Push
