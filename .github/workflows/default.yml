@@ -27,16 +27,17 @@ jobs:
         cd gh-pages
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        git remote set-url origin git@github.com:${GITHUB_REPOSITORY}.git
         git add .
         git commit -m "Update documentation" -a || true
         # The above command will fail if no changes were present, so we ignore
         # that.
     - name: Deploy Configuration and Push
       run: |
-          mkdir ~/.ssh
-          ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
-          echo "${{ secrets.MY_ACTIONS_DEPLOY_KEY }}" > ~/.ssh/id_rsa
-          chmod 400 ~/.ssh/id_rsa
-          git push origin HEAD:gh-pages
+        mkdir ~/.ssh
+        ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
+        echo "${{ secrets.MY_ACTIONS_DEPLOY_KEY }}" > ~/.ssh/id_rsa
+        chmod 400 ~/.ssh/id_rsa
+        cd gh-pages
+        git remote set-url origin git@github.com:${GITHUB_REPOSITORY}.git
+        git push origin HEAD:gh-pages
     # ===============================
