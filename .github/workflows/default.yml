@@ -9,6 +9,7 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, 'auto rebuilding site')"
 
     steps:
     - uses: actions/checkout@v1
@@ -26,6 +27,7 @@ jobs:
         cd gh-pages
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
+        git remote set-url origin git@github.com:${GITHUB_REPOSITORY}.git
         git add .
         git commit -m "Update documentation" -a || true
         # The above command will fail if no changes were present, so we ignore
