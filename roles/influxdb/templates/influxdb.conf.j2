@@ -1,8 +1,8 @@
 ### Welcome to the InfluxDB configuration file.
 
 # The values in this file override the default values used by the system if
-# a config option is not specified.  The commented out lines are the the configuration
-# field and the default value used.  Uncommentting a line and changing the value
+# a config option is not specified. The commented out lines are the configuration
+# field and the default value used. Uncommenting a line and changing the value
 # will change the value used at runtime when the process is restarted.
 
 # Once every 24 hours InfluxDB will report usage data to usage.influxdata.com
@@ -10,12 +10,9 @@
 # usage data. No data from user databases is ever transmitted.
 # Change this option to true to disable reporting.
 # reporting-disabled = false
-reporting-disabled = false
 
-# we'll try to get the hostname automatically, but if it the os returns something
-# that isn't resolvable by other servers in the cluster, use this option to
-# manually set the hostname
-# hostname = "localhost"
+# Bind address to use for the RPC service for backup and restore.
+# bind-address = "127.0.0.1:8088"
 
 ###
 ### [meta]
@@ -34,8 +31,6 @@ reporting-disabled = false
   # If log messages are printed for the meta service
   # logging-enabled = true
 
-  bind-address = ":8089"
-
 ###
 ### [data]
 ###
@@ -52,6 +47,18 @@ reporting-disabled = false
   # The directory where the TSM storage engine stores WAL files.
   wal-dir = "/var/lib/influxdb/wal"
 
+  # The amount of time that a write will wait before fsyncing.  A duration
+  # greater than 0 can be used to batch up multiple fsync calls.  This is useful for slower
+  # disks or when WAL write contention is seen.  A value of 0s fsyncs every write to the WAL.
+  # Values in the range of 0-100ms are recommended for non-SSD disks.
+  # wal-fsync-delay = "0s"
+
+
+  # The type of shard index to use for new shards.  The default is an in-memory index that is
+  # recreated at startup.  A value of "tsi1" will use a disk based index that supports higher
+  # cardinality datasets.
+  # index-version = "inmem"
+
   # Trace logging provides more verbose output around the tsm engine. Turning
   # this on can provide more useful output for debugging tsm engine issues.
   # trace-logging-enabled = false
@@ -60,15 +67,23 @@ reporting-disabled = false
   # log any sensitive data contained within a query.
   # query-log-enabled = true
 
+  # Validates incoming writes to ensure keys only have valid unicode characters.
+  # This setting will incur a small overhead because every key must be checked.
+  # validate-keys = false
+
   # Settings for the TSM engine
 
   # CacheMaxMemorySize is the maximum size a shard's cache can
   # reach before it starts rejecting writes.
-  # cache-max-memory-size = 1048576000
+  # Valid size suffixes are k, m, or g (case insensitive, 1024 = 1k).
+  # Values without a size suffix are in bytes.
+  # cache-max-memory-size = "1g"
 
   # CacheSnapshotMemorySize is the size at which the engine will
   # snapshot the cache and write it to a TSM file, freeing up memory
-  # cache-snapshot-memory-size = 26214400
+  # Valid size suffixes are k, m, or g (case insensitive, 1024 = 1k).
+  # Values without a size suffix are in bytes.
+  # cache-snapshot-memory-size = "25m"
 
   # CacheSnapshotWriteColdDuration is the length of time at
   # which the engine will snapshot the cache and write it to
@@ -80,6 +95,28 @@ reporting-disabled = false
   # write or delete
   # compact-full-write-cold-duration = "4h"
 
+  # The maximum number of concurrent full and level compactions that can run at one time.  A
+  # value of 0 results in 50% of runtime.GOMAXPROCS(0) used at runtime.  Any number greater
+  # than 0 limits compactions to that value.  This setting does not apply
+  # to cache snapshotting.
+  # max-concurrent-compactions = 0
+
+  # CompactThroughput is the rate limit in bytes per second that we
+  # will allow TSM compactions to write to disk. Note that short bursts are allowed
+  # to happen at a possibly larger value, set by CompactThroughputBurst
+  # compact-throughput = "48m"
+
+  # CompactThroughputBurst is the rate limit in bytes per second that we
+  # will allow TSM compactions to write to disk.
+  # compact-throughput-burst = "48m"
+
+  # If true, then the mmap advise value MADV_WILLNEED will be provided to the kernel with respect to
+  # TSM files. This setting has been found to be problematic on some kernels, and defaults to off.
+  # It might help users who have slow disks in some cases.
+  # tsm-use-madv-willneed = false
+
+  # Settings for the inmem index
+
   # The maximum series allowed per database before writes are dropped.  This limit can prevent
   # high cardinality issues at the database level.  This limit can be disabled by setting it to
   # 0.
@@ -89,6 +126,27 @@ reporting-disabled = false
   # can prevent high cardinality tag values from being written to a measurement.  This limit can be
   # disabled by setting it to 0.
   # max-values-per-tag = 100000
+
+  # Settings for the tsi1 index
+
+  # The threshold, in bytes, when an index write-ahead log file will compact
+  # into an index file. Lower sizes will cause log files to be compacted more
+  # quickly and result in lower heap usage at the expense of write throughput.
+  # Higher sizes will be compacted less frequently, store more series in-memory,
+  # and provide higher write throughput.
+  # Valid size suffixes are k, m, or g (case insensitive, 1024 = 1k).
+  # Values without a size suffix are in bytes.
+  # max-index-log-file-size = "1m"
+
+  # The size of the internal cache used in the TSI index to store previously 
+  # calculated series results. Cached results will be returned quickly from the cache rather
+  # than needing to be recalculated when a subsequent query with a matching tag key/value 
+  # predicate is executed. Setting this value to 0 will disable the cache, which may
+  # lead to query performance issues.
+  # This value should only be increased if it is known that the set of regularly used 
+  # tag key/value predicates across all measurements for a database is larger than 100. An
+  # increase in cache size may lead to an increase in heap usage.
+  series-id-set-cache-size = 100
 
 ###
 ### [coordinator]
@@ -109,22 +167,20 @@ reporting-disabled = false
   # can help prevent run away queries.  Setting the value to 0 disables the limit.
   # query-timeout = "0s"
 
-  # The the time threshold when a query will be logged as a slow query.  This limit can be set to help
+  # The time threshold when a query will be logged as a slow query.  This limit can be set to help
   # discover slow or resource intensive queries.  Setting the value to 0 disables the slow query logging.
   # log-queries-after = "0s"
 
-  # The maximum number of points a SELECT can process.  A value of 0 will make the maximum
-  # point count unlimited.
+  # The maximum number of points a SELECT can process.  A value of 0 will make
+  # the maximum point count unlimited.  This will only be checked every second so queries will not
+  # be aborted immediately when hitting the limit.
   # max-select-point = 0
 
   # The maximum number of series a SELECT can run.  A value of 0 will make the maximum series
   # count unlimited.
-
-  # The maximum number of series a SELECT can run. A value of zero will make the maximum series
-  # count unlimited.
   # max-select-series = 0
 
-  # The maxium number of group by time bucket a SELECt can create.  A value of zero will max the maximum
+  # The maximum number of group by time bucket a SELECT can create.  A value of zero will max the maximum
   # number of buckets unlimited.
   # max-select-buckets = 0
 
@@ -135,7 +191,7 @@ reporting-disabled = false
 ###
 
 [retention]
-  # Determines whether retention policy enforcment enabled.
+  # Determines whether retention policy enforcement enabled.
   # enabled = true
 
   # The interval of time when retention policy enforcement checks run.
@@ -180,29 +236,6 @@ reporting-disabled = false
   # store-interval = "10s"
 
 ###
-### [admin]
-###
-### Controls the availability of the built-in, web-based admin interface. If HTTPS is
-### enabled for the admin interface, HTTPS must also be enabled on the [http] service.
-###
-### NOTE: This interface is deprecated as of 1.1.0 and will be removed in a future release.
-
-[admin]
-  # Determines whether the admin service is enabled.
-  # enabled = false
-  enabled = false
-
-  # The default bind address used by the admin service.
-  # bind-address = ":8083"
-  bind-address = ":8083"
-
-  # Whether the admin service should use HTTPS.
-  # https-enabled = false
-
-  # The SSL certificate used when HTTPS is enabled.
-  # https-certificate = "/etc/ssl/influxdb.pem"
-
-###
 ### [http]
 ###
 ### Controls how the HTTP endpoints are configured. These are the primary
@@ -212,20 +245,41 @@ reporting-disabled = false
 [http]
   # Determines whether HTTP endpoint is enabled.
   # enabled = true
-  enabled = true
+
+  # Determines whether the Flux query endpoint is enabled.
+  # flux-enabled = false
+
+  # Determines whether the Flux query logging is enabled.
+  # flux-log-enabled = false
 
   # The bind address used by the HTTP service.
   # bind-address = ":8086"
-  bind-address = "{{ influxdb_http_bind_address }}"
 
-  # Determines whether HTTP authentication is enabled.
+  # Determines whether user authentication is enabled over HTTP/HTTPS.
   # auth-enabled = false
 
   # The default realm sent back when issuing a basic auth challenge.
   # realm = "InfluxDB"
 
-  # Determines whether HTTP request logging is enable.d
+  # Determines whether HTTP request logging is enabled.
   # log-enabled = true
+
+  # Determines whether the HTTP write request logs should be suppressed when the log is enabled.
+  # suppress-write-log = false
+
+  # When HTTP request logging is enabled, this option specifies the path where
+  # log entries should be written. If unspecified, the default is to write to stderr, which
+  # intermingles HTTP logs with internal InfluxDB logging.
+  #
+  # If influxd is unable to access the specified path, it will log an error and fall back to writing
+  # the request log to stderr.
+  # access-log-path = ""
+
+  # Filters which requests should be logged. Each filter is of the pattern NNN, NNX, or NXX where N is
+  # a number and X is a wildcard for any number. To filter all 5xx responses, use the string 5xx.
+  # If multiple filters are used, then only one has to match. The default is to have no filters which
+  # will cause every request to be printed.
+  # access-log-status-filters = []
 
   # Determines whether detailed write logging is enabled.
   # write-tracing = false
@@ -233,6 +287,19 @@ reporting-disabled = false
   # Determines whether the pprof endpoint is enabled.  This endpoint is used for
   # troubleshooting and monitoring.
   # pprof-enabled = true
+
+  # Enables authentication on pprof endpoints. Users will need admin permissions
+  # to access the pprof endpoints when this setting is enabled. This setting has
+  # no effect if either auth-enabled or pprof-enabled are set to false.
+  # pprof-auth-enabled = false
+
+  # Enables a pprof endpoint that binds to localhost:6060 immediately on startup.
+  # This is only needed to debug startup issues.
+  # debug-pprof-enabled = false
+
+  # Enables authentication on the /ping, /metrics, and deprecated /status
+  # endpoints. This setting has no effect if auth-enabled is set to false.
+  # ping-auth-enabled = false
 
   # Determines whether HTTPS is enabled.
   # https-enabled = false
@@ -244,10 +311,10 @@ reporting-disabled = false
   # https-private-key = ""
 
   # The JWT auth shared secret to validate requests using JSON web tokens.
-  # shared-sercret = ""
+  # shared-secret = ""
 
   # The default chunk size for result sets that should be chunked.
-  # max-row-limit = 10000
+  # max-row-limit = 0
 
   # The maximum number of HTTP connections that may be open at once.  New connections that
   # would exceed this limit are dropped.  Setting this value to 0 disables the limit.
@@ -258,6 +325,50 @@ reporting-disabled = false
 
   # The path of the unix domain socket.
   # bind-socket = "/var/run/influxdb.sock"
+
+  # The maximum size of a client request body, in bytes. Setting this value to 0 disables the limit.
+  # max-body-size = 25000000
+
+  # The maximum number of writes processed concurrently.
+  # Setting this to 0 disables the limit.
+  # max-concurrent-write-limit = 0
+
+  # The maximum number of writes queued for processing.
+  # Setting this to 0 disables the limit.
+  # max-enqueued-write-limit = 0
+
+  # The maximum duration for a write to wait in the queue to be processed.
+  # Setting this to 0 or setting max-concurrent-write-limit to 0 disables the limit.
+  # enqueued-write-timeout = 0
+
+	# User supplied HTTP response headers
+	#
+	# [http.headers]
+	#   X-Header-1 = "Header Value 1"
+	#   X-Header-2 = "Header Value 2"
+
+###
+### [logging]
+###
+### Controls how the logger emits logs to the output.
+###
+
+[logging]
+  # Determines which log encoder to use for logs. Available options
+  # are auto, logfmt, and json. auto will use a more a more user-friendly
+  # output format if the output terminal is a TTY, but the format is not as
+  # easily machine-readable. When the output is a non-TTY, auto will use
+  # logfmt.
+  # format = "auto"
+
+  # Determines which level of logs will be emitted. The available levels
+  # are error, warn, info, and debug. Logs that are equal to or above the
+  # specified level will be emitted.
+  # level = "info"
+
+  # Suppresses the logo output that is printed when the program is started.
+  # The logo is always suppressed if STDOUT is not a TTY.
+  # suppress-logo = false
 
 ###
 ### [subscriber]
@@ -376,6 +487,11 @@ reporting-disabled = false
   # UDP Read buffer size, 0 means OS default. UDP listener will fail if set above OS max.
   # read-buffer = 0
 
+  # Multi-value plugins can be handled two ways.
+  # "split" will parse and store the multi-value plugin data into separate measurements
+  # "join" will parse and store the multi-value plugin as a single multi-value measurement.
+  # "split" is the default behavior for backward compatibility with previous versions of influxdb.
+  # parse-multivalue-plugin = "split"
 ###
 ### [opentsdb]
 ###
@@ -419,6 +535,9 @@ reporting-disabled = false
   # database = "udp"
   # retention-policy = ""
 
+  # InfluxDB precision for timestamps on received points ("" or "n", "u", "ms", "s", "m", "h")
+  # precision = ""
+
   # These next lines control how batching works. You should have this enabled
   # otherwise you could get dropped metrics or poor performance. Batching
   # will buffer points in memory if you have many coming in.
@@ -442,11 +561,38 @@ reporting-disabled = false
 ###
 
 [continuous_queries]
-  # Determiens whether the continuous query service is enabled.
+  # Determines whether the continuous query service is enabled.
   # enabled = true
 
   # Controls whether queries are logged when executed by the CQ service.
   # log-enabled = true
 
+  # Controls whether queries are logged to the self-monitoring data store.
+  # query-stats-enabled = false
+
   # interval for how often continuous queries will be checked if they need to run
   # run-interval = "1s"
+
+###
+### [tls]
+###
+### Global configuration settings for TLS in InfluxDB.
+###
+
+[tls]
+  # Determines the available set of cipher suites. See https://golang.org/pkg/crypto/tls/#pkg-constants
+  # for a list of available ciphers, which depends on the version of Go (use the query
+  # SHOW DIAGNOSTICS to see the version of Go used to build InfluxDB). If not specified, uses
+  # the default settings from Go's crypto/tls package.
+  # ciphers = [
+  #   "TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305",
+  #   "TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305",
+  # ]
+
+  # Minimum version of the tls protocol that will be negotiated. If not specified, uses the
+  # default settings from Go's crypto/tls package.
+  # min-version = "tls1.2"
+
+  # Maximum version of the tls protocol that will be negotiated. If not specified, uses the
+  # default settings from Go's crypto/tls package.
+  # max-version = "tls1.3"

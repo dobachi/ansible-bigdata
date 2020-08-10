@@ -1,6 +1,36 @@
 ---
 # tasks file for roles/influxdb
-- include: repo.yml tags=influxdb,repo
-- include: install.yml tags=influxdb,install
-- include: config.yml tags=influxdb,config
-- include: service.yml tags=influxdb,service
+
+- block:
+
+  - name: copy_influxdb_repo
+    template:
+      src: influxdb.repo.j2
+      dest: /etc/yum.repos.d/influxdb.repo
+
+  - name: install_influxdb
+    yum:
+      name: influxdb
+      state: installed
+
+  - name: copy_influxdb_conf
+    template:
+      src: influxdb.conf.j2
+      dest: /etc/influxdb/influxdb.conf
+  
+  - name: config_limits.conf
+    lineinfile:
+      dest: /etc/security/limits.conf
+      regexp: "^{{ item }}"
+      line: "{{ item }}"
+    with_items:
+      - "influxdb soft nofile 65536"
+      - "influxdb hard nofile 65536"
+
+  - name: disable_influxdb
+    service:
+      name: influxdb
+      enabled: no
+
+  tags:
+    - influxdb

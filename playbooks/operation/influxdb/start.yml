@@ -1,0 +1,9 @@
+- hosts: '{{server | default("hadoop_other") }}'
+  tasks:
+    - name: start_influxdb
+      service:
+        name: influxdb
+        state: started
+
+    - name: wait_for_influxdb
+      wait_for: host={{ ansible_hostname }}  port=8086

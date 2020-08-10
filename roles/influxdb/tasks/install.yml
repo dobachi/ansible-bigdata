@@ -1,2 +1,0 @@
-- name: install_influxdb
-  yum: name=influxdb state=installed

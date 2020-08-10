@@ -1,0 +1,9 @@
+- hosts: '{{server | default("hadoop_other") }}'
+  tasks:
+    - name: stop_influxdb
+      service:
+        name: influxdb
+        state: stopped
+
+    - name: wait_for_spark_influxdb
+      wait_for: host={{ ansible_hostname }}  port=8086 state=stopped

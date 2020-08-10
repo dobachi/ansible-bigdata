@@ -1,2 +1,0 @@
-- name: start_influxdb
-  service: name=influxdb state=started enabled=yes
