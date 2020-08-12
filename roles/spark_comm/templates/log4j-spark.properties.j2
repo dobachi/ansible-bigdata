@@ -16,8 +16,11 @@
 #
 
 # Set everything to be logged to the console
-#log4j.rootCategory=INFO, cosole
+{% if spark_comm_log4j_RFA == True %}
 log4j.rootCategory={{ spark_comm_log4j_rootCategory }}
+{% elif %}
+log4j.rootCategory=INFO, cosole
+{% endif %}
 log4j.appender.console=org.apache.log4j.ConsoleAppender
 log4j.appender.console.target=System.err
 log4j.appender.console.layout=org.apache.log4j.PatternLayout
