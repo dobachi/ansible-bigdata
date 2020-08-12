@@ -20,10 +20,13 @@
 - block:
 
   - name: install_libselinux-python
-    yum: name=libselinux-python state=installed
+    yum:
+     name: libselinux-python
+     state: installed
   
   - name: disable_selinux_config
-    selinux: state={{ common_selinux_state }}
+    selinux:
+      state: "{{ common_selinux_state }}"
   
   - name: check_selinux_state
     shell: getenforce
@@ -42,7 +45,12 @@
 - block:
 
   - name: deploy_transparent_hugepages_configs
-    template: src=rc.local.j2 dest=/etc/rc.d/rc.local mode=755 owner=root group=root
+    template:
+      src: rc.local.j2
+      dest: /etc/rc.d/rc.local
+      mode: 755
+      owner: root
+      group: root
   
   - name: set_transparent_hugepages
     shell: echo never > /sys/kernel/mm/transparent_hugepage/{{ item }}
@@ -50,50 +58,76 @@
       - enabled
       - defrag
   
-  # tuned for CentOS7
   - name: create_tuned_directory
-    file: path=/usr/lib/tuned/common state=directory mode=755 owner=root group=root
-    when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "7"
+    file:
+      path: /usr/lib/tuned/common
+      state: directory
+      mode: 755
+      owner: root
+      group: root
   
   - name: configure_tuned_hadoop-base
-    template: src=tuned.conf.j2 dest=/usr/lib/tuned/common/tuned.conf mode=644 owner=root group=root
-    when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "7"
+    template:
+      src: tuned.conf.j2
+      dest: /usr/lib/tuned/common/tuned.conf
+      mode: 644
+      owner: root
+      group: root
   
   - name: set_tuned_to_common
     shell: /sbin/tuned-adm profile common
-    when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "7"
   
-  # misc
   - name: copy_limits_conf
-    template: src=limits.conf.j2 dest=/etc/security/limits.conf mode=644 owner=root group=root
+    template:
+      src: limits.conf.j2
+      dest: /etc/security/limits.conf
+      mode: 644
+      owner: root
+      group: root
   
   - name: copy_hosts
-    copy: src={{ common_hosts_tmpl }} dest=/etc/hosts
+    template:
+      src: "{{ common_hosts_tmpl }}"
+      dest: "/etc/hosts"
+      mode: 644
     when: common_hosts_replace and ansible_virtualization_type != 'docker'
   
   - name: set_hostname_to_inventory_hostname
-    hostname: name={{ inventory_hostname }}
+    hostname:
+      name: "{{ inventory_hostname }}"
     when: common_config_hostname
   
   - name: no_requiretty_for_root_and_wheel
-    template: src={{ item }} dest=/etc/sudoers.d/{{ item }}
+    template:
+      src: "{{ item }}"
+      dest: "/etc/sudoers.d/{{ item }}"
+      mode: 644
     with_items:
       - root
       - wheel
   
   - name: copy_sudoers
-    template: src=sudoers.j2 dest=/etc/sudoers
+    template:
+      src: sudoers.j2
+      dest: /etc/sudoers
+      mode: 644
   
   - name: copy_lang.sh
-    template: src=lang.sh.j2 dest=/etc/profile.d/lang.sh
+    template: 
+      src: lang.sh.j2
+      dest: /etc/profile.d/lang.sh
+      mode: 644
   
   - name: set_timezone_for_centos7
     shell: timedatectl set-timezone {{ common_timezone }}
-    when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "7"
   
   - name: deploy_journald_configuration
-    template: src=journald.conf.j2 dest=/etc/systemd/journald.conf mode=755 owner=root group=root
-    when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "7"
+    template:
+      src: journald.conf.j2
+      dest: /etc/systemd/journald.conf
+      mode: 644
+      owner: root 
+      group: root
     notify:
       - restart_journald
 
