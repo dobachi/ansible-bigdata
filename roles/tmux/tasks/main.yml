@@ -1,10 +1,17 @@
 ---
 # tasks file for roles/tmux
 
-- name: install_tmux
-  yum: name=tmux state=installed
-  tags: tmux
+- block:
 
-- name: deploy_tmux.conf
-  template: src=tmux.conf dest=/etc/tmux.conf
+  - name: install_tmux
+    yum:
+      name: tmux 
+      state: installed
+  
+  - name: deploy_tmux.conf
+    template: 
+      src: tmux.conf 
+      dest: /etc/tmux.conf
+      mode: 644
+
   tags: tmux
