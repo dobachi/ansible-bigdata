@@ -67,6 +67,7 @@
       owner: "spark"
       group: "spark"
       mode: 0775
+      state: directory
   
   - name: make_alternatives_entry_of_spark_default
     alternatives:
