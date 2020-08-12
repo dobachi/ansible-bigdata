@@ -1,5 +1,3 @@
-- include: service.yml tags=service,common
-
 - block:
 
   - name: install_common_softwares
