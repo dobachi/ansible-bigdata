@@ -1,1 +1,9 @@
-- include: config.yml tags=config,epel
+- block:
+
+  - name: install_epel_repo
+    yum: 
+      name: epel-release 
+      state: installed
+
+  tags:
+    - epel

@@ -1,2 +1,15 @@
-- include: install.yml tags=install,screen
-- include: config.yml tags=config,screen
+- block:
+
+  - name: install_screen
+    yum: 
+      name: screen
+      state: installed
+
+  - name: copy_screenrc
+    template: 
+      src: screenrc.j2
+      dest: /etc/screenrc
+      mode: 644
+
+  tags:
+    - screen
