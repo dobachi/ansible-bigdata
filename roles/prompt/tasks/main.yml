@@ -3,9 +3,9 @@
 - block:
 
   - name: copy_prompt.sh
-    template:
-      src: prompt.sh.j2
-      dest: /etc/profile.d/prompt.sh.
+    copy:
+      src: prompt.sh
+      dest: /etc/profile.d/prompt.sh
       mode: 755
 
   tags:
