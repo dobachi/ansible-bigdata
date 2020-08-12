@@ -11,11 +11,13 @@
     template:
       src: zoo.cfg.j2
       dest: /etc/zookeeper/conf/zoo.cfg
+      mode: 644
 
   - name: myid
     template:
       src: myid.j2
       dest: /var/lib/zookeeper/myid
+      mode: 644
 
   - name: disable_zookeeper-server
     service:

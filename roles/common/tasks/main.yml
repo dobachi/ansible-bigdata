@@ -1,18 +1,157 @@
-# install
-- include: install.yml tags=install,common
+- block:
 
-# selinux
-- include: selinux.yml tags=selinux,common
+  - name: install_common_softwares
+    yum:
+      name:
+        - vim
+        - zip
+        - unzip
+        - man
+        - wget
+        - ntp
+        - python-pip
+      state: installed
+
+  tags:
+    - common
+  
+- block:
+
+  - name: install_libselinux-python
+    yum:
+     name: libselinux-python
+     state: installed
+  
+  - name: disable_selinux_config
+    selinux:
+      state: "{{ common_selinux_state }}"
+  
+  - name: check_selinux_state
+    shell: getenforce
+    register: selinux_state
+    ignore_errors: True
+    check_mode: no
+  
+  - name: disable_selinux_with_command
+    shell: setenforce 0
+    when: selinux_state.stderr.find('Disabled') == False
+  
   when: ansible_virtualization_type != 'docker'
+  tags:
+    - common
 
-# config
-- include: config.yml tags=config,common
+- block:
 
-# service
-- include: service_centos6.yml tags=service,common
-  when: ansible_distribution == 'CentOS' and ansible_distribution_major_version == '6' and ansible_virtualization_type != 'docker'
+  - name: deploy_transparent_hugepages_configs
+    template:
+      src: rc.local.j2
+      dest: /etc/rc.d/rc.local
+      mode: 755
+      owner: root
+      group: root
+  
+  - name: set_transparent_hugepages
+    shell: echo never > /sys/kernel/mm/transparent_hugepage/{{ item }}
+    with_items:
+      - enabled
+      - defrag
+  
+  - name: create_tuned_directory
+    file:
+      path: /usr/lib/tuned/common
+      state: directory
+      mode: 755
+      owner: root
+      group: root
+  
+  - name: configure_tuned_hadoop-base
+    template:
+      src: tuned.conf.j2
+      dest: /usr/lib/tuned/common/tuned.conf
+      mode: 644
+      owner: root
+      group: root
+  
+  - name: set_tuned_to_common
+    shell: /sbin/tuned-adm profile common
+  
+  - name: copy_limits_conf
+    template:
+      src: limits.conf.j2
+      dest: /etc/security/limits.conf
+      mode: 644
+      owner: root
+      group: root
+  
+  - name: copy_hosts
+    template:
+      src: "{{ common_hosts_tmpl }}"
+      dest: "/etc/hosts"
+      mode: 644
+    when: common_hosts_replace and ansible_virtualization_type != 'docker'
+  
+  - name: set_hostname_to_inventory_hostname
+    hostname:
+      name: "{{ inventory_hostname }}"
+    when: common_config_hostname
+  
+  - name: no_requiretty_for_root_and_wheel
+    template:
+      src: "{{ item }}"
+      dest: "/etc/sudoers.d/{{ item }}"
+      mode: 644
+    with_items:
+      - root
+      - wheel
+  
+  - name: copy_sudoers
+    template:
+      src: sudoers.j2
+      dest: /etc/sudoers
+      mode: 644
+  
+  - name: copy_lang.sh
+    template: 
+      src: lang.sh.j2
+      dest: /etc/profile.d/lang.sh
+      mode: 644
+  
+  - name: set_timezone_for_centos7
+    shell: timedatectl set-timezone {{ common_timezone }}
+  
+  - name: deploy_journald_configuration
+    template:
+      src: journald.conf.j2
+      dest: /etc/systemd/journald.conf
+      mode: 644
+      owner: root 
+      group: root
+    notify:
+      - restart_journald
 
-- include: service_centos7.yml tags=service,common
-  when: ansible_distribution == 'CentOS' and ansible_distribution_major_version == '7' and ansible_virtualization_type != 'docker'
+  tags:
+    - common
 
-- include: service.yml tags=service,common
+- block:
+
+  - name: check_firewalld_installed
+    shell: rpm -qa | grep firewalld
+    register: is_firewalld_installed
+    check_mode: no
+    ignore_errors: True
+  
+  - name: stop_iptables_for_centos7
+    service: name=firewalld state={{ common_firewalld_state }} enabled=no
+    when: is_firewalld_installed.rc == 0
+
+  when: ansible_virtualization_type != 'docker'
+  tags:
+    - common
+
+- block:
+
+  - name: start_ntpd
+    service: name=ntpd state=started enabled=yes
+
+  tags:
+    - common

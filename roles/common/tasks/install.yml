@@ -7,3 +7,4 @@
     - man
     - wget
     - ntp
+    - python-pip

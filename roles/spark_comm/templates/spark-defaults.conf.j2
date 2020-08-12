@@ -50,7 +50,7 @@ spark.yarn.historyServer.address {{ spark_comm_historyserver }}:18080
 {% endif %}
 
 {% if spark_comm_executor_memOverhead is defined %}
-spark.yarn.executor.memoryOverhead {{ spark_comm_executor_memOverhead }}
+spark.executor.memoryOverhead {{ spark_comm_executor_memOverhead }}
 {% endif %}
 
 {% if spark_comm_exe_instances is defined %}

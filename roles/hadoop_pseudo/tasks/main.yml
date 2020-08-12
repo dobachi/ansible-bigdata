@@ -18,5 +18,10 @@
       name: hadoop-conf-pseudo
       state: installed
 
+  - name: configure_yarn-site.xml
+    template:
+      src: yarn-site.xml.j2
+      dest: /etc/hadoop/conf/yarn-site.xml
+
   tags:
     - hadoop_pseudo

@@ -1,3 +1,12 @@
 # file: roles/prompt/tasks/main.yml
 
-- include: conf.yml tags=config,prompt
+- block:
+
+  - name: copy_prompt.sh
+    copy:
+      src: prompt.sh
+      dest: /etc/profile.d/prompt.sh
+      mode: 755
+
+  tags:
+    - prompt

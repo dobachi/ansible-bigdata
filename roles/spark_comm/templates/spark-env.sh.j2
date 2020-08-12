@@ -92,8 +92,6 @@ export SPARK_DRIVER_MEMORY=${SPARK_DRIVER_MEMORY:-{{ spark_comm_dri_mem }}}
 export SPARK_HISTORY_OPTS=${SPARK_HISTORY_OPTS:-"$SPARK_HISTORY_OPTS -Dspark.history.fs.logDirectory={{ spark_comm_logdir }}"}
 {% endif %}
 
-export SPARK_CONF_DIR=/etc/spark/conf
-
 {% if spark_comm_scala_home is defined %}
 export SCALA_HOME=${SCALA_HOME:-"{{ spark_comm_scala_home }}"}
 {% endif %}

@@ -21,26 +21,31 @@
     template:
       src: hadoop-env.sh.j2
       dest: /etc/hadoop/conf/hadoop-env.sh
+      mode: 644
 
   - name: configure_core-site.xml
     template:
       src: core-site.xml.j2
       dest: /etc/hadoop/conf/core-site.xml
+      mode: 644
 
   - name: configure_hdfs-site.xml
     template:
       src: hdfs-site.xml.j2
       dest: /etc/hadoop/conf/hdfs-site.xml
+      mode: 644
 
   - name: configure_yarn-site.xml
     template:
       src: yarn-site.xml.j2
       dest: /etc/hadoop/conf/yarn-site.xml
+      mode: 644
 
   - name: configure_hadoop-metrics2.property
     template:
       src: hadoop-metrics2.properties.j2
       dest: /etc/hadoop/conf/hadoop-metrics2.properties
+      mode: 644
     when: hadoop_base_ganglia == True
 
   tags:
