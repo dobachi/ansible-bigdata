@@ -5,6 +5,7 @@
   - name: check_spark_group_exists
     shell: grep -e "^spark:" /etc/group
     register: check_spark_group
+    ignore_errors: yes
 
   - name: create_spark_group
     group:
@@ -15,6 +16,7 @@
   - name: check_spark_user_exists
     shell: grep -e "^spark:" /etc/passwd
     register: check_spark_user
+    ignore_errors: yes
 
   - name: create_spark_user
     user:
@@ -25,6 +27,7 @@
   - name: check_hdfs_user_exists
     shell: grep -e "^hdfs:" /etc/passwd
     register: check_hdfs_user
+    ignore_errors: yes
 
   - name: add_hdfs_to_spark_group
     user:
@@ -81,12 +84,16 @@
       src: "{{ spark_comm_env_tmpl }}"
       dest: "/usr/local/spark/default/conf/spark-env.sh"
   
-    #   - name: copy_metrics.properties
-    #     template: src={{ spark_comm_metrics_tmpl }} dest=/usr/local/spark/default/conf/metrics.properties
-    #   
-    #   - name: copy_log4j_spark_properties
-    #     template: src={{ spark_comm_log4j_spark_properties_tmpl }} dest=/usr/local/spark/default/conf/log4j-spark.properties
-    #   
+  - name: copy_metrics.properties
+    template:
+      src: "{{ spark_comm_metrics_tmpl }}"
+      dest: "/usr/local/spark/default/conf/metrics.properties"
+  
+  - name: copy_log4j_spark_properties
+    template:
+      src: "{{ spark_comm_log4j_spark_properties_tmpl }}"
+      dest: "/usr/local/spark/default/conf/log4j.properties"
+  
     #   - name: copy_hive-site.xml
     #     template: src={{ spark_comm_hive_site_tmpl }} dest=/usr/local/spark/default/conf/hive-site.xml
    

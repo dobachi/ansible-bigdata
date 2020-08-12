@@ -67,13 +67,14 @@ spark_comm_env_tmpl: 'spark-env.sh.j2'
 
 # /etc/spark/conf/metrics.properties
 spark_comm_metrics_tmpl: 'metrics.properties.j2'
-spark_comm_graphite_enabled: True
-spark_comm_graphite_host: '{{ groups["hadoop_other"] | join(",") }}'
+spark_comm_graphite_enabled: False
+spark_comm_graphite_host: '{{ groups.hadoop_other[0] }}'
 spark_comm_graphite_prefix: 'spark'
 spark_comm_graphite_port: '2003'
 
 # /etc/spark/conf/log4j-spark.properties
 spark_comm_log4j_spark_properties_tmpl: 'log4j-spark.properties.j2'
+spark_comm_log4j_RFA: False
 spark_comm_log4j_rootCategory: 'WARN, rolling'
 spark_comm_log4j_filename: 'spark.log'
 spark_comm_log4j_ConversionPattern: '%d{yy/MM/dd HH:mm:ss} %p %c{1}: %m%n'
