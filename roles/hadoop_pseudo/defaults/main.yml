@@ -1,2 +1,3 @@
 ---
 # defaults file for roles/hadoop_pseudo
+hadoop_pseudo_yarn_vmemcheck: "false"
