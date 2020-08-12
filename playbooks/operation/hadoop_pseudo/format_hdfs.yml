@@ -1,3 +1,5 @@
 - hosts: "{{ server | default('pseudo') }}"
+  become: yes
+  become_user: hdfs
   roles:
     - hadoop_format_hdfs
