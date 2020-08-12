@@ -19,7 +19,7 @@
 {% if spark_comm_log4j_RFA == True %}
 log4j.rootCategory={{ spark_comm_log4j_rootCategory }}
 {% else %}
-log4j.rootCategory=INFO, cosole
+log4j.rootCategory=INFO, console
 {% endif %}
 log4j.appender.console=org.apache.log4j.ConsoleAppender
 log4j.appender.console.target=System.err
