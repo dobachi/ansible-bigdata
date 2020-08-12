@@ -11,9 +11,3 @@
 
     - name: wait_for_nodemanager_service_port
       wait_for: host={{ ansible_hostname }} port=8040
-
-    - name: start_hadoop_mapreduce_historyserver
-      shell: /usr/sbin/service hadoop-mapreduce-historyserver  start
-
-    - name: wait_for_other_service_port
-      wait_for: host={{ ansible_hostname }}  port=19888
