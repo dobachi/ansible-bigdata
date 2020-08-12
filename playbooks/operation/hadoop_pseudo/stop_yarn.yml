@@ -11,9 +11,3 @@
 
     - name: wait_for_nodemanager_service_port_stopped
       wait_for: host={{ ansible_hostname }}  port=8040 state=stopped
-
-    - name: stop_mapreduce_historyserver
-      shell: /usr/sbin/service hadoop-mapreduce-historyserver  stop
-
-    - name: wait_for_other_service_port_stopped
-      wait_for: host={{ ansible_hostname }} port=19888 state=stopped
