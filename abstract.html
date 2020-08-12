@@ -40,33 +40,25 @@
 <div class="section" id="about-playbooks">
 <h2><span class="section-number">1.1. </span>About playbooks<a class="headerlink" href="#about-playbooks" title="Permalink to this headline">¶</a></h2>
 <p>This is a library of playbooks to construct HDFS/YARN clusters with some kinds of Big Data tools, such as Apache Spark.
-You can build a Hadoop cluster with HA as well as pseudo Hadoop environment.</p>
-<p>Although the configuration of OS and middlewares are not well tuned about performance,
-this is enough to be used to construct small cluster.
-In other words, if you would like to construct and manage large clusters,
-you may need to configure OS and middlewares adequately.</p>
-<p>To write these playbooks, <a class="reference external" href="https://bitbucket.org/dobachi/ansible-playbooks.git">dobachi’s ansible-playbooks</a>
-and <a class="reference external" href="https://github.com/mcsrainbow/ansible-playbooks-cdh5">mcsrainbow’s ansible-playbooks-cdh5</a> are used as reference.</p>
+You can construct a Hadoop cluster with HA as well as a pseudo Hadoop environment.</p>
+<p>The roles contains only basic configurations.
+I recommend that you customize or parameterize roles to configure systems appropriately for your workload.</p>
 </div>
 <div class="section" id="feature">
 <h2><span class="section-number">1.2. </span>Feature<a class="headerlink" href="#feature" title="Permalink to this headline">¶</a></h2>
-<p>This project has the following functions.
-Each function is available individually.</p>
+<p>The project contains the following features.</p>
 <ul class="simple">
-<li><p>Configuring Ansible execution environment</p></li>
-<li><p>Booting EC2 instances for Hadoop cluster</p></li>
-<li><p>Configuring HDFS/YARN with NameNode HA</p></li>
-<li><p>Configuring CDH5’s Spark core on Client node</p></li>
-<li><p>Configuring Spark community edition’s core on Client node</p></li>
-<li><p>Configuring Ganglia for the resource visualization</p></li>
-<li><p>Configuring InfluxDB and Grafana for the metrics visualization</p></li>
-<li><p>Configuring Pseudo environment for test</p></li>
-<li><p>Configuring Zeppelin for Spark notebook</p></li>
-<li><p>Configuring fluentd and td-agent</p></li>
-<li><p>Configuring Kafka cluster</p></li>
-<li><p>Configuring Confluent cluster</p></li>
-<li><p>Configuring Ambari</p></li>
-<li><p>Configuring CUDA and cuDNN</p></li>
+<li><p>Examples of the inventry file of Ansible</p></li>
+<li><p>Basic configurations provided via role variables and group_vars</p></li>
+<li><p>Roles to configure and operate middleware</p></li>
+<li><p>Playbooks to configure and operate middleware</p></li>
+</ul>
+<p>The main products which this project can deploy are:</p>
+<ul class="simple">
+<li><p>Bigtop based Apache Hadoop cluster
+* Pseudo environment
+* Distributed environment with NameNode and ResourceManager HA</p></li>
+<li><p>Bigtop and community based Apache Spark</p></li>
 </ul>
 </div>
 <div class="section" id="servers">
@@ -75,8 +67,8 @@ Each function is available individually.</p>
 <p><strong>Servers for medium cluster</strong></p>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 9%" />
-<col style="width: 91%" />
+<col style="width: 8%" />
+<col style="width: 92%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Server</p></th>
@@ -85,18 +77,18 @@ Each function is available individually.</p>
 </thead>
 <tbody>
 <tr class="row-even"><td><p>master01</p></td>
-<td><p>Primary NameNode, JournalNode, Zookeeper Server(id=1), Ganglia Slave</p></td>
+<td><p>Primary NameNode, JournalNode, ZooKeeper Server(id=1), Ganglia Slave</p></td>
 </tr>
 <tr class="row-odd"><td><p>master02</p></td>
-<td><p>JournalNode, Zookeeper Server(id=2), Primary ResourceManager,
+<td><p>JournalNode, ZooKeeper Server(id=2), Primary ResourceManager,
 Ganglia Slave</p></td>
 </tr>
 <tr class="row-even"><td><p>master03</p></td>
-<td><p>JournalNode, Zookeeper Server(id=3), HistoryServer, Backup ResourceManager,
-Backup NameNode, Ganglia Slave, Ganglia Master, InfluxDB, Grafana</p></td>
+<td><p>JournalNode, ZooKeeper Server(id=3), HistoryServer, Standby ResourceManager,
+Standby NameNode, Ganglia Slave, Ganglia Master, InfluxDB, Grafana, Spark History Server</p></td>
 </tr>
 <tr class="row-odd"><td><p>client01</p></td>
-<td><p>Hadoop Client, Spark Core, Ganglia Slave, Zeppelin</p></td>
+<td><p>Hadoop Client, Spark Client, Ganglia Slave, Zeppelin</p></td>
 </tr>
 <tr class="row-even"><td><p>slave01</p></td>
 <td><p>DataNode, NodeManager, Ganglia Slave</p></td>
@@ -143,22 +135,22 @@ Backup NameNode, Ganglia Slave, Ganglia Master, InfluxDB, Grafana</p></td>
 <td><p>Primary NameNode, Ganglia Slave</p></td>
 </tr>
 <tr class="row-odd"><td><p>master02</p></td>
-<td><p>Backup NameNode, Ganglia Slave</p></td>
+<td><p>Standby NameNode, Ganglia Slave</p></td>
 </tr>
 <tr class="row-even"><td><p>master03</p></td>
 <td><p>Primary ResourceManager, Ganglia Slave</p></td>
 </tr>
 <tr class="row-odd"><td><p>master04</p></td>
-<td><p>Backup ResourceManager, Ganglia Slave</p></td>
+<td><p>Standby ResourceManager, Ganglia Slave</p></td>
 </tr>
 <tr class="row-even"><td><p>master05</p></td>
-<td><p>JournalNode, Zookeeper Server(id=1), Ganglia Slave</p></td>
+<td><p>JournalNode, ZooKeeper Server(id=1), Ganglia Slave</p></td>
 </tr>
 <tr class="row-odd"><td><p>master06</p></td>
-<td><p>JournalNode, Zookeeper Server(id=2), Ganglia Slave</p></td>
+<td><p>JournalNode, ZooKeeper Server(id=2), Ganglia Slave</p></td>
 </tr>
 <tr class="row-even"><td><p>master07</p></td>
-<td><p>JournalNode, Zookeeper Server(id=3), Ganglia Slave</p></td>
+<td><p>JournalNode, ZooKeeper Server(id=3), Ganglia Slave</p></td>
 </tr>
 <tr class="row-odd"><td><p>master08</p></td>
 <td><p>HistoryServer, Ganglia Master, Ganglia Slave, InfluxDB, Grafana</p></td>
@@ -224,20 +216,17 @@ Backup NameNode, Ganglia Slave, Ganglia Master, InfluxDB, Grafana</p></td>
 <tbody>
 <tr class="row-even"><td><p>pseudo</p></td>
 <td><p>NameNode, DataNode, SecondaryNameNode, ResourceManager, NodeManager,
-Spark-core, Spark history server</p></td>
+Spark, Spark History Server</p></td>
 </tr>
 </tbody>
 </table>
-<ul class="simple">
-<li><p>You can also configure InfluxDB, Grafana, Zeppelin by using playbooks</p></li>
-</ul>
 </div>
 <div class="section" id="software-information">
 <h2><span class="section-number">1.4. </span>Software information<a class="headerlink" href="#software-information" title="Permalink to this headline">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 14%" />
-<col style="width: 86%" />
+<col style="width: 30%" />
+<col style="width: 70%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Software</p></th>
@@ -246,31 +235,18 @@ Spark-core, Spark history server</p></td>
 </thead>
 <tbody>
 <tr class="row-even"><td><p>OS</p></td>
-<td><p>CentOS6.6 or CentOS7.0</p></td>
-</tr>
-<tr class="row-odd"><td><p>Hadoop</p></td>
-<td><p>CDH5.3</p></td>
-</tr>
-<tr class="row-even"><td><p>Spark</p></td>
-<td><p>Spark1.2 of CDH5
-or Spark community edition</p></td>
+<td><p>(I use CentOS 7)</p></td>
 </tr>
 <tr class="row-odd"><td><p>Ansible</p></td>
-<td><p>Ansible 1.8.2 of EPEL</p></td>
+<td><p>(I use 2.9.9)</p></td>
 </tr>
-<tr class="row-even"><td><p>InfluxDB</p></td>
-<td><p>Latest version of the community</p></td>
+<tr class="row-even"><td><p>Hadoop</p></td>
+<td><p>2.8.5 (Bigtop 1.4.0)</p></td>
 </tr>
-<tr class="row-odd"><td><p>Graphana</p></td>
-<td><p>1.9.1 of the community</p></td>
+<tr class="row-odd"><td><p>Spark</p></td>
+<td><p>2.2.3 (Bigtop 1.4.0)</p></td>
 </tr>
-<tr class="row-even"><td><p>Zeppelin</p></td>
-<td><p>Latest version of the community</p></td>
-</tr>
-<tr class="row-odd"><td><p>Kafka</p></td>
-<td><p>0.10.0.0</p></td>
-</tr>
-<tr class="row-even"><td><p>Confluent</p></td>
+<tr class="row-even"><td><p>Spark Community version</p></td>
 <td><p>3.0.0</p></td>
 </tr>
 </tbody>
@@ -279,22 +255,9 @@ or Spark community edition</p></td>
 <div class="section" id="prerequirement">
 <h2><span class="section-number">1.5. </span>Prerequirement<a class="headerlink" href="#prerequirement" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>You can login to each server by SSH from the server where you execute ansible.</p></li>
-<li><p>You can use “sudo” in each server.
-If you cannot use sudo, you should access remote servers by root user.</p></li>
-<li><p>When you manage EC2 instances, you need to use RSA key to login servers.
-For example, CentOS6 community instance use RSA key with root user in SSH access.</p></li>
+<li><p>Login to each server by SSH from the server where you execute ansible.</p></li>
+<li><p>“sudo” as admin user in each server.</p></li>
 </ul>
-</div>
-<div class="section" id="use-python3">
-<h2><span class="section-number">1.6. </span>Use Python3<a class="headerlink" href="#use-python3" title="Permalink to this headline">¶</a></h2>
-<p>If you want to use Python3, you should create group_vars/all/python3 file including the following content.
-Please replace &lt;your python3 path&gt; to the path of your own Python3.
-For example, /usr/bin/python3.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ansible_python_interpreter</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">your</span> <span class="n">python3</span> <span class="n">path</span><span class="o">&gt;</span>
-</pre></div>
-</div>
-<p>The file, group_vars/all/python3 is included in .gitignore list, because the path of Python3 is different from each environment.</p>
 </div>
 </div>
 
