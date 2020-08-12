@@ -79,21 +79,25 @@
     template:
       src: "{{ spark_comm_defaults_tmpl }}"
       dest: "/usr/local/spark/default/conf/spark-defaults.conf"
+      mode: 644
   
   - name: copy_spark-env.sh
     template:
       src: "{{ spark_comm_env_tmpl }}"
       dest: "/usr/local/spark/default/conf/spark-env.sh"
+      mode: 644
   
   - name: copy_metrics.properties
     template:
       src: "{{ spark_comm_metrics_tmpl }}"
       dest: "/usr/local/spark/default/conf/metrics.properties"
+      mode: 644
   
   - name: copy_log4j_spark_properties
     template:
       src: "{{ spark_comm_log4j_spark_properties_tmpl }}"
       dest: "/usr/local/spark/default/conf/log4j.properties"
+      mode: 644
   
     #   - name: copy_hive-site.xml
     #     template: src={{ spark_comm_hive_site_tmpl }} dest=/usr/local/spark/default/conf/hive-site.xml
