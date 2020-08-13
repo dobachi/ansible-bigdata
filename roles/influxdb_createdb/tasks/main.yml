@@ -1,0 +1,19 @@
+---
+# tasks file for roles/influxdb_createdb
+
+- block:
+  - name: pip_install_influxdb
+    pip:
+      name: influxdb
+      state: present
+
+  - name: create_graphite_db
+    influxdb_database:
+      hostname: "{{ groups.hadoop_other[0] }}"
+      database_name: "{{item}}"
+    with_items:
+      - "graphite"
+      - "grafana"
+
+  tags:
+    - influxdb_createdb
