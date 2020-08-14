@@ -1,0 +1,16 @@
+---
+# tasks file for roles/hive_init_schema
+
+- block:
+
+    - name: remove_metasotedb
+      file:
+        path: /var/lib/hive/metastore/metastore_db
+        state: absent
+
+    - name: init_schema
+      shell: /usr/lib/hive/bin/schematool -dbType derby -initSchema
+
+  when: hive_derby == True
+  tags:
+    - hive_init_schema

@@ -1,0 +1,7 @@
+- hosts: "{{ server | default('hadoop_client') }}"
+  roles:
+    - common
+    - epel
+    - openjdk
+    - hadoop_base
+    - hive

@@ -1,0 +1,8 @@
+- hosts: hadoop_client
+  gather_facts: no
+  tasks:
+    - name: start_daemons
+      shell: /usr/sbin/service hive-server2 start
+
+    - name: wait_for_hive-server2_service_port
+      wait_for: host={{ ansible_host }} port=10000

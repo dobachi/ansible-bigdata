@@ -1,0 +1,5 @@
+---
+# defaults file for roles/hive_tez_setup
+hive_tez_version: "0.9.1"
+# hive_tez_setup_base_url: "http://ftp.jaist.ac.jp/pub/apache/tez/{{hive_tez_version}}"
+hive_tez_setup_url: "{{hive_tez_setup_base_url}}/apache-tez-{{hive_tez_version}}-bin.tar.gz"

@@ -1,0 +1,5 @@
+- hosts: "{{ server | default(groups.hadoop_client[0]) }}"
+  become: True
+  become_user: hive
+  roles:
+    - hive_init_schema

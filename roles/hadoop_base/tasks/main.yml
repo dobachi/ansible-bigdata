@@ -48,5 +48,11 @@
       mode: 644
     when: hadoop_base_ganglia == True
 
+  - name: configure_/etc/default/hadoop
+    template:
+      src: hadoop.j2
+      dest: /etc/default/hadoop
+      mode: 644
+
   tags:
     - hadoop_base

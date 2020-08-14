@@ -1,0 +1,2 @@
+- include: stop_hive-server2.yml
+- include: start_hive-server2.yml

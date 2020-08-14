@@ -1,0 +1,3 @@
+---
+# defaults file for roles/hive_init_schema
+hive_derby: True

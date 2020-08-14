@@ -1,0 +1,22 @@
+---
+# tasks file for roles/hive
+- block:
+
+  - name: install_hive
+    yum:
+      name: ["hive", "hive-server2", "tez"]
+      state: installed
+
+  - name: disable_hive-server2
+    service:
+      name: hive-server2
+      enabled: no
+
+  - name: configure_tez-site.xml
+    template:
+      src: tez-site.xml.j2
+      dest: /etc/tez/conf/tez-site.xml
+      mode: 0644
+
+  tags:
+    - hive

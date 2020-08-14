@@ -58,4 +58,20 @@
         <value>{{hadoop_base_yarn_vmemcheck}}</value>
     </property>
 
+    <property>
+        <name>yarn.nodemanager.delete.debug-delay-sec</name>
+        <value>{{hadoop_base_nm_deletesec}}</value>
+    </property>
+
+{% if hadoop_base_tez == True %}
+    <property>
+      <name>yarn.nodemanager.aux-services</name>
+      <value>mapreduce_shuffle</value>
+    </property>
+    <property>
+      <name>yarn.nodemanager.aux-services.mapreduce_shuffle.class</name>
+      <value>org.apache.hadoop.mapred.ShuffleHandler</value>
+    </property>
+{% endif %}
+
 </configuration>

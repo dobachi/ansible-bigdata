@@ -14,3 +14,7 @@ hadoop_base_yarn_vmemcheck: "false"
 hadoop_base_ganglia: False
 hadoop_base_nn_g_servers: "{{groups.hadoop_master[0]}}:8649,{{groups.hadoop_master[1]}}:8649"
 hadoop_base_dn_g_servers: "{{groups.hadoop_slave[0]}}:8649,{{groups.hadoop_slave[1]}}:8649"
+# hadoop_base_hive_users:
+#   - hive
+hadoop_base_tez: False
+hadoop_base_nm_deletesec: 0

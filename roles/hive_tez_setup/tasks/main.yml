@@ -1,0 +1,48 @@
+---
+# tasks file for roles/hive_tez_setup
+- block:
+
+  - name: mkdir_/apps/tez
+    shell: hdfs dfs -mkdir -p /apps/tez
+    become: yes
+    become_user: hdfs
+
+  - name: chmod_/apps
+    shell: hdfs dfs -chmod 755 /apps
+    become: yes
+    become_user: hdfs
+
+  - name: mkdir_/usr/local/tez
+    file:
+      path: /usr/local/tez
+      state: directory
+      owner: hive
+      group: hive
+      mode: 0755
+
+  - name: downloads_tez_tgz
+    get_url:
+      url: "{{hive_tez_setup_url}}"
+      dest: /usr/local/tez/apache-tez-{{hive_tez_version}}-bin.tar.gz
+      owner: hive
+      group: hive
+      mode: 644
+
+  - name: unarchive_tez_tgz
+    unarchive:
+      src: /usr/local/tez/apache-tez-{{hive_tez_version}}-bin.tar.gz
+      dest: /usr/local/tez/apache-tez-{{hive_tez_version}}-bin
+      creates: /usr/local/tez/apache-tez-{{hive_tez_version}}-bin/LICENSE
+
+  - name: upload_tez_tgz
+    shell: hdfs dfs -copyFromLocal /usr/local/tez/apache-tez-{{hive_tez_version}}-bin/share/tez.tar.gz /apps/tez/tez.tar.gz
+    become: yes
+    become_user: hdfs
+
+  - name: chmod_tez_tgz
+    shell: hdfs dfs -chmod 644 /apps/tez/tez.tar.gz
+    become: yes
+    become_user: hdfs
+
+  tags:
+    - hive_tez_setup
