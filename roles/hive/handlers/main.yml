@@ -1,2 +1,7 @@
 ---
 # handlers file for roles/hive
+
+- name: postgresql
+  service:
+    name: postgresql
+    state: restarted

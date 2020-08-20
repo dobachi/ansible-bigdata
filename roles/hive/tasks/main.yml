@@ -18,5 +18,79 @@
       dest: /etc/tez/conf/tez-site.xml
       mode: 0644
 
+  - name: configure_hive-site.xml
+    template:
+      src: hive-site.xml.j2
+      dest: /etc/hive/conf/hive-site.xml
+      mode: 0644
+      owner: hive
+
+  tags:
+    - hive
+
+- block:
+
+  - name: install_postgresql
+    yum:
+      name: ["postgresql-server", "postgresql-jdbc"]
+      state: installed
+
+  - name: init_postgresql
+    shell: /usr/sbin/service postgresql initdb
+    args:
+      creates: /var/lib/pgsql/initdb.log
+
+  - name: configure_postgresql.conf
+    template:
+      src: postgresql.conf.j2
+      dest: /var/lib/pgsql/data/postgresql.conf
+      mode: 0700
+      owner: postgres
+    notify:
+      - postgresql
+
+  - name: configure_pg_hba.conf
+    template:
+      src: pg_hba.conf.j2
+      dest: /var/lib/pgsql/data/pg_hba.conf
+      mode: 0700
+      owner: postgres
+    notify:
+      - postgresql
+
+  - meta: flush_handlers
+
+  - name: link_jdbc_driver
+    file:
+      path: /usr/lib/hive/lib/postgresql-jdbc.jar
+      src: /usr/share/java/postgresql-jdbc.jar
+      state: link
+
+  - name: start_postgresql
+    service:
+      name: postgresql
+      state: started
+      enabled: yes
+
+  - name: install_psycopg2
+    yum:
+      name: python-psycopg2
+      state: installed
+
+  - name: add_user_to_postgres
+    become: yes
+    become_user: postgres
+    postgresql_user:
+      name: hiveuser
+      password: mypassword
+
+  - name: create_metastore
+    become: yes
+    become_user: postgres
+    postgresql_db:
+      name: metastore
+      owner: hiveuser
+
+  when: hive_postgres == True
   tags:
     - hive

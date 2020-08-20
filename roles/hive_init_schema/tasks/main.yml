@@ -4,13 +4,28 @@
 - block:
 
     - name: remove_metasotedb
+      become: True
+      become_user: hive
       file:
         path: /var/lib/hive/metastore/metastore_db
         state: absent
 
     - name: init_schema
+      become: True
+      become_user: hive
       shell: /usr/lib/hive/bin/schematool -dbType derby -initSchema
 
-  when: hive_derby == True
+  when: hive_postgres == False
+  tags:
+    - hive_init_schema
+
+- block:
+
+    - name: init_schema
+      become: True
+      become_user: postgres
+      shell: /usr/lib/hive/bin/schematool -dbType postgres -initSchema
+
+  when: hive_postgres == True
   tags:
     - hive_init_schema
