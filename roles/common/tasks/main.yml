@@ -1,4 +1,9 @@
 - block:
+  - name: install_epel-release
+    yum:
+      name:
+        - epel-release
+      state: installed
 
   - name: install_common_softwares
     yum:
@@ -10,6 +15,7 @@
         - wget
         - ntp
         - python-pip
+      update_cache: yes
       state: installed
 
   tags:
