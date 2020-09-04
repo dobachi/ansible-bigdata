@@ -14,6 +14,10 @@ dataDir=/var/lib/zookeeper
 clientPort=2181
 
 {% for server in groups.hadoop_zookeeperserver %}
+{% if hostvars[inventory_hostname].zookeeper_server_id == loop.index %}
+server.{{ loop.index }}=0.0.0.0:2888:3888
+{% else %}
 server.{{ loop.index }}={{ server }}:2888:3888
+{% endif %}
 {% endfor %}
 
