@@ -32,7 +32,11 @@
     {% for host in groups.hadoop_resourcemanager %}
 <property>
       <name>yarn.resourcemanager.hostname.{{ host }}</name>
+{% if inventory_hostname == host %}
+      <value>0.0.0.0</value>
+{% else %}
       <value>{{ host }}</value>
+{% endif %}
     </property>
     {% endfor %}
 

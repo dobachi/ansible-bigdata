@@ -29,14 +29,22 @@
     {% for host in groups.hadoop_namenode %}
 <property>
       <name>dfs.namenode.rpc-address.{{ hadoop_base_nameservices }}.{{ host }}</name>
+{% if inventory_hostname == host %}
+      <value>0.0.0.0:8020</value>
+{% else %}
       <value>{{ host }}:8020</value>
+{% endif %}
     </property>
     {% endfor %}
 
     {% for host in groups.hadoop_namenode %}
 <property>
       <name>dfs.namenode.http-address.{{ hadoop_base_nameservices }}.{{ host }}</name>
+{% if inventory_hostname == host %}
+      <value>0.0.0.0:50070</value>
+{% else %}
       <value>{{ host }}:50070</value>
+{% endif %}
     </property>
     {% endfor %}
 
