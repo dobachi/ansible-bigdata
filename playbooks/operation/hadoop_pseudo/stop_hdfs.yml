@@ -4,16 +4,16 @@
       shell: /usr/sbin/service hadoop-hdfs-namenode stop
 
     - name: wait_for_namenode_service_port_stopped
-      wait_for: host={{ ansible_hostname }}  port=8020 state=stopped
+      wait_for: host={{ ansible_host }}  port=8020 state=stopped
 
     - name: stop_secondarynamenode
       shell: /usr/sbin/service hadoop-hdfs-secondarynamenode stop
 
     - name: wait_for_secondarynamenode_web_service_port_stopped
-      wait_for: host={{ ansible_hostname }} port=50090 state=stopped
+      wait_for: host={{ ansible_host }} port=50090 state=stopped
 
     - name: stop_datanode
       shell: /usr/sbin/service hadoop-hdfs-datanode stop
 
     - name: wait_for_datanode_service_port_stopped
-      wait_for: host={{ ansible_hostname }}  port=50020 state=stopped
+      wait_for: host={{ ansible_host }}  port=50020 state=stopped

@@ -4,7 +4,7 @@
       shell: /usr/sbin/service hadoop-yarn-resourcemanager stop
 
     - name: wait_for_resourcemanager_web_service_port_stopped
-      wait_for: host={{ ansible_hostname }} port=8088 state=stopped
+      wait_for: host={{ ansible_host }} port=8088 state=stopped
 
 - hosts: "{{ server | default(groups.hadoop_slave) }}"
   tasks:
@@ -15,4 +15,4 @@
       service: name=hadoop-yarn-nodemanager state=stopped
 
     - name: wait_for_nodemanager_service_port_stopped
-      wait_for: host={{ ansible_hostname }}  port=8040 state=stopped
+      wait_for: host={{ ansible_host }}  port=8040 state=stopped

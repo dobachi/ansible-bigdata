@@ -5,4 +5,4 @@
     - name: start_ambari
       service: name=ambari-server state=started
     - name : check if ambari-server is up
-      wait_for : host={{ ansible_hostname }} port=8080 delay=20
+      wait_for : host={{ ansible_host }} port=8080 delay=20

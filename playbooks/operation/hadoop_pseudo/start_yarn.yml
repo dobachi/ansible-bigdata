@@ -4,10 +4,10 @@
       shell: /usr/sbin/service hadoop-yarn-resourcemanager  start
 
     - name: wait_for_resourcemanager_web_service_port
-      wait_for: host={{ ansible_hostname }}  port=8088
+      wait_for: host={{ ansible_host }}  port=8088
 
     - name: start_nodemanager
       shell: /usr/sbin/service hadoop-yarn-nodemanager  start
 
     - name: wait_for_nodemanager_service_port
-      wait_for: host={{ ansible_hostname }} port=8040
+      wait_for: host={{ ansible_host }} port=8040
