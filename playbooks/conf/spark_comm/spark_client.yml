@@ -1,6 +1,6 @@
 - hosts: '{{ server | default("hadoop_client") }}'
   roles:
-    - { role: common, common_config_hostname: True }
+    - common
     - openjdk
       #    - scala
       #    - sbt

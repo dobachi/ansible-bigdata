@@ -101,7 +101,7 @@
   - name: set_hostname_to_inventory_hostname
     hostname:
       name: "{{ inventory_hostname }}"
-    when: common_config_hostname
+    when: common_config_hostname == True
   
   - name: no_requiretty_for_root_and_wheel
     template:

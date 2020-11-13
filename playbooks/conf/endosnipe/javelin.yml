@@ -1,5 +1,5 @@
 - hosts: "{{ server | default('endo_javelin') }}"
   roles:
-    - { role: common, common_config_hostname: True }
+    - common
     - epel
     - endosnipe_javelin
