@@ -6,7 +6,7 @@
     copy:
       src: prompt.sh
       dest: /etc/profile.d/prompt.sh
-      mode: 755
+      mode: 0644
 
   tags:
     - prompt

@@ -106,7 +106,7 @@
     template:
       src: "spark.sh.j2"
       dest: "/etc/profile.d/spark.sh"
-      mode: 755
+      mode: 0644
 
   tags:
     - spark_comm
