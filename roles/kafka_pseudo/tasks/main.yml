@@ -1,4 +1,66 @@
 ---
 # tasks file for roles/kafka_pseudo
-- include: user.yml tags=user,kafka_pseudo
-- include: install.yml tags=install,kafka_pseudo
+- block:
+
+  - name: add_kafka_group
+    group: 
+      name: kafka
+  
+  - name: add_kafka_user
+    user:
+      name: kafka 
+      group: kafka
+
+  - name: mkdir_/opt/kafka_pseudo
+    file: 
+      path: /opt/kafka_pseudo
+      owner: kafka 
+      group: kafka
+      state: directory
+  
+  - name: download_kafka_packages
+    get_url: 
+      url: "{{kafka_pseudo_baseurl}}/{{ kafka_pseudo_version }}/kafka_{{ kafka_pseudo_scala_version }}-{{ kafka_pseudo_version }}.tgz" 
+      dest: "/opt/kafka_pseudo/kafka_{{ kafka_pseudo_scala_version }}-{{ kafka_pseudo_version }}.tgz"
+  
+  - name: unarchive_kafka_packages
+    shell: tar xvzf kafka_{{ kafka_pseudo_scala_version }}-{{ kafka_pseudo_version }}.tgz
+    args:
+      chdir: /opt/kafka_pseudo 
+      creates: /opt/kafka_pseudo/default/LICENSE
+  
+  - name: chown_of_kafka_packages
+    file: 
+      path: /opt/kafka_pseudo/kafka_{{ kafka_pseudo_scala_version }}-{{ kafka_pseudo_version }}
+      recurse: yes 
+      owner: kafka 
+      group: kafka 
+      state: directory
+  
+  - name: make_alternatives_link_of_kafka_package
+    alternatives:
+      name: kafka_package 
+      path: /opt/kafka_pseudo/kafka_{{ kafka_pseudo_scala_version }}-{{ kafka_pseudo_version }}
+      link: /opt/kafka_pseudo/default
+  
+  - name: mkdir_/etc/kafka/
+    file:
+      path: /etc/kafka
+      state: directory
+      owner: kafka
+      group: kafka
+  
+  - name: make_alternatives_link_of_kafka_pseudo_config
+    alternatives: 
+      name: kafka_pseudo_config
+      path: /opt/kafka_pseudo/default/config 
+      link: /etc/kafka/conf.pseudo
+  
+  - name: make_alternatives_link_of_kafka_conf
+    alternatives:
+      name: kafka_conf 
+      path: /etc/kafka/conf.pseudo 
+      link: /etc/kafka/conf
+
+  tags:
+    - kafka_pseudo

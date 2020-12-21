@@ -1,4 +1,8 @@
-- hosts: "{{ server | default('pseudo') }}"
+- hosts: "{{ server | default('localhost') }}"
   tasks:
     - name: start_zookeeper_server
-      service: name=zookeeper-server state=started
+      become: yes
+      become_user: kafka
+      shell: ./bin/zookeeper-server-start.sh -daemon config/zookeeper.properties
+      args:
+        chdir: /opt/kafka_pseudo/default

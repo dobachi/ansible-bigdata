@@ -3,5 +3,4 @@
     - common
     - epel
     - openjdk
-    - zookeeper_server
     - kafka_pseudo
