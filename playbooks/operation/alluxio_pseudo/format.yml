@@ -1,0 +1,9 @@
+- hosts: "{{ server | default('hadoop-pseudo') }}"
+  become: yes
+  become_user: alluxio
+  tasks:
+    - name: format
+      shell: ./bin/alluxio format
+      args:
+        chdir: /opt/alluxio/default 
+

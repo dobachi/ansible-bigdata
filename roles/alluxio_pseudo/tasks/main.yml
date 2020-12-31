@@ -1,0 +1,50 @@
+---
+# tasks file for roles/alluxio_pseudo
+
+- block:
+  - name: groupadd
+    group:
+      name: alluxio
+
+  - name: useradd
+    user:
+      name: alluxio
+      group: alluxio
+      groups: alluxio,wheel
+
+  - name: mkdir_/opt/alluxio
+    file:
+      path: /opt/alluxio
+      state: directory
+
+  - name: downloads_packages
+    get_url:
+      url: https://downloads.alluxio.io/downloads/files/{{alluxio_pseudo_version}}/alluxio-{{alluxio_pseudo_version}}-bin.tar.gz
+      dest: /opt/alluxio/alluxio-{{alluxio_pseudo_version}}-bin.tar.gz
+
+  - name: unpackage
+    unarchive:
+      src: /opt/alluxio/alluxio-{{alluxio_pseudo_version}}-bin.tar.gz
+      dest: /opt/alluxio/
+
+  - name: chown
+    file:
+      path: /opt/alluxio/alluxio-{{alluxio_pseudo_version}}
+      owner: alluxio
+      group: alluxio
+      recurse: yes
+      state: directory
+
+  - name: alternative
+    alternatives:
+      name: alluxio_pseudo
+      link: /opt/alluxio/default
+      path: /opt/alluxio/alluxio-{{alluxio_pseudo_version}}
+
+  - name: configure
+    template:
+      src: alluxio-site.properties.j2
+      dest: /opt/alluxio/default/conf/alluxio-site.properties
+
+  tags:
+    - alluxio_pseudo
