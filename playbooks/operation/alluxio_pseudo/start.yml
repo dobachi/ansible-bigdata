@@ -3,7 +3,7 @@
   become_user: alluxio
   tasks:
     - name: start
-      shell: ./bin/alluxio-start.sh -a local SudoMount
+      shell: ./bin/alluxio-start.sh local SudoMount
       args:
         chdir: /opt/alluxio/default 
 
