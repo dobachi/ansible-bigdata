@@ -519,8 +519,39 @@ $ ansible-playbook playbooks/operation/cdh5_hive/start_metastore.yml -k -s -e <s
 <p>If you also use Hive as a input of Spark,
 please copy hive-site.xml from /etc/hive/conf to /etc/spark/conf.</p>
 </div>
+<div class="section" id="configure-pseudo-alluxio">
+<h2><span class="section-number">4.17. </span>Configure Pseudo Alluxio<a class="headerlink" href="#configure-pseudo-alluxio" title="Permalink to this headline">¶</a></h2>
+<p>To configure pseudo Alluxio environment,
+please execute the following command.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ ansible-playbook playbooks/conf/alluxio/alluxio_pseudo.yml -k -b
+</pre></div>
+</div>
+<p>This deploys an alluxio pacakage under “/opt/alluxio/” and create a link, “/opt/alluxio/defualt” .
+The “alluxio” user and group are also created.</p>
+<p>After the configuration, execute the followin commands to mount RAMFS and format it.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ ansible-playbook playbooks/operation/alluxio_pseudo/format.yml -k -b
+</pre></div>
+</div>
+<p>This creates a RAMFS space on “/mnt/ramdisk/alluxioworker” and formats it.</p>
+<p>Then, we can start alluxio processes.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ ansible-playbook playbooks/operation/alluxio_pseudo/start.yml -k -b
+</pre></div>
+</div>
+<p>We can run tests with the following command.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ ansible-playbook playbooks/operation/alluxio_pseudo/test.yml -c <span class="nb">local</span> -b -k -vvv
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To print STDOUT / STDERR messages, we use -vvv options.</p>
+</div>
+<p>If you want to stop processes, you can use the following commands.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ ansible-playbook playbooks/operation/alluxio_pseudo/stop.yml -c <span class="nb">local</span> -b -k
+</pre></div>
+</div>
+</div>
 <div class="section" id="configure-alluxio-on-yarn">
-<h2><span class="section-number">4.17. </span>Configure Alluxio on YARN<a class="headerlink" href="#configure-alluxio-on-yarn" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.18. </span>Configure Alluxio on YARN<a class="headerlink" href="#configure-alluxio-on-yarn" title="Permalink to this headline">¶</a></h2>
 <p>To configure Alluxio environment at the client,
 please execute the following command.</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ ansible-playbook playbooks/conf/alluxio/alluxio_yarn.yml -k -s
@@ -550,7 +581,7 @@ please execute the following command.</p>
 </ul>
 </div>
 <div class="section" id="configure-tpc-ds">
-<h2><span class="section-number">4.18. </span>Configure TPC-DS<a class="headerlink" href="#configure-tpc-ds" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.19. </span>Configure TPC-DS<a class="headerlink" href="#configure-tpc-ds" title="Permalink to this headline">¶</a></h2>
 <p>To configure TPC-DS, please execute the following command.</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ ansible-playbook playbooks/conf/tpc_ds/tpc_ds.yml -k -s
 </pre></div>
@@ -563,7 +594,7 @@ please execute the command with overwriting “server” variable like the follo
 </div>
 </div>
 <div class="section" id="configure-keras-and-tensorflow">
-<h2><span class="section-number">4.19. </span>Configure Keras and Tensorflow<a class="headerlink" href="#configure-keras-and-tensorflow" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.20. </span>Configure Keras and Tensorflow<a class="headerlink" href="#configure-keras-and-tensorflow" title="Permalink to this headline">¶</a></h2>
 <p>If you want to use GPU,
 you should download cuDNN package from NVIDIA’s download site manually.
 This is because we need to register NVIDIA’s site before downloading the package.
@@ -571,13 +602,13 @@ In “cuda” role, we use cudnn-8.0-linux-x64-v5.1.solitairetheme8.
 Before executing the playbook, you should store cudnn-8.0-linux-x64-v5.1.solitairetheme8 in roles/cuda/files directory.</p>
 <p>If you don’t want to use GPU, you don’t need to downloads cuDNN packages.</p>
 <div class="section" id="gpu">
-<h3><span class="section-number">4.19.1. </span>GPU<a class="headerlink" href="#gpu" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">4.20.1. </span>GPU<a class="headerlink" href="#gpu" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ ansible-playbook playbooks/conf/tensorflow/keras_gpu.yml -k -s -e <span class="s2">&quot;server=hd-client01&quot;</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="cpu">
-<h3><span class="section-number">4.19.2. </span>CPU<a class="headerlink" href="#cpu" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">4.20.2. </span>CPU<a class="headerlink" href="#cpu" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ ansible-playbook playbooks/conf/tensorflow/keras.yml -k -s -e <span class="s2">&quot;server=hd-client01&quot;</span>
 </pre></div>
 </div>
