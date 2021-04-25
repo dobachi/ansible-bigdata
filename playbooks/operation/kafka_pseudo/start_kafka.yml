@@ -1,6 +1,8 @@
-- hosts: "{{ server | default('pseudo') }}"
+- hosts: "{{ server | default('localhost') }}"
   tasks:
     - name: start_kafka_server
-      sudo: yes
-      sudo_user: kafka
-      shell: ./bin/kafka-server-start.sh -daemon config/server.properties chdir=/usr/local/kafka_pseudo/default
+      become: yes
+      become_user: kafka
+      shell: ./bin/kafka-server-start.sh -daemon config/server.properties
+      args:
+        chdir: /opt/kafka_pseudo/default

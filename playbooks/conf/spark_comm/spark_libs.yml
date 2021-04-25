@@ -1,5 +1,5 @@
 - hosts: '{{ server | default("hadoop_slave:hadoop_client") }}'
   roles:
-    - { role: common, common_config_hostname: True }
+    - common
     - gcc_gfortran
     - openblas

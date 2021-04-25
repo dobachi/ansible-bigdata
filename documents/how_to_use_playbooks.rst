@@ -561,6 +561,47 @@ To start metastore service, execute the following command.
 If you also use Hive as a input of Spark,
 please copy hive-site.xml from /etc/hive/conf to /etc/spark/conf.
 
+Configure Pseudo Alluxio 
+----------------------------
+To configure pseudo Alluxio environment,
+please execute the following command.
+
+.. code-block:: shell
+
+ $ ansible-playbook playbooks/conf/alluxio/alluxio_pseudo.yml -k -b
+
+This deploys an alluxio pacakage under "/opt/alluxio/" and create a link, "/opt/alluxio/defualt" .
+The "alluxio" user and group are also created. 
+
+After the configuration, execute the followin commands to mount RAMFS and format it.
+
+.. code-block:: shell
+
+ $ ansible-playbook playbooks/operation/alluxio_pseudo/format.yml -k -b
+
+This creates a RAMFS space on "/mnt/ramdisk/alluxioworker" and formats it.
+
+Then, we can start alluxio processes.
+
+.. code-block:: shell
+
+ $ ansible-playbook playbooks/operation/alluxio_pseudo/start.yml -k -b
+
+We can run tests with the following command.
+
+.. code-block:: shell
+
+ $ ansible-playbook playbooks/operation/alluxio_pseudo/test.yml -c local -b -k -vvv
+
+.. note::
+
+   To print STDOUT / STDERR messages, we use -vvv options.
+
+If you want to stop processes, you can use the following commands.
+
+.. code-block:: shell
+
+ $ ansible-playbook playbooks/operation/alluxio_pseudo/stop.yml -c local -b -k
 
 Configure Alluxio on YARN
 ----------------------------

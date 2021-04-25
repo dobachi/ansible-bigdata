@@ -14,3 +14,8 @@ common_lang: 'en_US.UTF-8'
 
 common_timezone: 'Asia/Tokyo'
 
+common_configure_transparent_hg: True
+
+common_configure_timezone: True
+
+common_configure_ntp: True

@@ -1,11 +1,11 @@
 - hosts: "{{ server | default('hdoop_client') }}"
   roles:
-    - { role: common, common_config_hostname: True }
+    - common
     - openjdk
     - maven
     - alluxio_yarn
 
 - hosts: "{{ server | default('hadoop_slave') }}"
   roles:
-    - { role: common, common_config_hostname: True }
+    - common
     - alluxio_conf

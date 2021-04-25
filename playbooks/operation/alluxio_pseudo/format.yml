@@ -1,0 +1,17 @@
+- hosts: "{{ server | default('hadoop-pseudo') }}"
+  become: yes
+  become_user: alluxio
+  tasks:
+    - name: unmount_ramfs
+      shell: ./bin/alluxio-mount.sh SudoUmount
+      args:
+        chdir: /opt/alluxio/default 
+    - name: mount_ramfs
+      shell: ./bin/alluxio-mount.sh SudoMount
+      args:
+        chdir: /opt/alluxio/default 
+    - name: format
+      shell: ./bin/alluxio format
+      args:
+        chdir: /opt/alluxio/default 
+

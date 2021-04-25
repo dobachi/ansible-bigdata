@@ -1,0 +1,6 @@
+- hosts: "{{ server | default('hadoop_pseudo') }}"
+  roles:
+    - common
+    - openjdk
+    - maven
+    - alluxio_pseudo
