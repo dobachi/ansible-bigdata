@@ -67,7 +67,7 @@
     with_items:
       - enabled
       - defrag
-    when: common_configure_transparent_hg == True
+    when: common_configure_transparent_hg == True and not "microsoft" in _unamer.stdout
   
   - name: create_tuned_directory
     file:
