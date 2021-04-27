@@ -48,6 +48,11 @@
 
 - block:
 
+  # To use detect WSL
+  - name: uname_r
+    shell: uname -r
+    register: _unamer
+
   - name: deploy_transparent_hugepages_configs
     template:
       src: rc.local.j2
@@ -55,7 +60,7 @@
       mode: 755
       owner: root
       group: root
-    when: common_configure_transparent_hg == True
+    when: common_configure_transparent_hg == True and not "microsoft" in _unamer.stdout
   
   - name: set_transparent_hugepages
     shell: echo never > /sys/kernel/mm/transparent_hugepage/{{ item }}
@@ -123,10 +128,15 @@
       src: lang.sh.j2
       dest: /etc/profile.d/lang.sh
       mode: 644
+
+  # To use detect WSL
+  - name: uname_r
+    shell: uname -r
+    register: _unamer
   
   - name: set_timezone_for_centos7
     shell: timedatectl set-timezone {{ common_timezone }}
-    when: common_configure_timezone == True
+    when: common_configure_timezone == True and not "microsoft" in _unamer.stdout
   
   - name: deploy_journald_configuration
     template:
@@ -161,7 +171,7 @@
 
   - name: start_ntpd
     service: name=ntpd state=started enabled=yes
-    when: common_configure_ntp == True
+    when: common_configure_ntp == True and not "microsoft" in _unamer.stdout
 
   tags:
     - common
