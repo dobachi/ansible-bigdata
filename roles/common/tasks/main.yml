@@ -60,14 +60,14 @@
       mode: 755
       owner: root
       group: root
-    when: common_configure_transparent_hg == True and not "microsoft" in _unamer.stdout
+    when: common_configure_transparent_hg == True and not "microsoft" in _unamer.stdout.lower()
   
   - name: set_transparent_hugepages
     shell: echo never > /sys/kernel/mm/transparent_hugepage/{{ item }}
     with_items:
       - enabled
       - defrag
-    when: common_configure_transparent_hg == True and not "microsoft" in _unamer.stdout
+    when: common_configure_transparent_hg == True and not "microsoft" in _unamer.stdout.lower()
   
   - name: create_tuned_directory
     file:
@@ -136,7 +136,7 @@
   
   - name: set_timezone_for_centos7
     shell: timedatectl set-timezone {{ common_timezone }}
-    when: common_configure_timezone == True and not "microsoft" in _unamer.stdout
+    when: common_configure_timezone == True and not "microsoft" in _unamer.stdout.lower()
   
   - name: deploy_journald_configuration
     template:
@@ -171,7 +171,7 @@
 
   - name: start_ntpd
     service: name=ntpd state=started enabled=yes
-    when: common_configure_ntp == True and not "microsoft" in _unamer.stdout
+    when: common_configure_ntp == True and not "microsoft" in _unamer.stdout.lower()
 
   tags:
     - common
