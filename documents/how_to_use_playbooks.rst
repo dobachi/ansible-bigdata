@@ -176,13 +176,13 @@ Execute ansible-playbook command with common_only_common.yml
 .. code-block:: shell
 
  $ cd /etc/ansible
- $ ansible-playbook playbooks/conf/common/common_only_common.yml -k -s -e "common_config_hostname=True server=hadoop_all"
+ $ ansible-playbook playbooks/conf/common/common_only_common.yml -k -b -e "common_config_hostname=True server=hadoop_all"
 
 This is usefull for configuration of EC2 instance, because your node may have variety of hostname after each node booted.
 
-How to configure CDH5 HDFS/YARN environment
+How to configure Bigtop HDFS/YARN environment
 --------------------------------------------
-You can construct CDH5 HDFS/YARN environment by ansible-playbook command.
+You can construct Bigtop HDFS/YARN environment by ansible-playbook command.
 
 Preparement
 ~~~~~~~~~~~~
@@ -198,35 +198,45 @@ by Ansible driver server's /etc/ansible/roles/common/files/hosts.default
 
 .. code-block:: shell
 
- $ ansible-playbook playbooks/conf/cdh5/cdh5_all.yml -k -s -e "common_hosts_replace=True"
- $ ansible-playbook playbooks/operation/cdh5/init_zkfc.yml -k -s 
- $ ansible-playbook playbooks/operation/cdh5/init_hdfs.yml -k -s 
+ $ ansible-playbook playbooks/conf/hadoop/hadoop.yml -k -b -e "common_hosts_replace=True"
+ $ ansible-playbook playbooks/operation/hadoop/init_zkfc.yml -k -b 
+ $ ansible-playbook playbooks/operation/hadoop/init_hdfs.yml -k -b 
 
 Start services
 
 .. code-block:: shell
 
- $ ansible-playbook playbooks/operation/cdh5/start_cluster.yml -k -s 
+ $ ansible-playbook playbooks/operation/hadoop/start_cluster.yml -k -b 
 
-How to install Spark environment on CDH5 environment
+You may need to clean up zkfc environments when you failed start HDFS.
+
+.. code-block:: shell
+
+  $ ansible-playbook playbooks/operation/hadoop/bootstrap_nnstandby.yml -k -b
+  $ ansible-playbook playbooks/operation/hadoop/init_zkfc.yml -k -b 
+  $ ansible-playbook playbooks/operation/hadoop/init_hdfs.yml -k -b 
+  $ ansible-playbook playbooks/operation/hadoop/start_cluster.yml -k -b 
+
+How to install Spark environment on Bigtop environment
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 You can install Spark Core into Client node by the following command
 
 .. code-block:: shell
 
- $ ansible-playbook playbooks/conf/cdh5/cdh5_spark.yml -k -s
+ $ ansible-playbook playbooks/conf/spar/spark_client.yml -k -s
+ $ ansible-playbook playbooks/conf/spar/spark_misc.yml -k -s
 
 If you want to start Spark's history server,
 please execute the following command.
 
 .. code-block:: shell
 
- $ ansible-playbook playbooks/operation/cdh5/start_sparkhistory.yml -k -s
+ $ ansible-playbook playbooks/operation/hadoop/start_spark_historyserver.yml -k -s
 
 
-How to configure CDH5 Pseudo environment
+How to configure Bigtop Pseudo environment
 --------------------------------------------
-You can construct CDH5 HDFS/YARN environment by ansible-playbook command.
+You can construct Bigtop HDFS/YARN environment by ansible-playbook command.
 
 Preparement
 ~~~~~~~~~~~~
@@ -242,29 +252,14 @@ by Ansible driver server's /etc/ansible/roles/common/files/hosts.default
 
 .. code-block:: shell
 
- $ ansible-playbook playbooks/conf/cdh5_pseudo/cdh5_pseudo.yml -k -s -e "common_hosts_replace=True"
- $ ansible-playbook playbooks/operation/cdh5_pseudo/init_hdfs.yml -k -s 
+ $ ansible-playbook playbooks/conf/hadoop_pseudo/hadoop_pseudo.yml -k -b -e "common_hosts_replace=True"
+ $ ansible-playbook playbooks/operation/hadoop_pseudo/init_hdfs.yml -k -b 
 
 Start services
 
 .. code-block:: shell
 
- $ ansible-playbook playbooks/operation/cdh5_pseudo/start_cluster.yml -k -s 
-
-How to install Spark environment on Hadoop pseudo environment
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-You can install Spark Core into Client node by the following command
-
-.. code-block:: shell
-
- $ ansible-playbook playbooks/conf/cdh5_pseudo/cdh5_spark.yml -k -s
-
-If you want to start Spark's history server,
-please execute the following command.
-
-.. code-block:: shell
-
- $ ansible-playbook playbooks/operation/cdh5_pseudo/start_sparkhistory.yml -k -s
+ $ ansible-playbook playbooks/operation/hadoop_pseudo/start_cluster.yml -k -b 
 
 How to install Ganglia environment
 ---------------------------------------
@@ -514,7 +509,7 @@ To install Hive and related packages, execute the following command.
 
 .. code-block:: shell
 
- $ ansible-playbook playbooks/conf/cdh5_hive/cdh5_hive.yml -k -s -e "server=hadoop_client"
+ $ ansible-playbook playbooks/conf/cdh5_hive/cdh5_hive.yml -k -b -e "server=hadoop_client"
 
 The above command installs PostgreSQL and Hive packages as well as common packages.
 To Initialize PostgreSQL Database, execute the following command.
@@ -522,14 +517,14 @@ This command remove existing database and initialize database.
 
 .. code-block:: shell
 
- $ ansible-playbook playbooks/operation/postgresql/initdb.yml -s -k -e "server=hadoop_client"
- $ ansible-playbook playbooks/operation/postgresql/restart_postgresql.yml -s -k -e "server=hadoop_client"
+ $ ansible-playbook playbooks/operation/postgresql/initdb.yml -b -k -e "server=hadoop_client"
+ $ ansible-playbook playbooks/operation/postgresql/restart_postgresql.yml -b -k -e "server=hadoop_client"
 
 To create user and database, execute the following command.
 
 .. code-block:: shell
 
- $ ansible-playbook playbooks/operation/cdh5_hive/create_metastore_db -k -s -e "server=hadoop_client"
+ $ ansible-playbook playbooks/operation/cdh5_hive/create_metastore_db -k -b -e "server=hadoop_client"
 
 To define schema, execute the following command *on the Hadoop client*.
 
@@ -554,9 +549,9 @@ To start metastore service, execute the following command.
 
 .. code-block:: shell
 
- $ ansible-playbook playbooks/conf/cdh5_hive/cdh5_hive.yml -s -k -e "server=hadoop_client" 
- $ ansible-playbook playbooks/operation/postgresql/restart_postgresql.yml -s -k -e "server=hadoop_client"
- $ ansible-playbook playbooks/operation/cdh5_hive/start_metastore.yml -k -s -e "server=hadoop_client"
+ $ ansible-playbook playbooks/conf/cdh5_hive/cdh5_hive.yml -b -k -e "server=hadoop_client" 
+ $ ansible-playbook playbooks/operation/postgresql/restart_postgresql.yml -b -k -e "server=hadoop_client"
+ $ ansible-playbook playbooks/operation/cdh5_hive/start_metastore.yml -k -b -e "server=hadoop_client"
 
 If you also use Hive as a input of Spark,
 please copy hive-site.xml from /etc/hive/conf to /etc/spark/conf.
@@ -651,7 +646,7 @@ please execute the command with overwriting "server" variable like the following
 
 .. code-block:: shell
 
- $ ansible-playbook playbooks/conf/tpc_ds/tpc_ds.yml -k -s -e "server=haddoop_client:hadoop_slave"
+ $ ansible-playbook playbooks/conf/tpc_ds/tpc_ds.yml -k -b -e "server=haddoop_client:hadoop_slave"
 
 Configure Keras and Tensorflow
 -------------------------------------
@@ -667,13 +662,13 @@ GPU
 ~~~~~~~~~~
 .. code-block:: shell
 
- $ ansible-playbook playbooks/conf/tensorflow/keras_gpu.yml -k -s -e "server=hd-client01"
+ $ ansible-playbook playbooks/conf/tensorflow/keras_gpu.yml -k -b -e "server=hd-client01"
 
 CPU
 ~~~~~
 .. code-block:: shell
 
- $ ansible-playbook playbooks/conf/tensorflow/keras.yml -k -s -e "server=hd-client01"
+ $ ansible-playbook playbooks/conf/tensorflow/keras.yml -k -b -e "server=hd-client01"
 
 
 
