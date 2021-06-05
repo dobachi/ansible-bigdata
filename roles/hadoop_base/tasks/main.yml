@@ -10,7 +10,7 @@
       enabled: yes
       gpgcheck: yes
       gpgkey: https://dist.apache.org/repos/dist/release/bigtop/KEYS
-      baseurl: http://repos.bigtop.apache.org/releases/1.4.0/centos/7/$basearch
+      baseurl: http://repos.bigtop.apache.org/releases/1.5.0/centos/7/$basearch
 
   - name: install_hadoop
     yum:
