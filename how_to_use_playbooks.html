@@ -192,14 +192,14 @@ You can obtain new IP address tables by executing the playbook.</p>
 You can use “common” role and related playbooks.</p>
 <p>Execute ansible-playbook command with common_only_common.yml</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> /etc/ansible
-$ ansible-playbook playbooks/conf/common/common_only_common.yml -k -s -e <span class="s2">&quot;common_config_hostname=True server=hadoop_all&quot;</span>
+$ ansible-playbook playbooks/conf/common/common_only_common.yml -k -b -e <span class="s2">&quot;common_config_hostname=True server=hadoop_all&quot;</span>
 </pre></div>
 </div>
 <p>This is usefull for configuration of EC2 instance, because your node may have variety of hostname after each node booted.</p>
 </div>
-<div class="section" id="how-to-configure-cdh5-hdfs-yarn-environment">
-<h2><span class="section-number">4.5. </span>How to configure CDH5 HDFS/YARN environment<a class="headerlink" href="#how-to-configure-cdh5-hdfs-yarn-environment" title="Permalink to this headline">¶</a></h2>
-<p>You can construct CDH5 HDFS/YARN environment by ansible-playbook command.</p>
+<div class="section" id="how-to-configure-bigtop-hdfs-yarn-environment">
+<h2><span class="section-number">4.5. </span>How to configure Bigtop HDFS/YARN environment<a class="headerlink" href="#how-to-configure-bigtop-hdfs-yarn-environment" title="Permalink to this headline">¶</a></h2>
+<p>You can construct Bigtop HDFS/YARN environment by ansible-playbook command.</p>
 <div class="section" id="preparement">
 <h3><span class="section-number">4.5.1. </span>Preparement<a class="headerlink" href="#preparement" title="Permalink to this headline">¶</a></h3>
 <p>If you have not configured Ansible execution environment,
@@ -211,32 +211,40 @@ You can reference <a class="reference internal" href="#sec-configure-ansible-env
 <p>In the following example, we configure common_hosts_replace is True.
 As a result of this parameter configuration, Ansible replace /etc/hosts
 by Ansible driver server’s /etc/ansible/roles/common/files/hosts.default</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ ansible-playbook playbooks/conf/cdh5/cdh5_all.yml -k -s -e <span class="s2">&quot;common_hosts_replace=True&quot;</span>
-$ ansible-playbook playbooks/operation/cdh5/init_zkfc.yml -k -s
-$ ansible-playbook playbooks/operation/cdh5/init_hdfs.yml -k -s
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ ansible-playbook playbooks/conf/hadoop/hadoop.yml -k -b -e <span class="s2">&quot;common_hosts_replace=True&quot;</span>
+$ ansible-playbook playbooks/operation/hadoop/init_zkfc.yml -k -b
+$ ansible-playbook playbooks/operation/hadoop/init_hdfs.yml -k -b
 </pre></div>
 </div>
 <p>Start services</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ ansible-playbook playbooks/operation/cdh5/start_cluster.yml -k -s
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ ansible-playbook playbooks/operation/hadoop/start_cluster.yml -k -b
+</pre></div>
+</div>
+<p>You may need to clean up zkfc environments when you failed start HDFS.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ ansible-playbook playbooks/operation/hadoop/bootstrap_nnstandby.yml -k -b
+$ ansible-playbook playbooks/operation/hadoop/init_zkfc.yml -k -b
+$ ansible-playbook playbooks/operation/hadoop/init_hdfs.yml -k -b
+$ ansible-playbook playbooks/operation/hadoop/start_cluster.yml -k -b
 </pre></div>
 </div>
 </div>
-<div class="section" id="how-to-install-spark-environment-on-cdh5-environment">
-<h3><span class="section-number">4.5.3. </span>How to install Spark environment on CDH5 environment<a class="headerlink" href="#how-to-install-spark-environment-on-cdh5-environment" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="how-to-install-spark-environment-on-bigtop-environment">
+<h3><span class="section-number">4.5.3. </span>How to install Spark environment on Bigtop environment<a class="headerlink" href="#how-to-install-spark-environment-on-bigtop-environment" title="Permalink to this headline">¶</a></h3>
 <p>You can install Spark Core into Client node by the following command</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ ansible-playbook playbooks/conf/cdh5/cdh5_spark.yml -k -s
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ ansible-playbook playbooks/conf/spar/spark_client.yml -k -s
+$ ansible-playbook playbooks/conf/spar/spark_misc.yml -k -s
 </pre></div>
 </div>
 <p>If you want to start Spark’s history server,
 please execute the following command.</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ ansible-playbook playbooks/operation/cdh5/start_sparkhistory.yml -k -s
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ ansible-playbook playbooks/operation/hadoop/start_spark_historyserver.yml -k -s
 </pre></div>
 </div>
 </div>
 </div>
-<div class="section" id="how-to-configure-cdh5-pseudo-environment">
-<h2><span class="section-number">4.6. </span>How to configure CDH5 Pseudo environment<a class="headerlink" href="#how-to-configure-cdh5-pseudo-environment" title="Permalink to this headline">¶</a></h2>
-<p>You can construct CDH5 HDFS/YARN environment by ansible-playbook command.</p>
+<div class="section" id="how-to-configure-bigtop-pseudo-environment">
+<h2><span class="section-number">4.6. </span>How to configure Bigtop Pseudo environment<a class="headerlink" href="#how-to-configure-bigtop-pseudo-environment" title="Permalink to this headline">¶</a></h2>
+<p>You can construct Bigtop HDFS/YARN environment by ansible-playbook command.</p>
 <div class="section" id="id1">
 <h3><span class="section-number">4.6.1. </span>Preparement<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <p>If you have not configured Ansible execution environment,
@@ -248,24 +256,12 @@ You can reference <a class="reference internal" href="#sec-configure-ansible-env
 <p>In the following example, we configure common_hosts_replace is True.
 As a result of this parameter configuration, Ansible replace /etc/hosts
 by Ansible driver server’s /etc/ansible/roles/common/files/hosts.default</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ ansible-playbook playbooks/conf/cdh5_pseudo/cdh5_pseudo.yml -k -s -e <span class="s2">&quot;common_hosts_replace=True&quot;</span>
-$ ansible-playbook playbooks/operation/cdh5_pseudo/init_hdfs.yml -k -s
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ ansible-playbook playbooks/conf/hadoop_pseudo/hadoop_pseudo.yml -k -b -e <span class="s2">&quot;common_hosts_replace=True&quot;</span>
+$ ansible-playbook playbooks/operation/hadoop_pseudo/init_hdfs.yml -k -b
 </pre></div>
 </div>
 <p>Start services</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ ansible-playbook playbooks/operation/cdh5_pseudo/start_cluster.yml -k -s
-</pre></div>
-</div>
-</div>
-<div class="section" id="how-to-install-spark-environment-on-hadoop-pseudo-environment">
-<h3><span class="section-number">4.6.3. </span>How to install Spark environment on Hadoop pseudo environment<a class="headerlink" href="#how-to-install-spark-environment-on-hadoop-pseudo-environment" title="Permalink to this headline">¶</a></h3>
-<p>You can install Spark Core into Client node by the following command</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ ansible-playbook playbooks/conf/cdh5_pseudo/cdh5_spark.yml -k -s
-</pre></div>
-</div>
-<p>If you want to start Spark’s history server,
-please execute the following command.</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ ansible-playbook playbooks/operation/cdh5_pseudo/start_sparkhistory.yml -k -s
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ ansible-playbook playbooks/operation/hadoop_pseudo/start_cluster.yml -k -b
 </pre></div>
 </div>
 </div>
@@ -480,18 +476,18 @@ If you want to configure PATH, please do it yourself.</p>
 <div class="section" id="configure-hive">
 <h2><span class="section-number">4.16. </span>Configure Hive<a class="headerlink" href="#configure-hive" title="Permalink to this headline">¶</a></h2>
 <p>To install Hive and related packages, execute the following command.</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ ansible-playbook playbooks/conf/cdh5_hive/cdh5_hive.yml -k -s -e <span class="s2">&quot;server=hadoop_client&quot;</span>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ ansible-playbook playbooks/conf/cdh5_hive/cdh5_hive.yml -k -b -e <span class="s2">&quot;server=hadoop_client&quot;</span>
 </pre></div>
 </div>
 <p>The above command installs PostgreSQL and Hive packages as well as common packages.
 To Initialize PostgreSQL Database, execute the following command.
 This command remove existing database and initialize database.</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ ansible-playbook playbooks/operation/postgresql/initdb.yml -s -k -e <span class="s2">&quot;server=hadoop_client&quot;</span>
-$ ansible-playbook playbooks/operation/postgresql/restart_postgresql.yml -s -k -e <span class="s2">&quot;server=hadoop_client&quot;</span>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ ansible-playbook playbooks/operation/postgresql/initdb.yml -b -k -e <span class="s2">&quot;server=hadoop_client&quot;</span>
+$ ansible-playbook playbooks/operation/postgresql/restart_postgresql.yml -b -k -e <span class="s2">&quot;server=hadoop_client&quot;</span>
 </pre></div>
 </div>
 <p>To create user and database, execute the following command.</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ ansible-playbook playbooks/operation/cdh5_hive/create_metastore_db -k -s -e <span class="s2">&quot;server=hadoop_client&quot;</span>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ ansible-playbook playbooks/operation/cdh5_hive/create_metastore_db -k -b -e <span class="s2">&quot;server=hadoop_client&quot;</span>
 </pre></div>
 </div>
 <p>To define schema, execute the following command <em>on the Hadoop client</em>.</p>
@@ -511,9 +507,9 @@ metastore-#   WHERE <span class="nv">tableowner</span> <span class="o">=</span> 
 </pre></div>
 </div>
 <p>To start metastore service, execute the following command.</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ ansible-playbook playbooks/conf/cdh5_hive/cdh5_hive.yml -s -k -e <span class="s2">&quot;server=hadoop_client&quot;</span>
-$ ansible-playbook playbooks/operation/postgresql/restart_postgresql.yml -s -k -e <span class="s2">&quot;server=hadoop_client&quot;</span>
-$ ansible-playbook playbooks/operation/cdh5_hive/start_metastore.yml -k -s -e <span class="s2">&quot;server=hadoop_client&quot;</span>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ ansible-playbook playbooks/conf/cdh5_hive/cdh5_hive.yml -b -k -e <span class="s2">&quot;server=hadoop_client&quot;</span>
+$ ansible-playbook playbooks/operation/postgresql/restart_postgresql.yml -b -k -e <span class="s2">&quot;server=hadoop_client&quot;</span>
+$ ansible-playbook playbooks/operation/cdh5_hive/start_metastore.yml -k -b -e <span class="s2">&quot;server=hadoop_client&quot;</span>
 </pre></div>
 </div>
 <p>If you also use Hive as a input of Spark,
@@ -589,7 +585,7 @@ please execute the following command.</p>
 <p>The default target node is localhost.
 If you want to configure any other nodes,
 please execute the command with overwriting “server” variable like the following.</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ ansible-playbook playbooks/conf/tpc_ds/tpc_ds.yml -k -s -e <span class="s2">&quot;server=haddoop_client:hadoop_slave&quot;</span>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ ansible-playbook playbooks/conf/tpc_ds/tpc_ds.yml -k -b -e <span class="s2">&quot;server=haddoop_client:hadoop_slave&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -603,13 +599,13 @@ Before executing the playbook, you should store cudnn-8.0-linux-x64-v5.1.solitai
 <p>If you don’t want to use GPU, you don’t need to downloads cuDNN packages.</p>
 <div class="section" id="gpu">
 <h3><span class="section-number">4.20.1. </span>GPU<a class="headerlink" href="#gpu" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ ansible-playbook playbooks/conf/tensorflow/keras_gpu.yml -k -s -e <span class="s2">&quot;server=hd-client01&quot;</span>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ ansible-playbook playbooks/conf/tensorflow/keras_gpu.yml -k -b -e <span class="s2">&quot;server=hd-client01&quot;</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="cpu">
 <h3><span class="section-number">4.20.2. </span>CPU<a class="headerlink" href="#cpu" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ ansible-playbook playbooks/conf/tensorflow/keras.yml -k -s -e <span class="s2">&quot;server=hd-client01&quot;</span>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ ansible-playbook playbooks/conf/tensorflow/keras.yml -k -b -e <span class="s2">&quot;server=hd-client01&quot;</span>
 </pre></div>
 </div>
 </div>
