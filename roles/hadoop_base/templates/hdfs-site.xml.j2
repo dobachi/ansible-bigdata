@@ -26,27 +26,30 @@
 	<value>{{groups.hadoop_namenode | join(',')}}</value>
     </property>
 
-    {% for host in groups.hadoop_namenode %}
-<property>
-      <name>dfs.namenode.rpc-address.{{ hadoop_base_nameservices }}.{{ host }}</name>
-{% if inventory_hostname == host %}
-      <value>0.0.0.0:8020</value>
-{% else %}
-      <value>{{ host }}:8020</value>
-{% endif %}
+    <property>
+      <name>dfs.namenode.rpc-address.{{ hadoop_base_nameservices }}.{{ groups.hadoop_namenode_primary[0] }}</name>
+      <value>{{ groups.hadoop_namenode_primary[0] }}:8020</value>
     </property>
-    {% endfor %}
 
-    {% for host in groups.hadoop_namenode %}
-<property>
-      <name>dfs.namenode.http-address.{{ hadoop_base_nameservices }}.{{ host }}</name>
-{% if inventory_hostname == host %}
-      <value>0.0.0.0:50070</value>
-{% else %}
-      <value>{{ host }}:50070</value>
-{% endif %}
+    <property>
+      <name>dfs.namenode.rpc-address.{{ hadoop_base_nameservices }}.{{ groups.hadoop_namenode_backup[0] }}</name>
+      <value>{{ groups.hadoop_namenode_backup[0] }}:8020</value>
     </property>
-    {% endfor %}
+
+    <property>
+      <name>dfs.namenode.rpc-bind-host</name>
+      <value>0.0.0.0</value>
+    </property>
+
+    <property>
+      <name>dfs.namenode.http-address.{{ hadoop_base_nameservices }}.{{ groups.hadoop_namenode_primary[0] }}</name>
+      <value>{{ groups.hadoop_namenode_primary[0] }}:50070</value>
+    </property>
+
+    <property>
+      <name>dfs.namenode.http-address.{{ hadoop_base_nameservices }}.{{ groups.hadoop_namenode_backup[0] }}</name>
+      <value>{{ groups.hadoop_namenode_backup[0] }}:50070</value>
+    </property>
 
     <!-- the location of the shared storage directory -->
     <property>
